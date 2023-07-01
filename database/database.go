@@ -72,3 +72,23 @@ func CollectionExists(dbName string, collectionName string) (bool, error) {
 	}
 	return false, nil
 }
+
+func GetCollection(dbName string, collectionName string) (*mongo.Collection, error) {
+	client, err := GetConnection()
+	if err != nil {
+		panic("Error while getting collection " + collectionName + " : " + err.Error())
+	}
+
+	exists, err := CollectionExists(dbName, collectionName)
+	if err != nil {
+		panic("Error while getting collection " + collectionName + " : " + err.Error())
+	}
+
+	if !exists {
+		panic("Collection " + collectionName + " does not exists")
+	}
+
+	collection := client.Database(dbName).Collection(collectionName)
+
+	return collection, nil
+}
