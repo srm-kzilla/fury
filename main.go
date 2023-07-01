@@ -11,6 +11,7 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/limiter"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/joho/godotenv"
+	"github.com/srm-kzilla/recruitment-portal-2023/api"
 )
 
 var startTime time.Time
@@ -26,6 +27,7 @@ func healthCheck(c *fiber.Ctx) error {
 func setupRoutes(app *fiber.App) {
 	app.Get("/", rootFunction)
 	app.Get("/health", healthCheck)
+	api.SetupApp(app)
 }
 
 func init() {
