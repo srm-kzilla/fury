@@ -57,3 +57,18 @@ func GetAllCollections(dbName string) ([]string, error) {
 
 	return collectionNames, nil
 }
+
+func CollectionExists(dbName string, collectionName string) (bool, error) {
+
+	collectionNames, err := GetAllCollections(dbName)
+	if err != nil {
+		return false, err
+	}
+
+	for _, name := range collectionNames {
+		if name == collectionName {
+			return true, nil
+		}
+	}
+	return false, nil
+}
