@@ -6,6 +6,7 @@ import (
 	"os"
 
 	"github.com/joho/godotenv"
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"go.mongodb.org/mongo-driver/mongo/readpref"
@@ -40,4 +41,19 @@ func GetConnection() (*mongo.Client, error) {
 		panic("Error while connecting with DB." + err.Error())
 	}
 	return DB, nil
+}
+
+func GetAllCollections(dbName string) ([]string, error) {
+	client, err := GetConnection()
+	if err != nil {
+		return nil, err
+	}
+
+	db := client.Database(dbName)
+	collectionNames, err := db.ListCollectionNames(context.Background(), bson.M{})
+	if err != nil {
+		return nil, err
+	}
+
+	return collectionNames, nil
 }
