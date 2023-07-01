@@ -8,6 +8,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/helmet"
+	"github.com/gofiber/fiber/v2/middleware/limiter"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/joho/godotenv"
 )
@@ -47,6 +48,12 @@ func main() {
 
 	//setting up helmet
 	app.Use(helmet.New())
+
+	//setting up a rate limiter for max 100 requests/min per user
+	app.Use(limiter.New(limiter.Config{
+		Max:        100,
+		Expiration: time.Minute,
+	}))
 
 	port := os.Getenv("PORT")
 	if port == "" {
