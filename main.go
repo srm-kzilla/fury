@@ -11,7 +11,7 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/limiter"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/joho/godotenv"
-	"github.com/srm-kzilla/recruitment-portal-2023/api"
+	"github.com/srm-kzilla/Recruitments/api"
 )
 
 var startTime time.Time
