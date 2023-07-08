@@ -14,5 +14,6 @@ func SetupApp(app *fiber.App) {
 	api.Get("/", handleRoot)
 	api.Get("/admin/applications/", adminController.GetAllApplications)
 	api.Get("/admin/applications/:domain", adminController.GetApplications)
+	api.Put("/admin/applications/", adminController.UpdateApplications)
 
 }

@@ -65,3 +65,41 @@ func GetApplications(c *fiber.Ctx) error {
 	}
 	return c.Status(fiber.StatusOK).JSON(applications)
 }
+
+func UpdateApplications(c *fiber.Ctx) error {
+	var application applicationsModel.UpdateApplication
+	var check applicationsModel.Application
+	c.BodyParser(&application)
+
+	fmt.Println(application.RegNo)
+
+	applicationsCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "applications")
+	if e != nil {
+		fmt.Println("Error: ", e)
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"error":   e.Error(),
+			"message": "Error getting applications collection",
+		})
+	}
+
+	err := applicationsCollection.FindOne(context.Background(), bson.M{"regNo": application.RegNo}).Decode(&check)
+	if err != nil {
+		log.Println("Error ", err)
+		c.Status(fiber.StatusBadGateway).JSON(fiber.Map{
+			"error": "no RegNo record exists",
+		})
+		return nil
+	}
+
+	check.Status = application.Status
+	errr := applicationsCollection.FindOneAndReplace(context.Background(), bson.M{"regNo": application.RegNo}, check).Decode(&check)
+	if errr != nil {
+		fmt.Println("Error: ", errr)
+		c.Status(fiber.StatusBadGateway).JSON(fiber.Map{
+			"error": errr.Error(),
+		})
+		return nil
+	}
+	c.Status(fiber.StatusOK).JSON(application)
+	return nil
+}
