@@ -1,0 +1,180 @@
+@import "../../mixins";
+@import "../../variables";
+@import "../../fonts";
+
+div.kz-task-project {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  color: var(--color-text-alt);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-bg-alt);
+  border-radius: 0.75rem;
+  font-family: "Caros", sans-serif;
+
+  div.not-found {
+    width: 100%;
+    padding: 2rem 8rem;
+    text-align: center;
+
+    @include for-mobile-only {
+      padding: 4rem;
+    }
+
+    img {
+      max-width: 80%;
+      height: auto;
+    }
+
+    p {
+      @include fluid-type(0.75rem, 1rem, $min-width, $max-width);
+      margin-top: 2rem;
+    }
+
+    small {
+      @include fluid-type(0.5rem, 0.75rem, $min-width, $max-width);
+    }
+  }
+
+  div.kz-task-project-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 2rem 4rem;
+    padding-bottom: 4rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    @include for-mobile-only {
+      padding: 1rem;
+      padding-bottom: 4rem;
+    }
+
+    @include CustomScrollBar;
+
+    div.kz-project-title {
+      font-family: "Caros", sans-serif;
+
+      & > div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        span {
+          padding: 0.3rem 0.5rem;
+          text-transform: uppercase;
+          background-color: $primary;
+          border-radius: 0.25rem;
+          font-size: 0.7rem;
+        }
+      }
+
+      h5 {
+        @include fluid-type(0.75rem, 1rem, $min-width, $max-width);
+        font-weight: 300;
+
+        span {
+          color: $primary;
+        }
+      }
+
+      h2 {
+        @include fluid-type(1rem, 2rem, $min-width, $max-width);
+        font-weight: 500;
+      }
+    }
+
+    div.kz-task {
+      div.kz-task-list {
+        width: 100%;
+        min-height: 8rem;
+
+        &.clickDisabled {
+          pointer-events: none;
+        }
+      }
+
+      div.kz-task-title {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        padding: 0.5rem 0;
+        justify-content: space-between;
+        border-bottom: 0.01rem solid $border-primary;
+
+        svg {
+          width: 2rem;
+          transform: scale(1.5);
+          margin: auto 0;
+        }
+      }
+    }
+  }
+
+  div.kz-add-task {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--color-text);
+    padding: 1rem 0;
+    border-radius: 0.75rem;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+
+    div.check-icon {
+      border: 0.1rem solid $border-primary;
+      background-color: $background-alt;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      padding: 0.25rem;
+      margin: auto 0.5rem;
+
+      svg {
+        opacity: 0;
+      }
+
+      &.active {
+        background-color: $primary;
+        border: none;
+
+        svg {
+          opacity: 1;
+          margin: auto;
+          fill: var(--color-bg);
+        }
+      }
+    }
+
+    input {
+      flex-grow: 1;
+      height: 2rem;
+      border: none;
+      border-radius: 0.25rem;
+      padding: 0 1rem;
+      outline: none;
+      margin: auto 0.5rem;
+    }
+
+    button {
+      margin: auto 0.5rem;
+      width: 2rem;
+      height: 2rem;
+      border: none;
+      border-radius: 0.25rem;
+      outline: none;
+      background-color: $primary;
+      cursor: pointer;
+
+      svg {
+        fill: var(--color-bg);
+        transform: scale(1.6) translateX(0.5px) translateY(1px);
+        margin: auto;
+      }
+    }
+  }
+}

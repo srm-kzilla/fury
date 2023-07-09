@@ -1,0 +1,49 @@
+.css-yk16xz-control {
+  border-color: var(--color-bg) !important;
+  color: var(--color-bg) !important;
+}
+
+.css-b8ldur-Input {
+  color: var(--color-text) !important;
+}
+
+.css-b8ldur-Input input {
+  color: var(--color-text) !important;
+}
+.css-b8ldur-Input input ::placeholder {
+  color: var(--color-text) !important;
+}
+
+.custom-select {
+  color: var(--color-text) !important;
+}
+
+.kz-form .submission-heading h1 {
+  margin-bottom: 0 !important;
+}
+.kz-form .submission-heading h4 {
+  margin: 0 !important;
+  margin-bottom: 2rem !important;
+  width: 60% !important;
+}
+.kz-form .submission-heading h4 span {
+  color: #ff644e !important;
+}
+@media only screen and (max-width: 576px) and (orientation: portrait) {
+  .kz-form .submission-heading h4 {
+    width: 100% !important;
+  }
+}
+.kz-form .checkbox {
+  display: flex;
+}
+.kz-form .checkbox input {
+  width: auto;
+  margin-right: 0.5rem;
+  height: 1rem;
+  width: 1rem;
+  margin-top: 0;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=Submission.css.map */

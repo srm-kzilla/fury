@@ -1,0 +1,131 @@
+@import "../../variables";
+
+.kz-user-form {
+  margin-top: 1rem;
+
+  input,
+  textarea,
+  select {
+    border: none;
+    width: 80%;
+    padding: 14px 20px;
+    color: var(--color-text);
+    background-color: var(--color-bg-alt);
+    border-radius: 5px;
+    font-family: "Caros", "Courier New", Courier, monospace;
+    outline: none;
+
+    &::placeholder {
+      color: var(--color-placeholder);
+    }
+  }
+
+  select {
+    width: 100%;
+  }
+
+  span,
+  sup,
+  sub {
+    color: $primary;
+  }
+
+  p {
+    margin-top: 0.5rem;
+    color: $primary;
+  }
+
+  input[type="tel"] {
+    width: 145%;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    color: var(--color-header);
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  h3 {
+    margin: 20px;
+    font-size: 2em;
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+
+  h4 {
+    display: inline-block;
+    margin: 20px;
+    width: 40%;
+  }
+
+  h5 {
+    color: var(--color-input);
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin: 0 0 2rem 0;
+  }
+
+  button {
+    cursor: pointer;
+    border: none;
+    outline-color: $primary;
+    background-color: $primary;
+    color: #fff;
+    border-radius: 5px;
+    padding: 12px 30px;
+    font-family: "Caros", sans-serif;
+    font-weight: 500;
+    margin: 1.2rem 0;
+  }
+
+  .logout {
+    border-color: $primary !important;
+    border-radius: 5px !important;
+    background-color: inherit;
+    color: $primary;
+  }
+
+  .resume {
+    margin-bottom: 2rem;
+  }
+
+  .intl-tel-input.allow-dropdown input,
+  .intl-tel-input.allow-dropdown input[type="text"],
+  .intl-tel-input.allow-dropdown input[type="tel"] {
+    color: var(--color-text);
+    background-color: var(--color-bg-alt);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .kz-user-form {
+    margin: 3rem 1rem 3rem 2.5rem;
+  }
+
+  .intl-tel-input.allow-dropdown input,
+  .intl-tel-input.allow-dropdown input[type="text"],
+  .intl-tel-input.allow-dropdown input[type="tel"] {
+    width: 120%;
+  }
+
+  button,
+  .dropzone {
+    width: 90%;
+  }
+
+  .select {
+    margin-bottom: 2rem;
+  }
+}
+
+.intl-tel-input {
+  .country-list {
+    background-color: var(--color-bg-alt);
+    border-radius: 0.25rem;
+  }
+}

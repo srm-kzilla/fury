@@ -1,4 +1,4 @@
-@import "../../mixins";
+@import "../mixins";
 
 div.kz-home {
   .hero {
@@ -104,6 +104,7 @@ div.kz-home {
 
     p {
       font-size: 16px;
+      line-height: 2rem;
 
       span {
         color: $primary;

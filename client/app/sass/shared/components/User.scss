@@ -1,0 +1,28 @@
+@import "../../variables";
+@import "../../mixins";
+@import "../../fonts";
+
+div.kz-user {
+  position: relative;
+  text-align: left;
+  margin-top: 2rem;
+  @include MarginAutoX;
+  padding: 2rem 4rem;
+  color: var(--color-text);
+  @include for-mobile-only {
+    padding: 0 1rem;
+    text-align: center;
+  }
+
+  h2 {
+    @include fluid-type(2rem, 3rem, $min-width, $max-width);
+    font-family: "Caros", sans-serif;
+    font-weight: 700;
+  }
+
+  h5 {
+    @include fluid-type(0.75rem, 1rem, $min-width, $max-width);
+    font-family: "Caros", sans-serif;
+    font-weight: 300;
+  }
+}

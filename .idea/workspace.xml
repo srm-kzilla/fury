@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2ad6d1f5-ea1a-4e72-b43d-4ec7ff7c8180" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/client/styles/App.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/styles/_fonts.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/styles/_mixins.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/styles/_variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/styles/index.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/styles/pages/Dashboard.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/styles/pages/Explore.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/styles/pages/Home.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/styles/pages/Login.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/styles/pages/NotFound.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/styles/pages/OAuthRedirect.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/styles/pages/Privacy.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/styles/pages/Project.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/styles/pages/ProjectTiles.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/styles/pages/Submission.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/styles/shared/components/ApplicationTile.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/styles/shared/components/Footer.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/styles/shared/components/FooterCompact.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/styles/shared/components/FormClosed.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/styles/shared/components/FormFields.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/styles/shared/components/FormSteps.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/styles/shared/components/Headbar.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/styles/shared/components/Loading.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/styles/shared/components/Navbar.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/styles/shared/components/Sidebar.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/styles/shared/components/SignInWithSRMKZILLA.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/styles/shared/components/Task.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/styles/shared/components/TaskList.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/styles/shared/components/Tile.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/styles/shared/components/User.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/styles/shared/components/UserProfile.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/styles/shared/components/ValuesTicker.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/styles/shared/components/Wizard.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/routes/_index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/routes/_index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/client/pnpm-lock.yaml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="com.haulmont.rcb.palette" />
+        <option value="com.haulmont.rcb.previews" />
+        <option value="com.haulmont.rcb.index" />
+        <option value="com.haulmont.rcb.useInitial" />
+        <option value="com.haulmont.rcb.README" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2S9rV9fePlSoZhfN3WZ4q4a0yvI" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "pd/init/remix",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/Pradyumna D/Programming Projects/SRMKZILLA/recruitment-portal-2023/client/app/routes",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "pnpm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "D:\\Pradyumna D\\Programming Projects\\SRMKZILLA\\recruitment-portal-2023\\client\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="ReactDesignerToolWindowState">
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.rcb.reactComponents" value="false" />
+        <entry key="com.haulmont.rcb.reactInspector" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Pradyumna D\Programming Projects\SRMKZILLA\recruitment-portal-2023\client\app\routes" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Pradyumna D\Programming Projects\SRMKZILLA\recruitment-portal-2023\client\styles" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2ad6d1f5-ea1a-4e72-b43d-4ec7ff7c8180" name="Changes" comment="" />
+      <created>1688569660265</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1688569660265</updated>
+      <workItem from="1688569661247" duration="291000" />
+      <workItem from="1688569977216" duration="1343000" />
+      <workItem from="1688571344165" duration="137000" />
+      <workItem from="1688574074689" duration="348000" />
+      <workItem from="1688840790992" duration="4024000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
+  </component>
+</project>

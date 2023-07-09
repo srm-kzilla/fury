@@ -1,0 +1,60 @@
+div.kz-navbar {
+  padding: 1.5rem 4rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 99;
+}
+@media only screen and (max-width: 576px) and (orientation: portrait) {
+  div.kz-navbar {
+    padding: 1rem;
+  }
+}
+div.kz-navbar .logo img {
+  height: 3rem;
+  width: auto;
+}
+div.kz-navbar .nav ul {
+  list-style: none;
+  display: flex;
+}
+div.kz-navbar .nav ul li {
+  margin: 0 2rem;
+  text-transform: lowercase;
+}
+div.kz-navbar .cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+div.kz-navbar .cta > div {
+  display: flex;
+}
+div.kz-navbar .cta > div > div:last-child {
+  padding: 0.2rem 0;
+}
+div.kz-navbar .cta > div svg {
+  width: 2rem;
+  height: 2rem;
+  margin: auto 1rem;
+  vertical-align: bottom;
+}
+div.kz-navbar .cta a {
+  display: inline-block;
+}
+div.kz-navbar .cta a.border {
+  padding: 0.5rem 1rem;
+  border: 1px var(--color-text) solid;
+}
+div.kz-navbar .cta svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 1.5rem;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=Navbar.css.map */

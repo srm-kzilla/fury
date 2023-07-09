@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
+@font-face {
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Caros";
+  src: url("assets/fonts/CarosBold.woff2") format("woff2"), url("assets/fonts/CarosBold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Caros";
+  src: url("assets/fonts/CarosMedium.woff2") format("woff2"), url("assets/fonts/CarosMedium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Caros";
+  src: url("assets/fonts/Caros.woff2") format("woff2"), url("assets/fonts/Caros.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  --color-text: #202020;
+  --color-bg: #ffffff;
+  --color-bg-alt: #fafafa;
+  --color-primary: #ff644e;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: 0.05s background-color linear;
+}
+
+html {
+  height: 100%;
+}
+
+body,
+#root {
+  min-height: 100%;
+}
+
+#root {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  font-size: 14px;
+  font-family: "Caros", sans-serif;
+  text-rendering: optimizeLegibility;
+  color: var(--color-text);
+  line-height: 1.5;
+  background-color: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.row {
+  margin: 0 -24px !important;
+}
+
+.react-loading-skeleton {
+  background-color: var(--color-bg-alt) !important;
+  background-image: linear-gradient(90deg, var(--color-bg-alt), var(--color-skeleton), var(--color-bg-alt)) !important;
+}
+
+.grecaptcha-badge {
+  visibility: hidden;
+}
+
+.spin {
+  -webkit-animation: spin 1s linear infinite;
+  -moz-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+}
+
+a.border {
+  padding: 0.5rem 1rem;
+  border: 1px var(--color-text) solid;
+}
+
+.container-fluid {
+  overflow-x: hidden;
+}
+
+/*# sourceMappingURL=index.css.map */

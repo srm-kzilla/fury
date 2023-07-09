@@ -1,0 +1,69 @@
+@import "../../mixins";
+
+div.kz-footer {
+  background-color: var(--color-bg-alt);
+
+  .main {
+    padding: 2rem 4rem;
+    @include for-mobile-only {
+      padding: 2rem 1rem;
+    }
+  }
+
+  .footnote {
+    padding: 1rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include for-mobile-only {
+      padding: 1rem;
+    }
+
+    p {
+      max-width: 33%;
+      text-align: right;
+      @include for-mobile-only {
+        max-width: 60%;
+      }
+      a {
+        color: $primary;
+      }
+    }
+    img {
+      width: 3rem;
+    }
+  }
+
+  p span {
+    color: $primary;
+  }
+
+  .socials {
+    padding: 1rem 4rem;
+    display: flex;
+
+    @include for-mobile-only {
+      padding: 1rem 2rem;
+    }
+
+    li {
+      margin-right: 1.5rem;
+      height: 21px;
+      margin-bottom: 0;
+    }
+  }
+
+  h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: $primary;
+  }
+
+  ul {
+    list-style: none;
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+.kz-not-found-container h1 {
+  margin: 0 2rem;
+}
+.kz-not-found-container svg {
+  height: 300px;
+  width: auto;
+  margin: 8rem 0 3rem 0;
+}
+.kz-not-found-container h5 {
+  color: var(--color-placeholder);
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin: 1rem 0 2rem 0;
+}
+.kz-not-found-container span {
+  border-bottom: 3px dotted #ff644e;
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=NotFound.css.map */
