@@ -1,4 +1,5 @@
-import type { V2_MetaFunction } from "@remix-run/node";
+import type { LinksFunction, V2_MetaFunction } from "@remix-run/node";
+import stylesHref from "../styles/Home.css";
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -6,6 +7,10 @@ export const meta: V2_MetaFunction = () => {
     { name: "description", content: "Welcome to Remix!" },
   ];
 };
+
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: stylesHref },
+];
 
 export default function Index() {
   return (
