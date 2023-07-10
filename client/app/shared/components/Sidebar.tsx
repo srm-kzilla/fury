@@ -2,7 +2,9 @@ import React, {useContext} from "react";
 import "../../styles/shared/Sidebar.css";
 import {Assets} from "../../constants";
 import {BiHomeCircle, BiLogOut, BiRocket} from "react-icons/bi";
-import {Link, useHistory, useLocation} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "@remix-run/react";
+
+
 import classNames from "classnames";
 import {AuthStore, ThemeStore} from "../stores";
 import {observer} from "mobx-react";
@@ -10,7 +12,7 @@ import {FaMoon, FaRegMoon} from "react-icons/fa";
 
 const Sidebar = () => {
     let location = useLocation();
-    const history = useHistory();
+    const history = useNavigate();
     const pathname = location.pathname;
     const authStore = useContext(AuthStore);
     const themeStore = useContext(ThemeStore);
@@ -18,7 +20,7 @@ const Sidebar = () => {
     const signOut = () => {
         authStore.setUser(undefined);
         authStore.setAuthorization(undefined);
-        history.push("/start");
+        history("/start");
     };
 
     const toggleTheme = () => {
@@ -39,7 +41,7 @@ const Sidebar = () => {
                         }
                         alt="logo"
                         onClick={() => {
-                            history.push("/");
+                            history("/");
                         }}
                     />
                 </div>

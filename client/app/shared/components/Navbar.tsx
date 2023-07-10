@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
 import "../../styles/shared/components/Navbar.css";
 import {Assets} from "../../constants";
-import {Link, useLocation} from "react-router-dom";
+import {Link, useLocation} from "@remix-run/react";
 import {AuthStore, ThemeStore} from "../stores";
 import {FaMoon, FaRegMoon} from "react-icons/fa";
 import {observer} from "mobx-react";

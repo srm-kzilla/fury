@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "@remix-run/react";
 import { Field, Formik } from "formik";
 import { Grid, Row, Col } from "react-flexbox-grid";
 import * as Yup from "yup";
@@ -21,7 +21,7 @@ const UserProfileForm = () => {
   const [isSubmitting, setSubmitting] = useState(false);
   const { blob, setBlob } = useContext(StoreContext);
 
-  let history = useHistory();
+  let history = useNavigate();
   const authStore = useContext(AuthStore);
 
   const capitaliseInitialChar = (name: string) => {
@@ -74,8 +74,8 @@ const UserProfileForm = () => {
               } = await APIService.getInstance().fetchUserInfo();
 
               authStore.setUser(user);
-              history.push("/temp");
-              history.push("/dashboard");
+              history("/temp");
+              history("/dashboard");
               toast({
                 message: "All set!",
                 title: "Create a new application to get started.",

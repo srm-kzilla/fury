@@ -13,7 +13,7 @@ import {
 import {Assets} from "../../constants";
 import {ThemeStore} from "../stores";
 import {observer} from "mobx-react";
-import {Link} from "react-router-dom";
+import {Link} from "@remix-run/react";
 
 const Footer = () => {
     const themeStore = useContext(ThemeStore);

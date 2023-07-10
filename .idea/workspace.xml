@@ -5,56 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ad6d1f5-ea1a-4e72-b43d-4ec7ff7c8180" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/app/constants.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/ApplicationTile.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/Footer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/FooterCompact.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/FormClosed.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/Headbar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/Loading.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/Navbar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/Sidebar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/SignInWithSRMKZILLA.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/Task.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/TaskList.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/Tile.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/User.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/UserProfile.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/ValuesTicker.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormFields/CustomSelect.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormFields/DropZone.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormFields/SelectableDiv.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormFields/TextArea.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormFields/TextField.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormFields/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/DomainForm/DropzoneComponent.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/DomainForm/Question1.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/DomainForm/Question2.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/DomainForm/Question3.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/DomainForm/Question4.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/DomainForm/Question5.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/DomainForm/Question6.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/DomainForm/Question7.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/DomainForm/Question8.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/DomainForm/QuestionComponent.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/DomainSelect.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/Instructions.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/ProjectComponent.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/Store.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/Wizard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/stores/AuthStore.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/stores/ThemeStore.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/stores/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/utils/MomentConfig.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/utils/PrivateRoute.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/utils/domains.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/utils/recaptcha.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/utils/scrollToTop.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/utils/toast.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/client/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/shared/components/FormClosed.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/FormClosed.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Headbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Headbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/shared/components/UserProfile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/UserProfile.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,25 +43,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "aj/feat/add-sass",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/Pradyumna D/Programming Projects/SRMKZILLA/recruitment-portal-2023/client/app/shared/components/Wizard",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "pnpm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "D:\\Pradyumna D\\Programming Projects\\SRMKZILLA\\recruitment-portal-2023\\client\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;pd/migration/migrate-components&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Pradyumna D/Programming Projects/SRMKZILLA/recruitment-portal-2023/client/app/shared/components/Wizard&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\Pradyumna D\\Programming Projects\\SRMKZILLA\\recruitment-portal-2023\\client\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -141,7 +98,8 @@
       <workItem from="1688574074689" duration="348000" />
       <workItem from="1688840790992" duration="4024000" />
       <workItem from="1688888909741" duration="1601000" />
-      <workItem from="1688910524257" duration="2420000" />
+      <workItem from="1688910524257" duration="2642000" />
+      <workItem from="1688973211319" duration="671000" />
     </task>
     <servers />
   </component>
@@ -168,7 +126,6 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/client/app/shared/components/Task.tsx</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

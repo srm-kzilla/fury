@@ -1,7 +1,8 @@
 import {observer} from "mobx-react";
 import React, {useContext, useEffect} from "react";
 import {AuthStore} from "../stores";
-import {Redirect, Route} from "react-router-dom";
+import {Route} from "react-router-dom";
+import {redirect} from "@remix-run/node";
 import {Loading, UserProfileForm} from "../components";
 import Store from "../components/Wizard/Store";
 
@@ -37,11 +38,7 @@ const PrivateRoute: React.FC<any> = ({
                     );
                 } else {
                     return (
-                        <Redirect
-                            to={{
-                                pathname: redirectTo,
-                            }}
-                        />
+                        redirect(redirectTo)
                     );
                 }
             }}

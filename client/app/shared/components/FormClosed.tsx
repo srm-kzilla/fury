@@ -1,6 +1,6 @@
 import React from "react";
 import {BiHomeAlt} from "react-icons/bi";
-import {Link} from "react-router-dom";
+import { Link } from "@remix-run/react";
 import "../styles/shared/FormClosed.css";
 
 export default function FormClosed() {
