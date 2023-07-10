@@ -1,0 +1,244 @@
+@import "../mixins";
+
+div.kz-glance {
+  background-color: var(--color-bg-alt);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  overflow-y: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  max-width: 25vw;
+
+  hr {
+    margin: 0 2rem;
+    border-top: 1px solid var(--color-text-alt);
+    height: 1px;
+
+    color: transparent;
+    background-color: transparent;
+  }
+
+  .profile {
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+
+    @include for-mobile-only {
+      padding: 1rem;
+    }
+
+    img {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      margin-right: 1rem;
+    }
+
+    &>div {
+      span {
+        margin-left: 0.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+          fill: $tertiary;
+        }
+
+        &.primary svg {
+          fill: $primary;
+        }
+      }
+
+      h5 {
+        font-size: 1rem;
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+      }
+
+      p {
+        font-size: 0.75rem;
+        font-weight: 300;
+        color: var(--color-text-alt);
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  div.activity {
+    padding: 1rem 2rem;
+    flex-grow: 1;
+    overflow-y: scroll;
+    @include CustomScrollBar;
+
+    h3 {
+      position: relative;
+    }
+
+    .activity-tile {
+      display: flex;
+      align-items: center;
+      margin: 1rem 0;
+      padding: 1rem 0;
+      border-bottom: 1px rgba(var(--color-text-alt-rgb), 0.5) solid;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      svg {
+        fill: $primary;
+        width: 2rem;
+        height: 2rem;
+        margin-right: 0.5rem;
+      }
+
+      &>div {
+        display: flex;
+        flex-direction: column;
+
+        time {
+          font-size: 0.6rem;
+          font-weight: 300;
+          color: var(--color-text-alt);
+          margin-bottom: 0.2rem;
+        }
+
+        p {
+          font-size: 0.8rem;
+          font-weight: 400;
+
+          span {
+            color: $primary;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+
+    @include for-mobile-only {
+      padding: 0.5rem 1rem;
+    }
+
+  }
+
+  div.push-notifications {
+    padding: 1rem 2rem;
+    font-size: 0.8rem;
+
+    @include for-mobile-only {
+      padding: 0.5rem;
+    }
+
+    &>div {
+      background-color: var(--color-text-alt);
+      color: var(--color-bg);
+      padding: 1rem;
+      border-radius: 0.5rem;
+      display: flex;
+
+      @include for-mobile-only {
+        padding: 0;
+      }
+
+      .illustration {
+        width: 8rem;
+        position: relative;
+
+        @include for-mobile-only {
+          width: 6rem;
+        }
+
+        img {
+          width: 3rem;
+          position: absolute;
+          height: auto;
+          left: 0;
+          top: -5.3rem;
+
+          @include for-mobile-only {
+            top: -2rem;
+            width: 2rem;
+          }
+        }
+      }
+
+      background: linear-gradient(135deg,
+        var(--color-text) 21px,
+        var(--color-text-alt) 22px,
+        var(--color-text-alt) 24px,
+        transparent 24px,
+        transparent 67px,
+        var(--color-text-alt) 67px,
+        var(--color-text-alt) 69px,
+        transparent 69px),
+      linear-gradient(225deg,
+        var(--color-text) 21px,
+        var(--color-text-alt) 22px,
+        var(--color-text-alt) 24px,
+        transparent 24px,
+        transparent 67px,
+        var(--color-text-alt) 67px,
+        var(--color-text-alt) 69px,
+        transparent 69px) 0 64px;
+      background-color: var(--color-text);
+      background-size: 64px 128px;
+
+      h5 {
+        font-size: 1.1rem;
+      }
+
+      p {
+        margin: 0.5rem 0;
+        line-height: 1.3;
+
+        @include for-mobile-only {
+          margin: 0;
+        }
+      }
+
+      a {
+        margin-top: 0.2rem;
+        display: inline-block;
+        background-color: var(--color-text);
+        @include BoxShadow();
+        cursor: pointer;
+
+        &.border {
+          padding: 0.5rem 1rem;
+          border: 1px var(--color-bg) solid;
+
+          @include for-mobile-only {
+            padding: 0.15rem 0.5rem;
+            border-radius: 0.25rem;
+            margin: 0.25rem auto;
+          }
+        }
+
+        @include for-mobile-only {
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  div.kz-glance {
+    background-color: var(--color-bg-alt);
+    max-height: 20rem;
+    border-radius: 1rem;
+    position: relative;
+    max-width: initial;
+  }
+}

@@ -5,7 +5,7 @@ import {Constants} from "../../constants";
 const themes = ["system", "light", "dark"];
 
 const hexToRgb = (hex: string) => {
-    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return result
         ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(
             result[3],
@@ -51,7 +51,9 @@ const darkTheme = {
 };
 
 export class ThemeStore {
+    // @ts-ignore
     @observable theme: string;
+    // @ts-ignore
     @observable _theme: string;
 
     constructor() {
@@ -61,7 +63,7 @@ export class ThemeStore {
         this._theme = this.theme;
         this.injectTheme();
     }
-
+    // @ts-ignore
     @action setTheme = (theme: string) => {
         localStorage.setItem(Constants.LOCAL_STORAGE.THEME, theme);
         this.theme = theme;

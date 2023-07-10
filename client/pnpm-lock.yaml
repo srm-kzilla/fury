@@ -53,6 +53,9 @@ dependencies:
   react:
     specifier: ^18.2.0
     version: 18.2.0
+  react-compound-timer:
+    specifier: ^1.2.0
+    version: 1.2.0(react@18.2.0)
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
@@ -68,6 +71,9 @@ dependencies:
   react-loading-skeleton:
     specifier: ^3.3.1
     version: 3.3.1(react@18.2.0)
+  react-onesignal:
+    specifier: ^2.0.4
+    version: 2.0.4(react@18.2.0)
   react-select:
     specifier: ^5.7.3
     version: 5.7.3(@types/react@18.0.35)(react-dom@18.2.0)(react@18.2.0)
@@ -6709,6 +6715,14 @@ packages:
       unpipe: 1.0.0
     dev: true
 
+  /react-compound-timer@1.2.0(react@18.2.0):
+    resolution: {integrity: sha512-BEFT0Z/+vusfAy4Ci1+G5lr8mI+dk3ddRJuu1DIYA5xGS+5P+M0o4krHmFMKgHuaIY9H3xx0KCvf3ilb1+HFWA==}
+    peerDependencies:
+      react: ^16.8.6
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /react-dom@18.2.0(react@18.2.0):
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
     peerDependencies:
@@ -6764,6 +6778,15 @@ packages:
     resolution: {integrity: sha512-NilqqwMh2v9omN7LteiDloEVpFyMIa0VGqF+ukqp0ncVlYu1sKYbYGX9JEl+GtOT9TKsh04zCHAbavnQ2USldA==}
     peerDependencies:
       react: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
+    dev: false
+
+  /react-onesignal@2.0.4(react@18.2.0):
+    resolution: {integrity: sha512-llZ4PV1+EsWWZDt0BRils6gAxaxMoYP0Z3rlNivQy4xqUaiO1/PcRaIJ6CuzCci/koDsw5IzLOXEHlV4Yn+d9Q==}
+    engines: {node: '>=8', npm: '>=5'}
+    peerDependencies:
+      react: '>= 16.8'
     dependencies:
       react: 18.2.0
     dev: false

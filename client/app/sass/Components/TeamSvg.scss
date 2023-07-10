@@ -1,0 +1,11 @@
+@import "../variables";
+
+.team-illustration {
+  .theme {
+    fill: var(--color-bg-alt);
+  }
+
+  .primary {
+    fill: $primary;
+  }
+}

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import TaskList from "../TaskList/TaskList";
+import React, { useState } from "react";
+import TaskList from "./TaskList";
 import { BiPlus } from "react-icons/bi";
 import classNames from "classnames";
 import { v4 as uuid } from "uuid"; // TODO: Update this dependency
@@ -63,8 +63,8 @@ const Task = (props: Props) => {
                 })}
               >
                 {props.activeProject?.tasks
-                  .filter((task) => task.section.toLowerCase() === "suggested")
-                  .map((task) => {
+                  .filter((task: any) => task.section.toLowerCase() === "suggested")
+                  .map((task: any) => {
                     return (
                       <TaskList
                         key={task.id}
@@ -87,8 +87,8 @@ const Task = (props: Props) => {
                 })}
               >
                 {props.activeProject?.tasks
-                  .filter((task) => task.section.toLowerCase() === "bonus")
-                  .map((task) => {
+                  .filter((task: any) => task.section.toLowerCase() === "bonus")
+                  .map((task: any) => {
                     return (
                       <TaskList
                         key={task.id}

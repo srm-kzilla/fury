@@ -15,15 +15,17 @@ interface Authorization {
 }
 
 export class AuthStore {
+    // @ts-ignore
     @observable timeLeft: number =
         (process.env.REACT_APP_DEADLINE as any) - Date.now();
-
+    // @ts-ignore
     @computed get timeLeftDuration() {
         const duration = moment.duration(this.timeLeft, "milliseconds");
         return duration;
     }
-
+    // @ts-ignore
     @observable user: any | undefined;
+    // @ts-ignore
     @observable authorization: Authorization | undefined;
     interval: any;
 
@@ -35,7 +37,7 @@ export class AuthStore {
         };
         this.authorization = authorization;
     }
-
+    // @ts-ignore
     @action setUser = (user: User | undefined) => {
         this.user = user;
         this.setDeadline();
@@ -48,7 +50,7 @@ export class AuthStore {
             this.timeLeft = (process.env.REACT_APP_DEADLINE as any) - Date.now();
         }, 1000);
     }
-
+    // @ts-ignore
     @action setAuthorization = (authorization: Authorization | undefined) => {
         if (!authorization) {
             this.authorization = undefined;

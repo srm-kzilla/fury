@@ -3,7 +3,7 @@ import React, {useContext, useEffect} from "react";
 import {AuthStore} from "../stores";
 import {Route} from "react-router-dom";
 import {redirect} from "@remix-run/node";
-import {Loading, UserProfileForm} from "../components";
+import {Loading, UserProfileForm} from '../components';
 import Store from "../components/Wizard/Store";
 
 const PrivateRoute: React.FC<any> = ({
