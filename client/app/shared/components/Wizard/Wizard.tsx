@@ -10,7 +10,6 @@ import ProjectQuestionComponent from "./ProjectComponent";
 import { StoreContext } from "./Store";
 import "../../../styles/shared/components/Wizard.css";
 
-// import ProjectQuestionComponent from "../../../pages/ProjectTiles/ProjectTiles";
 
 const Wizard = (props: any) => {
   const {
@@ -18,7 +17,6 @@ const Wizard = (props: any) => {
     formComponents,
     handleSubmit,
     initialValues,
-    totalSteps,
   } = props;
 
   const {

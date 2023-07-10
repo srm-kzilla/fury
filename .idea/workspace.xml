@@ -5,38 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ad6d1f5-ea1a-4e72-b43d-4ec7ff7c8180" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/app/components/Glance.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/components/InfoTile.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/components/Notification.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/components/TeamSvg.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/routes/Application.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/routes/Dashboard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/routes/Explore.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/routes/Home.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/sass/Components/Glance.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/sass/Components/InfoTile.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/sass/Components/Notification.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/sass/Components/TeamSvg.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/components/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/shared/services/apiService.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/styles/Components/Glance.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/styles/Components/Glance.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/styles/Components/InfoTile.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/styles/Components/InfoTile.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/styles/Components/Notification.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/styles/Components/Notification.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/styles/Components/TeamSvg.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/styles/Components/TeamSvg.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Task.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/components/Glance.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/components/Glance.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/shared/components/UserProfile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/UserProfile.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/app/shared/components/Wizard/Wizard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/Wizard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/stores/AuthStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/stores/AuthStore.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/stores/ThemeStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/stores/ThemeStore.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/utils/PrivateRoute.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/utils/PrivateRoute.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/client/pnpm-lock.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +95,7 @@
       <workItem from="1688840790992" duration="4024000" />
       <workItem from="1688888909741" duration="1601000" />
       <workItem from="1688910524257" duration="2642000" />
-      <workItem from="1688973211319" duration="2464000" />
+      <workItem from="1688973211319" duration="3069000" />
     </task>
     <servers />
   </component>
@@ -145,16 +116,5 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="LAST_COMMIT_MESSAGE" value="" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/client/app/shared/components/Wizard/Wizard.tsx</url>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

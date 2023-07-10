@@ -5,11 +5,10 @@ import {AuthStore} from "../shared/stores";
 import {observer} from "mobx-react";
 import Timer from "react-compound-timer";
 import Glance from "../components/Glance";
-import Notification from "../components/Notification";
-import NotificationSkeleton from "../components/NotificationSkeleton";
+import Notification, {NotificationSkeleton} from "../components/Notification";
 import TeamSvg from "../components/TeamSvg";
 import {Col, Grid, Row} from "react-flexbox-grid";
-import {ApplicationTile, ApplicationTileSkeleton, FooterCompact, Sidebar,} from "../../shared/components";
+import {ApplicationTile, ApplicationTileSkeleton, FooterCompact, Sidebar,} from "../shared/components";
 import {Link, useNavigate} from "@remix-run/react";
 import {BiAlarm, BiPlus} from "react-icons/bi";
 import {Assets} from "../constants";
@@ -22,6 +21,7 @@ const Dashboard = () => {
     const [loading, setLoading] = useState(true);
     const [notifications, setNotifications] = useState<Notification[]>([]);
     const [projects, setProjects] = useState<any>([]);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [timesUp, setTimesUp] = useState<number>(Date.now() + 604800000); //to be changed when backend is done
 
     useEffect(() => {

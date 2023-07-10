@@ -71,16 +71,21 @@ const Glance = ({user}: Props) => {
     };
 
     const sendCrispTags = () => {
+        // @ts-ignore
         window.$crisp.push([
             "set",
             "user:nickname",
             [user.first_name + " " + user.last_name],
         ]);
+        // @ts-ignore
         window.$crisp.push(["set", "user:email", [user?.github_email]]);
+        // @ts-ignore
         window.$crisp.push(["set", "user:phone", [user?.contact_num]]);
+        // @ts-ignore
         window.$crisp.push(["set", "user:avatar", [user?.avatar_url]]);
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const registerForPush = () => {
         OneSignal.registerForPushNotifications()
             .then(() => {
@@ -203,6 +208,7 @@ interface ActivityProps {
 }
 
 const Activity = ({event}: ActivityProps) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const toTitleCase = (str: string) => {
         return str.replace(/\w\S*/g, function (txt) {
             return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
