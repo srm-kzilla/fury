@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ad6d1f5-ea1a-4e72-b43d-4ec7ff7c8180" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/client/app/components/Glance.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/components/Glance.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/UserProfile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/UserProfile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Wizard/Wizard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/Wizard.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="2ad6d1f5-ea1a-4e72-b43d-4ec7ff7c8180" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -95,7 +91,7 @@
       <workItem from="1688840790992" duration="4024000" />
       <workItem from="1688888909741" duration="1601000" />
       <workItem from="1688910524257" duration="2642000" />
-      <workItem from="1688973211319" duration="3069000" />
+      <workItem from="1688973211319" duration="3344000" />
     </task>
     <servers />
   </component>
