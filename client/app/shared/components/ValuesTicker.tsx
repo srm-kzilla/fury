@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/shared/components/ValuesTicker.css";
+import "../../styles/shared/components/ValuesTicker.css";
 
 interface Props {
   valueSize: number;

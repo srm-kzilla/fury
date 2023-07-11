@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import "../../styles/shared/Sidebar.css";
+import "../../styles/shared/components/Sidebar.css";
 import {Assets} from "../../constants";
 import {BiHomeCircle, BiLogOut, BiRocket} from "react-icons/bi";
 import {Link, useLocation, useNavigate} from "@remix-run/react";

@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/shared/FooterCompact.css";
+import "../../styles/shared/components/FooterCompact.css";
 import {Assets} from "../../constants";
 
 const FooterCompact = () => {

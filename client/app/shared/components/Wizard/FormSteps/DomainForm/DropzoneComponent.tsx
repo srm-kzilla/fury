@@ -1,46 +1,47 @@
-import React, { useContext } from "react";
-import { Grid, Row, Col } from "react-flexbox-grid";
-import { capitalCase } from "change-case";
+import React, {useContext} from "react";
+import {capitalCase} from "change-case";
 
-import { StoreContext } from "../../Store";
+import {StoreContext} from "../../Store";
 import "../../../../styles/shared/components/FormSteps.css";
-import { DropZone } from "../../FormFields";
+import {DropZone} from "../../FormFields";
 
 interface Question {
-  domain: string;
-  question: string;
+    domain: string;
+    question: string;
 }
 
 interface Props {
-  questionArray: Question[];
-  name: string;
+    questionArray: Question[];
+    name: string;
 }
 
 const DropzoneComponent = (props: Props) => {
-  const { questionArray, name } = props;
-  let { domain, setDomain } = useContext(StoreContext);
-  let selectedDomain = questionArray.find(
-    (obj: Question) => obj.domain == domain
-  );
+    const {questionArray, name} = props;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    let {domain, setDomain} = useContext(StoreContext);
+    let selectedDomain = questionArray.find(
+        (obj: Question) => obj.domain == domain
+    );
 
-  return (
-    <Grid className="kz-form">
-      <Row>
-        <Col md={12} xs={12} className="kz-message-screen">
-          <h1>
-            {domain === "gfx"
-              ? "GFX OR Photography"
-              : capitalCase(selectedDomain!.domain)}{" "}
-            Application
-          </h1>
-          <h4
-            dangerouslySetInnerHTML={{ __html: selectedDomain!.question }}
-          ></h4>
-          <DropZone name={name} />
-        </Col>
-      </Row>
-    </Grid>
-  );
+    return (
+        //   TODO: Apply flexbox here
+        <div className="kz-form">
+            <div>
+                <div className="kz-message-screen">
+                    <h1>
+                        {domain === "gfx"
+                            ? "GFX OR Photography"
+                            : capitalCase(selectedDomain!.domain)}{" "}
+                        Application
+                    </h1>
+                    <h4
+                        dangerouslySetInnerHTML={{__html: selectedDomain!.question}}
+                    ></h4>
+                    <DropZone name={name}/>
+                </div>
+            </div>
+        </div>
+    );
 };
 
 export default DropzoneComponent;

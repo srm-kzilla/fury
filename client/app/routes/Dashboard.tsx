@@ -1,19 +1,28 @@
 import React, {useContext, useEffect, useRef, useState} from "react";
-import "../styles/pages/Dashboard.css";
-import {APIService} from "../shared/services/apiService";
+import dashboardCSS from "../styles/pages/Dashboard.css";
+import {APIService} from "~/shared/services/apiService";
 import {AuthStore} from "../shared/stores";
 import {observer} from "mobx-react";
 import Timer from "react-compound-timer";
 import Glance from "../components/Glance";
 import Notification, {NotificationSkeleton} from "../components/Notification";
 import TeamSvg from "../components/TeamSvg";
-import {Col, Grid, Row} from "react-flexbox-grid";
 import {ApplicationTile, ApplicationTileSkeleton, FooterCompact, Sidebar,} from "../shared/components";
 import {Link, useNavigate} from "@remix-run/react";
 import {BiAlarm, BiPlus} from "react-icons/bi";
-import {Assets} from "../constants";
-import {toast} from "../shared/utils/toast";
+import {Assets} from "~/constants";
+import {toast} from "~/shared/utils/toast";
 import {toast as Toast} from "react-toastify";
+import {LinksFunction} from "@remix-run/node";
+
+export const links: LinksFunction = () => {
+    return [
+        {
+            rel: "stylesheet",
+            href: dashboardCSS,
+        },
+    ];
+};
 
 const Dashboard = () => {
     const authStore = useContext(AuthStore);
@@ -49,7 +58,7 @@ const Dashboard = () => {
                 });
             })
             .finally(() => setLoading(false));
-    }, []);
+    }, [authStore]);
 
     useEffect(() => {
         if (Date.now() >= timesUp) {
@@ -90,15 +99,16 @@ const Dashboard = () => {
         setTimeout(() => {
             Toast.dismiss(toastRef.current);
         }, 8000);
-    }, []);
+    }, [authStore.timeLeftDuration]);
 
     return (
         <>
             <div className="kz-dashboard">
                 <Sidebar/>
-                <Grid fluid style={{overflowX: "hidden"}}>
-                    <Row className="main-wrapper">
-                        <Col xs={12} md={9} className="main">
+                {/*TODO: Apple flexbox here*/}
+                <div style={{overflowX: "hidden"}}>
+                    <div className="main-wrapper">
+                        <div className="main">
                             <h2>
                                 Applications{" "}
                                 {!loading && projects.length < 2 && authStore.timeLeft > 0 && (
@@ -111,34 +121,34 @@ const Dashboard = () => {
                                     </Link>
                                 )}
                             </h2>
-                            <Grid fluid>
-                                <Row>
+                            <div>
+                                <div>
                                     {loading && (
                                         <>
-                                            <Col sm={12} md={6} className="tile">
+                                            <div className="tile">
                                                 <ApplicationTileSkeleton/>
-                                            </Col>
-                                            <Col sm={12} md={6} className="tile">
+                                            </div>
+                                            <div className="tile">
                                                 <ApplicationTileSkeleton/>
-                                            </Col>
+                                            </div>
                                         </>
                                     )}
 
                                     {projects.length > 0 &&
                                         projects.map((project: any, index: number) => {
                                             return (
-                                                <Col sm={12} md={6} key={index} className="tile">
+                                                <div key={index} className="tile">
                                                     <ApplicationTile
                                                         application={project}
                                                         handleClick={() => {
                                                             history(`/applications/${project.domain}`);
                                                         }}
                                                     />
-                                                </Col>
+                                                </div>
                                             );
                                         })}
-                                </Row>
-                            </Grid>
+                                </div>
+                            </div>
                             {!loading && projects.length === 0 && (
                                 <div className="empty">
                                     <TeamSvg/>
@@ -158,22 +168,21 @@ const Dashboard = () => {
                             )}
 
                             <h2 className="mt">Notifications</h2>
-                            <Grid fluid style={{overflowX: "hidden"}}>
-                                <Row className="notif-row">
+                            {/*TODO: Apply flexbox here*/}
+                            <div style={{overflowX: "hidden"}}>
+                                <div className="notif-row">
                                     {loading && (
-                                        <Col
-                                            sm={12}
-                                            md={5}
+                                        <div
                                             className="kz-notifications"
                                             style={{overflowX: "hidden"}}
                                         >
                                             <NotificationSkeleton/>
                                             <NotificationSkeleton/>
                                             <NotificationSkeleton/>
-                                        </Col>
+                                        </div>
                                     )}
                                     {!loading && (
-                                        <Col sm={12} md={5} className="kz-notifications">
+                                        <div className="kz-notifications">
                                             {notifications.map((notification: Notification) => {
                                                 return (
                                                     <Notification
@@ -189,10 +198,10 @@ const Dashboard = () => {
                                                         <h2>The mailman did not have anything for you.</h2>
                                                     </div>
                                                 )}
-                                        </Col>
+                                        </div>
                                     )}
 
-                                    <Col sm={12} md={7} className="banner">
+                                    <div className="banner">
                                         <div className="kz-timer">
                                             {authStore.timeLeft <= 0 ? (
                                                 <div className="kz-times-up">
@@ -251,15 +260,15 @@ const Dashboard = () => {
                                                 alt="banner"
                                             />
                                         </figure>
-                                    </Col>
-                                </Row>
-                            </Grid>
-                        </Col>
-                        <Col sm={12} md={3} className="glance">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="glance">
                             <Glance user={authStore.user}/>
-                        </Col>
-                    </Row>
-                </Grid>
+                        </div>
+                    </div>
+                </div>
             </div>
             <FooterCompact/>
         </>

@@ -2,7 +2,6 @@ import React from "react";
 import "../styles/pages/Explore.css";
 
 import {FooterCompact, Sidebar} from "../shared/components";
-import {Col, Grid, Row} from "react-flexbox-grid";
 import {
     BiAward,
     BiBot,
@@ -145,27 +144,28 @@ const Explore = () => {
         <>
             <div className="kz-explore">
                 <Sidebar/>
-                <Grid fluid>
-                    <Row>
-                        <Col sm={12} className="main">
+                {/*TODO: Add flexbox here*/}
+                <div>
+                    <div>
+                        <div className="main">
                             <h2>
                                 Explore <span>@srmkzilla</span>
                             </h2>
-                            <Grid fluid>
+                            <div>
                                 <h3 className="mb">2022</h3>
-                                <Row>
+                                <div>
                                     {items.map((item, index) => {
                                         return (
-                                            <Col sm={12} md={4} key={index} className="tile">
+                                            <div key={index} className="tile">
                                                 <InfoTile {...item} />
-                                            </Col>
+                                            </div>
                                         );
                                     })}
-                                </Row>
-                            </Grid>
-                        </Col>
-                    </Row>
-                </Grid>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <FooterCompact/>
         </>

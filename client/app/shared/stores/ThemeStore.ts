@@ -57,12 +57,15 @@ export class ThemeStore {
     @observable _theme: string;
 
     constructor() {
-        const fetchedTheme = localStorage.getItem(Constants.LOCAL_STORAGE.THEME);
-        this.theme =
-            fetchedTheme && themes.includes(fetchedTheme) ? fetchedTheme : themes[2];
-        this._theme = this.theme;
-        this.injectTheme();
+        if (typeof window !== 'undefined') {
+            const fetchedTheme = localStorage.getItem(Constants.LOCAL_STORAGE.THEME);
+            this.theme =
+                fetchedTheme && themes.includes(fetchedTheme) ? fetchedTheme : themes[2];
+            this._theme = this.theme;
+            this.injectTheme();
+        }
     }
+
     // @ts-ignore
     @action setTheme = (theme: string) => {
         localStorage.setItem(Constants.LOCAL_STORAGE.THEME, theme);

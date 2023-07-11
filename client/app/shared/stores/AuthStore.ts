@@ -18,11 +18,13 @@ export class AuthStore {
     // @ts-ignore
     @observable timeLeft: number =
         (process.env.REACT_APP_DEADLINE as any) - Date.now();
+
     // @ts-ignore
     @computed get timeLeftDuration() {
         const duration = moment.duration(this.timeLeft, "milliseconds");
         return duration;
     }
+
     // @ts-ignore
     @observable user: any | undefined;
     // @ts-ignore
@@ -30,13 +32,16 @@ export class AuthStore {
     interval: any;
 
     constructor() {
-        const authorization = {
-            access_token: localStorage.getItem("access_token") || "",
-            provider: localStorage.getItem("provider") || "",
-            refresh_token: localStorage.getItem("refresh_token") || "",
-        };
-        this.authorization = authorization;
+        if (typeof window !== 'undefined') {
+            const authorization = {
+                access_token: localStorage.getItem("access_token") || "",
+                provider: localStorage.getItem("provider") || "",
+                refresh_token: localStorage.getItem("refresh_token") || "",
+            };
+            this.authorization = authorization;
+        }
     }
+
     // @ts-ignore
     @action setUser = (user: User | undefined) => {
         this.user = user;
@@ -50,6 +55,7 @@ export class AuthStore {
             this.timeLeft = (process.env.REACT_APP_DEADLINE as any) - Date.now();
         }, 1000);
     }
+
     // @ts-ignore
     @action setAuthorization = (authorization: Authorization | undefined) => {
         if (!authorization) {

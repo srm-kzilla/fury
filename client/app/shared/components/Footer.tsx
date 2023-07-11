@@ -1,6 +1,5 @@
 import React, {useContext} from "react";
-import "../styles/shared/Footer.css";
-import {Col, Grid, Row} from "react-flexbox-grid";
+import "../../styles/shared/components/Footer.css";
 import {
     FaEnvelope,
     FaFacebookSquare,
@@ -59,9 +58,10 @@ const Footer = () => {
             </ul>
             <hr/>
             <div className="main">
-                <Grid fluid>
-                    <Row>
-                        <Col xs={12} lg={3}>
+                <div>
+                    {/*TODO: Apply flexbox here*/}
+                    <div>
+                        <div>
                             <h4>More about us</h4>
                             <ul>
                                 <li>
@@ -71,16 +71,16 @@ const Footer = () => {
                                     <a href="https://blog.srmkzilla.net">Blog</a>
                                 </li>
                             </ul>
-                        </Col>
-                        <Col xs={12} lg={3}>
+                        </div>
+                        <div>
                             <h4>Related information</h4>
                             <ul>
                                 <li>
                                     <Link to="/privacy">Privacy</Link>
                                 </li>
                             </ul>
-                        </Col>
-                        <Col xs={12} lg={6}>
+                        </div>
+                        <div>
                             <h4>Equal opportunity</h4>
                             <p>
                                 SRMKZILLA is proud to be an{" "}
@@ -89,9 +89,9 @@ const Footer = () => {
                                 ancestry, religion, sex, national origin, sexual orientation,
                                 age, citizenship, disability or gender identity.
                             </p>
-                        </Col>
-                    </Row>
-                </Grid>
+                        </div>
+                    </div>
+                </div>
             </div>
             <hr/>
             <div className="footnote">

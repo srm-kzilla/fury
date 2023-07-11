@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { Grid, Row, Col } from "react-flexbox-grid";
 import { StoreContext } from "../Store";
 import "../../../../styles/shared/components/FormSteps.css";
 import Markdown from "markdown-to-jsx"; // TODO: Update Depedency
@@ -9,7 +8,8 @@ interface Props {
 }
 export const GeneralInstructionComponent = ({ timeLeft }: Props) => {
   return (
-    <Grid className="kz-form">
+    //   TODO: Apply flexbox here
+    <div className="kz-form">
       <h1>A few things to keep in mind...</h1>
       <h5>
         Welcome to the first step of your journey towards being an SRMKZILLian.{" "}
@@ -73,11 +73,12 @@ export const GeneralInstructionComponent = ({ timeLeft }: Props) => {
           .
         </p>
       </div>
-    </Grid>
+    </div>
   );
 };
 
 const DomainInstructionComponent = (props: { domain?: string }) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   let { domain, setDomain } = useContext(StoreContext);
   domain = props.domain || domain;
 
@@ -135,7 +136,8 @@ const DomainInstructionComponent = (props: { domain?: string }) => {
   let domainInstruction = INSTRUCTIONS.find((obj) => obj.domain == domain);
 
   return (
-    <Grid className="kz-form">
+    //   TODO: Apply flexbox here
+    <div className="kz-form">
       <h1>
         {(domain === "content_writing"
           ? "content writing"
@@ -146,11 +148,11 @@ const DomainInstructionComponent = (props: { domain?: string }) => {
         – Before you begin
       </h1>
       <h5>Here's what we'd like you to know.</h5>
-      <Row>
+      <div>
         {domain &&
           domainInstruction!.instruction.map((instruction, index) => {
             return (
-              <Col md={12} className="kz-instruction-container" key={index}>
+              <div className="kz-instruction-container" key={index}>
                 {/* <div>
                   <span id="index">{index + 1}</span>
                 </div> */}
@@ -159,11 +161,11 @@ const DomainInstructionComponent = (props: { domain?: string }) => {
                     {instruction}
                   </Markdown>
                 </div>
-              </Col>
+              </div>
             );
           })}
-      </Row>
-    </Grid>
+      </div>
+    </div>
   );
 };
 

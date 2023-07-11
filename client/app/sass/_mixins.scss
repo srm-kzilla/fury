@@ -1,5 +1,5 @@
 @use "sass:math";
-@import "variables";
+@import "./variables";
 
 @mixin for-tablet-only {
   @media (max-width: 720px) {
@@ -56,7 +56,7 @@
   max-width: 1200px;
   padding: 0 4rem;
   @include for-tablet-only {
-    padding: inherit auto;
+    padding: inherit;
   }
   @include for-mobile-only {
     padding: 0 1rem;

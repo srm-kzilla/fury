@@ -1,7 +1,6 @@
 import React, {useContext, useState} from "react";
 import {useNavigate} from "@remix-run/react";
 import {Field, Formik} from "formik";
-import {Col, Grid, Row} from "react-flexbox-grid";
 import * as Yup from "yup";
 import {observer} from "mobx-react";
 import {BiLoader} from "react-icons/bi";
@@ -11,7 +10,6 @@ import "../../styles/shared/components/UserProfile.css";
 import {APIService} from "../services/apiService";
 import {toast} from "../utils/toast";
 import {AuthStore} from "../stores";
-import "./UserProfile.scss";
 import {StoreContext} from "../components/Wizard/Store";
 
 const UserProfileForm = () => {
@@ -42,7 +40,8 @@ const UserProfileForm = () => {
 
     return (
         <>
-            <Grid className="kz-user-form">
+            {/*TODO: Apply flexbox here*/}
+            <div className="kz-user-form">
                 <Formik
                     initialValues={{
                         first_name: "",
@@ -133,29 +132,29 @@ const UserProfileForm = () => {
                         const {touched, errors, handleSubmit} = props;
                         return (
                             <form onSubmit={handleSubmit}>
-                                <Row>
-                                    <Col md={12}>
+                                <div>
+                                    <div>
                                         <h1>Tell us about yourself</h1>
-                                    </Col>
-                                    <Col md={12}>
+                                    </div>
+                                    <div>
                                         <h5>
                                             We like being on a first-name basis, but it also helps us
                                             get in touch with you.
                                         </h5>
-                                    </Col>
-                                    <Col md={4} xs={12}>
+                                    </div>
+                                    <div>
                                         <label className="label">
                                             First Name<sup>*</sup>
                                         </label>
                                         <TextField name="first_name" placeholder="Michael"/>
-                                    </Col>
-                                    <Col md={4} xs={12}>
+                                    </div>
+                                    <div>
                                         <label className="label">
                                             Last Name<sup>*</sup>
                                         </label>
                                         <TextField name="last_name" placeholder="Scott"/>
-                                    </Col>
-                                    <Col md={4} xs={12} className="select">
+                                    </div>
+                                    <div className="select">
                                         <label className="label">
                                             Gender<sup>*</sup>
                                         </label>
@@ -166,10 +165,10 @@ const UserProfileForm = () => {
                                             <option value="other">Other</option>
                                         </Field>
                                         {touched.gender && errors.gender && <p>{errors.gender}</p>}
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col md={4} xs={12}>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div>
                                         <label className="label">
                                             Registration Number<sup>*</sup>
                                         </label>
@@ -177,8 +176,8 @@ const UserProfileForm = () => {
                                             name="registration_number"
                                             placeholder="RA2111029010045"
                                         />
-                                    </Col>
-                                    <Col md={4} xs={12} className="select">
+                                    </div>
+                                    <div className="select">
                                         <label className="label">
                                             Branch<sup>*</sup>
                                         </label>
@@ -186,45 +185,45 @@ const UserProfileForm = () => {
                                             <BranchOptions/>
                                         </Field>
                                         {touched.branch && errors.branch && <p>{errors.branch}</p>}
-                                    </Col>
-                                    <Col md={4} xs={12} className="resume">
+                                    </div>
+                                    <div className="resume">
                                         <label className="label">Resume (upto 20 megabytes)</label>
                                         <DropZone label="Resume" name="resume"/>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col md={4} xs={12}>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div>
                                         <label className="label">
                                             Contact Number<sup>*</sup>
                                         </label>
                                         <TextField name="contact_num" placeholder="9898384880"/>
-                                    </Col>
-                                    <Col md={4} xs={12}>
+                                    </div>
+                                    <div>
                                         <label className="label">LinkedIn Profile</label>
                                         <TextField
                                             name="linkedin"
                                             placeholder="https://www.linkedin.com/company/srmkzilla/"
                                         />
-                                    </Col>
-                                    <Col md={4} xs={12}>
+                                    </div>
+                                    <div>
                                         <label className="label">Dribbble/Behance Profile</label>
                                         <TextField
                                             name="gfx_profile"
                                             placeholder="https://www.dribbble.com/michael-scott"
                                         />
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col md={4} xs={12}>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div>
                                         <label className="label">GitHub Link</label>
                                         <TextField
                                             name="github"
                                             placeholder="https://www.github.com/michael-scott"
                                         />
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col md={2} xs={12}>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div>
                                         <button type="submit" disabled={isSubmitting}>
                                             {isSubmitting ? (
                                                 <BiLoader className="spin"/>
@@ -232,8 +231,8 @@ const UserProfileForm = () => {
                                                 "Continue"
                                             )}
                                         </button>
-                                    </Col>
-                                    <Col md={2} xs={12}>
+                                    </div>
+                                    <div>
                                         <button
                                             className="logout"
                                             onClick={() => {
@@ -243,13 +242,13 @@ const UserProfileForm = () => {
                                         >
                                             Logout
                                         </button>
-                                    </Col>
-                                </Row>
+                                    </div>
+                                </div>
                             </form>
                         );
                     }}
                 </Formik>
-            </Grid>
+            </div>
         </>
     );
 };

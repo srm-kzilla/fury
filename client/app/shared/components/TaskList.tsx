@@ -2,7 +2,7 @@ import React from "react";
 import { MdCheck, MdDelete } from "react-icons/md";
 import classNames from "classnames";
 import "../../styles/shared/components/TaskList.css";
-import { TaskType } from "../../../pages/ProjectTiles/ProjectTiles";
+import { TaskType } from "../../routes/ProjectTiles";
 import Markdown from "markdown-to-jsx"; // TODO: Update this dependency
 
 interface Props {

@@ -4,9 +4,7 @@ import {BiBell, BiCheckCircle, BiExtension, BiFlag, BiKey, BiTrashAlt,} from "re
 import {APIService} from "../shared/services/apiService";
 import moment from "moment";
 // eslint-disable-next-line import/no-duplicates
-import OneSignal from "react-onesignal";
 // eslint-disable-next-line import/no-duplicates
-import useOneSignalSetup from "react-onesignal";
 import classNames from "classnames";
 import Skeleton from "react-loading-skeleton";
 
@@ -44,31 +42,6 @@ const Glance = ({user}: Props) => {
         sendCrispTags();
     }, []);
 
-    // @ts-ignore
-  useOneSignalSetup(() => {
-        (async () => {
-            try {
-                sendTags();
-                const supported = await OneSignal.isPushNotificationsSupported();
-                if (!supported) return setPushPromptVisible(false);
-                const enabled = await OneSignal.isPushNotificationsEnabled();
-                if (enabled) return setPushPromptVisible(false);
-                return setPushPromptVisible(true);
-            } catch (e) {
-                //
-            }
-        })();
-    });
-
-    const sendTags = () => {
-        OneSignal.sendTags({
-            first_name: user.first_name,
-            last_name: user.last_name,
-            login: user.login,
-            email: user.github_email,
-            user_id: user.user_id,
-        });
-    };
 
     const sendCrispTags = () => {
         // @ts-ignore
@@ -83,20 +56,6 @@ const Glance = ({user}: Props) => {
         window.$crisp.push(["set", "user:phone", [user?.contact_num]]);
         // @ts-ignore
         window.$crisp.push(["set", "user:avatar", [user?.avatar_url]]);
-    };
-
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const registerForPush = () => {
-        OneSignal.registerForPushNotifications()
-            .then(() => {
-                setPushPromptVisible(false);
-                sendTags();
-            })
-            .catch((error) => {
-                //
-            });
-        user?.email && OneSignal.setEmail(user.email);
-        user?.id && OneSignal.setExternalUserId(user.id);
     };
 
     return (

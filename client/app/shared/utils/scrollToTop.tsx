@@ -1,5 +1,4 @@
 import React, {Fragment, useEffect} from "react";
-import {withRouter} from "react-router-dom";
 
 function ScrollToTop({history, children}: { history: any; children: any }) {
     useEffect(() => {
@@ -15,4 +14,4 @@ function ScrollToTop({history, children}: { history: any; children: any }) {
 }
 
 //@ts-ignore
-export default withRouter(ScrollToTop);
+export default ScrollToTop;

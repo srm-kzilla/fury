@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import * as Yup from "yup";
-import { Grid, Row, Col } from "react-flexbox-grid";
 
 import { StoreContext } from "../Store";
 import { SelectableDiv } from "../FormFields";
@@ -51,9 +50,11 @@ const DomainSelect = () => {
   const [loading, setLoading] = useState(true);
   const [options, setOptions] = useState(domainOptions);
   const {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     domain,
     setDomain,
     userProjects,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     setUserProjects,
     setSelectedDomainSlug,
   } = useContext(StoreContext);
@@ -89,25 +90,26 @@ const DomainSelect = () => {
   return loading ? (
     <Loading />
   ) : (
-    <Grid className="kz-form">
+    //   TODO: Apply flexbox here
+    <div className="kz-form">
       {options.length > 0 ? (
-        <Row>
+        <div>
           <SelectableDiv
             label="Select a domain"
             name="domain"
             options={options}
             handleSelect={handleSelect}
           />
-        </Row>
+        </div>
       ) : (
-        <Row center="xs">
-          <Col md={12} xs={12} className="kz-message-screen">
+        <div>
+          <div className="kz-message-screen">
             <h1>You have already applied for two domains.</h1>
             <h4>If you think this is a mistake, please contact support.</h4>
-          </Col>
-        </Row>
+          </div>
+        </div>
       )}
-    </Grid>
+    </div>
   );
 };
 

@@ -1,8 +1,8 @@
 import React, { useMemo } from "react";
-import tinycolor from "tinycolor2"; // TODO: Update this dependency
+import tinycolor from "tinycolor2";
 import classNames from "classnames";
 import "../../styles/shared/components/Tile.css";
-import { ProjectTile } from "../../../pages/ProjectTiles/ProjectTiles";
+import { ProjectTile } from "../../routes/ProjectTiles";
 
 interface Props {
   tile: ProjectTile;

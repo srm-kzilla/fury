@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import TaskList from "./TaskList";
 import { BiPlus } from "react-icons/bi";
 import classNames from "classnames";
-import { v4 as uuid } from "uuid"; // TODO: Update this dependency
+import { v4 as uuid } from "uuid";
 import "../../styles/shared/components/Task.css";
 import { Assets } from "../../constants";
 import {
   ProjectTile,
   TaskType,
-} from "../../../pages/ProjectTiles/ProjectTiles";
+} from "../../routes/ProjectTiles";
 import Markdown from "markdown-to-jsx";
 
 interface Props {

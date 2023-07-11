@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/shared/ApplicationTile.css";
+import "../../styles/shared/components/ApplicationTile.css";
 import {BiCheck, BiError, BiFlag, BiHourglass, BiTask, BiX,} from "react-icons/bi";
 import Skeleton from "react-loading-skeleton";
 
