@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import "../styles/Components/Glance.css";
+import glanceCss from "../styles/Components/Glance.css";
 import {BiBell, BiCheckCircle, BiExtension, BiFlag, BiKey, BiTrashAlt,} from "react-icons/bi";
 import {APIService} from "../shared/services/apiService";
 import moment from "moment";
@@ -7,6 +7,16 @@ import moment from "moment";
 // eslint-disable-next-line import/no-duplicates
 import classNames from "classnames";
 import Skeleton from "react-loading-skeleton";
+import {LinksFunction} from "@remix-run/node";
+
+export const links: LinksFunction = () => {
+    return [
+        {
+            rel: "stylesheet",
+            href: glanceCss,
+        },
+    ];
+};
 
 interface Props {
     user?: any;

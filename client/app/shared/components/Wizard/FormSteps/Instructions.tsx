@@ -1,8 +1,19 @@
 import React, { useContext } from "react";
 import { StoreContext } from "../Store";
-import "../../../../styles/shared/components/FormSteps.css";
+import instructionsCSS from "../../../../styles/shared/components/FormSteps.css";
 import Markdown from "markdown-to-jsx"; // TODO: Update Depedency
 import { Duration } from "moment";
+import {LinksFunction} from "@remix-run/node";
+
+export const links: LinksFunction = () => {
+  return [
+    {
+      rel: "stylesheet",
+      href: instructionsCSS,
+    },
+  ];
+};
+
 interface Props {
   timeLeft?: Duration;
 }

@@ -2,8 +2,18 @@ import React, {useContext} from "react";
 
 import {getDomainName} from "../../../../utils/domains";
 import {StoreContext} from "../../Store";
-import "../../../../../styles/shared/components/FormSteps.css";
+import questionComponentCSS from "../../../../../styles/shared/components/FormSteps.css";
 import {DropZone, TextArea} from "../../FormFields";
+import {LinksFunction} from "@remix-run/node";
+
+export const links: LinksFunction = () => {
+    return [
+        {
+            rel: "stylesheet",
+            href: questionComponentCSS,
+        },
+    ];
+};
 
 interface Question {
     domain: string;

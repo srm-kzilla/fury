@@ -1,5 +1,15 @@
 import React from "react";
-import "../styles/Components/TeamSvg.css";
+import teamSvgCss from "../styles/Components/TeamSvg.css";
+import {LinksFunction} from "@remix-run/node";
+
+export const links: LinksFunction = () => {
+    return [
+        {
+            rel: "stylesheet",
+            href: teamSvgCss,
+        },
+    ];
+};
 
 const TeamSvg = () => {
     return (

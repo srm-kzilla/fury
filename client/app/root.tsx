@@ -21,6 +21,19 @@ import {links as tileLink} from "../app/shared/components/Tile"
 import {links as userLink} from "../app/shared/components/User"
 import {links as userProfileLink} from "../app/shared/components/UserProfile"
 import {links as valuesTickerLink} from "../app/shared/components/ValuesTicker"
+import {links as wizardLink} from "../app/shared/components/Wizard/Wizard"
+import {links as selectableDivLink} from "../app/shared/components/Wizard/FormFields/SelectableDiv"
+import {links as textAreaLink} from "../app/shared/components/Wizard/FormFields/TextArea"
+import {links as textFieldLink} from "../app/shared/components/Wizard/FormFields/TextField"
+import {links as dropzoneComponentLink} from "../app/shared/components/Wizard/FormSteps/DomainForm/DropzoneComponent"
+import {links as questionComponentLink} from "../app/shared/components/Wizard/FormSteps/DomainForm/QuestionComponent"
+import {links as domainSelectLink} from "../app/shared/components/Wizard/FormSteps/DomainSelect"
+import {links as instructionsLink} from "../app/shared/components/Wizard/FormSteps/Instructions"
+import {links as glanceLink} from "../app/components/Glance"
+import {links as infoTileLink} from "../app/components/InfoTile"
+import {links as loadingShimmerLink} from "../app/components/LoadingShimmer"
+import {links as notificationLink} from "../app/components/Notification"
+import {links as teamSvgLink} from "../app/components/TeamSvg"
 
 export const links: LinksFunction = () => {
     return [
@@ -43,6 +56,19 @@ export const links: LinksFunction = () => {
         ...userLink(),
         ...userProfileLink(),
         ...valuesTickerLink(),
+        ...glanceLink(),
+        ...infoTileLink(),
+        ...loadingShimmerLink(),
+        ...notificationLink(),
+        ...teamSvgLink(),
+        ...wizardLink(),
+        ...selectableDivLink(),
+        ...textAreaLink(),
+        ...textFieldLink(),
+        ...dropzoneComponentLink(),
+        ...questionComponentLink(),
+        ...domainSelectLink(),
+        ...instructionsLink(),
         {
             rel: "stylesheet",
             href: index,

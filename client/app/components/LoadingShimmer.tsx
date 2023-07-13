@@ -1,6 +1,16 @@
 import React from "react";
 import Skeleton from "react-loading-skeleton";
-import "../styles/Components/LoadingShimmer.css";
+import loadingShimmerCSS from "../styles/Components/LoadingShimmer.css";
+import {LinksFunction} from "@remix-run/node";
+
+export const links: LinksFunction = () => {
+    return [
+        {
+            rel: "stylesheet",
+            href: loadingShimmerCSS,
+        },
+    ];
+};
 
 const LoadingShimmer = () => {
   return (

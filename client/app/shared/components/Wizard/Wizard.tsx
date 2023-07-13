@@ -7,8 +7,17 @@ import * as Yup from "yup";
 import {toast} from "../../utils/toast";
 import ProjectQuestionComponent from "./ProjectComponent";
 import {StoreContext} from "./Store";
-import "../../../styles/shared/components/Wizard.css";
+import wizardCSS from "../../../styles/shared/components/Wizard.css";
+import {LinksFunction} from "@remix-run/node";
 
+export const links: LinksFunction = () => {
+    return [
+        {
+            rel: "stylesheet",
+            href: wizardCSS ,
+        },
+    ];
+};
 
 const Wizard = (props: any) => {
     const {

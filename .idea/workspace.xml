@@ -6,25 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="2ad6d1f5-ea1a-4e72-b43d-4ec7ff7c8180" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/components/Glance.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/components/Glance.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/components/InfoTile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/components/InfoTile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/components/LoadingShimmer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/components/LoadingShimmer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/components/Notification.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/components/Notification.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/components/TeamSvg.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/components/TeamSvg.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/app/root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/root.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/routes/Application.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/routes/Application.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/routes/Explore.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/routes/Explore.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/routes/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/routes/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/ApplicationTile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/ApplicationTile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/FooterCompact.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/FooterCompact.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/FormClosed.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/FormClosed.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Headbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Headbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Loading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Loading.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Sidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/SignInWithSRMKZILLA.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/SignInWithSRMKZILLA.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Task.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/TaskList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/TaskList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Tile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Tile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/User.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/User.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/UserProfile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/UserProfile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/ValuesTicker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/ValuesTicker.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormFields/SelectableDiv.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormFields/SelectableDiv.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormFields/TextArea.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormFields/TextArea.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormFields/TextField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormFields/TextField.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/DomainForm/DropzoneComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/DomainForm/DropzoneComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/DomainForm/QuestionComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/DomainForm/QuestionComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/DomainSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/DomainSelect.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/Instructions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/Instructions.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Wizard/Wizard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/Wizard.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +112,7 @@
       <workItem from="1688984982375" duration="840000" />
       <workItem from="1689002494025" duration="19000" />
       <workItem from="1689063717233" duration="10788000" />
-      <workItem from="1689234988622" duration="2858000" />
+      <workItem from="1689234988622" duration="4007000" />
     </task>
     <servers />
   </component>

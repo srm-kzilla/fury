@@ -3,9 +3,20 @@ import * as Yup from "yup";
 
 import { StoreContext } from "../Store";
 import { SelectableDiv } from "../FormFields";
-import "../../../../styles/shared/components/FormSteps.css";
+import domainSelectCSS from "../../../../styles/shared/components/FormSteps.css";
 import { APIService } from "../../../services/apiService";
 import { Loading } from "../..";
+import {LinksFunction} from "@remix-run/node";
+
+export const links: LinksFunction = () => {
+  return [
+    {
+      rel: "stylesheet",
+      href: domainSelectCSS,
+    },
+  ];
+};
+
 
 let domainOptions = [
   {
