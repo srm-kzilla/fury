@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import "../../styles/shared/components/Footer.css";
+import footerCss from "../../styles/shared/components/Footer.css";
 import {
     FaEnvelope,
     FaFacebookSquare,
@@ -13,6 +13,16 @@ import {Assets} from "../../constants";
 import {ThemeStore} from "../stores";
 import {observer} from "mobx-react";
 import {Link} from "@remix-run/react";
+import {LinksFunction} from "@remix-run/node";
+
+export const links: LinksFunction = () => {
+    return [
+        {
+            rel: "stylesheet",
+            href: footerCss,
+        },
+    ];
+}
 
 const Footer = () => {
     const themeStore = useContext(ThemeStore);

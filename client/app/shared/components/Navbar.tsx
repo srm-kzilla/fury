@@ -1,11 +1,22 @@
 import React, {useContext} from "react";
-import "../../styles/shared/components/Navbar.css";
+import navbarCSS from "../../styles/shared/components/Navbar.css";
 import {Assets} from "../../constants";
 import {Link, useLocation} from "@remix-run/react";
 import {AuthStore, ThemeStore} from "../stores";
 import {FaMoon, FaRegMoon} from "react-icons/fa";
 import {observer} from "mobx-react";
 import {BiLogOut} from "react-icons/bi";
+import {LinksFunction} from "@remix-run/node";
+
+
+export const links: LinksFunction = () => {
+    return [
+        {
+            rel: "stylesheet",
+            href: navbarCSS,
+        },
+    ];
+};
 
 const Navbar = () => {
     const {user} = useContext(AuthStore);
@@ -25,7 +36,7 @@ const Navbar = () => {
     };
 
     return (
-        <div className="kz-navbar">
+        <div className="kz-navbar test">
             <div className="logo">
                 <Link to="/">
                     <figure>

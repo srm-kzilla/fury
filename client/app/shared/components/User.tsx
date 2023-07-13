@@ -1,5 +1,15 @@
 import React from "react";
-import "../../styles/shared/components/User.css";
+import userCss from "../../styles/shared/components/User.css";
+import {LinksFunction} from "@remix-run/node";
+
+export const links: LinksFunction = () => {
+    return [
+        {
+            rel: "stylesheet",
+            href: userCss,
+        },
+    ];
+};
 
 interface Props {
   clickDisabled: boolean;

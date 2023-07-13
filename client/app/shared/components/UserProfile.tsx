@@ -6,11 +6,21 @@ import {observer} from "mobx-react";
 import {BiLoader} from "react-icons/bi";
 
 import {DropZone, TextField,} from "../../shared/components/Wizard/FormFields";
-import "../../styles/shared/components/UserProfile.css";
+import userProfileCSS from "../../styles/shared/components/UserProfile.css";
 import {APIService} from "../services/apiService";
 import {toast} from "../utils/toast";
 import {AuthStore} from "../stores";
 import {StoreContext} from "../components/Wizard/Store";
+import {LinksFunction} from "@remix-run/node";
+
+export const links: LinksFunction = () => {
+    return [
+        {
+            rel: "stylesheet",
+            href: userProfileCSS,
+        },
+    ];
+};
 
 const UserProfileForm = () => {
     const [isSubmitting, setSubmitting] = useState(false);

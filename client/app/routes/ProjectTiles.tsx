@@ -4,7 +4,17 @@ import {produce} from "immer";
 import {StoreContext} from "../shared/components/Wizard/Store";
 import {APIService} from "../shared/services/apiService";
 import LoadingShimmer from "../components/LoadingShimmer";
-import "../styles/pages/ProjectTiles.css";
+import projectTilesLink from "../styles/pages/ProjectTiles.css";
+import {LinksFunction} from "@remix-run/node";
+
+export const links: LinksFunction = () => {
+    return [
+        {
+            rel: "stylesheet",
+            href: projectTilesLink,
+        },
+    ];
+};
 
 export interface TaskType {
     id: string;

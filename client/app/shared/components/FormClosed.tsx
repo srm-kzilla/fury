@@ -1,7 +1,18 @@
 import React from "react";
 import {BiHomeAlt} from "react-icons/bi";
 import { Link } from "@remix-run/react";
-import "../../styles/shared/components/FormClosed.css";
+import formClosedCss from "../../styles/shared/components/FormClosed.css";
+import {LinksFunction} from "@remix-run/node";
+
+export const links: LinksFunction = () => {
+    return [
+        {
+            rel: "stylesheet",
+            href: formClosedCss,
+        },
+    ];
+};
+
 
 export default function FormClosed() {
     return (

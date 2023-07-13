@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/pages/Explore.css";
+import exploreCSS from "../styles/pages/Explore.css";
 
 import {FooterCompact, Sidebar} from "../shared/components";
 import {
@@ -18,7 +18,16 @@ import {
     BiVector,
 } from "react-icons/bi";
 import InfoTile from "../components/InfoTile";
+import {LinksFunction} from "@remix-run/node";
 
+export const links: LinksFunction = () => {
+    return [
+        {
+            rel: "stylesheet",
+            href: exploreCSS,
+        },
+    ];
+};
 
 const Explore = () => {
     const items = [

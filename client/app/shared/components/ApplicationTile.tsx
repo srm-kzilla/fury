@@ -1,9 +1,19 @@
 import React from "react";
-import "../../styles/shared/components/ApplicationTile.css";
+import applicationCss from "../../styles/shared/components/ApplicationTile.css";
 import {BiCheck, BiError, BiFlag, BiHourglass, BiTask, BiX,} from "react-icons/bi";
 import Skeleton from "react-loading-skeleton";
 
 import {getDomainName} from "~/shared/utils/domains";
+import {LinksFunction} from "@remix-run/node";
+
+export const links: LinksFunction = () => {
+    return [
+        {
+            rel: "stylesheet",
+            href: applicationCss,
+        },
+    ];
+};
 
 interface Props {
     application: any;

@@ -1,6 +1,16 @@
 import React from "react";
-import "../../styles/shared/components/SignInWithSRMKZILLA.css";
+import SignInWithSRMKZILLACSS from "../../styles/shared/components/SignInWithSRMKZILLA.css";
 import classNames from "classnames";
+import {LinksFunction} from "@remix-run/node";
+
+export const links: LinksFunction = () => {
+    return [
+        {
+            rel: "stylesheet",
+            href: SignInWithSRMKZILLACSS,
+        },
+    ];
+};
 
 interface Props {
   dark?: boolean;

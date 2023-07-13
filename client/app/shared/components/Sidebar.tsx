@@ -1,14 +1,22 @@
 import React, {useContext} from "react";
-import "../../styles/shared/components/Sidebar.css";
+import sidebarCSS from "../../styles/shared/components/Sidebar.css";
 import {Assets} from "../../constants";
 import {BiHomeCircle, BiLogOut, BiRocket} from "react-icons/bi";
 import {Link, useLocation, useNavigate} from "@remix-run/react";
-
-
 import classNames from "classnames";
 import {AuthStore, ThemeStore} from "../stores";
 import {observer} from "mobx-react";
 import {FaMoon, FaRegMoon} from "react-icons/fa";
+import {LinksFunction} from "@remix-run/node";
+
+export const links: LinksFunction = () => {
+    return [
+        {
+            rel: "stylesheet",
+            href: sidebarCSS,
+        },
+    ];
+};
 
 const Sidebar = () => {
     let location = useLocation();

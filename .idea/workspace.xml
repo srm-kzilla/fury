@@ -5,147 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ad6d1f5-ea1a-4e72-b43d-4ec7ff7c8180" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/app/assets/fonts/Caros.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/assets/fonts/Caros.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/assets/fonts/CarosBold.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/assets/fonts/CarosBold.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/assets/fonts/CarosLight.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/assets/fonts/CarosLight.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/assets/fonts/CarosMedium.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/assets/fonts/CarosMedium.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/assets/images/empty.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/assets/images/github.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/assets/images/google.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/assets/images/hero.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/assets/images/lanyard.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/assets/images/mail.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/assets/images/mask_parrot.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/assets/images/not_found.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/assets/images/placeholder.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/assets/images/push.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/assets/images/srmkzilla.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/assets/images/srmkzilla_logo_black.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/assets/images/srmkzilla_logo_black_mono.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/assets/images/srmkzilla_logo_white.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/assets/images/srmkzilla_logo_white_mono.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/assets/lotties/paperplane.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/assets/lotties/tick.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/components/LoadingShimmer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/routes/ProjectTiles.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/app/sass/Components/LoadingShimmer.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/components/Glance.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/components/Glance.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/constants.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/app/root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/root.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/routes/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/routes/Dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/routes/Application.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/routes/Application.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/app/routes/Explore.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/routes/Explore.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/app/routes/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/routes/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/routes/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/routes/Login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/sass/App.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/sass/App.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/sass/_fonts.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/sass/_fonts.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/sass/_mixins.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/sass/_mixins.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/sass/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/sass/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/sass/pages/Home.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/sass/pages/Home.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/sass/pages/Login.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/sass/pages/Login.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/sass/pages/ProjectTiles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/sass/pages/ProjectTiles.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/sass/shared/components/Task.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/sass/shared/components/Task.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/sass/shared/components/TaskList.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/sass/shared/components/TaskList.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/sass/shared/components/Tile.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/sass/shared/components/Tile.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/sass/shared/components/User.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/sass/shared/components/User.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/sass/shared/components/ValuesTicker.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/sass/shared/components/ValuesTicker.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/app/shared/components/ApplicationTile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/ApplicationTile.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/app/shared/components/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Footer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/app/shared/components/FooterCompact.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/FooterCompact.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/app/shared/components/FormClosed.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/FormClosed.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/app/shared/components/Headbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Headbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Loading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Loading.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Navbar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/app/shared/components/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/shared/components/SignInWithSRMKZILLA.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/SignInWithSRMKZILLA.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/app/shared/components/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Task.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/app/shared/components/TaskList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/TaskList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/app/shared/components/Tile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Tile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/app/shared/components/User.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/User.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/app/shared/components/UserProfile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/UserProfile.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/app/shared/components/ValuesTicker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/ValuesTicker.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormFields/CustomSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormFields/CustomSelect.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormFields/SelectableDiv.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormFields/SelectableDiv.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/DomainForm/DropzoneComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/DomainForm/DropzoneComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/DomainForm/Question1.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/DomainForm/Question1.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/DomainForm/QuestionComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/DomainForm/QuestionComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/DomainSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/DomainSelect.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/Instructions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/Instructions.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Wizard/ProjectComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/ProjectComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Wizard/Wizard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/Wizard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/stores/AuthStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/stores/AuthStore.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/stores/ThemeStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/stores/ThemeStore.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/utils/scrollToTop.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/utils/scrollToTop.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/App.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/Components/Glance.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/Components/Glance.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/Components/InfoTile.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/Components/InfoTile.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/Components/Notification.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/Components/Notification.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/Components/TeamSvg.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/Components/TeamSvg.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/index.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/pages/Dashboard.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/pages/Dashboard.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/pages/Explore.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/pages/Explore.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/pages/Home.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/pages/Home.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/pages/Login.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/pages/Login.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/pages/NotFound.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/pages/NotFound.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/pages/OAuthRedirect.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/pages/OAuthRedirect.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/pages/Privacy.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/pages/Privacy.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/pages/Project.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/pages/Project.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/pages/ProjectTiles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/pages/ProjectTiles.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/pages/Submission.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/pages/Submission.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/ApplicationTile.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/ApplicationTile.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/Footer.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/Footer.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/FooterCompact.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/FooterCompact.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/FormClosed.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/FormClosed.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/FormFields.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/FormFields.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/FormSteps.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/FormSteps.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/Headbar.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/Headbar.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/Loading.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/Loading.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/Navbar.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/Navbar.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/Sidebar.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/Sidebar.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/SignInWithSRMKZILLA.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/SignInWithSRMKZILLA.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/Task.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/Task.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/TaskList.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/TaskList.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/Tile.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/Tile.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/User.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/User.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/UserProfile.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/UserProfile.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/ValuesTicker.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/ValuesTicker.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/Wizard.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/styles/shared/components/Wizard.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/client/pnpm-lock.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,26 +56,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "pd/migration/migrate-components",
-    "ignore.virus.scanning.warn.message": "true",
-    "js.last.introduce.type": "LET",
-    "last_opened_file_path": "D:/Pradyumna D/Programming Projects/SRMKZILLA/recruitment-portal-2023/client/app/routes",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "pnpm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "D:\\Pradyumna D\\Programming Projects\\SRMKZILLA\\recruitment-portal-2023\\client\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;pd/migration/migrate-components&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;js.last.introduce.type&quot;: &quot;LET&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Pradyumna D/Programming Projects/SRMKZILLA/recruitment-portal-2023/client/app/routes&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\Pradyumna D\\Programming Projects\\SRMKZILLA\\recruitment-portal-2023\\client\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -238,6 +117,7 @@
       <workItem from="1688984982375" duration="840000" />
       <workItem from="1689002494025" duration="19000" />
       <workItem from="1689063717233" duration="10788000" />
+      <workItem from="1689234988622" duration="2858000" />
     </task>
     <servers />
   </component>

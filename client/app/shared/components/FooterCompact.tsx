@@ -1,6 +1,16 @@
 import React from "react";
-import "../../styles/shared/components/FooterCompact.css";
+import footerCompactCss from "../../styles/shared/components/FooterCompact.css";
 import {Assets} from "../../constants";
+import {LinksFunction} from "@remix-run/node";
+
+export const links: LinksFunction = () => {
+    return [
+        {
+            rel: "stylesheet",
+            href: footerCompactCss,
+        },
+    ];
+}
 
 const FooterCompact = () => {
     return (

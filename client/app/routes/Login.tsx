@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from "react";
-import "../styles/pages/Login.css";
+import loginCSS from "../styles/pages/Login.css";
 import {Loading, Navbar} from "../shared/components";
 import GitHubIcon from "../assets/images/github.svg";
 import GoogleIcon from "../assets/images/google.svg";
@@ -8,6 +8,16 @@ import {AuthStore} from "../shared/stores";
 import {useNavigate} from "@remix-run/react";
 import {APIService} from "../shared/services/apiService";
 import {toast} from "../shared/utils/toast";
+import {LinksFunction} from "@remix-run/node";
+
+export const links: LinksFunction = () => {
+    return [
+        {
+            rel: "stylesheet",
+            href: loginCSS,
+        },
+    ];
+};
 
 
 const Login = () => {
