@@ -2,6 +2,7 @@
 	"dependencies": {
 		"react-awesome-reveal": "^4.2.5",
 		"react-multi-carousel": "^2.8.4",
-		"react-player": "^2.12.0"
+		"react-player": "^2.12.0",
+		"remixicon-react": "^1.0.0"
 	}
 }

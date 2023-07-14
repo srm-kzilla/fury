@@ -14,6 +14,9 @@ dependencies:
   react-player:
     specifier: ^2.12.0
     version: 2.12.0(react@18.2.0)
+  remixicon-react:
+    specifier: ^1.0.0
+    version: 1.0.0(react@18.2.0)
 
 packages:
 
@@ -407,6 +410,14 @@ packages:
 
   /regenerator-runtime@0.13.11:
     resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
+    dev: false
+
+  /remixicon-react@1.0.0(react@18.2.0):
+    resolution: {integrity: sha512-KOXlc8EdKdujr2f/2idyFSQRjUB8p0HNiWZYBBzRsTRlTXFuSAFfnGq9culNjhCGmc92Jbtfr9OP0MXWvTMdsQ==}
+    peerDependencies:
+      react: '>=0.14.0'
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /resolve-from@4.0.0:

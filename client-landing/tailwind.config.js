@@ -12,6 +12,15 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      colors: {
+        recruitments: {
+          bg: "#1d1c1c",
+          orange: "#ff644e",
+        }
+      },
+      fontFamily: {
+        NanumPenScript: ["Nanum Pen Script", "cursive"],
+      }
     },
   },
   plugins: [],

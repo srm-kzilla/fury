@@ -5,7 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ad6d1f5-ea1a-4e72-b43d-4ec7ff7c8180" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/client-landing/components/Hero.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client-landing/components/Navbar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client-landing/public/HeroImage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client-landing/public/SRMKZILLALogo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client-landing/pages/_document.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client-landing/pages/_document.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client-landing/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client-landing/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client-landing/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/client-landing/styles/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client-landing/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/client-landing/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,26 +47,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;client-landing&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;js.last.introduce.type&quot;: &quot;LET&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Pradyumna D/Programming Projects/SRMKZILLA/recruitment-portal-2023/client/app/routes&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\Pradyumna D\\Programming Projects\\SRMKZILLA\\recruitment-portal-2023\\client\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "client-landing",
+    "ignore.virus.scanning.warn.message": "true",
+    "js.last.introduce.type": "LET",
+    "last_opened_file_path": "D:/Pradyumna D/Programming Projects/SRMKZILLA/recruitment-portal-2023/client/app/routes",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "pnpm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "D:\\Pradyumna D\\Programming Projects\\SRMKZILLA\\recruitment-portal-2023\\client-landing\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -74,6 +84,7 @@
       <recent name="D:\Pradyumna D\Programming Projects\SRMKZILLA\recruitment-portal-2023\client\app\shared" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Pradyumna D\Programming Projects\SRMKZILLA\recruitment-portal-2023\client-landing\public" />
       <recent name="D:\Pradyumna D\Programming Projects\SRMKZILLA\recruitment-portal-2023\client\app\shared" />
       <recent name="D:\Pradyumna D\Programming Projects\SRMKZILLA\recruitment-portal-2023\client\app\sass" />
       <recent name="D:\Pradyumna D\Programming Projects\SRMKZILLA\recruitment-portal-2023\client\styles" />
@@ -101,7 +112,7 @@
       <workItem from="1689234988622" duration="4007000" />
       <workItem from="1689250854699" duration="86000" />
       <workItem from="1689250979042" duration="1009000" />
-      <workItem from="1689314220541" duration="390000" />
+      <workItem from="1689314220541" duration="4063000" />
     </task>
     <servers />
   </component>
