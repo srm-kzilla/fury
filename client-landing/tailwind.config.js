@@ -16,6 +16,7 @@ module.exports = {
         recruitments: {
           bg: "#1d1c1c",
           orange: "#ff644e",
+          footerbg: "#202020",
         },
       },
       fontFamily: {

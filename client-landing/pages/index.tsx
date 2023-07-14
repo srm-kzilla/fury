@@ -7,6 +7,7 @@ export default function Home() {
     <div>
       <Roadmap />
       <CoreValues />
+      <Footer />
     </div>
   );
 }
