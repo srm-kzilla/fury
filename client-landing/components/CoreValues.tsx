@@ -3,7 +3,7 @@ const CoreValues = () => {
     <div className=" flex justify-center py-16">
       <div className=" w-11/12">
         <h2 className=" text-3xl font-semibold ">Core Values</h2>
-        <p className=" text-2xl">
+        <p className=" text-2xl mt-4">
           Here at <span className="text-recruitments-orange">SRMKZILLA</span>,
           our open-source projects define who we are because we believe in
           making knowledge and our products accessible to people from all walks
