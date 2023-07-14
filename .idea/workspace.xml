@@ -6,20 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2ad6d1f5-ea1a-4e72-b43d-4ec7ff7c8180" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/components/Glance.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/components/Glance.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/components/InfoTile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/components/InfoTile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/components/LoadingShimmer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/components/LoadingShimmer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/components/Notification.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/components/Notification.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/components/TeamSvg.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/components/TeamSvg.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/root.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormFields/SelectableDiv.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormFields/SelectableDiv.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormFields/TextArea.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormFields/TextArea.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormFields/TextField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormFields/TextField.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/DomainForm/DropzoneComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/DomainForm/DropzoneComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/DomainForm/QuestionComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/DomainForm/QuestionComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/DomainSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/DomainSelect.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/Instructions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/FormSteps/Instructions.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/app/shared/components/Wizard/Wizard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/app/shared/components/Wizard/Wizard.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +43,7 @@
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;pd/migration/migrate-components&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;client-landing&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;js.last.introduce.type&quot;: &quot;LET&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/Pradyumna D/Programming Projects/SRMKZILLA/recruitment-portal-2023/client/app/routes&quot;,
@@ -113,6 +99,9 @@
       <workItem from="1689002494025" duration="19000" />
       <workItem from="1689063717233" duration="10788000" />
       <workItem from="1689234988622" duration="4007000" />
+      <workItem from="1689250854699" duration="86000" />
+      <workItem from="1689250979042" duration="1009000" />
+      <workItem from="1689314220541" duration="390000" />
     </task>
     <servers />
   </component>
