@@ -14,9 +14,9 @@ const inter = Inter({
 const Footer = () => {
   return (
     <div className={` px-16 py-6 bg-recruitments-footerbg ${inter.className}`}>
-      <div className=" border-b-2 flex gap-10 py-4">
+      <div className=" border-b-2 flex flex-col md:flex-row gap-10 py-4">
         <div className=" flex flex-col gap-6">
-          <div className=" flex md:gap-4 lg:gap-8 border-b-2 w-3/5 pb-4">
+          <div className=" flex md:gap-4 lg:gap-8 border-b-2 w-full justify-between sm:justify-start sm:w-3/5 pb-4">
             <TwitterLineIcon size={40} />
             <InstagramLineIcon size={40} />
             <YoutubeLineIcon size={40} />
@@ -24,9 +24,9 @@ const Footer = () => {
             <MailLine size={40} />
             <LinkedInBoxLine size={40} />
           </div>
-          <div className=" flex basis-2/3 gap-10 py-6">
-            <div className=" flex flex-col gap-3">
-              <h2 className=" text-recruitments-orange font-semibold lg:text-lg">
+          <div className=" flex flex-col sm:items-start items-center sm:flex-row basis-2/3 gap-10 py-6">
+            <div className=" flex flex-col gap-3 sm:items-start items-center text-center sm:text-left">
+              <h2 className=" text-recruitments-orange font-semibold lg:text-lg ">
                 More About Us
               </h2>
               <ul className="">
@@ -34,7 +34,7 @@ const Footer = () => {
                 <li>Blog</li>
               </ul>
             </div>
-            <div className=" flex flex-col gap-3">
+            <div className=" flex flex-col gap-3 sm:items-start items-center ">
               <h2 className=" text-recruitments-orange font-semibold lg:text-lg">
                 Related Information
               </h2>
@@ -42,7 +42,7 @@ const Footer = () => {
                 <li>Privacy</li>
               </ul>
             </div>
-            <div className=" flex flex-col gap-3">
+            <div className=" flex flex-col gap-3 sm:items-start items-center text-center sm:text-left">
               <h2 className=" text-recruitments-orange font-semibold lg:text-lg">
                 Equal Opportunity
               </h2>
