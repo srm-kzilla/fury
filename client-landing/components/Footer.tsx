@@ -67,7 +67,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className=" flex justify-end gap-16 py-3">
+      <div className=" flex justify-between sm:justify-end gap-16 py-3">
         <div className=" flex flex-col">
           <div className=" text-recruitments-orange flex gap-2">
             <div>Privacy</div>
