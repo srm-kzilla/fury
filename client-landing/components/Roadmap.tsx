@@ -53,7 +53,7 @@ const Roadmap = () => {
           </div>
         </div>
       </div>
-      <div>
+      <div className="block sm:hidden">
         <div className=" flex flex-col items-center mt-6">
           <div className="">
             <ImageComponent
