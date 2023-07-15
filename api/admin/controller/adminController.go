@@ -2,7 +2,6 @@ package adminController
 
 import (
 	"context"
-	"fmt"
 	"log"
 	"os"
 
@@ -17,7 +16,7 @@ func GetAllApplications(c *fiber.Ctx) error {
 	var applications []bson.M
 	applicationsCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "applications")
 	if e != nil {
-		fmt.Println("Error: ", e)
+		log.Println("Error: ", e)
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"error":   e.Error(),
 			"message": "Error getting applications collection",
@@ -39,7 +38,6 @@ func GetAllApplications(c *fiber.Ctx) error {
 
 func GetApplications(c *fiber.Ctx) error {
 	domain := c.Params("domain")
-	fmt.Println(domain)
 	if domain == "" {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": "Domain is required",
@@ -47,7 +45,7 @@ func GetApplications(c *fiber.Ctx) error {
 	}
 	applicationsCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "applications")
 	if e != nil {
-		fmt.Println("Error: ", e)
+		log.Println("Error: ", e)
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"error":   e.Error(),
 			"message": "Error getting applications collection",
@@ -71,11 +69,9 @@ func UpdateApplications(c *fiber.Ctx) error {
 	var check applicationsModel.Application
 	c.BodyParser(&application)
 
-	fmt.Println(application.RegNo)
-
 	applicationsCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "applications")
 	if e != nil {
-		fmt.Println("Error: ", e)
+		log.Println("Error: ", e)
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"error":   e.Error(),
 			"message": "Error getting applications collection",
@@ -94,7 +90,7 @@ func UpdateApplications(c *fiber.Ctx) error {
 	check.Status = application.Status
 	errr := applicationsCollection.FindOneAndReplace(context.Background(), bson.M{"regNo": application.RegNo}, check).Decode(&check)
 	if errr != nil {
-		fmt.Println("Error: ", errr)
+		log.Println("Error: ", errr)
 		c.Status(fiber.StatusBadGateway).JSON(fiber.Map{
 			"error": errr.Error(),
 		})
