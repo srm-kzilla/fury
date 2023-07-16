@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useNavigate  } from "@remix-run/react";
+import { useNavigate } from "@remix-run/react";
 import { observer } from "mobx-react";
 
 import {
@@ -22,16 +22,10 @@ import { StoreContext } from "../shared/components/Wizard/Store";
 import { toast } from "../shared/utils/toast";
 import { AuthStore } from "../shared/stores";
 
-
 const Application = () => {
   const [loading, setLoading] = useState(false);
-  const {
-    setUserProjects,
-    selectedDomainSlug,
-    setSubmitted,
-    domain,
-    setYear,
-  } = useContext(StoreContext);
+  const { setUserProjects, selectedDomainSlug, setSubmitted, domain, setYear } =
+    useContext(StoreContext);
   let history = useNavigate();
   const authStore = useContext(AuthStore);
   let { blob } = useContext(StoreContext);

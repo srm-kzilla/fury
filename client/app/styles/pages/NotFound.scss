@@ -1,0 +1,25 @@
+@import "../variables";
+
+.kz-not-found-container {
+  h1 {
+    margin: 0 2rem;
+  }
+
+  svg {
+    height: 300px;
+    width: auto;
+    margin: 8rem 0 3rem 0;
+  }
+
+  h5 {
+    color: var(--color-placeholder);
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin: 1rem 0 2rem 0;
+  }
+
+  span {
+    border-bottom: 3px dotted $primary;
+    text-decoration: none;
+  }
+}

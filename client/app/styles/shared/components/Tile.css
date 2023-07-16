@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
+@font-face {
+  font-family: "Caros";
+  src: url("../../../assets/fonts/CarosLight.woff2") format("woff2"), url("../../../assets/fonts/CarosLight.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Caros";
+  src: url("../../../assets/fonts/CarosBold.woff2") format("woff2"), url("../../../assets/fonts/CarosBold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Caros";
+  src: url("../../../assets/fonts/CarosMedium.woff2") format("woff2"), url("../../../assets/fonts/CarosMedium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Caros";
+  src: url("../../../assets/fonts/Caros.woff2") format("woff2"), url("../../../assets/fonts/Caros.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+div.kz-wrapper {
+  position: relative;
+  width: fit-content;
+  margin: 1rem auto;
+  padding: 0.5rem;
+  height: fit-content;
+  cursor: pointer;
+}
+div.kz-wrapper h5 {
+  font-size: calc(
+    0.75rem + 0.25 * ((100vw - 420px) / 480)
+  );
+  text-align: center;
+  margin-top: 1rem;
+}
+@media screen and (max-width: 420px) {
+  div.kz-wrapper h5 {
+    font-size: 0.75rem;
+  }
+}
+@media screen and (min-width: 900px) {
+  div.kz-wrapper h5 {
+    font-size: 1rem;
+  }
+}
+@media only screen and (max-width: 576px) and (orientation: portrait) {
+  div.kz-wrapper {
+    margin: auto;
+  }
+}
+div.kz-wrapper.active div.kz-project-tile {
+  border: 0.2rem solid var(--theme);
+  box-shadow: 0 0 5px #fff, -5px 0 10px var(--theme), 5px 0 10px var(--theme);
+}
+
+div.kz-project-tile {
+  position: relative;
+  display: flex;
+  height: 5rem;
+  width: 5rem;
+  margin: 0 auto;
+  background-color: var(--theme);
+  flex-direction: column;
+  justify-content: center;
+  border: 0.2rem solid transparent;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+div.kz-project-tile:hover {
+  box-shadow: 0 0 5px #fff, -5px 0 10px var(--theme), 5px 0 10px var(--theme);
+}
+div.kz-project-tile h2 {
+  color: #000000;
+  text-align: center;
+  opacity: 1;
+}
+div.kz-project-tile.dark h2 {
+  color: #ffffff;
+  opacity: 1;
+}
+div.kz-project-tile div.kz-bg-shapes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  opacity: 0.3;
+}
+div.kz-project-tile div.kz-bg-shapes div.kz-rectangle {
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 5rem;
+  height: 5rem;
+  border: 1rem solid #fff;
+}
+div.kz-project-tile div.kz-bg-shapes div.kz-circle {
+  position: absolute;
+  bottom: -50%;
+  right: -50%;
+  width: 5rem;
+  height: 5rem;
+  border: 1rem solid #fff;
+  border-radius: 50%;
+}
+
+/*# sourceMappingURL=Tile.css.map */

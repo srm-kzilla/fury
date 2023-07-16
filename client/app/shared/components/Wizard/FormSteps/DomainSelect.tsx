@@ -6,7 +6,7 @@ import { SelectableDiv } from "../FormFields";
 import domainSelectCSS from "../../../../styles/shared/components/FormSteps.css";
 import { APIService } from "../../../services/apiService";
 import { Loading } from "../..";
-import {LinksFunction} from "@remix-run/node";
+import { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => {
   return [
@@ -16,7 +16,6 @@ export const links: LinksFunction = () => {
     },
   ];
 };
-
 
 let domainOptions = [
   {
@@ -82,10 +81,10 @@ const DomainSelect = () => {
       setOptions(
         domainOptions.filter((domain) => {
           const domainExists = userProjects.find(
-            (project: any) => project.domain === domain.value
+            (project: any) => project.domain === domain.value,
           );
           return !domainExists;
-        })
+        }),
       );
       setLoading(false);
     };

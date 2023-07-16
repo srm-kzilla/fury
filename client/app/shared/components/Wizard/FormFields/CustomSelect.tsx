@@ -3,7 +3,7 @@ import { FieldProps } from "formik";
 // eslint-disable-next-line import/no-duplicates
 import Select from "react-select";
 // eslint-disable-next-line import/no-duplicates
-import OptionsType  from "react-select";
+import OptionsType from "react-select";
 import debounce from "debounce"; // TODO: Update Dependency
 
 interface Option {

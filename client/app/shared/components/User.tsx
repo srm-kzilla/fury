@@ -1,14 +1,14 @@
 import React from "react";
 import userCss from "../../styles/shared/components/User.css";
-import {LinksFunction} from "@remix-run/node";
+import { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => {
-    return [
-        {
-            rel: "stylesheet",
-            href: userCss,
-        },
-    ];
+  return [
+    {
+      rel: "stylesheet",
+      href: userCss,
+    },
+  ];
 };
 
 interface Props {

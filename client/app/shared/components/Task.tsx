@@ -5,12 +5,9 @@ import classNames from "classnames";
 import { v4 as uuid } from "uuid";
 import taskCSS from "../../styles/shared/components/Task.css";
 import { Assets } from "../../constants";
-import {
-  ProjectTile,
-  TaskType,
-} from "../../routes/ProjectTiles";
+import { ProjectTile, TaskType } from "../../routes/ProjectTiles";
 import Markdown from "markdown-to-jsx";
-import {LinksFunction} from "@remix-run/node";
+import { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => {
   return [
@@ -73,7 +70,9 @@ const Task = (props: Props) => {
                 })}
               >
                 {props.activeProject?.tasks
-                  .filter((task: any) => task.section.toLowerCase() === "suggested")
+                  .filter(
+                    (task: any) => task.section.toLowerCase() === "suggested",
+                  )
                   .map((task: any) => {
                     return (
                       <TaskList

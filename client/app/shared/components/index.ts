@@ -7,9 +7,7 @@ import TaskList from "./TaskList";
 import SignInWithSRMKZILLA from "./SignInWithSRMKZILLA";
 import Loading from "./Loading";
 import Sidebar from "./Sidebar";
-import ApplicationTile, {
-  ApplicationTileSkeleton,
-} from "./ApplicationTile";
+import ApplicationTile, { ApplicationTileSkeleton } from "./ApplicationTile";
 import FooterCompact from "./FooterCompact";
 import UserProfileForm from "./UserProfile";
 import Store from "./Wizard/Store";

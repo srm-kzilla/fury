@@ -1,0 +1,112 @@
+.kz-user-form {
+  margin-top: 1rem;
+}
+.kz-user-form input,
+.kz-user-form textarea,
+.kz-user-form select {
+  border: none;
+  width: 80%;
+  padding: 14px 20px;
+  color: var(--color-text);
+  background-color: var(--color-bg-alt);
+  border-radius: 5px;
+  font-family: "Caros", "Courier New", Courier, monospace;
+  outline: none;
+}
+.kz-user-form input::placeholder,
+.kz-user-form textarea::placeholder,
+.kz-user-form select::placeholder {
+  color: var(--color-placeholder);
+}
+.kz-user-form select {
+  width: 100%;
+}
+.kz-user-form span,
+.kz-user-form sup,
+.kz-user-form sub {
+  color: #ff644e;
+}
+.kz-user-form p {
+  margin-top: 0.5rem;
+  color: #ff644e;
+}
+.kz-user-form input[type=tel] {
+  width: 145%;
+}
+.kz-user-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+.kz-user-form h1 {
+  color: var(--color-header);
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+.kz-user-form h3 {
+  margin: 20px;
+  font-size: 2em;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+.kz-user-form h4 {
+  display: inline-block;
+  margin: 20px;
+  width: 40%;
+}
+.kz-user-form h5 {
+  color: var(--color-input);
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin: 0 0 2rem 0;
+}
+.kz-user-form button {
+  cursor: pointer;
+  border: none;
+  outline-color: #ff644e;
+  background-color: #ff644e;
+  color: #fff;
+  border-radius: 5px;
+  padding: 12px 30px;
+  font-family: "Caros", sans-serif;
+  font-weight: 500;
+  margin: 1.2rem 0;
+}
+.kz-user-form .logout {
+  border-color: #ff644e !important;
+  border-radius: 5px !important;
+  background-color: inherit;
+  color: #ff644e;
+}
+.kz-user-form .resume {
+  margin-bottom: 2rem;
+}
+.kz-user-form .intl-tel-input.allow-dropdown input,
+.kz-user-form .intl-tel-input.allow-dropdown input[type=text],
+.kz-user-form .intl-tel-input.allow-dropdown input[type=tel] {
+  color: var(--color-text);
+  background-color: var(--color-bg-alt);
+}
+
+@media only screen and (max-width: 768px) {
+  .kz-user-form {
+    margin: 3rem 1rem 3rem 2.5rem;
+  }
+  .intl-tel-input.allow-dropdown input,
+.intl-tel-input.allow-dropdown input[type=text],
+.intl-tel-input.allow-dropdown input[type=tel] {
+    width: 120%;
+  }
+  button,
+.dropzone {
+    width: 90%;
+  }
+  .select {
+    margin-bottom: 2rem;
+  }
+}
+.intl-tel-input .country-list {
+  background-color: var(--color-bg-alt);
+  border-radius: 0.25rem;
+}
+
+/*# sourceMappingURL=UserProfile.css.map */

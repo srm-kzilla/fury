@@ -1,10 +1,8 @@
 {
-  "private": true,
-  "sideEffects": false,
   "scripts": {
     "build": "remix build",
     "dev": "concurrently \"npm run sass\" \"remix dev\"",
-    "sass": "sass --watch app/sass:app/styles",
+    "sass": "sass --watch app/styles",
     "start": "remix-serve build",
     "typecheck": "tsc"
   },
@@ -13,7 +11,6 @@
     "@remix-run/node": "^1.18.1",
     "@remix-run/react": "^1.18.1",
     "@remix-run/serve": "^1.18.1",
-    "@types/yup": "^0.32.0",
     "axios": "^1.4.0",
     "change-case": "^4.1.2",
     "classnames": "^2.3.2",
@@ -39,7 +36,10 @@
     "sass": "1.54.0",
     "tinycolor2": "^1.6.0",
     "uuid": "^9.0.0",
-    "yup": "^1.2.0"
+    "yup": "^1.2.0",
+    "react-awesome-reveal": "^4.2.5",
+    "react-multi-carousel": "^2.8.4",
+    "react-player": "^2.12.0"
   },
   "devDependencies": {
     "@remix-run/dev": "^1.18.1",
@@ -55,6 +55,6 @@
     "typescript": "^5.0.4"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=18.5.0"
   }
 }

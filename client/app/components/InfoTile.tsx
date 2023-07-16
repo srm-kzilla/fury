@@ -3,15 +3,15 @@ import infoTileCSS from "../styles/Components/InfoTile.css";
 
 import { BiTime, BiArrowToRight } from "react-icons/bi";
 import moment from "moment";
-import {LinksFunction} from "@remix-run/node";
+import { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => {
-    return [
-        {
-            rel: "stylesheet",
-            href: infoTileCSS,
-        },
-    ];
+  return [
+    {
+      rel: "stylesheet",
+      href: infoTileCSS,
+    },
+  ];
 };
 
 interface Props {

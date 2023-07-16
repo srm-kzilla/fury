@@ -1,0 +1,67 @@
+div.kz-footer {
+  background-color: var(--color-bg-alt);
+}
+div.kz-footer .main {
+  padding: 2rem 4rem;
+}
+@media only screen and (max-width: 576px) and (orientation: portrait) {
+  div.kz-footer .main {
+    padding: 2rem 1rem;
+  }
+}
+div.kz-footer .footnote {
+  padding: 1rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media only screen and (max-width: 576px) and (orientation: portrait) {
+  div.kz-footer .footnote {
+    padding: 1rem;
+  }
+}
+div.kz-footer .footnote p {
+  max-width: 33%;
+  text-align: right;
+}
+@media only screen and (max-width: 576px) and (orientation: portrait) {
+  div.kz-footer .footnote p {
+    max-width: 60%;
+  }
+}
+div.kz-footer .footnote p a {
+  color: #ff644e;
+}
+div.kz-footer .footnote img {
+  width: 3rem;
+}
+div.kz-footer p span {
+  color: #ff644e;
+}
+div.kz-footer .socials {
+  padding: 1rem 4rem;
+  display: flex;
+}
+@media only screen and (max-width: 576px) and (orientation: portrait) {
+  div.kz-footer .socials {
+    padding: 1rem 2rem;
+  }
+}
+div.kz-footer .socials li {
+  margin-right: 1.5rem;
+  height: 21px;
+  margin-bottom: 0;
+}
+div.kz-footer h4 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #ff644e;
+}
+div.kz-footer ul {
+  list-style: none;
+}
+div.kz-footer ul li {
+  margin-bottom: 0.5rem;
+}
+
+/*# sourceMappingURL=Footer.css.map */
