@@ -12,7 +12,7 @@ const Roadmap = () => {
       className={` flex flex-col items-center py-10 ${montserrat.className}`}
     >
       <div className=" font-semibold text-3xl">Become a SRMKZILLian</div>
-      <div className="hidden sm:block">
+      <div className="hidden sm:block md:scale-75 lg:scale-75 xl:scale-100">
         <div className=" w-full px-1 lg:px-24 pt-10 flex justify-center">
           <div className=" translate-y-32">
             <ImageComponent
