@@ -1,4 +1,4 @@
-module github.com/srm-kzilla/recruitment-portal-2023
+module github.com/srm-kzilla/Recruitments
 
 go 1.20
 
