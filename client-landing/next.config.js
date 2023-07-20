@@ -6,12 +6,12 @@ const nextConfig = {
       {
         source: '/:slug([a-zA-Z0-9]+)', 
         destination: '/', 
-        permanent: true,
+        permanent: false,
       },
       {
         source: '/:slug1/:slug2*', 
         destination: '/', 
-        permanent: true,
+        permanent: false,
       }
     ];
   },
