@@ -14,9 +14,9 @@ const ImageComponent = ({
   reverse,
 }: ImageComponentProps) => {
   return (
-    <div>
+    <>
       <div className="hidden sm:flex flex-col items-center w-fit gap-2">
-        <div className=" text-2xl text-recruitments-orange font-semibold">
+        <div className="text-2xl text-highlight font-semibold">
           {title}
         </div>
         <div className=" relative md:w-28 md:h-28 lg:w-44 lg:h-44 xl:w-52 xl:h-64">
@@ -35,7 +35,7 @@ const ImageComponent = ({
           <Image src={image} alt="RoadmapSvg" fill />
         </div>
         <div className=" flex flex-col gap-2 items-center">
-          <div className=" text-2xl text-recruitments-orange font-semibold">
+          <div className=" text-2xl text-highlight font-semibold">
             {title}
           </div>
           <div className=" text-xs lg:text-sm w-40 text-center">
@@ -43,7 +43,7 @@ const ImageComponent = ({
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

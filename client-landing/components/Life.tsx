@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Life() {
   return (
     <div className="w-full min-h-screen flex flex-col h-fit p-8 relative">
-      <div className="lg:flex lg:flex-row w-full h-fit ">
+      <div className="lg:flex lg:flex-row w-full h-fit">
         <div className="lg:hidden block">
           <h1 className="text-3xl">Life at SRMKZILLA</h1>
         </div>
@@ -11,7 +11,7 @@ export default function Life() {
           <div className="hidden lg:block">
             <h1 className="text-4xl">Life at SRMKZILLA</h1>
           </div>
-          <div className="font-NanumPenScript text-lg md:text-2xl">
+          <div className="font-handwriting text-lg md:text-2xl">
             <h1>
               Bustling with tech geniuses, Picassos, and philosophers, SRMKZILLA
               is a paradise for people with an unquenchable thirst to create.
@@ -59,9 +59,8 @@ export default function Life() {
             />
           </div>
           <div
-            className={
+            className=
               "absolute z-10 top-28 left-[140px] lg:left-[500px] scale-[0.85]"
-            }
           >
             <Image
               className="w-52 lg:w-[20vw]"
@@ -80,7 +79,6 @@ export default function Life() {
           height="315"
           src="https://www.youtube.com/embed/iJZiaoXtSnc"
           title="YouTube video player"
-          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
         ></iframe>

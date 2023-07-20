@@ -21,7 +21,7 @@ export default function Hero() {
           <button className="font-bold flex gap-3 items-center">
             <div
               className={
-                "rounded-full p-1 bg-recruitments-orange text-recruitments-bg"
+                "rounded-full p-1 bg-highlight text-primary"
               }
             >
               <RightArrow size={25} />

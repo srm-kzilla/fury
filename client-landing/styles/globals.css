@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-recruitments-bg text-white;
+  @apply bg-primary text-white font-body;
 }
 
 ::-webkit-scrollbar {
@@ -11,7 +11,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-recruitments-orange rounded-full;
+  @apply bg-highlight rounded-full;
 }
 
 ::-webkit-scrollbar {
@@ -19,5 +19,5 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-recruitments-orange rounded-full;
+  @apply bg-primary rounded-full;
 }
