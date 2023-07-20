@@ -7,11 +7,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
       colors: {
         recruitments: {
           bg: "#1d1c1c",
@@ -19,7 +14,7 @@ module.exports = {
         }
       },
       fontFamily: {
-        NanumPenScript: ["Nanum Pen Script", "cursive"],
+        handwriting: ["Nanum Pen Script", "cursive"],
       }
     },
   },
