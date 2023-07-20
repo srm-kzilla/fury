@@ -2,15 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-
 body {
   @apply bg-recruitments-bg text-white;
 }
 
 ::-webkit-scrollbar {
-    @apply w-1 bg-black;
- }
+  @apply w-1 bg-black;
+}
 
 ::-webkit-scrollbar-thumb {
-    @apply bg-recruitments-orange rounded-full;
+  @apply bg-recruitments-orange rounded-full;
+}
+
+::-webkit-scrollbar {
+  @apply w-1 bg-black;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-recruitments-orange rounded-full;
 }
