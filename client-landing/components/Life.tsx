@@ -34,7 +34,7 @@ export default function Life() {
           <div className="absolute z-40 top-28 lg:left-[200px]">
             <Image
               className="w-52 lg:w-[20vw]"
-              src="/life-1.png"
+              src="/Life-1.png"
               alt="Life-1"
               width={500}
               height={500}
@@ -43,8 +43,8 @@ export default function Life() {
           <div className="absolute z-30 top-28 left-[80px] lg:left-[300px] scale-[0.95]">
             <Image
               className="w-52 lg:w-[20vw]"
-              src="/life-2.png"
-              alt="Life-1"
+              src="/Life-2.png"
+              alt="Life-2"
               width={500}
               height={500}
             />
@@ -52,8 +52,8 @@ export default function Life() {
           <div className="absolute z-20 top-28 left-[110px] lg:left-[400px] scale-[0.9]">
             <Image
               className="w-52 lg:w-[20vw]"
-              src="/life-3.png"
-              alt="Life-1"
+              src="/Life-3.png"
+              alt="Life-3"
               width={500}
               height={500}
             />
@@ -65,8 +65,8 @@ export default function Life() {
           >
             <Image
               className="w-52 lg:w-[20vw]"
-              src="/life-4.png"
-              alt="Life-1"
+              src="/Life-4.png"
+              alt="Life-4"
               width={500}
               height={500}
             />
