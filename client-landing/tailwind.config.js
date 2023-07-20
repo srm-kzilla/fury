@@ -16,6 +16,8 @@ module.exports = {
       },
       fontFamily: {
         handwriting: ["Nanum Pen Script", "cursive"],
+        roadmap: ["Montserrat", "sans-serif"],
+        footer: ["Inter", "sans-serif"],
       },
     },
   },
