@@ -13,3 +13,11 @@ body {
 ::-webkit-scrollbar-thumb {
   @apply bg-recruitments-orange rounded-full;
 }
+
+::-webkit-scrollbar {
+  @apply w-1 bg-black;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-recruitments-orange rounded-full;
+}
