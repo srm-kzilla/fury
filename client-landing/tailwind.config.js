@@ -7,11 +7,15 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      colors: {
+        recruitments: {
+          bg: "#1d1c1c",
+          orange: "#ff644e",
+        }
       },
+      fontFamily: {
+        handwriting: ["Nanum Pen Script", "cursive"],
+      }
     },
   },
   plugins: [],
