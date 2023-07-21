@@ -1,7 +1,6 @@
 import TwitterLineIcon from "remixicon-react/TwitterLineIcon";
 import InstagramLineIcon from "remixicon-react/InstagramLineIcon";
 import YoutubeLineIcon from "remixicon-react/YoutubeLineIcon";
-import FaceBookLineIcon from "remixicon-react/FacebookCircleLineIcon";
 import MailLine from "remixicon-react/MailLineIcon";
 import LinkedInBoxLine from "remixicon-react/LinkedinBoxLineIcon";
 import Image from "next/image";
@@ -59,7 +58,7 @@ const Footer = () => {
               <ul>
                 <li>
                   <a href="https://medium.com/srmkzilla" target="blank">
-                    SRMKZILLA's BLOG
+                    SRMKZILLA&apos;s BLOG
                   </a>
                 </li>
               </ul>

@@ -1,13 +1,12 @@
 import React from "react";
 import Image from "next/image";
-import MoonIcon from "remixicon-react/MoonFillIcon";
 
 export default function Navbar() {
   return (
     <div className="w-full h-fit flex justify-between py-6 p-6">
       <div>
         <Image
-          src="/srmkzilla-logo-new.svg"
+          src="/SRMKZILLALogo.svg"
           alt="SRMKZILLA"
           width={60}
           height={60}
