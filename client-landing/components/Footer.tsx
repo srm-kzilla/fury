@@ -8,10 +8,10 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <div className="px-16 py-6 bg-recruitments-footerbg font-footer">
+    <div className="py-6 md:px-8 bg-secondary">
       <div className="border-b-2 flex flex-col md:flex-row gap-10 py-4">
         <div className="flex flex-col gap-6">
-          <div className="flex md:gap-4 lg:gap-8 border-b-2 w-full justify-between sm:justify-start sm:w-3/5 pb-4">
+          <div className="flex px-2 md:px-0 md:gap-4 lg:gap-8 border-b-2 w-full justify-between sm:justify-start sm:w-3/5 pb-4">
             <TwitterLineIcon size={40} />
             <InstagramLineIcon size={40} />
             <YoutubeLineIcon size={40} />
@@ -19,9 +19,9 @@ const Footer = () => {
             <MailLine size={40} />
             <LinkedInBoxLine size={40} />
           </div>
-          <div className="flex flex-col sm:items-start items-center sm:flex-row basis-2/3 gap-10 py-6">
+          <div className="px-16 md:px-0 flex flex-col sm:items-start items-center sm:flex-row basis-2/3 gap-10 py-6">
             <div className="flex flex-col gap-3 sm:items-start items-center text-center sm:text-left">
-              <h2 className="text-recruitments-orange font-semibold lg:text-lg ">
+              <h2 className="text-highlight font-semibold lg:text-lg ">
                 More About Us
               </h2>
               <ul>
@@ -30,7 +30,7 @@ const Footer = () => {
               </ul>
             </div>
             <div className="flex flex-col gap-3 sm:items-start items-center ">
-              <h2 className="text-recruitments-orange font-semibold lg:text-lg">
+              <h2 className="text-highlight font-semibold lg:text-lg">
                 Related Information
               </h2>
               <ul>
@@ -38,12 +38,12 @@ const Footer = () => {
               </ul>
             </div>
             <div className="flex flex-col gap-3 sm:items-start items-center text-center sm:text-left">
-              <h2 className="text-recruitments-orange font-semibold lg:text-lg">
+              <h2 className="text-highlight font-semibold lg:text-lg">
                 Equal Opportunity
               </h2>
               <p>
                 SRMKZILLA is proud to be an{" "}
-                <span className="text-recruitments-orange">
+                <span className="text-highlight">
                   equal opportunity workplace.
                 </span>{" "}
                 We are committed to equal volunteering opportunity regardless of
@@ -57,19 +57,19 @@ const Footer = () => {
           <div className="relative w-64 h-64">
             <Image src="/FooterLogo.svg" alt="FooterLogo" fill />
           </div>
-          <div className="text-recruitments-orange text-2xl font-semibold">
+          <div className="text-highlight text-2xl font-semibold -translate-x-4">
             Get Started
           </div>
         </div>
       </div>
-      <div className="flex justify-between sm:justify-end gap-16 py-3">
+      <div className="flex justify-between sm:justify-end gap-16 py-3 px-4 md:px-0">
         <div className="flex flex-col">
-          <div className="text-recruitments-orange flex gap-2">
+          <div className="text-highlight flex gap-2">
             <div>Privacy</div>
             <div>Policy</div>
           </div>
           <div className="flex gap-2">
-            <div className="text-recruitments-orange ">Service</div>
+            <div className="text-highlight ">Service</div>
             <div>Apply</div>
           </div>
         </div>

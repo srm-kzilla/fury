@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Roadmap = () => {
   return (
-    <div className="flex flex-col items-center py-10 font-roadmap">
+    <div className="flex flex-col items-center py-10 px-8 font-roadmap">
       <div className="font-semibold text-3xl">Become a SRMKZILLian</div>
       <div className="hidden sm:block md:scale-75 lg:scale-75 xl:scale-100">
         <div className="w-full px-1 lg:px-24 pt-10 flex justify-center">

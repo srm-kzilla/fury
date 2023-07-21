@@ -3,21 +3,18 @@ module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
       colors: {
-        recruitments: {
-          bg: "#1d1c1c",
-          orange: "#ff644e",
-          footerbg: "#202020",
-        },
+        primary: "#1d1c1c",
+        secondary: "#202020",
+        highlight: "#ff644e",
       },
       fontFamily: {
+        body: ["Inter", "sans-serif"],
+        info: ["Montserrat", "sans-serif"],
         handwriting: ["Nanum Pen Script", "cursive"],
-        roadmap: ["Montserrat", "sans-serif"],
-        footer: ["Inter", "sans-serif"],
       },
     },
   },

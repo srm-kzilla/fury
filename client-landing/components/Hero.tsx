@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <div className="w-full h-screen p-8 flex flex-col gap-6 md:gap-12">
+    <div className="w-full p-8 flex flex-col gap-6 md:gap-12">
       <div className="flex flex-col gap-7">
         <div>
           <h1 className="text-3xl md:text-5xl font-semibold">
@@ -19,11 +19,7 @@ export default function Hero() {
         </div>
         <div>
           <button className="font-bold flex gap-3 items-center">
-            <div
-              className={
-                "rounded-full p-1 bg-recruitments-orange text-recruitments-bg"
-              }
-            >
+            <div className="rounded-full p-1 bg-highlight text-primary">
               <RightArrow size={25} />
             </div>
             <div>
