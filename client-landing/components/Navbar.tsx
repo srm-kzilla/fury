@@ -7,20 +7,19 @@ export default function Navbar() {
     <div className="w-full h-fit flex justify-between py-6 p-6">
       <div>
         <Image
-          src="/SRMKZILLALogo.png"
+          src="/srmkzilla-logo-new.svg"
           alt="SRMKZILLA"
-          width={45}
-          height={45}
+          width={60}
+          height={60}
         />
       </div>
       <div className="flex w-full gap-5 items-center justify-end">
-        <div className="w-fit h-fit cursor-pointer">
-          <MoonIcon size={35} />
-        </div>
         <div>
-          <button className="md:px-12 px-4 md:py-2 py-1 rounded-full border-2 border-white font-bold hover:bg-white hover:text-recruitments-bg duration-300">
-            Get Started
-          </button>
+          <a href="https://dashboard.kzilla.xyz" target="_blank">
+            <button className="md:px-12 px-4 md:py-2 py-1 rounded-full border-2 text-highlight border-highlight font-bold hover:bg-white hover:text-black hover:text-recruitments-bg duration-300">
+              Get Started
+            </button>
+          </a>
         </div>
       </div>
     </div>

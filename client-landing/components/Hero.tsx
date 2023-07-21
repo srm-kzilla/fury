@@ -23,7 +23,13 @@ export default function Hero() {
               <RightArrow size={25} />
             </div>
             <div>
-              <h1>Get Started</h1>
+              <a
+                href="https://dashboard.kzilla.xyz
+              "
+                target="_blank"
+              >
+                <h1>Get Started</h1>
+              </a>
             </div>
           </button>
         </div>
