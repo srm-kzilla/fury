@@ -7,7 +7,7 @@ export default function Hero() {
     <div className="w-full p-8 flex flex-col gap-6 md:gap-12">
       <div className="flex flex-col gap-7">
         <div>
-          <h1 className="text-3xl md:text-5xl font-semibold">
+          <h1 className="text-3xl md:text-5xl font-semibold font-headers">
             #Recruitment2023
           </h1>
         </div>
@@ -16,22 +16,6 @@ export default function Hero() {
             SRMKZILLA - the perfect home for your technical talents, and
             artistic acumen!
           </h1>
-        </div>
-        <div>
-          <button className="font-bold flex gap-3 items-center">
-            <div className="rounded-full p-1 bg-highlight text-primary">
-              <RightArrow size={25} />
-            </div>
-            <div>
-              <a
-                href="https://dashboard.kzilla.xyz
-              "
-                target="_blank"
-              >
-                <h1>Get Started</h1>
-              </a>
-            </div>
-          </button>
         </div>
       </div>
       <div className="w-full h-fit md:flex md:flex-row flex flex-col-reverse gap-20 md:gap-0">

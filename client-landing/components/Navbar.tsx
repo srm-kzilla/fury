@@ -16,7 +16,7 @@ export default function Navbar() {
       <div className="flex w-full gap-5 items-center justify-end">
         <div>
           <a href="https://dashboard.kzilla.xyz" target="_blank">
-            <button className="md:px-12 px-4 md:py-2 py-1 rounded-full border-2 text-highlight border-highlight font-bold hover:bg-white hover:text-black hover:text-recruitments-bg duration-300">
+            <button className="md:px-12 px-4 md:py-2 py-1 rounded-full border-2 hover:bg-highlight hover:border-black hover:text-black font-bold bg-primary border-highlight text-highlight hover:text-recruitments-bg duration-300">
               Get Started
             </button>
           </a>
