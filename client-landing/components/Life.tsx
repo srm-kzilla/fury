@@ -34,9 +34,10 @@ export default function Life() {
           height={700}
         />
       </div>
-      <div className="w-full h-fit flex justify-center lg:static -bottom-36 left-0 p-8">
+
+      <div className="w-full h-fit flex justify-center lg:static -bottom-36 left-0 p-12">
         <iframe
-          className="lg:w-1/2 w-full h-[50vw] lg:h-[550px] rounded-2xl"
+          className="lg:w-2/3 w-full h-[50vw] lg:h-[550px] rounded-2xl"
           width="560"
           height="315"
           src="https://www.youtube.com/embed/iJZiaoXtSnc"
