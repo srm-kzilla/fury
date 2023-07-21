@@ -3,9 +3,9 @@ import Image from "next/image";
 
 const Roadmap = () => {
   return (
-    <div className="flex flex-col items-center py-10 px-8 font-roadmap">
+    <div className="flex flex-col gap-4 items-center py-10 px-8 font-roadmap">
       <div className="font-semibold text-3xl">Become a SRMKZILLian</div>
-      <div className="hidden sm:block md:scale-75 lg:scale-75 xl:scale-100">
+      <div className="hidden lg:block lg:scale-75 xl:scale-100">
         <div className="w-full px-1 lg:px-24 pt-10 flex justify-center">
           <div className=" translate-y-32">
             <ImageComponent
@@ -46,7 +46,7 @@ const Roadmap = () => {
           </div>
         </div>
       </div>
-      <div className="block sm:hidden">
+      <div className="block lg:hidden">
         <div className="flex flex-col items-center mt-6">
           <div>
             <ImageComponent
@@ -55,7 +55,7 @@ const Roadmap = () => {
               description="Fly over to the dashboard, give us your deets, and your journey to be a part of an Avengers-esque team begins."
             />
           </div>
-          <div className="relative w-28 h-20 -scale-x-100 ">
+          <div className="relative w-28 h-20 md:w-40 md:h-40 -scale-x-100 ">
             <Image src="/Path.svg" alt="path" fill />
           </div>
           <div>
@@ -66,7 +66,7 @@ const Roadmap = () => {
               reverse={true}
             />
           </div>
-          <div className="relative w-28 h-20 ">
+          <div className="relative w-28 h-20 md:w-40 md:h-40">
             <Image src="/Path.svg" alt="path" fill />
           </div>
           <div>
@@ -76,7 +76,7 @@ const Roadmap = () => {
               description="Consider us your therapists, and pour your heart out. We won't mind. Plus, we’re very fun to talk to!"
             />
           </div>
-          <div className="relative w-28 h-20 -scale-x-100 ">
+          <div className="relative w-28 h-20 md:w-40 md:h-40 -scale-x-100 ">
             <Image src="/Path.svg" alt="path" fill />
           </div>
           <div>
@@ -89,7 +89,7 @@ const Roadmap = () => {
           </div>
         </div>
       </div>
-      <div className="mt-16 sm:mt-48 font-semibold rounded-3xl border-2 px-8 py-1 w-fit">
+      <div className="mt-16 lg:mt-48 font-semibold rounded-3xl border-2 px-8 py-1 w-fit">
         Get Started
       </div>
     </div>
