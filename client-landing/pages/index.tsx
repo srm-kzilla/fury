@@ -11,7 +11,7 @@ export default function Home() {
     <>
       <Head>
         <title>JOIN SRMKZILLA!</title>
-        <meta name="title" content="RECRUITMENT23 SRMKZILLA" />
+        <meta name="title" content="RECRUITMENT'23 SRMKZILLA" />
         <meta property="og:title" content="RECRUITMENT23 SRMKZILLA" />
         <meta property="twitter:title" content="RECRUITMENT23 SRMKZILLA" />
         <meta httpEquiv="refresh" />
@@ -36,6 +36,7 @@ export default function Home() {
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://recruitment.srmkzilla.net/" />
+        <meta property="og:image" content="https://recruitment-2021.s3.ap-south-1.amazonaws.com/life/Screenshot+from+2021-09-14+17-35-58.png" />
         <meta
           property="og:description"
           content="SRMKZILLA is a community of young tech enthusiasts who eat, sleep and breath technology. We organize everything from technical workshops to gaming events, you name it & we do it. "
