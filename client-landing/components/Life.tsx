@@ -26,16 +26,16 @@ export default function Life() {
           reverse={true}
         />
       </div>
-      <div className="w-full h-fit flex justify-center lg:static -bottom-36 left-0 md:p-8 mt-24">
-        <iframe
-          className="lg:w-4/5 w-full h-[50vw] lg:h-[550px] rounded-2xl"
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/iJZiaoXtSnc"
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        ></iframe>
+      <div className="w-full h-fit flex justify-center lg:static -bottom-36 left-0 md:p-12">
+        <div className="w-full h-fit flex justify-center lg:static -bottom-36 left-0 md:p-8 mt-12">
+          <iframe
+            className="lg:w-4/5 w-full h-[50vw] lg:h-[550px] rounded-2xl"
+            src="https://www.youtube.com/embed/iJZiaoXtSnc"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+        </div>
       </div>
     </div>
   );
