@@ -2,7 +2,7 @@ import LifeDesc from "./LifeDesc";
 
 export default function Life() {
   return (
-    <div className="flex flex-col gap-3 px-8 py-24">
+    <div className="flex flex-col gap-3 px-8 py-24 xl:px-48">
       <h1 className="md:text-4xl text-3xl font-semibold">LIFE AT SRMKZILLA</h1>
       {/* <div className="flex flex-col-reverse lg:flex-row gap-y-4 justify-between items-center">
         <div className="flex flex-col gap-4 lg:w-1/2">
@@ -56,18 +56,18 @@ export default function Life() {
           reverse={true}
         />
       </div>
-
       <div className="w-full h-fit flex justify-center lg:static -bottom-36 left-0 p-12">
-      <div className="w-full h-fit flex justify-center lg:static -bottom-36 left-0 p-8 mt-24">
-        <iframe
-          className="lg:w-2/3 w-full h-[50vw] lg:h-[550px] rounded-2xl"
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/iJZiaoXtSnc"
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        ></iframe>
+        <div className="w-full h-fit flex justify-center lg:static -bottom-36 left-0 p-8 mt-24">
+          <iframe
+            className="lg:w-2/3 w-full h-[50vw] lg:h-[550px] rounded-2xl"
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/iJZiaoXtSnc"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+        </div>
       </div>
     </div>
   );
