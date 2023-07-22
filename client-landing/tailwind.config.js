@@ -13,7 +13,7 @@ module.exports = {
         secondary_highlight: '#58acf5'
       },
       fontFamily: {
-        body: ["Cal sans", "sans-serif"],
+        body: ["Cal Sans", "sans-serif"],
         info: ["Montserrat", "sans-serif"],
         handwriting: ["Nanum Pen Script", "cursive"],
       },
