@@ -16,14 +16,13 @@ interface Authorization {
 
 export class AuthStore {
   // @ts-ignore
-  // @observable timeLeft: number =
-  //   (process.env.REACT_APP_DEADLINE as any) - Date.now();
-  //
-  // // @ts-ignore
-  // @computed get timeLeftDuration() {
-  //   const duration = moment.duration(this.timeLeft, "milliseconds");
-  //   return duration;
-  // }
+  @observable timeLeft: number =
+    1692489600 - Date.now();
+
+  // @ts-ignore
+  @computed get timeLeftDuration() {
+    return moment.duration(this.timeLeft, "milliseconds");
+  }
 
   // @ts-ignore
   @observable user: any | undefined;
@@ -33,28 +32,27 @@ export class AuthStore {
 
   constructor() {
     if (typeof window !== "undefined") {
-      const authorization = {
+      this.authorization = {
         access_token: localStorage.getItem("access_token") || "",
         provider: localStorage.getItem("provider") || "",
         refresh_token: localStorage.getItem("refresh_token") || "",
       };
-      this.authorization = authorization;
     }
   }
 
   // @ts-ignore
   @action setUser = (user: User | undefined) => {
     this.user = user;
-    // this.setDeadline();
+    this.setDeadline();
   };
 
-  // setDeadline() {
-  //   clearInterval(this.interval);
-  //   this.interval = setInterval(() => {
-  //     if (!this.user) return clearInterval(this.interval);
-  //     this.timeLeft = (process.env.REACT_APP_DEADLINE as any) - Date.now();
-  //   }, 1000);
-  // }
+  setDeadline() {
+    clearInterval(this.interval);
+    this.interval = setInterval(() => {
+      if (!this.user) return clearInterval(this.interval);
+      this.timeLeft = (process.env.REACT_APP_DEADLINE as any) - Date.now();
+    }, 1000);
+  }
 
   // @ts-ignore
   @action setAuthorization = (authorization: Authorization | undefined) => {

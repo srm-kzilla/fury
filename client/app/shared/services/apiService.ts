@@ -1,5 +1,6 @@
 import axios, { AxiosInstance, AxiosResponse } from "axios";
-import { API } from "~/constants";
+import { API } from "../../constants";
+import { AuthProvider } from "../../pages/Login/Login";
 import { getRecaptchaToken } from "../utils/recaptcha";
 
 /**

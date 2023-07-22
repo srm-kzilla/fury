@@ -1,144 +1,88 @@
-import type { LinksFunction } from "@remix-run/node";
 import {
+  isRouteErrorResponse,
   Link,
   Links,
   LiveReload,
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration, useLoaderData,
+  ScrollRestoration,
+  useLoaderData,
+  useRouteError,
 } from "@remix-run/react";
-import index from "~/styles/index.css";
-import app from "~/styles/App.css";
+import { ReactNode, useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
-import { links as navbarLink } from "../app/shared/components/Navbar";
-import { links as sidebarLink } from "../app/shared/components/Sidebar";
-import { links as applicationTitleLink } from "../app/shared/components/ApplicationTile";
-import { links as footerLink } from "../app/shared/components/Footer";
-import { links as footerCompactLink } from "../app/shared/components/FooterCompact";
-import { links as formClosedLink } from "../app/shared/components/FormClosed";
-import { links as headbarLink } from "../app/shared/components/Headbar";
-import { links as loadingLink } from "../app/shared/components/Loading";
-import { links as signInWithSRMKZILLALink } from "../app/shared/components/SignInWithSRMKZILLA";
-import { links as taskLink } from "../app/shared/components/Task";
-import { links as taskListLink } from "../app/shared/components/TaskList";
-import { links as tileLink } from "../app/shared/components/Tile";
-import { links as userLink } from "../app/shared/components/User";
-import { links as userProfileLink } from "../app/shared/components/UserProfile";
-import { links as valuesTickerLink } from "../app/shared/components/ValuesTicker";
-import { links as wizardLink } from "../app/shared/components/Wizard/Wizard";
-import { links as selectableDivLink } from "../app/shared/components/Wizard/FormFields/SelectableDiv";
-import { links as textAreaLink } from "../app/shared/components/Wizard/FormFields/TextArea";
-import { links as textFieldLink } from "../app/shared/components/Wizard/FormFields/TextField";
-import { links as dropzoneComponentLink } from "../app/shared/components/Wizard/FormSteps/DomainForm/DropzoneComponent";
-import { links as questionComponentLink } from "../app/shared/components/Wizard/FormSteps/DomainForm/QuestionComponent";
-import { links as domainSelectLink } from "../app/shared/components/Wizard/FormSteps/DomainSelect";
-import { links as instructionsLink } from "../app/shared/components/Wizard/FormSteps/Instructions";
-import { links as glanceLink } from "../app/components/Glance";
-import { links as infoTileLink } from "../app/components/InfoTile";
-import { links as loadingShimmerLink } from "../app/components/LoadingShimmer";
-import { links as notificationLink } from "../app/components/Notification";
-import { links as teamSvgLink } from "../app/components/TeamSvg";
-import { BiX } from "react-icons/bi";
 import classNames from "classnames";
+import axios from "axios";
+import rootStyles from "~/styles/index.css";
+import appStyles from "~/styles/App.css";
+import { Headbar, NotFound } from "~/shared/components";
+import { links as navbarLinks } from "~/shared/components/Navbar";
+import { links as headbarLinks } from "~/shared/components/Headbar";
+import { links as footerLinks } from "~/shared/components/Footer";
+import { links as notFoundLinks } from "~/shared/components/NotFound";
+import { json } from "@remix-run/node";
+import { BiX } from "react-icons/bi";
 import { Constants } from "~/constants";
-import { useContext, useEffect, useState } from "react";
-import { APIService } from "~/shared/services/apiService";
-import { updateLocale } from "~/shared/utils/MomentConfig";
-import { AuthStore } from "~/shared/stores";
-import { StoreContext } from "~/shared/components/Wizard/Store";
-import { Headbar } from "~/shared/components";
-import {json} from "@remix-run/node";
+import type { LinksFunction, LoaderFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => {
   return [
-    ...navbarLink(),
-    ...sidebarLink(),
-    ...applicationTitleLink(),
-    ...footerLink(),
-    ...footerCompactLink(),
-    ...formClosedLink(),
-    ...headbarLink(),
-    ...loadingLink(),
-    ...signInWithSRMKZILLALink(),
-    ...taskLink(),
-    ...taskListLink(),
-    ...tileLink(),
-    ...userLink(),
-    ...userProfileLink(),
-    ...valuesTickerLink(),
-    ...glanceLink(),
-    ...infoTileLink(),
-    ...loadingShimmerLink(),
-    ...notificationLink(),
-    ...teamSvgLink(),
-    ...wizardLink(),
-    ...selectableDivLink(),
-    ...textAreaLink(),
-    ...textFieldLink(),
-    ...dropzoneComponentLink(),
-    ...questionComponentLink(),
-    ...domainSelectLink(),
-    ...instructionsLink(),
+    ...navbarLinks(),
+    ...headbarLinks(),
+    ...footerLinks(),
+    ...notFoundLinks(),
     {
       rel: "stylesheet",
-      href: index,
+      href: rootStyles,
     },
     {
       rel: "stylesheet",
-      href: app,
+      href: appStyles,
     },
   ];
 };
 
+export const loader: LoaderFunction = async () => {
+  const { data: { headline }} = await axios.get(`${process.env.API_BASE_URL}/headline`)
+
+  return json({ headline });
+}
+
 function App() {
-  const authStore = useContext(AuthStore);
-  const { userProjects } = useContext(StoreContext);
-  const [headline, setHeadline] = useState("");
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    APIService.getInstance()
-      .fetchUserInfo()
-      .then(({ data: { user } }) => {
-        authStore.setUser(user);
-      })
-      .finally(() => {
-        setLoading(false);
-        updateLocale();
-      });
-  }, []);
-
-  useEffect(() => {
-    (async () => {
-      const {
-        data: { headline },
-      } = await APIService.getInstance().fetchHeadline();
-      setHeadline(headline);
-    })();
-  }, []);
+  const { headline } = useLoaderData<typeof loader>();
 
   return (
     <>
+      <Layout>
+        <Headbar headline={headline} />
+        <div className="App">
+          <Outlet />
+          <Cookie />
+          <ToastContainer pauseOnFocusLoss={false} />
+        </div>
+      </Layout>
+    </>
+  );
+}
+
+function Layout({ children }: { children: ReactNode }) {
+  return (
+    <>
       <html lang="en">
-        <head>
-          <meta charSet="utf-8" />
-          <meta name="viewport" content="width=device-width,initial-scale=1" />
-          <Meta />
-          <Links />
-          <title>SRMKZILLA Recruitments '23</title>
-        </head>
-        <body>
-          <ScrollRestoration />
-          <Scripts />
-          <LiveReload />
-          <Headbar headline={headline} />
-          <div className="App">
-            <Outlet />
-            <Cookie />
-            <ToastContainer pauseOnFocusLoss={false} />
-          </div>
-        </body>
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <Meta />
+        <Links />
+        <title>SRMKZILLA Recruitments '23</title>
+      </head>
+      <body>
+      <ScrollRestoration />
+      <Scripts />
+      <LiveReload />
+      {children}
+      </body>
       </html>
     </>
   );
@@ -186,5 +130,24 @@ const Cookie = () => {
     </div>
   );
 };
+
+export function ErrorBoundary() {
+  const error = useRouteError();
+
+  if (isRouteErrorResponse(error)) {
+    return (
+      <Layout>
+        <NotFound code={error.status} />
+      </Layout>
+    )
+  }
+
+  return (
+    <Layout>
+      <h1>Uh oh ...</h1>
+      <p>Something went wrong.</p>
+    </Layout>
+  );
+}
 
 export default App;

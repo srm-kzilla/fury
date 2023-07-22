@@ -12,6 +12,7 @@ import FooterCompact from "./FooterCompact";
 import UserProfileForm from "./UserProfile";
 import Store from "./Wizard/Store";
 import Headbar from "./Headbar";
+import NotFound from "./NotFound";
 
 export {
   Navbar,
@@ -29,4 +30,5 @@ export {
   TaskList,
   Store,
   Headbar,
+  NotFound,
 };
