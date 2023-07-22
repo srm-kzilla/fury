@@ -7,22 +7,22 @@ export default function Life() {
       <div className=" flex flex-col gap-24 py-8">
         <LifeDesc
           text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc scelerisque est ut euismod convallis. Pellentesque luctus ligula vel sodales pellentesque. Quisque sed ipsum bibendum ipsum ultrices maximus. Praesent tincidunt tincidunt ornare. Sed gravida porttitor varius. Maecenas aliquam lobortis odio, vel blandit erat auctor at. Sed elementum purus enim, iaculis semper."
-          img="/Life1.png"
+          img="/Life1.svg"
           reverse={false}
         />
         <LifeDesc
           text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc scelerisque est ut euismod convallis. Pellentesque luctus ligula vel sodales pellentesque. Quisque sed ipsum bibendum ipsum ultrices maximus. Praesent tincidunt tincidunt ornare. Sed gravida porttitor varius. Maecenas aliquam lobortis odio, vel blandit erat auctor at. Sed elementum purus enim, iaculis semper."
-          img="/Life2.png"
+          img="/Life2.svg"
           reverse={true}
         />
         <LifeDesc
           text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc scelerisque est ut euismod convallis. Pellentesque luctus ligula vel sodales pellentesque. Quisque sed ipsum bibendum ipsum ultrices maximus. Praesent tincidunt tincidunt ornare. Sed gravida porttitor varius. Maecenas aliquam lobortis odio, vel blandit erat auctor at. Sed elementum purus enim, iaculis semper."
-          img="/Life3.png"
+          img="/Life3.svg"
           reverse={false}
         />
         <LifeDesc
           text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc scelerisque est ut euismod convallis. Pellentesque luctus ligula vel sodales pellentesque. Quisque sed ipsum bibendum ipsum ultrices maximus. Praesent tincidunt tincidunt ornare. Sed gravida porttitor varius. Maecenas aliquam lobortis odio, vel blandit erat auctor at. Sed elementum purus enim, iaculis semper."
-          img="/Life4.png"
+          img="/Life4.svg"
           reverse={true}
         />
       </div>
