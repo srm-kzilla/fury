@@ -36,8 +36,7 @@ export const Constants = {
 };
 
 export const API = {
-  BASE_URL: "https://api.srmkzilla.net/v1",
-  // BASE_URL: process.env.REACT_APP_BASE_URL,
+  BASE_URL: "http://localhost:5050/api/v1",
   ENDPOINTS: {
     USERS: {
       BASE_URL: function () {

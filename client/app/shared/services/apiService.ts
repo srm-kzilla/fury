@@ -1,8 +1,6 @@
-import axios, { AxiosInstance, AxiosResponse } from "axios";
-import { API } from "../../constants";
-import { AuthProvider } from "../../pages/Login/Login";
-import { getRecaptchaToken } from "../utils/recaptcha";
-
+import axios from "axios";
+import { API } from "~/constants";
+import type { AxiosInstance } from "axios";
 /**
  * Drives a database connection in a singleton.
  */
@@ -16,84 +14,84 @@ export class APIService {
     });
     this.instance.defaults.timeout = 60000;
 
-    this.instance.interceptors.request.use(
-      (config) => {
-        const token = localStorage.getItem("access_token");
-        if (token) {
-          config.headers.Authorization = `Bearer ${token}`;
-        }
-        return config;
-      },
-      (error) => Promise.reject(error),
-    );
-
-    this.instance.interceptors.response.use(
-      (response) => {
-        return response;
-      },
-      (error) => {
-        if (!!error) {
-          const originalRequest = error.config;
-          if (
-            error.response &&
-            error.response.status === 401 &&
-            !originalRequest._retry
-          ) {
-            originalRequest._retry = true;
-            return this.instance
-              .post("/auth/google/refresh", {
-                refresh_token: localStorage.getItem("refresh_token"),
-              })
-              .then((res) => {
-                // 1) put token to LocalStorage
-                // localStorageService.setToken(res.data);
-                res &&
-                  localStorage.setItem("access_token", res.data.access_token);
-                // 2) Change Authorization header
-                axios.defaults.headers.common["Authorization"] =
-                  "Bearer " + localStorage.getItem("access_token");
-
-                // 3) return originalRequest object with Axios.
-                return axios(originalRequest);
-              });
-          }
-        }
-      },
-    );
-
-    this.instance.interceptors.request.use(
-      async (config) => {
-        if (
-          [
-            "post",
-            "put",
-            "delete",
-            "POST",
-            "PUT",
-            "DELETE",
-            "get",
-            "GET",
-          ].includes(config.method!)
-        ) {
-          const token = await getRecaptchaToken("action");
-          config.headers["x-recaptcha-token"] = token;
-        }
-        return config;
-      },
-      (error) => Promise.reject(error),
-    );
-
-    this.instance.interceptors.response.use(
-      async (response: AxiosResponse) => {
-        return response;
-      },
-      async (error) => {
-        if (error?.response?.status === 503) {
-          window.location.reload();
-        }
-        throw error;
-      },
-    );
+    // this.instance.interceptors.request.use(
+    //   (config) => {
+    //     const token = localStorage.getItem("access_token");
+    //     if (token) {
+    //       config.headers.Authorization = `Bearer ${token}`;
+    //     }
+    //     return config;
+    //   },
+    //   (error) => Promise.reject(error),
+    // );
+    //
+    // this.instance.interceptors.response.use(
+    //   (response) => {
+    //     return response;
+    //   },
+    //   (error) => {
+    //     if (!!error) {
+    //       const originalRequest = error.config;
+    //       if (
+    //         error.response &&
+    //         error.response.status === 401 &&
+    //         !originalRequest._retry
+    //       ) {
+    //         originalRequest._retry = true;
+    //         return this.instance
+    //           .post("/auth/google/refresh", {
+    //             refresh_token: localStorage.getItem("refresh_token"),
+    //           })
+    //           .then((res) => {
+    //             // 1) put token to LocalStorage
+    //             // localStorageService.setToken(res.data);
+    //             res &&
+    //               localStorage.setItem("access_token", res.data.access_token);
+    //             // 2) Change Authorization header
+    //             axios.defaults.headers.common["Authorization"] =
+    //               "Bearer " + localStorage.getItem("access_token");
+    //
+    //             // 3) return originalRequest object with Axios.
+    //             return axios(originalRequest);
+    //           });
+    //       }
+    //     }
+    //   },
+    // );
+    //
+    // this.instance.interceptors.request.use(
+    //   async (config) => {
+    //     if (
+    //       [
+    //         "post",
+    //         "put",
+    //         "delete",
+    //         "POST",
+    //         "PUT",
+    //         "DELETE",
+    //         "get",
+    //         "GET",
+    //       ].includes(config.method!)
+    //     ) {
+    //       const token = await getRecaptchaToken("action");
+    //       config.headers["x-recaptcha-token"] = token;
+    //     }
+    //     return config;
+    //   },
+    //   (error) => Promise.reject(error),
+    // );
+    //
+    // this.instance.interceptors.response.use(
+    //   async (response: AxiosResponse) => {
+    //     return response;
+    //   },
+    //   async (error) => {
+    //     if (error?.response?.status === 503) {
+    //       window.location.reload();
+    //     }
+    //     throw error;
+    //   },
+    // );
   }
 
   /**
