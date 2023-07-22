@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-primary text-white font-body;
+}
+
+::-webkit-scrollbar {
+  @apply w-1 bg-black;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-highlight rounded-full;
+}
+
+::-webkit-scrollbar {
+  @apply w-1 bg-black;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary rounded-full;
+}
