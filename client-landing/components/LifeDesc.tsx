@@ -15,10 +15,10 @@ const LifeDesc = ({
         reverse ? `md:flex-row-reverse` : `md:flex-row`
       }`}
     >
-      <h1 className=" md:w-3/4">{text}</h1>
+      <h1 className="md:w-3/4 text-center">{text}</h1>
       <div>
         <Image
-          className="h-fit"
+          className="h-fit rounded-2xl"
           src={img}
           alt="life at SRMKZILLA"
           width={700}

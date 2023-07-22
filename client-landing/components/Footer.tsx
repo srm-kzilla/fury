@@ -47,21 +47,19 @@ const Footer = () => {
               <LinkedInBoxLine size={40} />
             </a>
           </div>
-          <div className="px-16 md:px-0 flex flex-col sm:items-start items-center sm:flex-row basis-2/3 gap-10 py-6">
-            <div className="flex flex-col gap-3 sm:items-start items-center text-center sm:text-left">
+          <div className="px-16 md:px-0 flex flex-col sm:items-start items-center md:flex md:flex-row gap-10 py-6">
+            <div className="flex flex-col md:w-1/3 gap-3 sm:items-start items-center text-center sm:text-left">
               <a href="https://srmkzilla.net" target="blank">
-                <h2 className="text-highlight font-semibold lg:text-lg ">
-                  More About Us
+                <h2 className="text-highlight font-semibold lg:text-lg  whitespace-nowrap">
+                  About Us
                 </h2>
               </a>
-
-              <ul>
-                <li>
-                  <a href="https://medium.com/srmkzilla" target="blank">
-                    SRMKZILLA&apos;s BLOG
-                  </a>
-                </li>
-              </ul>
+              <a
+                href="https://medium.com/srmkzilla whitespace-nowrap"
+                target="blank"
+              >
+                Our Blog
+              </a>
             </div>
             <div className="flex flex-col gap-3 sm:items-start items-center text-center sm:text-left">
               <h2 className="text-highlight font-semibold lg:text-lg">
@@ -84,15 +82,18 @@ const Footer = () => {
         <div className="flex flex-col items-center justify-center basis-1/3">
           <a href="https://dashboard.kzilla.xyz" target="_blank">
             <div className="relative w-64 h-64">
-              <Image src="/FooterLogo.svg" alt="FooterLogo" fill />
+              <Image src="/FooterIcon.svg" alt="SRMKZILLA" fill />
             </div>
           </a>
         </div>
       </div>
-      <div className="flex justify-between sm:justify-end gap-16 py-3 px-4 md:px-0">
+      <div className="flex justify-center sm:justify-end gap-16 py-3 px-4 md:px-0">
         <div className="flex flex-col">
           <div className="text-highlight">
-            <a href="https://gist.github.com/shawshankkumar/faf6f0028e01ae56610dc3b2830a777e" target="blank">
+            <a
+              href="https://gist.github.com/shawshankkumar/faf6f0028e01ae56610dc3b2830a777e"
+              target="blank"
+            >
               <div>Privacy Policy</div>
             </a>
           </div>

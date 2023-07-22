@@ -6,23 +6,23 @@ export default function Life() {
       <h1 className="md:text-4xl text-3xl font-semibold">LIFE AT SRMKZILLA</h1>
       <div className=" flex flex-col gap-24 py-8">
         <LifeDesc
-          text="Bustling with tech geniuses, Picassos, and philosophers, SRMKZILLA
-              is a paradise for people with an unquenchable thirst to create.
-              But sometimes, as humans do, we grow weary and tired. Fret not for
-              SRMKZILLA boasts the unofficial title of being the most fun campus
-              club around. We know the importance of taking a well-deserved
-              break and having adventures."
+          text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc scelerisque est ut euismod convallis. Pellentesque luctus ligula vel sodales pellentesque. Quisque sed ipsum bibendum ipsum ultrices maximus. Praesent tincidunt tincidunt ornare. Sed gravida porttitor varius. Maecenas aliquam lobortis odio, vel blandit erat auctor at. Sed elementum purus enim, iaculis semper."
           img="/Life1.svg"
           reverse={false}
         />
         <LifeDesc
-          text="We pride ourselves on the accepting and productive environment
-          we've established in our club. Here, you get to be
-          unapologetically yourself and be loved all the more for it, while
-          still being a part of something bigger than yourself. So, it is
-          our pleasure to invite you into this artistic mosaic of
-          technology, talent, and diversity."
+          text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc scelerisque est ut euismod convallis. Pellentesque luctus ligula vel sodales pellentesque. Quisque sed ipsum bibendum ipsum ultrices maximus. Praesent tincidunt tincidunt ornare. Sed gravida porttitor varius. Maecenas aliquam lobortis odio, vel blandit erat auctor at. Sed elementum purus enim, iaculis semper."
           img="/Life2.svg"
+          reverse={true}
+        />
+        <LifeDesc
+          text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc scelerisque est ut euismod convallis. Pellentesque luctus ligula vel sodales pellentesque. Quisque sed ipsum bibendum ipsum ultrices maximus. Praesent tincidunt tincidunt ornare. Sed gravida porttitor varius. Maecenas aliquam lobortis odio, vel blandit erat auctor at. Sed elementum purus enim, iaculis semper."
+          img="/Life3.svg"
+          reverse={false}
+        />
+        <LifeDesc
+          text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc scelerisque est ut euismod convallis. Pellentesque luctus ligula vel sodales pellentesque. Quisque sed ipsum bibendum ipsum ultrices maximus. Praesent tincidunt tincidunt ornare. Sed gravida porttitor varius. Maecenas aliquam lobortis odio, vel blandit erat auctor at. Sed elementum purus enim, iaculis semper."
+          img="/Life4.svg"
           reverse={true}
         />
       </div>
