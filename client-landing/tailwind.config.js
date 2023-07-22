@@ -10,6 +10,7 @@ module.exports = {
         primary: "#1d1c1c",
         secondary: "#202020",
         highlight: "#ff644e",
+        secondary_highlight: '#58acf5'
       },
       fontFamily: {
         body: ["Cal sans", "sans-serif"],
