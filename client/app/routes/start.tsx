@@ -1,23 +1,24 @@
-import React, { useContext, useEffect, useState } from "react";
-import loginCSS from "../styles/pages/Login.css";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "@remix-run/react";
+import loginStyles from "../styles/pages/Login.css";
 import { Loading, Navbar } from "../shared/components";
-import GitHubIcon from "../assets/images/github.svg";
 import GoogleIcon from "../assets/images/google.svg";
 import qs from "querystring";
+import { links as navbarLinks } from "../shared/components/Navbar";
+import { links as loadingLinks } from "../shared/components/Loading";
 import { AuthStore } from "../shared/stores";
-import { useNavigate } from "@remix-run/react";
-import { APIService } from "../shared/services/apiService";
-import { toast } from "../shared/utils/toast";
-import { LinksFunction } from "@remix-run/node";
+import { APIService } from "~/shared/services/apiService";
+import { toast } from "~/shared/utils/toast";
+import type { LinksFunction } from "@remix-run/node";
 
-export const links: LinksFunction = () => {
-  return [
-    {
-      rel: "stylesheet",
-      href: loginCSS,
-    },
-  ];
-};
+export const links: LinksFunction = () => [
+  ...navbarLinks(),
+  ...loadingLinks(),
+  {
+    rel: "stylesheet",
+    href: loginStyles,
+  },
+];
 
 const Login = () => {
   const authStore = useContext(AuthStore);
@@ -57,18 +58,10 @@ const Login = () => {
   return !loading ? (
     <div className="kz-login">
       <Navbar />
-      {/*TODO: Apply flexbox here*/}
-      <div>
-        <div>
-          <div>
-            <h1>The campus club you love.</h1>
-          </div>
-          <div className="login-col">
-            <div className="login">
-              {/* eslint-disable-next-line @typescript-eslint/no-use-before-define */}
-              <LoginButton provider={AuthProvider.Google} />
-            </div>
-          </div>
+      <div className={"kz-login-container"}>
+        <h1>The campus club you love.</h1>
+        <div className="login">
+          <LoginButton />
         </div>
       </div>
     </div>
@@ -77,56 +70,33 @@ const Login = () => {
   );
 };
 
-export enum AuthProvider {
-  Google = "google",
-  GitHub = "github",
-}
-
-interface LoginButtonProps {
-  provider: AuthProvider;
-}
-
-export const getProviderConfig = (provider: AuthProvider) => {
-  switch (provider) {
-    case AuthProvider.Google:
-      return {
-        icon: GoogleIcon,
-        text: "Sign in with Google",
-        url:
-          "https://accounts.google.com/o/oauth2/v2/auth?" +
-          qs.stringify({
-            client_id:
-              "311478294319-ej3c44c7nc1omuiv0m8sa5ndfoh6dcev.apps.googleusercontent.com",
-            redirect_uri: process.env.REACT_APP_OAUTH_URL,
-            response_type: "code",
-            access_type: "offline",
-            prompt: "consent",
-            scope: [
-              "https://www.googleapis.com/auth/userinfo.email",
-              "https://www.googleapis.com/auth/userinfo.profile",
-            ].join(" "),
-          }),
-      };
-    case AuthProvider.GitHub:
-      return {
-        icon: GitHubIcon,
-        text: "Sign in with GitHub",
-        url:
-          "https://github.com/login/oauth/authorize?" +
-          qs.stringify({
-            client_id: "e3f853137251730f5999",
-            scope: ["user:email"].join(" "),
-          }),
-      };
-  }
+export const getProviderConfig = () => {
+  return {
+    icon: GoogleIcon,
+    text: "Sign in with Google",
+    url:
+      "https://accounts.google.com/o/oauth2/v2/auth?" +
+      qs.stringify({
+        client_id:
+          "311478294319-ej3c44c7nc1omuiv0m8sa5ndfoh6dcev.apps.googleusercontent.com",
+        redirect_uri: "http://localhost:3000/oauth/google/callback",
+        response_type: "code",
+        access_type: "offline",
+        prompt: "consent",
+        scope: [
+          "https://www.googleapis.com/auth/userinfo.email",
+          "https://www.googleapis.com/auth/userinfo.profile",
+        ].join(" "),
+      }),
+  };
 };
 
-const LoginButton: React.FC<LoginButtonProps> = (props) => {
+const LoginButton = () => {
   function openLoginWindow(url: string) {
     window.open(url, "_self");
   }
 
-  const providerConfig = getProviderConfig(props.provider);
+  const providerConfig = getProviderConfig();
 
   return (
     <div

@@ -7,24 +7,26 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLoaderData,
   useRouteError,
 } from "@remix-run/react";
-import { ReactNode, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import classNames from "classnames";
 import rootStyles from "~/styles/index.css";
 import appStyles from "~/styles/App.css";
+import toastStyles from "react-toastify/dist/ReactToastify.css";
 import { Headbar, NotFound } from "~/shared/components";
 import { links as navbarLinks } from "~/shared/components/Navbar";
 import { links as headbarLinks } from "~/shared/components/Headbar";
 import { links as footerLinks } from "~/shared/components/Footer";
 import { links as notFoundLinks } from "~/shared/components/NotFound";
-import { json } from "@remix-run/node";
 import { BiX } from "react-icons/bi";
 import { Constants } from "~/constants";
+import { AuthStore } from "~/shared/stores";
+import { updateLocale } from "./shared/utils/MomentConfig";
 import { APIService } from "~/shared/services/apiService";
-import type { LinksFunction, LoaderFunction } from "@remix-run/node";
+import type { LinksFunction } from "@remix-run/node";
+import type { ReactNode } from "react";
 
 export const links: LinksFunction = () => {
   return [
@@ -40,17 +42,36 @@ export const links: LinksFunction = () => {
       rel: "stylesheet",
       href: appStyles,
     },
+    {
+      rel: "stylesheet",
+      href: toastStyles,
+    }
   ];
 };
 
-export const loader: LoaderFunction = async () => {
-  const { data: { headline }} = await APIService.getInstance().fetchHeadline();
-
-  return json({ headline });
-}
-
 function App() {
-  const { headline } = useLoaderData<typeof loader>();
+  const authStore = useContext(AuthStore);
+  const [headline, setHeadline] = useState("");
+
+  useEffect(() => {
+    APIService.getInstance()
+      .fetchUserInfo()
+      .then(({ data: { user } }) => {
+        authStore.setUser(user);
+      })
+      .finally(() => {
+        updateLocale();
+      });
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      const {
+        data: { headline },
+      } = await APIService.getInstance().fetchHeadline();
+      setHeadline(headline);
+    })();
+  }, []);
 
   return (
     <>
