@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <div className="py-6 md:px-8 bg-secondary">
+    <div className="py-6 md:px-8 bg-secondary xl:px-48">
       <div className="border-b-2 flex flex-col md:flex-row gap-10 py-4">
         <div className="flex flex-col gap-6">
           <div className="flex px-2 md:px-0 md:gap-4 lg:gap-8 border-b-2 w-full justify-between sm:justify-start sm:w-3/5 pb-4">
@@ -91,7 +91,7 @@ const Footer = () => {
       </div>
       <div className="flex justify-between sm:justify-end gap-16 py-3 px-4 md:px-0">
         <div className="flex flex-col">
-          <div className="text-highlight flex gap-2">
+          <div className="text-highlight">
             <a href="https://gist.github.com/shawshankkumar/faf6f0028e01ae56610dc3b2830a777e" target="blank">
               <div>Privacy Policy</div>
             </a>
