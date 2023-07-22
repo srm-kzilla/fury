@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import dashboardCSS from "../styles/pages/Dashboard.css";
+import dashboardStyles from "../styles/pages/Dashboard.css";
 import { APIService } from "~/shared/services/apiService";
 import { AuthStore } from "../shared/stores";
 import { observer } from "mobx-react";
 import Timer from "react-compound-timer";
-import Glance from "../components/Glance";
 import Notification, { NotificationSkeleton } from "../components/Notification";
+import { links as sidebarLinks } from "../shared/components/Sidebar";
+import { links as footerCompactLinks } from "../shared/components/FooterCompact";
+
 import TeamSvg from "../components/TeamSvg";
 import {
   ApplicationTile,
@@ -18,16 +20,16 @@ import { BiAlarm, BiPlus } from "react-icons/bi";
 import { Assets } from "~/constants";
 import { toast } from "~/shared/utils/toast";
 import { toast as Toast } from "react-toastify";
-import { LinksFunction } from "@remix-run/node";
+import type { LinksFunction } from "@remix-run/node";
 
-export const links: LinksFunction = () => {
-  return [
-    {
-      rel: "stylesheet",
-      href: dashboardCSS,
-    },
-  ];
-};
+export const links: LinksFunction = () => [
+  ...sidebarLinks(),
+  ...footerCompactLinks(),
+  {
+    rel: "stylesheet",
+    href: dashboardStyles,
+  },
+];
 
 const Dashboard = () => {
   const authStore = useContext(AuthStore);
@@ -84,7 +86,7 @@ const Dashboard = () => {
       isNaN(days) ||
       (days == 0 && hours == 0 && minutes == 0 && seconds == 0)
     ) {
-      curr = (process.env.REACT_APP_DEADLINE as any) - Date.now();
+      curr = 1692489600 - Date.now();
       days = Math.floor(curr / 8.64e7);
       hours = new Date(curr).getHours();
       minutes = new Date(curr).getMinutes();
@@ -110,7 +112,6 @@ const Dashboard = () => {
     <>
       <div className="kz-dashboard">
         <Sidebar />
-        {/*TODO: Apple flexbox here*/}
         <div style={{ overflowX: "hidden" }}>
           <div className="main-wrapper">
             <div className="main">
@@ -221,7 +222,7 @@ const Dashboard = () => {
                           <div className="timer">
                             <Timer
                               initialTime={
-                                (process.env.REACT_APP_DEADLINE as any) -
+                                1692489600 -
                                 Date.now()
                               }
                               direction="backward"
@@ -269,9 +270,9 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-            <div className="glance">
-              <Glance user={authStore.user} />
-            </div>
+            {/*<div className="glance">*/}
+            {/*  <Glance user={authStore.user} />*/}
+            {/*</div>*/}
           </div>
         </div>
       </div>
