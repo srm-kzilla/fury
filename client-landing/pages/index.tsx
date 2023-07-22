@@ -50,7 +50,7 @@ export default function Home() {
           property="twitter:description"
           content="SRMKZILLA is a community of young tech enthusiasts who eat, sleep and breath technology. We organize everything from technical workshops to gaming events, you name it & we do it. "
         />
-        <link rel="icon preload canonical" href="/SRMKZILLALogo.svg" />
+        <link rel="icon preload canonical" href="/srmkzilla-join-now.svg" />
 
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#000" />
