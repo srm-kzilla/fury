@@ -12,7 +12,7 @@ module.exports = {
         highlight: "#ff644e",
       },
       fontFamily: {
-        body: ["Inter", "sans-serif"],
+        body: ["Cal sans", "sans-serif"],
         info: ["Montserrat", "sans-serif"],
         handwriting: ["Nanum Pen Script", "cursive"],
       },
