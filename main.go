@@ -12,6 +12,7 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/srm-kzilla/Recruitments/api"
 	"github.com/srm-kzilla/Recruitments/utils"
+	"github.com/gofiber/fiber/v2/middleware/recover"
 )
 
 var startTime time.Time
@@ -39,6 +40,8 @@ func main() {
 	app.Use(cors.New())
 
 	app.Use(helmet.New())
+
+    app.Use(recover.New())
 
 	app.Use(limiter.New(limiter.Config{
 		Max:        1000,
