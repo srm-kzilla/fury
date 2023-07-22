@@ -1,7 +1,9 @@
-import React from "react";
-import exploreCSS from "../styles/pages/Explore.css";
-
-import { FooterCompact, Sidebar } from "../shared/components";
+import exploreStyles from "~/styles/pages/Explore.css";
+import { FooterCompact, Sidebar } from "~/shared/components";
+import InfoTile from "~/components/InfoTile";
+import { links as compactFooterLinks } from "~/shared/components/FooterCompact";
+import { links as sidebarLinks } from "~/shared/components/Sidebar";
+import { links as infoTileLinks } from "~/components/InfoTile";
 import {
   BiAward,
   BiBot,
@@ -17,17 +19,17 @@ import {
   BiTerminal,
   BiVector,
 } from "react-icons/bi";
-import InfoTile from "../components/InfoTile";
-import { LinksFunction } from "@remix-run/node";
+import type { LinksFunction } from "@remix-run/node";
 
-export const links: LinksFunction = () => {
-  return [
-    {
-      rel: "stylesheet",
-      href: exploreCSS,
-    },
-  ];
-};
+export const links: LinksFunction = () => [
+  ...sidebarLinks(),
+  ...compactFooterLinks(),
+  ...infoTileLinks(),
+  {
+    rel: "stylesheet",
+    href: exploreStyles,
+  },
+];
 
 const Explore = () => {
   const items = [
@@ -153,7 +155,6 @@ const Explore = () => {
     <>
       <div className="kz-explore">
         <Sidebar />
-        {/*TODO: Add flexbox here*/}
         <div>
           <div>
             <div className="main">

@@ -13,7 +13,6 @@ import {
 import { ReactNode, useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import classNames from "classnames";
-import axios from "axios";
 import rootStyles from "~/styles/index.css";
 import appStyles from "~/styles/App.css";
 import { Headbar, NotFound } from "~/shared/components";
@@ -24,6 +23,7 @@ import { links as notFoundLinks } from "~/shared/components/NotFound";
 import { json } from "@remix-run/node";
 import { BiX } from "react-icons/bi";
 import { Constants } from "~/constants";
+import { APIService } from "~/shared/services/apiService";
 import type { LinksFunction, LoaderFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => {
@@ -44,7 +44,7 @@ export const links: LinksFunction = () => {
 };
 
 export const loader: LoaderFunction = async () => {
-  const { data: { headline }} = await axios.get(`${process.env.API_BASE_URL}/headline`)
+  const { data: { headline }} = await APIService.getInstance().fetchHeadline();
 
   return json({ headline });
 }
