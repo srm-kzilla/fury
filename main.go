@@ -4,7 +4,6 @@ import (
 	"log"
 	"os"
 	"time"
-
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/helmet"
@@ -12,21 +11,14 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/joho/godotenv"
 	"github.com/srm-kzilla/Recruitments/api"
+	"github.com/srm-kzilla/Recruitments/utils"
 )
 
 var startTime time.Time
 
-func rootFunction(c *fiber.Ctx) error {
-	return c.JSON(map[string]string{"message": "SRMKZILLA Recruitments-23 server running"})
-}
-
-func healthCheck(c *fiber.Ctx) error {
-	return c.JSON(map[string]string{"message": "OK", "uptime": time.Since(startTime).String()})
-}
-
 func setupRoutes(app *fiber.App) {
-	app.Get("/", rootFunction)
-	app.Get("/health", healthCheck)
+	app.Get("/", utils.RootFunction)
+	app.Get("/health", utils.HealthCheck)
 	api.SetupApp(app)
 }
 
@@ -42,18 +34,14 @@ func init() {
 func main() {
 	app := fiber.New()
 
-	// Creating a logger middleware
 	app.Use(logger.New())
 
-	//setting up cors
 	app.Use(cors.New())
 
-	//setting up helmet
 	app.Use(helmet.New())
 
-	//setting up a rate limiter for max 100 requests/min per user
 	app.Use(limiter.New(limiter.Config{
-		Max:        100,
+		Max:        1000,
 		Expiration: time.Minute,
 	}))
 
