@@ -50,7 +50,7 @@ export class AuthStore {
     clearInterval(this.interval);
     this.interval = setInterval(() => {
       if (!this.user) return clearInterval(this.interval);
-      this.timeLeft = (process.env.REACT_APP_DEADLINE as any) - Date.now();
+      this.timeLeft = 1692489600 - Date.now();
     }, 1000);
   }
 
