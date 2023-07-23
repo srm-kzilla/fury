@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import { Fragment, useContext, useEffect, useRef, useState } from "react";
 import dashboardStyles from "../styles/pages/Dashboard.css";
 import { APIService } from "~/shared/services/api-service";
 import { AuthStore } from "../shared/stores";
 import { observer } from "mobx-react";
 import Timer from "react-compound-timer";
-import Notification, { NotificationSkeleton } from "../components/Notification";
-import { links as sidebarLinks } from "../shared/components/Sidebar";
-import { links as footerCompactLinks } from "../shared/components/FooterCompact";
+import Notification, { NotificationSkeleton } from "~/components/Notification";
+import { links as sidebarLinks } from "~/shared/components/Sidebar";
+import { links as footerCompactLinks } from "~/shared/components/FooterCompact";
 
 import TeamSvg from "../components/TeamSvg";
 import {
@@ -228,7 +228,7 @@ const Dashboard = () => {
                               direction="backward"
                             >
                               {() => (
-                                <React.Fragment>
+                                <Fragment>
                                   <div>
                                     <h5>
                                       <Timer.Days />
@@ -253,7 +253,7 @@ const Dashboard = () => {
                                     </h5>
                                     <small>seconds</small>
                                   </div>
-                                </React.Fragment>
+                                </Fragment>
                               )}
                             </Timer>
                           </div>

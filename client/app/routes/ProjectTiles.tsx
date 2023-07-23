@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Task, Tile, User } from "../shared/components";
+import { Task, Tile, User } from "~/shared/components";
 import { produce } from "immer";
-import { StoreContext } from "../shared/components/Wizard/Store";
-import { APIService } from "../shared/services/api-service";
-import LoadingShimmer from "../components/LoadingShimmer";
-import projectTilesLink from "../styles/pages/ProjectTiles.css";
-import { LinksFunction } from "@remix-run/node";
+import { StoreContext } from "~/shared/components/Wizard/Store";
+import { APIService } from "~/shared/services/api-service";
+import LoadingShimmer from "~/components/LoadingShimmer";
+import projectTilesLink from "~/styles/pages/ProjectTiles.css";
+import type { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => {
   return [
@@ -187,9 +187,11 @@ const ProjectTiles = () => {
     </div>
   );
 };
+
 export const ProjectTilesComponent = {
   component: ProjectTiles,
   validationSchemas: {},
   initialValues: {},
 };
+
 export default ProjectTiles;

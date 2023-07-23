@@ -6,7 +6,7 @@ import GoogleIcon from "../assets/images/google.svg";
 import qs from "querystring";
 import { links as navbarLinks } from "../shared/components/Navbar";
 import { links as loadingLinks } from "../shared/components/Loading";
-import { AuthStore } from "../shared/stores";
+import { AuthStore } from "~/shared/stores";
 import { APIService } from "~/shared/services/api-service";
 import { toast } from "~/shared/utils/toast";
 import type { LinksFunction } from "@remix-run/node";

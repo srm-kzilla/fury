@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "@remix-run/react";
 import { observer } from "mobx-react";
 
@@ -16,11 +16,11 @@ import {
   DomainInstructions,
 } from "../shared/components/Wizard/FormSteps";
 import Wizard from "../shared/components/Wizard/Wizard";
-import { APIService } from "../shared/services/api-service";
+import { APIService } from "~/shared/services/api-service";
 import { Loading } from "../shared/components";
-import { StoreContext } from "../shared/components/Wizard/Store";
-import { toast } from "../shared/utils/toast";
-import { AuthStore } from "../shared/stores";
+import { StoreContext } from "~/shared/components/Wizard/Store";
+import { toast } from "~/shared/utils/toast";
+import { AuthStore } from "~/shared/stores";
 
 const Application = () => {
   const [loading, setLoading] = useState(false);
