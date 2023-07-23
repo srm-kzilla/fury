@@ -4,7 +4,7 @@ import React, { useContext, useState } from "react";
 import { BiHomeAlt, BiLoader } from "react-icons/bi";
 import { Link } from "@remix-run/react";
 import * as Yup from "yup";
-import { toast } from "../../utils/toast";
+import { toast } from "~/shared/utils/toast";
 import ProjectQuestionComponent from "./ProjectComponent";
 import { StoreContext } from "./Store";
 import wizardStyles from "~/styles/shared/components/Wizard.css";

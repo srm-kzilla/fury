@@ -5,28 +5,26 @@ import * as Yup from "yup";
 import { observer } from "mobx-react";
 import { BiLoader } from "react-icons/bi";
 
-import { DropZone, TextField } from "../../shared/components/Wizard/FormFields";
-import userProfileCSS from "../../styles/shared/components/UserProfile.css";
-import { APIService } from "../services/api-service";
-import { toast } from "../utils/toast";
-import { AuthStore } from "../stores";
+import { DropZone, TextField } from "~/shared/components/Wizard/FormFields";
+import userProfileStyles from "~/styles/shared/components/UserProfile.css";
+import { APIService } from "~/shared/services/api-service";
+import { toast } from "~/shared/utils/toast";
+import { AuthStore } from "~/shared/stores";
 import { StoreContext } from "../components/Wizard/Store";
-import { LinksFunction } from "@remix-run/node";
+import type { LinksFunction } from "@remix-run/node";
 
-export const links: LinksFunction = () => {
-  return [
-    {
-      rel: "stylesheet",
-      href: userProfileCSS,
-    },
-  ];
-};
+export const links: LinksFunction = () => [
+  {
+    rel: "stylesheet",
+    href: userProfileStyles,
+  },
+];
 
 const UserProfileForm = () => {
   const [isSubmitting, setSubmitting] = useState(false);
   const { blob, setBlob } = useContext(StoreContext);
 
-  let history = useNavigate();
+  let navigate = useNavigate();
   const authStore = useContext(AuthStore);
 
   const capitaliseInitialChar = (name: string) => {
@@ -81,8 +79,7 @@ const UserProfileForm = () => {
               } = await APIService.getInstance().fetchUserInfo();
 
               authStore.setUser(user);
-              history("/temp");
-              history("/dashboard");
+              navigate("/dashboard");
               toast({
                 message: "All set!",
                 title: "Create a new application to get started.",

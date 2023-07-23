@@ -1,46 +1,53 @@
 import { observer } from "mobx-react";
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect} from "react";
 import { AuthStore } from "../stores";
-import { Route } from "react-router-dom";
-import { redirect } from "@remix-run/node";
-import { Loading, UserProfileForm } from "../components";
-import Store from "../components/Wizard/Store";
+import { useNavigate } from "@remix-run/react";
+import Store from "~/shared/components/Wizard/Store";
+import { Loading, UserProfileForm } from "~/shared/components";
+import { links as loadingLinks } from "~/shared/components/Loading";
+import { links as userProfileLinks } from "~/shared/components/UserProfile";
+import type { ReactNode } from "react";
+import type { LinksFunction } from "@remix-run/node";
 
-const PrivateRoute: React.FC<any> = ({
-  children,
-  path,
-  redirectTo,
-  loading,
-  ...rest
-}) => {
+interface PrivateRouteProps {
+  children: ReactNode;
+  redirectTo: string;
+  loading: boolean;
+}
+
+export const links: LinksFunction = () => [
+  ...loadingLinks(),
+  ...userProfileLinks(),
+];
+
+const PrivateRoute = ({ children, redirectTo, loading }: PrivateRouteProps) => {
   const authStore = useContext(AuthStore);
+  const navigate = useNavigate();
 
   useEffect(() => {}, [loading, authStore.user]);
 
   return (
-    <Route
-      {...rest}
-      exact
-      path={path}
-      render={({ location }) => {
-        if (loading) return <Loading />;
+    <>
+      {loading ? <Loading /> : (
+        <>
+          {authStore.user ? (
+            authStore.user.gender ?  (
+              <>
+                {children}
+              </>
+            ) : (
+              <>
+                <Store>
+                  <UserProfileForm />
+                </Store>
+              </>
+            )
+          ): navigate(redirectTo)}
+        </>
+      )}
+    </>
+  )
 
-        if (authStore.user) {
-          return authStore.user.gender ? (
-            children
-          ) : (
-            <>
-              <Store>
-                <UserProfileForm />
-              </Store>
-            </>
-          );
-        } else {
-          return redirect(redirectTo);
-        }
-      }}
-    />
-  );
 };
 
 export default observer(PrivateRoute);

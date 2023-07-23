@@ -15,6 +15,8 @@ import {
   FooterCompact,
   Sidebar,
 } from "~/shared/components";
+import { links as userProfileLinks } from "~/shared/components/UserProfile";
+import PrivateRoute from "~/shared/utils/PrivateRoute";
 import { Link, useNavigate } from "@remix-run/react";
 import { BiAlarm, BiPlus } from "react-icons/bi";
 import { Assets } from "~/constants";
@@ -24,6 +26,7 @@ import type { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => [
   ...sidebarLinks(),
+  ...userProfileLinks(),
   ...notificationLinks(),
   ...footerCompactLinks(),
   {
@@ -97,7 +100,7 @@ const Dashboard = () => {
   }, [authStore.timeLeftDuration]);
 
   return (
-    <>
+    <PrivateRoute loading={loading} redirectTo="/start">
       <div className="kz-dashboard">
         <Sidebar />
         <div style={{ overflowX: "hidden" }}>
@@ -265,7 +268,7 @@ const Dashboard = () => {
         </div>
       </div>
       <FooterCompact />
-    </>
+    </PrivateRoute>
   );
 };
 
