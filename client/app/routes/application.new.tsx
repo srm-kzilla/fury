@@ -16,7 +16,7 @@ import {
   DomainInstructions,
 } from "../shared/components/Wizard/FormSteps";
 import Wizard from "../shared/components/Wizard/Wizard";
-import { APIService } from "../shared/services/apiService";
+import { APIService } from "../shared/services/api-service";
 import { Loading } from "../shared/components";
 import { StoreContext } from "../shared/components/Wizard/Store";
 import { toast } from "../shared/utils/toast";
