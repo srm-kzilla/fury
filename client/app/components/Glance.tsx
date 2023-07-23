@@ -8,7 +8,7 @@ import {
   BiKey,
   BiTrashAlt,
 } from "react-icons/bi";
-import { APIService } from "../shared/services/apiService";
+import { APIService } from "../shared/services/api-service";
 import moment from "moment";
 // eslint-disable-next-line import/no-duplicates
 // eslint-disable-next-line import/no-duplicates

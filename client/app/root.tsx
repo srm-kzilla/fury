@@ -24,7 +24,7 @@ import { BiX } from "react-icons/bi";
 import { Constants } from "~/constants";
 import { AuthStore } from "~/shared/stores";
 import { updateLocale } from "./shared/utils/MomentConfig";
-import { APIService } from "~/shared/services/apiService";
+import { APIService } from "~/shared/services/api-service";
 import type { LinksFunction } from "@remix-run/node";
 import type { ReactNode } from "react";
 

@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import { StoreContext } from "../Store";
 import { SelectableDiv } from "../FormFields";
 import domainSelectCSS from "../../../../styles/shared/components/FormSteps.css";
-import { APIService } from "../../../services/apiService";
+import { APIService } from "../../../services/api-service";
 import { Loading } from "../..";
 import { LinksFunction } from "@remix-run/node";
 

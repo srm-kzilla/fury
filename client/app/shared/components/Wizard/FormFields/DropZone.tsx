@@ -4,7 +4,7 @@ import { useDropzone } from "react-dropzone";
 import { toast as Toast } from "react-toastify";
 import { BiX } from "react-icons/bi";
 
-import { APIService } from "../../../services/apiService";
+import { APIService } from "../../../services/api-service";
 import { toast } from "../../../utils/toast";
 import { StoreContext } from "../Store";
 

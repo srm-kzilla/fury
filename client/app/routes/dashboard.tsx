@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import dashboardStyles from "../styles/pages/Dashboard.css";
-import { APIService } from "~/shared/services/apiService";
+import { APIService } from "~/shared/services/api-service";
 import { AuthStore } from "../shared/stores";
 import { observer } from "mobx-react";
 import Timer from "react-compound-timer";

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Task, Tile, User } from "../shared/components";
 import { produce } from "immer";
 import { StoreContext } from "../shared/components/Wizard/Store";
-import { APIService } from "../shared/services/apiService";
+import { APIService } from "../shared/services/api-service";
 import LoadingShimmer from "../components/LoadingShimmer";
 import projectTilesLink from "../styles/pages/ProjectTiles.css";
 import { LinksFunction } from "@remix-run/node";

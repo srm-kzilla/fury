@@ -7,7 +7,7 @@ import qs from "querystring";
 import { links as navbarLinks } from "../shared/components/Navbar";
 import { links as loadingLinks } from "../shared/components/Loading";
 import { AuthStore } from "../shared/stores";
-import { APIService } from "~/shared/services/apiService";
+import { APIService } from "~/shared/services/api-service";
 import { toast } from "~/shared/utils/toast";
 import type { LinksFunction } from "@remix-run/node";
 
@@ -41,7 +41,7 @@ const Login = () => {
           toast({
             title: "Heads up!",
             message:
-              "You have until 25th September 2022 to sprinkle your magic. <span>Sign In for #Recruitment2022,</span> and get started.",
+              "You have until 20th August 2023 to sprinkle your magic. <span>Sign In for #Recruitment2023,</span> and get started.",
             theme: "info",
             options: {
               autoClose: false,

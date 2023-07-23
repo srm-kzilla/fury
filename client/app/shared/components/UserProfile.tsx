@@ -7,7 +7,7 @@ import { BiLoader } from "react-icons/bi";
 
 import { DropZone, TextField } from "../../shared/components/Wizard/FormFields";
 import userProfileCSS from "../../styles/shared/components/UserProfile.css";
-import { APIService } from "../services/apiService";
+import { APIService } from "../services/api-service";
 import { toast } from "../utils/toast";
 import { AuthStore } from "../stores";
 import { StoreContext } from "../components/Wizard/Store";

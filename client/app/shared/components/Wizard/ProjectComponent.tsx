@@ -1,10 +1,8 @@
 import React from "react";
 import * as Yup from "yup";
 
-// import Project from "../../../pages/Project/Project";
-// import Project from "./TestApp";
 import { ProjectTilesComponent } from "../../../routes/ProjectTiles";
-import { APIService } from "../../services/apiService";
+import { APIService } from "../../services/api-service";
 
 const Question1 = {
   projectComponents: [
