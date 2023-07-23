@@ -25,7 +25,7 @@ div.kz-dashboard {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 1rem;
+      margin: 1rem 0;
 
       @include for-mobile-only {
         margin: 0.5rem auto;

@@ -1,6 +1,8 @@
+import type {AxiosInstance, AxiosResponse} from "axios";
 import axios from "axios";
 import { API } from "~/constants";
-import type { AxiosInstance, AxiosResponse } from "axios";
+import { getRecaptchaToken } from "~/shared/utils/recaptcha";
+
 /**
  * Drives a database connection in a singleton.
  */
@@ -54,27 +56,26 @@ export class APIService {
       },
     );
 
-    // this.instance.interceptors.request.use(
-    //   async (config) => {
-    //     if (
-    //       [
-    //         "post",
-    //         "put",
-    //         "delete",
-    //         "POST",
-    //         "PUT",
-    //         "DELETE",
-    //         "get",
-    //         "GET",
-    //       ].includes(config.method!)
-    //     ) {
-    //       const token = await getRecaptchaToken("action");
-    //       config.headers["x-recaptcha-token"] = token;
-    //     }
-    //     return config;
-    //   },
-    //   (error) => Promise.reject(error),
-    // );
+    this.instance.interceptors.request.use(
+      async (config) => {
+        if (
+          [
+            "post",
+            "put",
+            "delete",
+            "POST",
+            "PUT",
+            "DELETE",
+            "get",
+            "GET",
+          ].includes(config.method!)
+        ) {
+          config.headers["x-recaptcha-token"] = await getRecaptchaToken("action");
+        }
+        return config;
+      },
+      (error) => Promise.reject(error),
+    );
 
     this.instance.interceptors.response.use(
       async (response: AxiosResponse) => {

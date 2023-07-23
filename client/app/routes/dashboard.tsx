@@ -4,7 +4,7 @@ import { APIService } from "~/shared/services/api-service";
 import { AuthStore } from "../shared/stores";
 import { observer } from "mobx-react";
 import Timer from "react-compound-timer";
-import Notification, { NotificationSkeleton } from "~/components/Notification";
+import Notification, { NotificationSkeleton, links as notificationLinks } from "~/components/Notification";
 import { links as sidebarLinks } from "~/shared/components/Sidebar";
 import { links as footerCompactLinks } from "~/shared/components/FooterCompact";
 
@@ -14,7 +14,7 @@ import {
   ApplicationTileSkeleton,
   FooterCompact,
   Sidebar,
-} from "../shared/components";
+} from "~/shared/components";
 import { Link, useNavigate } from "@remix-run/react";
 import { BiAlarm, BiPlus } from "react-icons/bi";
 import { Assets } from "~/constants";
@@ -24,6 +24,7 @@ import type { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => [
   ...sidebarLinks(),
+  ...notificationLinks(),
   ...footerCompactLinks(),
   {
     rel: "stylesheet",
@@ -37,8 +38,6 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [projects, setProjects] = useState<any>([]);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [timesUp, setTimesUp] = useState<number>(Date.now() + 604800000); //to be changed when backend is done
 
   useEffect(() => {
     setLoading(true);
@@ -46,15 +45,12 @@ const Dashboard = () => {
     const notificationsPromise =
       APIService.getInstance().fetchUserNotifications();
     const projectsPromise = APIService.getInstance().fetchApplications();
-    //const timesUpAt = APIService.getInstance().fetchTimesUpAt();
 
-    // @ts-ignore
     Promise.all([userInfoPromise, notificationsPromise, projectsPromise])
       .then(function (values) {
         authStore.setUser(values[0].data.user);
         setNotifications(values[1].data.notifications);
         setProjects(values[2].data.applications);
-        //setTimesUp(values[3].data.timesUpAt);  set after backend is done
       })
       .catch((error) => {
         toast({
@@ -66,13 +62,6 @@ const Dashboard = () => {
       })
       .finally(() => setLoading(false));
   }, [authStore]);
-
-  useEffect(() => {
-    if (Date.now() >= timesUp) {
-      //TODO - block routes here
-      //TODO - disable clicks here
-    }
-  }, [timesUp]);
 
   const toastRef = useRef<any>(null);
   useEffect(() => {
@@ -92,7 +81,6 @@ const Dashboard = () => {
       minutes = new Date(curr).getMinutes();
       seconds = new Date(curr).getSeconds();
     }
-    console.log(days, hours, minutes, seconds);
 
     toastRef.current = toast({
       title: "Heads up!",
@@ -222,7 +210,7 @@ const Dashboard = () => {
                           <div className="timer">
                             <Timer
                               initialTime={
-                                1692489600 -
+                                1692513000000 -
                                 Date.now()
                               }
                               direction="backward"
@@ -270,9 +258,9 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-            {/*<div className="glance">*/}
-            {/*  <Glance user={authStore.user} />*/}
-            {/*</div>*/}
+            <div className="glance">
+              {/*<Glance user={authStore.user} />*/}
+            </div>
           </div>
         </div>
       </div>

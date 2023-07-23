@@ -1,12 +1,12 @@
-import React, { useState, useRef, useContext } from "react";
+import { useState, useRef, useContext } from "react";
 import { Field } from "formik";
 import { useDropzone } from "react-dropzone";
 import { toast as Toast } from "react-toastify";
 import { BiX } from "react-icons/bi";
 
-import { APIService } from "../../../services/api-service";
-import { toast } from "../../../utils/toast";
-import { StoreContext } from "../Store";
+import { APIService } from "~/shared/services/api-service";
+import { toast } from "~/shared/utils/toast";
+import { StoreContext } from "~/shared/components/Wizard/Store";
 
 type DropZoneProps = {
   name: string;

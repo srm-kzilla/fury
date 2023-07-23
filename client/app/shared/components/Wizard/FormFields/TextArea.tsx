@@ -1,17 +1,4 @@
-import React from "react";
 import { Field } from "formik";
-
-import textAreaCSS from "../../../../styles/shared/components/FormFields.css";
-import { LinksFunction } from "@remix-run/node";
-
-export const links: LinksFunction = () => {
-  return [
-    {
-      rel: "stylesheet",
-      href: textAreaCSS,
-    },
-  ];
-};
 
 type TextAreaProps = {
   label?: string;

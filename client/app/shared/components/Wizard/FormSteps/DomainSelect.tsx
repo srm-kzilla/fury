@@ -1,21 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import * as Yup from "yup";
 
-import { StoreContext } from "../Store";
-import { SelectableDiv } from "../FormFields";
-import domainSelectCSS from "../../../../styles/shared/components/FormSteps.css";
-import { APIService } from "../../../services/api-service";
-import { Loading } from "../..";
-import { LinksFunction } from "@remix-run/node";
-
-export const links: LinksFunction = () => {
-  return [
-    {
-      rel: "stylesheet",
-      href: domainSelectCSS,
-    },
-  ];
-};
+import { StoreContext } from "~/shared/components/Wizard/Store";
+import { Loading } from "~/shared/components";
+import { SelectableDiv } from "~/shared/components/Wizard/FormFields";
+import { APIService } from "~/shared/services/api-service";
 
 let domainOptions = [
   {

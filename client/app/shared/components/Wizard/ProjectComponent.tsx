@@ -1,12 +1,12 @@
 import React from "react";
 import * as Yup from "yup";
 
-import { ProjectTilesComponent } from "../../../routes/ProjectTiles";
+import { ProjectTilesComponent } from "~/routes/ProjectTiles";
 import { APIService } from "../../services/api-service";
 
 const Question1 = {
   projectComponents: [
-    () => <ProjectTilesComponent.component />,
+    () => <ProjectTilesComponent.Component />,
     // () => <Project />,
   ],
   projectSchema: [

@@ -1,18 +1,7 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { Field } from "formik";
+import { StoreContext } from "~/shared/components/Wizard/Store";
 
-import { StoreContext } from "../Store";
-import selectableDivCSS from "../../../../styles/shared/components/FormFields.css";
-import { LinksFunction } from "@remix-run/node";
-
-export const links: LinksFunction = () => {
-  return [
-    {
-      rel: "stylesheet",
-      href: selectableDivCSS,
-    },
-  ];
-};
 
 type SelectableDivProps = {
   name: string;

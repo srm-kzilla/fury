@@ -189,7 +189,7 @@ const ProjectTiles = () => {
 };
 
 export const ProjectTilesComponent = {
-  component: ProjectTiles,
+  Component: ProjectTiles,
   validationSchemas: {},
   initialValues: {},
 };

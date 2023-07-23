@@ -27,7 +27,13 @@ import { updateLocale } from "./shared/utils/MomentConfig";
 import { APIService } from "~/shared/services/api-service";
 import type { LinksFunction } from "@remix-run/node";
 import type { ReactNode } from "react";
+import Store from "~/shared/components/Wizard/Store";
 
+declare global {
+  interface Window {
+    $crisp: any;
+  }
+}
 export const links: LinksFunction = () => {
   return [
     ...navbarLinks(),
@@ -78,7 +84,9 @@ function App() {
       <Layout>
         <Headbar headline={headline} />
         <div className="App">
-          <Outlet />
+          <Store>
+            <Outlet />
+          </Store>
           <Cookie />
           <ToastContainer pauseOnFocusLoss={false} />
         </div>

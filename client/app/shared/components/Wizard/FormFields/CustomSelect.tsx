@@ -1,10 +1,7 @@
-import React from "react";
-import { FieldProps } from "formik";
-// eslint-disable-next-line import/no-duplicates
 import Select from "react-select";
-// eslint-disable-next-line import/no-duplicates
-import OptionsType from "react-select";
-import debounce from "debounce"; // TODO: Update Dependency
+import debounce from "debounce";
+import type OptionsType from "react-select";
+import type { FieldProps } from "formik";
 
 interface Option {
   label: string;

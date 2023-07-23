@@ -7,17 +7,25 @@ import * as Yup from "yup";
 import { toast } from "../../utils/toast";
 import ProjectQuestionComponent from "./ProjectComponent";
 import { StoreContext } from "./Store";
-import wizardCSS from "../../../styles/shared/components/Wizard.css";
-import { LinksFunction } from "@remix-run/node";
+import wizardStyles from "~/styles/shared/components/Wizard.css";
+import formFieldStyles from "~/styles/shared/components/FormFields.css";
+import formStepsStyles from "~/styles/shared/components/FormSteps.css";
+import type { LinksFunction } from "@remix-run/node";
 
-export const links: LinksFunction = () => {
-  return [
-    {
-      rel: "stylesheet",
-      href: wizardCSS,
-    },
-  ];
-};
+export const links: LinksFunction = () => [
+  {
+    rel: "stylesheet",
+    href: formFieldStyles,
+  },
+  {
+    rel: "stylesheet",
+    href: formStepsStyles,
+  },
+  {
+    rel: "stylesheet",
+    href: wizardStyles,
+  },
+];
 
 const Wizard = (props: any) => {
   const { validationSchemas, formComponents, handleSubmit, initialValues } =

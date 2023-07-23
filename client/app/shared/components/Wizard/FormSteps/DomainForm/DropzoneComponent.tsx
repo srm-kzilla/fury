@@ -2,18 +2,7 @@ import React, { useContext } from "react";
 import { capitalCase } from "change-case";
 
 import { StoreContext } from "../../Store";
-import dropzoneComponentCSS from "../../../../../styles/shared/components/FormSteps.css";
 import { DropZone } from "../../FormFields";
-import { LinksFunction } from "@remix-run/node";
-
-export const links: LinksFunction = () => {
-  return [
-    {
-      rel: "stylesheet",
-      href: dropzoneComponentCSS,
-    },
-  ];
-};
 
 interface Question {
   domain: string;

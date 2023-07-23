@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import glanceCss from "../styles/Components/Glance.css";
+import { useEffect, useState } from "react";
+import glanceStyles from "~/styles/Components/Glance.css";
 import {
   BiBell,
   BiCheckCircle,
@@ -8,19 +8,17 @@ import {
   BiKey,
   BiTrashAlt,
 } from "react-icons/bi";
-import { APIService } from "../shared/services/api-service";
+import { APIService } from "~/shared/services/api-service";
 import moment from "moment";
-// eslint-disable-next-line import/no-duplicates
-// eslint-disable-next-line import/no-duplicates
 import classNames from "classnames";
 import Skeleton from "react-loading-skeleton";
-import { LinksFunction } from "@remix-run/node";
+import type { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => {
   return [
     {
       rel: "stylesheet",
-      href: glanceCss,
+      href: glanceStyles,
     },
   ];
 };

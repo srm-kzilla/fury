@@ -17,7 +17,7 @@ interface Authorization {
 export class AuthStore {
   // @ts-ignore
   @observable timeLeft: number =
-    1692489600 - Date.now();
+    1692513000000 - Date.now();
 
   // @ts-ignore
   @computed get timeLeftDuration() {
@@ -50,7 +50,7 @@ export class AuthStore {
     clearInterval(this.interval);
     this.interval = setInterval(() => {
       if (!this.user) return clearInterval(this.interval);
-      this.timeLeft = 1692489600 - Date.now();
+      this.timeLeft = 1692513000000 - Date.now();
     }, 1000);
   }
 
