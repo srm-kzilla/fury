@@ -61,10 +61,10 @@ h2 {
 .react-loading-skeleton {
   background-color: var(--color-bg-alt) !important;
   background-image: linear-gradient(
-    90deg,
-    var(--color-bg-alt),
-    var(--color-skeleton),
-    var(--color-bg-alt)
+                  90deg,
+                  var(--color-bg-alt),
+                  var(--color-skeleton),
+                  var(--color-bg-alt)
   ) !important;
 }
 
@@ -87,4 +87,14 @@ a {
 
 .container-fluid {
   overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+  background-color: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ff644e;
+  border-radius: 10px;
 }

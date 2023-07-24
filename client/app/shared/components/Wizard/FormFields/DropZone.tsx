@@ -142,7 +142,7 @@ const DropZone = ({ name, label }: DropZoneProps) => {
                 {limit ? (
                   <p>{myFiles}</p>
                 ) : (
-                  <p>Drag and drop your files here, or click to select files</p>
+                  <p className={"drop-zone"}>Drag and drop your files here, or click to select files</p>
                 )}
               </div>
             </>

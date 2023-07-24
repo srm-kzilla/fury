@@ -31,6 +31,7 @@ const lightTheme = {
   "--color-bg-rgb": hexToRgb("#ffffff"),
   "--color-bg-alt-rgb": hexToRgb("#fafafa"),
   "--color-input-rgb": hexToRgb("#a0a1b7"),
+  "--scrollbar-track": "#ffffff",
 };
 const darkTheme = {
   "--color-text": "#fafafa",
@@ -48,6 +49,7 @@ const darkTheme = {
   "--color-bg-rgb": hexToRgb("#111111"),
   "--color-bg-alt-rgb": hexToRgb("#202020"),
   "--color-input-rgb": hexToRgb("#a0a1b7"),
+  "--scrollbar-track": "#000000",
 };
 
 export class ThemeStore {
