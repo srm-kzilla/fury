@@ -2,9 +2,8 @@ package adminController
 
 import (
 	"context"
-	"log"
+	"github.com/charmbracelet/log"
 	"os"
-
 	"github.com/gofiber/fiber/v2"
 	applicationsModel "github.com/srm-kzilla/Recruitments/api/applications/model"
 	"github.com/srm-kzilla/Recruitments/database"
@@ -16,7 +15,7 @@ func GetAllApplications(c *fiber.Ctx) error {
 	var applications []bson.M
 	applicationsCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "applications")
 	if e != nil {
-		log.Println("Error: ", e)
+		log.Error("Error: ", e)
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"error":   e.Error(),
 			"message": "Error getting applications collection",
@@ -25,7 +24,7 @@ func GetAllApplications(c *fiber.Ctx) error {
 
 	cursor, err := applicationsCollection.Aggregate(context.Background(), mongo.Pipeline{})
 	if err = cursor.All(context.Background(), &applications); err != nil {
-		log.Println("Error ", err)
+		log.Error("Error ", err)
 		c.Status(fiber.StatusBadGateway).JSON(fiber.Map{
 			"error":        err.Error(),
 			"applications": applications,
