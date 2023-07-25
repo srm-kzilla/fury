@@ -45,13 +45,13 @@ const PrivacyPolicy = () => {
           <div className="pb-4">
             <h2 className="text-highlight text-3xl my-4 font-medium">Reuse</h2>
             <p>
-              SRMKZILLA ("SRMKZILLA") makes available services include our web
-              sites (
+              SRMKZILLA ("SRMKZILLA") makes available services include our
+              websites (
               <a
                 className="text-highlight"
-                href="https://recruitments.srmkzilla.net"
+                href="https://recruitment.srmkzilla.net"
               >
-                https://recruitments.srmkzilla.net
+                https://recruitment.srmkzilla.net
               </a>
               ), our blog, our API, and any other software, sites, and services
               offered by SRMKZILLA in connection to any of those (taken
