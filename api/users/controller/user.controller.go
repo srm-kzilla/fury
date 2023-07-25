@@ -29,7 +29,7 @@ func GetUser(c *fiber.Ctx) error {
 	var user usersModel.User
 	err := applicationsCollection.FindOne(context.Background(), bson.M{"regNo": regNo}).Decode(&user)
 	if err != nil {
-		log.Println("Error", err)
+		log.Error("Error", err)
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error":   err.Error(),
 			"message": "Domain not found",
@@ -45,7 +45,7 @@ func UpdateUser(c *fiber.Ctx) error {
 
 	applicationsCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "applications")
 	if e != nil {
-		log.Println("Error: ", e)
+		log.Error("Error: ", e)
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"error":   e.Error(),
 			"message": "Error getting applications collection",
@@ -54,7 +54,7 @@ func UpdateUser(c *fiber.Ctx) error {
 
 	err := applicationsCollection.FindOne(context.Background(), bson.M{"regNo": user.RegNo}).Decode(&check)
 	if err != nil {
-		log.Println("Error ", err)
+		log.Error("Error ", err)
 		c.Status(fiber.StatusBadGateway).JSON(fiber.Map{
 			"error": "no RegNo record exists",
 		})
@@ -64,7 +64,7 @@ func UpdateUser(c *fiber.Ctx) error {
 	check = user
 	errr := applicationsCollection.FindOneAndReplace(context.Background(), bson.M{"regNo": user.RegNo}, check).Decode(&check)
 	if errr != nil {
-		log.Println("Error: ", errr)
+		log.Error("Error: ", errr)
 		c.Status(fiber.StatusBadGateway).JSON(fiber.Map{
 			"error": errr.Error(),
 		})
