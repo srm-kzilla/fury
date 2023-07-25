@@ -11,7 +11,7 @@ const PrivacyPolicy = () => {
         <meta />
       </Head>
       <Navbar />
-      <div className="mx-11 p-2 font-sans">
+      <div className="mx-7 p-2 font-sans md:mx-10">
         <main className="text-base">
           <h5 className="my-2 text-xs font-bold">
             Last Updated on 21st July 2023
