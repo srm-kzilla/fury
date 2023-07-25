@@ -78,7 +78,7 @@ const ProjectTiles = () => {
         } else {
           return { ...projectTile, active: false };
         }
-      }),
+      })
     );
   };
 
@@ -88,10 +88,10 @@ const ProjectTiles = () => {
     // @ts-ignore
     const newProjectTiles = produce(projects, (draft) => {
       const projectIndex = projects.findIndex(
-        (p) => p.slug === activeProjectId,
+        (p) => p.slug === activeProjectId
       );
       const taskIndex = projects[projectIndex].tasks.findIndex(
-        (t) => t.id === taskId,
+        (t) => t.id === taskId
       );
 
       const isActive = draft[projectIndex].tasks[taskIndex].done;
@@ -106,7 +106,7 @@ const ProjectTiles = () => {
     // @ts-ignore
     const newProjectTiles = produce(projects, (draft) => {
       const projectIndex = projects.findIndex(
-        (p) => p.slug === activeProjectId,
+        (p) => p.slug === activeProjectId
       );
       draft[projectIndex].tasks.push(task);
     });
@@ -118,10 +118,10 @@ const ProjectTiles = () => {
     // @ts-ignore
     const newProjectTiles = produce(projects, (draft) => {
       const projectIndex = projects.findIndex(
-        (p) => p.slug === activeProjectId,
+        (p) => p.slug === activeProjectId
       );
       const taskIndex = projects[projectIndex].tasks.findIndex(
-        (p) => p.id === taskId,
+        (p) => p.id === taskId
       );
       draft[projectIndex].tasks.splice(taskIndex, 1);
     });

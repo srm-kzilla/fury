@@ -34,7 +34,7 @@ export const CustomSelect = ({
       field.name,
       isMulti
         ? (option as Option[])?.map((item: Option) => item.value)
-        : (option as Option).value,
+        : (option as Option).value
     );
   };
 
