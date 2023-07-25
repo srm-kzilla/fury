@@ -2,14 +2,13 @@ package database
 
 import (
 	"context"
-	"log"
 	"os"
-
 	"github.com/joho/godotenv"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"go.mongodb.org/mongo-driver/mongo/readpref"
+	"github.com/charmbracelet/log"
 )
 
 var DB *mongo.Client
@@ -18,13 +17,13 @@ func GetConnection() (*mongo.Client, error) {
 	if os.Getenv("APP_ENV") != "production" {
 		err := godotenv.Load()
 		if err != nil {
-			log.Println("Error Loading .env file")
+			log.Error("Error Loading .env file")
 		}
 	}
 
 	uri := os.Getenv("MONGO_URI")
 	if uri == "" {
-		log.Println("Mongo URI Required")
+		log.Error("Mongo URI Required")
 	}
 
 	var err error

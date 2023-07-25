@@ -1,18 +1,17 @@
 package main
 
 import (
-	"log"
 	"os"
 	"time"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/helmet"
 	"github.com/gofiber/fiber/v2/middleware/limiter"
-	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/joho/godotenv"
 	"github.com/srm-kzilla/Recruitments/api"
 	"github.com/srm-kzilla/Recruitments/utils"
 	"github.com/gofiber/fiber/v2/middleware/recover"
+	"github.com/charmbracelet/log"
 )
 
 var startTime time.Time
@@ -27,15 +26,13 @@ func init() {
 	startTime = time.Now()
 	err := godotenv.Load()
 	if err != nil {
-		log.Panicln(err)
+		log.Error(err)
 	}
-	log.Println("Loaded .env file")
+	log.Info("Loaded .env file")
 }
 
 func main() {
 	app := fiber.New()
-
-	app.Use(logger.New())
 
 	app.Use(cors.New())
 
@@ -55,7 +52,7 @@ func main() {
 
 	setupRoutes(app)
 
-	log.Printf(`
+	log.Infof(`
 	################################################
 	🛡️  Server listening on port: %s 🛡️
 	################################################

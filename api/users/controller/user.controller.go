@@ -2,9 +2,8 @@ package userController
 
 import (
 	"context"
-	"log"
+	"github.com/charmbracelet/log"
 	"os"
-
 	"github.com/gofiber/fiber/v2"
 	usersModel "github.com/srm-kzilla/Recruitments/api/users/model"
 	"github.com/srm-kzilla/Recruitments/database"
@@ -20,7 +19,7 @@ func GetUser(c *fiber.Ctx) error {
 	}
 	applicationsCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "applications")
 	if e != nil {
-		log.Println("Error: ", e)
+		log.Error("Error: ", e)
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"error":   e.Error(),
 			"message": "Error getting applications collection",
