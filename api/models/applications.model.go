@@ -1,4 +1,4 @@
-package applicationModel
+package models
 
 type Application struct {
 	Email  string `validate:"required" json:"email"`

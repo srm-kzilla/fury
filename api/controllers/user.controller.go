@@ -1,11 +1,11 @@
-package userController
+package controllers
 
 import (
 	"context"
 	"github.com/charmbracelet/log"
 	"os"
 	"github.com/gofiber/fiber/v2"
-	usersModel "github.com/srm-kzilla/Recruitments/api/users/model"
+	"github.com/srm-kzilla/Recruitments/api/models"
 	"github.com/srm-kzilla/Recruitments/database"
 	"go.mongodb.org/mongo-driver/bson"
 )
@@ -26,7 +26,7 @@ func GetUser(c *fiber.Ctx) error {
 		})
 	}
 
-	var user usersModel.User
+	var user models.User
 	err := applicationsCollection.FindOne(context.Background(), bson.M{"regNo": regNo}).Decode(&user)
 	if err != nil {
 		log.Error("Error", err)
@@ -39,8 +39,8 @@ func GetUser(c *fiber.Ctx) error {
 }
 
 func UpdateUser(c *fiber.Ctx) error {
-	var user usersModel.User
-	var check usersModel.User
+	var user models.User
+	var check models.User
 	c.BodyParser(&user)
 
 	applicationsCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "applications")

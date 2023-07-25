@@ -1,11 +1,11 @@
-package adminController
+package controllers
 
 import (
 	"context"
 	"github.com/charmbracelet/log"
 	"os"
 	"github.com/gofiber/fiber/v2"
-	applicationsModel "github.com/srm-kzilla/Recruitments/api/applications/model"
+	"github.com/srm-kzilla/Recruitments/api/models"
 	"github.com/srm-kzilla/Recruitments/database"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -44,17 +44,17 @@ func GetApplications(c *fiber.Ctx) error {
 	}
 	applicationsCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "applications")
 	if e != nil {
-		log.Println("Error: ", e)
+		log.Error("Error: ", e)
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"error":   e.Error(),
 			"message": "Error getting applications collection",
 		})
 	}
 
-	var applications applicationsModel.Application
+	var applications models.Application
 	err := applicationsCollection.FindOne(context.Background(), bson.M{"domain": domain}).Decode(&applications)
 	if err != nil {
-		log.Println("Error", err)
+		log.Error("Error", err)
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error":   err.Error(),
 			"message": "Domain not found",
@@ -64,13 +64,13 @@ func GetApplications(c *fiber.Ctx) error {
 }
 
 func UpdateApplications(c *fiber.Ctx) error {
-	var application applicationsModel.UpdateApplication
-	var check applicationsModel.Application
+	var application models.UpdateApplication
+	var check models.Application
 	c.BodyParser(&application)
 
 	applicationsCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "applications")
 	if e != nil {
-		log.Println("Error: ", e)
+		log.Error("Error: ", e)
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"error":   e.Error(),
 			"message": "Error getting applications collection",
@@ -79,7 +79,7 @@ func UpdateApplications(c *fiber.Ctx) error {
 
 	err := applicationsCollection.FindOne(context.Background(), bson.M{"regNo": application.RegNo}).Decode(&check)
 	if err != nil {
-		log.Println("Error ", err)
+		log.Error("Error ", err)
 		c.Status(fiber.StatusBadGateway).JSON(fiber.Map{
 			"error": "no RegNo record exists",
 		})
@@ -89,7 +89,7 @@ func UpdateApplications(c *fiber.Ctx) error {
 	check.Status = application.Status
 	errr := applicationsCollection.FindOneAndReplace(context.Background(), bson.M{"regNo": application.RegNo}, check).Decode(&check)
 	if errr != nil {
-		log.Println("Error: ", errr)
+		log.Error("Error: ", errr)
 		c.Status(fiber.StatusBadGateway).JSON(fiber.Map{
 			"error": errr.Error(),
 		})
