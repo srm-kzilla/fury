@@ -90,10 +90,7 @@ const Footer = () => {
       <div className="flex justify-center sm:justify-end gap-16 py-3 px-4 md:px-0">
         <div className="flex flex-col">
           <div className="text-highlight">
-            <a
-              href="https://gist.github.com/shawshankkumar/faf6f0028e01ae56610dc3b2830a777e"
-              target="blank"
-            >
+            <a href="privacy-policy" target="blank">
               <div>Privacy Policy</div>
             </a>
           </div>
