@@ -61,10 +61,10 @@ h2 {
 .react-loading-skeleton {
   background-color: var(--color-bg-alt) !important;
   background-image: linear-gradient(
-                  90deg,
-                  var(--color-bg-alt),
-                  var(--color-skeleton),
-                  var(--color-bg-alt)
+    90deg,
+    var(--color-bg-alt),
+    var(--color-skeleton),
+    var(--color-bg-alt)
   ) !important;
 }
 
