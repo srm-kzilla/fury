@@ -214,9 +214,7 @@ export const FormFooter = ({
     },
   };
   return (
-    // TODO: Apply flexbox here
     <div className="kz-form-footer">
-      <div>
         <div className="center">
           {step + 1} of {totalStep + 1}
         </div>
@@ -226,7 +224,6 @@ export const FormFooter = ({
           </div>
         </div>
         <div className="center">{children}</div>
-      </div>
     </div>
   );
 };

@@ -87,7 +87,7 @@ const UserProfileForm = () => {
               .trim()
               .matches(
                 /^RA(20|21|22)[0-9]{11}$/g,
-                "You must be in 1st, 2nd year or 3rd year to apply",
+                "You must be in 1st, 2nd year or 3rd year to apply"
               )
               .required("Registration number is required"),
             // year: Yup.string(),
@@ -100,13 +100,13 @@ const UserProfileForm = () => {
               .url("The URL you have entered doesn't seem right")
               .matches(
                 /(http(s)?:\/\/)?([\w]+\.)?linkedin\.com\/in\/[A-z0-9_-]+\/?/g,
-                "The URL you have entered doesn't seem right",
+                "The URL you have entered doesn't seem right"
               ),
             github: Yup.string()
               .url("The URL you have entered doesn't seem right")
               .matches(
                 /(http(s)?:\/\/)?([\w]+\.)?github\.com\/[A-z0-9_-]+\/?/g,
-                "The URL you have entered doesn't seem right",
+                "The URL you have entered doesn't seem right"
               ),
             resume: Yup.string(),
             gfx_profile: Yup.string().url(),

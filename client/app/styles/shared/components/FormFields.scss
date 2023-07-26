@@ -30,7 +30,7 @@
   input,
   textarea {
     border: none;
-    width: 80%;
+    width: 100%;
     color: var(--color-text);
     background-color: var(--color-bg-alt);
     border-radius: 5px;
@@ -50,7 +50,7 @@
 
   textarea {
     height: 10rem;
-    width: 90%;
+    width: 100%;
     resize: none;
     padding: 1rem;
   }
@@ -67,9 +67,16 @@
     border-radius: 10px;
     border: 1px solid transparent;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+
+    h3 {
+      margin: 0;
+    }
 
     h4 {
-      width: 80% !important;
+      width: 100% !important;
     }
   }
 
@@ -104,9 +111,11 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .selectable-div {
-    margin: 0;
-    width: 80%;
+  .kz-form-field {
+    .selectable-div {
+      margin: 0 0 20px;
+      width: 100%;
+    }
   }
 
   .kz-user-form select {
