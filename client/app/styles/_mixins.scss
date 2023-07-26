@@ -1,0 +1,141 @@
+@use "sass:math";
+@import "./variables";
+
+@mixin for-tablet-only {
+  @media (max-width: 720px) {
+    @content;
+  }
+}
+
+@mixin for-small-screens {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin for-mobile-only {
+  @media only screen and (max-width: 576px) and (orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin ContainerMargin {
+  margin: 0 5rem;
+
+  @include for-tablet-only {
+    margin: 0 1rem;
+  }
+}
+
+@mixin MarginAutoX {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin MarginAutoY {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+@mixin NavbarPadding {
+  padding: 1.5rem 4rem;
+  @include for-mobile-only {
+    padding: 1rem;
+  }
+}
+
+@mixin ContainerPadding {
+  padding: 3.5rem 5rem;
+
+  @include for-tablet-only {
+    padding: 3.5rem 1rem;
+  }
+}
+
+@mixin ContainerX {
+  max-width: 1200px;
+  padding: 0 4rem;
+  @include for-tablet-only {
+    padding: inherit;
+  }
+  @include for-mobile-only {
+    padding: 0 1rem;
+  }
+}
+
+@mixin ContainerY {
+  margin: 4rem 0;
+  @include for-mobile-only {
+    margin: 2rem 0;
+  }
+}
+
+@mixin PrimaryContainer {
+  background-color: var(--color-bg);
+}
+
+@mixin BoxShadow($color: rgba(0, 0, 0, 0.2)) {
+  box-shadow: 0px 4px 12px 2px $color;
+}
+
+@mixin SecondaryContainer {
+  background-color: var(--color-bg-alt);
+}
+
+@function hexToRGB($hex) {
+  @return red($hex), green($hex), blue($hex);
+}
+
+@mixin getLightColorToBackground($color: #ffffff) {
+  background-color: rgba($color, 0.3);
+}
+
+@mixin getLightColor($color: $border-primary) {
+  color: rgba($color, 0.3);
+}
+
+@mixin CustomScrollBar {
+  &::-webkit-scrollbar {
+    width: 0.2rem;
+    height: 1rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    margin: 0;
+    margin-right: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-text-alt);
+    border-radius: 0.1rem;
+
+    &:hover {
+      cursor: grab;
+    }
+  }
+}
+
+@mixin fluid-type(
+  $min-font-size: 12px,
+  $max-font-size: 21px,
+  $lower-range: 420px,
+  $upper-range: 900px
+) {
+  font-size: calc(
+    #{$min-font-size} + #{(
+        math.div($max-font-size, $max-font-size * 0 + 1) -
+          math.div($min-font-size, $min-font-size * 0 + 1)
+      )} * ((100vw - #{$lower-range}) / #{(
+            math.div($upper-range, $upper-range * 0 + 1) -
+              math.div($lower-range, $lower-range * 0 + 1)
+          )})
+  );
+
+  @media screen and (max-width: $lower-range) {
+    font-size: $min-font-size;
+  }
+
+  @media screen and (min-width: $upper-range) {
+    font-size: $max-font-size;
+  }
+}

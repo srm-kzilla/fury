@@ -1,0 +1,62 @@
+@import "../../mixins";
+
+div.kz-application-tile {
+  @include BoxShadow();
+  padding: 1rem 2rem;
+  background-color: var(--color-bg-alt);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+
+  @include for-tablet-only {
+    margin-bottom: 1rem;
+  }
+
+  .icon {
+    svg {
+      width: 2rem;
+      height: 2rem;
+      color: $primary;
+    }
+  }
+
+  h3 {
+    margin-top: 0.5rem;
+    font-size: 1.5rem;
+  }
+
+  svg.info {
+    margin-top: 0;
+  }
+
+  .info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2rem;
+
+    .status {
+      display: flex;
+      align-items: center;
+      color: var(--color-text-alt);
+
+      svg {
+        margin-right: 0.5rem;
+
+        &.primary {
+          color: $primary;
+        }
+
+        &.tertiary {
+          color: $tertiary;
+        }
+      }
+    }
+
+    span.domain {
+      color: $primary;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+  }
+}

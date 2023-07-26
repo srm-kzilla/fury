@@ -1,0 +1,107 @@
+@import "./variables";
+@import "./mixins";
+@import "./fonts";
+
+:root {
+  --color-text: #fafafa;
+  --color-text-alt: #e5e5e5;
+  --color-bg: #111111;
+  --color-bg-alt: #202020;
+  --color-skeleton: #555;
+  --color-input: #e5e5e5;
+  --color-input-alt: #e5e5e5;
+  --color-placeholder: #555;
+  --color-header: #e5e5e5;
+  --color-dark: #111111;
+  --color-text-alt-rgb: rgb(229, 229, 229);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  transition: 0.05s background-color linear;
+}
+
+html {
+  height: 100%;
+}
+
+body,
+#root {
+  min-height: 100%;
+}
+
+#root {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  font-size: $fontSize;
+  font-family: "Caros", sans-serif;
+  text-rendering: optimizeLegibility;
+  color: var(--color-text);
+  line-height: 1.5;
+  background-color: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.row {
+  margin: 0 -24px !important;
+}
+
+.react-loading-skeleton {
+  background-color: var(--color-bg-alt) !important;
+  background-image: linear-gradient(
+    90deg,
+    var(--color-bg-alt),
+    var(--color-skeleton),
+    var(--color-bg-alt)
+  ) !important;
+}
+
+.grecaptcha-badge {
+  visibility: hidden;
+}
+
+.spin {
+  -webkit-animation: spin 1s linear infinite;
+  -moz-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+}
+
+a {
+  &.border {
+    padding: 0.5rem 1rem;
+    border: 1px var(--color-text) solid;
+  }
+}
+
+.container-fluid {
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ff644e;
+  border-radius: 10px;
+}

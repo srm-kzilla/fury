@@ -1,0 +1,309 @@
+@import "../variables";
+@import "../mixins";
+
+div.kz-dashboard {
+  padding-left: 5rem;
+  padding-bottom: 2rem;
+
+  @include for-mobile-only {
+    padding-left: 3rem;
+  }
+
+  .main {
+    width: 80%;
+    padding: 2rem;
+
+    @include for-mobile-only {
+      padding: 2rem 1rem;
+    }
+
+    div.kz-timer {
+      padding: 1rem 0;
+      width: 100%;
+      background-color: var(--color-bg-alt);
+      border-radius: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 1rem 0;
+
+      @include for-mobile-only {
+        margin: 0.5rem auto;
+      }
+
+      @include for-tablet-only {
+        margin: 0.75rem auto;
+      }
+
+      div.timer-inner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        h4 {
+          margin: 0.25rem auto;
+          display: inline-block;
+          @include fluid-type(0.75rem, 1rem, $min-width, $max-width);
+
+          svg {
+            vertical-align: bottom;
+            color: $primary;
+            width: 1.5rem;
+            height: 1.5rem;
+            animation: alarmBuzz 0.8s infinite
+              cubic-bezier(0.075, 0.82, 0.165, 1);
+
+            @keyframes alarmBuzz {
+              0% {
+                -webkit-transform: rotate(0deg);
+              }
+
+              10% {
+                -webkit-transform: rotate(-2deg);
+              }
+
+              20% {
+                -webkit-transform: rotate(2deg);
+              }
+
+              30% {
+                -webkit-transform: rotate(0deg);
+              }
+
+              40% {
+                -webkit-transform: rotate(2deg);
+              }
+
+              50% {
+                -webkit-transform: rotate(-2deg);
+              }
+
+              60% {
+                -webkit-transform: rotate(0deg);
+              }
+
+              70% {
+                -webkit-transform: rotate(-2deg);
+              }
+
+              80% {
+                -webkit-transform: rotate(2deg);
+              }
+
+              90% {
+                -webkit-transform: rotate(0deg);
+              }
+
+              100% {
+                -webkit-transform: rotate(-2deg);
+              }
+            }
+          }
+        }
+
+        div.timer {
+          display: flex;
+          justify-content: center;
+          flex-direction: row;
+          margin: 0.75rem auto;
+
+          & > div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            h5 {
+              width: 3rem;
+              height: 3rem;
+              color: var(--color-text);
+              margin: auto 0.5rem;
+              border-radius: 0.25rem;
+              background-color: var(--color-bg);
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+
+            small {
+              margin: 0.25rem auto 0 auto;
+              color: $primary;
+              font-weight: 700;
+            }
+          }
+        }
+      }
+    }
+
+    .banner {
+      width: 100%;
+
+      figure {
+        border-radius: 1rem;
+        overflow: hidden;
+        height: 220px;
+
+        img {
+          width: 100%;
+          border-radius: 1rem;
+          height: 100%;
+          object-fit: cover;
+
+          @include for-mobile-only {
+            transform: scale(2) translateY(20px);
+          }
+        }
+      }
+    }
+
+    h2 {
+      margin: 1rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .new {
+        color: var(--color-text-alt);
+        width: 3rem;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+
+        &::before {
+          content: "";
+          display: inline-block;
+          border-radius: 50%;
+          border: 1px dashed var(--color-text-alt);
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          -webkit-animation: spin 10s linear infinite;
+          -moz-animation: spin 10s linear infinite;
+          animation: spin 10s linear infinite;
+        }
+      }
+    }
+
+    .mt {
+      margin-top: 2rem;
+    }
+
+    .empty {
+      display: flex;
+      width: 80%;
+      margin: 0 auto;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        height: 12rem;
+        max-width: 80%;
+        width: auto;
+      }
+
+      h3 {
+        margin: 2rem 0;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+
+        span {
+          &.primary {
+            color: $primary;
+          }
+
+          &.strike {
+            position: relative;
+
+            &::before {
+              position: absolute;
+              top: 50%;
+              content: "";
+              display: inline-block;
+              left: -2px;
+              height: 4px;
+              right: -2px;
+              background-color: $primary;
+            }
+          }
+        }
+      }
+
+      h5 {
+        font-weight: 400;
+        font-size: 1.2rem;
+
+        a {
+          color: $primary;
+          font-weight: 500;
+          padding-bottom: 2px;
+          border-bottom: 1px dashed $primary;
+        }
+      }
+    }
+    .notif-row {
+      padding: 1rem;
+    }
+    .kz-notifications {
+      height: 25rem;
+      overflow-y: scroll;
+      background-color: var(--color-bg-alt);
+      border-radius: 1rem;
+      padding: 0;
+      @include BoxShadow();
+
+      .empty {
+        text-align: center;
+        padding: 1rem;
+
+        img {
+          height: 8rem;
+        }
+
+        h2 {
+          font-size: 1.5rem;
+        }
+      }
+
+      @include CustomScrollBar;
+    }
+  }
+}
+
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .main-wrapper {
+    flex-direction: column-reverse;
+
+    .main {
+      width: 100% !important;
+    }
+  }
+
+  .glance {
+    padding: 1rem;
+  }
+}

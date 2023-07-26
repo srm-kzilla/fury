@@ -1,0 +1,188 @@
+@import "./mixins";
+@import "./variables";
+
+div.App {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex-grow: 1;
+
+  .kz-cookie {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    width: 80%;
+    border-radius: 0.5rem;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 1rem;
+    z-index: 999;
+    background-color: var(--color-primary);
+    box-shadow: 0.25rem 0.25rem 2rem rgba(0, 0, 0, 0.2);
+
+    @include for-mobile-only {
+      flex-direction: column;
+      width: 96%;
+
+      .content {
+        margin-right: 0 !important;
+        margin-bottom: 1rem;
+      }
+    }
+
+    visibility: hidden;
+    opacity: 0;
+
+    &.open {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    & > span {
+      position: absolute;
+      right: 0.5rem;
+      top: 0.5rem;
+      cursor: pointer;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      margin-right: 5rem;
+
+      h3 {
+        margin-bottom: 1rem;
+      }
+    }
+
+    a {
+      color: $primary;
+    }
+
+    div.btn {
+      padding: 0.5rem 1rem;
+      background-color: #ffffff;
+      border-radius: 0.5rem;
+      color: #000;
+      cursor: pointer;
+    }
+  }
+}
+
+.Toastify__toast {
+  border-radius: 0.5rem !important;
+  background: var(--color-bg-alt) !important;
+  color: var(--color-text-alt) !important;
+
+  .kz-toast {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+
+    svg {
+      flex-shrink: 0;
+    }
+
+    &.info {
+      svg {
+        fill: $info;
+      }
+      span {
+        color: $info;
+      }
+    }
+    &.success {
+      svg {
+        fill: $tertiary;
+      }
+      span {
+        color: $tertiary;
+      }
+    }
+    &.warning {
+      svg {
+        fill: $warning;
+      }
+      span {
+        color: $warning;
+      }
+    }
+    &.error {
+      svg {
+        fill: $primary;
+      }
+      span {
+        color: $primary;
+      }
+    }
+
+    svg {
+      margin-right: 1rem;
+    }
+    p {
+      margin-top: 0.2rem;
+    }
+  }
+}
+
+.Toastify__close-button {
+  opacity: 1;
+  & > svg {
+    fill: var(--color-text-alt) !important;
+  }
+}
+
+.success .Toastify__progress-bar--default {
+  background: linear-gradient(
+    to right,
+    darken($tertiary, 20%),
+    lighten($tertiary, 10%)
+  ) !important;
+}
+
+.error .Toastify__progress-bar--default {
+  background: linear-gradient(
+    to right,
+    darken($primary, 20%),
+    lighten($primary, 10%)
+  ) !important;
+}
+
+.info .Toastify__progress-bar--default {
+  background: linear-gradient(
+    to right,
+    darken($info, 20%),
+    lighten($info, 10%)
+  ) !important;
+}
+
+.warning .Toastify__progress-bar--default {
+  background: linear-gradient(
+    to right,
+    darken($warning, 20%),
+    lighten($warning, 10%)
+  ) !important;
+}
+
+svg.info {
+  fill: $info;
+}
+
+svg.success {
+  fill: $tertiary;
+}
+
+svg.warning {
+  fill: $warning;
+}
+
+svg.error {
+  fill: $primary;
+}
+
+.pd-2 {
+  padding: 2rem;
+}
