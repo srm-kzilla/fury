@@ -1,13 +1,28 @@
 @import "../../variables";
 
 .kz-user-form {
-  margin-top: 1rem;
+  margin: 4rem;
+
+  form {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+  }
+
+  .grid-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: fit-content;
+    height: fit-content;
+  }
 
   input,
   textarea,
   select {
     border: none;
-    width: 80%;
+    width: 30rem;
     padding: 14px 20px;
     color: var(--color-text);
     background-color: var(--color-bg-alt);
@@ -20,8 +35,25 @@
     }
   }
 
-  select {
+  .drop-zone {
+    color: #3b3e42;
+    white-space: pre-wrap;
+    //width: 30rem;
+    padding: 14px 63px;
+    background-color: var(--color-bg-alt);
+    border-radius: 5px;
+    font-family: "Caros", "Courier New", Courier, monospace;
+  }
+
+  .button-collection {
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  select {
+    width: 30rem;
   }
 
   span,
@@ -42,6 +74,7 @@
   label {
     display: block;
     margin-bottom: 10px;
+    padding-top: 30px;
   }
 
   h1 {
@@ -104,8 +137,45 @@
 
 @media only screen and (max-width: 768px) {
   .kz-user-form {
-    margin: 3rem 1rem 3rem 2.5rem;
+    margin: 3rem 1rem;
+
+
+    div {
+      width: 100%;
+    }
+
+    input,
+    textarea,
+    select {
+      border: none;
+      width: 100%;
+      padding: 14px 20px;
+      color: var(--color-text);
+      background-color: var(--color-bg-alt);
+      border-radius: 5px;
+      font-family: "Caros", "Courier New", Courier, monospace;
+      outline: none;
+
+      &::placeholder {
+        color: var(--color-placeholder);
+      }
+    }
+
   }
+  select {
+    width: 100%;
+  }
+
+  .drop-zone {
+    color: #3b3e42;
+    white-space: pre-wrap;
+    //width: 30rem;
+    padding: 14px 20px;
+    background-color: var(--color-bg-alt);
+    border-radius: 5px;
+    font-family: "Caros", "Courier New", Courier, monospace;
+  }
+
 
   .intl-tel-input.allow-dropdown input,
   .intl-tel-input.allow-dropdown input[type="text"],
@@ -115,7 +185,7 @@
 
   button,
   .dropzone {
-    width: 90%;
+    width: 100%;
   }
 
   .select {

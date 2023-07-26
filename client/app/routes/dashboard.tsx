@@ -4,7 +4,10 @@ import { APIService } from "~/shared/services/api-service";
 import { AuthStore } from "../shared/stores";
 import { observer } from "mobx-react";
 import Timer from "react-compound-timer";
-import Notification, { NotificationSkeleton, links as notificationLinks } from "~/components/Notification";
+import Notification, {
+  NotificationSkeleton,
+  links as notificationLinks,
+} from "~/components/Notification";
 import { links as sidebarLinks } from "~/shared/components/Sidebar";
 import { links as footerCompactLinks } from "~/shared/components/FooterCompact";
 
@@ -212,10 +215,7 @@ const Dashboard = () => {
 
                           <div className="timer">
                             <Timer
-                              initialTime={
-                                1692513000000 -
-                                Date.now()
-                              }
+                              initialTime={1692513000000 - Date.now()}
                               direction="backward"
                             >
                               {() => (
@@ -261,9 +261,7 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-            <div className="glance">
-              {/*<Glance user={authStore.user} />*/}
-            </div>
+            <div className="glance">{/*<Glance user={authStore.user} />*/}</div>
           </div>
         </div>
       </div>

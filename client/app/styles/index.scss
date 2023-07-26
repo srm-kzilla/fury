@@ -88,3 +88,13 @@ a {
 .container-fluid {
   overflow-x: hidden;
 }
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+  background-color: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ff644e;
+  border-radius: 10px;
+}
