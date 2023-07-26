@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import navbarCSS from "~/styles/shared/components/Navbar.css";
 import { Assets } from "~/constants";
 import { Link, useLocation } from "@remix-run/react";
-import { AuthStore, ThemeStore } from "../stores";
+import { AuthStore } from "../stores";
 import { FaMoon, FaRegMoon } from "react-icons/fa";
 import { observer } from "mobx-react";
 import { BiLogOut } from "react-icons/bi";
@@ -19,17 +19,10 @@ export const links: LinksFunction = () => {
 
 const Navbar = () => {
   const { user } = useContext(AuthStore);
-  const themeStore = useContext(ThemeStore);
   const authStore = useContext(AuthStore);
   const location = useLocation();
 
   console.log("Navbar.tsx: user: ", user);
-
-  const toggleTheme = () => {
-    themeStore.theme === "dark"
-      ? themeStore.setTheme("light")
-      : themeStore.setTheme("dark");
-  };
 
   const signOut = () => {
     authStore.setUser(undefined);
@@ -42,11 +35,7 @@ const Navbar = () => {
         <Link to="/">
           <figure>
             <img
-              src={
-                themeStore.theme === "dark"
-                  ? Assets.SRMKZILLA_LOGO_WHITE
-                  : Assets.SRMKZILLA_LOGO_BLACK
-              }
+              src={Assets.SRMKZILLA_LOGO_WHITE}
               alt="logo"
             />
           </figure>
@@ -54,10 +43,6 @@ const Navbar = () => {
       </div>
 
       <div className="cta">
-        <div onClick={toggleTheme}>
-          {themeStore.theme === "dark" ? <FaMoon /> : <FaRegMoon />}
-        </div>
-
         {user ? (
           <div>
             <div>

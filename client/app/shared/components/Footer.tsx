@@ -10,7 +10,6 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import { Assets } from "../../constants";
-import { ThemeStore } from "../stores";
 import { observer } from "mobx-react";
 import { Link } from "@remix-run/react";
 import { LinksFunction } from "@remix-run/node";
@@ -25,7 +24,6 @@ export const links: LinksFunction = () => {
 };
 
 const Footer = () => {
-  const themeStore = useContext(ThemeStore);
   return (
     <div className="kz-footer">
       <ul className="socials">
@@ -107,11 +105,7 @@ const Footer = () => {
       <div className="footnote">
         <figure>
           <img
-            src={
-              themeStore.theme === "dark"
-                ? Assets.SRMKZILLA_LOGO_WHITE_MONO
-                : Assets.SRMKZILLA_LOGO_BLACK_MONO
-            }
+            src={Assets.SRMKZILLA_LOGO_WHITE_MONO}
             alt="logo"
           />
         </figure>

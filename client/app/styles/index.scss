@@ -3,10 +3,17 @@
 @import "./fonts";
 
 :root {
-  --color-text: #202020;
-  --color-bg: #ffffff;
-  --color-bg-alt: #fafafa;
-  --color-primary: #ff644e;
+  --color-text: #fafafa;
+  --color-text-alt: #e5e5e5;
+  --color-bg: #111111;
+  --color-bg-alt: #202020;
+  --color-skeleton: #555;
+  --color-input: #e5e5e5;
+  --color-input-alt: #e5e5e5;
+  --color-placeholder: #555;
+  --color-header: #e5e5e5;
+  --color-dark: #111111;
+  --color-text-alt-rgb: rgb(229, 229, 229);
 }
 
 * {
