@@ -85,7 +85,7 @@ const Dashboard = () => {
       isNaN(days) ||
       (days == 0 && hours == 0 && minutes == 0 && seconds == 0)
     ) {
-      curr = 1698335475000 - Date.now();
+      curr = endTime - Date.now();
       days = Math.floor(curr / 8.64e7);
       hours = new Date(curr).getHours();
       minutes = new Date(curr).getMinutes();

@@ -3,7 +3,7 @@ import { useContext, useEffect } from "react";
 import { AuthStore } from "../stores";
 import { useNavigate } from "@remix-run/react";
 import Store from "~/shared/components/Wizard/Store";
-import { Loading, UserProfileForm } from "~/shared/components/index";
+import { Loading, UserProfileForm } from "~/shared/components";
 import { links as loadingLinks } from "~/shared/components/Loading";
 import { links as userProfileLinks } from "~/shared/components/UserProfile";
 import type { ReactNode } from "react";
