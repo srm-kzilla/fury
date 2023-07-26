@@ -16,8 +16,8 @@ export default function Hero() {
           </h1>
         </div>
         <div>
-          <a href="https://dashboard.kzilla.xyz" target="_blank">
-            <button className="font-bold flex gap-3 items-center">
+          {/* <a href="https://dashboard.kzilla.xyz" target="_blank"> */}
+            <button disabled={true} className="font-bold flex gap-3 items-center">
               <div className="rounded-full p-1 bg-highlight text-primary">
                 <RightArrow size={25} />
               </div>
@@ -25,7 +25,7 @@ export default function Hero() {
                 <h1 className="text-2xl font-semibold">Get Started</h1>
               </div>
             </button>
-          </a>
+          {/* </a> */}
         </div>
       </div>
       <div className="w-full h-fit md:flex md:flex-row flex flex-col-reverse gap-20 md:gap-0">
