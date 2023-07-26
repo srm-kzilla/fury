@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import navbarCSS from "~/styles/shared/components/Navbar.css";
+import navbarStyles from "~/styles/shared/components/Navbar.css";
 import { Assets } from "~/constants";
 import { Link, useLocation } from "@remix-run/react";
 import { AuthStore } from "../stores";
@@ -10,7 +10,7 @@ import type { LinksFunction } from "@remix-run/node";
 export const links: LinksFunction = () => [
   {
     rel: "stylesheet",
-    href: navbarCSS,
+    href: navbarStyles,
   },
 ];
 
@@ -18,8 +18,6 @@ const Navbar = () => {
   const { user } = useContext(AuthStore);
   const authStore = useContext(AuthStore);
   const location = useLocation();
-
-  console.log("Navbar.tsx: user: ", user);
 
   const signOut = () => {
     authStore.setUser(undefined);

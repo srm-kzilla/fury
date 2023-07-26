@@ -1,6 +1,7 @@
 import { createContext } from "react";
 import { action, computed, observable } from "mobx";
 import moment from "moment";
+import getEnv from "~/shared/utils/env";
 
 export interface User {
   given_name: string;
@@ -14,9 +15,13 @@ interface Authorization {
   refresh_token: string;
 }
 
+const env = getEnv();
+
 export class AuthStore {
   // @ts-ignore
-  @observable timeLeft: number = 1692513000000 - Date.now();
+  @observable endTime: number = env.APPLICATION_DEADLINE;
+  // @ts-ignore
+  @observable timeLeft: number = this.endTime - Date.now();
 
   // @ts-ignore
   @computed get timeLeftDuration() {
@@ -49,7 +54,7 @@ export class AuthStore {
     clearInterval(this.interval);
     this.interval = setInterval(() => {
       if (!this.user) return clearInterval(this.interval);
-      this.timeLeft = 1692513000000 - Date.now();
+      this.timeLeft = this.endTime - Date.now();
     }, 1000);
   }
 

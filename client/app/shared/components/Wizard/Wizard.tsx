@@ -215,15 +215,15 @@ export const FormFooter = ({
   };
   return (
     <div className="kz-form-footer">
-        <div className="center">
-          {step + 1} of {totalStep + 1}
+      <div className="center">
+        {step + 1} of {totalStep + 1}
+      </div>
+      <div className="center">
+        <div style={progressBarStyles.container}>
+          <div style={progressBarStyles.completed}></div>
         </div>
-        <div className="center">
-          <div style={progressBarStyles.container}>
-            <div style={progressBarStyles.completed}></div>
-          </div>
-        </div>
-        <div className="center">{children}</div>
+      </div>
+      <div className="center">{children}</div>
     </div>
   );
 };

@@ -1,24 +1,21 @@
-import React from "react";
-import notificationCss from "../styles/Components/Notification.css";
+import notificationStyles from "~/styles/Components/Notification.css";
 import { BiBoltCircle } from "react-icons/bi";
 import moment from "moment";
 import Markdown from "markdown-to-jsx";
 import Skeleton from "react-loading-skeleton";
-import { LinksFunction } from "@remix-run/node";
+import type { LinksFunction } from "@remix-run/node";
 
 interface Notification {
   timestamp: number;
   markdown: string;
 }
 
-export const links: LinksFunction = () => {
-  return [
-    {
-      rel: "stylesheet",
-      href: notificationCss,
-    },
-  ];
-};
+export const links: LinksFunction = () => [
+  {
+    rel: "stylesheet",
+    href: notificationStyles,
+  },
+];
 
 const Notification = ({ notification }: { notification: Notification }) => {
   return (

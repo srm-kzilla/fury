@@ -1,18 +1,14 @@
-import React from "react";
-import infoTileCSS from "../styles/Components/InfoTile.css";
-
+import infoTileStyles from "~/styles/Components/InfoTile.css";
 import { BiTime, BiArrowToRight } from "react-icons/bi";
 import moment from "moment";
-import { LinksFunction } from "@remix-run/node";
+import type { LinksFunction } from "@remix-run/node";
 
-export const links: LinksFunction = () => {
-  return [
-    {
-      rel: "stylesheet",
-      href: infoTileCSS,
-    },
-  ];
-};
+export const links: LinksFunction = () => [
+  {
+    rel: "stylesheet",
+    href: infoTileStyles,
+  },
+];
 
 interface Props {
   icon: any;

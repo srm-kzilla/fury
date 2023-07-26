@@ -1,15 +1,12 @@
-import React from "react";
-import teamSvgCss from "../styles/Components/TeamSvg.css";
-import { LinksFunction } from "@remix-run/node";
+import teamSvgStyles from "~/styles/Components/TeamSvg.css";
+import type { LinksFunction } from "@remix-run/node";
 
-export const links: LinksFunction = () => {
-  return [
-    {
-      rel: "stylesheet",
-      href: teamSvgCss,
-    },
-  ];
-};
+export const links: LinksFunction = () => [
+  {
+    rel: "stylesheet",
+    href: teamSvgStyles,
+  },
+];
 
 const TeamSvg = () => {
   return (

@@ -10,17 +10,17 @@ import Notification, {
 } from "~/components/Notification";
 import { links as sidebarLinks } from "~/shared/components/Sidebar";
 import { links as footerCompactLinks } from "~/shared/components/FooterCompact";
-
 import TeamSvg from "~/components/TeamSvg";
 import Glance from "~/components/Glance";
+import PrivateRoute from "~/shared/components/PrivateRoute";
 import {
   ApplicationTile,
   ApplicationTileSkeleton,
   FooterCompact,
   Sidebar,
 } from "~/shared/components";
+import getEnv from "~/shared/utils/env";
 import { links as userProfileLinks } from "~/shared/components/UserProfile";
-import PrivateRoute from "~/shared/utils/PrivateRoute";
 import { Link, useNavigate } from "@remix-run/react";
 import { BiAlarm, BiPlus } from "react-icons/bi";
 import { Assets } from "~/constants";
@@ -40,11 +40,14 @@ export const links: LinksFunction = () => [
 ];
 
 const Dashboard = () => {
+  const env = getEnv();
   const authStore = useContext(AuthStore);
   const history = useNavigate();
   const [loading, setLoading] = useState(true);
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [projects, setProjects] = useState<any>([]);
+
+  const endTime = parseInt(env.APPLICATION_DEADLINE!);
 
   useEffect(() => {
     setLoading(true);
@@ -82,7 +85,7 @@ const Dashboard = () => {
       isNaN(days) ||
       (days == 0 && hours == 0 && minutes == 0 && seconds == 0)
     ) {
-      curr = 1692489600 - Date.now();
+      curr = endTime - Date.now();
       days = Math.floor(curr / 8.64e7);
       hours = new Date(curr).getHours();
       minutes = new Date(curr).getMinutes();
@@ -169,7 +172,6 @@ const Dashboard = () => {
               )}
 
               <h2 className="mt">Notifications</h2>
-              {/*TODO: Apply flexbox here*/}
               <div style={{ overflowX: "hidden" }}>
                 <div className="notif-row">
                   {loading && (
@@ -216,7 +218,7 @@ const Dashboard = () => {
 
                           <div className="timer">
                             <Timer
-                              initialTime={1692513000000 - Date.now()}
+                              initialTime={endTime - Date.now()}
                               direction="backward"
                             >
                               {() => (
