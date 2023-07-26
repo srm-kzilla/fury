@@ -1,18 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import Head from "next/head";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 
 const Error = () => {
-  const [count, setCount] = useState(3);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCount(count - 1);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [count]);
-
   useEffect(() => {
     const timeout = setTimeout(() => {
       window.location.replace("/");
@@ -34,7 +26,11 @@ const Error = () => {
           Looks like you&apos;re lost
         </p>
         <h1 className="text-center text-white text-xl font-medium mt-5">
-          Redirecting in <span id="seconds">{count}</span> seconds
+          Redirecting to{" "}
+          <a className="cursor-pointer" href="/">
+            recruitment.srmkzilla.net
+          </a>{" "}
+          now
         </h1>
       </div>
       <Image
