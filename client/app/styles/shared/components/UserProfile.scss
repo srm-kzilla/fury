@@ -3,26 +3,21 @@
 .kz-user-form {
   margin: 4rem;
 
-  form {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-  }
-
   .grid-box {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    width: fit-content;
-    height: fit-content;
+    gap: 0.2rem 1rem;
+
+    div {
+      width: 25rem;
+    }
   }
 
   input,
   textarea,
   select {
     border: none;
-    width: 30rem;
+    width: 25rem;
     padding: 14px 20px;
     color: var(--color-text);
     background-color: var(--color-bg-alt);
@@ -38,8 +33,7 @@
   .drop-zone {
     color: #3b3e42;
     white-space: pre-wrap;
-    //width: 30rem;
-    padding: 14px 63px;
+    padding: 2rem 5rem;
     background-color: var(--color-bg-alt);
     border-radius: 5px;
     font-family: "Caros", "Courier New", Courier, monospace;
@@ -50,10 +44,6 @@
     display: flex;
     flex-wrap: wrap;
     margin-top: 10px;
-  }
-
-  select {
-    width: 30rem;
   }
 
   span,
@@ -139,16 +129,21 @@
   .kz-user-form {
     margin: 3rem 1rem;
 
+    .grid-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
-    div {
-      width: 100%;
+      div {
+        width: 15rem;
+      }
     }
 
     input,
     textarea,
     select {
       border: none;
-      width: 100%;
+      width: 15rem;
       padding: 14px 20px;
       color: var(--color-text);
       background-color: var(--color-bg-alt);
@@ -160,22 +155,16 @@
         color: var(--color-placeholder);
       }
     }
-
-  }
-  select {
-    width: 100%;
   }
 
   .drop-zone {
     color: #3b3e42;
     white-space: pre-wrap;
-    //width: 30rem;
-    padding: 14px 20px;
+    padding: 2rem 5rem;
     background-color: var(--color-bg-alt);
     border-radius: 5px;
     font-family: "Caros", "Courier New", Courier, monospace;
   }
-
 
   .intl-tel-input.allow-dropdown input,
   .intl-tel-input.allow-dropdown input[type="text"],
@@ -183,9 +172,10 @@
     width: 120%;
   }
 
-  button,
-  .dropzone {
+  .button-collection {
     width: 100%;
+    display: flex;
+    justify-content: center;
   }
 
   .select {

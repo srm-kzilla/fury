@@ -87,7 +87,7 @@ const UserProfileForm = () => {
               .trim()
               .matches(
                 /^RA(20|21|22)[0-9]{11}$/g,
-                "You must be in 1st, 2nd year or 3rd year to apply"
+                "You must be in 1st, 2nd year or 3rd year to apply",
               )
               .required("Registration number is required"),
             // year: Yup.string(),
@@ -100,13 +100,13 @@ const UserProfileForm = () => {
               .url("The URL you have entered doesn't seem right")
               .matches(
                 /(http(s)?:\/\/)?([\w]+\.)?linkedin\.com\/in\/[A-z0-9_-]+\/?/g,
-                "The URL you have entered doesn't seem right"
+                "The URL you have entered doesn't seem right",
               ),
             github: Yup.string()
               .url("The URL you have entered doesn't seem right")
               .matches(
                 /(http(s)?:\/\/)?([\w]+\.)?github\.com\/[A-z0-9_-]+\/?/g,
-                "The URL you have entered doesn't seem right"
+                "The URL you have entered doesn't seem right",
               ),
             resume: Yup.string(),
             gfx_profile: Yup.string().url(),
@@ -115,7 +115,7 @@ const UserProfileForm = () => {
           {(props) => {
             const { touched, errors, handleSubmit } = props;
             return (
-              <div>
+              <form onSubmit={handleSubmit}>
                 <div>
                   <h1>Tell us about yourself</h1>
                 </div>
@@ -125,117 +125,96 @@ const UserProfileForm = () => {
                     get in touch with you.
                   </h5>
                 </div>
-                <form onSubmit={handleSubmit}>
-                  <div className="grid-box">
-                    <div>
-                      <label className="label">
-                        First Name<sup>*</sup>
-                      </label>
-                      <TextField name="first_name" placeholder="Michael" />
-                    </div>
-                    <div>
-                      <label className="label">
-                        Last Name<sup>*</sup>
-                      </label>
-                      <TextField name="last_name" placeholder="Scott" />
-                    </div>
-                    <div className="select">
-                      <label className="label">
-                        Gender<sup>*</sup>
-                      </label>
-                      <Field component="select" name="gender">
-                        <option value="">Select your gender</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
-                      </Field>
-                      {touched.gender && errors.gender && (
-                        <p>{errors.gender}</p>
-                      )}
-                    </div>
-
-                    <div>
-                      <label className="label">
-                        Registration Number<sup>*</sup>
-                      </label>
-                      <TextField
-                        name="registration_number"
-                        placeholder="RA2111029010045"
-                      />
-                    </div>
-                    <div className="select">
-                      <label className="label">
-                        Branch<sup>*</sup>
-                      </label>
-                      <Field component="select" name="branch">
-                        <BranchOptions />
-                      </Field>
-                      {touched.branch && errors.branch && (
-                        <p>{errors.branch}</p>
-                      )}
-                    </div>
-                    <div className="resume">
-                      <label className="label">
-                        Resume (upto 20 megabytes)
-                      </label>
-                      <DropZone label="Resume" name="resume" />
-                    </div>
-
-                    <div>
-                      <label className="label">
-                        Contact Number<sup>*</sup>
-                      </label>
-                      <TextField name="contact_num" placeholder="9898384880" />
-                    </div>
-                    <div>
-                      <label className="label">LinkedIn Profile</label>
-                      <TextField
-                        name="linkedin"
-                        placeholder="https://www.linkedin.com/company/srmkzilla/"
-                      />
-                    </div>
-                    <div>
-                      <label className="label">Dribbble/Behance Profile</label>
-                      <TextField
-                        name="gfx_profile"
-                        placeholder="https://www.dribbble.com/michael-scott"
-                      />
-                    </div>
-
-                    <div>
-                      <div>
-                        <label className="label">GitHub Link</label>
-                        <TextField
-                          name="github"
-                          placeholder="https://www.github.com/michael-scott"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </form>
-                <div className="button-collection">
+                <div className="grid-box">
                   <div>
-                    <button type="submit" disabled={isSubmitting}>
-                      {isSubmitting ? (
-                        <BiLoader className="spin" />
-                      ) : (
-                        "Continue"
-                      )}
-                    </button>
+                    <label className="label">
+                      First Name<sup>*</sup>
+                    </label>
+                    <TextField name="first_name" placeholder="Michael" />
                   </div>
                   <div>
-                    <button
-                      className="logout"
-                      onClick={() => {
-                        authStore.setUser(undefined);
-                        authStore.setAuthorization(undefined);
-                      }}
-                    >
-                      Logout
-                    </button>
+                    <label className="label">
+                      Last Name<sup>*</sup>
+                    </label>
+                    <TextField name="last_name" placeholder="Scott" />
+                  </div>
+                  <div className="select">
+                    <label className="label">
+                      Gender<sup>*</sup>
+                    </label>
+                    <Field component="select" name="gender">
+                      <option value="">Select your gender</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                      <option value="other">Other</option>
+                    </Field>
+                    {touched.gender && errors.gender && <p>{errors.gender}</p>}
+                  </div>
+                  <div>
+                    <label className="label">
+                      Registration Number<sup>*</sup>
+                    </label>
+                    <TextField
+                      name="registration_number"
+                      placeholder="RA2111029010045"
+                    />
+                  </div>
+                  <div className="select">
+                    <label className="label">
+                      Branch<sup>*</sup>
+                    </label>
+                    <Field component="select" name="branch">
+                      <BranchOptions />
+                    </Field>
+                    {touched.branch && errors.branch && <p>{errors.branch}</p>}
+                  </div>
+                  <div className="resume">
+                    <label className="label">Resume (upto 20 megabytes)</label>
+                    <DropZone label="Resume" name="resume" />
+                  </div>
+                  <div>
+                    <label className="label">
+                      Contact Number<sup>*</sup>
+                    </label>
+                    <TextField name="contact_num" placeholder="9898384880" />
+                  </div>
+                  <div>
+                    <label className="label">LinkedIn Profile</label>
+                    <TextField
+                      name="linkedin"
+                      placeholder="https://www.linkedin.com/company/srmkzilla/"
+                    />
+                  </div>
+                  <div>
+                    <label className="label">Dribbble/Behance Profile</label>
+                    <TextField
+                      name="gfx_profile"
+                      placeholder="https://www.dribbble.com/michael-scott"
+                    />
+                  </div>
+                  <div>
+                    <label className="label">GitHub Link</label>
+                    <TextField
+                      name="github"
+                      placeholder="https://www.github.com/michael-scott"
+                    />
                   </div>
                 </div>
-              </div>
+                <div className="button-collection">
+                  <button type="submit" disabled={isSubmitting}>
+                    {isSubmitting ? <BiLoader className="spin" /> : "Continue"}
+                  </button>
+                  <button
+                    className="logout"
+                    onClick={() => {
+                      authStore.setUser(undefined);
+                      authStore.setAuthorization(undefined);
+                    }}
+                  >
+                    Logout
+                  </button>
+                </div>
+              </form>
             );
           }}
         </Formik>
