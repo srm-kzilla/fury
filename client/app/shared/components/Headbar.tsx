@@ -1,16 +1,13 @@
-import React from "react";
-import headbarCss from "../../styles/shared/components/Headbar.css";
+import headbarStyles from "~/styles/shared/components/Headbar.css";
 import Markdown from "markdown-to-jsx";
-import { LinksFunction } from "@remix-run/node";
+import type { LinksFunction } from "@remix-run/node";
 
-export const links: LinksFunction = () => {
-  return [
-    {
-      rel: "stylesheet",
-      href: headbarCss,
-    },
-  ];
-};
+export const links: LinksFunction = () => [
+  {
+    rel: "stylesheet",
+    href: headbarStyles,
+  },
+];
 
 const Headbar = ({ headline }: { headline?: string }) => {
   return headline ? (

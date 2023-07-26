@@ -1,5 +1,4 @@
-import React from "react";
-import applicationCss from "../../styles/shared/components/ApplicationTile.css";
+import applicationTileStyles from "~/styles/shared/components/ApplicationTile.css";
 import {
   BiCheck,
   BiError,
@@ -8,19 +7,16 @@ import {
   BiTask,
   BiX,
 } from "react-icons/bi";
-import Skeleton from "react-loading-skeleton";
-
 import { getDomainName } from "~/shared/utils/domains";
-import { LinksFunction } from "@remix-run/node";
+import Skeleton from "react-loading-skeleton";
+import type { LinksFunction } from "@remix-run/node";
 
-export const links: LinksFunction = () => {
-  return [
-    {
-      rel: "stylesheet",
-      href: applicationCss,
-    },
-  ];
-};
+export const links: LinksFunction = () => [
+  {
+    rel: "stylesheet",
+    href: applicationTileStyles,
+  },
+];
 
 interface Props {
   application: any;
@@ -79,9 +75,6 @@ const ApplicationTile = ({ application, handleClick }: Props) => {
           {status && status.icon}
           {status && status.label}
         </div>
-        {/* <div>
-          <span className="domain">{application.domain}</span>
-        </div> */}
       </div>
     </div>
   );

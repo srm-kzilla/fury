@@ -1,15 +1,12 @@
-import React from "react";
-import loadingCss from "../../styles/shared/components/Loading.css";
-import { LinksFunction } from "@remix-run/node";
+import loadingStyles from "~/styles/shared/components/Loading.css";
+import type { LinksFunction } from "@remix-run/node";
 
-export const links: LinksFunction = () => {
-  return [
-    {
-      rel: "stylesheet",
-      href: loadingCss,
-    },
-  ];
-};
+export const links: LinksFunction = () => [
+  {
+    rel: "stylesheet",
+    href: loadingStyles,
+  },
+];
 
 const Loading = () => {
   return <div className="kz-loading"></div>;

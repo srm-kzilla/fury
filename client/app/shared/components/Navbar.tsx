@@ -1,21 +1,18 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import navbarCSS from "~/styles/shared/components/Navbar.css";
 import { Assets } from "~/constants";
 import { Link, useLocation } from "@remix-run/react";
 import { AuthStore } from "../stores";
-import { FaMoon, FaRegMoon } from "react-icons/fa";
 import { observer } from "mobx-react";
 import { BiLogOut } from "react-icons/bi";
 import type { LinksFunction } from "@remix-run/node";
 
-export const links: LinksFunction = () => {
-  return [
-    {
-      rel: "stylesheet",
-      href: navbarCSS,
-    },
-  ];
-};
+export const links: LinksFunction = () => [
+  {
+    rel: "stylesheet",
+    href: navbarCSS,
+  },
+];
 
 const Navbar = () => {
   const { user } = useContext(AuthStore);

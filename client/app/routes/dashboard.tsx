@@ -11,7 +11,8 @@ import Notification, {
 import { links as sidebarLinks } from "~/shared/components/Sidebar";
 import { links as footerCompactLinks } from "~/shared/components/FooterCompact";
 
-import TeamSvg from "../components/TeamSvg";
+import TeamSvg from "~/components/TeamSvg";
+import Glance from "~/components/Glance";
 import {
   ApplicationTile,
   ApplicationTileSkeleton,
@@ -26,7 +27,6 @@ import { Assets } from "~/constants";
 import { toast } from "~/shared/utils/toast";
 import { toast as Toast } from "react-toastify";
 import type { LinksFunction } from "@remix-run/node";
-import Glance from "~/components/Glance";
 
 export const links: LinksFunction = () => [
   ...sidebarLinks(),

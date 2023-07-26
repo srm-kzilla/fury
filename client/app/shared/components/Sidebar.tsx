@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import sidebarCSS from "../../styles/shared/components/Sidebar.css";
-import { Assets } from "../../constants";
+import { Assets } from "~/constants";
 import { BiHomeCircle, BiLogOut, BiRocket } from "react-icons/bi";
 import { Link, useLocation, useNavigate } from "@remix-run/react";
 import classNames from "classnames";
 import { AuthStore } from "../stores";
 import { observer } from "mobx-react";
-import { LinksFunction } from "@remix-run/node";
+import type { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => {
   return [

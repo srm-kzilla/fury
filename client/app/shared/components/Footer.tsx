@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import footerCss from "../../styles/shared/components/Footer.css";
+import footerStyles from "~/styles/shared/components/Footer.css";
 import {
   FaEnvelope,
   FaFacebookSquare,
@@ -9,19 +8,17 @@ import {
   FaTwitter,
   FaYoutube,
 } from "react-icons/fa";
-import { Assets } from "../../constants";
+import { Assets } from "~/constants";
 import { observer } from "mobx-react";
 import { Link } from "@remix-run/react";
-import { LinksFunction } from "@remix-run/node";
+import type { LinksFunction } from "@remix-run/node";
 
-export const links: LinksFunction = () => {
-  return [
-    {
-      rel: "stylesheet",
-      href: footerCss,
-    },
-  ];
-};
+export const links: LinksFunction = () => [
+  {
+    rel: "stylesheet",
+    href: footerStyles,
+  },
+];
 
 const Footer = () => {
   return (

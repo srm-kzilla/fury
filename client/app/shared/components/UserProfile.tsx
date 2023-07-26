@@ -1,16 +1,15 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
+import userProfileStyles from "~/styles/shared/components/UserProfile.css";
 import { useNavigate } from "@remix-run/react";
 import { Field, Formik } from "formik";
 import * as Yup from "yup";
 import { observer } from "mobx-react";
 import { BiLoader } from "react-icons/bi";
-
 import { DropZone, TextField } from "~/shared/components/Wizard/FormFields";
-import userProfileStyles from "~/styles/shared/components/UserProfile.css";
 import { APIService } from "~/shared/services/api-service";
 import { toast } from "~/shared/utils/toast";
 import { AuthStore } from "~/shared/stores";
-import { StoreContext } from "../components/Wizard/Store";
+import { StoreContext } from "~/shared/components/Wizard/Store";
 import type { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => [
@@ -31,24 +30,8 @@ const UserProfileForm = () => {
     return name.charAt(0).toUpperCase() + name.slice(1);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const getYearOfStudy = (registration: string) => {
-    const year = registration.charAt(3);
-    switch (year) {
-      case "7":
-        return "4";
-      case "8":
-        return "3";
-      case "9":
-        return "2";
-      default:
-        return "-1";
-    }
-  };
-
   return (
     <>
-      {/*TODO: Apply flexbox here*/}
       <div className="kz-user-form">
         <Formik
           initialValues={{
@@ -65,9 +48,7 @@ const UserProfileForm = () => {
           }}
           onSubmit={async (values) => {
             setSubmitting(true);
-            // values.year = getYearOfStudy(values.registration_number);
             try {
-              //capitalise first chars of name
               values.first_name = capitaliseInitialChar(values.first_name);
               values.last_name = capitaliseInitialChar(values.last_name);
               values.resume = blob;
@@ -127,12 +108,8 @@ const UserProfileForm = () => {
                 /(http(s)?:\/\/)?([\w]+\.)?github\.com\/[A-z0-9_-]+\/?/g,
                 "The URL you have entered doesn't seem right"
               ),
-            // .required(
-            //   "We need to get a hold of your LinkedIn profile to understand more about you"
-            // ),
             resume: Yup.string(),
             gfx_profile: Yup.string().url(),
-            // github: Yup.string().url(),
           })}
         >
           {(props) => {
@@ -236,7 +213,7 @@ const UserProfileForm = () => {
                     </div>
                   </div>
                 </form>
-                <div className={"button-collection"}>
+                <div className="button-collection">
                   <div>
                     <button type="submit" disabled={isSubmitting}>
                       {isSubmitting ? (
@@ -267,7 +244,6 @@ const UserProfileForm = () => {
   );
 };
 
-//TODO: REFACTOR
 const BranchOptions = () => (
   <>
     <option value="aerospace_engineering">Aerospace Engineering</option>;
