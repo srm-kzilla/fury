@@ -52,7 +52,7 @@ const Error = () => {
         className="absolute top-0 left-0 w-screen h-screen object-cover z-0"
         alt="stars"
       />
-      <div className="absolute z-10 xl:w-5/12 bg w-9/12 top-96 mt-12 md:mt-56 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
+      <div className="absolute z-20 xl:w-5/12 bg w-9/12 top-96 mt-12 md:mt-24 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
         <Image height={1000} width={1500} src="/err.png" alt="404" />
       </div>
     </div>
