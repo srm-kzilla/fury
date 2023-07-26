@@ -10,9 +10,9 @@ import Notification, {
 } from "~/components/Notification";
 import { links as sidebarLinks } from "~/shared/components/Sidebar";
 import { links as footerCompactLinks } from "~/shared/components/FooterCompact";
-
 import TeamSvg from "~/components/TeamSvg";
 import Glance from "~/components/Glance";
+import PrivateRoute from "~/shared/components/PrivateRoute";
 import {
   ApplicationTile,
   ApplicationTileSkeleton,
@@ -20,7 +20,6 @@ import {
   Sidebar,
 } from "~/shared/components";
 import { links as userProfileLinks } from "~/shared/components/UserProfile";
-import PrivateRoute from "~/shared/utils/PrivateRoute";
 import { Link, useNavigate } from "@remix-run/react";
 import { BiAlarm, BiPlus } from "react-icons/bi";
 import { Assets } from "~/constants";
