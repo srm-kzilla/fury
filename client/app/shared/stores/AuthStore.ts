@@ -16,8 +16,7 @@ interface Authorization {
 
 export class AuthStore {
   // @ts-ignore
-  @observable timeLeft: number =
-    1692513000000 - Date.now();
+  @observable timeLeft: number = 1692513000000 - Date.now();
 
   // @ts-ignore
   @computed get timeLeftDuration() {

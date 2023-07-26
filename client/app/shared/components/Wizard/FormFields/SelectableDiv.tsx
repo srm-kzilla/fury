@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import { Field } from "formik";
 import { StoreContext } from "~/shared/components/Wizard/Store";
 
-
 type SelectableDivProps = {
   name: string;
   options: {

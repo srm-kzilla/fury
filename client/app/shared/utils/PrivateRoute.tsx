@@ -1,5 +1,5 @@
 import { observer } from "mobx-react";
-import { useContext, useEffect} from "react";
+import { useContext, useEffect } from "react";
 import { AuthStore } from "../stores";
 import { useNavigate } from "@remix-run/react";
 import Store from "~/shared/components/Wizard/Store";
@@ -28,13 +28,13 @@ const PrivateRoute = ({ children, redirectTo, loading }: PrivateRouteProps) => {
 
   return (
     <>
-      {loading ? <Loading /> : (
+      {loading ? (
+        <Loading />
+      ) : (
         <>
           {authStore.user ? (
-            authStore.user.gender ?  (
-              <>
-                {children}
-              </>
+            authStore.user.gender ? (
+              <>{children}</>
             ) : (
               <>
                 <Store>
@@ -42,12 +42,13 @@ const PrivateRoute = ({ children, redirectTo, loading }: PrivateRouteProps) => {
                 </Store>
               </>
             )
-          ): navigate(redirectTo)}
+          ) : (
+            navigate(redirectTo)
+          )}
         </>
       )}
     </>
-  )
-
+  );
 };
 
 export default observer(PrivateRoute);

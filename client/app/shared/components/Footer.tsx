@@ -101,10 +101,7 @@ const Footer = () => {
       <hr />
       <div className="footnote">
         <figure>
-          <img
-            src={Assets.SRMKZILLA_LOGO_WHITE_MONO}
-            alt="logo"
-          />
+          <img src={Assets.SRMKZILLA_LOGO_WHITE_MONO} alt="logo" />
         </figure>
         <p>
           This site is protected by reCAPTCHA and the Google{" "}

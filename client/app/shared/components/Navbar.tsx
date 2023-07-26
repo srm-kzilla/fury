@@ -31,10 +31,7 @@ const Navbar = () => {
       <div className="logo">
         <Link to="/">
           <figure>
-            <img
-              src={Assets.SRMKZILLA_LOGO_WHITE}
-              alt="logo"
-            />
+            <img src={Assets.SRMKZILLA_LOGO_WHITE} alt="logo" />
           </figure>
         </Link>
       </div>

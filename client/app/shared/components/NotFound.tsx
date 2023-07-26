@@ -6,8 +6,8 @@ export const links: LinksFunction = () => [
   {
     rel: "stylesheet",
     href: notFoundStyles,
-  }
-]
+  },
+];
 
 type NotFoundProps = {
   code: number;

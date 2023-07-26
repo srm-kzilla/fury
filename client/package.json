@@ -4,6 +4,7 @@
     "dev": "concurrently \"pnpm sass\" \"remix dev\"",
     "sass": "sass --watch app/styles",
     "start": "remix-serve build",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "typecheck": "tsc"
   },
   "dependencies": {

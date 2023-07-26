@@ -16,7 +16,9 @@ import {
   DomainInstructions,
 } from "~/shared/components/Wizard/FormSteps";
 import { Loading } from "~/shared/components";
-import Wizard, { links as wizardLinks } from "~/shared/components/Wizard/Wizard";
+import Wizard, {
+  links as wizardLinks,
+} from "~/shared/components/Wizard/Wizard";
 import { links as loadingLinks } from "~/shared/components/Loading";
 import { toast } from "~/shared/utils/toast";
 import { APIService } from "~/shared/services/api-service";
@@ -24,10 +26,7 @@ import { StoreContext } from "~/shared/components/Wizard/Store";
 import { AuthStore } from "~/shared/stores";
 import type { LinksFunction } from "@remix-run/node";
 
-export const links: LinksFunction = () => [
-  ...wizardLinks(),
-  ...loadingLinks(),
-]
+export const links: LinksFunction = () => [...wizardLinks(), ...loadingLinks()];
 
 const Application = () => {
   const [loading, setLoading] = useState(false);
@@ -49,7 +48,7 @@ const Application = () => {
         year = userInfo.data.user.registration_number.substring(2, 4);
         retrievedProjects = res.data.applications;
       } catch (err) {
-        console.log(err)
+        console.log(err);
         toast({
           title: "Something broke",
           message: "Our systems had a hard time figuring out who you are.",

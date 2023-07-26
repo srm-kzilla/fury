@@ -1,4 +1,4 @@
-import type {AxiosInstance, AxiosResponse} from "axios";
+import type { AxiosInstance, AxiosResponse } from "axios";
 import axios from "axios";
 import { API } from "~/constants";
 import { getRecaptchaToken } from "~/shared/utils/recaptcha";
@@ -70,7 +70,9 @@ export class APIService {
             "GET",
           ].includes(config.method!)
         ) {
-          config.headers["x-recaptcha-token"] = await getRecaptchaToken("action");
+          config.headers["x-recaptcha-token"] = await getRecaptchaToken(
+            "action",
+          );
         }
         return config;
       },
