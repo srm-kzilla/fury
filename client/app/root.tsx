@@ -15,6 +15,7 @@ import classNames from "classnames";
 import rootStyles from "~/styles/index.css";
 import appStyles from "~/styles/App.css";
 import toastStyles from "react-toastify/dist/ReactToastify.css";
+import Store from "~/shared/components/Wizard/Store";
 import { Headbar, NotFound } from "~/shared/components";
 import { links as navbarLinks } from "~/shared/components/Navbar";
 import { links as headbarLinks } from "~/shared/components/Headbar";
@@ -23,11 +24,10 @@ import { links as notFoundLinks } from "~/shared/components/NotFound";
 import { BiX } from "react-icons/bi";
 import { Constants } from "~/constants";
 import { AuthStore } from "~/shared/stores";
-import { updateLocale } from "./shared/utils/MomentConfig";
+import { updateLocale } from "./shared/utils/moment-config";
 import { APIService } from "~/shared/services/api-service";
 import type { LinksFunction } from "@remix-run/node";
 import type { ReactNode } from "react";
-import Store from "~/shared/components/Wizard/Store";
 
 declare global {
   interface Window {

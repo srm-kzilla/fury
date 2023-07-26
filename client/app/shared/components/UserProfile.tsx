@@ -209,6 +209,7 @@ const UserProfileForm = () => {
                     onClick={() => {
                       authStore.setUser(undefined);
                       authStore.setAuthorization(undefined);
+                      navigate("/start");
                     }}
                   >
                     Logout

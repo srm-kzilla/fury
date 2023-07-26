@@ -27,7 +27,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="kz-navbar test">
+    <div className="kz-navbar">
       <div className="logo">
         <Link to="/">
           <figure>
