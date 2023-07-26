@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Head from "next/head";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
+import Link from "next/link";
 
 const Error = () => {
   useEffect(() => {
@@ -27,9 +28,9 @@ const Error = () => {
         </p>
         <h1 className="text-center text-white text-xl font-medium mt-5">
           Redirecting to{" "}
-          <a className="cursor-pointer" href="/">
+          <Link className="cursor-pointer" href="/">
             recruitment.srmkzilla.net
-          </a>{" "}
+          </Link>{" "}
           now
         </h1>
       </div>
