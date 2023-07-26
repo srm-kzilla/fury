@@ -7,6 +7,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
   useRouteError,
 } from "@remix-run/react";
 import { useContext, useEffect, useState } from "react";
@@ -28,12 +29,15 @@ import { updateLocale } from "./shared/utils/moment-config";
 import { APIService } from "~/shared/services/api-service";
 import type { LinksFunction } from "@remix-run/node";
 import type { ReactNode } from "react";
+import { json } from "@remix-run/node";
 
 declare global {
   interface Window {
     $crisp: any;
+    ENV: { [key: string]: string };
   }
 }
+
 export const links: LinksFunction = () => {
   return [
     ...navbarLinks(),
@@ -53,6 +57,17 @@ export const links: LinksFunction = () => {
       href: toastStyles,
     },
   ];
+};
+
+export const loader = () => {
+  const env = process.env;
+
+  return json({
+    env: {
+      API_BASE_URL: env.API_BASE_URL,
+      APPLICATION_DEADLINE: env.APPLICATION_DEADLINE,
+    },
+  });
 };
 
 function App() {
@@ -96,18 +111,19 @@ function App() {
 }
 
 function Layout({ children }: { children: ReactNode }) {
+  const { env } = useLoaderData<typeof loader>();
+
   return (
-    <>
-      <html lang="en">
-        <head>
-          <meta charSet="utf-8" />
-          <meta name="viewport" content="width=device-width,initial-scale=1" />
-          <Meta />
-          <Links />
-          <title>SRMKZILLA Recruitments '23</title>
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
+    <html lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <Meta />
+        <Links />
+        <title>SRMKZILLA Recruitments '23</title>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
             window.$crisp=[];
             window.CRISP_WEBSITE_ID="c3e20450-f803-4f5b-9674-b2245cf31786";
             (function() {
@@ -118,17 +134,21 @@ function Layout({ children }: { children: ReactNode }) {
               d.getElementsByTagName("head")[0].appendChild(s);
             })();
           `,
-            }}
-          />
-        </head>
-        <body>
-          <ScrollRestoration />
-          <Scripts />
-          <LiveReload />
-          {children}
-        </body>
-      </html>
-    </>
+          }}
+        />
+      </head>
+      <body>
+        <ScrollRestoration />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.ENV = ${JSON.stringify(env)}`,
+          }}
+        />
+        <Scripts />
+        <LiveReload />
+        {children}
+      </body>
+    </html>
   );
 }
 

@@ -11,6 +11,7 @@ import SRMKZILLA_LOGO_WHITE_MONO from "./assets/images/srmkzilla_logo_white_mono
 import MAIL from "./assets/images/mail.svg";
 import LANYARD from "./assets/images/lanyard.png";
 import EMPTY from "./assets/images/empty.svg";
+import getEnv from "~/shared/utils/env";
 
 export const Assets = {
   LOGO,
@@ -35,8 +36,10 @@ export const Constants = {
   },
 };
 
+const env = getEnv();
+
 export const API = {
-  BASE_URL: "http://localhost:5050/api/v1",
+  BASE_URL: env.API_BASE_URL,
   ENDPOINTS: {
     USERS: {
       BASE_URL: function () {
