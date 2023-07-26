@@ -9,6 +9,7 @@ import (
 	"github.com/srm-kzilla/Recruitments/api/models"
 	"github.com/srm-kzilla/Recruitments/database"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 func CreateApplication(c *fiber.Ctx) error {
@@ -51,4 +52,58 @@ func CreateApplication(c *fiber.Ctx) error {
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"message": "Application created successfully",
 	})
+}
+
+func UpdateDraft(c *fiber.Ctx) error {
+	var application models.Application
+	var check models.Application
+	c.BodyParser(&application)
+
+	regNo := c.Params("regNo")
+	if regNo == "" {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error": "RegNo is required",
+		})
+	}
+
+	log.Info("regNo: ", regNo)
+	usersCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "users")
+	if e != nil {
+		log.Error("Error: ", e)
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"error":   e.Error(),
+			"message": "Error getting users collection",
+		})
+	}
+
+	err := usersCollection.FindOne(context.Background(), bson.M{"regNo": regNo}).Decode(&check)
+	if err != nil {
+		log.Error("Error ", err)
+		c.Status(fiber.StatusBadGateway).JSON(fiber.Map{
+			"error": "record doesn't exists",
+		})
+		return nil
+	}
+
+	arrayFilters := options.ArrayFilters{
+		Filters: []interface{}{bson.M{"elem.domain": application.Domain}},
+	}
+
+	check = application
+	_, errr := usersCollection.UpdateOne(context.Background(), bson.M{"regNo": regNo}, bson.M{
+		"$set": bson.M{
+			"application.$[elem]": application,
+		},
+	}, &options.UpdateOptions{
+		ArrayFilters: &arrayFilters,
+	})
+	if errr != nil {
+		log.Error("Error: ", errr)
+		c.Status(fiber.StatusBadGateway).JSON(fiber.Map{
+			"error": errr.Error(),
+		})
+		return nil
+	}
+	c.Status(fiber.StatusOK).JSON(check)
+	return nil
 }
