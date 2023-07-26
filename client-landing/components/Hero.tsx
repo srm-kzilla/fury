@@ -58,9 +58,11 @@ export default function Hero() {
           everything we do , from eye catching and visually engaging posts to
           flamboyant visual elements create a strong identity that attracts
           attention. With unique designs and an artistic vision , welcome home
-          designers! At SRMKZILLA , with opportunities to create extraordinary
-          products; products that redefine what campus clubs can do and sets us
-          apart with our quirk for creativity!
+          designers! <br /><br /> At SRMKZILLA, by organizing events, leading project
+          teams, and managing club activities, the team members enhance their
+          communication, teamwork, and problem-solving skills. With opportunities
+          to create extraordinary products; products that redefine what campus clubs
+          can do and sets us apart with our quirk for creativity!
         </h1>
       </div>
     </div>
