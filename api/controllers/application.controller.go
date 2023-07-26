@@ -107,3 +107,31 @@ func UpdateDraft(c *fiber.Ctx) error {
 	c.Status(fiber.StatusOK).JSON(check)
 	return nil
 }
+
+func GetQuestions(c *fiber.Ctx) error {
+	domain := c.Params("domain")
+	if domain == "" {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error": "domain is required",
+		})
+	}
+	questionsCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "questions")
+	if e != nil {
+		log.Error("Error: ", e)
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"error":   e.Error(),
+			"message": "Error getting questions collection",
+		})
+	}
+
+	var questions models.Question
+	err := questionsCollection.FindOne(context.Background(), bson.M{"domain": domain}).Decode(&questions)
+	if err != nil {
+		log.Error("Error", err)
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error":   err.Error(),
+			"message": "Domain not found",
+		})
+	}
+	return c.Status(fiber.StatusOK).JSON(questions)
+}
