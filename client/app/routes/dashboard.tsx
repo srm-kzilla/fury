@@ -26,6 +26,7 @@ import { Assets } from "~/constants";
 import { toast } from "~/shared/utils/toast";
 import { toast as Toast } from "react-toastify";
 import type { LinksFunction } from "@remix-run/node";
+import Glance from "~/components/Glance";
 
 export const links: LinksFunction = () => [
   ...sidebarLinks(),
@@ -58,7 +59,7 @@ const Dashboard = () => {
         setNotifications(values[1].data.notifications);
         setProjects(values[2].data.applications);
       })
-      .catch((error) => {
+      .catch(() => {
         toast({
           title: "Stuff broke",
           message:
@@ -261,7 +262,9 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-            <div className="glance">{/*<Glance user={authStore.user} />*/}</div>
+            <div className="glance">
+              <Glance user={authStore.user} />
+            </div>
           </div>
         </div>
       </div>

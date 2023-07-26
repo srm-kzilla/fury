@@ -10,7 +10,6 @@ import {
 } from "react-icons/bi";
 import { APIService } from "~/shared/services/api-service";
 import moment from "moment";
-import classNames from "classnames";
 import Skeleton from "react-loading-skeleton";
 import type { LinksFunction } from "@remix-run/node";
 
@@ -37,7 +36,6 @@ interface Activity {
 
 const Glance = ({ user }: Props) => {
   const [activity, setActivity] = useState<any[]>([]);
-  const [pushPromptVisible, setPushPromptVisible] = useState(true);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -58,17 +56,13 @@ const Glance = ({ user }: Props) => {
   }, []);
 
   const sendCrispTags = () => {
-    // @ts-ignore
     window.$crisp.push([
       "set",
       "user:nickname",
       [user.first_name + " " + user.last_name],
     ]);
-    // @ts-ignore
     window.$crisp.push(["set", "user:email", [user?.github_email]]);
-    // @ts-ignore
     window.$crisp.push(["set", "user:phone", [user?.contact_num]]);
-    // @ts-ignore
     window.$crisp.push(["set", "user:avatar", [user?.avatar_url]]);
   };
 
@@ -87,7 +81,7 @@ const Glance = ({ user }: Props) => {
 
             <p>
               <Skeleton width={80} />
-              <span className={classNames({ primary: pushPromptVisible })}>
+              <span className="primary">
                 <Skeleton circle width={16} height={16} />
               </span>
             </p>
@@ -107,7 +101,7 @@ const Glance = ({ user }: Props) => {
 
             <p>
               {user?.email}
-              <span className={classNames({ primary: pushPromptVisible })}>
+              <span className="primary">
                 <BiBell />
               </span>
             </p>
@@ -134,28 +128,6 @@ const Glance = ({ user }: Props) => {
           </div>
         )}
       </div>
-
-      {/* {pushPromptVisible && (
-        <div className="push-notifications">
-          <div>
-            <div className="illustration">
-              <figure>
-                <img src={Assets.PUSH} alt="push_avatar" />
-              </figure>
-            </div>
-            <div>
-              <h5>Let us ring a bell.</h5>
-              <p>
-                We use notifications to keep you informed on your application
-                status.
-              </p>
-              <a className="border" onClick={registerForPush}>
-                Subscribe
-              </a>
-            </div>
-          </div>
-        </div>
-      )} */}
     </div>
   );
 };
@@ -181,13 +153,6 @@ interface ActivityProps {
 }
 
 const Activity = ({ event }: ActivityProps) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const toTitleCase = (str: string) => {
-    return str.replace(/\w\S*/g, function (txt) {
-      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-    });
-  };
-
   const parseActivity = (event: Activity) => {
     switch (event.type) {
       case "login":

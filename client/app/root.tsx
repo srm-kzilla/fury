@@ -105,6 +105,19 @@ function Layout({ children }: { children: ReactNode }) {
         <Meta />
         <Links />
         <title>SRMKZILLA Recruitments '23</title>
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            window.$crisp=[];
+            window.CRISP_WEBSITE_ID="c3e20450-f803-4f5b-9674-b2245cf31786";
+            (function() {
+              d=document;
+              s=d.createElement("script");
+              s.src="https://client.crisp.chat/l.js";
+              s.async=1;
+              d.getElementsByTagName("head")[0].appendChild(s);
+            })();
+          `
+        }} />
       </head>
       <body>
       <ScrollRestoration />
@@ -153,9 +166,9 @@ const Cookie = () => {
           allow better web analytics for us.
         </p>
       </div>
-      <a className="btn" onClick={accept}>
+      <div className="btn" onClick={accept}>
         Accept
-      </a>
+      </div>
     </div>
   );
 };
