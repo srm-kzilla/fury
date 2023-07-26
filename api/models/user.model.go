@@ -1,9 +1,19 @@
 package models
 
 type User struct {
-	Email       string                         `validate:"required" json:"email"`
-	Name        string                         `validate:"required" json:"name"`
-	RegNo       string                         `validate:"required" json:"regNo"`
-	createdAt   string                         `json:"createdAt"`
-	Application []Application `validjson:"application"`
+	RegNo       string        `validate:"required" json:"regNo" bson:"regNo"`
+	Name        string        `validate:"required" json:"name"`
+	Year        int           `validate:"required" json:"year"`
+	Email       string        `validate:"required" json:"email"`
+	Gender      string        `validate:"required" json:"gender"`
+	Contact     int           `validate:"required" json:"contact"`
+	CreatedAt   string        `json:"createdAt" bson:"createdAt"`
+	Application []Application `json:"application" default:"[]" bson:"application"`
+	Socials     Social        `json:"socials"`
+}
+
+type Social struct {
+	Github    string `json:"github"`
+	LinkedIn  string `json:"linkedIn"`
+	Portfolio string `json:"portfolio"`
 }
