@@ -16,8 +16,8 @@ export default function Hero() {
           </h1>
         </div>
         <div>
-          <a href="https://dashboard.kzilla.xyz" target="_blank">
-            <button className="font-bold flex gap-3 items-center">
+          {/* <a href="https://dashboard.kzilla.xyz" target="_blank"> */}
+            <button disabled={true} className="font-bold flex gap-3 items-center">
               <div className="rounded-full p-1 bg-highlight text-primary">
                 <RightArrow size={25} />
               </div>
@@ -25,7 +25,7 @@ export default function Hero() {
                 <h1 className="text-2xl font-semibold">Get Started</h1>
               </div>
             </button>
-          </a>
+          {/* </a> */}
         </div>
       </div>
       <div className="w-full h-fit md:flex md:flex-row flex flex-col-reverse gap-20 md:gap-0">
@@ -58,9 +58,11 @@ export default function Hero() {
           everything we do , from eye catching and visually engaging posts to
           flamboyant visual elements create a strong identity that attracts
           attention. With unique designs and an artistic vision , welcome home
-          designers! At SRMKZILLA , with opportunities to create extraordinary
-          products; products that redefine what campus clubs can do and sets us
-          apart with our quirk for creativity!
+          designers! <br /><br /> At SRMKZILLA, by organizing events, leading project
+          teams, and managing club activities, the team members enhance their
+          communication, teamwork, and problem-solving skills. With opportunities
+          to create extraordinary products; products that redefine what campus clubs
+          can do and sets us apart with our quirk for creativity!
         </h1>
       </div>
     </div>
