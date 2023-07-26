@@ -67,6 +67,9 @@
     border-radius: 10px;
     border: 1px solid transparent;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
 
     h4 {
       width: 80% !important;
