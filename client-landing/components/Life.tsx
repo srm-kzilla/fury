@@ -16,25 +16,26 @@ export default function Life() {
       >
         LIFE AT SRMKZILLA
       </motion.h1>
+      <h1 className="md:text-4xl text-3xl font-semibold">LIFE @ SRMKZILLA</h1>
       <div className=" flex flex-col gap-24 py-8">
         <LifeDesc
-          text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc scelerisque est ut euismod convallis. Pellentesque luctus ligula vel sodales pellentesque. Quisque sed ipsum bibendum ipsum ultrices maximus. Praesent tincidunt tincidunt ornare. Sed gravida porttitor varius. Maecenas aliquam lobortis odio, vel blandit erat auctor at. Sed elementum purus enim, iaculis semper."
-          img="/Life1.svg"
+          text="Bustling with tech geniuses, Picassos, and philosophers, SRMKZILLA is a paradise for people with an unquenchable thirst to create. Here, you get to be unapologetically you, while still being a part of something bigger than yourself. So, it is our pleasure to invite you into this artistic mosaic of technology, talent and diversity."
+          img="/life-1.jpg"
           reverse={false}
         />
         <LifeDesc
-          text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc scelerisque est ut euismod convallis. Pellentesque luctus ligula vel sodales pellentesque. Quisque sed ipsum bibendum ipsum ultrices maximus. Praesent tincidunt tincidunt ornare. Sed gravida porttitor varius. Maecenas aliquam lobortis odio, vel blandit erat auctor at. Sed elementum purus enim, iaculis semper."
-          img="/Life2.svg"
+          text="We are firm believers of the ancient practice of imparting our centuries old wisdom to the younglings. So, we organize workshops, seminars and other actually useful things practically every other day. From events as awaited as Christopher Nolan movies to fests as big as concerts, we do it all."
+          img="/life-2-srm.jpg"
           reverse={true}
         />
         <LifeDesc
-          text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc scelerisque est ut euismod convallis. Pellentesque luctus ligula vel sodales pellentesque. Quisque sed ipsum bibendum ipsum ultrices maximus. Praesent tincidunt tincidunt ornare. Sed gravida porttitor varius. Maecenas aliquam lobortis odio, vel blandit erat auctor at. Sed elementum purus enim, iaculis semper."
-          img="/Life3.svg"
+          text="Our alumni range from academic weapons to obsessed artists who excel at whatever they decide to pursue. We have a long history of churning out winners and go-getters who continue to amaze us and everyone else in the best way possible. What can I say? We got that Midas touch!"
+          img="/life-3.jpg"
           reverse={false}
         />
         <LifeDesc
-          text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc scelerisque est ut euismod convallis. Pellentesque luctus ligula vel sodales pellentesque. Quisque sed ipsum bibendum ipsum ultrices maximus. Praesent tincidunt tincidunt ornare. Sed gravida porttitor varius. Maecenas aliquam lobortis odio, vel blandit erat auctor at. Sed elementum purus enim, iaculis semper."
-          img="/Life4.svg"
+          text="But we do know how to let loose. In fact, we pride ourselves on the parties we throw and the adventures we go on together. There is just something so beautiful about seeing tired students letting loose and going crazy at our many events. And sshhhh! Let's not talk about our 'members only' parties."
+          img="/life-4.jpg"
           reverse={true}
         />
       </div>

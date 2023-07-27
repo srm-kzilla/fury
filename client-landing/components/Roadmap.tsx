@@ -110,6 +110,11 @@ const Roadmap = () => {
             Get Started
           </button>
         </a>
+          {/* <a href="https://dashboard.kzilla.xyz" target="_blank"> */}
+          <button disabled={true} className="md:px-12 px-4 md:py-2 py-1 rounded-full border-2 hover:bg-highlight hover:border-black hover:text-black font-bold bg-primary border-highlight text-highlight hover:text-recruitments-bg duration-300">
+              Get Started
+            </button>
+          {/* </a> */}
       </div>
     </div>
   );

@@ -20,9 +20,11 @@ const LifeDesc = ({
         <Image
           className="h-fit rounded-2xl"
           src={img}
-          alt="life at SRMKZILLA"
+          alt="life @ SRMKZILLA"
           width={700}
           height={700}
+          loading="lazy"
+          blurDataURL="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
         />
       </motion.div>
     </div>

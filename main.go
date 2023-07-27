@@ -41,7 +41,7 @@ func main() {
     app.Use(recover.New())
 
 	app.Use(limiter.New(limiter.Config{
-		Max:        1000,
+		Max:        600,
 		Expiration: time.Minute,
 	}))
 
