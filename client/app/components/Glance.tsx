@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import glanceStyles from "~/styles/Components/Glance.css";
+import glanceStyles from "~/styles/components/Glance.css";
 import {
   BiBell,
   BiCheckCircle,
