@@ -55,7 +55,7 @@ const Footer = () => {
                 </h2>
               </a>
               <a
-                href="https://medium.com/srmkzilla whitespace-nowrap"
+                href="https://medium.com/srmkzilla"
                 target="blank"
               >
                 Our Blog
