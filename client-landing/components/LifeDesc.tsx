@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+import { motion } from "framer-motion";
 const LifeDesc = ({
   text,
   img,
@@ -16,7 +16,7 @@ const LifeDesc = ({
       }`}
     >
       <h1 className="md:w-3/4 text-center">{text}</h1>
-      <div>
+      <motion.div whileHover={{ scale: 1.05 }}>
         <Image
           className="h-fit rounded-2xl"
           src={img}
@@ -24,7 +24,7 @@ const LifeDesc = ({
           width={700}
           height={700}
         />
-      </div>
+      </motion.div>
     </div>
   );
 };
