@@ -1,13 +1,26 @@
 import React from "react";
 import RightArrow from "remixicon-react/ArrowRightLineIcon";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
     <div className="w-full p-8 flex flex-col gap-6 md:gap-12 xl:px-48">
       <div className="flex flex-col gap-7">
         <div>
-          <h1 className="text-3xl md:text-6xl font-bold">#Recruitment2023</h1>
+          <motion.h1
+            className=" text-3xl md:text-6xl font-bold"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ duration: 1.5 }}
+            variants={{
+              hidden: { opacity: 0, x: -40 },
+              visible: { opacity: 1, x: 0 },
+            }}
+          >
+            #Recruitment2023
+          </motion.h1>
         </div>
         <div>
           <h1 className="text-lg md:text-3xl">
@@ -16,6 +29,12 @@ export default function Hero() {
           </h1>
         </div>
         <div>
+<!--           <a href="https://dashboard.kzilla.xyz" target="_blank">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="font-bold flex gap-3 items-center"
+            > -->
           {/* <a href="https://dashboard.kzilla.xyz" target="_blank"> */}
             <button disabled={true} className="font-bold flex gap-3 items-center">
               <div className="rounded-full p-1 bg-highlight text-primary">
@@ -24,8 +43,10 @@ export default function Hero() {
               <div>
                 <h1 className="text-2xl font-semibold">Get Started</h1>
               </div>
+            </motion.button>
+          </a>
             </button>
-          {/* </a> */}
+        
         </div>
       </div>
       <div className="w-full h-fit md:flex md:flex-row flex flex-col-reverse gap-20 md:gap-0">

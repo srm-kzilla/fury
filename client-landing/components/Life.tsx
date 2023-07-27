@@ -1,8 +1,21 @@
 import LifeDesc from "./LifeDesc";
-
+import { motion } from "framer-motion";
 export default function Life() {
   return (
     <div className="flex flex-col gap-3 px-8 py-24 xl:px-48">
+      <motion.h1
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        transition={{ duration: 1.5 }}
+        variants={{
+          hidden: { opacity: 0, y: 40 },
+          visible: { opacity: 1, y: 0 },
+        }}
+        className="md:text-4xl text-3xl font-semibold"
+      >
+        LIFE AT SRMKZILLA
+      </motion.h1>
       <h1 className="md:text-4xl text-3xl font-semibold">LIFE @ SRMKZILLA</h1>
       <div className=" flex flex-col gap-24 py-8">
         <LifeDesc
