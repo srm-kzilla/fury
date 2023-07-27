@@ -55,7 +55,7 @@ const Footer = () => {
                 </h2>
               </a>
               <a
-                href="https://medium.com/srmkzilla whitespace-nowrap"
+                href="https://medium.com/srmkzilla"
                 target="blank"
               >
                 Our Blog
@@ -73,7 +73,7 @@ const Footer = () => {
                 We are committed to equal volunteering opportunity regardless of
                 race, color, ancestry, religion, sex, national origin, sexual
                 orientation, age, citizenship, disability or gender identity. We
-                event accept developers who think HTML is a language and Python
+                even accept developers who think HTML is a language and Python
                 is the best.
               </p>
             </div>

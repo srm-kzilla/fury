@@ -19,4 +19,8 @@ func SetupApp(app *fiber.App) {
 	user := api.Group("/users/")
 	routes.UserRoutes(user)
 
+	// /api/v1/application
+	application := api.Group("/application/")
+	routes.ApplicationRoutes(application)
+
 }

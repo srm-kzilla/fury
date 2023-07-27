@@ -73,7 +73,7 @@ const Footer = () => {
                   <a href="https://srmkzilla.net">SRMKZILLA</a>
                 </li>
                 <li>
-                  <a href="https://blog.srmkzilla.net">Blog</a>
+                  <a href="https://medium.com/srmkzilla">Blog</a>
                 </li>
               </ul>
             </div>
