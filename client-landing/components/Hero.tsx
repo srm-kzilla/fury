@@ -9,7 +9,7 @@ export default function Hero() {
       <div className="flex flex-col gap-7">
         <div>
           <motion.h1
-            className=" text-3xl md:text-6xl font-bold"
+            className="text-3xl md:text-6xl font-bold"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -24,42 +24,25 @@ export default function Hero() {
         </div>
         <div>
           <h1 className="text-lg md:text-3xl">
-            SRMKZILLA - the perfect home for your technical talents, and
-            artistic acumen!
+            SRMKZILLA - the perfect home for your technical talents, and artistic acumen!
           </h1>
         </div>
-        <div>
-<!--           <a href="https://dashboard.kzilla.xyz" target="_blank">
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="font-bold flex gap-3 items-center"
-            > -->
-          {/* <a href="https://dashboard.kzilla.xyz" target="_blank"> */}
-            <button disabled={true} className="font-bold flex gap-3 items-center">
-              <div className="rounded-full p-1 bg-highlight text-primary">
-                <RightArrow size={25} />
-              </div>
-              <div>
-                <h1 className="text-2xl font-semibold">Get Started</h1>
-              </div>
-            </motion.button>
-          </a>
-            </button>
-        
-        </div>
+        <button
+          className="font-bold flex gap-3 items-center"
+        >
+          <div className="rounded-full p-1 bg-highlight text-primary">
+            <RightArrow size={25} />
+          </div>
+          <div>
+            <h1 className="text-2xl font-semibold">Get Started</h1>
+          </div>
+        </button>
       </div>
       <div className="w-full h-fit md:flex md:flex-row flex flex-col-reverse gap-20 md:gap-0">
         <div className="md:w-1/2 w-full h-full flex flex-col gap-5 justify-start">
           <h1 className="md:text-4xl text-3xl font-semibold">Dear Reader,</h1>
           <h1 className="font-handwriting text-lg md:text-3xl">
-            SRMKZILLA is a beacon of opportunity and growth for aspiring
-            developers. From your first &quot;Hello World&quot; to your first
-            complex git branch pushes , through our collaborative learning
-            environment, skill development programs and open-source
-            contributions ,the club empowers developers to realize their full
-            potential. On a quest to learn and evolve your skills , welcome home
-            developers!
+            SRMKZILLA is a beacon of opportunity and growth for aspiring developers. From your first &quot;Hello World&quot; to your first complex git branch pushes, through our collaborative learning environment, skill development programs, and open-source contributions, the club empowers developers to realize their full potential. On a quest to learn and evolve your skills, welcome home developers!
           </h1>
         </div>
         <div className="md:w-1/2 w-full h-fit flex items-start justify-end">
@@ -75,15 +58,7 @@ export default function Hero() {
       </div>
       <div>
         <h1 className="font-handwriting text-lg md:text-3xl">
-          Design and innovation go hand in hand. Design being the foundation of
-          everything we do , from eye catching and visually engaging posts to
-          flamboyant visual elements create a strong identity that attracts
-          attention. With unique designs and an artistic vision , welcome home
-          designers! <br /><br /> At SRMKZILLA, by organizing events, leading project
-          teams, and managing club activities, the team members enhance their
-          communication, teamwork, and problem-solving skills. With opportunities
-          to create extraordinary products; products that redefine what campus clubs
-          can do and sets us apart with our quirk for creativity!
+          Design and innovation go hand in hand. Design being the foundation of everything we do, from eye-catching and visually engaging posts to flamboyant visual elements create a strong identity that attracts attention. With unique designs and an artistic vision, welcome home designers! <br /><br /> At SRMKZILLA, by organizing events, leading project teams, and managing club activities, the team members enhance their communication, teamwork, and problem-solving skills. With opportunities to create extraordinary products; products that redefine what campus clubs can do and set us apart with our quirk for creativity!
         </h1>
       </div>
     </div>
