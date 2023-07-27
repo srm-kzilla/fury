@@ -1,13 +1,24 @@
 package models
 
 type Application struct {
-	Email  string `validate:"required" json:"email"`
-	Name   string `validate:"required" json:"name"`
-	RegNo  string `validate:"required" json:"regNo"`
-	Status string `json:"status"`
+	Status    string   `json:"status"`
+	Domain    string   `validate:"required" json:"domain"`
+	AppliedAt string   `json:"appliedAt" bson:"appliedAt"`
+	UpdatedAt string   `json:"updatedAt" bson:"updatedAt"`
+	Questions Question `json:"questions"`
+}
+
+type Question struct {
+	Question1 string `validate:"required" json:"question1"`
 }
 
 type UpdateApplication struct {
-	RegNo  string `validate:"required" json:"regNo"`
+	RegNo  string `validate:"required" json:"regNo" bson:"regNo"`
 	Status string `validate:"required" json:"status"`
+}
+
+type ApplicationBody struct {
+	RegNo       string      `validate:"required" json:"regNo" bson:"regNo"`
+	Type        string      `validate:"required" json:"type"`
+	Application Application `json:"application"`
 }
