@@ -15,7 +15,7 @@ export default function Life() {
       >
 
       <h1 className="md:text-4xl text-3xl font-semibold">LIFE @ SRMKZILLA</h1>
-      <div className=" flex flex-col gap-20 md:gap-24 py-8">
+      <div className=" flex flex-col gap-24 py-8">
         <LifeDesc
           text="Bustling with tech geniuses, Picassos, and philosophers, SRMKZILLA is a paradise for people with an unquenchable thirst to create. Here, you get to be unapologetically you, while still being a part of something bigger than yourself. So, it is our pleasure to invite you into this artistic mosaic of technology, talent and diversity."
           img="/life-1.jpg"
