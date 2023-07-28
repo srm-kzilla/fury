@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+import { motion } from "framer-motion";
 type ImageComponentProps = {
   title: string;
   image: string;
@@ -33,9 +33,19 @@ const ImageComponent = ({
           <Image src={image} alt="RoadmapSvg" fill />
         </div>
         <div className=" flex flex-col gap-2 items-center">
-          <div className=" text-2xl md:text-3xl text-highlight font-semibold">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ duration: 1.1 }}
+            variants={{
+              hidden: { opacity: 0, y: 40 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            className=" text-2xl md:text-3xl text-highlight font-semibold"
+          >
             {title}
-          </div>
+          </motion.div>
           <div className=" text-xs md:text-xl w-40 md:w-60 text-center">
             {description}
           </div>

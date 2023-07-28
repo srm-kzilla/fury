@@ -11,7 +11,7 @@ const PrivacyPolicy = () => {
         <meta />
       </Head>
       <Navbar />
-      <div className=" font-sans px-8 xl:px-48" >
+      <div className=" font-sans px-8 xl:px-48">
         <main className="text-base">
           <h5 className="my-2 text-xs font-bold">
             Last Updated on 21st July 2023
@@ -28,9 +28,9 @@ const PrivacyPolicy = () => {
             </p>
 
             <p>
-              We will also ask you to provide personal information, but you&apos;ll
-              always be able to opt out. If you give us personal information, we
-              won&apos;t do anything evil with it.
+              We will also ask you to provide personal information, but
+              you&apos;ll always be able to opt out. If you give us personal
+              information, we won&apos;t do anything evil with it.
             </p>
             <p>
               We can also use cookies, but you can choose not to store these.
@@ -45,8 +45,8 @@ const PrivacyPolicy = () => {
           <div className="pb-4">
             <h2 className="text-highlight text-3xl my-4 font-medium">Reuse</h2>
             <p>
-              SRMKZILLA (&apos;SRMKZILLA&apos;) makes available services include our
-              websites (
+              SRMKZILLA (&apos;SRMKZILLA&apos;) makes available services include
+              our websites (
               <a
                 className="text-highlight"
                 href="https://recruitment.srmkzilla.net"
@@ -55,9 +55,9 @@ const PrivacyPolicy = () => {
               </a>
               ), our blog, our API, and any other software, sites, and services
               offered by SRMKZILLA in connection to any of those (taken
-              together, the &apos;Service&apos;). It is SRMKZILLA&apos;s policy to respect your
-              privacy regarding any information we may collect while operating
-              our websites.
+              together, the &apos;Service&apos;). It is SRMKZILLA&apos;s policy
+              to respect your privacy regarding any information we may collect
+              while operating our websites.
             </p>
           </div>
 
@@ -89,10 +89,10 @@ const PrivacyPolicy = () => {
               type, language preference, referring site, and the date and time
               of each visitor request. SRMKZILLA&apos;s purpose in collecting
               non-personally identifying information is to better understand how
-              SRMKZILLA&apos;s visitors use its website. From time to time, SRMKZILLA
-              may release non-personally-identifying information in the
-              aggregate, e.g., by publishing a report on trends in the usage of
-              its website.
+              SRMKZILLA&apos;s visitors use its website. From time to time,
+              SRMKZILLA may release non-personally-identifying information in
+              the aggregate, e.g., by publishing a report on trends in the usage
+              of its website.
             </p>
             <p>
               SRMKZILLA also collects potentially personally-identifying
@@ -110,17 +110,17 @@ const PrivacyPolicy = () => {
               Gathering of Personally-Identifying Information
             </h2>
             <p>
-              Certain visitors to SRMKZILLA&apos;s websites choose to interact with
-              SRMKZILLA in ways that require SRMKZILLA to gather
+              Certain visitors to SRMKZILLA&apos;s websites choose to interact
+              with SRMKZILLA in ways that require SRMKZILLA to gather
               personally-identifying information. The amount and type of
               information that SRMKZILLA gathers depends on the nature of the
               interaction. SRMKZILLA collects such information only insofar as
               is necessary or appropriate to fulfill the purpose of the
-              visitor&apos;s interaction with SRMKZILLA. SRMKZILLA does not disclose
-              personally-identifying information other than as described below.
-              And visitors can always refuse to supply personally-identifying
-              information, with the caveat that it may prevent them from
-              engaging in certain Service-related activities.
+              visitor&apos;s interaction with SRMKZILLA. SRMKZILLA does not
+              disclose personally-identifying information other than as
+              described below. And visitors can always refuse to supply
+              personally-identifying information, with the caveat that it may
+              prevent them from engaging in certain Service-related activities.
             </p>
             <p>
               Additionally, some interactions, such as posting a comment, may
@@ -154,9 +154,9 @@ const PrivacyPolicy = () => {
               SRMKZILLA discloses potentially personally-identifying and
               personally-identifying information only to those of its employees,
               contractors and affiliated organizations that (i) need to know
-              that information in order to process it on SRMKZILLA&apos;s behalf or
-              to provide services available at SRMKZILLA&apos;s websites, and (ii)
-              that have agreed not to disclose it to others. Some of those
+              that information in order to process it on SRMKZILLA&apos;s behalf
+              or to provide services available at SRMKZILLA&apos;s websites, and
+              (ii) that have agreed not to disclose it to others. Some of those
               employees, contractors and affiliated organizations may be located
               outside of your home country; by using the Service, you consent to
               the transfer of such information to them. SRMKZILLA will not rent
@@ -190,15 +190,15 @@ const PrivacyPolicy = () => {
             </h2>
             <p>
               A cookie is a string of information that a website stores on a
-              visitor&apos;s computer, and that the visitor&apos;s browser provides to the
-              Service each time the visitor returns. SRMKZILLA uses cookies to
-              help SRMKZILLA identify and track visitors, their usage of
-              SRMKZILLA Service, and their Service access preferences. SRMKZILLA
-              visitors who do not wish to have cookies placed on their computers
-              should set their browsers to refuse cookies before using
-              SRMKZILLA&apos;s websites, with the drawback that certain features of
-              SRMKZILLA&apos;s websites may not function properly without the aid of
-              cookies.
+              visitor&apos;s computer, and that the visitor&apos;s browser
+              provides to the Service each time the visitor returns. SRMKZILLA
+              uses cookies to help SRMKZILLA identify and track visitors, their
+              usage of SRMKZILLA Service, and their Service access preferences.
+              SRMKZILLA visitors who do not wish to have cookies placed on their
+              computers should set their browsers to refuse cookies before using
+              SRMKZILLA&apos;s websites, with the drawback that certain features
+              of SRMKZILLA&apos;s websites may not function properly without the
+              aid of cookies.
             </p>
           </div>
 

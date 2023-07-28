@@ -5,7 +5,9 @@ import (
 	"github.com/srm-kzilla/Recruitments/api/controllers"
 )
 
-func UserRoutes(router fiber.Router){
+func UserRoutes(router fiber.Router) {
+	router.Post("/", controllers.CreateUser)
 	router.Get("/:regNo", controllers.GetUser)
 	router.Put("/", controllers.UpdateUser)
+
 }
