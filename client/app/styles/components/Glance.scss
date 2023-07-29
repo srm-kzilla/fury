@@ -5,13 +5,10 @@ div.kz-glance {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  width: 100%;
   border-top-left-radius: 1rem;
   border-bottom-left-radius: 1rem;
   overflow-y: hidden;
-  position: fixed;
-  top: 0;
-  right: 0;
-  max-width: 25vw;
 
   hr {
     margin: 0 2rem;
@@ -26,6 +23,7 @@ div.kz-glance {
     padding: 2rem;
     display: flex;
     align-items: center;
+    width: fit-content;
 
     @include for-mobile-only {
       padding: 1rem;

@@ -1,9 +1,18 @@
 @import "../variables";
 @import "../mixins";
 
+
 div.kz-dashboard {
   padding-left: 5rem;
   padding-bottom: 2rem;
+
+  .main-wrapper {
+    display: flex;
+
+    .glance {
+      width: 25rem;
+    }
+  }
 
   @include for-mobile-only {
     padding-left: 3rem;
@@ -51,8 +60,7 @@ div.kz-dashboard {
             color: $primary;
             width: 1.5rem;
             height: 1.5rem;
-            animation: alarmBuzz 0.8s infinite
-              cubic-bezier(0.075, 0.82, 0.165, 1);
+            animation: alarmBuzz 0.8s infinite cubic-bezier(0.075, 0.82, 0.165, 1);
 
             @keyframes alarmBuzz {
               0% {
@@ -137,7 +145,25 @@ div.kz-dashboard {
     }
 
     .banner {
-      width: 100%;
+      width: 40%;
+
+      .container-iframe {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      }
+
+      .responsive-iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
 
       figure {
         border-radius: 1rem;
@@ -246,9 +272,14 @@ div.kz-dashboard {
         }
       }
     }
+
     .notif-row {
       padding: 1rem;
+      display: flex;
+      gap: 10px;
+      align-items: center;
     }
+
     .kz-notifications {
       height: 25rem;
       overflow-y: scroll;
@@ -295,15 +326,33 @@ div.kz-dashboard {
 }
 
 @media only screen and (max-width: 768px) {
-  .main-wrapper {
-    flex-direction: column-reverse;
+  div.kz-dashboard {
 
-    .main {
-      width: 100% !important;
+    .main-wrapper {
+      flex-direction: column;
+
+      .glance {
+        padding: 1rem;
+        width: 100%;
+      }
+
+      .main {
+        width: 100% !important;
+
+        .banner {
+          width: 100%;
+        }
+
+        .notif-row {
+          padding: 1rem;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          align-items: center;
+        }
+      }
+
     }
-  }
 
-  .glance {
-    padding: 1rem;
   }
 }
