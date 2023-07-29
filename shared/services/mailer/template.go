@@ -3,11 +3,11 @@ package mailer
 import (
 	"bytes"
 	"html/template"
-	"log"
 	"os"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/ses"
+	"github.com/charmbracelet/log"
 )
 
 type SESInput struct {
@@ -34,7 +34,7 @@ func getHTMLTemplate(templateName string, embedData interface{}) string {
 
 	error := htmlTemplate.ExecuteTemplate(&templateBuffer, "email.html", embedData)
 	if error != nil {
-		log.Println(error)
+		log.Error("Error: ",error)
 		return ""
 	}
 	return templateBuffer.String()
