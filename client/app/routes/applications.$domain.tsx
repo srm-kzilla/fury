@@ -1,4 +1,4 @@
-import {useParams} from "@remix-run/react";
+    import {useParams} from "@remix-run/react";
 import applicationStyles from "../styles/pages/Application.css";
 import {LinksFunction} from "@remix-run/node";
 
