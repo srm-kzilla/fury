@@ -1,7 +1,6 @@
 package mailer
 
 import (
-	"log"
 	"os"
 
 	"github.com/aws/aws-sdk-go/aws"
@@ -9,22 +8,25 @@ import (
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/ses"
+	"github.com/charmbracelet/log"
 )
 
-func SendEmail(sesInput SESInput) {
+var (
+	AwsRegion          = os.Getenv("AWS_REGION")
+	AwsAccessKeyId     = os.Getenv("AWS_KEY")
+	AwsSecretAccessKey = os.Getenv("AWS_SECRET")
+)
+
+func SendEmail(sesInput SESInput) error {
 
 	emailTemplate := GenerateSESTemplate(sesInput)
 
-	region := os.Getenv("AWS_REGION")
-	accessKeyId := os.Getenv("AWS_KEY")
-	secretAccessKey := os.Getenv("AWS_SECRET")
-
 	sess, err := session.NewSession(&aws.Config{
-		Region:      aws.String(region),
-		Credentials: credentials.NewStaticCredentials(accessKeyId, secretAccessKey, ""),
+		Region:      aws.String(AwsRegion),
+		Credentials: credentials.NewStaticCredentials(AwsAccessKeyId, AwsSecretAccessKey, ""),
 	})
 	if err != nil {
-		log.Println(err)
+		return err
 	}
 
 	service := ses.New(sess)
@@ -32,15 +34,14 @@ func SendEmail(sesInput SESInput) {
 	if os.Getenv("APP_ENV") == "production" {
 		// Attempt to send the email.
 		_, err = service.SendEmail(emailTemplate)
-
-		// Display error messages if they occur.
 		if err != nil {
 			if aerr, ok := err.(awserr.Error); ok {
-				log.Println(aerr.Error())
+				return aerr
 			} else {
-				log.Println(err.Error())
+				return err
 			}
 		}
 	}
 	log.Printf("Email Sent to address: %s", sesInput.RecieverEmail)
+	return nil
 }
