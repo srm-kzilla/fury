@@ -4,17 +4,6 @@ import { produce } from "immer";
 import { StoreContext } from "~/shared/components/Wizard/Store";
 import { APIService } from "~/shared/services/api-service";
 import LoadingShimmer from "~/components/LoadingShimmer";
-import projectTilesLink from "~/styles/pages/ProjectTiles.css";
-import type { LinksFunction } from "@remix-run/node";
-
-export const links: LinksFunction = () => {
-  return [
-    {
-      rel: "stylesheet",
-      href: projectTilesLink,
-    },
-  ];
-};
 
 export interface TaskType {
   id: string;
@@ -78,7 +67,7 @@ const ProjectTiles = () => {
         } else {
           return { ...projectTile, active: false };
         }
-      }),
+      })
     );
   };
 
@@ -88,10 +77,10 @@ const ProjectTiles = () => {
     // @ts-ignore
     const newProjectTiles = produce(projects, (draft) => {
       const projectIndex = projects.findIndex(
-        (p) => p.slug === activeProjectId,
+        (p) => p.slug === activeProjectId
       );
       const taskIndex = projects[projectIndex].tasks.findIndex(
-        (t) => t.id === taskId,
+        (t) => t.id === taskId
       );
 
       const isActive = draft[projectIndex].tasks[taskIndex].done;
@@ -106,7 +95,7 @@ const ProjectTiles = () => {
     // @ts-ignore
     const newProjectTiles = produce(projects, (draft) => {
       const projectIndex = projects.findIndex(
-        (p) => p.slug === activeProjectId,
+        (p) => p.slug === activeProjectId
       );
       draft[projectIndex].tasks.push(task);
     });
@@ -118,10 +107,10 @@ const ProjectTiles = () => {
     // @ts-ignore
     const newProjectTiles = produce(projects, (draft) => {
       const projectIndex = projects.findIndex(
-        (p) => p.slug === activeProjectId,
+        (p) => p.slug === activeProjectId
       );
       const taskIndex = projects[projectIndex].tasks.findIndex(
-        (p) => p.id === taskId,
+        (p) => p.id === taskId
       );
       draft[projectIndex].tasks.splice(taskIndex, 1);
     });
@@ -132,8 +121,8 @@ const ProjectTiles = () => {
     <div className="kz-project">
       {/*TODO: Apply flexbox here*/}
       <div>
-        <div>
-          <div>
+        <div className="kz-project-flex">
+          <div className="kz-project-inner-flex">
             <User clickDisabled={clickDisabled} />
             {loading && (
               <div className="kz-shimmer">
@@ -146,7 +135,7 @@ const ProjectTiles = () => {
             {!loading && (
               <div className="kz-project-tiles">
                 <div>
-                  <div>
+                  <div className="kz-project-grid">
                     {projects.map((tile) => {
                       return (
                         <div key={tile.slug}>
@@ -165,7 +154,7 @@ const ProjectTiles = () => {
             )}
           </div>
 
-          <div>
+          <div className="kz-project-inner-flex">
             <div className="kz-task-wrapper">
               <Task
                 activeProject={activeProject}

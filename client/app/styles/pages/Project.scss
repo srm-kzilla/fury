@@ -2,12 +2,7 @@
 @import "../mixins";
 
 div.kz-project-module {
-  padding-left: 5rem;
   padding-bottom: 2rem;
-
-  @include for-mobile-only {
-    padding-left: 3rem;
-  }
 
   .left {
     display: flex;
@@ -46,6 +41,14 @@ div.kz-project-module {
     }
   }
 
+  .kz-project-flex {
+    display: flex;
+    height: 100%;
+    @include for-mobile-only {
+      flex-direction: column;
+    }
+  }
+
   .todo {
     padding: 2rem;
 
@@ -62,6 +65,7 @@ div.kz-project-module {
 
   .main {
     padding: 2rem;
+    flex-basis: 50%;
 
     @include for-mobile-only {
       padding: 1rem;
@@ -149,6 +153,7 @@ div.kz-project-module {
 
     @include for-mobile-only {
       padding: 1rem;
+      height: fit-content;
     }
 
     @include for-tablet-only {

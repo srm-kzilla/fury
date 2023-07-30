@@ -19,6 +19,9 @@ div.kz-wizard {
   }
 
   .kz-form-footer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
     padding: 2rem 1.5rem;
     border-top: 1px solid var(--color-skeleton);
 
@@ -31,8 +34,23 @@ div.kz-wizard {
     }
   }
 
+  .footer-item-1 {
+    flex-basis: 25%;
+  }
+
+  .footer-item-2 {
+    flex-basis: 50%;
+  }
+
   .home-icon {
     cursor: pointer;
+  }
+
+  .center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
   }
 
   .kz-button-container {
@@ -57,7 +75,6 @@ div.kz-wizard {
       visibility: hidden;
     }
   }
-
 }
 
 @media only screen and (max-width: 768px) {
@@ -71,7 +88,6 @@ div.kz-wizard {
     button {
       margin: 1rem 0;
     }
-
   }
 
   .kz-form-footer {
@@ -80,7 +96,6 @@ div.kz-wizard {
     align-items: center;
     justify-content: center;
     width: 100%;
-
 
     .center {
       width: 100%;
@@ -104,8 +119,6 @@ div.kz-wizard {
       }
     }
   }
-
-
 }
 
 .kz-message-screen {

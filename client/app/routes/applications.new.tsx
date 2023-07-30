@@ -25,8 +25,46 @@ import { APIService } from "~/shared/services/api-service";
 import { StoreContext } from "~/shared/components/Wizard/Store";
 import { AuthStore } from "~/shared/stores";
 import type { LinksFunction } from "@remix-run/node";
+import projectTilesLink from "~/styles/pages/ProjectTiles.css";
+import tileCss from "~/styles/shared/components/Tile.css";
+import taskCSS from "~/styles/shared/components/Task.css";
+import taskListCss from "~/styles/shared/components/TaskList.css";
+import ProjectCss from "~/styles/pages/Project.css";
+import sidebarCSS from "~/styles/shared/components/Sidebar.css";
+import footerCompactStyles from "~/styles/shared/components/FooterCompact.css";
 
-export const links: LinksFunction = () => [...wizardLinks(), ...loadingLinks()];
+export const links: LinksFunction = () => [
+  ...wizardLinks(),
+  ...loadingLinks(),
+  {
+    rel: "stylesheet",
+    href: projectTilesLink,
+  },
+  {
+    rel: "stylesheet",
+    href: tileCss,
+  },
+  {
+    rel: "stylesheet",
+    href: taskCSS,
+  },
+  {
+    rel: "stylesheet",
+    href: taskListCss,
+  },
+  {
+    rel: "stylesheet",
+    href: ProjectCss,
+  },
+  {
+    rel: "stylesheet",
+    href: sidebarCSS,
+  },
+  {
+    rel: "stylesheet",
+    href: footerCompactStyles,
+  },
+];
 
 const Application = () => {
   const [loading, setLoading] = useState(false);
@@ -142,7 +180,7 @@ const Application = () => {
           observer(() =>
             GeneralInstructions.component({
               timeLeft: authStore.timeLeftDuration,
-            }),
+            })
           ),
           DomainSelectForm.component,
           DomainInstructions.component,

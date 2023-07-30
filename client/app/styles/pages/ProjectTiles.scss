@@ -4,8 +4,7 @@
 
 @font-face {
   font-family: "Caros";
-  src:
-    url("../../assets/fonts/CarosLight.woff2") format("woff2"),
+  src: url("../../assets/fonts/CarosLight.woff2") format("woff2"),
     url("../../assets/fonts/CarosLight.woff") format("woff");
   font-weight: 300;
   font-style: normal;
@@ -14,8 +13,7 @@
 
 @font-face {
   font-family: "Caros";
-  src:
-    url("../../assets/fonts/CarosBold.woff2") format("woff2"),
+  src: url("../../assets/fonts/CarosBold.woff2") format("woff2"),
     url("../../assets/fonts/CarosBold.woff") format("woff");
   font-weight: bold;
   font-style: normal;
@@ -24,8 +22,7 @@
 
 @font-face {
   font-family: "Caros";
-  src:
-    url("../../assets/fonts/CarosMedium.woff2") format("woff2"),
+  src: url("../../assets/fonts/CarosMedium.woff2") format("woff2"),
     url("../../assets/fonts/CarosMedium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
@@ -34,8 +31,7 @@
 
 @font-face {
   font-family: "Caros";
-  src:
-    url("../../assets/fonts/Caros.woff2") format("woff2"),
+  src: url("../../assets/fonts/Caros.woff2") format("woff2"),
     url("../../assets/fonts/Caros.woff") format("woff");
   font-weight: normal;
   font-style: normal;
@@ -83,10 +79,6 @@ div.kz-project {
     min-height: 12rem;
     padding: 0 4rem;
 
-    @include for-mobile-only {
-      padding: 0 1rem;
-    }
-
     @include for-tablet-only {
       padding: 0 2rem;
     }
@@ -94,6 +86,28 @@ div.kz-project {
     @include for-small-screens {
       padding: 0 2rem;
     }
+  }
+
+  div.kz-project-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    @include for-tablet-only {
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+    }
+  }
+
+  div.kz-project-flex {
+    display: flex;
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  div.kz-project-inner-flex {
+    flex-basis: 50%;
   }
 
   div.kz-task-wrapper {

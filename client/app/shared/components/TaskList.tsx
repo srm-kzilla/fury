@@ -1,19 +1,8 @@
 import React from "react";
 import { MdCheck, MdDelete } from "react-icons/md";
 import classNames from "classnames";
-import taskListCss from "../../styles/shared/components/TaskList.css";
 import { TaskType } from "../../routes/ProjectTiles";
 import Markdown from "markdown-to-jsx";
-import { LinksFunction } from "@remix-run/node"; // TODO: Update this dependency
-
-export const links: LinksFunction = () => {
-  return [
-    {
-      rel: "stylesheet",
-      href: taskListCss,
-    },
-  ];
-};
 
 interface Props {
   projectTask: TaskType;
