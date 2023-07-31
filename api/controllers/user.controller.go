@@ -3,14 +3,17 @@ package controllers
 import (
 	"context"
 	"os"
-
 	"github.com/charmbracelet/log"
 	"github.com/gofiber/fiber/v2"
 	"github.com/srm-kzilla/Recruitments/api/models"
 	"github.com/srm-kzilla/Recruitments/database"
 	"go.mongodb.org/mongo-driver/bson"
+	"github.com/aws/aws-sdk-go/aws"
+    "github.com/aws/aws-sdk-go/aws/session"
+    "github.com/aws/aws-sdk-go/service/s3"
+	"github.com/aws/aws-sdk-go/aws/credentials"
 )
-
+	
 func CreateUser(c *fiber.Ctx) error {
 	var user models.User
 	user.Application = []models.Application{}
@@ -98,5 +101,84 @@ func UpdateUser(c *fiber.Ctx) error {
 		return nil
 	}
 	c.Status(fiber.StatusOK).JSON(user)
+	return nil
+}
+
+func UploadResume(c *fiber.Ctx) error {
+
+	file, err := c.FormFile("resume")
+
+	var maxFileSize int64 = 1024 * 1024 * 10
+	
+	if err != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error":   "File not found in the request",
+			"message": err.Error(),
+		})
+	}
+
+	if file.Header.Get("Content-Type") != "application/pdf" {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error":   "Invalid file format. Only PDF files are allowed.",
+			"message": "Invalid file format",
+		})
+	}
+
+	if file.Size > maxFileSize {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error":   "File size exceeds the limit. Max file size is 10 MB.",
+			"message": "File size too large",
+		})
+	}
+
+	sess, err := session.NewSession(&aws.Config{
+		Region: aws.String(os.Getenv("AWS_S3_BUCKET_REGION")),
+		Credentials: credentials.NewStaticCredentials(
+			os.Getenv("AWS_KEY"),
+			os.Getenv("AWS_SECRET"),
+			"",
+		),
+	})
+
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"error":   "Error creating AWS session",
+			"message": err.Error(),
+		})
+	}
+
+	svc := s3.New(sess)
+
+	srcFile, err := file.Open()
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"error":   "Error opening file",
+			"message": err.Error(),
+		})
+	}
+	defer srcFile.Close()
+
+	// @aryan replace this when middleware is ready
+	key := "your_object_key.pdf" 
+
+	params := &s3.PutObjectInput{
+		Bucket: aws.String(os.Getenv("AWS_S3_BUCKET")),
+		Key:    aws.String(key),
+		Body:   srcFile,
+		ACL:    aws.String("public-read"),
+	}
+
+	_, err = svc.PutObject(params)
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"error":   "Error uploading file",
+			"message": err.Error(),
+		})
+	}
+
+	c.Status(fiber.StatusOK).JSON(fiber.Map{
+		"message": "File uploaded successfully with public read access.",
+	})
+
 	return nil
 }
