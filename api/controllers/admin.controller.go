@@ -2,13 +2,16 @@ package controllers
 
 import (
 	"context"
-	"github.com/charmbracelet/log"
 	"os"
+
+	"github.com/charmbracelet/log"
+	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"
 	"github.com/srm-kzilla/Recruitments/api/models"
 	"github.com/srm-kzilla/Recruitments/database"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 func GetAllApplications(c *fiber.Ctx) error {
@@ -68,7 +71,18 @@ func UpdateApplications(c *fiber.Ctx) error {
 	var check models.Application
 	c.BodyParser(&application)
 
-	applicationsCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "applications")
+	var validate *validator.Validate
+
+	validate = validator.New()
+	validationErr := validate.Struct(application)
+
+	if validationErr != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"validation": validationErr.Error(),
+		})
+	}
+
+	applicationsCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "users")
 	if e != nil {
 		log.Error("Error: ", e)
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
@@ -86,8 +100,18 @@ func UpdateApplications(c *fiber.Ctx) error {
 		return nil
 	}
 
+	arrayFilters := options.ArrayFilters{
+		Filters: []interface{}{bson.M{"elem.domain": application.Domain}},
+	}
+
 	check.Status = application.Status
-	errr := applicationsCollection.FindOneAndReplace(context.Background(), bson.M{"regNo": application.RegNo}, check).Decode(&check)
+	_, errr := applicationsCollection.UpdateOne(context.Background(), bson.M{"regNo": application.RegNo}, bson.M{
+		"$set": bson.M{
+			"application.$[elem].status": application.Status,
+		},
+	}, &options.UpdateOptions{
+		ArrayFilters: &arrayFilters,
+	})
 	if errr != nil {
 		log.Error("Error: ", errr)
 		c.Status(fiber.StatusBadGateway).JSON(fiber.Map{

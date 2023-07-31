@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/charmbracelet/log"
+	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"
 	"github.com/srm-kzilla/Recruitments/api/models"
 	"github.com/srm-kzilla/Recruitments/database"
@@ -22,9 +23,20 @@ func CreateApplication(c *fiber.Ctx) error {
 		})
 	}
 
+	var validate *validator.Validate
+
+	validate = validator.New()
+	validationErr := validate.Struct(body)
+
+	if validationErr != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"validation": validationErr.Error(),
+		})
+	}
+
 	var status string
 	if body.Type == "submit" {
-		// schema validation
+
 		status = "pending"
 	} else {
 		status = "draft"
