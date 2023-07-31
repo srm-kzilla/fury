@@ -9,5 +9,5 @@ func UserRoutes(router fiber.Router) {
 	router.Post("/", controllers.CreateUser)
 	router.Get("/:regNo", controllers.GetUser)
 	router.Put("/", controllers.UpdateUser)
-
+	router.Post("/upload/resume/", controllers.UploadResume)
 }
