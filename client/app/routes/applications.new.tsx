@@ -25,8 +25,6 @@ import { APIService } from "~/shared/services/api-service";
 import { StoreContext } from "~/shared/components/Wizard/Store";
 import { AuthStore } from "~/shared/stores";
 import type { LinksFunction } from "@remix-run/node";
-import taskListCss from "~/styles/shared/components/TaskList.css";
-import ProjectCss from "~/styles/pages/Project.css";
 import { links as ProjectTilesLinks } from "~/shared/components/ProjectTiles";
 import { links as FooterCompactLinks } from "~/shared/components/FooterCompact";
 import { links as TaskListLinks } from "~/shared/components/TaskList";
