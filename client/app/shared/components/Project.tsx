@@ -1,7 +1,6 @@
 import classNames from "classnames";
 import { observer } from "mobx-react";
-import React, { useContext, useEffect, useState } from "react";
-// import "react-datepicker/dist/react-datepicker.css";
+import { useContext, useEffect, useState } from "react";
 import { BiArrowBack, BiCog } from "react-icons/bi";
 import {
   FooterCompact,
@@ -18,6 +17,17 @@ import {
 import { APIService } from "../services/api-service";
 import { StoreContext } from "../../shared/components/Wizard/Store";
 import Markdown from "markdown-to-jsx";
+import ProjectCss from "~/styles/pages/Project.css";
+import type { LinksFunction } from "@remix-run/node";
+
+export const links: LinksFunction = () => {
+  return [
+    {
+      rel: "stylesheet",
+      href: ProjectCss,
+    },
+  ];
+};
 
 const Project = () => {
   const [settingsMode, setSettingsMode] = useState(true);
@@ -44,8 +54,6 @@ const Project = () => {
   return (
     <>
       <div className="kz-project-module">
-        {/* <Sidebar /> */}
-
         <div>
           <div className="kz-project-flex">
             <div className="main left">
@@ -59,7 +67,7 @@ const Project = () => {
                   />
                 </div>
               </div>
-              <div className="instructions-box">
+              <div className="instructions-box margin-bt">
                 <DomainInstructions.component domain={"technical"} />
               </div>
               <div className="instructions-box">

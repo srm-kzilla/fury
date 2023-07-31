@@ -25,45 +25,20 @@ import { APIService } from "~/shared/services/api-service";
 import { StoreContext } from "~/shared/components/Wizard/Store";
 import { AuthStore } from "~/shared/stores";
 import type { LinksFunction } from "@remix-run/node";
-import projectTilesLink from "~/styles/pages/ProjectTiles.css";
-import tileCss from "~/styles/shared/components/Tile.css";
-import taskCSS from "~/styles/shared/components/Task.css";
 import taskListCss from "~/styles/shared/components/TaskList.css";
 import ProjectCss from "~/styles/pages/Project.css";
-import sidebarCSS from "~/styles/shared/components/Sidebar.css";
-import footerCompactStyles from "~/styles/shared/components/FooterCompact.css";
+import { links as ProjectTilesLinks } from "~/shared/components/ProjectTiles";
+import { links as FooterCompactLinks } from "~/shared/components/FooterCompact";
+import { links as TaskListLinks } from "~/shared/components/TaskList";
+import { links as ProjectLinks } from "~/shared/components/Project";
 
 export const links: LinksFunction = () => [
   ...wizardLinks(),
   ...loadingLinks(),
-  {
-    rel: "stylesheet",
-    href: projectTilesLink,
-  },
-  {
-    rel: "stylesheet",
-    href: tileCss,
-  },
-  {
-    rel: "stylesheet",
-    href: taskCSS,
-  },
-  {
-    rel: "stylesheet",
-    href: taskListCss,
-  },
-  {
-    rel: "stylesheet",
-    href: ProjectCss,
-  },
-  {
-    rel: "stylesheet",
-    href: sidebarCSS,
-  },
-  {
-    rel: "stylesheet",
-    href: footerCompactStyles,
-  },
+  ...ProjectTilesLinks(),
+  ...FooterCompactLinks(),
+  ...TaskListLinks(),
+  ...ProjectLinks(),
 ];
 
 const Application = () => {

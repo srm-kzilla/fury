@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import TaskList from "./TaskList";
 import { BiPlus } from "react-icons/bi";
 import classNames from "classnames";
 import { v4 as uuid } from "uuid";
 import { Assets } from "../../constants";
-import { ProjectTile, TaskType } from "../../routes/ProjectTiles";
+import { ProjectTile, TaskType } from "./ProjectTiles";
 import Markdown from "markdown-to-jsx";
 
 interface Props {

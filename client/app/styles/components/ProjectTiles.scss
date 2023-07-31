@@ -1,0 +1,138 @@
+@import "../variables";
+@import "../mixins";
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
+
+@font-face {
+  font-family: "Caros";
+  src: url("../../assets/fonts/CarosLight.woff2") format("woff2"),
+    url("../../assets/fonts/CarosLight.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Caros";
+  src: url("../../assets/fonts/CarosBold.woff2") format("woff2"),
+    url("../../assets/fonts/CarosBold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Caros";
+  src: url("../../assets/fonts/CarosMedium.woff2") format("woff2"),
+    url("../../assets/fonts/CarosMedium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Caros";
+  src: url("../../assets/fonts/Caros.woff2") format("woff2"),
+    url("../../assets/fonts/Caros.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+div.kz-project {
+  position: relative;
+  background-color: var(--color-bg);
+  padding: 1rem;
+
+  div.dots1,
+  div.dots2 {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    width: 8rem;
+    height: 4rem;
+
+    img {
+      width: 100%;
+      height: 100%;
+      opacity: 0.7;
+    }
+  }
+
+  div.dots1 {
+    top: 14%;
+    left: 45%;
+    transform: rotate(90deg) translateX(-50%);
+
+    @include for-mobile-only {
+      display: none;
+    }
+  }
+
+  div.dots2 {
+    bottom: 2%;
+    left: 10%;
+  }
+
+  div.kz-project-tiles {
+    position: relative;
+    margin: 1rem auto;
+    min-height: 12rem;
+    padding: 0 4rem;
+
+    @include for-tablet-only {
+      padding: 0 2rem;
+    }
+
+    @include for-small-screens {
+      padding: 0 2rem;
+    }
+  }
+
+  div.kz-project-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    @include for-tablet-only {
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+    }
+  }
+
+  div.kz-project-flex {
+    display: flex;
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  div.kz-project-inner-flex {
+    flex-basis: 50%;
+  }
+
+  div.kz-task-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+  }
+
+  div.kz-shimmer {
+    display: flex;
+    width: 20rem;
+    justify-content: space-between;
+    position: relative;
+    margin: 2rem auto;
+
+    @include for-mobile-only {
+      padding: 0 1rem;
+    }
+
+    @include for-tablet-only {
+      padding: 0 2rem;
+    }
+
+    @include for-small-screens {
+      padding: 0 2rem;
+    }
+  }
+}

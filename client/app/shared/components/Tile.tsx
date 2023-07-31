@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import tinycolor from "tinycolor2";
 import classNames from "classnames";
-import { ProjectTile } from "../../routes/ProjectTiles";
+import { ProjectTile } from "./ProjectTiles";
 
 interface Props {
   tile: ProjectTile;

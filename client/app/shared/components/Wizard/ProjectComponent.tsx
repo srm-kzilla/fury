@@ -1,7 +1,5 @@
-import React from "react";
 import * as Yup from "yup";
-
-import { ProjectTilesComponent } from "~/routes/ProjectTiles";
+import { ProjectTilesComponent } from "~/shared/components/ProjectTiles";
 import { APIService } from "../../services/api-service";
 import Project from "../Project";
 
