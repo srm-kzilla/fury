@@ -5,22 +5,22 @@ import { StoreContext } from "~/shared/components/Wizard/Store";
 import { APIService } from "~/shared/services/api-service";
 import LoadingShimmer from "~/components/LoadingShimmer";
 import type { LinksFunction } from "@remix-run/node";
-import projectTilesCss from "~/styles/pages/ProjectTiles.css";
-import tileCss from "~/styles/shared/components/Tile.css";
-import taskCSS from "~/styles/shared/components/Task.css";
+import projectTilesStyles from "~/styles/pages/ProjectTiles.css";
+import tileStyles from "~/styles/shared/components/Tile.css";
+import taskStyles from "~/styles/shared/components/Task.css";
 
 export const links: LinksFunction = () => [
   {
     rel: "stylesheet",
-    href: projectTilesCss,
+    href: projectTilesStyles,
   },
   {
     rel: "stylesheet",
-    href: tileCss,
+    href: tileStyles,
   },
   {
     rel: "stylesheet",
-    href: taskCSS,
+    href: taskStyles,
   },
 ];
 

@@ -2,7 +2,7 @@ import { MdCheck, MdDelete } from "react-icons/md";
 import classNames from "classnames";
 import { TaskType } from "./ProjectTiles";
 import Markdown from "markdown-to-jsx";
-import TaskListCss from "~/styles/shared/components/TaskList.css";
+import TaskListStyles from "~/styles/shared/components/TaskList.css";
 
 interface Props {
   projectTask: TaskType;
@@ -17,7 +17,7 @@ export const links: LinksFunction = () => {
   return [
     {
       rel: "stylesheet",
-      href: TaskListCss,
+      href: TaskListStyles,
     },
   ];
 };

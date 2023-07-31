@@ -17,14 +17,14 @@ import {
 import { APIService } from "../services/api-service";
 import { StoreContext } from "../../shared/components/Wizard/Store";
 import Markdown from "markdown-to-jsx";
-import ProjectCss from "~/styles/pages/Project.css";
+import ProjectStyles from "~/styles/pages/Project.css";
 import type { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => {
   return [
     {
       rel: "stylesheet",
-      href: ProjectCss,
+      href: ProjectStyles,
     },
   ];
 };
