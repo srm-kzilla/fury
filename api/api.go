@@ -2,14 +2,12 @@ package api
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/srm-kzilla/Recruitments/api/controllers"
 	"github.com/srm-kzilla/Recruitments/api/routes"
 	"github.com/srm-kzilla/Recruitments/utils"
 )
 
 func SetupApp(app *fiber.App) {
 
-	app.Get("/oauth/google/callback", controllers.GetAccessTokenGoogle)
 	api := app.Group("/api/v1/")
 	api.Get("/", utils.HandleRoot)
 
