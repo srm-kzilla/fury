@@ -15,29 +15,13 @@ import (
 	"github.com/srm-kzilla/Recruitments/api/models"
 	"github.com/srm-kzilla/Recruitments/constants"
 	"github.com/srm-kzilla/Recruitments/database"
+	"github.com/srm-kzilla/Recruitments/utils"
 	"go.mongodb.org/mongo-driver/bson"
 	"golang.org/x/oauth2"
-	"golang.org/x/oauth2/google"
 )
 
-var AppConfig oauth2.Config
-
-func loadConfig() {
-	AppConfig = oauth2.Config{
-		ClientID:     os.Getenv("GOOGLE_CLIENT_ID"),
-		ClientSecret: os.Getenv("GOOGLE_CLIENT_SECRET"),
-		Endpoint:     google.Endpoint,
-		RedirectURL:  os.Getenv("GOOGLE_REDIRECT_URI"),
-		Scopes: []string{
-			"https://www.googleapis.com/auth/userinfo.email",
-			"https://www.googleapis.com/auth/userinfo.profile",
-		},
-	}
-}
-
 func GoogleLogin(c *fiber.Ctx) error {
-	loadConfig()
-	url := AppConfig.AuthCodeURL(os.Getenv("GOOGLE_STATE"))
+	url := utils.AppConfig.AuthCodeURL(os.Getenv("GOOGLE_STATE"))
 	err := c.Redirect(url)
 	if err != nil {
 		return c.SendStatus(fiber.StatusInternalServerError)
@@ -66,10 +50,16 @@ func GetAccessTokenGoogle(c *fiber.Ctx) error {
 	return c.Status(fiber.StatusOK).JSON(user)
 }
 
+func getGoogleAccessToken(code string) (*oauth2.Token, error) {
+	token, err := utils.AppConfig.Exchange(context.Background(), code)
+	if err != nil {
+		return nil, err
+	}
+	return token, nil
+}
 func getUserDetailsGoogle(code string) (models.Auth, error) {
 	var userData models.UserData
-	loadConfig()
-	token, err := AppConfig.Exchange(context.Background(), code)
+	token, err := getGoogleAccessToken(code)
 	if err != nil {
 		return models.Auth{}, err
 	}
@@ -109,9 +99,8 @@ func retrieveRegNoFromLastName(lastName string) string {
 	}
 	return ""
 }
-
-func calculateStudentYear(regYear string) int {
-	year, err := strconv.Atoi(regYear[2:4])
+func calculateStudentYear(regNo string) int {
+	year, err := strconv.Atoi(regNo[2:4])
 	if err != nil {
 		return 0
 	}
