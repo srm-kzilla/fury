@@ -110,15 +110,12 @@ func retrieveRegNoFromLastName(lastName string) string {
 	return ""
 }
 
-func calculateStudentYear(input string) int {
-	year, err := strconv.Atoi(input[2:4])
+func calculateStudentYear(regYear string) int {
+	year, err := strconv.Atoi(regYear[2:4])
 	if err != nil {
 		return 0
 	}
-	currentYear, errr := strconv.Atoi(os.Getenv("YEAR"))
-	if errr != nil {
-		return 0
-	}
+	currentYear := time.Now().Year() - 2000
 	studentYear := currentYear - year + 1
 	if studentYear < 1 {
 		return 0
