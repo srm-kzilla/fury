@@ -3,11 +3,13 @@ package routes
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/srm-kzilla/Recruitments/api/controllers"
+	"github.com/srm-kzilla/Recruitments/middlewares"
 )
 
 func UserRoutes(router fiber.Router) {
-	router.Post("/", controllers.CreateUser)
-	router.Get("/:regNo", controllers.GetUser)
-	router.Put("/", controllers.UpdateUser)
-	router.Post("/upload/resume/", controllers.UploadResume)
+	protected := router.Use(middlewares.UserAuthenticate)
+	protected.Post("/", controllers.CreateUser)
+	protected.Get("/:regNo", controllers.GetUser)
+	protected.Put("/", controllers.UpdateUser)
+	protected.Post("/upload/resume/", controllers.UploadResume)
 }
