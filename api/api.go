@@ -11,6 +11,10 @@ func SetupApp(app *fiber.App) {
 	api := app.Group("/api/v1/")
 	api.Get("/", utils.HandleRoot)
 
+	// /api/v1/auth
+	auth := api.Group("/auth/")
+	routes.AuthRoutes(auth)
+
 	// /api/v1/admin
 	admin := api.Group("/admin/")
 	routes.AdminRoutes(admin)

@@ -1,5 +1,6 @@
 .env
 tmp/
+tmp/main
 .idea/
 .vscode/
 tmp
