@@ -1,18 +1,7 @@
 import React, { useMemo } from "react";
 import tinycolor from "tinycolor2";
 import classNames from "classnames";
-import { ProjectTile } from "../../routes/ProjectTiles";
-import { LinksFunction } from "@remix-run/node";
-import tileCss from "../../styles/shared/components/Tile.css";
-
-export const links: LinksFunction = () => {
-  return [
-    {
-      rel: "stylesheet",
-      href: tileCss,
-    },
-  ];
-};
+import { ProjectTile } from "./ProjectTiles";
 
 interface Props {
   tile: ProjectTile;
