@@ -78,8 +78,8 @@ func getUserDetailsGoogle(code string) (models.Auth, error) {
 	}
 	userData.RegNo = retrieveRegNoFromLastName(userData.FamilyName)
 	userData.Year = calculateStudentYear(userData.RegNo)
-	userData.Name = filterFamilyName(userData.Name)
-	userData.FamilyName = filterFamilyName(userData.FamilyName)
+	userData.Name = filterName(userData.Name)
+	userData.FamilyName = filterName(userData.FamilyName)
 	authData := models.Auth{
 		AccessToken:  token.AccessToken,
 		TokenType:    token.TokenType,
@@ -112,7 +112,7 @@ func calculateStudentYear(regNo string) int {
 	return studentYear
 }
 
-func filterFamilyName(familyName string) string {
+func filterName(familyName string) string {
 	index := strings.Index(familyName, "(")
 
 	if index < 0 {
