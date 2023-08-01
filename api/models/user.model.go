@@ -7,7 +7,7 @@ type User struct {
 	Email       string        `validate:"required" json:"email"`
 	Gender      string        `validate:"required" json:"gender"`
 	Contact     int           `validate:"required" json:"contact"`
-	CreatedAt   string        `json:"createdAt" bson:"createdAt"`
+	CreatedAt   int64         `json:"createdAt" bson:"createdAt"`
 	Application []Application `json:"application" default:"[]" bson:"application"`
 	Socials     Social        `json:"socials"`
 }

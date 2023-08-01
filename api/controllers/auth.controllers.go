@@ -9,9 +9,13 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/srm-kzilla/Recruitments/api/models"
+	"github.com/srm-kzilla/Recruitments/constants"
+	"github.com/srm-kzilla/Recruitments/database"
+	"go.mongodb.org/mongo-driver/bson"
 	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/google"
 )
@@ -53,6 +57,12 @@ func GetAccessTokenGoogle(c *fiber.Ctx) error {
 			"error": err.Error(),
 		})
 	}
+	err = registerUserInDb(user.UserData)
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"error": err.Error(),
+		})
+	}
 	return c.Status(fiber.StatusOK).JSON(user)
 }
 
@@ -63,7 +73,7 @@ func getUserDetailsGoogle(code string) (models.Auth, error) {
 	if err != nil {
 		return models.Auth{}, err
 	}
-	user, err := http.Get("https://www.googleapis.com/oauth2/v2/userinfo?access_token=" + token.AccessToken)
+	user, err := http.Get(constants.GoogleUserInfoApi + token.AccessToken)
 	if err != nil {
 		return models.Auth{}, err
 	}
@@ -73,7 +83,7 @@ func getUserDetailsGoogle(code string) (models.Auth, error) {
 	if err != nil {
 		return models.Auth{}, err
 	}
-	if !strings.HasSuffix(userData.Email, "@srmist.edu.in") {
+	if !strings.HasSuffix(userData.Email, constants.SrmEmailDomain) {
 		return models.Auth{}, errors.New("use srm mail id")
 	}
 	userData.RegNo = retrieveRegNoFromLastName(userData.FamilyName)
@@ -119,9 +129,33 @@ func calculateStudentYear(input string) int {
 func filterFamilyName(familyName string) string {
 	index := strings.Index(familyName, "(")
 
-	if index == -1 {
+	if index < 0 {
 		return familyName
 	}
 	result := familyName[:index]
 	return result
+}
+
+func registerUserInDb(user models.UserData) error {
+	var check models.User
+	usersCollection, err := database.GetCollection(os.Getenv("DB_NAME"), "users")
+	if err != nil {
+		return err
+	}
+	usersCollection.FindOne(context.Background(), bson.M{"email": user.Email}).Decode(&check)
+	if check.Email == user.Email {
+		return nil
+	}
+	newUser := models.User{
+		Name:      user.Name,
+		RegNo:     user.RegNo,
+		Year:      user.Year,
+		Email:     user.Email,
+		CreatedAt: time.Now().Unix(),
+	}
+	_, e := usersCollection.InsertOne(context.Background(), newUser)
+	if e != nil {
+		return e
+	}
+	return nil
 }
