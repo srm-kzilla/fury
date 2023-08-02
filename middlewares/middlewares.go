@@ -5,6 +5,7 @@ import (
 	"errors"
 	"net/http"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/gofiber/fiber/v2"
@@ -24,7 +25,13 @@ func UserAuthenticate(c *fiber.Ctx) error {
 			"message": "Authorization token not found",
 		})
 	}
-	err := getGoogleAccessTokenInfo(accessToken)
+	if !strings.Contains(accessToken, "Bearer") {
+		return c.Status(401).JSON(fiber.Map{
+			"message": "Invalid token",
+		})
+	}
+	token := strings.Split(accessToken, " ")[1]
+	err := getGoogleAccessTokenInfo(token)
 	if err != nil {
 		return c.Status(401).JSON(fiber.Map{
 			"message": "Invalid token",
