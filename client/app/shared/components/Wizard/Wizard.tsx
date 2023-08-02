@@ -63,7 +63,7 @@ const Wizard = (props: any) => {
     ? projectComponents[step - 2]
     : formComponents[step];
   const [lastStep, setLastStep] = useState(
-    projectForm ? 3 : formComponents.length - 1,
+    projectForm ? 3 : formComponents.length - 1
   );
 
   const next = () => {
@@ -88,7 +88,7 @@ const Wizard = (props: any) => {
                 setSubmitted(true);
                 const statusCode = await handleProjectSubmit(
                   values,
-                  selectedProjectSlug,
+                  selectedProjectSlug
                 );
                 if (statusCode === 200) {
                   toast({
@@ -117,7 +117,7 @@ const Wizard = (props: any) => {
               if (isProjectForm()) setLastStep(3);
 
               Object.keys(initialValues[step + 1]).map((key) =>
-                setFieldTouched(key, false, false),
+                setFieldTouched(key, false, false)
               );
             }
           }}

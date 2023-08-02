@@ -142,7 +142,7 @@ const Application = () => {
           observer(() =>
             GeneralInstructions.component({
               timeLeft: authStore.timeLeftDuration,
-            }),
+            })
           ),
           DomainSelectForm.component,
           DomainInstructions.component,

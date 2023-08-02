@@ -71,7 +71,7 @@ const Task = (props: Props) => {
               >
                 {props.activeProject?.tasks
                   .filter(
-                    (task: any) => task.section.toLowerCase() === "suggested",
+                    (task: any) => task.section.toLowerCase() === "suggested"
                   )
                   .map((task: any) => {
                     return (

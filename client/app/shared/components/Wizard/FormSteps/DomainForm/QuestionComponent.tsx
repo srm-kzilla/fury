@@ -30,7 +30,7 @@ const TextAreaComponent = (props: Props) => {
   const { questionArray, name, type } = props;
   let { domain } = useContext(StoreContext);
   let selectedDomain = questionArray.find(
-    (obj: Question) => obj.domain == domain,
+    (obj: Question) => obj.domain == domain
   );
 
   return (

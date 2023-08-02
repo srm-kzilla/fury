@@ -19,17 +19,17 @@ const Question1 = {
         .required("Project Link is a required field.")
         .matches(
           /^https?:\/\/(www\.)?github\.com\/.+\/.+(.git)?$/,
-          "The project links must follow the format https://github.com/user/repo",
+          "The project links must follow the format https://github.com/user/repo"
         ),
       subdomain: Yup.string().required(
-        "You need to select your preferred subdomain.",
+        "You need to select your preferred subdomain."
       ),
     },
   ],
   initialProjectValue: [{}, { project_link: "", project_title: "" }],
   handleProjectSubmit: async (
     values: any,
-    project_slug: string,
+    project_slug: string
   ): Promise<number> => {
     try {
       const response = await APIService.getInstance().createProjects({
