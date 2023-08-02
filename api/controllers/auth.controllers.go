@@ -13,9 +13,9 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/srm-kzilla/Recruitments/api/models"
-	"github.com/srm-kzilla/Recruitments/constants"
-	"github.com/srm-kzilla/Recruitments/database"
-	"github.com/srm-kzilla/Recruitments/utils"
+	"github.com/srm-kzilla/Recruitments/api/utils/constants"
+	"github.com/srm-kzilla/Recruitments/api/utils/database"
+	"github.com/srm-kzilla/Recruitments/api/utils"
 	"go.mongodb.org/mongo-driver/bson"
 	"golang.org/x/oauth2"
 )

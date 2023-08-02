@@ -11,7 +11,7 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/limiter"
 	"github.com/gofiber/fiber/v2/middleware/recover"
 	"github.com/srm-kzilla/Recruitments/api"
-	"github.com/srm-kzilla/Recruitments/utils"
+	"github.com/srm-kzilla/Recruitments/api/utils"
 )
 
 func setupRoutes(app *fiber.App) {
