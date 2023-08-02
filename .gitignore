@@ -1,7 +1,33 @@
+# env
 .env
+.env.*
+
+# deps
+node_modules/
+
+# go build
 tmp/
 tmp/main
+tmp
+
+# logs
+logs
+*.log
+.pnpm-debug.log*
+
+# misc
+.DS_Store
+
+# editor config
 .idea/
 .vscode/
-tmp
-.DS_Store
+
+# build files
+.cache/
+build/
+public/build/
+dist/
+
+# css output
+*.css
+*.css.map
