@@ -1,4 +1,4 @@
-import teamSvgStyles from "~/styles/Components/TeamSvg.css";
+import teamSvgStyles from "~/styles/components/TeamSvg.css";
 import type { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => [

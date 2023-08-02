@@ -1,4 +1,4 @@
-import infoTileStyles from "~/styles/Components/InfoTile.css";
+import infoTileStyles from "~/styles/components/InfoTile.css";
 import { BiTime, BiArrowToRight } from "react-icons/bi";
 import moment from "moment";
 import type { LinksFunction } from "@remix-run/node";
