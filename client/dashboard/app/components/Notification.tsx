@@ -1,4 +1,4 @@
-import notificationStyles from "~/styles/Components/Notification.css";
+import notificationStyles from "~/styles/components/Notification.css";
 import { BiBoltCircle } from "react-icons/bi";
 import moment from "moment";
 import Markdown from "markdown-to-jsx";
