@@ -1,0 +1,129 @@
+/* app/styles/shared/components/FormFields.css */
+.kz-form-field {
+  margin-bottom: 2rem;
+}
+.kz-form-field div.inner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: var(--color-bg-alt);
+  border-radius: 5px;
+  font-family:
+    Caros,
+    Courier New,
+    Courier,
+    monospace;
+}
+.kz-form-field div.inner input.readOnly {
+  font-style: italic;
+  opacity: .8;
+}
+.kz-form-field div.inner svg {
+  color: #ff644e;
+  width: 1rem;
+  height: 1rem;
+  margin: auto 1rem;
+}
+.kz-form-field input,
+.kz-form-field textarea {
+  border: none;
+  width: 100%;
+  color: var(--color-text);
+  background-color: var(--color-bg-alt);
+  border-radius: 5px;
+  font-family:
+    Caros,
+    Courier New,
+    Courier,
+    monospace;
+  outline: none;
+  flex-grow: 1;
+}
+.kz-form-field input::placeholder,
+.kz-form-field textarea::placeholder {
+  color: var(--color-placeholder);
+}
+.kz-form-field label {
+  display: block;
+  margin-bottom: .5rem;
+}
+.kz-form-field textarea {
+  height: 10rem;
+  width: 100%;
+  resize: none;
+  padding: 1rem;
+}
+.kz-form-field p {
+  margin-top: .5rem;
+  color: #ff644e;
+}
+.kz-form-field .selectable-div {
+  box-shadow: 0 4px 12px 2px #0003;
+  cursor: pointer;
+  margin: 20px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+.kz-form-field .selectable-div h3 {
+  margin: 0;
+}
+.kz-form-field .selectable-div h4 {
+  width: 100% !important;
+}
+.kz-form-field .active {
+  border-color: #ff644e;
+}
+.kz-form-field .css-yk16xz-control {
+  width: 80%;
+  padding: 4px 0;
+}
+.react-select-container .react-select__menu,
+.react-select-container .react-select__option,
+.react-select-container .react-select__control {
+  color: var(--color-input);
+  background-color: var(--color-bg-alt);
+  width: 80%;
+}
+@media only screen and (max-width: 768px) {
+  .kz-form-field .selectable-div {
+    margin: 0 0 20px;
+    width: 100%;
+  }
+  .kz-user-form select {
+    width: 90% !important;
+  }
+  .dropzone {
+    width: 80%;
+  }
+  .kz-form-field div.inner {
+    width: 90%;
+  }
+}
+div.dropzone {
+  position: relative;
+  height: 6rem;
+  border-radius: .3rem;
+  background-color: var(--color-bg-alt);
+  margin-top: .5rem;
+}
+div.dropzone p {
+  color: var(--color-placeholder);
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+div.dropzone .file-name {
+  display: flex;
+  color: var(--color-text);
+  font-size: 1rem;
+}
+div.dropzone .file-name:nth-child(1) {
+  cursor: pointer;
+}

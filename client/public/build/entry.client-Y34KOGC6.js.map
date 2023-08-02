@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../app/entry.client.tsx"],
+  "sourcesContent": ["import { jsx } from \"react/jsx-runtime\";\nimport * as __hmr__ from \"remix:hmr\";\nif (import.meta) {\n  import.meta.hot = __hmr__.createHotContext(\n    //@ts-expect-error\n    \"app\\\\entry.client.tsx\"\n  );\n  import.meta.hot.lastModified = \"1690992447605.2869\";\n}\nimport { RemixBrowser } from \"@remix-run/react\";\nimport { startTransition, StrictMode } from \"react\";\nimport { hydrateRoot } from \"react-dom/client\";\nstartTransition(() => {\n  hydrateRoot(\n    document,\n    /* @__PURE__ */ jsx(StrictMode, { children: /* @__PURE__ */ jsx(RemixBrowser, {}) })\n  );\n});\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;AAAA,yBAAoB;AAUpB,IAAAA,gBAA4C;AAC5C,oBAA4B;AAT5B,IAAI,aAAa;AACf,cAAY,MAAc;AAAA;AAAA,IAExB;AAAA,EACF;AACA,cAAY,IAAI,eAAe;AACjC;AAAA,IAIA,+BAAgB,MAAM;AACpB;AAAA,IACE;AAAA,IACgB,4CAAI,0BAAY,EAAE,UAA0B,4CAAI,cAAc,CAAC,CAAC,EAAE,CAAC;AAAA,EACrF;AACF,CAAC;",
+  "names": ["import_react"]
+}

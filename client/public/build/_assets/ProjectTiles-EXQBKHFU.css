@@ -1,0 +1,112 @@
+@import "https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap";
+
+/* app/styles/pages/ProjectTiles.css */
+@font-face {
+  font-family: Caros;
+  src: url(/build/_assets/CarosLight-RVXAWV56.woff2) format("woff2"), url(/build/_assets/CarosLight-VP3PAXST.woff) format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: Caros;
+  src: url(/build/_assets/CarosBold-G3GDJIDN.woff2) format("woff2"), url(/build/_assets/CarosBold-2O2XLE43.woff) format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: Caros;
+  src: url(/build/_assets/CarosMedium-TWLYIRTD.woff2) format("woff2"), url(/build/_assets/CarosMedium-XPVTVHV6.woff) format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: Caros;
+  src: url(/build/_assets/Caros-FJOSMKIY.woff2) format("woff2"), url(/build/_assets/Caros-UZ47DW2K.woff) format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+div.kz-project {
+  position: relative;
+  background-color: var(--color-bg);
+  padding: 1rem;
+}
+div.kz-project div.dots1,
+div.kz-project div.dots2 {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  width: 8rem;
+  height: 4rem;
+}
+div.kz-project div.dots1 img,
+div.kz-project div.dots2 img {
+  width: 100%;
+  height: 100%;
+  opacity: .7;
+}
+div.kz-project div.dots1 {
+  top: 14%;
+  left: 45%;
+  transform: rotate(90deg) translate(-50%);
+}
+@media only screen and (max-width: 576px) and (orientation: portrait) {
+  div.kz-project div.dots1 {
+    display: none;
+  }
+}
+div.kz-project div.dots2 {
+  bottom: 2%;
+  left: 10%;
+}
+div.kz-project div.kz-project-tiles {
+  position: relative;
+  margin: 1rem auto;
+  min-height: 12rem;
+  padding: 0 4rem;
+}
+@media only screen and (max-width: 576px) and (orientation: portrait) {
+  div.kz-project div.kz-project-tiles {
+    padding: 0 1rem;
+  }
+}
+@media (max-width: 720px) {
+  div.kz-project div.kz-project-tiles {
+    padding: 0 2rem;
+  }
+}
+@media (max-width: 1024px) {
+  div.kz-project div.kz-project-tiles {
+    padding: 0 2rem;
+  }
+}
+div.kz-project div.kz-task-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+div.kz-project div.kz-shimmer {
+  display: flex;
+  width: 20rem;
+  justify-content: space-between;
+  position: relative;
+  margin: 2rem auto;
+}
+@media only screen and (max-width: 576px) and (orientation: portrait) {
+  div.kz-project div.kz-shimmer {
+    padding: 0 1rem;
+  }
+}
+@media (max-width: 720px) {
+  div.kz-project div.kz-shimmer {
+    padding: 0 2rem;
+  }
+}
+@media (max-width: 1024px) {
+  div.kz-project div.kz-shimmer {
+    padding: 0 2rem;
+  }
+}

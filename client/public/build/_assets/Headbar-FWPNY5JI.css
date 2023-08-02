@@ -1,0 +1,17 @@
+/* app/styles/shared/components/Headbar.css */
+.kz-headbar {
+  padding: .2rem .2rem .4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .8rem;
+  z-index: 9999;
+  background-image: linear-gradient(to right, #e71d00, #ff9181);
+  border-bottom-right-radius: .25rem;
+  border-bottom-left-radius: .25rem;
+  text-align: center;
+}
+.kz-headbar a {
+  padding-bottom: 2px;
+  border-bottom: 1px dashed var(--color-text);
+}
