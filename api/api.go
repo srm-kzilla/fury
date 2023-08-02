@@ -3,7 +3,7 @@ package api
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/srm-kzilla/Recruitments/api/routes"
-	"github.com/srm-kzilla/Recruitments/utils"
+	"github.com/srm-kzilla/Recruitments/api/utils"
 )
 
 func SetupApp(app *fiber.App) {
