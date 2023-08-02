@@ -113,7 +113,7 @@ func calculateStudentYear(regNo string) int {
 }
 
 func filterName(familyName string) string {
-	index := strings.Index(familyName, "(")
+	index := strings.Index(familyName, " (")
 
 	if index < 0 {
 		return familyName
