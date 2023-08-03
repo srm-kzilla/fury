@@ -4,6 +4,8 @@ const GoogleUserInfoApi = "https://www.googleapis.com/oauth2/v2/userinfo?access_
 const SrmEmailDomain = "@srmist.edu.in"
 const GoogleAccessTokenInfoApi = "https://www.googleapis.com/oauth2/v3/tokeninfo?access_token="
 
+var Domains = [4]string{"technical", "editorial", "corporate", "events"}
+
 var Questions = map[string]map[int]string{
 	"technical": {
 		1: "What is the difference between a process and a thread?",
