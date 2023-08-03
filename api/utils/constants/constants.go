@@ -4,7 +4,7 @@ const GoogleUserInfoApi = "https://www.googleapis.com/oauth2/v2/userinfo?access_
 const SrmEmailDomain = "@srmist.edu.in"
 const GoogleAccessTokenInfoApi = "https://www.googleapis.com/oauth2/v3/tokeninfo?access_token="
 
-var Domains = [4]string{"technical", "editorial", "corporate", "events"}
+var Domains = [7]string{"technical", "editorial", "corporate", "events", "gfx", "vfx", "content"}
 
 var Questions = map[string]map[int]string{
 	"technical": {
@@ -33,6 +33,11 @@ var Questions = map[string]map[int]string{
 		3: "What is the difference between a boss and a leader?",
 	},
 	"vfx": {
+		1: "What is the difference between a leader and a manager?",
+		2: "What is the difference between a team and a group?",
+		3: "What is the difference between a boss and a leader?",
+	},
+	"content": {
 		1: "What is the difference between a leader and a manager?",
 		2: "What is the difference between a team and a group?",
 		3: "What is the difference between a boss and a leader?",

@@ -117,14 +117,16 @@ func GetQuestions(c *fiber.Ctx) error {
 		})
 	}
 
-	// exist := slices.Contains(constants.Domains, domain)
-	// if !exist {
-	// 	return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
-	// 		"error": "domain is invalid",
-	// 	})
-	// }
+	var questions map[int]string
 
-	questions := constants.Questions[domain]
+	for _, item := range constants.Domains[:] {
+		if item == domain {
+			questions = constants.Questions[domain]
+			return c.Status(fiber.StatusOK).JSON(questions)
+		}
+	}
+	return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+		"error": "domain is invalid",
+	})
 
-	return c.Status(fiber.StatusOK).JSON(questions)
 }
