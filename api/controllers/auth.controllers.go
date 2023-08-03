@@ -133,11 +133,12 @@ func registerUserInDb(user models.UserData) error {
 		return nil
 	}
 	newUser := models.User{
-		Name:      user.Name,
-		RegNo:     user.RegNo,
-		Year:      user.Year,
-		Email:     user.Email,
-		CreatedAt: time.Now().Unix(),
+		Name:        user.Name,
+		RegNo:       user.RegNo,
+		Year:        user.Year,
+		Email:       user.Email,
+		Application: []models.Application{},
+		CreatedAt:   time.Now().Unix(),
 	}
 	_, e := usersCollection.InsertOne(context.Background(), newUser)
 	if e != nil {
