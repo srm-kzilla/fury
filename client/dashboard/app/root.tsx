@@ -87,14 +87,6 @@ function App() {
       });
   }, []);
 
-  useEffect(() => {
-    (async () => {
-      const {
-        data: { headline },
-      } = await APIService.getInstance().fetchHeadline();
-      setHeadline(headline);
-    })();
-  }, []);
 
   return (
     <>
