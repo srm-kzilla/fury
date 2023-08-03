@@ -29,6 +29,9 @@ dependencies:
   framer-motion:
     specifier: ^10.13.1
     version: 10.13.1(react-dom@18.2.0)(react@18.2.0)
+  markdown-to-jsx:
+    specifier: ^7.2.1
+    version: 7.2.1(react@18.2.0)
   next:
     specifier: 13.4.9
     version: 13.4.9(react-dom@18.2.0)(react@18.2.0)
@@ -1789,6 +1792,15 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       yallist: 4.0.0
+    dev: false
+
+  /markdown-to-jsx@7.2.1(react@18.2.0):
+    resolution: {integrity: sha512-9HrdzBAo0+sFz9ZYAGT5fB8ilzTW+q6lPocRxrIesMO+aB40V9MgFfbfMXxlGjf22OpRy+IXlvVaQenicdpgbg==}
+    engines: {node: '>= 10'}
+    peerDependencies:
+      react: '>= 0.14.0'
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /merge-stream@2.0.0:
