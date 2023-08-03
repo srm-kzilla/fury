@@ -13,9 +13,9 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/srm-kzilla/Recruitments/api/models"
+	"github.com/srm-kzilla/Recruitments/api/utils"
 	"github.com/srm-kzilla/Recruitments/api/utils/constants"
 	"github.com/srm-kzilla/Recruitments/api/utils/database"
-	"github.com/srm-kzilla/Recruitments/api/utils"
 	"go.mongodb.org/mongo-driver/bson"
 	"golang.org/x/oauth2"
 )
@@ -136,4 +136,24 @@ func registerUserInDb(user models.UserData) error {
 		return e
 	}
 	return nil
+}
+
+func RefreshAccessTokenGoogle(c *fiber.Ctx) error {
+	refreshToken := c.Query("refresh_token")
+	if refreshToken == "" {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error": "Invalid request",
+		})
+	}
+	token, err := utils.AppConfig.TokenSource(context.Background(), &oauth2.Token{RefreshToken: refreshToken}).Token()
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"error": err.Error(),
+		})
+	}
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{
+		"access_token": token.AccessToken,
+		"token_type":   token.TokenType,
+		"expires_in":   token.Expiry,
+	})
 }
