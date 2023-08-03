@@ -46,7 +46,7 @@ func GetUser(c *fiber.Ctx) error {
 	userId := c.Locals("userId").(primitive.ObjectID)
 	if userId == primitive.NilObjectID {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
-			"error": "User email is missing",
+			"error": "User ObjectID is missing",
 		})
 	}
 	usersCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "users")
