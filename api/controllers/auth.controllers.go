@@ -55,7 +55,7 @@ func getUserDetailsGoogle(code string) (models.Auth, error) {
 	if err != nil {
 		return models.Auth{}, err
 	}
-	user, err := http.Get(constants.GoogleUserInfoApi + token.AccessToken)
+	user, err := http.Get(constants.GOOGLE_USER_INFO + token.AccessToken)
 	if err != nil {
 		return models.Auth{}, err
 	}
@@ -65,7 +65,7 @@ func getUserDetailsGoogle(code string) (models.Auth, error) {
 	if err != nil {
 		return models.Auth{}, err
 	}
-	if !strings.HasSuffix(userData.Email, constants.SrmEmailDomain) {
+	if !strings.HasSuffix(userData.Email, constants.SRM_EMAIL_DOMAIN) {
 		return models.Auth{}, errors.New("use srm mail id")
 	}
 	userData.RegNo = retrieveRegNoFromLastName(userData.FamilyName)

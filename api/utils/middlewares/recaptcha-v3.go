@@ -28,7 +28,7 @@ func CheckRecaptcha(secret, response, clientIP string) error {
 		"remoteip": {clientIP},
 	}
 
-	resp, err := http.PostForm(constants.GoogleRecaptchaVerifyApi, recaptchaPayload)
+	resp, err := http.PostForm(constants.GOOGLE_RECAPTCHA_VERIFY, recaptchaPayload)
 	if err != nil {
 		return err
 	}

@@ -1,11 +1,10 @@
 package constants
 
-const GoogleUserInfoApi = "https://www.googleapis.com/oauth2/v2/userinfo?access_token="
-const SrmEmailDomain = "@srmist.edu.in"
-const GoogleAccessTokenInfoApi = "https://www.googleapis.com/oauth2/v3/tokeninfo?access_token="
+const GOOGLE_USER_INFO = "https://www.googleapis.com/oauth2/v2/userinfo?access_token="
+const SRM_EMAIL_DOMAIN = "@srmist.edu.in"
+const GOOGLE_ACCESS_TOKEN_INFO = "https://www.googleapis.com/oauth2/v3/tokeninfo?access_token="
 
-const GoogleRecaptchaVerifyApi = "https://www.google.com/recaptcha/api/siteverify"
-
+const GOOGLE_RECAPTCHA_VERIFY = "https://www.google.com/recaptcha/api/siteverify"
 
 var Domains = [7]string{"technical", "editorial", "corporate", "events", "gfx", "vfx", "content"}
 
@@ -46,4 +45,3 @@ var Questions = map[string]map[int]string{
 		3: "What is the difference between a boss and a leader?",
 	},
 }
-
