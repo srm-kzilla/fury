@@ -59,8 +59,8 @@ export default function Home() {
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#000" />
       </Head>
-      <Navbar />
       <Headbar />
+      <Navbar />
       <Hero />
       <Life />
       <Roadmap />
