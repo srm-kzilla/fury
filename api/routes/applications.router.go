@@ -8,5 +8,6 @@ import (
 func ApplicationRoutes(router fiber.Router) {
 	router.Post("/", controllers.CreateApplication)
 	router.Put("/:regNo", controllers.UpdateDraft)
+	router.Get("/questions/:domain", controllers.GetQuestions)
 
 }

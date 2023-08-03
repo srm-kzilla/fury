@@ -7,7 +7,8 @@ import (
 	"github.com/charmbracelet/log"
 	"github.com/gofiber/fiber/v2"
 	"github.com/srm-kzilla/Recruitments/api/models"
-	"github.com/srm-kzilla/Recruitments/database"
+	"github.com/srm-kzilla/Recruitments/api/utils/constants"
+	"github.com/srm-kzilla/Recruitments/api/utils/database"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
@@ -115,23 +116,17 @@ func GetQuestions(c *fiber.Ctx) error {
 			"error": "domain is required",
 		})
 	}
-	questionsCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "questions")
-	if e != nil {
-		log.Error("Error: ", e)
-		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"error":   e.Error(),
-			"message": "Error getting questions collection",
-		})
-	}
 
-	var questions models.Question
-	err := questionsCollection.FindOne(context.Background(), bson.M{"domain": domain}).Decode(&questions)
-	if err != nil {
-		log.Error("Error", err)
-		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
-			"error":   err.Error(),
-			"message": "Domain not found",
-		})
+	var questions map[int]string
+
+	for _, item := range constants.Domains[:] {
+		if item == domain {
+			questions = constants.Questions[domain]
+			return c.Status(fiber.StatusOK).JSON(questions)
+		}
 	}
-	return c.Status(fiber.StatusOK).JSON(questions)
+	return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+		"error": "domain is invalid",
+	})
+
 }

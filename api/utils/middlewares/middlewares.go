@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/srm-kzilla/Recruitments/constants"
+	"github.com/srm-kzilla/Recruitments/api/utils/constants"
 )
 
 type GoogleAccessTokenInfo struct {

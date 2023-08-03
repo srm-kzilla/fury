@@ -3,7 +3,7 @@ package routes
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/srm-kzilla/Recruitments/api/controllers"
-	"github.com/srm-kzilla/Recruitments/middlewares"
+	"github.com/srm-kzilla/Recruitments/api/utils/middlewares"
 )
 
 func UserRoutes(router fiber.Router) {

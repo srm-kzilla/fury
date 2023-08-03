@@ -6,7 +6,7 @@ import (
 	"github.com/charmbracelet/log"
 	"github.com/gofiber/fiber/v2"
 	"github.com/srm-kzilla/Recruitments/api/models"
-	"github.com/srm-kzilla/Recruitments/database"
+	"github.com/srm-kzilla/Recruitments/api/utils/database"
 	"go.mongodb.org/mongo-driver/bson"
 	"github.com/aws/aws-sdk-go/aws"
     "github.com/aws/aws-sdk-go/aws/session"

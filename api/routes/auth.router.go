@@ -6,6 +6,7 @@ import (
 )
 
 func AuthRoutes(router fiber.Router) {
-	router.Get("/google/login", controllers.GoogleLogin)
-	router.Get("/google/token", controllers.GetAccessTokenGoogle)
+	google := router.Group("/google/")
+	google.Post("/token", controllers.GetAccessTokenGoogle)
+	google.Get("/refresh", controllers.RefreshAccessTokenGoogle)
 }

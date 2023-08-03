@@ -1,5 +1,5 @@
 import Skeleton from "react-loading-skeleton";
-import loadingShimmerStyles from "~/styles/Components/LoadingShimmer.css";
+import loadingShimmerStyles from "~/styles/components/LoadingShimmer.css";
 import type { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => [

@@ -6,7 +6,7 @@ import (
 	"os"
 	"github.com/gofiber/fiber/v2"
 	"github.com/srm-kzilla/Recruitments/api/models"
-	"github.com/srm-kzilla/Recruitments/database"
+	"github.com/srm-kzilla/Recruitments/api/utils/database"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 )
