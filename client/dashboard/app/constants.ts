@@ -39,7 +39,7 @@ export const Constants = {
 const env = getEnv();
 
 export const API = {
-  BASE_URL: env.API_BASE_URL,
+  BASE_URL: env.OLD_API_BASE_URL,
   ENDPOINTS: {
     USERS: {
       BASE_URL: function () {

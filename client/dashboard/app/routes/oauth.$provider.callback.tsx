@@ -1,56 +1,50 @@
-import { useContext, useEffect, useState } from "react";
-import { useLocation, useNavigate } from "@remix-run/react";
-import { APIService } from "~/shared/services/api-service";
-import { AuthStore } from "~/shared/stores";
-import { observer } from "mobx-react";
-import { Loading } from "~/shared/components";
 import { toast } from "~/shared/utils/toast";
+import { createUserSession } from "~/utils/session.server";
+import { getAccessTokenFromCode } from "~/utils/api.server";
+import { json } from "@remix-run/node";
+import { useLoaderData, useNavigate } from "@remix-run/react";
+import { useEffect } from "react";
+import { Loading } from "~/shared/components";
+import type { LoaderFunction } from "@remix-run/node";
 
-function useQuery() {
-  return new URLSearchParams(useLocation().search);
-}
+type LoaderData = {
+  error?: string;
+};
 
-const OAuthRedirect = () => {
-  let query = useQuery();
-  let navigate = useNavigate();
-  const authStore = useContext(AuthStore);
+export const loader: LoaderFunction = async ({ request }) => {
+  const data = await getAccessTokenFromCode(request);
 
-  const [code] = useState(query.get("code"));
+  if (data.error) {
+    return json({
+      error: "Use SRM Email to Register",
+    });
+  }
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const response = await APIService.getInstance().getAccessToken(code!);
+  const { access_token, refresh_token, expires_in } = data;
 
-        const refresh_token = response.data.result.refresh_token;
-
-        const access_token = response.data.result.access_token;
-        authStore.setAuthorization({
-          access_token,
-          provider: "google",
-          refresh_token,
-        });
-
-        const {
-          data: { user },
-        } = await APIService.getInstance().fetchUserInfo();
-        authStore.setUser(user);
-        navigate("/dashboard");
-      } catch (e) {
-        toast({
-          title: "We shot past the moon",
-          message:
-            "Landing back to #Recruitment2022 failed. Please try again in a moment.",
-        });
-      }
-    })();
-  }, []);
-
-  return (
-    <div className="kz-oauth-redirect">
-      <Loading />
-    </div>
+  return createUserSession(
+    access_token,
+    refresh_token,
+    expires_in,
+    "/dashboard"
   );
 };
 
-export default observer(OAuthRedirect);
+export default function OAuthProviderCallback() {
+  const navigate = useNavigate();
+  const { error } = useLoaderData<LoaderData>();
+
+  useEffect(() => {
+    toast({
+      title: "Not Allowed!",
+      theme: "error",
+      message: error,
+    });
+
+    const timeout = setTimeout(() => navigate("/start"), 5000);
+
+    return () => clearInterval(timeout);
+  }, []);
+
+  return <Loading />;
+}
