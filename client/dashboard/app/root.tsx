@@ -74,7 +74,6 @@ export const loader = () => {
 
 function App() {
   const authStore = useContext(AuthStore);
-  const [headline, setHeadline] = useState("");
 
   useEffect(() => {
     APIService.getInstance()
