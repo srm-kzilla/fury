@@ -70,10 +70,10 @@ const DomainSelect = () => {
       setOptions(
         domainOptions.filter((domain) => {
           const domainExists = userProjects.find(
-            (project: any) => project.domain === domain.value,
+            (project: any) => project.domain === domain.value
           );
           return !domainExists;
-        }),
+        })
       );
       setLoading(false);
     };

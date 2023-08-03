@@ -74,3 +74,17 @@ div.kz-sidebar {
     }
   }
 }
+
+@media only screen and (max-width: 768px) {
+  div.kz-sidebar {
+    .logo {
+      text-align: center;
+      margin-top: 25px;
+
+      img {
+        width: 80%;
+        cursor: pointer;
+      }
+    }
+  }
+}
