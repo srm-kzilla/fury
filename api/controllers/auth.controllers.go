@@ -20,14 +20,6 @@ import (
 	"golang.org/x/oauth2"
 )
 
-func GoogleLogin(c *fiber.Ctx) error {
-	url := utils.AppConfig.AuthCodeURL("state-token", oauth2.AccessTypeOffline)
-	err := c.Redirect(url)
-	if err != nil {
-		return c.SendStatus(fiber.StatusInternalServerError)
-	}
-	return nil
-}
 func GetAccessTokenGoogle(c *fiber.Ctx) error {
 	code := c.Query("code")
 	if code == "" {
