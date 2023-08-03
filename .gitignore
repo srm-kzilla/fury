@@ -5,3 +5,4 @@ tmp/main
 .vscode/
 tmp
 .DS_Store
+client/**/build
