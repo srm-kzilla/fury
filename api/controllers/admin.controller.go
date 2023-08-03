@@ -2,8 +2,9 @@ package controllers
 
 import (
 	"context"
-	"github.com/charmbracelet/log"
 	"os"
+
+	"github.com/charmbracelet/log"
 	"github.com/gofiber/fiber/v2"
 	"github.com/srm-kzilla/Recruitments/api/models"
 	"github.com/srm-kzilla/Recruitments/api/utils/database"
@@ -13,12 +14,12 @@ import (
 
 func GetAllApplications(c *fiber.Ctx) error {
 	var applications []bson.M
-	applicationsCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "applications")
+	applicationsCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "users")
 	if e != nil {
 		log.Error("Error: ", e)
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"error":   e.Error(),
-			"message": "Error getting applications collection",
+			"message": "Error getting users collection",
 		})
 	}
 
@@ -42,12 +43,12 @@ func GetApplications(c *fiber.Ctx) error {
 			"error": "Domain is required",
 		})
 	}
-	applicationsCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "applications")
+	applicationsCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "users")
 	if e != nil {
 		log.Error("Error: ", e)
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"error":   e.Error(),
-			"message": "Error getting applications collection",
+			"message": "Error getting users collection",
 		})
 	}
 
@@ -68,12 +69,12 @@ func UpdateApplications(c *fiber.Ctx) error {
 	var check models.Application
 	c.BodyParser(&application)
 
-	applicationsCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "applications")
+	applicationsCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "users")
 	if e != nil {
 		log.Error("Error: ", e)
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"error":   e.Error(),
-			"message": "Error getting applications collection",
+			"message": "Error getting users collection",
 		})
 	}
 
