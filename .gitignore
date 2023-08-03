@@ -6,3 +6,4 @@ tmp/main
 tmp
 .DS_Store
 build/
+.cache/
