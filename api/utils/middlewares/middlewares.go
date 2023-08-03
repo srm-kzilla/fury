@@ -31,34 +31,36 @@ func UserAuthenticate(c *fiber.Ctx) error {
 		})
 	}
 	token := strings.Split(accessToken, " ")[1]
-	err := getGoogleAccessTokenInfo(token)
+	email, err := getGoogleAccessTokenInfo(token)
 	if err != nil {
 		return c.Status(401).JSON(fiber.Map{
 			"message": "Invalid token",
 		})
 	}
+	c.Locals("email", email)
 	return c.Next()
 }
 
-func getGoogleAccessTokenInfo(accessToken string) error {
+func getGoogleAccessTokenInfo(accessToken string) (string, error) {
 	var tokenInfo GoogleAccessTokenInfo
 	res, err := http.Get(constants.GoogleAccessTokenInfoApi + accessToken)
 	if err != nil {
-		return err
+		return "", err
 	}
 	defer res.Body.Close()
 
 	err = json.NewDecoder(res.Body).Decode(&tokenInfo)
 	if err != nil {
-		return err
+		return "", err
 	}
+	email := tokenInfo.Email
 	exp, err := strconv.Atoi(tokenInfo.Exp)
 	if err != nil {
-		return err
+		return "", err
 	}
 	if exp < int(time.Now().Unix()) {
-		return errors.New("token expired")
+		return "", errors.New("token expired")
 	}
-	return nil
+	return email, nil
 
 }
