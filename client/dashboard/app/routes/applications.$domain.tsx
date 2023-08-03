@@ -6,6 +6,8 @@ import tickLottie from "../assets/lotties/tick.json";
 import { Sidebar } from "~/shared/components";
 import { links as sidebarLinks } from "~/shared/components/Sidebar";
 import { useEffect, useState } from "react";
+import { useParams } from "@remix-run/react";
+import getEnv from "~/shared/utils/env";
 
 export const links: LinksFunction = () => [
   ...sidebarLinks(),
@@ -17,13 +19,14 @@ export const links: LinksFunction = () => [
 
 export default function Application() {
   const [data, setData] = useState();
+  const params = useParams();
+  const { domain } = params;
 
   useEffect(() => {
     (async () => {
       try {
-        // TODO: Change the URL to use environment variables
         const response = await fetch(
-          `${window.ENV.API_BASE_URL}/applications/get/technical`,
+          `${getEnv().API_BASE_URL}/applications/get/${domain}`,
           {
             method: "GET",
             headers: {
@@ -33,8 +36,8 @@ export default function Application() {
           }
         );
         const data = await response.json();
+        console.log({ data });
         setData(data.status);
-        console.log(data);
       } catch (error) {
         console.error(error);
       }
@@ -42,15 +45,15 @@ export default function Application() {
   }, []);
 
   return (
-    <div className={"wrapper"}>
+    <div className="wrapper">
       <div>
         <Sidebar />
       </div>
 
-      <div className={"main"}>
+      <div className="main">
         {data === "Accepted" ? (
-          <div className={"mainAccepted"}>
-            <div className={"wrapperAccepted"}>
+          <div className="mainAccepted">
+            <div className="wrapperAccepted">
               <Lottie
                 style={{ width: "60%", height: "60%" }}
                 options={{
@@ -62,26 +65,26 @@ export default function Application() {
                   },
                 }}
               />
-              <div className={"text"}>
+              <div className="text">
                 <h1>Accepted</h1>
                 <p>We loved you!</p>
               </div>
-              <div className={"statusWrapper"}>
+              <div className="statusWrapper">
                 <div>
-                  <div className={"greenCircle"}></div>
+                  <div className="greenCircle"></div>
                   <p>Draft</p>
                 </div>
                 <div>
-                  <div className={"greenCircle"}></div>
+                  <div className="greenCircle"></div>
                   <p>In Review</p>
                 </div>
                 <div>
-                  <div className={"greenCircle"}></div>
+                  <div className="greenCircle"></div>
                   <p>Accepted</p>
                 </div>
               </div>
             </div>
-            <div className={"wrapperText"}>
+            <div className="wrapperText">
               <h1>What's next?</h1>
               <p>
                 You will get an email from us regarding the interview where
@@ -98,7 +101,7 @@ export default function Application() {
             </div>
           </div>
         ) : data === "Rejected" ? (
-          <div className={"rejectWrapper"}>
+          <div className="rejectWrapper">
             <h1>
               We carefully reviewed your submission,{" "}
               <span>and decided not to proceed with your application.</span>
@@ -114,13 +117,13 @@ export default function Application() {
               wish you the best of luck in your search. We hope to see you
               reapply for a future batch.
             </p>
-            <div className={"statusWrapper"}>
+            <div className="statusWrapper">
               <div>
-                <div className={"greenCircle"}></div>
+                <div className="greenCircle"></div>
                 <p>Draft</p>
               </div>
               <div>
-                <div className={"greenCircle"}></div>
+                <div className="greenCircle"></div>
                 <p>In Review</p>
               </div>
               <div>
@@ -130,8 +133,8 @@ export default function Application() {
             </div>
           </div>
         ) : data === "in_review" ? (
-          <div className={"main"}>
-            <div className={"lottie"}>
+          <div className="main">
+            <div className="lottie">
               <Lottie
                 style={{ width: "80%", height: "80%" }}
                 options={{
@@ -150,17 +153,17 @@ export default function Application() {
             <div>
               <p>We are reviewing applications on a rolling basis.</p>
             </div>
-            <div className={"statusWrapper"}>
+            <div className="statusWrapper">
               <div>
-                <div className={"greenCircle"}></div>
+                <div className="greenCircle"></div>
                 <p>Draft</p>
               </div>
               <div>
-                <div className={"greenCircle"}></div>
+                <div className="greenCircle"></div>
                 <p>In Review</p>
               </div>
               <div>
-                <div className={"borderCircle"}></div>
+                <div className="borderCircle"></div>
                 <p>Accepted</p>
               </div>
             </div>
