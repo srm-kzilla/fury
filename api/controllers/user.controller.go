@@ -107,18 +107,22 @@ func UpdateUser(c *fiber.Ctx) error {
 }
 
 func UploadResume(c *fiber.Ctx) error {
-
-	file, err := c.FormFile("resume")
-
 	var maxFileSize int64 = 1024 * 1024 * 10
 
+	file, err := c.FormFile("resume")
 	if err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error":   "File not found in the request",
 			"message": err.Error(),
 		})
 	}
-
+	userId := c.Locals("userId").(primitive.ObjectID).Hex()
+	if userId == "" {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error":   "User ObjectID is missing",
+			"message": err.Error(),
+		})
+	}
 	if file.Header.Get("Content-Type") != "application/pdf" {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error":   "Invalid file format. Only PDF files are allowed.",
@@ -161,7 +165,7 @@ func UploadResume(c *fiber.Ctx) error {
 	defer srcFile.Close()
 
 	// @aryan replace this when middleware is ready
-	key := "your_object_key.pdf"
+	key := userId + ".pdf"
 
 	params := &s3.PutObjectInput{
 		Bucket: aws.String(os.Getenv("AWS_S3_BUCKET")),

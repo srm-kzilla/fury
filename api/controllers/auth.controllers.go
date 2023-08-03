@@ -17,6 +17,7 @@ import (
 	"github.com/srm-kzilla/Recruitments/api/utils/constants"
 	"github.com/srm-kzilla/Recruitments/api/utils/database"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"golang.org/x/oauth2"
 )
 
@@ -133,6 +134,7 @@ func registerUserInDb(user models.UserData) error {
 		return nil
 	}
 	newUser := models.User{
+		ID:          primitive.NewObjectID(),
 		Name:        user.Name,
 		RegNo:       user.RegNo,
 		Year:        user.Year,
