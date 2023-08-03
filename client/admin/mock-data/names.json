@@ -1,0 +1,88 @@
+[
+{
+    "id":1,
+    "name":"John Doe",
+    "regno":"RA23---",
+    "year":1,
+    "email":"someemail@gmail.com",
+    "gender":"male",
+    "contact":1234567890,
+    "socials":{
+        "github":"name_dev",
+        "linkedin":"name_lastname",
+        "portfolio":"link"
+    }
+},
+{
+    "id":1,
+    "name":"Jane Doe",
+    "regno":"RA23---",
+    "year":1,
+    "email":"someemail@gmail.com",
+    "gender":"female",
+    "contact":1234567890,
+    "socials":{
+        "github":"name_dev",
+        "linkedin":"name_lastname",
+        "portfolio":"link"
+    }
+},
+{
+    "id":1,
+    "name":"John Doe",
+    "regno":"RA23---",
+    "year":1,
+    "email":"someemail@gmail.com",
+    "gender":"male",
+    "contact":1234567890,
+    "socials":{
+        "github":"name_dev",
+        "linkedin":"name_lastname",
+        "portfolio":"link"
+    }
+},
+{
+    "id":1,
+    "name":"Jane Doe",
+    "regno":"RA23---",
+    "year":1,
+    "email":"someemail@gmail.com",
+    "gender":"female",
+    "contact":1234567890,
+    "socials":{
+        "github":"name_dev",
+        "linkedin":"name_lastname",
+        "portfolio":"link"
+    }
+  
+},
+{
+    "id":1,
+    "name":"John Doe",
+    "regno":"RA23---",
+    "year":1,
+    "email":"someemail@gmail.com",
+    "gender":"male",
+    "contact":1234567890,
+    "socials":{
+        "github":"name_dev",
+        "linkedin":"name_lastname",
+        "portfolio":"link"
+    }
+},
+{
+    "id":1,
+    "name":"Jane Doe",
+    "regno":"RA23---",
+    "year":1,
+    "email":"someemail@gmail.com",
+    "gender":"female",
+    "contact":1234567890,
+    "socials":{
+        "github":"name_dev",
+        "linkedin":"name_lastname",
+        "portfolio":"link"
+    }
+  
+}
+]
