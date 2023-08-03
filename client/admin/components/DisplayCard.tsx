@@ -34,9 +34,9 @@ const DisplayCard = ({ ...person }: PersonType) => {
             </h1>
           </div>
 
-          <div className="relative right-10">
+          <div className="relative left-1/4">
             <Drawer.Trigger asChild>
-              <button className="text-kz-orange text-xs left-10 hover:text-sm">
+              <button className="text-kz-orange text-xs hover:text-sm">
                 Read More...
               </button>
             </Drawer.Trigger>
@@ -45,14 +45,15 @@ const DisplayCard = ({ ...person }: PersonType) => {
 
         <Drawer.Portal>
           <Drawer.Overlay className="fixed bg-kz-lt-grey" />
-          <Drawer.Content className="bg-kz-white flex flex-col mt-24 fixed bottom-0 left-0 right-0">
-            <div className="p-4 bg-kz-lt-grey text-kz-white">
+          <Drawer.Content className="bg-kz-grey flex flex-col fixed max-h-[85vh] mt-24 bottom-0 left-0 right-0">
+            <div className="w-full overflow-auto p-4 rounded-t-3xl bg-kz-lt-grey text-kz-white">
               <div className="mx-auto w-12 h-1.5 rounded-full bg-kz-orange mb-8" />
               <div className="max-w-md mx-auto">
                 <Drawer.Title className="font-semibold text-xl mb-4">
                   {person.name}
+                  <hr className="text-kz-orange mt-2" />
                 </Drawer.Title>
-                <p className="text-zinc-600 mb-2">
+                <p className="mb-2">
                   <span className="font-bold">GitHub</span> :{" "}
                   {person.socials.github}
                   <br />
@@ -61,6 +62,7 @@ const DisplayCard = ({ ...person }: PersonType) => {
                   <br />
                   <span className="font-bold">Portfolio</span> :{" "}
                   {person.socials.portfolio}
+                  <hr className="mt-2 text-kz-orange" />
                 </p>
                 <div>
                   <h1 className="my-2 font-bold">
@@ -70,7 +72,7 @@ const DisplayCard = ({ ...person }: PersonType) => {
                     <div key={index} className="my-5">
                       Q.{index + 1} {question.question}
                       <br />
-                      A.{question.answer}
+                      A. {question.answer}
                     </div>
                   ))}
                 </div>

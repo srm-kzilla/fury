@@ -7,10 +7,10 @@ module.exports = {
   ],
   theme: {
     colors: {
-      "kz-grey": "#111111",
+      "kz-grey": "#1d1c1c",
       "kz-orange": "#c75305",
       "kz-white": "#ffffff",
-      "kz-lt-grey": "#151319",
+      "kz-lt-grey": "#353535",
     },
     fontFamily: {
       body: ["Cal Sans"],
