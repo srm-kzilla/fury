@@ -19,7 +19,7 @@ const DropzoneComponent = (props: Props) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   let { domain, setDomain } = useContext(StoreContext);
   let selectedDomain = questionArray.find(
-    (obj: Question) => obj.domain == domain,
+    (obj: Question) => obj.domain == domain
   );
 
   return (
