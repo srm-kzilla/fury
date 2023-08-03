@@ -60,7 +60,7 @@ export default function Home() {
         <meta name="theme-color" content="#000" />
       </Head>
       <Navbar />
-      <Headbar headline="Dear Freshers, we see you can't wait. Recruitments are now open! ;) #2022Wrapped" />
+      <Headbar />
       <Hero />
       <Life />
       <Roadmap />
