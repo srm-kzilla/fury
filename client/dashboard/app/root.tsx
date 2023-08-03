@@ -77,7 +77,6 @@ export const loader = () => {
 
 function App() {
   const authStore = useContext(AuthStore);
-  const [headline, setHeadline] = useState("");
 
   useEffect(() => {
     APIService.getInstance()
@@ -90,19 +89,14 @@ function App() {
       });
   }, []);
 
-  useEffect(() => {
-    (async () => {
-      const {
-        data: { headline },
-      } = await APIService.getInstance().fetchHeadline();
-      setHeadline(headline);
-    })();
-  }, []);
-
   return (
     <>
       <Layout>
-        <Headbar headline={headline} />
+        <Headbar
+          headline={
+            "Dear Freshers, we see you can't wait. Recruitments open soon ;) [#2023Wrapped](https://photos.google.com/share/AF1QipORRPNrrr85gqjyS5pE43TsBKHW8PxfwUJ3hKXAgdv0SxSTKeExuMFM9RiCbIPNLQ?key=UUtMem5BOS1LeF9kYU1MWmlYRk05eGhZVVJRYXRn)"
+          }
+        />
         <div className="App">
           <Store>
             <Outlet />

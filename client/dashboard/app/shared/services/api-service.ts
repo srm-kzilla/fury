@@ -24,7 +24,7 @@ export class APIService {
         }
         return config;
       },
-      (error) => Promise.reject(error),
+      (error) => Promise.reject(error)
     );
 
     this.instance.interceptors.response.use(
@@ -53,7 +53,7 @@ export class APIService {
               });
           }
         }
-      },
+      }
     );
 
     this.instance.interceptors.request.use(
@@ -71,12 +71,12 @@ export class APIService {
           ].includes(config.method!)
         ) {
           config.headers["x-recaptcha-token"] = await getRecaptchaToken(
-            "action",
+            "action"
           );
         }
         return config;
       },
-      (error) => Promise.reject(error),
+      (error) => Promise.reject(error)
     );
 
     this.instance.interceptors.response.use(
@@ -88,7 +88,7 @@ export class APIService {
           window.location.reload();
         }
         throw error;
-      },
+      }
     );
   }
 
@@ -108,7 +108,7 @@ export class APIService {
       API.ENDPOINTS.AUTH.BASE_URL() + API.ENDPOINTS.AUTH.EXCHANGE_TOKEN(),
       {
         code,
-      },
+      }
     );
   }
 
@@ -118,19 +118,19 @@ export class APIService {
 
   async fetchUserActivity() {
     return this.instance.get(
-      API.ENDPOINTS.USERS.BASE_URL() + API.ENDPOINTS.USERS.ACTIVITY(),
+      API.ENDPOINTS.USERS.BASE_URL() + API.ENDPOINTS.USERS.ACTIVITY()
     );
   }
 
   async fetchUserNotifications() {
     return this.instance.get(
-      API.ENDPOINTS.USERS.BASE_URL() + API.ENDPOINTS.USERS.NOTIFICATIONS(),
+      API.ENDPOINTS.USERS.BASE_URL() + API.ENDPOINTS.USERS.NOTIFICATIONS()
     );
   }
 
   async fetchUserProjects(slug?: string) {
     return this.instance.get(
-      API.ENDPOINTS.USERS.BASE_URL() + API.ENDPOINTS.USERS.PROJECTS(slug),
+      API.ENDPOINTS.USERS.BASE_URL() + API.ENDPOINTS.USERS.PROJECTS(slug)
     );
   }
 
@@ -162,7 +162,7 @@ export class APIService {
       API.ENDPOINTS.USERS.BASE_URL() + API.ENDPOINTS.USERS.REPOS(),
       {
         params: { q: repo },
-      },
+      }
     );
   }
 
@@ -181,7 +181,7 @@ export class APIService {
         params: {
           project_slug: slug,
         },
-      },
+      }
     );
   }
 
@@ -193,7 +193,7 @@ export class APIService {
         params: {
           project_slug: slug,
         },
-      },
+      }
     );
   }
 
@@ -228,14 +228,14 @@ export class APIService {
     return this.instance.post(
       API.ENDPOINTS.APPLICATIONS.BASE_URL() +
         API.ENDPOINTS.APPLICATIONS.CREATE(),
-      formData,
+      formData
     );
   }
 
   async getApplicationBySlug(slug: string) {
     return this.instance.get(
       API.ENDPOINTS.APPLICATIONS.BASE_URL() +
-        API.ENDPOINTS.APPLICATIONS.SINGLE_APPLICATION(slug),
+        API.ENDPOINTS.APPLICATIONS.SINGLE_APPLICATION(slug)
     );
   }
 
@@ -243,7 +243,7 @@ export class APIService {
     return this.instance.post(
       API.ENDPOINTS.AUTH.BASE_URL() + API.ENDPOINTS.AUTH.ACCESS_TOKEN(),
       {},
-      { params: { code: code } },
+      { params: { code: code } }
     );
   }
 }
