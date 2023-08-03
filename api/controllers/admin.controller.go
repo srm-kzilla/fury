@@ -2,8 +2,9 @@ package controllers
 
 import (
 	"context"
-	"github.com/charmbracelet/log"
 	"os"
+
+	"github.com/charmbracelet/log"
 	"github.com/gofiber/fiber/v2"
 	"github.com/srm-kzilla/Recruitments/api/models"
 	"github.com/srm-kzilla/Recruitments/api/utils/database"
@@ -13,17 +14,17 @@ import (
 
 func GetAllApplications(c *fiber.Ctx) error {
 	var applications []bson.M
-	applicationsCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "applications")
+	usersCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "users")
 	if e != nil {
 		log.Error("Error: ", e)
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"error":   e.Error(),
-			"message": "Error getting applications collection",
+			"message": "Error getting users collection",
 		})
 	}
 
-	cursor, err := applicationsCollection.Aggregate(context.Background(), mongo.Pipeline{})
-	if err = cursor.All(context.Background(), &applications); err != nil {
+	cursor, _ := usersCollection.Aggregate(context.Background(), mongo.Pipeline{})
+	if err := cursor.All(context.Background(), &applications); err != nil {
 		log.Error("Error ", err)
 		c.Status(fiber.StatusBadGateway).JSON(fiber.Map{
 			"error":        err.Error(),
@@ -42,17 +43,17 @@ func GetApplications(c *fiber.Ctx) error {
 			"error": "Domain is required",
 		})
 	}
-	applicationsCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "applications")
+	usersCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "users")
 	if e != nil {
 		log.Error("Error: ", e)
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"error":   e.Error(),
-			"message": "Error getting applications collection",
+			"message": "Error getting users collection",
 		})
 	}
 
 	var applications models.Application
-	err := applicationsCollection.FindOne(context.Background(), bson.M{"domain": domain}).Decode(&applications)
+	err := usersCollection.FindOne(context.Background(), bson.M{"domain": domain}).Decode(&applications)
 	if err != nil {
 		log.Error("Error", err)
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
@@ -68,16 +69,16 @@ func UpdateApplications(c *fiber.Ctx) error {
 	var check models.Application
 	c.BodyParser(&application)
 
-	applicationsCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "applications")
+	usersCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "users")
 	if e != nil {
 		log.Error("Error: ", e)
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"error":   e.Error(),
-			"message": "Error getting applications collection",
+			"message": "Error getting users collection",
 		})
 	}
 
-	err := applicationsCollection.FindOne(context.Background(), bson.M{"regNo": application.RegNo}).Decode(&check)
+	err := usersCollection.FindOne(context.Background(), bson.M{"regNo": application.RegNo}).Decode(&check)
 	if err != nil {
 		log.Error("Error ", err)
 		c.Status(fiber.StatusBadGateway).JSON(fiber.Map{
@@ -87,7 +88,7 @@ func UpdateApplications(c *fiber.Ctx) error {
 	}
 
 	check.Status = application.Status
-	errr := applicationsCollection.FindOneAndReplace(context.Background(), bson.M{"regNo": application.RegNo}, check).Decode(&check)
+	errr := usersCollection.FindOneAndReplace(context.Background(), bson.M{"regNo": application.RegNo}, check).Decode(&check)
 	if errr != nil {
 		log.Error("Error: ", errr)
 		c.Status(fiber.StatusBadGateway).JSON(fiber.Map{
