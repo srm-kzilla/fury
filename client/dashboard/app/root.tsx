@@ -99,7 +99,11 @@ function App() {
   return (
     <>
       <Layout>
-        <Headbar headline={headline} />
+        <Headbar
+          headline={
+            "Dear Freshers, we see you can't wait. Recruitments open soon ;) [#2023Wrapped](https://photos.google.com/share/AF1QipORRPNrrr85gqjyS5pE43TsBKHW8PxfwUJ3hKXAgdv0SxSTKeExuMFM9RiCbIPNLQ?key=UUtMem5BOS1LeF9kYU1MWmlYRk05eGhZVVJRYXRn)"
+          }
+        />
         <div className="App">
           <Store>
             <Outlet />
