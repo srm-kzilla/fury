@@ -3,17 +3,19 @@ package controllers
 import (
 	"context"
 	"os"
+
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/credentials"
+	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/charmbracelet/log"
 	"github.com/gofiber/fiber/v2"
 	"github.com/srm-kzilla/Recruitments/api/models"
 	"github.com/srm-kzilla/Recruitments/api/utils/database"
 	"go.mongodb.org/mongo-driver/bson"
-	"github.com/aws/aws-sdk-go/aws"
-    "github.com/aws/aws-sdk-go/aws/session"
-    "github.com/aws/aws-sdk-go/service/s3"
-	"github.com/aws/aws-sdk-go/aws/credentials"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 )
-	
+
 func CreateUser(c *fiber.Ctx) error {
 	var user models.User
 	user.Application = []models.Application{}
@@ -41,10 +43,10 @@ func CreateUser(c *fiber.Ctx) error {
 }
 
 func GetUser(c *fiber.Ctx) error {
-	regNo := c.Params("regNo")
-	if regNo == "" {
+	userId := c.Locals("userId").(primitive.ObjectID)
+	if userId == primitive.NilObjectID {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
-			"error": "RegNo is required",
+			"error": "User email is missing",
 		})
 	}
 	usersCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "users")
@@ -57,7 +59,7 @@ func GetUser(c *fiber.Ctx) error {
 	}
 
 	var user models.User
-	err := usersCollection.FindOne(context.Background(), bson.M{"regNo": regNo}).Decode(&user)
+	err := usersCollection.FindOne(context.Background(), bson.M{"_id": userId}).Decode(&user)
 	if err != nil {
 		log.Error("Error", err)
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
@@ -109,7 +111,7 @@ func UploadResume(c *fiber.Ctx) error {
 	file, err := c.FormFile("resume")
 
 	var maxFileSize int64 = 1024 * 1024 * 10
-	
+
 	if err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error":   "File not found in the request",
@@ -159,7 +161,7 @@ func UploadResume(c *fiber.Ctx) error {
 	defer srcFile.Close()
 
 	// @aryan replace this when middleware is ready
-	key := "your_object_key.pdf" 
+	key := "your_object_key.pdf"
 
 	params := &s3.PutObjectInput{
 		Bucket: aws.String(os.Getenv("AWS_S3_BUCKET")),

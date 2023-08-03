@@ -9,7 +9,7 @@ import (
 func UserRoutes(router fiber.Router) {
 	protected := router.Use(middlewares.UserAuthenticate)
 	protected.Post("/", controllers.CreateUser)
-	protected.Get("/:regNo", controllers.GetUser)
+	protected.Get("/", controllers.GetUser)
 	protected.Put("/", controllers.UpdateUser)
 	protected.Post("/upload/resume/", controllers.UploadResume)
 }
