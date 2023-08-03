@@ -1,0 +1,176 @@
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.statusWrapper {
+  display: flex;
+  gap: 2rem;
+  align-self: center;
+}
+
+.statusWrapper > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.mainAccepted {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+}
+
+.mainAccepted > div {
+  width: 50%;
+  height: 100%;
+}
+
+.wrapperText {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 10px;
+}
+
+.wrapperText > h1 {
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+.wrapperText > p {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.wrapperText > h5 > a {
+  color: #ec6d5e;
+}
+
+.wrapperAccepted {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.wrapperAccepted > .text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.lottie {
+  width: 50%;
+  height: 50%;
+}
+
+.rejectWrapper {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: start;
+  gap: 2rem;
+  padding-left: 10rem;
+}
+
+.rejectWrapper > h1 > span {
+  color: #ec6d5e;
+}
+
+.greenCircle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #6dd3a8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.redCircle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #ec6d5e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.borderCircle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid #bababa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Write css for mobile view
+@media (max-width: 768px) {
+  .lottie {
+    width: 100%;
+    height: 100%;
+  }
+
+  .mainAccepted {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .rejectWrapper {
+    padding: 1rem;
+  }
+
+  .mainAccepted > div {
+    width: 100%;
+    height: 100%;
+  }
+
+  .wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 3rem;
+  }
+
+  .wrapperText > h1 {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  .wrapperText > p {
+    font-size: 0.8rem;
+    font-weight: 400;
+  }
+}
