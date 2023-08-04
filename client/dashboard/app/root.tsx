@@ -94,7 +94,7 @@ function App() {
       <Layout>
         <Headbar
           headline={
-            "Dear Freshers, we see you can't wait. Recruitments open soon ;) [#2023Wrapped](https://photos.google.com/share/AF1QipORRPNrrr85gqjyS5pE43TsBKHW8PxfwUJ3hKXAgdv0SxSTKeExuMFM9RiCbIPNLQ?key=UUtMem5BOS1LeF9kYU1MWmlYRk05eGhZVVJRYXRn)"
+            "Dear Freshers, we see you can't wait. Recruitments open soon ;) [#2023Wrapped](https://photos.app.goo.gl/FQTcCjWnXgPB5r296)"
           }
         />
         <div className="App">
