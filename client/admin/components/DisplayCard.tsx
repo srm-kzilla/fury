@@ -5,6 +5,7 @@ interface PersonType {
   name: string;
   regno: string;
   year: number;
+  dept: string;
   email: string;
   gender: string;
   contact: number;
@@ -18,29 +19,21 @@ const DisplayCard = ({ ...person }: PersonType) => {
   return (
     <div
       key={person.id}
-      className="flex flex-col shadow-card-shadow font-body w-full bg-kz-lt-grey hover:scale-105 rounded-md mt-5"
+      className="shadow-card-shadow font-body w-full bg-kz-lt-grey hover:scale-105 rounded-md mt-5"
     >
       <Drawer.Root shouldScaleBackground>
-        <div className="flex flex-row items-end">
-          <div>
-            <h1 className="text-kz-white m-2 text-sm">
-              <span className="font-bold">Name</span>: {person.name}
-            </h1>
-            <h1 className="text-kz-white m-2 text-sm">
-              <span className="font-bold">Reg No</span>: {person.regno}
-            </h1>
-            <h1 className="text-kz-white m-2 text-sm">
-              <span className="font-bold">Year</span>: {person.year}
-            </h1>
-          </div>
-
-          <div className="relative left-1/4">
-            <Drawer.Trigger asChild>
-              <button className="text-kz-orange text-xs hover:text-sm">
-                Read More...
-              </button>
-            </Drawer.Trigger>
-          </div>
+        <div className="flex flex-col text-xs items-center md:justify-around md:flex-row  md:text-sm">
+          <div className="text-kz-white m-2">{person.id}</div>
+          <Drawer.Trigger>
+            <div className="text-kz-white m-2">{person.name}</div>
+          </Drawer.Trigger>
+          <div className="text-kz-white m-2">{person.regno}</div>
+          <div className="text-kz-white m-2">{person.dept}</div>
+          <div className="text-kz-white m-2">{person.email}</div>
+          <div className="text-kz-white m-2">{person.contact}</div>
+          <button>
+            <div className="w-3 h-3 mb-2 rounded-full border border-kz-grey md:mb-0" />
+          </button>
         </div>
 
         <Drawer.Portal>

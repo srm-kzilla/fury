@@ -14,7 +14,7 @@ export function Dashboard() {
         </h1>
         <hr className="text-kz-orange" />
       </div>
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 grid-flow-row gap-4">
+      <div className="flex flex-col">
         {data.map((person) => (
           <div key={person.id}>
             <DisplayCard {...person} />

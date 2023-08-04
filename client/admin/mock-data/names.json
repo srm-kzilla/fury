@@ -1,9 +1,11 @@
 [
 {
     "id":1,
+    "dept":"CINTEL",
     "name":"John Doe",
-    "regno":"RA23---",
+    "regno":"RA2311026010215",
     "year":1,
+    "dept":"CINTEL",
     "email":"someemail@gmail.com",
     "gender":"male",
     "contact":1234567890,
@@ -14,10 +16,11 @@
     }
 },
 {
-    "id":1,
+    "id":2,
     "name":"Jane Doe",
-    "regno":"RA23---",
+    "regno":"RA2311026010215",
     "year":1,
+    "dept":"CINTEL",
     "email":"someemail@gmail.com",
     "gender":"female",
     "contact":1234567890,
@@ -28,10 +31,11 @@
     }
 },
 {
-    "id":1,
+    "id":3,
     "name":"John Doe",
-    "regno":"RA23---",
+    "regno":"RA2311026010215",
     "year":1,
+    "dept":"CINTEL",
     "email":"someemail@gmail.com",
     "gender":"male",
     "contact":1234567890,
@@ -42,10 +46,11 @@
     }
 },
 {
-    "id":1,
+    "id":4,
     "name":"Jane Doe",
-    "regno":"RA23---",
+    "regno":"RA2311026010215",
     "year":1,
+    "dept":"CINTEL",
     "email":"someemail@gmail.com",
     "gender":"female",
     "contact":1234567890,
@@ -57,10 +62,11 @@
   
 },
 {
-    "id":1,
+    "id":5,
     "name":"John Doe",
-    "regno":"RA23---",
+    "regno":"RA2311026010215",
     "year":1,
+    "dept":"CINTEL",
     "email":"someemail@gmail.com",
     "gender":"male",
     "contact":1234567890,
@@ -71,10 +77,11 @@
     }
 },
 {
-    "id":1,
+    "id":6,
     "name":"Jane Doe",
-    "regno":"RA23---",
+    "regno":"RA2311026010215",
     "year":1,
+    "dept":"CINTEL",
     "email":"someemail@gmail.com",
     "gender":"female",
     "contact":1234567890,
