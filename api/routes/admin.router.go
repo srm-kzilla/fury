@@ -8,7 +8,8 @@ import (
 func AdminRoutes(router fiber.Router){
 
 	router.Post("/signup", controllers.AdminSignup)
-
+	router.Post("/login", controllers.AdminLogin)
+	
 	applicationsAdmin := router.Group("/applications")
 
 	applicationsAdmin.Get("/", controllers.GetAllApplications)

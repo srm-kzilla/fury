@@ -12,6 +12,7 @@ import (
 	"github.com/srm-kzilla/Recruitments/api/utils/database"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
+	"github.com/golang-jwt/jwt/v4"
 )
 
 func GetAllApplications(c *fiber.Ctx) error {
@@ -155,6 +156,73 @@ func AdminSignup(c *fiber.Ctx) error {
 	c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"success": true,
 		"message": "User created successfully",
+	})
+	return nil
+}
+
+func AdminLogin(c *fiber.Ctx) error {
+	var evaluator models.Evaluators
+	var evaluatorRequest models.Evaluators
+	c.BodyParser(&evaluatorRequest)
+
+	evaluatorsCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "evaluators")
+	if e != nil {
+		log.Error("Error: ", e)
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"error":   e.Error(),
+			"message": "Error getting evaluators collection",
+		})
+	}
+
+	err := evaluatorsCollection.FindOne(context.Background(), bson.M{"email": evaluatorRequest.Email}).Decode(&evaluator)
+	if err != nil {
+		log.Error("Error ", err)
+		if err == mongo.ErrNoDocuments {
+			return c.Status(fiber.StatusNotFound).JSON(fiber.Map{
+				"error":   e,
+				"message": "Error getting data",
+			})
+		}
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"error": err,
+		})
+	}
+
+	if evaluator.IsActive == false {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"message": "Inactive User",
+		})
+	}
+
+	hashedPassword := []byte(evaluator.Password)
+	loginPassword := []byte(evaluatorRequest.Password)
+
+    err = bcrypt.CompareHashAndPassword(hashedPassword, loginPassword)
+
+	if err != nil {
+		return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{
+			"message": "Invalid Password",
+		})
+	}
+	claims := jwt.MapClaims{
+		"email": evaluator.Email,
+		"exp":      time.Now().Add(time.Hour * 24 * 30).Unix(), // Token will expire in 24 hours
+	}
+
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
+	tokenString, errortoken := token.SignedString([]byte(os.Getenv("JWT_SECRET")))
+
+	if errortoken != nil {
+		log.Error(errortoken)
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"message": "Error generating JWT token",
+		})
+	}
+
+	c.Status(fiber.StatusOK).JSON(fiber.Map{
+		"success": true,
+		"message": "Login successful",
+		"jwt": tokenString,
 	})
 	return nil
 }
