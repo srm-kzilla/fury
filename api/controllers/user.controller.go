@@ -16,32 +16,6 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-func CreateUser(c *fiber.Ctx) error {
-	var user models.User
-	user.Application = []models.Application{}
-	c.BodyParser(&user)
-
-	usersCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "users")
-	if e != nil {
-		log.Error("Error: ", e)
-		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"error":   e.Error(),
-			"message": "Error getting users collection",
-		})
-	}
-
-	_, err := usersCollection.InsertOne(context.Background(), user)
-	if err != nil {
-		log.Error("Error: ", err)
-		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"error":   err.Error(),
-			"message": "Error inserting user",
-		})
-	}
-
-	return c.Status(fiber.StatusOK).JSON(user)
-}
-
 func GetUser(c *fiber.Ctx) error {
 	userId := c.Locals("userId").(primitive.ObjectID)
 	if userId == primitive.NilObjectID {
@@ -93,8 +67,13 @@ func UpdateUser(c *fiber.Ctx) error {
 		return nil
 	}
 
-	check = user
-	errr := usersCollection.FindOneAndReplace(context.Background(), bson.M{"regNo": user.RegNo}, check).Decode(&check)
+	_, errr := usersCollection.UpdateOne(context.Background(), bson.M{"regNo": user.RegNo}, bson.D{{Key: "$set",
+		Value: bson.D{
+			{Key: "gender", Value: user.Gender},
+			{Key: "contact", Value: user.Contact},
+			{Key: "socials", Value: bson.M{"github": user.Socials.Github, "linkedin": user.Socials.LinkedIn, "portfolio": user.Socials.Portfolio}},
+		},
+	}})
 	if errr != nil {
 		log.Error("Error: ", errr)
 		c.Status(fiber.StatusBadGateway).JSON(fiber.Map{
@@ -102,7 +81,9 @@ func UpdateUser(c *fiber.Ctx) error {
 		})
 		return nil
 	}
-	c.Status(fiber.StatusOK).JSON(user)
+	c.Status(fiber.StatusOK).JSON(fiber.Map{
+		"message": "Updated Successfully",
+	})
 	return nil
 }
 
