@@ -42,7 +42,7 @@ func UserAuthenticate(c *fiber.Ctx) error {
 
 func getGoogleAccessTokenInfo(accessToken string) error {
 	var tokenInfo GoogleAccessTokenInfo
-	res, err := http.Get(constants.GoogleAccessTokenInfoApi + accessToken)
+	res, err := http.Get(constants.GOOGLE_ACCESS_TOKEN_INFO + accessToken)
 	if err != nil {
 		return err
 	}
