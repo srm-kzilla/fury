@@ -1,6 +1,6 @@
 module github.com/srm-kzilla/Recruitments
 
-go 1.20
+go 1.19
 
 require (
 	github.com/aws/aws-sdk-go v1.44.312
@@ -12,12 +12,12 @@ require (
 )
 
 require (
-	cloud.google.com/go/compute v1.19.3 // indirect
-	cloud.google.com/go/compute/metadata v0.2.3 // indirect
+	cloud.google.com/go/compute v1.9.0 // indirect
 	github.com/andybalholm/brotli v1.0.5 // indirect
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
 	github.com/charmbracelet/lipgloss v0.7.1 // indirect
 	github.com/go-logfmt/logfmt v0.6.0 // indirect
+	github.com/golang-jwt/jwt/v4 v4.5.0 // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
 	github.com/golang/snappy v0.0.1 // indirect
 	github.com/google/uuid v1.3.0 // indirect

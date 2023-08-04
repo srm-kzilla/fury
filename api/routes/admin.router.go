@@ -6,7 +6,16 @@ import (
 )
 
 func AdminRoutes(router fiber.Router){
-	router.Get("/applications/", controllers.GetAllApplications)
-	router.Get("/applications/:domain", controllers.GetApplications)
-	router.Put("/applications/", controllers.UpdateApplications)
+
+	router.Post("/signup", controllers.AdminSignup)
+	router.Post("/login", controllers.AdminLogin)
+	
+	applicationsAdmin := router.Group("/applications")
+
+	applicationsAdmin.Get("/", controllers.GetAllApplications)
+	applicationsAdmin.Get("/:domain", controllers.GetApplications)
+	applicationsAdmin.Put("/", controllers.UpdateApplications)
+
+
+
 }
