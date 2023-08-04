@@ -1,15 +1,21 @@
 package middlewares
 
 import (
+	"context"
 	"encoding/json"
 	"errors"
 	"net/http"
+	"os"
 	"strconv"
 	"strings"
 	"time"
 
+	"github.com/charmbracelet/log"
 	"github.com/gofiber/fiber/v2"
+	"github.com/srm-kzilla/Recruitments/api/models"
 	"github.com/srm-kzilla/Recruitments/api/utils/constants"
+	"github.com/srm-kzilla/Recruitments/api/utils/database"
+	"go.mongodb.org/mongo-driver/bson"
 )
 
 type GoogleAccessTokenInfo struct {
@@ -31,34 +37,57 @@ func UserAuthenticate(c *fiber.Ctx) error {
 		})
 	}
 	token := strings.Split(accessToken, " ")[1]
-	err := getGoogleAccessTokenInfo(token)
+	email, err := getGoogleAccessTokenInfo(token)
 	if err != nil {
 		return c.Status(401).JSON(fiber.Map{
 			"message": "Invalid token",
 		})
 	}
+	user, err := getUserFromUserEmail(email)
+	if err != nil {
+		return c.Status(401).JSON(fiber.Map{
+			"message": err.Error(),
+		})
+	}
+	c.Locals("userId", user.ID)
 	return c.Next()
 }
+func getUserFromUserEmail(email string) (*models.User, error) {
+	usersCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "users")
+	if e != nil {
+		log.Error("Error: ", e)
+		return nil, errors.New("error getting users collection")
+	}
 
-func getGoogleAccessTokenInfo(accessToken string) error {
+	var user models.User
+	err := usersCollection.FindOne(context.Background(), bson.M{"email": email}).Decode(&user)
+	if err != nil {
+		log.Error("Error", err)
+		return nil, errors.New("user not found")
+	}
+	return &user, nil
+}
+
+func getGoogleAccessTokenInfo(accessToken string) (string, error) {
 	var tokenInfo GoogleAccessTokenInfo
 	res, err := http.Get(constants.GOOGLE_ACCESS_TOKEN_INFO + accessToken)
 	if err != nil {
-		return err
+		return "", err
 	}
 	defer res.Body.Close()
 
 	err = json.NewDecoder(res.Body).Decode(&tokenInfo)
 	if err != nil {
-		return err
+		return "", err
 	}
+	email := tokenInfo.Email
 	exp, err := strconv.Atoi(tokenInfo.Exp)
 	if err != nil {
-		return err
+		return "", err
 	}
 	if exp < int(time.Now().Unix()) {
-		return errors.New("token expired")
+		return "", errors.New("token expired")
 	}
-	return nil
+	return email, nil
 
 }

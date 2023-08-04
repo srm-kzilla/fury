@@ -17,9 +17,18 @@ import (
 	"github.com/srm-kzilla/Recruitments/api/utils/constants"
 	"github.com/srm-kzilla/Recruitments/api/utils/database"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"golang.org/x/oauth2"
 )
 
+func GoogleLogin(c *fiber.Ctx) error {
+	url := utils.AppConfig.AuthCodeURL(os.Getenv("GOOGLE_STATE"))
+	err := c.Redirect(url)
+	if err != nil {
+		return c.SendStatus(fiber.StatusInternalServerError)
+	}
+	return nil
+}
 func GetAccessTokenGoogle(c *fiber.Ctx) error {
 	code := c.Query("code")
 	if code == "" {
@@ -125,11 +134,13 @@ func registerUserInDb(user models.UserData) error {
 		return nil
 	}
 	newUser := models.User{
-		Name:      user.Name,
-		RegNo:     user.RegNo,
-		Year:      user.Year,
-		Email:     user.Email,
-		CreatedAt: time.Now().Unix(),
+		ID:          primitive.NewObjectID(),
+		Name:        user.Name,
+		RegNo:       user.RegNo,
+		Year:        user.Year,
+		Email:       user.Email,
+		Application: []models.Application{},
+		CreatedAt:   time.Now().Unix(),
 	}
 	_, e := usersCollection.InsertOne(context.Background(), newUser)
 	if e != nil {
