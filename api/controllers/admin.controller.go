@@ -99,3 +99,12 @@ func UpdateApplications(c *fiber.Ctx) error {
 	c.Status(fiber.StatusOK).JSON(application)
 	return nil
 }
+
+func AdminSignup(c *fiber.Ctx) error {
+	var application models.Evaluators
+	c.BodyParser(&application)
+
+	log.Print(application)
+	c.Status(fiber.StatusOK).JSON(application)
+	return nil
+}
