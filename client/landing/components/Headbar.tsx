@@ -7,6 +7,8 @@ const Headbar = () => {
         <a
           href="https://photos.google.com/share/AF1QipORRPNrrr85gqjyS5pE43TsBKHW8PxfwUJ3hKXAgdv0SxSTKeExuMFM9RiCbIPNLQ?key=UUtMem5BOS1LeF9kYU1MWmlYRk05eGhZVVJRYXRn"
           className="underline decoration-dashed"
+          target="_blank"
+          rel="noreferrer"
         >
           {" "}
           #2022Wrapped
