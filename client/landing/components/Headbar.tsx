@@ -5,7 +5,7 @@ const Headbar = () => {
         Dear Freshers, we see you can&apos;t wait. Recruitments are now open!
         :&#41;{" "}
         <a
-          href="https://photos.google.com/share/AF1QipORRPNrrr85gqjyS5pE43TsBKHW8PxfwUJ3hKXAgdv0SxSTKeExuMFM9RiCbIPNLQ?key=UUtMem5BOS1LeF9kYU1MWmlYRk05eGhZVVJRYXRn"
+          href="https://photos.app.goo.gl/FQTcCjWnXgPB5r296"
           className="underline decoration-dashed"
           target="_blank"
           rel="noreferrer"
