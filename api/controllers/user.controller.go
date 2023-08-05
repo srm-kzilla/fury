@@ -49,6 +49,13 @@ func UpdateUser(c *fiber.Ctx) error {
 	var check models.User
 	c.BodyParser(&user)
 
+	userId := c.Locals("userId").(primitive.ObjectID)
+	if userId == primitive.NilObjectID {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error": "User ObjectID is missing",
+		})
+	}
+
 	usersCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "users")
 	if e != nil {
 		log.Error("Error: ", e)
@@ -58,7 +65,7 @@ func UpdateUser(c *fiber.Ctx) error {
 		})
 	}
 
-	err := usersCollection.FindOne(context.Background(), bson.M{"regNo": user.RegNo}).Decode(&check)
+	err := usersCollection.FindOne(context.Background(), bson.M{"_id": userId}).Decode(&check)
 	if err != nil {
 		log.Error("Error ", err)
 		c.Status(fiber.StatusBadGateway).JSON(fiber.Map{
