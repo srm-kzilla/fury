@@ -69,14 +69,16 @@ func UpdateUser(c *fiber.Ctx) error {
 	if err != nil {
 		log.Error("Error ", err)
 		c.Status(fiber.StatusBadGateway).JSON(fiber.Map{
-			"error": "no RegNo record exists",
+			"message": "no record exists",
 		})
 		return nil
 	}
 
-	_, errr := usersCollection.UpdateOne(context.Background(), bson.M{"regNo": user.RegNo}, bson.D{{Key: "$set",
+	_, errr := usersCollection.UpdateOne(context.Background(), bson.M{"_id": userId}, bson.D{{Key: "$set",
 		Value: bson.D{
 			{Key: "gender", Value: user.Gender},
+			{Key: "resume", Value: user.Resume},
+			{Key: "branch", Value: user.Branch},
 			{Key: "contact", Value: user.Contact},
 			{Key: "socials", Value: bson.M{"github": user.Socials.Github, "linkedin": user.Socials.LinkedIn, "portfolio": user.Socials.Portfolio}},
 		},
@@ -153,7 +155,7 @@ func UploadResume(c *fiber.Ctx) error {
 	defer srcFile.Close()
 
 	// @aryan replace this when middleware is ready
-	key := userId + ".pdf"
+	key := "resume/" + userId + ".pdf"
 
 	params := &s3.PutObjectInput{
 		Bucket: aws.String(os.Getenv("AWS_S3_BUCKET")),
@@ -163,6 +165,7 @@ func UploadResume(c *fiber.Ctx) error {
 	}
 
 	_, err = svc.PutObject(params)
+	log.Print( err)
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"error":   "Error uploading file",
@@ -172,6 +175,7 @@ func UploadResume(c *fiber.Ctx) error {
 
 	c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"message": "File uploaded successfully with public read access.",
+		"url": "https://recruitment-23.s3.ap-south-1.amazonaws.com/" + key,
 	})
 
 	return nil
