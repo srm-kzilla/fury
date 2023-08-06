@@ -19,17 +19,13 @@ import appStyles from "~/styles/App.css";
 import toastStyles from "react-toastify/dist/ReactToastify.css";
 import Store from "~/shared/components/Wizard/Store";
 import { Headbar, NotFound } from "~/shared/components";
-import { links as navbarLinks } from "~/shared/components/Navbar";
 import { links as headbarLinks } from "~/shared/components/Headbar";
 import { links as footerLinks } from "~/shared/components/Footer";
 import { links as notFoundLinks } from "~/shared/components/NotFound";
 import { links as glanceLinks } from "~/components/Glance";
 import { BiX } from "react-icons/bi";
 import { Constants } from "~/constants";
-import { AuthStore } from "~/shared/stores";
-import { updateLocale } from "./shared/utils/moment-config";
 import { json } from "@remix-run/node";
-import { APIService } from "~/shared/services/api-service";
 import type { LinksFunction } from "@remix-run/node";
 
 declare global {
@@ -41,7 +37,6 @@ declare global {
 
 export const links: LinksFunction = () => {
   return [
-    ...navbarLinks(),
     ...headbarLinks(),
     ...footerLinks(),
     ...notFoundLinks(),
@@ -66,7 +61,6 @@ export const loader = () => {
 
   return json({
     env: {
-      OLD_API_BASE_URL: env.OLD_API_BASE_URL,
       API_BASE_URL: env.API_BASE_URL,
       APPLICATION_DEADLINE: env.APPLICATION_DEADLINE,
       OAUTH_REDIRECT_URI: env.OAUTH_REDIRECT_URI,

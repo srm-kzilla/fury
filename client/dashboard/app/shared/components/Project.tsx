@@ -1,5 +1,4 @@
 import classNames from "classnames";
-import { observer } from "mobx-react";
 import { useContext, useEffect, useState } from "react";
 import { BiArrowBack, BiCog } from "react-icons/bi";
 import {
@@ -15,7 +14,7 @@ import {
   GeneralInstructionComponent,
 } from "../../shared/components/Wizard/FormSteps/Instructions";
 import { APIService } from "../services/api-service";
-import { StoreContext } from "../../shared/components/Wizard/Store";
+import { StoreContext } from "~/shared/components/Wizard/Store";
 import Markdown from "markdown-to-jsx";
 import ProjectStyles from "~/styles/pages/Project.css";
 import type { LinksFunction } from "@remix-run/node";
@@ -132,4 +131,4 @@ const Project = () => {
   );
 };
 
-export default observer(Project);
+export default Project;

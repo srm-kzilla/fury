@@ -1,4 +1,3 @@
-import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Tile from "./Tile";
 import User from "./User";
@@ -13,7 +12,6 @@ import Headbar from "./Headbar";
 import NotFound from "./NotFound";
 
 export {
-  Navbar,
   Footer,
   Loading,
   Sidebar,
