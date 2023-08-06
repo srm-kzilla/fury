@@ -8,7 +8,6 @@ import Loading from "./Loading";
 import Sidebar from "./Sidebar";
 import ApplicationTile, { ApplicationTileSkeleton } from "./ApplicationTile";
 import FooterCompact from "./FooterCompact";
-import UserProfileForm from "./UserProfile";
 import Store from "./Wizard/Store";
 import Headbar from "./Headbar";
 import NotFound from "./NotFound";
@@ -21,7 +20,6 @@ export {
   ApplicationTile,
   FooterCompact,
   ApplicationTileSkeleton,
-  UserProfileForm,
   Tile,
   User,
   Task,

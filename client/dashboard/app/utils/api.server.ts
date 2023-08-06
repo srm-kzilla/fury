@@ -34,6 +34,21 @@ export const getUserDetails = async (request: Request): Promise<User> => {
   return res.json();
 };
 
+export const updateUserDetails = async (request: Request, user: UpdateUser) => {
+  const accessToken = await requireAccessToken(request);
+
+  const res = await fetch(API.BASE_URL + API.ENDPOINTS.USERS.BASE_URL(), {
+    method: "PUT",
+    body: JSON.stringify(user),
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      "Content-Type": "application/json"
+    },
+  });
+
+  return res.status;
+};
+
 export const uploadResume = async (
   request: Request,
   data: AsyncIterable<Uint8Array>

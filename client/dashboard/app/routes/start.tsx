@@ -1,18 +1,15 @@
 import { Form, useNavigation } from "@remix-run/react";
-import { getUserDetails, uploadResume } from "~/utils/api.server";
+import { getUserDetails, updateUserDetails } from "~/utils/api.server";
 import userProfileStyles from "~/styles/shared/components/UserProfile.css";
-import {
-  redirect,
-  unstable_composeUploadHandlers as composeUploadHandlers,
-  unstable_createMemoryUploadHandler as createMemoryUploadHandler,
-  unstable_parseMultipartFormData as parseMultipartFormData,
-} from "@remix-run/node";
+import { redirect } from "@remix-run/node";
+import { BiLoader } from "react-icons/bi";
+import * as Yup from "yup";
 import type {
   ActionFunction,
   LinksFunction,
   LoaderFunction,
 } from "@remix-run/node";
-import { BiLoader } from "react-icons/bi";
+import type { ValidationError } from "yup";
 
 export const links: LinksFunction = () => [
   {
@@ -28,31 +25,87 @@ export const loader: LoaderFunction = async ({ request }) => {
   return null;
 };
 
+type ActionData = {
+  errors: {
+    [key: string]: string;
+  };
+};
+
 export const action: ActionFunction = async ({ request }) => {
-  const uploadHandler = composeUploadHandlers(
-    async ({ name, data }) => {
-      if (name !== "resume") {
-        return undefined;
-      }
-      const uploadedImage = await uploadResume(
-        request,
-        data
-      );
-      return uploadedImage.url;
-    },
-    createMemoryUploadHandler()
-  );
+  const formData = await request.formData();
 
-  const formData = await parseMultipartFormData(
-    request,
-    uploadHandler
-  );
+  try {
+    const { branch, contact, github, linkedin, portfolio, gender } =
+      await validateUserDetails(formData);
+    const didUpdateUser = await updateUserDetails(request, {
+      branch,
+      contact,
+      gender,
+      socials: {
+        github,
+        linkedin,
+        portfolio,
+      },
+    });
 
-  for (const [key, value] of formData) {
-    console.log({ key, value })
+    if (didUpdateUser === 200) {
+      // TODO: show toast
+      return redirect("/");
+    }
+  } catch (errors) {
+    return { errors };
   }
 
   return null;
+};
+
+const validateUserDetails = async (formData: FormData) => {
+  const getValidationErrors = (err: ValidationError) => {
+    const validationErrors = {} as any;
+
+    err.inner.forEach((error: any) => {
+      if (error.path) {
+        validationErrors[error.path] = error.message;
+      }
+    });
+
+    console.log(validationErrors);
+    return validationErrors;
+  };
+
+  const userDetails: { [key: string]: any } = {};
+  for (const [key, value] of formData) {
+    userDetails[key] = value || "";
+  }
+
+  const updateUserSchema = Yup.object().shape({
+    gender: Yup.string().required("Pronoun is required"),
+    branch: Yup.string().required("Branch is required"),
+    contact: Yup.string()
+      .trim()
+      .matches(/^[0-9]{10}$/, "Your contact number must be 10 digits")
+      .required("We need your contact number to reach out to you!"),
+    linkedin: Yup.string()
+      .url("The URL you have entered doesn't seem right")
+      .matches(
+        /(http(s)?:\/\/)?(\w+\.)?linkedin\.com\/in\/[A-z0-9_-]+\/?/g,
+        "The URL you have entered doesn't seem right"
+      ),
+    github: Yup.string()
+      .url("The URL you have entered doesn't seem right")
+      .matches(
+        /(http(s)?:\/\/)?(\w+\.)?github\.com\/[A-z0-9_-]+\/?/g,
+        "The URL you have entered doesn't seem right"
+      ),
+    resume: Yup.string(),
+    portfolio: Yup.string().url(),
+  });
+
+  try {
+    return await updateUserSchema.validate(userDetails, { abortEarly: false });
+  } catch (error) {
+    throw getValidationErrors(error as ValidationError);
+  }
 };
 
 export default function Start() {
@@ -80,16 +133,6 @@ export default function Start() {
             <option value="female">Female</option>
             <option value="other">Other</option>
           </select>
-        </div>
-        <div>
-          <label className="label" htmlFor="registration_number">
-            Registration Number<sup>*</sup>
-          </label>
-          <input
-            type="text"
-            name="registration_number"
-            placeholder="RA2111032010022"
-          />
         </div>
         <div className="select">
           <label className="label" htmlFor="branch">

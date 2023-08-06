@@ -4,17 +4,20 @@ type User = {
   name: string;
   year: number;
   email: string;
-  gender: string;
-  resume: string;
-  contact: string;
+  gender?: string;
+  branch?: string;
+  resume?: string;
+  contact?: string;
   createdAt: Date;
   application: Array<Application>;
   socials: {
-    github: string;
-    linkedin: string;
-    portfolio: string;
+    github?: string;
+    linkedin?: string;
+    portfolio?: string;
   };
 };
+
+type UpdateUser = Pick<User, "gender"|"branch"|"resume"|"contact"|"socials">
 
 // TODO: define once API is ready
 type Application = {};
