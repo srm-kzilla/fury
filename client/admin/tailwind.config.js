@@ -7,13 +7,17 @@ module.exports = {
   ],
   theme: {
     colors: {
-      "kz-grey": "#1d1c1c",
-      "kz-orange": "#c75305",
-      "kz-white": "#ffffff",
-      "kz-lt-grey": "#353535",
+      kz: {
+        grey: "#1d1c1c",
+        orange: "#c75305",
+        white: "#ffffff",
+        "lt-grey": "#353535",
+        red: "#C51605",
+        green: "#7A9D54",
+      },
     },
     fontFamily: {
-      body: ["Cal Sans"],
+      body: ["DM Sans", "sans-serif"],
     },
     boxShadow: {
       "card-shadow":

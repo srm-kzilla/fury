@@ -9,7 +9,7 @@ export function Dashboard() {
         <title>Admin Dashboard</title>
       </Head>
       <div>
-        <h1 className="text-kz-orange font-body font-bold text-3xl">
+        <h1 className="text-kz-orange font-body font-extrabold text-3xl">
           Dashboard
         </h1>
         <hr className="text-kz-orange" />
