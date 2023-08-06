@@ -1,6 +1,9 @@
 package models
 
-import "go.mongodb.org/mongo-driver/bson/primitive"
+import (
+	"time"
+    "go.mongodb.org/mongo-driver/bson/primitive"
+)
 
 type User struct {
 	ID          primitive.ObjectID `json:"_id" bson:"_id"`
@@ -21,4 +24,10 @@ type Social struct {
 	Github    string `json:"github"`
 	LinkedIn  string `json:"linkedIn"`
 	Portfolio string `json:"portfolio"`
+}
+
+type Activity struct {
+	Timestamp      time.Time `json:"timestamp" bson:"timestamp"`
+	Location    string `json:"location" bson:"location"`
+	Type    string `json:"type" bson:"type"`
 }
