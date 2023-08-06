@@ -180,3 +180,30 @@ func UploadResume(c *fiber.Ctx) error {
 
 	return nil
 }
+
+func GetNotifications(c *fiber.Ctx) error {
+	notifications := []map[string]interface{}{
+		{
+			"markdown":  "**Hello, dreamer.** Welcome to #Recruitment2022. Your pathway to becoming an SRMKZILLian starts right here. Create a new application to get started.",
+			"text":      "Hello, dreamer. Welcome to #Recruitment2022. Your pathway to becoming an SRMKZILLian starts right here. Create a new application to get started.",
+			"timestamp": 1663511770010,
+		},
+	}
+
+	responseData := fiber.Map{
+		"notifications": notifications,
+	}
+
+	return c.Status(fiber.StatusOK).JSON(responseData)
+}
+
+func GetUserApplications(c *fiber.Ctx) error {
+	applications := []map[string]interface{}{
+	}
+
+	responseData := fiber.Map{
+		"applications": applications,
+	}
+
+	return c.Status(fiber.StatusOK).JSON(responseData)
+}
