@@ -2,7 +2,6 @@ package utils
 
 import (
 	"time"
-
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -19,5 +18,6 @@ func HandleRoot(c *fiber.Ctx) error {
 }
 
 func RecordActivity(c *fiber.Ctx) error {
-	return c.JSON(fiber.Map{"message": c.IP()})
+	IPAddress := c.Get("X-Forwarded-For")
+	return c.JSON(fiber.Map{"message": IPAddress})
 }
