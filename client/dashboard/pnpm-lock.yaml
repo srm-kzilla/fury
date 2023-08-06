@@ -71,12 +71,6 @@ dependencies:
   react-lottie:
     specifier: ^1.2.3
     version: 1.2.3(react@18.2.0)
-  react-multi-carousel:
-    specifier: ^2.8.4
-    version: 2.8.4
-  react-onesignal:
-    specifier: ^2.0.4
-    version: 2.0.4(react@18.2.0)
   react-player:
     specifier: ^2.12.0
     version: 2.12.0(react@18.2.0)
@@ -7047,20 +7041,6 @@ packages:
     dependencies:
       babel-runtime: 6.26.0
       lottie-web: 5.12.2
-      react: 18.2.0
-    dev: false
-
-  /react-multi-carousel@2.8.4:
-    resolution: {integrity: sha512-7Is5Wr+m2ebkR+oq2Su2tjUdBwpVtB2O6Tjb74KDNfxWe/FrsTQwezTJTk/r9cKCrRp9Li308v822/5bZm7XKg==}
-    engines: {node: '>=8'}
-    dev: false
-
-  /react-onesignal@2.0.4(react@18.2.0):
-    resolution: {integrity: sha512-llZ4PV1+EsWWZDt0BRils6gAxaxMoYP0Z3rlNivQy4xqUaiO1/PcRaIJ6CuzCci/koDsw5IzLOXEHlV4Yn+d9Q==}
-    engines: {node: '>=8', npm: '>=5'}
-    peerDependencies:
-      react: '>= 16.8'
-    dependencies:
       react: 18.2.0
     dev: false
 
