@@ -33,7 +33,7 @@ type LocationData struct {
 }
 
 func GetLocationFromIP(ip string) string {
-	url := "https://ip-api.com/json/" + ip
+	url := "http://ip-api.com/json/" + ip
 	response, err := http.Get(url)
 	if err != nil {
 		return ip
