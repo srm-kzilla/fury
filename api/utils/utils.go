@@ -6,7 +6,6 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
-	"github.com/charmbracelet/log"
 )
 
 func RootFunction(c *fiber.Ctx) error {
@@ -35,10 +34,8 @@ type LocationData struct {
 
 func GetLocationFromIP(ip string) string {
 	url := "https://ip-api.com/json/" + ip
-
 	response, err := http.Get(url)
 	if err != nil {
-		log.Error(err)
 		return ip
 	}
 	defer response.Body.Close()
@@ -49,21 +46,18 @@ func GetLocationFromIP(ip string) string {
 
 	body, err := ioutil.ReadAll(response.Body)
 	if err != nil {
-		log.Error(err)
 		return ip
 	}
 
 	var location LocationData
 	err = json.Unmarshal(body, &location)
 	if err != nil {
-		log.Error(err)
 		return ip
 	}
 
 	if location.Status == "fail" {
-		log.Error(err)
 		return ip
 	}
 
-	return location.City + ", " + location.Region
+	return location.City + ", " + location.Region + " (" + ip + ")"
 }
