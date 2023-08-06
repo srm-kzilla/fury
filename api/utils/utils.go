@@ -3,6 +3,9 @@ package utils
 import (
 	"time"
 	"github.com/gofiber/fiber/v2"
+	"encoding/json"
+	"io/ioutil"
+	"net/http"
 )
 
 func RootFunction(c *fiber.Ctx) error {
@@ -19,5 +22,43 @@ func HandleRoot(c *fiber.Ctx) error {
 
 func RecordActivity(c *fiber.Ctx) error {
 	IPAddress := c.Get("X-Forwarded-For")
-	return c.JSON(fiber.Map{"message": IPAddress})
+	return c.JSON(fiber.Map{"message": GetLocationFromIP(IPAddress)})
+}
+
+type LocationData struct {
+	City      string `json:"city"`
+	Region    string `json:"regionName"`
+	Status    string `json:"status"`
+	Message   string `json:"message"`
+}
+
+func GetLocationFromIP(ip string) string {
+	url := "https://ip-api.com/json/" + ip
+
+	response, err := http.Get(url)
+	if err != nil {
+		return ip
+	}
+	defer response.Body.Close()
+
+	if response.StatusCode != http.StatusOK {
+		return ip
+	}
+
+	body, err := ioutil.ReadAll(response.Body)
+	if err != nil {
+		return ip
+	}
+
+	var location LocationData
+	err = json.Unmarshal(body, &location)
+	if err != nil {
+		return ip
+	}
+
+	if location.Status == "fail" {
+		return ip
+	}
+
+	return location.City + ", " + location.Region
 }

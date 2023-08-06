@@ -16,7 +16,7 @@ import (
 
 func setupRoutes(app *fiber.App) {
 	app.Get("/", utils.RecordActivity)
-	app.Get("/health", utils.HealthCheck)
+	app.Get("/health", utils.RootFunction)
 	api.SetupApp(app)
 }
 
