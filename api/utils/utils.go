@@ -17,3 +17,7 @@ func HealthCheck(c *fiber.Ctx) error {
 func HandleRoot(c *fiber.Ctx) error {
 	return c.JSON(fiber.Map{"message": "RECRUITMENT API"})
 }
+
+func RecordActivity(c *fiber.Ctx) error {
+	return c.JSON(fiber.Map{"message": c.IP()})
+}
