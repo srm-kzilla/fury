@@ -34,8 +34,8 @@ const Sidebar = () => {
         <ul>
           <li title="Dashboard">
             <Link
-              to="/dashboard"
-              className={classNames({ active: pathname === "/dashboard" })}
+              to="/"
+              className={classNames({ active: pathname === "/" })}
             >
               <BiHomeCircle />
             </Link>
@@ -50,7 +50,7 @@ const Sidebar = () => {
           </li>
         </ul>
 
-        <Form method="post" action="/logout" className="sign-out">
+        <Form method="post" action="/logout">
           <button type="submit">
             <BiLogOut />
           </button>

@@ -1,4 +1,3 @@
-import Footer from "./Footer";
 import Tile from "./Tile";
 import User from "./User";
 import Task from "./Task";
@@ -12,7 +11,6 @@ import Headbar from "./Headbar";
 import NotFound from "./NotFound";
 
 export {
-  Footer,
   Loading,
   Sidebar,
   ApplicationTile,

@@ -20,7 +20,6 @@ import toastStyles from "react-toastify/dist/ReactToastify.css";
 import Store from "~/shared/components/Wizard/Store";
 import { Headbar, NotFound } from "~/shared/components";
 import { links as headbarLinks } from "~/shared/components/Headbar";
-import { links as footerLinks } from "~/shared/components/Footer";
 import { links as notFoundLinks } from "~/shared/components/NotFound";
 import { links as glanceLinks } from "~/components/Glance";
 import { BiX } from "react-icons/bi";
@@ -38,7 +37,6 @@ declare global {
 export const links: LinksFunction = () => {
   return [
     ...headbarLinks(),
-    ...footerLinks(),
     ...notFoundLinks(),
     ...glanceLinks(),
     {
