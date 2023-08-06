@@ -14,6 +14,8 @@ const API = {
     USERS: {
       BASE_URL: () => "/users",
       RESUME_UPLOAD: () => "/upload/resume",
+      NOTIFICATIONS: () => "/notifications",
+      APPLICATIONS: () => "/applications",
     },
     AUTH: {
       BASE_URL: () => "/auth",
@@ -74,6 +76,30 @@ export const uploadResume = async (
 
   return res.json();
 };
+
+export const getNotifications = async (request: Request) => {
+  const accessToken = await requireAccessToken(request);
+
+  const res = await fetch(API.BASE_URL + API.ENDPOINTS.USERS.BASE_URL() + API.ENDPOINTS.USERS.NOTIFICATIONS(), {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+
+  return res.json();
+}
+
+export const getApplications = async (request: Request) => {
+  const accessToken = await requireAccessToken(request);
+
+  const res = await fetch(API.BASE_URL + API.ENDPOINTS.USERS.BASE_URL() + API.ENDPOINTS.USERS.APPLICATIONS(), {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    }
+  });
+
+  return res.json();
+}
 
 export const getAccessTokenFromCode = async (request: Request) => {
   const url = new URL(request.url);

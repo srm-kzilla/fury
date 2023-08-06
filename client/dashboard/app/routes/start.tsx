@@ -10,7 +10,6 @@ import type {
   LoaderFunction,
 } from "@remix-run/node";
 import type { ValidationError } from "yup";
-import {useEffect} from "react";
 
 export const links: LinksFunction = () => [
   {

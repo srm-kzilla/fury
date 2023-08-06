@@ -21,3 +21,9 @@ type UpdateUser = Pick<User, "gender"|"branch"|"resume"|"contact"|"socials">
 
 // TODO: define once API is ready
 type Application = {};
+
+type NotificationType = {
+  markdown: string;
+  text: string;
+  timestamp: Date;
+};
