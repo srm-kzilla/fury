@@ -20,11 +20,6 @@ func HandleRoot(c *fiber.Ctx) error {
 	return c.JSON(fiber.Map{"message": "RECRUITMENT API"})
 }
 
-func RecordActivity(c *fiber.Ctx) error {
-	IPAddress := c.Get("X-Forwarded-For")
-	return c.JSON(fiber.Map{"message": GetLocationFromIP(IPAddress)})
-}
-
 type LocationData struct {
 	City      string `json:"city"`
 	Region    string `json:"regionName"`
