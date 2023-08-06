@@ -78,5 +78,8 @@ func getLocationFromIP(ip string) string {
 		return ip
 	}
 
+	if ip == "" {
+		return location.City + ", " + location.Region
+    }
 	return location.City + ", " + location.Region + " (" + ip + ")"
 }
