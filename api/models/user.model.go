@@ -9,6 +9,8 @@ type User struct {
 	Year        int                `validate:"required" json:"year"`
 	Email       string             `validate:"required" json:"email"`
 	Gender      string             `validate:"required" json:"gender"`
+	Branch      string             `validate:"required" json:"branch"`
+	Resume      string             `validate:"required" json:"resume"`
 	Contact     string             `validate:"required" json:"contact"`
 	CreatedAt   int64              `json:"createdAt" bson:"createdAt"`
 	Application []Application      `json:"application" default:"[]" bson:"application"`
