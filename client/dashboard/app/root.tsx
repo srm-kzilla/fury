@@ -76,27 +76,10 @@ export const loader = () => {
 };
 
 function App() {
-  const authStore = useContext(AuthStore);
-
-  useEffect(() => {
-    APIService.getInstance()
-      .fetchUserInfo()
-      .then(({ data: { user } }) => {
-        authStore.setUser(user);
-      })
-      .finally(() => {
-        updateLocale();
-      });
-  }, []);
-
   return (
     <>
       <Layout>
-        <Headbar
-          headline={
-            "Dear Freshers, we see you can't wait. Recruitments open soon ;) [#2023Wrapped](https://photos.app.goo.gl/FQTcCjWnXgPB5r296)"
-          }
-        />
+        <Headbar headline="Dear Freshers, we see you can't wait. Recruitments open soon ;) [#2023Wrapped](https://photos.app.goo.gl/FQTcCjWnXgPB5r296)" />
         <div className="App">
           <Store>
             <Outlet />

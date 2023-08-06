@@ -57,7 +57,7 @@ export async function requireAccessToken(request: Request) {
   const accessToken = await getAccessToken(request);
 
   if (!accessToken) {
-    throw redirect(`/start`);
+    throw redirect(`/auth`);
   }
 
   return accessToken;
