@@ -28,13 +28,13 @@ const LoginPage: NextPage = () => {
                 </h1>
               </div>
               <div>
-                <p className=" text-colors-kz-orange text-left font-outfit font-semibold text-xl md:text-2xl m-1">
+                <p className=" text-colors-kz-orange text-left font-outfit font-semibold text-xl md:text-2xl m-2">
                   Username
                 </p>
                 <div className="flex flex-col items-center">
                   <div className="w-full p-2 flex items-center rounded-xl ">
                     <input
-                      className="bg-transparent border-b-2 text-gray-500 font-medium outline-none w-full text-sm"
+                      className="bg-transparent border-b-2 text-gray-500 font-medium outline-none w-full text-l"
                       type="email"
                       name="email"
                       placeholder="Enter your user name"
@@ -43,30 +43,28 @@ const LoginPage: NextPage = () => {
                 </div>
               </div>
               <div>
-                <p className=" text-colors-kz-orange text-left font-outfit font-semibold text-xl md:text-2xl m-1">
+                <p className=" text-colors-kz-orange text-left font-outfit font-semibold text-xl md:text-2xl m-2">
                   Password
                 </p>
                 <div className="flex flex-col items-center">
                   <div className=" w-full p-2 flex items-center rounded-xl">
                     <input
-                      className="bg-transparent border-b-2 text-gray-500 font-medium outline-none w-full text-sm"
-                      type="email"
-                      name="email"
+                      className="bg-transparent border-b-2 text-gray-500 font-medium outline-none w-full text-l"
+                      type="password"
+                      name="password"
                       placeholder="Enter your Password"
                     />
                   </div>
                 </div>
               </div>
               <div>
-                <div className="">
-                  <div className="px-2 sm:px-5 max-w-sm ">
-                    <button
-                      type="button"
-                      className="text-white w-full bg-colors-kz-orange hover:shadow-box-shadow focus:outline-none font-medium rounded-lg md:text-sm px-5 py-2.5 text-center justify-between"
-                    >
-                      Login
-                    </button>
-                  </div>
+                <div className="px-2 sm:px-5 max-w-sm ">
+                  <button
+                    type="button"
+                    className="text-white w-full bg-colors-kz-orange hover:shadow-box-shadow focus:outline-none font-medium rounded-lg md:text-sm px-5 py-2.5 text-center justify-between"
+                  >
+                    Login
+                  </button>
                 </div>
               </div>
             </div>
