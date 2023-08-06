@@ -207,3 +207,28 @@ func GetUserApplications(c *fiber.Ctx) error {
 
 	return c.Status(fiber.StatusOK).JSON(responseData)
 }
+
+func GetUserActivity(c *fiber.Ctx) error {
+	activity := []map[string]interface{}{
+		{
+			"type":            "login",
+			"user_id":         "104121229959115963252",
+			"device_ip":       "::ffff:127.0.0.1",
+			"timestamp":       1663410336694,
+			"device_location": nil,
+		},
+		{
+			"type":            "login",
+			"user_id":         "104121229959115963252",
+			"device_ip":       "171.78.172.62",
+			"timestamp":       1662830819149,
+			"device_location": nil,
+		},
+	}
+
+	responseData := fiber.Map{
+		"activity": activity,
+	}
+
+	return c.Status(fiber.StatusOK).JSON(responseData)
+}
