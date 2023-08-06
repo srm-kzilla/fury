@@ -1,4 +1,4 @@
-import { Form, useNavigation } from "@remix-run/react";
+import { Form, useNavigation, useActionData } from "@remix-run/react";
 import { getUserDetails, updateUserDetails } from "~/utils/api.server";
 import userProfileStyles from "~/styles/shared/components/UserProfile.css";
 import { redirect } from "@remix-run/node";
@@ -10,6 +10,7 @@ import type {
   LoaderFunction,
 } from "@remix-run/node";
 import type { ValidationError } from "yup";
+import {useEffect} from "react";
 
 export const links: LinksFunction = () => [
   {
@@ -26,7 +27,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 };
 
 type ActionData = {
-  errors: {
+  errors?: {
     [key: string]: string;
   };
 };
@@ -69,7 +70,6 @@ const validateUserDetails = async (formData: FormData) => {
       }
     });
 
-    console.log(validationErrors);
     return validationErrors;
   };
 
@@ -88,13 +88,13 @@ const validateUserDetails = async (formData: FormData) => {
     linkedin: Yup.string()
       .url("The URL you have entered doesn't seem right")
       .matches(
-        /(http(s)?:\/\/)?(\w+\.)?linkedin\.com\/in\/[A-z0-9_-]+\/?/g,
+        /((http(s)?:\/\/)?(\w+\.)?linkedin\.com\/in\/[A-z0-9_-]+\/?)?/g,
         "The URL you have entered doesn't seem right"
       ),
     github: Yup.string()
       .url("The URL you have entered doesn't seem right")
       .matches(
-        /(http(s)?:\/\/)?(\w+\.)?github\.com\/[A-z0-9_-]+\/?/g,
+        /((http(s)?:\/\/)?(\w+\.)?github\.com\/[A-z0-9_-]+\/?)?/g,
         "The URL you have entered doesn't seem right"
       ),
     resume: Yup.string(),
@@ -110,6 +110,7 @@ const validateUserDetails = async (formData: FormData) => {
 
 export default function Start() {
   const navigation = useNavigation();
+  const actionData = useActionData<ActionData>();
 
   return (
     <Form method="post" className="kz-user-form" encType="multipart/form-data">
@@ -128,11 +129,12 @@ export default function Start() {
             Gender<sup>*</sup>
           </label>
           <select name="gender">
-            <option value="">Select your gender</option>
+            <option value="" disabled>Select your gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="other">Other</option>
           </select>
+          <sub>{actionData?.errors?.gender}</sub>
         </div>
         <div className="select">
           <label className="label" htmlFor="branch">
@@ -141,18 +143,21 @@ export default function Start() {
           <select name="branch">
             <BranchOptions />
           </select>
+          <sub>{actionData?.errors?.branch}</sub>
         </div>
         <div className="resume">
           <label className="label" htmlFor="resume">
             Resume (upto 20 megabytes)
           </label>
           <input name="resume" type="file" accept="application/pdf" />
+          <sub>{actionData?.errors?.resume}</sub>
         </div>
         <div>
           <label className="label" htmlFor="contact">
             Contact Number<sup>*</sup>
           </label>
           <input type="text" name="contact" placeholder="9898384880" />
+          <sub>{actionData?.errors?.contact}</sub>
         </div>
         <div>
           <label className="label" htmlFor="linkedin">
@@ -163,6 +168,7 @@ export default function Start() {
             name="linkedin"
             placeholder="https://www.linkedin.com/company/srmkzilla/"
           />
+          <sub>{actionData?.errors?.linkedin}</sub>
         </div>
         <div>
           <label className="label" htmlFor="portfolio">
@@ -173,6 +179,7 @@ export default function Start() {
             name="portfolio"
             placeholder="https://www.dribbble.com/michael-scott"
           />
+          <sub>{actionData?.errors?.portfolio}</sub>
         </div>
         <div>
           <label className="label" htmlFor="github">
@@ -183,6 +190,7 @@ export default function Start() {
             name="github"
             placeholder="https://www.github.com/michael-scott"
           />
+          <sub>{actionData?.errors?.github}</sub>
         </div>
       </div>
       <div className="button-collection">
@@ -193,7 +201,9 @@ export default function Start() {
             "Continue"
           )}
         </button>
-        <button className="logout">Logout</button>
+        <Form method="post" action="/logout">
+          <button className="logout">Logout</button>
+        </Form>
       </div>
     </Form>
   );
@@ -201,6 +211,7 @@ export default function Start() {
 
 const BranchOptions = () => (
   <>
+    <option value="" disabled>Select your branch</option>;
     <option value="aerospace_engineering">Aerospace Engineering</option>;
     <option value="artificial_intelligence">Artificial Intelligence</option>;
     <option value="automobile_engineering">Automobile Engineering</option>;
