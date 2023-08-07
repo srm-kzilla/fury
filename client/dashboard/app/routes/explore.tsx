@@ -1,9 +1,12 @@
 import exploreStyles from "~/styles/pages/Explore.css";
-import { FooterCompact, Sidebar } from "~/components";
 import InfoTile from "~/components/InfoTile";
-import { infoTileLinks } from "~/components";
-import { footerCompactLinks } from "~/components";
-import { sidebarLinks } from "~/components";
+import {
+  infoTileLinks,
+  footerCompactLinks,
+  sidebarLinks,
+  FooterCompact,
+  Sidebar,
+} from "~/components";
 import {
   BiAward,
   BiBot,

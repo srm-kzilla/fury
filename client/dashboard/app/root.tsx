@@ -18,12 +18,15 @@ import rootStyles from "~/styles/index.css";
 import appStyles from "~/styles/App.css";
 import toastStyles from "react-toastify/dist/ReactToastify.css";
 import Store from "~/components/Wizard/Store";
-import { Headbar, NotFound } from "~/components";
-import { navbarLinks } from "~/components";
-import { headbarLinks } from "~/components";
-import { footerLinks } from "~/components";
-import { notFoundLinks } from "~/components";
-import { glanceLinks } from "~/components";
+import {
+  Headbar,
+  NotFound,
+  glanceLinks,
+  notFoundLinks,
+  footerLinks,
+  headbarLinks,
+  navbarLinks,
+} from "~/components";
 import { BiX } from "react-icons/bi";
 import { Constants } from "~/constants";
 import { AuthStore } from "~/shared/stores";

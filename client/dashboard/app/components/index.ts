@@ -1,26 +1,26 @@
-export {default as ApplicationTile} from "./ApplicationTile";
-export {ApplicationTileSkeleton} from "./ApplicationTile"
-export {default as Footer } from "./Footer";
-export {default as FooterCompact} from "./FooterCompact";
+export { default as ApplicationTile } from "./ApplicationTile";
+export { ApplicationTileSkeleton } from "./ApplicationTile"
+export { default as Footer } from "./Footer";
+export { default as FooterCompact } from "./FooterCompact";
 // export {default as FormClosed} from "./FormClosed";
-export {default as Glance} from "./Glance";
-export {default as Headbar} from "./Headbar";
-export {default as InfoTile} from "./InfoTile";
-export {default as Loading } from "./Loading";
-export {default as LoadingShimmer} from "./LoadingShimmer";
-export {default as Navbar} from "./Navbar";
-export {default as NotFound} from "./NotFound";
-export {default as Notification} from "./Notification";
-export {default as PrivateRoute} from "./PrivateRoute";
-export {default as Project } from "./Project";
-export {default as ProjectTiles} from "./ProjectTiles";
-export {default as Sidebar } from "./Sidebar";
-export {default as Task} from "./Task";
-export {default as TaskList} from "./TaskList";
-export {default as TeamSvg} from "./TeamSvg";
-export {default as Tile} from "./Tile";
-export {default as User} from "./User";
-export {default as UserProfile} from "./UserProfile";
+export { default as Glance } from "./Glance";
+export { default as Headbar } from "./Headbar";
+export { default as InfoTile } from "./InfoTile";
+export { default as Loading } from "./Loading";
+export { default as LoadingShimmer } from "./LoadingShimmer";
+export { default as Navbar } from "./Navbar";
+export { default as NotFound } from "./NotFound";
+export { default as Notification } from "./Notification";
+export { default as PrivateRoute } from "./PrivateRoute";
+export { default as Project } from "./Project";
+export { default as ProjectTiles} from "./ProjectTiles";
+export { default as Sidebar } from "./Sidebar";
+export { default as Task } from "./Task";
+export { default as TaskList } from "./TaskList";
+export { default as TeamSvg } from "./TeamSvg";
+export { default as Tile } from "./Tile";
+export { default as User } from "./User";
+export { default as UserProfile } from "./UserProfile";
 
 export { links as applicationTileLinks } from './ApplicationTile';
 export { links as footerLinks } from './Footer';

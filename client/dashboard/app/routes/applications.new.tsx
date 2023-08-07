@@ -23,10 +23,12 @@ import { APIService } from "~/shared/services/api-service";
 import { StoreContext } from "~/components/Wizard/Store";
 import { AuthStore } from "~/shared/stores";
 import type { LinksFunction } from "@remix-run/node";
-import { projectTilesLinks } from "~/components";
-import { footerCompactLinks } from "~/components";
-import { taskListLinks } from "~/components";
-import { projectLinks } from "~/components";
+import {
+  projectTilesLinks,
+  footerCompactLinks,
+  taskListLinks,
+  projectLinks,
+} from "~/components";
 
 export const links: LinksFunction = () => [
   ...wizardLinks(),

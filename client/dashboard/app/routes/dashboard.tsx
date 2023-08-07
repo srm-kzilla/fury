@@ -4,24 +4,22 @@ import { APIService } from "~/shared/services/api-service";
 import { AuthStore } from "../shared/stores";
 import { observer } from "mobx-react";
 import Timer from "react-compound-timer";
-import Notification, {
-  links as notificationLinks,
-  NotificationSkeleton,
-} from "~/components/Notification";
-import { sidebarLinks } from "~/components";
-import { footerCompactLinks } from "~/components";
-import { applicationTileLinks } from "~/components";
-import TeamSvg from "~/components/TeamSvg";
-import Glance from "~/components/Glance";
-import PrivateRoute from "~/components/PrivateRoute";
+import Notification, { NotificationSkeleton } from "~/components/Notification";
 import {
+  sidebarLinks,
+  footerCompactLinks,
+  applicationTileLinks,
+  userProfileLinks,
   ApplicationTile,
   ApplicationTileSkeleton,
   FooterCompact,
   Sidebar,
+  notificationLinks,
 } from "~/components";
+import TeamSvg from "~/components/TeamSvg";
+import Glance from "~/components/Glance";
+import PrivateRoute from "~/components/PrivateRoute";
 import getEnv from "~/shared/utils/env";
-import { userProfileLinks } from "~/components";
 import { Link, useNavigate } from "@remix-run/react";
 import { BiAlarm, BiPlus } from "react-icons/bi";
 import { Assets } from "~/constants";
