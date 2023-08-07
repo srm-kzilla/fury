@@ -2,7 +2,7 @@ import { MdCheck, MdDelete } from "react-icons/md";
 import classNames from "classnames";
 import { TaskType } from "./ProjectTiles";
 import Markdown from "markdown-to-jsx";
-import TaskListStyles from "~/styles/shared/components/TaskList.css";
+import TaskListStyles from "~/styles/components/TaskList.css";
 
 interface Props {
   projectTask: TaskType;

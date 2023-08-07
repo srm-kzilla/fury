@@ -2,20 +2,15 @@ import classNames from "classnames";
 import { observer } from "mobx-react";
 import { useContext, useEffect, useState } from "react";
 import { BiArrowBack, BiCog } from "react-icons/bi";
-import {
-  FooterCompact,
-  Sidebar,
-  Task,
-  TaskList,
-} from "../../shared/components";
-import { TextField } from "../../shared/components/Wizard/FormFields";
+import { FooterCompact, Sidebar, Task, TaskList } from "../components";
+import { TextField } from "../components/Wizard/FormFields";
 import { Field } from "formik";
 import {
   DomainInstructions,
   GeneralInstructionComponent,
-} from "../../shared/components/Wizard/FormSteps/Instructions";
-import { APIService } from "../services/api-service";
-import { StoreContext } from "../../shared/components/Wizard/Store";
+} from "../components/Wizard/FormSteps/Instructions";
+import { APIService } from "~/shared/services/api-service";
+import { StoreContext } from "../components/Wizard/Store";
 import Markdown from "markdown-to-jsx";
 import ProjectStyles from "~/styles/pages/Project.css";
 import type { LinksFunction } from "@remix-run/node";

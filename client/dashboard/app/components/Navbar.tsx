@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import navbarStyles from "~/styles/shared/components/Navbar.css";
+import navbarStyles from "~/styles/components/Navbar.css";
 import { Assets } from "~/constants";
 import { Link, useLocation } from "@remix-run/react";
-import { AuthStore } from "../stores";
+import { AuthStore } from "~/shared/stores";
 import { observer } from "mobx-react";
 import { BiLogOut } from "react-icons/bi";
 import type { LinksFunction } from "@remix-run/node";

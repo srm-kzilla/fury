@@ -1,4 +1,4 @@
-import applicationTileStyles from "~/styles/shared/components/ApplicationTile.css";
+import applicationTileStyles from "~/styles/components/ApplicationTile.css";
 import {
   BiCheck,
   BiError,

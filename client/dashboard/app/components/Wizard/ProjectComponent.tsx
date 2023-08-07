@@ -1,6 +1,6 @@
 import * as Yup from "yup";
-import { ProjectTilesComponent } from "~/shared/components/ProjectTiles";
-import { APIService } from "../../services/api-service";
+import { ProjectTilesComponent } from "~/components/ProjectTiles";
+import { APIService } from "../../shared/services/api-service";
 import Project from "../Project";
 
 const Question1 = {

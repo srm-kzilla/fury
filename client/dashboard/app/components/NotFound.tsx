@@ -1,4 +1,4 @@
-import notFoundStyles from "~/styles/shared/components/NotFound.css";
+import notFoundStyles from "~/styles/components/NotFound.css";
 import { Link } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
 

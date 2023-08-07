@@ -243,6 +243,7 @@ func GetUserApplications(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error":   err.Error(),
 			"message": "User not found",
+
 		})
 	}
 	applications := user.Application
