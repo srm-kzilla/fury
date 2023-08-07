@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from "react";
 import * as Yup from "yup";
 
-import { StoreContext } from "~/shared/components/Wizard/Store";
-import { Loading } from "~/shared/components";
-import { SelectableDiv } from "~/shared/components/Wizard/FormFields";
+import { StoreContext } from "~/components/Wizard/Store";
+import { Loading } from "~/components";
+import { SelectableDiv } from "~/components/Wizard/FormFields";
 import { APIService } from "~/shared/services/api-service";
 
 let domainOptions = [

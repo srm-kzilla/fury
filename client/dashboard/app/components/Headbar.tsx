@@ -1,4 +1,4 @@
-import headbarStyles from "~/styles/shared/components/Headbar.css";
+import headbarStyles from "~/styles/components/Headbar.css";
 import Markdown from "markdown-to-jsx";
 import type { LinksFunction } from "@remix-run/node";
 

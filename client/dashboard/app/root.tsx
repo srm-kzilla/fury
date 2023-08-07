@@ -17,13 +17,16 @@ import classNames from "classnames";
 import rootStyles from "~/styles/index.css";
 import appStyles from "~/styles/App.css";
 import toastStyles from "react-toastify/dist/ReactToastify.css";
-import Store from "~/shared/components/Wizard/Store";
-import { Headbar, NotFound } from "~/shared/components";
-import { links as navbarLinks } from "~/shared/components/Navbar";
-import { links as headbarLinks } from "~/shared/components/Headbar";
-import { links as footerLinks } from "~/shared/components/Footer";
-import { links as notFoundLinks } from "~/shared/components/NotFound";
-import { links as glanceLinks } from "~/components/Glance";
+import Store from "~/components/Wizard/Store";
+import {
+  Headbar,
+  NotFound,
+  glanceLinks,
+  notFoundLinks,
+  footerLinks,
+  headbarLinks,
+  navbarLinks,
+} from "~/components";
 import { BiX } from "react-icons/bi";
 import { Constants } from "~/constants";
 import { AuthStore } from "~/shared/stores";

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { capitalCase } from "change-case";
 
 import { StoreContext } from "../../Store";
-import { DropZone } from "../../FormFields";
+import { DropZone } from "../FormFields";
 
 interface Question {
   domain: string;

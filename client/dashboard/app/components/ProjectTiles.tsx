@@ -1,13 +1,13 @@
 import { useContext, useEffect, useState } from "react";
-import { Task, Tile, User } from "~/shared/components";
+import { Task, Tile, User } from "~/components";
 import { produce } from "immer";
-import { StoreContext } from "~/shared/components/Wizard/Store";
+import { StoreContext } from "~/components/Wizard/Store";
 import { APIService } from "~/shared/services/api-service";
 import LoadingShimmer from "~/components/LoadingShimmer";
 import type { LinksFunction } from "@remix-run/node";
 import projectTilesStyles from "~/styles/pages/ProjectTiles.css";
-import tileStyles from "~/styles/shared/components/Tile.css";
-import taskStyles from "~/styles/shared/components/Task.css";
+import tileStyles from "~/styles/components/Tile.css";
+import taskStyles from "~/styles/components/Task.css";
 
 export const links: LinksFunction = () => [
   {

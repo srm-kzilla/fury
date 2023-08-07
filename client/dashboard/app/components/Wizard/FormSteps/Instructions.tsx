@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { StoreContext } from "../Store";
-import instructionsCSS from "../../../../styles/shared/components/FormSteps.css";
+import instructionsCSS from "~/styles/components/FormSteps.css";
 import Markdown from "markdown-to-jsx"; // TODO: Update Depedency
 import type { Duration } from "moment";
 import type { LinksFunction } from "@remix-run/node";
