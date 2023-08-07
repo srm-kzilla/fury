@@ -66,13 +66,6 @@ func UpdateUser(c *fiber.Ctx) error {
 		})
 	}
 
-	if !(strings.HasPrefix(user.Socials.Github, "github.com") || strings.HasPrefix(user.Socials.LinkedIn, "linkedin.com")) {
-		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
-			"error":   "Invalid socials link",
-			"message": "Invalid socials link",
-		})
-	}
-
 	err := usersCollection.FindOne(context.Background(), bson.M{"_id": userId}).Decode(&check)
 	if err != nil {
 		log.Error("Error ", err)
