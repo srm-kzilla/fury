@@ -206,13 +206,33 @@ func GetNotifications(c *fiber.Ctx) error {
 }
 
 func GetUserApplications(c *fiber.Ctx) error {
-	applications := []map[string]interface{}{}
-
-	responseData := fiber.Map{
-		"applications": applications,
+	userId := c.Locals("userId").(primitive.ObjectID)
+	if userId == primitive.NilObjectID {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error": "User ObjectID is missing",
+		})
 	}
 
-	return c.Status(fiber.StatusOK).JSON(responseData)
+	var user models.User
+
+	usersCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "users")
+	if e != nil {
+		log.Error("Error: ", e)
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"error":   e.Error(),
+			"message": "Error getting users collection",
+		})
+	}
+	err := usersCollection.FindOne(context.Background(), bson.M{"_id": userId}).Decode(&user)
+	if err != nil {
+		log.Error("Error", err)
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error":   err.Error(),
+			"message": "Domain not found",
+		})
+	}
+	applications := user.Application
+	return c.Status(fiber.StatusOK).JSON(applications)
 }
 
 func GetUserActivity(c *fiber.Ctx) error {
