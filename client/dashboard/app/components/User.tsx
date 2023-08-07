@@ -1,4 +1,4 @@
-import userStyles from "~/styles/components/User.css";
+import userStyles from "app/styles/components/User.css";
 import type { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => [
