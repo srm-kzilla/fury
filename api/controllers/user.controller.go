@@ -208,10 +208,9 @@ func GetNotifications(c *fiber.Ctx) error {
 		})
 	}
 	notifications := user.Notifications
-	if notifications == nil {
-		notifications = []models.Notification{}
-	}
-	return c.Status(fiber.StatusOK).JSON(notifications)
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{
+		"notifications": notifications,
+	})
 }
 
 func GetUserApplications(c *fiber.Ctx) error {
@@ -242,7 +241,9 @@ func GetUserApplications(c *fiber.Ctx) error {
 		})
 	}
 	applications := user.Application
-	return c.Status(fiber.StatusOK).JSON(applications)
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{
+		"applications": applications,
+	})
 }
 
 func GetUserActivity(c *fiber.Ctx) error {
