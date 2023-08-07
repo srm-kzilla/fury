@@ -128,10 +128,14 @@ export default function Start() {
             Gender<sup>*</sup>
           </label>
           <select name="gender">
-            <option value="" disabled>Select your gender</option>
+            <option value="" disabled>
+              Select your gender
+            </option>
             <option value="male">Male</option>
             <option value="female">Female</option>
-            <option value="other">Other</option>
+            <option value="other" selected>
+              Other
+            </option>
           </select>
           <sub>{actionData?.errors?.gender}</sub>
         </div>
@@ -207,8 +211,10 @@ export default function Start() {
 
 const BranchOptions = () => (
   <>
-    <option value="" disabled>Select your branch</option>;
-    <option value="aerospace_engineering">Aerospace Engineering</option>;
+    <option value="" disabled>
+      Select your branch
+    </option>
+    ;<option value="aerospace_engineering">Aerospace Engineering</option>;
     <option value="artificial_intelligence">Artificial Intelligence</option>;
     <option value="automobile_engineering">Automobile Engineering</option>;
     <option value="automobile_with_specialisation_in_automotive_electronics">
@@ -257,7 +263,7 @@ const BranchOptions = () => (
       Computer Science and Business Systems (in partnership with TCS)
     </option>
     ;
-    <option value="computer_science_and_engineering">
+    <option value="computer_science_and_engineering" selected>
       Computer Science and Engineering
     </option>
     ;
