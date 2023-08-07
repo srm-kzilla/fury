@@ -1,6 +1,6 @@
 import { Form, useNavigation, useActionData } from "@remix-run/react";
 import { getUserDetails, updateUserDetails } from "~/utils/api.server";
-import userProfileStyles from "~/styles/shared/components/UserProfile.css";
+import userProfileStyles from "~/styles/components/UserProfile.css";
 import { redirect } from "@remix-run/node";
 import { BiLoader } from "react-icons/bi";
 import * as Yup from "yup";
@@ -200,9 +200,6 @@ export default function Start() {
             "Continue"
           )}
         </button>
-        <Form method="post" action="/logout">
-          <button className="logout">Logout</button>
-        </Form>
       </div>
     </Form>
   );

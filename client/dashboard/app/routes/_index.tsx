@@ -75,7 +75,7 @@ const Dashboard = () => {
               </h2>
               <div>
                 <div className="application-wrapper">
-                  {applications.length > 0 &&
+                  {applications && applications.length > 0 &&
                     applications.map((project: any, index: number) => {
                       return (
                         <div key={index} className="tile">
@@ -90,7 +90,7 @@ const Dashboard = () => {
                     })}
                 </div>
               </div>
-              {applications.length === 0 && (
+              {applications && applications.length === 0 && (
                 <div className="empty">
                   <TeamSvg />
                   <h3>
@@ -112,7 +112,7 @@ const Dashboard = () => {
               <div style={{ overflowX: "hidden" }}>
                 <div className="notif-row">
                   <div className="kz-notifications">
-                    {notifications.map((notification: Notification) => {
+                    {notifications && notifications.map((notification: Notification) => {
                       return (
                         <Notification
                           key={notification.timestamp}
