@@ -3,12 +3,13 @@ package controllers
 import (
 	"context"
 	"os"
+	"strings"
 
-	"github.com/charmbracelet/log"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/s3"
+	"github.com/charmbracelet/log"
 	"github.com/gofiber/fiber/v2"
 	"github.com/srm-kzilla/Recruitments/api/models"
 	"github.com/srm-kzilla/Recruitments/api/utils/database"
@@ -62,6 +63,13 @@ func UpdateUser(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"error":   e.Error(),
 			"message": "Error getting users collection",
+		})
+	}
+
+	if !(strings.HasPrefix(user.Socials.Github, "github.com") || strings.HasPrefix(user.Socials.LinkedIn, "linkedin.com")) {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error":   "Invalid socials link",
+			"message": "Invalid socials link",
 		})
 	}
 
@@ -165,7 +173,7 @@ func UploadResume(c *fiber.Ctx) error {
 	}
 
 	_, err = svc.PutObject(params)
-	log.Print( err)
+	log.Print(err)
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"error":   "Error uploading file",
@@ -175,7 +183,7 @@ func UploadResume(c *fiber.Ctx) error {
 
 	c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"message": "File uploaded successfully with public read access.",
-		"url": "https://recruitment-23.s3.ap-south-1.amazonaws.com/" + key,
+		"url":     "https://recruitment-23.s3.ap-south-1.amazonaws.com/" + key,
 	})
 
 	return nil
@@ -198,8 +206,7 @@ func GetNotifications(c *fiber.Ctx) error {
 }
 
 func GetUserApplications(c *fiber.Ctx) error {
-	applications := []map[string]interface{}{
-	}
+	applications := []map[string]interface{}{}
 
 	responseData := fiber.Map{
 		"applications": applications,
