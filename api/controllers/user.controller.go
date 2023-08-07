@@ -208,6 +208,9 @@ func GetNotifications(c *fiber.Ctx) error {
 		})
 	}
 	notifications := user.Notifications
+	if notifications == nil {
+		notifications = []models.Notification{}
+	}
 	return c.Status(fiber.StatusOK).JSON(notifications)
 }
 
