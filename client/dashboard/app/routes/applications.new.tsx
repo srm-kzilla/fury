@@ -1,7 +1,5 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "@remix-run/react";
-import { observer } from "mobx-react";
-
 import {
   DomainSelectForm,
   GeneralInstructions,
@@ -17,18 +15,18 @@ import {
 } from "~/components/Wizard/FormSteps";
 import { Loading } from "~/components";
 import Wizard, { links as wizardLinks } from "~/components/Wizard/Wizard";
-import { loadingLinks } from "~/components";
-import { toast } from "~/shared/utils/toast";
-import { APIService } from "~/shared/services/api-service";
-import { StoreContext } from "~/components/Wizard/Store";
-import { AuthStore } from "~/shared/stores";
-import type { LinksFunction } from "@remix-run/node";
 import {
+  loadingLinks,
   projectTilesLinks,
   footerCompactLinks,
   taskListLinks,
   projectLinks,
 } from "~/components";
+import { toast } from "~/shared/utils/toast";
+import { APIService } from "~/shared/services/api-service";
+import getEnv from "~/shared/utils/env";
+import { StoreContext } from "~/components/Wizard/Store";
+import type { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => [
   ...wizardLinks(),
@@ -44,8 +42,10 @@ const Application = () => {
   const { setUserProjects, selectedDomainSlug, setSubmitted, domain, setYear } =
     useContext(StoreContext);
   let history = useNavigate();
-  const authStore = useContext(AuthStore);
   let { blob } = useContext(StoreContext);
+
+  const env = getEnv();
+  const endTime = parseInt(env.APPLICATION_DEADLINE!);
 
   useEffect(() => {
     let res;
@@ -118,7 +118,7 @@ const Application = () => {
       }
     }
   };
-  if (authStore.timeLeft > 0)
+  if (endTime - Date.now() > 0)
     return loading ? (
       <Loading />
     ) : (
@@ -150,11 +150,6 @@ const Application = () => {
           Question8.initialValues,
         ]}
         formComponents={[
-          observer(() =>
-            GeneralInstructions.component({
-              timeLeft: authStore.timeLeftDuration,
-            })
-          ),
           DomainSelectForm.component,
           DomainInstructions.component,
           Question1.component,

@@ -1,11 +1,8 @@
-import React, { useContext } from "react";
 import sidebarCSS from "~/styles/components/Sidebar.css";
 import { Assets } from "~/constants";
 import { BiHomeCircle, BiLogOut, BiRocket } from "react-icons/bi";
-import { Link, useLocation, useNavigate } from "@remix-run/react";
+import { Form, Link, useLocation, useNavigate } from "@remix-run/react";
 import classNames from "classnames";
-import { AuthStore } from "~/shared/stores";
-import { observer } from "mobx-react";
 import type { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => {
@@ -19,15 +16,8 @@ export const links: LinksFunction = () => {
 
 const Sidebar = () => {
   let location = useLocation();
-  const history = useNavigate();
+  const navigate = useNavigate();
   const pathname = location.pathname;
-  const authStore = useContext(AuthStore);
-
-  const signOut = () => {
-    authStore.setUser(undefined);
-    authStore.setAuthorization(undefined);
-    history("/start");
-  };
 
   return (
     <div className="kz-sidebar">
@@ -37,16 +27,13 @@ const Sidebar = () => {
             src={Assets.SRMKZILLA_LOGO_WHITE}
             alt="logo"
             onClick={() => {
-              history("/");
+              navigate("/");
             }}
           />
         </div>
         <ul>
           <li title="Dashboard">
-            <Link
-              to="/dashboard"
-              className={classNames({ active: pathname === "/dashboard" })}
-            >
+            <Link to="/" className={classNames({ active: pathname === "/" })}>
               <BiHomeCircle />
             </Link>
           </li>
@@ -60,14 +47,14 @@ const Sidebar = () => {
           </li>
         </ul>
 
-        <div className="sign-out">
-          <div title="Logout">
-            <BiLogOut onClick={signOut} />
-          </div>
-        </div>
+        <Form method="post" action="/logout">
+          <button type="submit">
+            <BiLogOut />
+          </button>
+        </Form>
       </div>
     </div>
   );
 };
 
-export default observer(Sidebar);
+export default Sidebar;

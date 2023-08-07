@@ -1,17 +1,15 @@
 import classNames from "classnames";
-import { observer } from "mobx-react";
 import { useContext, useEffect, useState } from "react";
 import { BiArrowBack, BiCog } from "react-icons/bi";
-import { FooterCompact, Sidebar, Task, TaskList } from "../components";
-import { TextField } from "../components/Wizard/FormFields";
+import { FooterCompact, Task } from "~/components";
+import { TextField } from "~/components/Wizard/FormFields";
 import { Field } from "formik";
 import {
   DomainInstructions,
   GeneralInstructionComponent,
 } from "../components/Wizard/FormSteps/Instructions";
 import { APIService } from "~/shared/services/api-service";
-import { StoreContext } from "../components/Wizard/Store";
-import Markdown from "markdown-to-jsx";
+import { StoreContext } from "~/components/Wizard/Store";
 import ProjectStyles from "~/styles/pages/Project.css";
 import type { LinksFunction } from "@remix-run/node";
 
@@ -127,4 +125,4 @@ const Project = () => {
   );
 };
 
-export default observer(Project);
+export default Project;

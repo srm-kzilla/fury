@@ -21,12 +21,12 @@ div.kz-dashboard {
     width: 80%;
     padding: 2rem;
 
-    .applicationWrapper {
+    .application-wrapper {
       display: flex;
       gap: 20px;
     }
 
-    .applicationWrapper > div {
+    .application-wrapper > div {
       width: 50%;
     }
 
@@ -347,13 +347,13 @@ div.kz-dashboard {
       .main {
         width: 100% !important;
 
-        .applicationWrapper {
+        .application-wrapper {
           display: flex;
           flex-direction: column;
           gap: 20px;
         }
 
-        .applicationWrapper > div {
+        .application-wrapper > div {
           width: 100%;
         }
 

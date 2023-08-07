@@ -1,8 +1,8 @@
-import applicationStyles from "../styles/pages/Application.css";
+import applicationStyles from "~/styles/pages/Application.css";
 import { LinksFunction } from "@remix-run/node";
-// import Lottie from "react-lottie";
-import paperPlaneLottie from "../assets/lotties/paperplane.json";
-import tickLottie from "../assets/lotties/tick.json";
+import Lottie from "react-lottie";
+import paperPlaneLottie from "~/assets/lotties/paperplane.json";
+import tickLottie from "~/assets/lotties/tick.json";
 import { Sidebar } from "~/components";
 import { sidebarLinks } from "~/components";
 import { useEffect, useState } from "react";

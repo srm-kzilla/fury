@@ -26,7 +26,7 @@ export const loader: LoaderFunction = async ({ request }) => {
     access_token,
     refresh_token,
     expires_in,
-    "/dashboard"
+    "/"
   );
 };
 
@@ -41,7 +41,7 @@ export default function OAuthProviderCallback() {
       message: error,
     });
 
-    const timeout = setTimeout(() => navigate("/start"), 5000);
+    const timeout = setTimeout(() => navigate("/auth"), 5000);
 
     return () => clearInterval(timeout);
   }, []);
