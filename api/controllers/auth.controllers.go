@@ -50,7 +50,7 @@ func GetAccessTokenGoogle(c *fiber.Ctx) error {
 		})
 	}
 	errRecordActivity := utils.RecordActivity(c.Get("X-Forwarded-For"), "login")
-	if errRecordActivity != nil { 
+	if errRecordActivity != nil {
 		log.Error(errRecordActivity)
 	}
 	return c.Status(fiber.StatusOK).JSON(user)
@@ -139,13 +139,19 @@ func registerUserInDb(user models.UserData) error {
 		return nil
 	}
 	newUser := models.User{
-		ID:          primitive.NewObjectID(),
-		Name:        user.Name,
-		RegNo:       user.RegNo,
-		Year:        user.Year,
-		Email:       user.Email,
-		Application: []models.Application{},
-		CreatedAt:   time.Now().Unix(),
+		ID:            primitive.NewObjectID(),
+		Name:          user.Name,
+		RegNo:         user.RegNo,
+		Year:          user.Year,
+		Email:         user.Email,
+		Gender:        "",
+		Branch:        "",
+		Resume:        "",
+		Contact:       "",
+		Notifications: []models.Notification{},
+		Socials:       models.Social{},
+		Application:   []models.Application{},
+		CreatedAt:     time.Now().Unix(),
 	}
 	_, e := usersCollection.InsertOne(context.Background(), newUser)
 	if e != nil {
