@@ -16,6 +16,7 @@ const API = {
       RESUME_UPLOAD: () => "/upload/resume",
       NOTIFICATIONS: () => "/notifications",
       APPLICATIONS: () => "/applications",
+      ACTIVITY: () => "/activity",
     },
     AUTH: {
       BASE_URL: () => "/auth",
@@ -44,7 +45,7 @@ export const updateUserDetails = async (request: Request, user: UpdateUser) => {
     body: JSON.stringify(user),
     headers: {
       Authorization: `Bearer ${accessToken}`,
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
   });
 
@@ -80,26 +81,53 @@ export const uploadResume = async (
 export const getNotifications = async (request: Request) => {
   const accessToken = await requireAccessToken(request);
 
-  const res = await fetch(API.BASE_URL + API.ENDPOINTS.USERS.BASE_URL() + API.ENDPOINTS.USERS.NOTIFICATIONS(), {
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-  });
+  const res = await fetch(
+    API.BASE_URL +
+      API.ENDPOINTS.USERS.BASE_URL() +
+      API.ENDPOINTS.USERS.NOTIFICATIONS(),
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }
+  );
 
   return res.json();
-}
+};
 
 export const getApplications = async (request: Request) => {
   const accessToken = await requireAccessToken(request);
 
-  const res = await fetch(API.BASE_URL + API.ENDPOINTS.USERS.BASE_URL() + API.ENDPOINTS.USERS.APPLICATIONS(), {
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
+  const res = await fetch(
+    API.BASE_URL +
+      API.ENDPOINTS.USERS.BASE_URL() +
+      API.ENDPOINTS.USERS.APPLICATIONS(),
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
     }
-  });
+  );
 
   return res.json();
-}
+};
+
+export const getUserActivity = async (request: Request) => {
+  const accessToken = await requireAccessToken(request);
+
+  const res = await fetch(
+    API.BASE_URL +
+      API.ENDPOINTS.USERS.BASE_URL() +
+      API.ENDPOINTS.USERS.ACTIVITY(),
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }
+  );
+
+  return res.json();
+};
 
 export const getAccessTokenFromCode = async (request: Request) => {
   const url = new URL(request.url);

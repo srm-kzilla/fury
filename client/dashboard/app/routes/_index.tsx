@@ -5,24 +5,25 @@ import {
   ApplicationTile,
   FooterCompact,
   Sidebar,
-  ApplicationTileSkeleton,
+  Glance,
   sidebarLinks,
   notificationLinks,
   footerCompactLinks,
   applicationTileLinks,
+  TeamSvg,
 } from "~/components";
-import type { LinksFunction, LoaderFunction } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
 import {
   getApplications,
   getNotifications,
+  getUserActivity,
   getUserDetails,
 } from "~/utils/api.server";
-import { Assets } from "~/constants";
-import { BiAlarm, BiPlus } from "react-icons/bi";
 import { Link, useLoaderData, useNavigate } from "@remix-run/react";
-import TeamSvg from "~/components/TeamSvg";
 import getEnv from "~/shared/utils/env";
+import { BiAlarm, BiPlus } from "react-icons/bi";
+import { Assets } from "~/constants";
+import type { LinksFunction, LoaderFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => [
   ...sidebarLinks(),
@@ -39,14 +40,15 @@ export const loader: LoaderFunction = async ({ request }) => {
   const user = await getUserDetails(request);
   const { notifications } = await getNotifications(request);
   const { applications } = await getApplications(request);
+  const { activity } = await getUserActivity(request);
 
   if (!user.gender) return redirect("/start");
 
-  return json({ user, notifications, applications });
+  return json({ user, notifications, applications, activity });
 };
 
 const Dashboard = () => {
-  const { notifications, applications } = useLoaderData();
+  const { user, notifications, applications, activity } = useLoaderData();
   const navigate = useNavigate();
 
   const env = getEnv();
@@ -72,15 +74,7 @@ const Dashboard = () => {
                 )}
               </h2>
               <div>
-                <div className="applicationWrapper">
-                  <>
-                    <div className="tile">
-                      <ApplicationTileSkeleton />
-                    </div>
-                    <div className="tile">
-                      <ApplicationTileSkeleton />
-                    </div>
-                  </>
+                <div className="application-wrapper">
                   {applications.length > 0 &&
                     applications.map((project: any, index: number) => {
                       return (
@@ -197,7 +191,9 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-            <div className="glance">{/*<Glance user={authStore.user} />*/}</div>
+            <div className="glance">
+              <Glance user={user} activity={activity} />
+            </div>
           </div>
         </div>
       </div>
