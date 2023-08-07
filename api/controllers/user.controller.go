@@ -3,6 +3,7 @@ package controllers
 import (
 	"context"
 	"os"
+	"strings"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
@@ -15,32 +16,6 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
-
-func CreateUser(c *fiber.Ctx) error {
-	var user models.User
-	user.Application = []models.Application{}
-	c.BodyParser(&user)
-
-	usersCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "users")
-	if e != nil {
-		log.Error("Error: ", e)
-		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"error":   e.Error(),
-			"message": "Error getting users collection",
-		})
-	}
-
-	_, err := usersCollection.InsertOne(context.Background(), user)
-	if err != nil {
-		log.Error("Error: ", err)
-		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"error":   err.Error(),
-			"message": "Error inserting user",
-		})
-	}
-
-	return c.Status(fiber.StatusOK).JSON(user)
-}
 
 func GetUser(c *fiber.Ctx) error {
 	userId := c.Locals("userId").(primitive.ObjectID)
@@ -75,6 +50,13 @@ func UpdateUser(c *fiber.Ctx) error {
 	var check models.User
 	c.BodyParser(&user)
 
+	userId := c.Locals("userId").(primitive.ObjectID)
+	if userId == primitive.NilObjectID {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error": "User ObjectID is missing",
+		})
+	}
+
 	usersCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "users")
 	if e != nil {
 		log.Error("Error: ", e)
@@ -84,17 +66,31 @@ func UpdateUser(c *fiber.Ctx) error {
 		})
 	}
 
-	err := usersCollection.FindOne(context.Background(), bson.M{"regNo": user.RegNo}).Decode(&check)
+	if !(strings.HasPrefix(user.Socials.Github, "github.com") || strings.HasPrefix(user.Socials.LinkedIn, "linkedin.com")) {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error":   "Invalid socials link",
+			"message": "Invalid socials link",
+		})
+	}
+
+	err := usersCollection.FindOne(context.Background(), bson.M{"_id": userId}).Decode(&check)
 	if err != nil {
 		log.Error("Error ", err)
 		c.Status(fiber.StatusBadGateway).JSON(fiber.Map{
-			"error": "no RegNo record exists",
+			"message": "no record exists",
 		})
 		return nil
 	}
 
-	check = user
-	errr := usersCollection.FindOneAndReplace(context.Background(), bson.M{"regNo": user.RegNo}, check).Decode(&check)
+	_, errr := usersCollection.UpdateOne(context.Background(), bson.M{"_id": userId}, bson.D{{Key: "$set",
+		Value: bson.D{
+			{Key: "gender", Value: user.Gender},
+			{Key: "resume", Value: user.Resume},
+			{Key: "branch", Value: user.Branch},
+			{Key: "contact", Value: user.Contact},
+			{Key: "socials", Value: bson.M{"github": user.Socials.Github, "linkedin": user.Socials.LinkedIn, "portfolio": user.Socials.Portfolio}},
+		},
+	}})
 	if errr != nil {
 		log.Error("Error: ", errr)
 		c.Status(fiber.StatusBadGateway).JSON(fiber.Map{
@@ -102,7 +98,9 @@ func UpdateUser(c *fiber.Ctx) error {
 		})
 		return nil
 	}
-	c.Status(fiber.StatusOK).JSON(user)
+	c.Status(fiber.StatusOK).JSON(fiber.Map{
+		"message": "Updated Successfully",
+	})
 	return nil
 }
 
@@ -165,7 +163,7 @@ func UploadResume(c *fiber.Ctx) error {
 	defer srcFile.Close()
 
 	// @aryan replace this when middleware is ready
-	key := userId + ".pdf"
+	key := "resume/" + userId + ".pdf"
 
 	params := &s3.PutObjectInput{
 		Bucket: aws.String(os.Getenv("AWS_S3_BUCKET")),
@@ -175,6 +173,7 @@ func UploadResume(c *fiber.Ctx) error {
 	}
 
 	_, err = svc.PutObject(params)
+	log.Print(err)
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"error":   "Error uploading file",
@@ -184,7 +183,59 @@ func UploadResume(c *fiber.Ctx) error {
 
 	c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"message": "File uploaded successfully with public read access.",
+		"url":     "https://recruitment-23.s3.ap-south-1.amazonaws.com/" + key,
 	})
 
 	return nil
+}
+
+func GetNotifications(c *fiber.Ctx) error {
+	notifications := []map[string]interface{}{
+		{
+			"markdown":  "**Hello, dreamer.** Welcome to #Recruitment2022. Your pathway to becoming an SRMKZILLian starts right here. Create a new application to get started.",
+			"text":      "Hello, dreamer. Welcome to #Recruitment2022. Your pathway to becoming an SRMKZILLian starts right here. Create a new application to get started.",
+			"timestamp": 1663511770010,
+		},
+	}
+
+	responseData := fiber.Map{
+		"notifications": notifications,
+	}
+
+	return c.Status(fiber.StatusOK).JSON(responseData)
+}
+
+func GetUserApplications(c *fiber.Ctx) error {
+	applications := []map[string]interface{}{}
+
+	responseData := fiber.Map{
+		"applications": applications,
+	}
+
+	return c.Status(fiber.StatusOK).JSON(responseData)
+}
+
+func GetUserActivity(c *fiber.Ctx) error {
+	activity := []map[string]interface{}{
+		{
+			"type":            "login",
+			"user_id":         "104121229959115963252",
+			"device_ip":       "::ffff:127.0.0.1",
+			"timestamp":       1663410336694,
+			"device_location": nil,
+		},
+		{
+			"type":            "login",
+			"user_id":         "104121229959115963252",
+			"device_ip":       "171.78.172.62",
+			"timestamp":       1662830819149,
+			"device_location": nil,
+		},
+	}
+
+	responseData := fiber.Map{
+		"activity": activity,
+	}
+
+	return c.Status(fiber.StatusOK).JSON(responseData)
 }

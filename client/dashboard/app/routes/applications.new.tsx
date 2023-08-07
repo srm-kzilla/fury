@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "@remix-run/react";
-
 import {
   DomainSelectForm,
   GeneralInstructions,
@@ -13,29 +12,29 @@ import {
   Question7,
   Question8,
   DomainInstructions,
-} from "~/shared/components/Wizard/FormSteps";
-import { Loading } from "~/shared/components";
-import Wizard, {
-  links as wizardLinks,
-} from "~/shared/components/Wizard/Wizard";
-import { links as loadingLinks } from "~/shared/components/Loading";
+} from "~/components/Wizard/FormSteps";
+import { Loading } from "~/components";
+import Wizard, { links as wizardLinks } from "~/components/Wizard/Wizard";
+import {
+  loadingLinks,
+  projectTilesLinks,
+  footerCompactLinks,
+  taskListLinks,
+  projectLinks,
+} from "~/components";
 import { toast } from "~/shared/utils/toast";
 import { APIService } from "~/shared/services/api-service";
-import { StoreContext } from "~/shared/components/Wizard/Store";
-import type { LinksFunction } from "@remix-run/node";
-import { links as ProjectTilesLinks } from "~/shared/components/ProjectTiles";
-import { links as FooterCompactLinks } from "~/shared/components/FooterCompact";
-import { links as TaskListLinks } from "~/shared/components/TaskList";
-import { links as ProjectLinks } from "~/shared/components/Project";
 import getEnv from "~/shared/utils/env";
+import { StoreContext } from "~/components/Wizard/Store";
+import type { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => [
   ...wizardLinks(),
   ...loadingLinks(),
-  ...ProjectTilesLinks(),
-  ...FooterCompactLinks(),
-  ...TaskListLinks(),
-  ...ProjectLinks(),
+  ...projectTilesLinks(),
+  ...footerCompactLinks(),
+  ...taskListLinks(),
+  ...projectLinks(),
 ];
 
 const Application = () => {

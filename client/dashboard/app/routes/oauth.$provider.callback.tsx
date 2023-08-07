@@ -4,7 +4,7 @@ import { getAccessTokenFromCode } from "~/utils/api.server";
 import { json } from "@remix-run/node";
 import { useLoaderData, useNavigate } from "@remix-run/react";
 import { useEffect } from "react";
-import { Loading } from "~/shared/components";
+import { Loading } from "~/components";
 import type { LoaderFunction } from "@remix-run/node";
 
 type LoaderData = {

@@ -1,16 +1,16 @@
 import dashboardStyles from "~/styles/pages/Dashboard.css";
 import Timer from "react-compound-timer";
-import Notification, {
-  links as notificationLinks,
-  NotificationSkeleton,
-} from "~/components/Notification";
-import { links as sidebarLinks } from "~/shared/components/Sidebar";
-import { links as footerCompactLinks } from "~/shared/components/FooterCompact";
 import {
+  Notification,
+  ApplicationTile,
+  FooterCompact,
+  Sidebar,
   ApplicationTileSkeleton,
-  links as applicationTileLinks,
-} from "~/shared/components/ApplicationTile";
-import { ApplicationTile, FooterCompact, Sidebar } from "~/shared/components";
+  sidebarLinks,
+  notificationLinks,
+  footerCompactLinks,
+  applicationTileLinks,
+} from "~/components";
 import type { LinksFunction, LoaderFunction } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
 import {
@@ -20,8 +20,7 @@ import {
 } from "~/utils/api.server";
 import { Assets } from "~/constants";
 import { BiAlarm, BiPlus } from "react-icons/bi";
-import Glance from "~/components/Glance";
-import {Link, useLoaderData, useNavigate} from "@remix-run/react";
+import { Link, useLoaderData, useNavigate } from "@remix-run/react";
 import TeamSvg from "~/components/TeamSvg";
 import getEnv from "~/shared/utils/env";
 

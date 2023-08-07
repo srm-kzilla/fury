@@ -10,21 +10,24 @@ import {
   useLoaderData,
   useRouteError,
 } from "@remix-run/react";
-import type { ReactNode } from "react";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import classNames from "classnames";
 import rootStyles from "~/styles/index.css";
 import appStyles from "~/styles/App.css";
 import toastStyles from "react-toastify/dist/ReactToastify.css";
-import Store from "~/shared/components/Wizard/Store";
-import { Headbar, NotFound } from "~/shared/components";
-import { links as headbarLinks } from "~/shared/components/Headbar";
-import { links as notFoundLinks } from "~/shared/components/NotFound";
-import { links as glanceLinks } from "~/components/Glance";
+import Store from "~/components/Wizard/Store";
+import {
+  Headbar,
+  NotFound,
+  glanceLinks,
+  notFoundLinks,
+  headbarLinks,
+} from "~/components";
 import { BiX } from "react-icons/bi";
 import { Constants } from "~/constants";
 import { json } from "@remix-run/node";
+import type { ReactNode } from "react";
 import type { LinksFunction } from "@remix-run/node";
 
 declare global {

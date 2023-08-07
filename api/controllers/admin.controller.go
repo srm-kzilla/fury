@@ -5,14 +5,14 @@ import (
 	"os"
 	"time"
 
-    "golang.org/x/crypto/bcrypt"
 	"github.com/charmbracelet/log"
 	"github.com/gofiber/fiber/v2"
+	"github.com/golang-jwt/jwt/v4"
 	"github.com/srm-kzilla/Recruitments/api/models"
 	"github.com/srm-kzilla/Recruitments/api/utils/database"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
-	"github.com/golang-jwt/jwt/v4"
+	"golang.org/x/crypto/bcrypt"
 )
 
 func GetAllApplications(c *fiber.Ctx) error {
@@ -55,15 +55,27 @@ func GetApplications(c *fiber.Ctx) error {
 		})
 	}
 
-	var applications models.Application
-	err := usersCollection.FindOne(context.Background(), bson.M{"domain": domain}).Decode(&applications)
+	cursor, err := usersCollection.Find(context.Background(), bson.M{
+		"application.domain": domain,
+	})
 	if err != nil {
 		log.Error("Error", err)
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error":   err.Error(),
-			"message": "Domain not found",
+			"message": "Applications not found",
 		})
 	}
+	defer cursor.Close(context.Background())
+
+	var applications []bson.M
+	if err := cursor.All(context.Background(), &applications); err != nil {
+		log.Fatal(err)
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error":   err.Error(),
+			"message": "Applications not found",
+		})
+	}
+
 	return c.Status(fiber.StatusOK).JSON(applications)
 }
 
@@ -136,9 +148,9 @@ func AdminSignup(c *fiber.Ctx) error {
 
 	passwordByte := []byte(evaluator.Password)
 	hashedPassword, err := bcrypt.GenerateFromPassword(passwordByte, bcrypt.DefaultCost)
-    if err != nil {
-        panic(err)
-    }
+	if err != nil {
+		panic(err)
+	}
 
 	evaluator.Password = string(hashedPassword)
 	evaluator.CreatedAt = time.Now()
@@ -197,7 +209,7 @@ func AdminLogin(c *fiber.Ctx) error {
 	hashedPassword := []byte(evaluator.Password)
 	loginPassword := []byte(evaluatorRequest.Password)
 
-    err = bcrypt.CompareHashAndPassword(hashedPassword, loginPassword)
+	err = bcrypt.CompareHashAndPassword(hashedPassword, loginPassword)
 
 	if err != nil {
 		return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{
@@ -206,7 +218,7 @@ func AdminLogin(c *fiber.Ctx) error {
 	}
 	claims := jwt.MapClaims{
 		"email": evaluator.Email,
-		"exp":      time.Now().Add(time.Hour * 24 * 30).Unix(), // Token will expire in 24 hours
+		"exp":   time.Now().Add(time.Hour * 24 * 30).Unix(), // Token will expire in 24 hours
 	}
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
@@ -222,7 +234,7 @@ func AdminLogin(c *fiber.Ctx) error {
 	c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"success": true,
 		"message": "Login successful",
-		"jwt": tokenString,
+		"jwt":     tokenString,
 	})
 	return nil
 }

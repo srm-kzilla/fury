@@ -11,6 +11,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/charmbracelet/log"
 	"github.com/gofiber/fiber/v2"
 	"github.com/srm-kzilla/Recruitments/api/models"
 	"github.com/srm-kzilla/Recruitments/api/utils"
@@ -47,6 +48,10 @@ func GetAccessTokenGoogle(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"error": err.Error(),
 		})
+	}
+	errRecordActivity := utils.RecordActivity(c.Get("X-Forwarded-For"), "login")
+	if errRecordActivity != nil { 
+		log.Error(errRecordActivity)
 	}
 	return c.Status(fiber.StatusOK).JSON(user)
 }
