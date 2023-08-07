@@ -1,15 +1,15 @@
 import { useContext, useState } from "react";
-import userProfileStyles from "~/styles/shared/components/UserProfile.css";
+import userProfileStyles from "~/styles/components/UserProfile.css";
 import { useNavigate } from "@remix-run/react";
 import { Field, Formik } from "formik";
 import * as Yup from "yup";
 import { observer } from "mobx-react";
 import { BiLoader } from "react-icons/bi";
-import { DropZone, TextField } from "~/shared/components/Wizard/FormFields";
+import { DropZone, TextField } from "~/components/Wizard/FormFields";
 import { APIService } from "~/shared/services/api-service";
 import { toast } from "~/shared/utils/toast";
 import { AuthStore } from "~/shared/stores";
-import { StoreContext } from "~/shared/components/Wizard/Store";
+import { StoreContext } from "~/components/Wizard/Store";
 import type { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => [
@@ -19,7 +19,7 @@ export const links: LinksFunction = () => [
   },
 ];
 
-const UserProfileForm = () => {
+export const UserProfileForm = () => {
   const [isSubmitting, setSubmitting] = useState(false);
   const { blob, setBlob } = useContext(StoreContext);
 

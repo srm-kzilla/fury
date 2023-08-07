@@ -1,4 +1,4 @@
-import footerCompactStyles from "~/styles/shared/components/FooterCompact.css";
+import footerCompactStyles from "~/styles/components/FooterCompact.css";
 import { Assets } from "~/constants";
 import type { LinksFunction } from "@remix-run/node";
 

@@ -8,20 +8,20 @@ import Notification, {
   links as notificationLinks,
   NotificationSkeleton,
 } from "~/components/Notification";
-import { links as sidebarLinks } from "~/shared/components/Sidebar";
-import { links as footerCompactLinks } from "~/shared/components/FooterCompact";
-import { links as applicationTileLinks } from "~/shared/components/ApplicationTile";
+import { links as sidebarLinks } from "~/components/Sidebar";
+import { links as footerCompactLinks } from "~/components/FooterCompact";
+import { links as applicationTileLinks } from "~/components/ApplicationTile";
 import TeamSvg from "~/components/TeamSvg";
 import Glance from "~/components/Glance";
-import PrivateRoute from "~/shared/components/PrivateRoute";
+import PrivateRoute from "~/components/PrivateRoute";
 import {
   ApplicationTile,
   ApplicationTileSkeleton,
   FooterCompact,
   Sidebar,
-} from "~/shared/components";
+} from "~/components";
 import getEnv from "~/shared/utils/env";
-import { links as userProfileLinks } from "~/shared/components/UserProfile";
+import { links as userProfileLinks } from "~/components/UserProfile";
 import { Link, useNavigate } from "@remix-run/react";
 import { BiAlarm, BiPlus } from "react-icons/bi";
 import { Assets } from "~/constants";

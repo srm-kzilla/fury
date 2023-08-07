@@ -1,4 +1,4 @@
-import footerStyles from "~/styles/shared/components/Footer.css";
+import footerStyles from "~/styles/components/Footer.css";
 import {
   FaEnvelope,
   FaFacebookSquare,

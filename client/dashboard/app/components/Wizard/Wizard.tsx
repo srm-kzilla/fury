@@ -7,9 +7,9 @@ import * as Yup from "yup";
 import { toast } from "~/shared/utils/toast";
 import ProjectQuestionComponent from "./ProjectComponent";
 import { StoreContext } from "./Store";
-import wizardStyles from "~/styles/shared/components/Wizard.css";
-import formFieldStyles from "~/styles/shared/components/FormFields.css";
-import formStepsStyles from "~/styles/shared/components/FormSteps.css";
+import wizardStyles from "~/styles/components/Wizard.css";
+import formFieldStyles from "~/styles/components/FormFields.css";
+import formStepsStyles from "~/styles/components/FormSteps.css";
 import type { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => [

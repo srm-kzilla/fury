@@ -1,11 +1,12 @@
 import { observer } from "mobx-react";
 import { useContext, useEffect } from "react";
-import { AuthStore } from "../stores";
+import { AuthStore } from "~/shared/stores";
 import { useNavigate } from "@remix-run/react";
-import Store from "~/shared/components/Wizard/Store";
-import { Loading, UserProfileForm } from "~/shared/components";
-import { links as loadingLinks } from "~/shared/components/Loading";
-import { links as userProfileLinks } from "~/shared/components/UserProfile";
+import Store from "~/components/Wizard/Store";
+import { Loading } from "~/components";
+import { UserProfileForm } from "~/components/UserProfile";
+import { links as loadingLinks } from "~/components/Loading";
+import { links as userProfileLinks } from "~/components/UserProfile";
 import type { ReactNode } from "react";
 import type { LinksFunction } from "@remix-run/node";
 

@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 
-import { getDomainName } from "../../../../utils/domains";
-import { StoreContext } from "../../Store";
-import questionComponentCSS from "../../../../../styles/shared/components/FormSteps.css";
-import { DropZone, TextArea } from "../../FormFields";
+import { getDomainName } from "../../../shared/utils/domains";
+import { StoreContext } from "../Store";
+import questionComponentCSS from "~/styles/components/FormSteps.css";
+import { DropZone, TextArea } from "../FormFields";
 import { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => {

@@ -6,7 +6,7 @@ import { BiX } from "react-icons/bi";
 
 import { APIService } from "~/shared/services/api-service";
 import { toast } from "~/shared/utils/toast";
-import { StoreContext } from "~/shared/components/Wizard/Store";
+import { StoreContext } from "~/components/Wizard/Store";
 
 type DropZoneProps = {
   name: string;

@@ -1,8 +1,8 @@
 import exploreStyles from "~/styles/pages/Explore.css";
-import { FooterCompact, Sidebar } from "~/shared/components";
+import { FooterCompact, Sidebar } from "~/components";
 import InfoTile, { links as infoTileLinks } from "~/components/InfoTile";
-import { links as compactFooterLinks } from "~/shared/components/FooterCompact";
-import { links as sidebarLinks } from "~/shared/components/Sidebar";
+import { links as compactFooterLinks } from "~/components/FooterCompact";
+import { links as sidebarLinks } from "~/components/Sidebar";
 import {
   BiAward,
   BiBot,
