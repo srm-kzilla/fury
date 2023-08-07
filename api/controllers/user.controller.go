@@ -3,7 +3,6 @@ package controllers
 import (
 	"context"
 	"os"
-	"strings"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
