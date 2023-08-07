@@ -4,7 +4,7 @@ import { LinksFunction } from "@remix-run/node";
 import paperPlaneLottie from "../assets/lotties/paperplane.json";
 import tickLottie from "../assets/lotties/tick.json";
 import { Sidebar } from "~/components";
-import { links as sidebarLinks } from "~/components/Sidebar";
+import { sidebarLinks } from "~/components";
 import { useEffect, useState } from "react";
 import { useParams } from "@remix-run/react";
 import getEnv from "~/shared/utils/env";

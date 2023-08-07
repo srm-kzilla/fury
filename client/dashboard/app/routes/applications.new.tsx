@@ -17,24 +17,24 @@ import {
 } from "~/components/Wizard/FormSteps";
 import { Loading } from "~/components";
 import Wizard, { links as wizardLinks } from "~/components/Wizard/Wizard";
-import { links as loadingLinks } from "~/components/Loading";
+import { loadingLinks } from "~/components";
 import { toast } from "~/shared/utils/toast";
 import { APIService } from "~/shared/services/api-service";
 import { StoreContext } from "~/components/Wizard/Store";
 import { AuthStore } from "~/shared/stores";
 import type { LinksFunction } from "@remix-run/node";
-import { links as ProjectTilesLinks } from "~/components/ProjectTiles";
-import { links as FooterCompactLinks } from "~/components/FooterCompact";
-import { links as TaskListLinks } from "~/components/TaskList";
-import { links as ProjectLinks } from "~/components/Project";
+import { projectTilesLinks } from "~/components";
+import { footerCompactLinks } from "~/components";
+import { taskListLinks } from "~/components";
+import { projectLinks } from "~/components";
 
 export const links: LinksFunction = () => [
   ...wizardLinks(),
   ...loadingLinks(),
-  ...ProjectTilesLinks(),
-  ...FooterCompactLinks(),
-  ...TaskListLinks(),
-  ...ProjectLinks(),
+  ...projectTilesLinks(),
+  ...footerCompactLinks(),
+  ...taskListLinks(),
+  ...projectLinks(),
 ];
 
 const Application = () => {
