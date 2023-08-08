@@ -4,11 +4,11 @@ import (
 	"context"
 	"os"
 
-	"github.com/charmbracelet/log"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/s3"
+	"github.com/charmbracelet/log"
 	"github.com/gofiber/fiber/v2"
 	"github.com/srm-kzilla/Recruitments/api/models"
 	"github.com/srm-kzilla/Recruitments/api/utils/database"
@@ -165,7 +165,7 @@ func UploadResume(c *fiber.Ctx) error {
 	}
 
 	_, err = svc.PutObject(params)
-	log.Print( err)
+	log.Print(err)
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"error":   "Error uploading file",
@@ -175,37 +175,75 @@ func UploadResume(c *fiber.Ctx) error {
 
 	c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"message": "File uploaded successfully with public read access.",
-		"url": "https://recruitment-23.s3.ap-south-1.amazonaws.com/" + key,
+		"url":     "https://recruitment-23.s3.ap-south-1.amazonaws.com/" + key,
 	})
 
 	return nil
 }
 
 func GetNotifications(c *fiber.Ctx) error {
-	notifications := []map[string]interface{}{
-		{
-			"markdown":  "**Hello, dreamer.** Welcome to #Recruitment2022. Your pathway to becoming an SRMKZILLian starts right here. Create a new application to get started.",
-			"text":      "Hello, dreamer. Welcome to #Recruitment2022. Your pathway to becoming an SRMKZILLian starts right here. Create a new application to get started.",
-			"timestamp": 1663511770010,
-		},
+	userId := c.Locals("userId").(primitive.ObjectID)
+	if userId == primitive.NilObjectID {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error": "User ObjectID is missing",
+		})
 	}
 
-	responseData := fiber.Map{
+	var user models.User
+
+	usersCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "users")
+	if e != nil {
+		log.Error("Error: ", e)
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"error":   e.Error(),
+			"message": "Error getting users collection",
+		})
+	}
+	err := usersCollection.FindOne(context.Background(), bson.M{"_id": userId}).Decode(&user)
+	if err != nil {
+		log.Error("Error", err)
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error":   err.Error(),
+			"message": "User not found",
+		})
+	}
+	notifications := user.Notifications
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"notifications": notifications,
-	}
-
-	return c.Status(fiber.StatusOK).JSON(responseData)
+	})
 }
 
 func GetUserApplications(c *fiber.Ctx) error {
-	applications := []map[string]interface{}{
+	userId := c.Locals("userId").(primitive.ObjectID)
+	if userId == primitive.NilObjectID {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error": "User ObjectID is missing",
+		})
 	}
 
-	responseData := fiber.Map{
+	var user models.User
+
+	usersCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "users")
+	if e != nil {
+		log.Error("Error: ", e)
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"error":   e.Error(),
+			"message": "Error getting users collection",
+		})
+	}
+	err := usersCollection.FindOne(context.Background(), bson.M{"_id": userId}).Decode(&user)
+	if err != nil {
+		log.Error("Error", err)
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error":   err.Error(),
+			"message": "User not found",
+
+		})
+	}
+	applications := user.Application
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"applications": applications,
-	}
-
-	return c.Status(fiber.StatusOK).JSON(responseData)
+	})
 }
 
 func GetUserActivity(c *fiber.Ctx) error {

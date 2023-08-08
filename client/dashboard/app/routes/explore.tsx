@@ -1,8 +1,12 @@
 import exploreStyles from "~/styles/pages/Explore.css";
-import { FooterCompact, Sidebar } from "~/shared/components";
-import InfoTile, { links as infoTileLinks } from "~/components/InfoTile";
-import { links as compactFooterLinks } from "~/shared/components/FooterCompact";
-import { links as sidebarLinks } from "~/shared/components/Sidebar";
+import InfoTile from "~/components/InfoTile";
+import {
+  infoTileLinks,
+  footerCompactLinks,
+  sidebarLinks,
+  FooterCompact,
+  Sidebar,
+} from "~/components";
 import {
   BiAward,
   BiBot,
@@ -22,7 +26,7 @@ import type { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => [
   ...sidebarLinks(),
-  ...compactFooterLinks(),
+  ...footerCompactLinks(),
   ...infoTileLinks(),
   {
     rel: "stylesheet",

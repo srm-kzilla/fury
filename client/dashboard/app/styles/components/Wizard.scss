@@ -1,0 +1,126 @@
+@import "../variables";
+
+div.kz-wizard {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex-grow: 1;
+  min-height: 100%;
+  margin: 2rem;
+
+  textarea {
+    margin-top: 2rem;
+  }
+
+  .kz-form-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .kz-form-footer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem 1.5rem;
+    border-top: 1px solid var(--color-skeleton);
+
+    bottom: 0;
+    width: 100%;
+
+    div:nth-child(1) > div {
+      margin-top: 10px;
+      color: var(--color-input);
+    }
+  }
+
+  .footer-item-1 {
+    flex-basis: 25%;
+  }
+
+  .footer-item-2 {
+    flex-basis: 50%;
+  }
+
+  .home-icon {
+    cursor: pointer;
+  }
+
+  .center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .kz-button-container {
+    button {
+      cursor: pointer;
+      border: none;
+      outline: none;
+      background-color: $primary;
+      color: #fff;
+      border-radius: 5px;
+      padding: 12px 25px;
+      font-family: "Caros", sans-serif;
+      font-weight: 500;
+      margin-top: 1rem;
+
+      &:first-child {
+        margin-right: 1rem;
+      }
+    }
+
+    .hide {
+      visibility: hidden;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  div.kz-wizard {
+    margin: 2px;
+
+    .home-icon {
+      margin: 1rem 1.5rem;
+    }
+
+    button {
+      margin: 1rem 0;
+    }
+  }
+
+  .kz-form-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    .center {
+      width: 100%;
+
+      .kz-button-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+        button {
+          width: 100%;
+          margin-left: 0;
+
+          &:first-child {
+            margin-right: 0;
+            margin-left: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+.kz-message-screen {
+  margin: 5rem 0;
+}

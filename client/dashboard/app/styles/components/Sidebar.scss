@@ -1,0 +1,109 @@
+@import "../variables";
+@import "../mixins";
+
+div.kz-sidebar {
+  button {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+
+    background: transparent;
+
+    color: inherit;
+    font: inherit;
+
+    line-height: normal;
+
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+    -webkit-appearance: none;
+  }
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4rem;
+  background-color: var(--color-bg-alt);
+  z-index: 999;
+
+  @include for-mobile-only {
+    width: 3rem;
+  }
+
+  & > div {
+    padding: 2rem 1rem;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    @include for-mobile-only {
+      padding: 2rem 0.5rem;
+    }
+
+    a.active {
+      svg {
+        fill: $primary;
+      }
+    }
+
+    svg {
+      width: 1.3rem;
+      height: auto;
+      fill: var(--color-text-alt);
+      cursor: pointer;
+    }
+
+    .logo {
+      text-align: center;
+
+      img {
+        width: 80%;
+        cursor: pointer;
+      }
+    }
+
+    ul {
+      list-style: none;
+
+      li {
+        margin-bottom: 2rem;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    .sign-out {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+
+      .theme svg {
+        width: 1rem;
+        height: 1rem;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  div.kz-sidebar {
+    .logo {
+      text-align: center;
+      margin-top: 25px;
+
+      img {
+        width: 80%;
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -4,7 +4,7 @@ import { getAccessTokenFromCode } from "~/utils/api.server";
 import { json } from "@remix-run/node";
 import { useLoaderData, useNavigate } from "@remix-run/react";
 import { useEffect } from "react";
-import { Loading } from "~/shared/components";
+import { Loading } from "~/components";
 import type { LoaderFunction } from "@remix-run/node";
 
 type LoaderData = {
@@ -26,7 +26,7 @@ export const loader: LoaderFunction = async ({ request }) => {
     access_token,
     refresh_token,
     expires_in,
-    "/dashboard"
+    "/"
   );
 };
 
@@ -41,7 +41,7 @@ export default function OAuthProviderCallback() {
       message: error,
     });
 
-    const timeout = setTimeout(() => navigate("/start"), 5000);
+    const timeout = setTimeout(() => navigate("/auth"), 5000);
 
     return () => clearInterval(timeout);
   }, []);

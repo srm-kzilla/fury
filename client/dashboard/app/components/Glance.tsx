@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import glanceStyles from "~/styles/components/Glance.css";
 import {
   BiBell,
@@ -8,9 +8,7 @@ import {
   BiKey,
   BiTrashAlt,
 } from "react-icons/bi";
-import { APIService } from "~/shared/services/api-service";
 import moment from "moment";
-import Skeleton from "react-loading-skeleton";
 import type { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => {
@@ -22,143 +20,63 @@ export const links: LinksFunction = () => {
   ];
 };
 
-interface Props {
-  user?: any;
+interface ActivityProps {
+  user: User;
+  activity: Activity[];
 }
 
-interface Activity {
-  project_slug?: string;
-  timestamp: number;
-  device_ip: string;
-  user_id: number;
-  type: "login" | "add_project" | "update_project" | "delete_project";
-}
-
-const Glance = ({ user }: Props) => {
-  const [activity, setActivity] = useState<any[]>([]);
-  const [loading, setLoading] = useState(false);
-
+const Glance = ({ user, activity }: ActivityProps) => {
   useEffect(() => {
-    (async () => {
-      setLoading(true);
-
-      try {
-        const {
-          data: { activity },
-        } = await APIService.getInstance().fetchUserActivity();
-        setActivity(activity);
-      } finally {
-        setLoading(false);
-      }
-    })();
-
-    sendCrispTags();
+    window.$crisp.push(["set", "user:nickname", [user?.name]]);
+    window.$crisp.push(["set", "user:email", [user?.email]]);
+    window.$crisp.push(["set", "user:phone", [user?.contact]]);
+    // window.$crisp.push(["set", "user:avatar", [user?.avatar_url]]);
   }, []);
-
-  const sendCrispTags = () => {
-    window.$crisp.push([
-      "set",
-      "user:nickname",
-      [user.first_name + " " + user.last_name],
-    ]);
-    window.$crisp.push(["set", "user:email", [user?.github_email]]);
-    window.$crisp.push(["set", "user:phone", [user?.contact_num]]);
-    window.$crisp.push(["set", "user:avatar", [user?.avatar_url]]);
-  };
 
   return (
     <div className="kz-glance">
-      {loading && (
-        <div className="profile skeleton">
-          <Skeleton circle width={48} height={48} />
-          <div>
-            <h5>
-              <Skeleton width={140} />
-              <span>
-                <Skeleton circle width={16} height={16} />
-              </span>
-            </h5>
+      <div className="profile">
+        {/*<img src={user?.avatar_url} alt="avatar" />*/}
+        <div>
+          <h5>
+            {user?.name}
+            <span>
+              <BiCheckCircle />
+            </span>
+          </h5>
 
-            <p>
-              <Skeleton width={80} />
-              <span className="primary">
-                <Skeleton circle width={16} height={16} />
-              </span>
-            </p>
-          </div>
+          <p>
+            {user?.email}
+            <span className="primary">
+              <BiBell />
+            </span>
+          </p>
         </div>
-      )}
-      {!loading && (
-        <div className="profile">
-          <img src={user?.avatar_url} alt="avatar" />
-          <div>
-            <h5>
-              {user?.first_name} {user?.last_name}
-              <span>
-                <BiCheckCircle />
-              </span>
-            </h5>
-
-            <p>
-              {user?.email}
-              <span className="primary">
-                <BiBell />
-              </span>
-            </p>
-          </div>
-        </div>
-      )}
+      </div>
       <hr />
 
       <div className="activity">
         <h3>Recent activity</h3>
-        {!user && (
-          <>
-            <ActivitySkeleton />
-            <ActivitySkeleton />
-            <ActivitySkeleton />
-          </>
-        )}
-        {user && (
-          <div>
-            {activity &&
-              activity.map((event: Activity) => {
-                return <Activity key={event.timestamp} event={event} />;
-              })}
-          </div>
-        )}
+        <div>
+          {activity &&
+            activity.map((event: Activity) => {
+              return (
+                <Activity key={event.timestamp.toString()} event={event} />
+              );
+            })}
+        </div>
       </div>
     </div>
   );
 };
 
-const ActivitySkeleton = () => {
-  return (
-    <div className="activity-tile skeleton">
-      <Skeleton circle width={32} height={32} />
-      <div>
-        <time>
-          <Skeleton width={80} />
-        </time>
-        <p>
-          <Skeleton count={2} />
-        </p>
-      </div>
-    </div>
-  );
-};
-
-interface ActivityProps {
-  event: Activity;
-}
-
-const Activity = ({ event }: ActivityProps) => {
-  const parseActivity = (event: Activity) => {
-    switch (event.type) {
+const Activity = ({ event }: { event: Activity }) => {
+  const parseActivity = (activity: Activity) => {
+    switch (activity.type) {
       case "login":
         return {
           icon: <BiKey />,
-          description: `You logged in from <span>${event.device_ip}</span>.`,
+          description: `You logged in from <span>${activity.device_ip}</span>.`,
         };
       case "add_project":
         return {
@@ -168,12 +86,12 @@ const Activity = ({ event }: ActivityProps) => {
       case "update_project":
         return {
           icon: <BiExtension />,
-          description: `You updated <span>${event.project_slug}</span>.`,
+          description: `You updated <span>${activity.project_slug}</span>.`,
         };
       case "delete_project":
         return {
           icon: <BiTrashAlt />,
-          description: `You deleted <span>${event.project_slug}</span>.`,
+          description: `You deleted <span>${activity.project_slug}</span>.`,
         };
       default:
         return undefined;

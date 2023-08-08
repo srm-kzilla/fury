@@ -1,0 +1,111 @@
+@import "../mixins";
+@import "../variables";
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
+
+@font-face {
+  font-family: "Caros";
+  src:
+    url("../../assets/fonts/CarosLight.woff2") format("woff2"),
+    url("../../assets/fonts/CarosLight.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Caros";
+  src:
+    url("../../assets/fonts/CarosBold.woff2") format("woff2"),
+    url("../../assets/fonts/CarosBold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Caros";
+  src:
+    url("../../assets/fonts/CarosMedium.woff2") format("woff2"),
+    url("../../assets/fonts/CarosMedium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Caros";
+  src:
+    url("../../assets/fonts/Caros.woff2") format("woff2"),
+    url("../../assets/fonts/Caros.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+div.kz-list {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 0.75rem 0;
+  font-family: "Caros", sans-serif;
+  justify-content: space-between;
+
+  div.checkicon {
+    background-color: $border-primary;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    @include MarginAutoY;
+    justify-content: center;
+    flex-direction: column;
+    flex-shrink: 0;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    svg {
+      opacity: 0;
+    }
+
+    &.active {
+      background-color: $primary;
+
+      svg {
+        opacity: 1;
+        margin: 0 auto;
+        fill: var(--color-bg);
+      }
+    }
+  }
+
+  div.description {
+    flex-grow: 1;
+    margin: auto 0;
+    padding: 0 1rem;
+    h5 {
+      @include fluid-type(0.75rem, 1rem, $min-width, $max-width);
+      font-weight: 300;
+    }
+  }
+
+  div.kz-task-delete {
+    background-color: transparent;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: $primary;
+    border-radius: 50%;
+
+    svg {
+      @include MarginAutoX;
+      width: 1.4rem;
+      height: 1.4rem;
+      cursor: pointer;
+    }
+  }
+}

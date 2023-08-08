@@ -10,26 +10,24 @@ import {
   useLoaderData,
   useRouteError,
 } from "@remix-run/react";
-import type { ReactNode } from "react";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import classNames from "classnames";
 import rootStyles from "~/styles/index.css";
 import appStyles from "~/styles/App.css";
 import toastStyles from "react-toastify/dist/ReactToastify.css";
-import Store from "~/shared/components/Wizard/Store";
-import { Headbar, NotFound } from "~/shared/components";
-import { links as navbarLinks } from "~/shared/components/Navbar";
-import { links as headbarLinks } from "~/shared/components/Headbar";
-import { links as footerLinks } from "~/shared/components/Footer";
-import { links as notFoundLinks } from "~/shared/components/NotFound";
-import { links as glanceLinks } from "~/components/Glance";
+import Store from "~/components/Wizard/Store";
+import {
+  Headbar,
+  NotFound,
+  glanceLinks,
+  notFoundLinks,
+  headbarLinks,
+} from "~/components";
 import { BiX } from "react-icons/bi";
 import { Constants } from "~/constants";
-import { AuthStore } from "~/shared/stores";
-import { updateLocale } from "./shared/utils/moment-config";
 import { json } from "@remix-run/node";
-import { APIService } from "~/shared/services/api-service";
+import type { ReactNode } from "react";
 import type { LinksFunction } from "@remix-run/node";
 
 declare global {
@@ -41,9 +39,7 @@ declare global {
 
 export const links: LinksFunction = () => {
   return [
-    ...navbarLinks(),
     ...headbarLinks(),
-    ...footerLinks(),
     ...notFoundLinks(),
     ...glanceLinks(),
     {
@@ -66,7 +62,6 @@ export const loader = () => {
 
   return json({
     env: {
-      OLD_API_BASE_URL: env.OLD_API_BASE_URL,
       API_BASE_URL: env.API_BASE_URL,
       APPLICATION_DEADLINE: env.APPLICATION_DEADLINE,
       OAUTH_REDIRECT_URI: env.OAUTH_REDIRECT_URI,
@@ -76,27 +71,10 @@ export const loader = () => {
 };
 
 function App() {
-  const authStore = useContext(AuthStore);
-
-  useEffect(() => {
-    APIService.getInstance()
-      .fetchUserInfo()
-      .then(({ data: { user } }) => {
-        authStore.setUser(user);
-      })
-      .finally(() => {
-        updateLocale();
-      });
-  }, []);
-
   return (
     <>
       <Layout>
-        <Headbar
-          headline={
-            "Dear Freshers, we see you can't wait. Recruitments open soon ;) [#2023Wrapped](https://photos.app.goo.gl/FQTcCjWnXgPB5r296)"
-          }
-        />
+        <Headbar headline="Dear Freshers, we see you can't wait. Recruitments open soon ;) [#2023Wrapped](https://photos.app.goo.gl/FQTcCjWnXgPB5r296)" />
         <div className="App">
           <Store>
             <Outlet />
