@@ -32,15 +32,19 @@ const DisplayCard = ({
       className="shadow-card-shadow font-body w-full bg-kz-lt-grey hover:scale-100 rounded-md mt-5"
     >
       <Drawer.Root shouldScaleBackground>
-        <div className="flex flex-col text-xs items-center md:justify-around md:flex-row  md:text-sm">
-          <div className="text-kz-white font-extrabold m-2">{id}</div>
+        <div className="flex flex-row justify-evenly text-xs items-center md:justify-around md:flex-row  md:text-sm">
+          <div className="text-kz-white font-extrabold m-2"># {id}</div>
           <Drawer.Trigger>
             <div className="text-kz-white font-bold m-2">{name}</div>
           </Drawer.Trigger>
           <div className="text-kz-white font-bold m-2">{regno}</div>
           <div className="text-kz-white font-bold m-2">{dept}</div>
-          <div className="text-kz-white font-bold m-2">{email}</div>
-          <div className="text-kz-white font-bold m-2">{contact}</div>
+          <div className="text-kz-white font-bold m-2 hidden md:block">
+            {email}
+          </div>
+          <div className="text-kz-white font-bold m-2 hidden md:block">
+            {contact}
+          </div>
           <button>
             <div className="w-3 h-3 mb-2 rounded-full border border-kz-grey md:mb-0" />
           </button>
