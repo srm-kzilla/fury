@@ -1,12 +1,7 @@
-import {
-  Form,
-  useNavigation,
-  useActionData,
-  useLoaderData,
-} from "@remix-run/react";
+import { Form, useNavigation, useActionData } from "@remix-run/react";
 import { getUserDetails, updateUserDetails } from "~/utils/api.server";
 import userProfileStyles from "~/styles/components/UserProfile.css";
-import { json, redirect } from "@remix-run/node";
+import { redirect } from "@remix-run/node";
 import { BiLoader } from "react-icons/bi";
 import * as Yup from "yup";
 import type {
@@ -25,9 +20,9 @@ export const links: LinksFunction = () => [
 
 export const loader: LoaderFunction = async ({ request }) => {
   const user = await getUserDetails(request);
-  if (!!user.gender) return redirect("/");
 
-  return json({ user });
+  if (!!user.gender) return redirect("/");
+  return null;
 };
 
 type ActionData = {
@@ -115,7 +110,6 @@ const validateUserDetails = async (formData: FormData) => {
 export default function Start() {
   const navigation = useNavigation();
   const actionData = useActionData<ActionData>();
-  const { user } = useLoaderData();
 
   return (
     <Form method="post" className="kz-user-form" encType="multipart/form-data">
@@ -130,14 +124,6 @@ export default function Start() {
       </div>
       <div className="grid-box">
         <div className="select">
-          <label className="label" htmlFor="name">
-            Name<sup>*</sup>
-          </label>
-          <input type="text" value={user.name} readOnly />
-          <label className="label" htmlFor="regno">
-            Registration Number<sup>*</sup>
-          </label>
-          <input type="text" value={user.regNo} readOnly />
           <label className="label" htmlFor="gender">
             Gender<sup>*</sup>
           </label>
