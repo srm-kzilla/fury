@@ -4,7 +4,7 @@ import Head from "next/head";
 
 export function Dashboard() {
   return (
-    <div className="h-screen w-screen bg-kz-grey p-5">
+    <div className="min-h-screen w-screen bg-kz-grey p-5">
       <Head>
         <title>Admin Dashboard</title>
       </Head>

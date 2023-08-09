@@ -29,22 +29,22 @@ const DisplayCard = ({
   return (
     <div
       key={id}
-      className="shadow-card-shadow font-body w-full py-4 bg-kz-lt-grey hover:scale-100 rounded-md mt-5"
+      className="shadow-card-shadow font-body w-full py-6 bg-kz-lt-grey rounded-md mt-5"
     >
-      <Drawer.Root shouldScaleBackground>
-        <Drawer.Trigger>
-          <div className="flex flex-row justify-evenly w-[90vw] text-xs text-kz-white font-medium items-center md:justify-around md:flex-row  md:text-lg">
-            <div className="text-kz-white font-extrabold"># {id}</div>
-            <div>{name}</div>
-            <div>{regno}</div>
-            <div>{dept}</div>
-            <div className="hidden md:block">{email}</div>
-            <div className="hidden md:block">{contact}</div>
-            <button>
-              <div className="w-3 h-3 rounded-full border border-kz-grey" />
-            </button>
-          </div>
-        </Drawer.Trigger>
+      <Drawer.Root>
+        <div className="flex flex-row justify-evenly items-center text-xs text-kz-white md:text-lg">
+          <div className="text-kz-white font-extrabold"># {id}</div>
+          <Drawer.Trigger>
+            <div className="hover:text-kz-orange">{name}</div>
+          </Drawer.Trigger>
+          <div>{regno}</div>
+          <div>{dept}</div>
+          <div className="hidden md:block">{email}</div>
+          <div className="hidden md:block">{contact}</div>
+          <button>
+            <div className="w-3 h-3 rounded-full border border-kz-grey" />
+          </button>
+        </div>
 
         <Drawer.Portal>
           <Drawer.Overlay className="fixed bg-kz-lt-grey" />
