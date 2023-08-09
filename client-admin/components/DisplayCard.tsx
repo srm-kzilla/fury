@@ -29,33 +29,29 @@ const DisplayCard = ({
   return (
     <div
       key={id}
-      className="shadow-card-shadow font-body w-full bg-kz-lt-grey hover:scale-100 rounded-md mt-5"
+      className="shadow-card-shadow font-body w-full py-4 bg-kz-lt-grey hover:scale-100 rounded-md mt-5"
     >
       <Drawer.Root shouldScaleBackground>
-        <div className="flex flex-row justify-evenly text-xs items-center md:justify-around md:flex-row  md:text-sm">
-          <div className="text-kz-white font-extrabold m-2"># {id}</div>
-          <Drawer.Trigger>
-            <div className="text-kz-white font-bold m-2">{name}</div>
-          </Drawer.Trigger>
-          <div className="text-kz-white font-bold m-2">{regno}</div>
-          <div className="text-kz-white font-bold m-2">{dept}</div>
-          <div className="text-kz-white font-bold m-2 hidden md:block">
-            {email}
+        <Drawer.Trigger>
+          <div className="flex flex-row justify-evenly w-[90vw] text-xs text-kz-white font-medium items-center md:justify-around md:flex-row  md:text-lg">
+            <div className="text-kz-white font-extrabold"># {id}</div>
+            <div>{name}</div>
+            <div>{regno}</div>
+            <div>{dept}</div>
+            <div className="hidden md:block">{email}</div>
+            <div className="hidden md:block">{contact}</div>
+            <button>
+              <div className="w-3 h-3 rounded-full border border-kz-grey" />
+            </button>
           </div>
-          <div className="text-kz-white font-bold m-2 hidden md:block">
-            {contact}
-          </div>
-          <button>
-            <div className="w-3 h-3 mb-2 rounded-full border border-kz-grey md:mb-0" />
-          </button>
-        </div>
+        </Drawer.Trigger>
 
         <Drawer.Portal>
           <Drawer.Overlay className="fixed bg-kz-lt-grey" />
           <Drawer.Content className="bg-kz-grey flex flex-col fixed max-h-[85vh] mt-24 bottom-0 left-0 right-0">
-            <div className="w-full overflow-auto p-4 rounded-t-3xl bg-kz-lt-grey text-kz-white">
+            <div className="w-screen overflow-auto px-10 p-5 rounded-t-3xl  bg-kz-lt-grey text-kz-white">
               <div className="mx-auto w-12 h-1.5 rounded-full bg-kz-orange mb-8" />
-              <div className="max-w-md mx-auto">
+              <div className="mx-auto">
                 <Drawer.Title className="font-semibold text-xl mb-4">
                   {name}
                   <hr className="text-kz-orange mt-2" />
@@ -82,11 +78,11 @@ const DisplayCard = ({
                     </div>
                   ))}
                 </div>
-                <div className="flex flex-row justify-between">
-                  <button className="text-kz-red text-xs hover:text-sm hover:border hover:border-kz-redpx-2 rounded-full">
+                <div className="flex flex-row justify-evenly">
+                  <button className="text-kz-red text-sm border border-kz-red px-3 hover:text-sm hover:text-white hover:bg-kz-red rounded-full">
                     Reject
                   </button>
-                  <button className="text-kz-green text-xs hover:text-sm hover:border hover:border-kz-green px-2 rounded-full">
+                  <button className="text-kz-green text-sm border border-kz-green px-3 hover:text-sm hover:text-white hover:bg-kz-green  rounded-full">
                     Call to Interview
                   </button>
                 </div>
