@@ -115,6 +115,18 @@
 
   .resume {
     margin-bottom: 2rem;
+    color: #fff;
+    .dropzone {
+      height: 5rem;
+      border-radius: 5px;
+      padding: 0.75rem;
+      text-align: center;
+      cursor: pointer;
+      background-color: var(--color-bg-alt) ;
+      .text{
+        color: var(--color-placeholder);
+      }
+    }
   }
 
   .intl-tel-input.allow-dropdown input,
@@ -157,14 +169,13 @@
     }
   }
 
-  .drop-zone {
-    color: #3b3e42;
-    white-space: pre-wrap;
-    padding: 2rem 5rem;
+ 
+  .dropzone {
     background-color: var(--color-bg-alt);
     border-radius: 5px;
     font-family: "Caros", "Courier New", Courier, monospace;
   }
+
 
   .intl-tel-input.allow-dropdown input,
   .intl-tel-input.allow-dropdown input[type="text"],
