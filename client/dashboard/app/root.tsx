@@ -29,6 +29,7 @@ import { Constants } from "~/constants";
 import { json } from "@remix-run/node";
 import type { ReactNode } from "react";
 import type { LinksFunction } from "@remix-run/node";
+import { Toaster } from "react-hot-toast";
 
 declare global {
   interface Window {
@@ -123,6 +124,19 @@ function Layout({ children }: { children: ReactNode }) {
         />
         <Scripts />
         <LiveReload />
+        <Toaster
+          position="top-right"
+          reverseOrder={false}
+          gutter={8}
+          containerStyle={{}}
+          toastOptions={{
+            className: "",
+            duration: 5000,
+            style: {
+              color: "#fff",
+            },
+          }}
+        />
         {children}
       </body>
     </html>

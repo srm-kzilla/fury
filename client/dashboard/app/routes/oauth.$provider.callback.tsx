@@ -1,4 +1,4 @@
-import { toast } from "~/shared/utils/toast";
+import toast  from "../utils/toast.client";
 import { createUserSession } from "~/utils/session.server";
 import { getAccessTokenFromCode } from "~/utils/api.server";
 import { json } from "@remix-run/node";
@@ -6,6 +6,7 @@ import { useLoaderData, useNavigate } from "@remix-run/react";
 import { useEffect } from "react";
 import { Loading } from "~/components";
 import type { LoaderFunction } from "@remix-run/node";
+import { Toaster } from "react-hot-toast";
 
 type LoaderData = {
   error?: string;
@@ -35,16 +36,16 @@ export default function OAuthProviderCallback() {
   const { error } = useLoaderData<LoaderData>();
 
   useEffect(() => {
-    toast({
-      title: "Not Allowed!",
-      theme: "error",
-      message: error,
-    });
+    toast.error(`Not Allowed: ${error}`);
 
     const timeout = setTimeout(() => navigate("/auth"), 5000);
 
     return () => clearInterval(timeout);
   }, []);
 
-  return <Loading />;
+  return (
+  <div>
+    <Loading />
+  </div>
+    );
 }

@@ -24,6 +24,9 @@ import getEnv from "~/shared/utils/env";
 import { BiAlarm, BiPlus } from "react-icons/bi";
 import { Assets } from "~/constants";
 import type { LinksFunction, LoaderFunction } from "@remix-run/node";
+import { Toaster } from "react-hot-toast";
+import toast from "../utils/toast.client";
+import { useEffect } from "react";
 
 export const links: LinksFunction = () => [
   ...sidebarLinks(),
@@ -53,7 +56,12 @@ const Dashboard = () => {
 
   const env = getEnv();
   const endTime = parseInt(env.APPLICATION_DEADLINE!);
+  const deadLine = new Date(endTime);
+  const resultFormat = deadLine.toISOString().split("T")[0];
 
+  useEffect(() => {
+    toast.show(`Deadline for application is ${resultFormat}`, "🗓️");
+  }, []);
   return (
     <>
       <div className="kz-dashboard">
@@ -75,7 +83,8 @@ const Dashboard = () => {
               </h2>
               <div>
                 <div className="application-wrapper">
-                  {applications && applications.length > 0 &&
+                  {applications &&
+                    applications.length > 0 &&
                     applications.map((project: any, index: number) => {
                       return (
                         <div key={index} className="tile">
@@ -112,14 +121,15 @@ const Dashboard = () => {
               <div style={{ overflowX: "hidden" }}>
                 <div className="notif-row">
                   <div className="kz-notifications">
-                    {notifications && notifications.map((notification: Notification) => {
-                      return (
-                        <Notification
-                          key={notification.timestamp}
-                          notification={notification}
-                        />
-                      );
-                    })}
+                    {notifications &&
+                      notifications.map((notification: Notification) => {
+                        return (
+                          <Notification
+                            key={notification.timestamp}
+                            notification={notification}
+                          />
+                        );
+                      })}
                     {(!notifications || notifications.length === 0) && (
                       <div className="empty">
                         <img src={Assets.MAIL} alt="mail" />
@@ -196,6 +206,7 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
+        
       </div>
       <FooterCompact />
     </>

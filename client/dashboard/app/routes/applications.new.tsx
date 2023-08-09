@@ -22,7 +22,7 @@ import {
   taskListLinks,
   projectLinks,
 } from "~/components";
-import { toast } from "~/shared/utils/toast";
+import toast from "../utils/toast.client";
 import { APIService } from "~/shared/services/api-service";
 import getEnv from "~/shared/utils/env";
 import { StoreContext } from "~/components/Wizard/Store";
@@ -60,11 +60,7 @@ const Application = () => {
         retrievedProjects = res.data.applications;
       } catch (err) {
         console.log(err);
-        toast({
-          title: "Something broke",
-          message: "Our systems had a hard time figuring out who you are.",
-          theme: "error",
-        });
+        toast.error("Something broke");
       } finally {
         setUserProjects(retrievedProjects);
         setYear(year);
@@ -80,39 +76,22 @@ const Application = () => {
     if (domain === "gfx" || domain === "vfx" || domain === "content_writing") {
       if (year === "21" && (domain === "gfx" || domain === "vfx")) {
         if (blob.length <= 0) {
-          toast({
-            title: "You skipped a part!",
-            message: "You must upload a file to continue.",
-            theme: "error",
-          });
+        toast.error("You must upload a file to continue.");
           return setSubmitted(false);
         }
       }
       values.question_8 = blob;
     }
     if (selectedDomainSlug === "") {
-      toast({
-        title: "You made a boo-boo!",
-        message: "You need to select a domain to continue.",
-        theme: "error",
-      });
+      toast.error("You need to select a domain to continue.");
     } else {
       setSubmitted(true);
       try {
         await APIService.getInstance().addApplication(values);
         history("/dashboard");
-        toast({
-          title: "Sweet!",
-          message: "You've successfully submitted your application.",
-          theme: "info",
-        });
+      toast.success("You've successfully submitted your application.");
       } catch (err) {
-        toast({
-          message:
-            "We were flying to mars and ran into some asteroids. Please check back soon.",
-          title: "This is embarrassing",
-          theme: "error",
-        });
+      toast.error("We were flying to mars and ran into some asteroids. Please check back soon.");
       } finally {
         setSubmitted(false);
       }
@@ -122,6 +101,8 @@ const Application = () => {
     return loading ? (
       <Loading />
     ) : (
+      <div>
+
       <Wizard
         validationSchemas={[
           GeneralInstructions.validationSchema,
@@ -163,6 +144,8 @@ const Application = () => {
         ]}
         handleSubmit={onSubmit}
       />
+      </div>
+
     );
   else {
     return <h1>Applications have now been closed</h1>;
