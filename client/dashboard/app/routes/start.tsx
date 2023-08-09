@@ -15,7 +15,8 @@ import type {
   LoaderFunction,
 } from "@remix-run/node";
 import type { ValidationError } from "yup";
-
+import { useState } from "react";
+import { useDropzone } from "react-dropzone";
 export const links: LinksFunction = () => [
   {
     rel: "stylesheet",
@@ -115,7 +116,13 @@ const validateUserDetails = async (formData: FormData) => {
 export default function Start() {
   const navigation = useNavigation();
   const actionData = useActionData<ActionData>();
-  const { user } = useLoaderData();
+  const { name, regNo } = useLoaderData();
+  const [selectedFile, setSelectedFile] = useState(null);
+  const onDrop = (acceptedFiles: any) => {
+    setSelectedFile(acceptedFiles[0]);
+  };
+
+  const { getRootProps, getInputProps } = useDropzone({ onDrop });
   return (
     <Form method="post" className="kz-user-form" encType="multipart/form-data">
       <div>
@@ -132,23 +139,23 @@ export default function Start() {
           <label className="label" htmlFor="name">
             Name<sup>*</sup>
           </label>
-          <input type="text" value={user.name} readOnly />
+          <input type="text" value={name} placeholder="Michael Scott" />
+        </div>
+        <div className="select">
           <label className="label" htmlFor="regno">
             Registration Number<sup>*</sup>
           </label>
-          <input type="text" value={user.regNo} readOnly />
+          <input type="text" value={regNo} placeholder="RA2211026010111" />
+        </div>
+        <div className="select">
           <label className="label" htmlFor="gender">
             Gender<sup>*</sup>
           </label>
-          <select name="gender">
-            <option value="" disabled>
-              Select your gender
-            </option>
+          <select name="gender" defaultValue={"other"}>
+            <option value="">Select your gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
-            <option value="other" selected>
-              Other
-            </option>
+            <option value="other">Other</option>
           </select>
           <sub>{actionData?.errors?.gender}</sub>
         </div>
@@ -156,17 +163,13 @@ export default function Start() {
           <label className="label" htmlFor="branch">
             Branch<sup>*</sup>
           </label>
-          <select name="branch">
+          <select
+            name="branch"
+            defaultValue={"computer_science_and_engineering"}
+          >
             <BranchOptions />
           </select>
           <sub>{actionData?.errors?.branch}</sub>
-        </div>
-        <div className="resume">
-          <label className="label" htmlFor="resume">
-            Resume (upto 20 megabytes)
-          </label>
-          <input name="resume" type="file" accept="application/pdf" />
-          <sub>{actionData?.errors?.resume}</sub>
         </div>
         <div>
           <label className="label" htmlFor="contact">
@@ -174,6 +177,25 @@ export default function Start() {
           </label>
           <input type="text" name="contact" placeholder="9898384880" />
           <sub>{actionData?.errors?.contact}</sub>
+        </div>
+        <div>
+          <div className="resume">
+            <label className="label" htmlFor="resume">
+              Resume (upto 20 megabytes)
+            </label>
+            <div {...getRootProps()} className="dropzone">
+              <input {...getInputProps()} />
+              {selectedFile ? (
+                <div>
+                  <p className="text">Selected file: {selectedFile.name}</p>
+                </div>
+              ) : (
+                <p className="text">
+                  Drag &amp; drop files here, or click to select
+                </p>
+              )}
+            </div>
+          </div>
         </div>
         <div>
           <label className="label" htmlFor="linkedin">
@@ -224,10 +246,8 @@ export default function Start() {
 
 const BranchOptions = () => (
   <>
-    <option value="" disabled>
-      Select your branch
-    </option>
-    ;<option value="aerospace_engineering">Aerospace Engineering</option>;
+    <option value="">Select your branch</option>;
+    <option value="aerospace_engineering">Aerospace Engineering</option>;
     <option value="artificial_intelligence">Artificial Intelligence</option>;
     <option value="automobile_engineering">Automobile Engineering</option>;
     <option value="automobile_with_specialisation_in_automotive_electronics">
@@ -276,7 +296,7 @@ const BranchOptions = () => (
       Computer Science and Business Systems (in partnership with TCS)
     </option>
     ;
-    <option value="computer_science_and_engineering" selected>
+    <option value="computer_science_and_engineering">
       Computer Science and Engineering
     </option>
     ;
