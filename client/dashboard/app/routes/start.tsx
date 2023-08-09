@@ -116,7 +116,9 @@ const validateUserDetails = async (formData: FormData) => {
 export default function Start() {
   const navigation = useNavigation();
   const actionData = useActionData<ActionData>();
-  const { name, regNo } = useLoaderData();
+  const {
+    user: { name, regNo },
+  } = useLoaderData();
   const [selectedFile, setSelectedFile] = useState(null);
   const onDrop = (acceptedFiles: any) => {
     setSelectedFile(acceptedFiles[0]);
@@ -187,7 +189,7 @@ export default function Start() {
               <input {...getInputProps()} />
               {selectedFile ? (
                 <div>
-                  <p className="text">Selected file: {selectedFile.name}</p>
+                  <p className="text">Selected file: {selectedFile["name"]}</p>
                 </div>
               ) : (
                 <p className="text">
