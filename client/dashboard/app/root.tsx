@@ -11,11 +11,9 @@ import {
   useRouteError,
 } from "@remix-run/react";
 import { useEffect, useState } from "react";
-import { ToastContainer } from "react-toastify";
 import classNames from "classnames";
 import rootStyles from "~/styles/index.css";
 import appStyles from "~/styles/App.css";
-import toastStyles from "react-toastify/dist/ReactToastify.css";
 import Store from "~/components/Wizard/Store";
 import {
   Headbar,
@@ -29,6 +27,7 @@ import { Constants } from "~/constants";
 import { json } from "@remix-run/node";
 import type { ReactNode } from "react";
 import type { LinksFunction } from "@remix-run/node";
+import { Toaster } from "react-hot-toast";
 
 declare global {
   interface Window {
@@ -49,10 +48,6 @@ export const links: LinksFunction = () => {
     {
       rel: "stylesheet",
       href: appStyles,
-    },
-    {
-      rel: "stylesheet",
-      href: toastStyles,
     },
   ];
 };
@@ -80,7 +75,6 @@ function App() {
             <Outlet />
           </Store>
           <Cookie />
-          <ToastContainer pauseOnFocusLoss={false} />
         </div>
       </Layout>
     </>
@@ -123,6 +117,19 @@ function Layout({ children }: { children: ReactNode }) {
         />
         <Scripts />
         <LiveReload />
+        <Toaster
+          position="top-right"
+          reverseOrder={false}
+          gutter={8}
+          containerStyle={{}}
+          toastOptions={{
+            className: "",
+            duration: 5000,
+            style: {
+              color: "#fff",
+            },
+          }}
+        />
         {children}
       </body>
     </html>

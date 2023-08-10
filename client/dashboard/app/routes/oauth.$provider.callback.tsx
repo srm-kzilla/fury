@@ -1,4 +1,4 @@
-import { toast } from "~/shared/utils/toast";
+import toast from "~/utils/toast.client";
 import { createUserSession } from "~/utils/session.server";
 import { getAccessTokenFromCode } from "~/utils/api.server";
 import { json } from "@remix-run/node";
@@ -22,12 +22,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 
   const { access_token, refresh_token, expires_in } = data;
 
-  return createUserSession(
-    access_token,
-    refresh_token,
-    expires_in,
-    "/"
-  );
+  return createUserSession(access_token, refresh_token, expires_in, "/");
 };
 
 export default function OAuthProviderCallback() {
@@ -35,11 +30,7 @@ export default function OAuthProviderCallback() {
   const { error } = useLoaderData<LoaderData>();
 
   useEffect(() => {
-    toast({
-      title: "Not Allowed!",
-      theme: "error",
-      message: error,
-    });
+    toast.error(`Not Allowed: ${error}`);
 
     const timeout = setTimeout(() => navigate("/auth"), 5000);
 

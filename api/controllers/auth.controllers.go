@@ -4,7 +4,9 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"net/http"
+	"net/url"
 	"os"
 	"regexp"
 	"strconv"
@@ -22,9 +24,22 @@ import (
 	"golang.org/x/oauth2"
 )
 
+// for manual testing
 func GoogleLogin(c *fiber.Ctx) error {
-	url := utils.AppConfig.AuthCodeURL(os.Getenv("GOOGLE_STATE"))
-	err := c.Redirect(url)
+	baseURL := "https://accounts.google.com/o/oauth2/v2/auth"
+	clientID := os.Getenv("GOOGLE_CLIENT_ID")
+	redirectURI := os.Getenv("GOOGLE_REDIRECT_URI")
+
+	query := url.Values{}
+	query.Add("client_id", clientID)
+	query.Add("redirect_uri", redirectURI)
+	query.Add("response_type", "code")
+	query.Add("access_type", "offline")
+	query.Add("prompt", "consent")
+	query.Add("scope", "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile")
+
+	authURL := fmt.Sprintf("%s?%s", baseURL, query.Encode())
+	err := c.Redirect(authURL)
 	if err != nil {
 		return c.SendStatus(fiber.StatusInternalServerError)
 	}
@@ -43,13 +58,13 @@ func GetAccessTokenGoogle(c *fiber.Ctx) error {
 			"error": err.Error(),
 		})
 	}
-	err = registerUserInDb(user.UserData)
+	mongo_id, err := registerUserInDb(user.UserData)
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"error": err.Error(),
 		})
 	}
-	errRecordActivity := utils.RecordActivity(c.Get("X-Forwarded-For"), "login")
+	errRecordActivity := utils.RecordActivity(c.Get("X-Forwarded-For"), "login", mongo_id)
 	if errRecordActivity != nil {
 		log.Error(errRecordActivity)
 	}
@@ -128,15 +143,15 @@ func filterName(familyName string) string {
 	return result
 }
 
-func registerUserInDb(user models.UserData) error {
+func registerUserInDb(user models.UserData) (primitive.ObjectID, error) {
 	var check models.User
 	usersCollection, err := database.GetCollection(os.Getenv("DB_NAME"), "users")
 	if err != nil {
-		return err
+		return primitive.ObjectID{}, err
 	}
 	usersCollection.FindOne(context.Background(), bson.M{"email": user.Email}).Decode(&check)
 	if check.Email == user.Email {
-		return nil
+		return check.ID, nil
 	}
 	newUser := models.User{
 		ID:            primitive.NewObjectID(),
@@ -153,11 +168,13 @@ func registerUserInDb(user models.UserData) error {
 		Application:   []models.Application{},
 		CreatedAt:     time.Now().Unix(),
 	}
-	_, e := usersCollection.InsertOne(context.Background(), newUser)
+	result, e := usersCollection.InsertOne(context.Background(), newUser)
 	if e != nil {
-		return e
+		return primitive.ObjectID{}, e
 	}
-	return nil
+	oid, _ := result.InsertedID.(primitive.ObjectID)
+
+	return oid, nil
 }
 
 func RefreshAccessTokenGoogle(c *fiber.Ctx) error {

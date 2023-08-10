@@ -21,9 +21,12 @@ import {
   getUserDetails,
 } from "~/utils/api.server";
 import { Link, useLoaderData, useNavigate } from "@remix-run/react";
-import getEnv from "~/shared/utils/env";
+import getEnv from "~/utils/env";
 import { BiAlarm, BiPlus } from "react-icons/bi";
 import { Assets } from "~/constants";
+import toast from "~/utils/toast.client";
+import { useEffect } from "react";
+import moment from "moment";
 import type { LinksFunction, LoaderFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => [
@@ -55,6 +58,10 @@ const Dashboard = () => {
 
   const env = getEnv();
   const endTime = parseInt(env.APPLICATION_DEADLINE!);
+
+  useEffect(() => {
+    toast.show(`Deadline for application is ${moment(endTime).format("MMMM Do YYYY")}`, "🗓️");
+  }, []);
 
   return (
     <>
@@ -112,7 +119,7 @@ const Dashboard = () => {
               )}
 
               <h2 className="mt">Notifications</h2>
-              <div style={{ overflowX: "hidden" }}>
+              <div className="notif-wrapper">
                 <div className="notif-row">
                   <div className="kz-notifications">
                     {notifications &&

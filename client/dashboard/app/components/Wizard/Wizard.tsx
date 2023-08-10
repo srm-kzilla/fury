@@ -4,13 +4,14 @@ import React, { useContext, useState } from "react";
 import { BiHomeAlt, BiLoader } from "react-icons/bi";
 import { Link } from "@remix-run/react";
 import * as Yup from "yup";
-import { toast } from "~/shared/utils/toast";
+import toast from "~/utils/toast.client";
 import ProjectQuestionComponent from "./ProjectComponent";
 import { StoreContext } from "./Store";
 import wizardStyles from "~/styles/components/Wizard.css";
 import formFieldStyles from "~/styles/components/FormFields.css";
 import formStepsStyles from "~/styles/components/FormSteps.css";
 import type { LinksFunction } from "@remix-run/node";
+import { Toaster } from "react-hot-toast";
 
 export const links: LinksFunction = () => [
   {
@@ -91,22 +92,12 @@ const Wizard = (props: any) => {
                   selectedProjectSlug
                 );
                 if (statusCode === 200) {
-                  toast({
-                    title: "Project added successfully",
-                    message:
-                      "We have successfully received your application for the Technical Domain.",
-                    theme: "success",
-                  });
+                  toast.success("Project added successfully");
                   return setInterval(() => {
                     window.location.href = "/dashboard";
                   }, 3000);
                 } else {
-                  toast({
-                    title: "Oops! Something went wrong",
-                    message:
-                      "Something went wrong during the project submission. Please try again or contact support.",
-                    theme: "error",
-                  });
+                  toast.error("Oops! Something went wrong");
                 }
                 setSubmitted(false);
               } else handleSubmit(values);

@@ -18,7 +18,7 @@ div.kz-dashboard {
   }
 
   .main {
-    width: 80%;
+    width: 100%;
     padding: 2rem;
 
     .application-wrapper {
@@ -42,7 +42,6 @@ div.kz-dashboard {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 1rem 0;
 
       @include for-mobile-only {
         margin: 0.5rem auto;
@@ -154,7 +153,11 @@ div.kz-dashboard {
     }
 
     .banner {
-      width: 40%;
+      max-width: 25.5rem;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
 
       .container-iframe {
         position: relative;
@@ -347,6 +350,12 @@ div.kz-dashboard {
       .main {
         width: 100% !important;
 
+        .notif-wrapper {
+          overflow-x: hidden;
+          width: 100%;
+          height: 50%;
+        }
+
         .application-wrapper {
           display: flex;
           flex-direction: column;
@@ -358,6 +367,7 @@ div.kz-dashboard {
         }
 
         .banner {
+          max-width: 100%;
           width: 100%;
         }
 
