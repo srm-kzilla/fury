@@ -37,9 +37,9 @@ export const getUserDetails = async (request: Request): Promise<User> => {
   return res.json();
 };
 
-export const getUserAvatar = async (user): Promise<string> => {
+export const getUserAvatar = async (user: { _id?: string; regNo?: string; name: any; year?: number; email?: string; gender?: string | undefined; branch?: string | undefined; resume?: string | undefined; contact?: string | undefined; createdAt?: Date; application?: Application[]; socials?: { github?: string | undefined; linkedin?: string | undefined; portfolio?: string | undefined; }; }): Promise<string> => {
   const res = await fetch(
-    `https://api.dicebear.com/6.x/pixel-art/svg?seed=${user.name}`
+    `https://api.dicebear.com/6.x/notionists-neutral/svg?seed=${user.name}`
   )
     .then((response) => {
       const contentType = response.headers.get("content-type");
