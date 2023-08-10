@@ -19,7 +19,7 @@ type User = {
 
 type UpdateUser = Pick<
   User,
-  "gender" | "branch" | "resume" | "contact" | "socials"
+  "name" | "gender" | "branch" | "resume" | "contact" | "socials"
 >;
 
 type Application = {
