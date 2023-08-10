@@ -23,10 +23,9 @@ export const links: LinksFunction = () => {
 interface ActivityProps {
   user: User;
   activity: Activity[];
-  avatar: string;
 }
 
-const Glance = ({ user, activity, avatar }: ActivityProps) => {
+const Glance = ({ user, activity }: ActivityProps) => {
   useEffect(() => {
     window.$crisp.push(["set", "user:nickname", [user?.name]]);
     window.$crisp.push(["set", "user:email", [user?.email]]);
@@ -37,7 +36,7 @@ const Glance = ({ user, activity, avatar }: ActivityProps) => {
   return (
     <div className="kz-glance">
       <div className="profile">
-        <img src={avatar} alt="avatar" />
+        <img src={`https://api.dicebear.com/6.x/notionists-neutral/svg?seed=${user.name}`} alt="avatar" />
         <div>
           <h5>
             {user?.name}

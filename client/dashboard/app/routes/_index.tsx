@@ -17,7 +17,6 @@ import {
   getApplications,
   getNotifications,
   getUserActivity,
-  getUserAvatar,
   getUserDetails,
 } from "~/utils/api.server";
 import { Link, useLoaderData, useNavigate } from "@remix-run/react";
@@ -45,15 +44,14 @@ export const loader: LoaderFunction = async ({ request }) => {
   const { notifications } = await getNotifications(request);
   const { applications } = await getApplications(request);
   const { activity } = await getUserActivity(request);
-  const avatar = await getUserAvatar(user);
 
   if (!user.gender) return redirect("/start");
 
-  return json({ user, notifications, applications, activity, avatar });
+  return json({ user, notifications, applications, activity });
 };
 
 const Dashboard = () => {
-  const { user, notifications, applications, activity, avatar } = useLoaderData();
+  const { user, notifications, applications, activity } = useLoaderData();
   const navigate = useNavigate();
 
   const env = getEnv();
@@ -203,7 +201,7 @@ const Dashboard = () => {
               </div>
             </div>
             <div className="glance">
-              <Glance user={user} activity={activity} avatar={avatar} />
+              <Glance user={user} activity={activity} />
             </div>
           </div>
         </div>

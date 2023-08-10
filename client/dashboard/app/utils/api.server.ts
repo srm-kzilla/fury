@@ -37,40 +37,6 @@ export const getUserDetails = async (request: Request): Promise<User> => {
   return res.json();
 };
 
-export const getUserAvatar = async (user: {
-  _id?: string;
-  regNo?: string;
-  name: any;
-  year?: number;
-  email?: string;
-  gender?: string | undefined;
-  branch?: string | undefined;
-  resume?: string | undefined;
-  contact?: string | undefined;
-  createdAt?: Date;
-  application?: Application[];
-  socials?: {
-    github?: string | undefined;
-    linkedin?: string | undefined;
-    portfolio?: string | undefined;
-  };
-}): Promise<string> => {
-  try {
-    const res = await fetch(
-      `https://api.dicebear.com/6.x/notionists-neutral/svg?seed=${user.name}`
-    );
-    const buffer = await res.arrayBuffer();
-    const dataUri = `data:image/svg+xml;base64,${Buffer.from(buffer).toString(
-      "base64"
-    )}`;
-
-    return dataUri as unknown as Promise<string>;
-  } catch (err) {
-    console.log(err);
-    return "";
-  }
-};
-
 export const updateUserDetails = async (request: Request, user: UpdateUser) => {
   const accessToken = await requireAccessToken(request);
 
