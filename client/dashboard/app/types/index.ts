@@ -41,8 +41,8 @@ type NotificationType = {
 };
 
 type Activity = {
-  device_ip: string;
-  device_location: string;
+  _id: string;
+  location: string;
   timestamp: Date;
   type: "login" | "add_project" | "update_project" | "delete_project";
   project_slug?: string;

@@ -36,7 +36,10 @@ const Glance = ({ user, activity }: ActivityProps) => {
   return (
     <div className="kz-glance">
       <div className="profile">
-        <img src={`https://api.dicebear.com/6.x/notionists-neutral/svg?seed=${user.name}`} alt="avatar" />
+        <img
+          src={`https://api.dicebear.com/6.x/notionists-neutral/svg?seed=${user.name}`}
+          alt="avatar"
+        />
         <div>
           <h5>
             {user?.name}
@@ -60,9 +63,7 @@ const Glance = ({ user, activity }: ActivityProps) => {
         <div>
           {activity &&
             activity.map((event: Activity) => {
-              return (
-                <Activity key={event.timestamp.toString()} event={event} />
-              );
+              return <Activity key={event._id} event={event} />;
             })}
         </div>
       </div>
@@ -76,7 +77,7 @@ const Activity = ({ event }: { event: Activity }) => {
       case "login":
         return {
           icon: <BiKey />,
-          description: `You logged in from <span>${activity.device_ip}</span>.`,
+          description: `You logged in from <span>${activity.location}</span>.`,
         };
       case "add_project":
         return {
