@@ -24,8 +24,7 @@ import getEnv from "~/shared/utils/env";
 import { BiAlarm, BiPlus } from "react-icons/bi";
 import { Assets } from "~/constants";
 import type { LinksFunction, LoaderFunction } from "@remix-run/node";
-import { Toaster } from "react-hot-toast";
-import toast from "../utils/toast.client";
+import toast from "~/utils/toast.client";
 import { useEffect } from "react";
 
 export const links: LinksFunction = () => [
@@ -206,7 +205,6 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        
       </div>
       <FooterCompact />
     </>

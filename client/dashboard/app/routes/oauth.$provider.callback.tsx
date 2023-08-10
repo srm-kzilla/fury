@@ -1,4 +1,4 @@
-import toast  from "../utils/toast.client";
+import toast from "~/utils/toast.client";
 import { createUserSession } from "~/utils/session.server";
 import { getAccessTokenFromCode } from "~/utils/api.server";
 import { json } from "@remix-run/node";
@@ -6,7 +6,6 @@ import { useLoaderData, useNavigate } from "@remix-run/react";
 import { useEffect } from "react";
 import { Loading } from "~/components";
 import type { LoaderFunction } from "@remix-run/node";
-import { Toaster } from "react-hot-toast";
 
 type LoaderData = {
   error?: string;
@@ -23,12 +22,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 
   const { access_token, refresh_token, expires_in } = data;
 
-  return createUserSession(
-    access_token,
-    refresh_token,
-    expires_in,
-    "/"
-  );
+  return createUserSession(access_token, refresh_token, expires_in, "/");
 };
 
 export default function OAuthProviderCallback() {
@@ -43,9 +37,5 @@ export default function OAuthProviderCallback() {
     return () => clearInterval(timeout);
   }, []);
 
-  return (
-  <div>
-    <Loading />
-  </div>
-    );
+  return <Loading />;
 }

@@ -4,7 +4,7 @@ import React, { useContext, useState } from "react";
 import { BiHomeAlt, BiLoader } from "react-icons/bi";
 import { Link } from "@remix-run/react";
 import * as Yup from "yup";
-import toast from "../../utils/toast.client";
+import toast from "~/utils/toast.client";
 import ProjectQuestionComponent from "./ProjectComponent";
 import { StoreContext } from "./Store";
 import wizardStyles from "~/styles/components/Wizard.css";
@@ -150,21 +150,6 @@ const Wizard = (props: any) => {
           </div>
         </div>
       )}
-      <Toaster
-        position="top-right"
-        reverseOrder={false}
-        gutter={8}
-        containerClassName=""
-        containerStyle={{}}
-        toastOptions={{
-          className: "",
-          duration: 5000,
-          style: {
-            background: "#363636",
-            color: "#fff",
-          },
-        }}
-      />
     </div>
   );
 };

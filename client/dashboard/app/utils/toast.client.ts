@@ -7,7 +7,7 @@ const toastBaseOptions = {
     border: "1px solid #30363d",
     maxWidth: "300px",
     padding: "1rem",
-    zIndex: "100000"
+    zIndex: "100000",
   },
 };
 

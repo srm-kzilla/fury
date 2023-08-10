@@ -17,7 +17,10 @@ type User = {
   };
 };
 
-type UpdateUser = Pick<User, "gender"|"branch"|"resume"|"contact"|"socials">
+type UpdateUser = Pick<
+  User,
+  "gender" | "branch" | "resume" | "contact" | "socials"
+>;
 
 type Application = {
   status: "pending" | "accepted" | "rejected";
@@ -29,7 +32,7 @@ type Application = {
 
 type Question = {
   question: string;
-}
+};
 
 type NotificationType = {
   markdown: string;
@@ -38,10 +41,10 @@ type NotificationType = {
 };
 
 type Activity = {
-  "device_ip": string,
-  "device_location": string;
-  "timestamp": Date;
-  "type": "login" | "add_project" | "update_project" | "delete_project";
-  "project_slug"?: string;
-  "user_id": string;
-}
+  device_ip: string;
+  device_location: string;
+  timestamp: Date;
+  type: "login" | "add_project" | "update_project" | "delete_project";
+  project_slug?: string;
+  user_id: string;
+};
