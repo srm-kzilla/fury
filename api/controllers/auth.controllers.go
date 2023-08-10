@@ -4,7 +4,9 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"net/http"
+	"net/url"
 	"os"
 	"regexp"
 	"strconv"
@@ -22,9 +24,22 @@ import (
 	"golang.org/x/oauth2"
 )
 
+// for manual testing
 func GoogleLogin(c *fiber.Ctx) error {
-	url := utils.AppConfig.AuthCodeURL(os.Getenv("GOOGLE_STATE"))
-	err := c.Redirect(url)
+	baseURL := "https://accounts.google.com/o/oauth2/v2/auth"
+	clientID := os.Getenv("GOOGLE_CLIENT_ID")
+	redirectURI := os.Getenv("GOOGLE_REDIRECT_URI")
+
+	query := url.Values{}
+	query.Add("client_id", clientID)
+	query.Add("redirect_uri", redirectURI)
+	query.Add("response_type", "code")
+	query.Add("access_type", "offline")
+	query.Add("prompt", "consent")
+	query.Add("scope", "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile")
+
+	authURL := fmt.Sprintf("%s?%s", baseURL, query.Encode())
+	err := c.Redirect(authURL)
 	if err != nil {
 		return c.SendStatus(fiber.StatusInternalServerError)
 	}
