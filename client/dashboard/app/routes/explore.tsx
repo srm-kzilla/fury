@@ -37,6 +37,36 @@ export const links: LinksFunction = () => [
 const Explore = () => {
   const items = [
     {
+      icon: <BiRocket />,
+      title: "Fury",
+      description:
+        "An open-source project inspired by Nick Fury, whose primary job was to recruit Avengers, spies and other cool people! ",
+      timestamp: 1692316800000,
+      url: "https://github.com/srm-kzilla/fury",
+    },
+    {
+      icon: <BiPalette />,
+      title: "Mellow",
+      description: "An artistic dark theme for Visual Studio Code.",
+      timestamp: 1586908800000,
+      url: "https://marketplace.visualstudio.com/items?itemName=SRMKZILLA.Mellow",
+    },
+    {
+      icon: <BiVector />,
+      title: "Kzilla.xyz",
+      description:
+        "Shorten the URL. Broaden the reach.The new URL shrinker of the Internet. It's as easy as it sounds. ",
+      timestamp: 1597190400000,
+      url: "https://kzilla.xyz/",
+    },
+    {
+      icon: <BiGame />,
+      title: "Jack",
+      description: "Meet Jack,a bot of all trades.",
+      timestamp: 1613260800000,
+      url: "https://github.com/srm-kzilla/jack",
+    },
+    {
       icon: <BiTerminal />,
       title: "Git Set Go",
       description:
@@ -144,6 +174,13 @@ const Explore = () => {
         "Code Decode, a workshop on how to start with competitive coding.",
       timestamp: 1605608655000,
       url: "https://www.instagram.com/p/CHsG774DblR/",
+    },
+    {
+      icon: <BiRocket />,
+      title: "Recruitments'20",
+      description: "Onboarding of new members to our team.",
+      timestamp: 1603794255000,
+      url: "https://www.instagram.com/p/CG1pVftDe4z/",
     },
     {
       icon: <BiRocket />,
