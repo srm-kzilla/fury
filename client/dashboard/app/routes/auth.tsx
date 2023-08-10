@@ -1,5 +1,5 @@
 import qs from "querystring";
-import getEnv from "~/shared/utils/env";
+import getEnv from "~/utils/env";
 import { redirect } from "@remix-run/node";
 import type { LoaderFunction } from "@remix-run/node";
 

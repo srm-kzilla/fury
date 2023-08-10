@@ -1,5 +1,5 @@
 import { createCookieSessionStorage, redirect } from "@remix-run/node";
-import getEnv from "~/shared/utils/env";
+import getEnv from "~/utils/env";
 
 const env = getEnv();
 const sessionSecret = env.SESSION_SECRET;

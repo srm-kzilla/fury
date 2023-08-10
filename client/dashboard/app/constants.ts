@@ -11,7 +11,7 @@ import SRMKZILLA_LOGO_WHITE_MONO from "./assets/images/srmkzilla_logo_white_mono
 import MAIL from "./assets/images/mail.svg";
 import LANYARD from "./assets/images/lanyard.png";
 import EMPTY from "./assets/images/empty.svg";
-import getEnv from "~/shared/utils/env";
+import getEnv from "~/utils/env";
 
 export const Assets = {
   LOGO,
