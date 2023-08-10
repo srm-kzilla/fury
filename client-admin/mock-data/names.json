@@ -12,7 +12,21 @@
             "github":"name_dev",
             "linkedin":"name_lastname",
             "portfolio":"link"
-        }
+        },
+        "application": [
+            {
+            "question": "Why do you want to join Kzilla",
+            "answer": "Because its the best club on campus"
+            },
+            {
+            "question": "Why do you want to join Kzilla",
+            "answer": "Because its the best club on campus"
+            },
+            {
+            "question": "Why do you want to join Kzilla",
+            "answer": "Because its the best club on campus"
+            }
+        ]
     },
     {
         "id":2,
@@ -27,7 +41,41 @@
             "github":"name_dev",
             "linkedin":"name_lastname",
             "portfolio":"link"
-        }
+        },
+        "application": [
+            {
+            "question": "Why do you want to join Kzilla",
+            "answer": "Because its the best club on campus"
+            },
+            {
+            "question": "Why do you want to join Kzilla",
+            "answer": "Because its the best club on campus"
+            },
+            {
+            "question": "Why do you want to join Kzilla",
+            "answer": "Because its the best club on campus"
+            },
+            {
+            "question": "Why do you want to join Kzilla",
+            "answer": "Because its the best club on campus"
+            },
+            {
+            "question": "Why do you want to join Kzilla",
+            "answer": "Because its the best club on campus"
+            },
+            {
+            "question": "Why do you want to join Kzilla",
+            "answer": "Because its the best club on campus"
+            },
+            {
+            "question": "Why do you want to join Kzilla",
+            "answer": "Because its the best club on campus"
+            },
+            {
+            "question": "Why do you want to join Kzilla",
+            "answer": "Because its the best club on campus"
+            }
+        ]
     },
     {
         "id":3,
@@ -42,7 +90,41 @@
             "github":"name_dev",
             "linkedin":"name_lastname",
             "portfolio":"link"
-        }
+        },
+        "application": [
+            {
+                "question": "Why do you want to join Kzilla",
+                "answer": "Because its the best club on campus"
+                },
+                {
+                "question": "Why do you want to join Kzilla",
+                "answer": "Because its the best club on campus"
+                },
+                {
+                "question": "Why do you want to join Kzilla",
+                "answer": "Because its the best club on campus"
+                },
+                {
+                "question": "Why do you want to join Kzilla",
+                "answer": "Because its the best club on campus"
+                },
+                {
+                "question": "Why do you want to join Kzilla",
+                "answer": "Because its the best club on campus"
+                },
+                {
+                "question": "Why do you want to join Kzilla",
+                "answer": "Because its the best club on campus"
+                },
+                {
+                "question": "Why do you want to join Kzilla",
+                "answer": "Because its the best club on campus"
+                },
+                {
+                "question": "Why do you want to join Kzilla",
+                "answer": "Because its the best club on campus"
+                }
+        ]
     },
     {
         "id":4,
@@ -57,7 +139,41 @@
             "github":"name_dev",
             "linkedin":"name_lastname",
             "portfolio":"link"
-        }
+        },
+        "application": [
+            {
+                "question": "Why do you want to join Kzilla",
+                "answer": "Because its the best club on campus"
+                },
+                {
+                "question": "Why do you want to join Kzilla",
+                "answer": "Because its the best club on campus"
+                },
+                {
+                "question": "Why do you want to join Kzilla",
+                "answer": "Because its the best club on campus"
+                },
+                {
+                "question": "Why do you want to join Kzilla",
+                "answer": "Because its the best club on campus"
+                },
+                {
+                "question": "Why do you want to join Kzilla",
+                "answer": "Because its the best club on campus"
+                },
+                {
+                "question": "Why do you want to join Kzilla",
+                "answer": "Because its the best club on campus"
+                },
+                {
+                "question": "Why do you want to join Kzilla",
+                "answer": "Because its the best club on campus"
+                },
+                {
+                "question": "Why do you want to join Kzilla",
+                "answer": "Because its the best club on campus"
+                }
+        ]
       
     },
     {
@@ -73,7 +189,41 @@
             "github":"name_dev",
             "linkedin":"name_lastname",
             "portfolio":"link"
-        }
+        },
+        "application": [
+            {
+                "question": "Why do you want to join Kzilla",
+                "answer": "Because its the best club on campus"
+                },
+                {
+                "question": "Why do you want to join Kzilla",
+                "answer": "Because its the best club on campus"
+                },
+                {
+                "question": "Why do you want to join Kzilla",
+                "answer": "Because its the best club on campus"
+                },
+                {
+                "question": "Why do you want to join Kzilla",
+                "answer": "Because its the best club on campus"
+                },
+                {
+                "question": "Why do you want to join Kzilla",
+                "answer": "Because its the best club on campus"
+                },
+                {
+                "question": "Why do you want to join Kzilla",
+                "answer": "Because its the best club on campus"
+                },
+                {
+                "question": "Why do you want to join Kzilla",
+                "answer": "Because its the best club on campus"
+                },
+                {
+                "question": "Why do you want to join Kzilla",
+                "answer": "Because its the best club on campus"
+                }
+        ]
     },
     {
         "id":6,
@@ -88,7 +238,41 @@
             "github":"name_dev",
             "linkedin":"name_lastname",
             "portfolio":"link"
-        }
+        },
+        "application": [
+            {
+                "question": "Why do you want to join Kzilla",
+                "answer": "Because its the best club on campus"
+                },
+                {
+                "question": "Why do you want to join Kzilla",
+                "answer": "Because its the best club on campus"
+                },
+                {
+                "question": "Why do you want to join Kzilla",
+                "answer": "Because its the best club on campus"
+                },
+                {
+                "question": "Why do you want to join Kzilla",
+                "answer": "Because its the best club on campus"
+                },
+                {
+                "question": "Why do you want to join Kzilla",
+                "answer": "Because its the best club on campus"
+                },
+                {
+                "question": "Why do you want to join Kzilla",
+                "answer": "Because its the best club on campus"
+                },
+                {
+                "question": "Why do you want to join Kzilla",
+                "answer": "Because its the best club on campus"
+                },
+                {
+                "question": "Why do you want to join Kzilla",
+                "answer": "Because its the best club on campus"
+                }
+        ]
       
     }
     ]

@@ -14,6 +14,11 @@ interface PersonType {
     linkedin: string;
     portfolio: string;
   };
+  application: Application[];
+}
+interface Application {
+  question: string;
+  answer: string;
 }
 const DisplayCard = ({
   id,
@@ -25,6 +30,7 @@ const DisplayCard = ({
   gender,
   contact,
   socials,
+  application,
 }: PersonType) => {
   return (
     <div
@@ -70,7 +76,7 @@ const DisplayCard = ({
                   <h1 className="my-2 font-bold">
                     The answers to questions you asked
                   </h1>
-                  {ques.map((question, index) => (
+                  {application.map((question, index) => (
                     <div key={index} className="my-5">
                       Q.{index + 1} {question.question}
                       <br />
