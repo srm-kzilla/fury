@@ -109,7 +109,7 @@ const Dashboard = () => {
               )}
 
               <h2 className="mt">Notifications</h2>
-              <div style={{ overflowX: "hidden" }}>
+              <div className="notif-wrapper">
                 <div className="notif-row">
                   <div className="kz-notifications">
                     {notifications && notifications.map((notification: Notification) => {
