@@ -20,12 +20,13 @@ import {
   getUserDetails,
 } from "~/utils/api.server";
 import { Link, useLoaderData, useNavigate } from "@remix-run/react";
-import getEnv from "~/shared/utils/env";
+import getEnv from "~/utils/env";
 import { BiAlarm, BiPlus } from "react-icons/bi";
 import { Assets } from "~/constants";
-import type { LinksFunction, LoaderFunction } from "@remix-run/node";
 import toast from "~/utils/toast.client";
 import { useEffect } from "react";
+import moment from "moment";
+import type { LinksFunction, LoaderFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => [
   ...sidebarLinks(),
@@ -55,12 +56,11 @@ const Dashboard = () => {
 
   const env = getEnv();
   const endTime = parseInt(env.APPLICATION_DEADLINE!);
-  const deadLine = new Date(endTime);
-  const resultFormat = deadLine.toISOString().split("T")[0];
 
   useEffect(() => {
-    toast.show(`Deadline for application is ${resultFormat}`, "🗓️");
+    toast.show(`Deadline for application is ${moment(endTime).format("MMMM Do YYYY")}`, "🗓️");
   }, []);
+
   return (
     <>
       <div className="kz-dashboard">

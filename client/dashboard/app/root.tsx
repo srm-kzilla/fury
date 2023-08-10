@@ -11,11 +11,9 @@ import {
   useRouteError,
 } from "@remix-run/react";
 import { useEffect, useState } from "react";
-import { ToastContainer } from "react-toastify";
 import classNames from "classnames";
 import rootStyles from "~/styles/index.css";
 import appStyles from "~/styles/App.css";
-import toastStyles from "react-toastify/dist/ReactToastify.css";
 import Store from "~/components/Wizard/Store";
 import {
   Headbar,
@@ -51,10 +49,6 @@ export const links: LinksFunction = () => {
       rel: "stylesheet",
       href: appStyles,
     },
-    {
-      rel: "stylesheet",
-      href: toastStyles,
-    },
   ];
 };
 
@@ -81,7 +75,6 @@ function App() {
             <Outlet />
           </Store>
           <Cookie />
-          <ToastContainer pauseOnFocusLoss={false} />
         </div>
       </Layout>
     </>

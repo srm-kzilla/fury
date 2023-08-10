@@ -1,6 +1,7 @@
 @import "../mixins";
 
 div.kz-glance {
+  position: fixed;
   background-color: var(--color-bg-alt);
   height: 100vh;
   display: flex;
