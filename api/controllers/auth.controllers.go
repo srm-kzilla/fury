@@ -24,7 +24,6 @@ import (
 
 func GoogleLogin(c *fiber.Ctx) error {
 	url := utils.AppConfig.AuthCodeURL(os.Getenv("GOOGLE_STATE"))
-	log.Print(url)
 	err := c.Redirect(url)
 	if err != nil {
 		return c.SendStatus(fiber.StatusInternalServerError)
