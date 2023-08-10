@@ -38,32 +38,34 @@ export const getUserDetails = async (request: Request): Promise<User> => {
 };
 
 export const getUserAvatar = async (user: { _id?: string; regNo?: string; name: any; year?: number; email?: string; gender?: string | undefined; branch?: string | undefined; resume?: string | undefined; contact?: string | undefined; createdAt?: Date; application?: Application[]; socials?: { github?: string | undefined; linkedin?: string | undefined; portfolio?: string | undefined; }; }): Promise<string> => {
-  const res = await fetch(
-    `https://api.dicebear.com/6.x/notionists-neutral/svg?seed=${user.name}`
-  )
-    .then((response) => {
-      const contentType = response.headers.get("content-type");
+  try {
+    const res = fetch(
+      `https://api.dicebear.com/6.x/notionists-neutral/svg?seed=${user.name}`
+    )
+      .then((response) => {
+        const contentType = response.headers.get("content-type");
+  
+        if (contentType === "image/svg+xml") {
+          return response.arrayBuffer();
+        } else {
+          console.log("Response does not contain an SVG image.");
+          return null;
+        }
+      })
+      .then((imageData) => {
+        if (imageData) {
+          const dataUri = `data:image/svg+xml;base64,${Buffer.from(
+            imageData
+          ).toString("base64")}`;
+          return dataUri;
+        }
+      });
+      return res as Promise<string>;
+  } catch (error) {
+    return error as string;
+  }
+  
 
-      if (contentType === "image/svg+xml") {
-        return response.arrayBuffer();
-      } else {
-        console.log("Response does not contain an SVG image.");
-        return null;
-      }
-    })
-    .then((imageData) => {
-      if (imageData) {
-        const dataUri = `data:image/svg+xml;base64,${Buffer.from(
-          imageData
-        ).toString("base64")}`;
-        return dataUri;
-      }
-    })
-    .catch((error) => {
-      return error;
-    });
-
-  return res;
 };
 
 export const updateUserDetails = async (request: Request, user: UpdateUser) => {
