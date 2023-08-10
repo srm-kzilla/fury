@@ -49,7 +49,7 @@ export const updateUserDetails = async (request: Request, user: UpdateUser) => {
     },
   });
 
-  return res.status;
+  return res.json();
 };
 
 export const uploadResume = async (

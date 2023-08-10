@@ -30,7 +30,9 @@ export default function OAuthProviderCallback() {
   const { error } = useLoaderData<LoaderData>();
 
   useEffect(() => {
-    toast.error(`Not Allowed: ${error}`);
+    if (error) {
+      toast.error(error);
+    }
 
     const timeout = setTimeout(() => navigate("/auth"), 5000);
 

@@ -14,9 +14,11 @@ import type {
   LinksFunction,
   LoaderFunction,
 } from "@remix-run/node";
-import type { ValidationError } from "yup";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { useDropzone } from "react-dropzone";
+import toast from "~/utils/toast.client";
+import type { ValidationError } from "yup";
+
 export const links: LinksFunction = () => [
   {
     rel: "stylesheet",
@@ -35,15 +37,18 @@ type ActionData = {
   errors?: {
     [key: string]: string;
   };
+  toastErrMessage?: string;
 };
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
 
   try {
-    const { branch, contact, github, linkedin, portfolio, gender } =
+    const { name, branch, contact, github, linkedin, portfolio, gender } =
       await validateUserDetails(formData);
-    const didUpdateUser = await updateUserDetails(request, {
+
+    const { error, message } = await updateUserDetails(request, {
+      name,
       branch,
       contact,
       gender,
@@ -54,15 +59,15 @@ export const action: ActionFunction = async ({ request }) => {
       },
     });
 
-    if (didUpdateUser === 200) {
-      // TODO: show toast
+    if (error === 400) {
+      return { toastErrMessage: message };
+    } else {
       return redirect("/");
     }
   } catch (errors) {
+    console.log(errors)
     return { errors };
   }
-
-  return null;
 };
 
 const validateUserDetails = async (formData: FormData) => {
@@ -84,6 +89,7 @@ const validateUserDetails = async (formData: FormData) => {
   }
 
   const updateUserSchema = Yup.object().shape({
+    name: Yup.string().required("Name is required"),
     gender: Yup.string().required("Pronoun is required"),
     branch: Yup.string().required("Branch is required"),
     contact: Yup.string()
@@ -119,14 +125,23 @@ export default function Start() {
   const {
     user: { name, regNo },
   } = useLoaderData();
+
   const [selectedFile, setSelectedFile] = useState(null);
   const onDrop = (acceptedFiles: any) => {
     setSelectedFile(acceptedFiles[0]);
   };
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
+
+  useEffect(() => {
+
+    if (actionData?.toastErrMessage) {
+      toast.error(actionData.toastErrMessage);
+    }
+  }, [actionData]);
+
   return (
-    <Form method="post" className="kz-user-form" encType="multipart/form-data">
+    <Form method="post" className="kz-user-form">
       <div>
         <h1>Tell us about yourself</h1>
       </div>
@@ -141,13 +156,13 @@ export default function Start() {
           <label className="label" htmlFor="name">
             Name<sup>*</sup>
           </label>
-          <input type="text" value={name} placeholder="Michael Scott" />
+          <input type="text" name="name" defaultValue={name} placeholder="Michael Scott" />
         </div>
         <div className="select">
           <label className="label" htmlFor="regno">
             Registration Number<sup>*</sup>
           </label>
-          <input type="text" value={regNo} placeholder="RA2211026010111" />
+          <input type="text" value={regNo} placeholder="RA2211026010111" readOnly />
         </div>
         <div className="select">
           <label className="label" htmlFor="gender">
