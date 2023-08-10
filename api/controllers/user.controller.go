@@ -257,26 +257,37 @@ func GetUserApplications(c *fiber.Ctx) error {
 }
 
 func GetUserActivity(c *fiber.Ctx) error {
-	activity := []map[string]interface{}{
-		{
-			"type":            "login",
-			"user_id":         "104121229959115963252",
-			"device_ip":       "::ffff:127.0.0.1",
-			"timestamp":       1663410336694,
-			"device_location": nil,
-		},
-		{
-			"type":            "login",
-			"user_id":         "104121229959115963252",
-			"device_ip":       "171.78.172.62",
-			"timestamp":       1662830819149,
-			"device_location": nil,
-		},
+	activityCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "activity")
+	if e != nil {
+		log.Error("Error", e)
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"error":   e.Error(),
+			"message": "DB not found",
+		})
 	}
 
-	responseData := fiber.Map{
-		"activity": activity,
+	userId := c.Locals("userId").(primitive.ObjectID)
+
+	cursor, err := activityCollection.Find(context.Background(), bson.M{
+		"user_id": userId,
+	})
+	if err != nil {
+		log.Error("Error", err)
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error":   err.Error(),
+			"message": "Activity not found",
+		})
+	}
+	defer cursor.Close(context.Background())
+
+	var activities []bson.M
+	if err := cursor.All(context.Background(), &activities); err != nil {
+		log.Fatal(err)
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error":   err.Error(),
+			"message": "Activities not found",
+		})
 	}
 
-	return c.Status(fiber.StatusOK).JSON(responseData)
+	return c.Status(fiber.StatusOK).JSON(activities)
 }

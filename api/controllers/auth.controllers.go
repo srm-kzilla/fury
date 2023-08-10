@@ -43,13 +43,13 @@ func GetAccessTokenGoogle(c *fiber.Ctx) error {
 			"error": err.Error(),
 		})
 	}
-	err = registerUserInDb(user.UserData)
+	mongo_id, err := registerUserInDb(user.UserData)
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"error": err.Error(),
 		})
 	}
-	errRecordActivity := utils.RecordActivity(c.Get("X-Forwarded-For"), "login")
+	errRecordActivity := utils.RecordActivity(c.Get("X-Forwarded-For"), "login", mongo_id)
 	if errRecordActivity != nil {
 		log.Error(errRecordActivity)
 	}
@@ -128,15 +128,15 @@ func filterName(familyName string) string {
 	return result
 }
 
-func registerUserInDb(user models.UserData) error {
+func registerUserInDb(user models.UserData) (primitive.ObjectID, error) {
 	var check models.User
 	usersCollection, err := database.GetCollection(os.Getenv("DB_NAME"), "users")
 	if err != nil {
-		return err
+		return primitive.ObjectID{}, err
 	}
 	usersCollection.FindOne(context.Background(), bson.M{"email": user.Email}).Decode(&check)
 	if check.Email == user.Email {
-		return nil
+		return check.ID, nil
 	}
 	newUser := models.User{
 		ID:            primitive.NewObjectID(),
@@ -153,11 +153,13 @@ func registerUserInDb(user models.UserData) error {
 		Application:   []models.Application{},
 		CreatedAt:     time.Now().Unix(),
 	}
-	_, e := usersCollection.InsertOne(context.Background(), newUser)
+	result, e := usersCollection.InsertOne(context.Background(), newUser)
 	if e != nil {
-		return e
+		return primitive.ObjectID{}, e
 	}
-	return nil
+	oid, _ := result.InsertedID.(primitive.ObjectID)
+
+	return oid, nil
 }
 
 func RefreshAccessTokenGoogle(c *fiber.Ctx) error {

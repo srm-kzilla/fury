@@ -29,9 +29,10 @@ type Social struct {
 }
 
 type Activity struct {
-	Timestamp time.Time `json:"timestamp" bson:"timestamp"`
-	Location  string    `json:"location" bson:"location"`
-	Type      string    `json:"type" bson:"type"`
+	Timestamp time.Time          `json:"timestamp" bson:"timestamp"`
+	Location  string             `json:"location" bson:"location"`
+	Type      string             `json:"type" bson:"type"`
+	UserId    primitive.ObjectID `json:"user_id" bson:"user_id"`
 }
 
 type Notification struct {

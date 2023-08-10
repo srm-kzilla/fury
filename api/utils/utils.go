@@ -1,22 +1,24 @@
 package utils
 
 import (
-	"os"
-	"time"
-	"github.com/gofiber/fiber/v2"
+	"context"
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
-	"github.com/srm-kzilla/Recruitments/api/utils/database"
+	"os"
+	"time"
+
+	"github.com/gofiber/fiber/v2"
 	"github.com/srm-kzilla/Recruitments/api/models"
-	"context"
+	"github.com/srm-kzilla/Recruitments/api/utils/database"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 type LocationData struct {
-	City      string `json:"city"`
-	Region    string `json:"regionName"`
-	Status    string `json:"status"`
-	Message   string `json:"message"`
+	City    string `json:"city"`
+	Region  string `json:"regionName"`
+	Status  string `json:"status"`
+	Message string `json:"message"`
 }
 
 func RootFunction(c *fiber.Ctx) error {
@@ -31,7 +33,7 @@ func HandleRoot(c *fiber.Ctx) error {
 	return c.JSON(fiber.Map{"message": "RECRUITMENT API"})
 }
 
-func RecordActivity(ip string, activityType string) error {
+func RecordActivity(ip string, activityType string, mongo_id primitive.ObjectID) error {
 	location := getLocationFromIP(ip)
 	activityCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "activity")
 
@@ -42,7 +44,8 @@ func RecordActivity(ip string, activityType string) error {
 	activity := models.Activity{
 		Location:  location,
 		Timestamp: time.Now(),
-		Type: activityType,
+		Type:      activityType,
+		UserId:    mongo_id,
 	}
 	_, err := activityCollection.InsertOne(context.Background(), activity)
 	if err != nil {
@@ -80,6 +83,6 @@ func getLocationFromIP(ip string) string {
 
 	if ip == "" {
 		return location.City + ", " + location.Region
-    }
+	}
 	return location.City + ", " + location.Region + " (" + ip + ")"
 }
