@@ -20,6 +20,7 @@ import {
   BiPlanet,
   BiRocket,
   BiTerminal,
+  BiTime,
   BiVector,
 } from "react-icons/bi";
 import type { LinksFunction } from "@remix-run/node";
@@ -65,6 +66,30 @@ const Explore = () => {
       description: "Meet Jack,a bot of all trades.",
       timestamp: 1613260800000,
       url: "https://github.com/srm-kzilla/jack",
+    },
+    {
+      icon: <BiTime />,
+      title: "Off The Clock",
+      description:
+        "We present to you “Off The Clock” - a harmonious event that soothes your ‘soul’.",
+      timestamp: 1692334800000,
+      url: "https://www.instagram.com/reel/CvwvvASOm6k/?igshid=MTc4MmM1YmI2Ng==",
+    },
+    {
+      icon: <BiLockOpenAlt />,
+      title: "MOZOFEST'23",
+      description:
+        "A three-day extravaganza to emanate the power of open source community sprinkled with a load of fun and frolic.",
+      timestamp: 1677205800000,
+      url: "https://www.instagram.com/p/Com8wmDPYva/?igshid=MzRlODBiNWFlZA==",
+    },
+    {
+      icon: <BiMeteor />,
+      title: "MOZOHACK'23",
+      description:
+        "A thrilling 24-hour hackathon where students across the nation come together to bring some amazing ideas to life.",
+      timestamp: 1677205800000,
+      url: "https://www.instagram.com/p/Cn-_yK5PixM/?igshid=MTc4MmM1YmI2Ng==",
     },
     {
       icon: <BiTerminal />,
