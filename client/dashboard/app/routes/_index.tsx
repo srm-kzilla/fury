@@ -17,6 +17,7 @@ import {
   getApplications,
   getNotifications,
   getUserActivity,
+  getUserAvatar,
   getUserDetails,
 } from "~/utils/api.server";
 import { Link, useLoaderData, useNavigate } from "@remix-run/react";
@@ -41,14 +42,15 @@ export const loader: LoaderFunction = async ({ request }) => {
   const { notifications } = await getNotifications(request);
   const { applications } = await getApplications(request);
   const { activity } = await getUserActivity(request);
+  const avatar = await getUserAvatar(user);
 
   if (!user.gender) return redirect("/start");
 
-  return json({ user, notifications, applications, activity });
+  return json({ user, notifications, applications, activity, avatar });
 };
 
 const Dashboard = () => {
-  const { user, notifications, applications, activity } = useLoaderData();
+  const { user, notifications, applications, activity, avatar } = useLoaderData();
   const navigate = useNavigate();
 
   const env = getEnv();
@@ -75,7 +77,8 @@ const Dashboard = () => {
               </h2>
               <div>
                 <div className="application-wrapper">
-                  {applications && applications.length > 0 &&
+                  {applications &&
+                    applications.length > 0 &&
                     applications.map((project: any, index: number) => {
                       return (
                         <div key={index} className="tile">
@@ -112,14 +115,15 @@ const Dashboard = () => {
               <div style={{ overflowX: "hidden" }}>
                 <div className="notif-row">
                   <div className="kz-notifications">
-                    {notifications && notifications.map((notification: Notification) => {
-                      return (
-                        <Notification
-                          key={notification.timestamp}
-                          notification={notification}
-                        />
-                      );
-                    })}
+                    {notifications &&
+                      notifications.map((notification: Notification) => {
+                        return (
+                          <Notification
+                            key={notification.timestamp}
+                            notification={notification}
+                          />
+                        );
+                      })}
                     {(!notifications || notifications.length === 0) && (
                       <div className="empty">
                         <img src={Assets.MAIL} alt="mail" />
@@ -192,7 +196,7 @@ const Dashboard = () => {
               </div>
             </div>
             <div className="glance">
-              <Glance user={user} activity={activity} />
+              <Glance user={user} activity={activity} avatar={avatar} />
             </div>
           </div>
         </div>

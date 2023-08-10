@@ -23,9 +23,10 @@ export const links: LinksFunction = () => {
 interface ActivityProps {
   user: User;
   activity: Activity[];
+  avatar: string;
 }
 
-const Glance = ({ user, activity }: ActivityProps) => {
+const Glance = ({ user, activity, avatar }: ActivityProps) => {
   useEffect(() => {
     window.$crisp.push(["set", "user:nickname", [user?.name]]);
     window.$crisp.push(["set", "user:email", [user?.email]]);
@@ -36,7 +37,7 @@ const Glance = ({ user, activity }: ActivityProps) => {
   return (
     <div className="kz-glance">
       <div className="profile">
-        {/*<img src={user?.avatar_url} alt="avatar" />*/}
+        <img src={avatar} alt="avatar" />
         <div>
           <h5>
             {user?.name}

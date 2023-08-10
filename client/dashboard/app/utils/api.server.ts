@@ -37,6 +37,35 @@ export const getUserDetails = async (request: Request): Promise<User> => {
   return res.json();
 };
 
+export const getUserAvatar = async (user): Promise<string> => {
+  const res = await fetch(
+    `https://api.dicebear.com/6.x/pixel-art/svg?seed=${user.name}`
+  )
+    .then((response) => {
+      const contentType = response.headers.get("content-type");
+
+      if (contentType === "image/svg+xml") {
+        return response.arrayBuffer();
+      } else {
+        console.log("Response does not contain an SVG image.");
+        return null;
+      }
+    })
+    .then((imageData) => {
+      if (imageData) {
+        const dataUri = `data:image/svg+xml;base64,${Buffer.from(
+          imageData
+        ).toString("base64")}`;
+        return dataUri;
+      }
+    })
+    .catch((error) => {
+      return error;
+    });
+
+  return res;
+};
+
 export const updateUserDetails = async (request: Request, user: UpdateUser) => {
   const accessToken = await requireAccessToken(request);
 
