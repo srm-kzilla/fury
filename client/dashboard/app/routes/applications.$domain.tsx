@@ -7,7 +7,7 @@ import { Sidebar } from "~/components";
 import { sidebarLinks } from "~/components";
 import { useEffect, useState } from "react";
 import { useParams } from "@remix-run/react";
-import getEnv from "~/shared/utils/env";
+import getEnv from "~/utils/env";
 
 export const links: LinksFunction = () => [
   ...sidebarLinks(),

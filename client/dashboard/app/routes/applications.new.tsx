@@ -24,7 +24,7 @@ import {
 } from "~/components";
 import toast from "~/utils/toast.client";
 import { APIService } from "~/shared/services/api-service";
-import getEnv from "~/shared/utils/env";
+import getEnv from "~/utils/env";
 import { StoreContext } from "~/components/Wizard/Store";
 import type { LinksFunction } from "@remix-run/node";
 
