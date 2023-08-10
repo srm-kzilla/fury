@@ -3,7 +3,6 @@ package controllers
 import (
 	"context"
 	"os"
-	"strings"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
@@ -50,15 +49,15 @@ func UpdateUser(c *fiber.Ctx) error {
 	var check models.User
 	c.BodyParser(&user)
 
-	githubValid := strings.Contains(user.Socials.Github, "github.com")
-	linkedinValid := strings.Contains(user.Socials.LinkedIn, "linkedin.com")
+	// githubValid := strings.Contains(user.Socials.Github, "github.com")
+	// linkedinValid := strings.Contains(user.Socials.LinkedIn, "linkedin.com")
 
-	if !githubValid || !linkedinValid {
-		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
-			"error":   400,
-			"message": "Invalid socials link",
-		})
-	}
+	// if !githubValid || !linkedinValid {
+	// 	return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+	// 		"error":   400,
+	// 		"message": "Invalid socials link",
+	// 	})
+	// }
 
 	userId := c.Locals("userId").(primitive.ObjectID)
 	if userId == primitive.NilObjectID {
