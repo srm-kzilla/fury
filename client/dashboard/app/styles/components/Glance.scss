@@ -83,8 +83,10 @@ div.kz-glance {
     .activity-tile {
       display: flex;
       align-items: center;
-      margin: 1rem 0;
-      padding: 1rem 0;
+      margin: 1rem 0rem;
+      padding: 0.5rem 0rem;
+      padding-right: 5rem;
+      width: 20rem;
       border-bottom: 1px rgba(var(--color-text-alt-rgb), 0.5) solid;
 
       &:last-child {
@@ -126,7 +128,7 @@ div.kz-glance {
     }
 
     @include for-mobile-only {
-      padding: 0.5rem 1rem;
+      padding: 1rem 2rem;
     }
   }
 

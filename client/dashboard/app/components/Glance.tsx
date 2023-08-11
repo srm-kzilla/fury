@@ -62,9 +62,12 @@ const Glance = ({ user, activity }: ActivityProps) => {
         <h3>Recent activity</h3>
         <div>
           {activity &&
-            activity.map((event: Activity) => {
-              return <Activity key={event._id} event={event} />;
-            })}
+            activity
+              .slice()
+              .reverse()
+              .map((event: Activity) => {
+                return <Activity key={event._id} event={event} />;
+              })}
         </div>
       </div>
     </div>
