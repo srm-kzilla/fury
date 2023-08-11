@@ -5,6 +5,7 @@ type Application struct {
 	Domain    string   `validate:"required" json:"domain"`
 	AppliedAt string   `json:"appliedAt" bson:"appliedAt"`
 	UpdatedAt string   `json:"updatedAt" bson:"updatedAt"`
+	CreatedAt string   `json:"createdAt" bson:"createdAt"`
 	Questions Question `json:"questions"`
 }
 
