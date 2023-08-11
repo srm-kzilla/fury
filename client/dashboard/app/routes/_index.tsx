@@ -43,8 +43,7 @@ export const loader: LoaderFunction = async ({ request }) => {
   const user = await getUserDetails(request);
   const { notifications } = await getNotifications(request);
   const { applications } = await getApplications(request);
-  const { activity } = await getUserActivity(request);
-
+  const activity = await getUserActivity(request);
   if (!user.gender) return redirect("/start");
 
   return json({ user, notifications, applications, activity });
