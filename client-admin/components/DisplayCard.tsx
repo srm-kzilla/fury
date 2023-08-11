@@ -1,5 +1,4 @@
 import { Drawer } from "vaul";
-import ques from "@/mock-data/quesans";
 interface PersonType {
   id: number;
   name: string;
