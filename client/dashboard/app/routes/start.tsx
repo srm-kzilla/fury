@@ -146,9 +146,8 @@ export default function Start() {
       </div>
       <div>
         <h5>
-          We like being on a first-name basis, but it also helps us get in touch
-          with you. While linkedin, portfolio and others are not mandatory, it helps your
-          chances
+          Although not obligatory, including your LinkedIn profile, portfolio,
+          and other delightful tidbits can certainly give your chances a boost!🚀
         </h5>
       </div>
       <div className="grid-box">
