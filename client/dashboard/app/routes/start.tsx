@@ -6,18 +6,26 @@ import {
 } from "@remix-run/react";
 import { getUserDetails, updateUserDetails } from "~/utils/api.server";
 import userProfileStyles from "~/styles/components/UserProfile.css";
-import { json, redirect } from "@remix-run/node";
+import {
+  json,
+  redirect,
+  unstable_composeUploadHandlers as composeUploadHandlers,
+  unstable_createMemoryUploadHandler as createMemoryUploadHandler,
+  unstable_parseMultipartFormData as parseMultipartFormData,
+} from "@remix-run/node";
 import { BiLoader } from "react-icons/bi";
 import * as Yup from "yup";
 import type {
   ActionFunction,
   LinksFunction,
   LoaderFunction,
+  UploadHandler,
 } from "@remix-run/node";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import toast from "~/utils/toast.client";
 import type { ValidationError } from "yup";
+import { s3UploadHandler } from "~/utils/s3-upload";
 
 export const links: LinksFunction = () => [
   {
@@ -41,23 +49,35 @@ type ActionData = {
 };
 
 export const action: ActionFunction = async ({ request }) => {
-  const formData = await request.formData();
-
+  // const formData = await unstable_parseMultipartFormData(
+  //   request,
+  //   uploadHandler as UploadHandler
+  // );
+  const uploadHandler: UploadHandler = composeUploadHandlers(
+    s3UploadHandler,
+    createMemoryUploadHandler()
+  );
+  // const formData = await request.formData();
+  const formData = await parseMultipartFormData(request, uploadHandler);
+  const resume = formData.get("resume");
+  console.log(resume)
   try {
     const { name, branch, contact, github, linkedin, portfolio, gender } =
       await validateUserDetails(formData);
-
-    const { error, message } = await updateUserDetails(request, {
-      name,
-      branch,
-      contact,
-      gender,
-      socials: {
-        github,
-        linkedin,
-        portfolio,
-      },
-    });
+    const resume = formData.get("resume");
+    console.log(resume);
+    // const { error, message } = await updateUserDetails(request, {
+    //   name,
+    //   branch,
+    //   contact,
+    //   gender,
+    //   resume:resume  as string,
+    //   socials: {
+    //     github,
+    //     linkedin,
+    //     portfolio,
+    //   },
+    // });
 
     if (error === 400) {
       return { toastErrMessage: message };
@@ -65,7 +85,7 @@ export const action: ActionFunction = async ({ request }) => {
       return redirect("/");
     }
   } catch (errors) {
-    console.log(errors)
+    console.log(errors);
     return { errors };
   }
 };
@@ -123,25 +143,33 @@ export default function Start() {
   const navigation = useNavigation();
   const actionData = useActionData<ActionData>();
   const {
-    user: { name, regNo },
+    user: { name, regNo, _id },
   } = useLoaderData();
 
   const [selectedFile, setSelectedFile] = useState(null);
-  const onDrop = (acceptedFiles: any) => {
-    setSelectedFile(acceptedFiles[0]);
-  };
+  // const onDrop = (acceptedFiles: any) => {
+  //   setSelectedFile(acceptedFiles[0]);
+  //   console.log(selectedFile);
+  //   // if(selectedFile){
+  //   //   let file = {
+  //   //     name: `${name}-resume`,
+  //   //     filename: `resume/${_id}`,
+  //   //     data:selectedFile
+  //   //   }
+  //   //   s3UploadHandler(file)
+  //   // }
+  // };
 
-  const { getRootProps, getInputProps } = useDropzone({ onDrop });
+  // const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   useEffect(() => {
-
     if (actionData?.toastErrMessage) {
       toast.error(actionData.toastErrMessage);
     }
   }, [actionData]);
 
   return (
-    <Form method="post" className="kz-user-form">
+    <Form method="post" className="kz-user-form" encType="multipart/form-data">
       <div>
         <h1>Tell us about yourself</h1>
       </div>
@@ -156,13 +184,23 @@ export default function Start() {
           <label className="label" htmlFor="name">
             Name<sup>*</sup>
           </label>
-          <input type="text" name="name" defaultValue={name} placeholder="Michael Scott" />
+          <input
+            type="text"
+            name="name"
+            defaultValue={name}
+            placeholder="Michael Scott"
+          />
         </div>
         <div className="select">
           <label className="label" htmlFor="regno">
             Registration Number<sup>*</sup>
           </label>
-          <input type="text" value={regNo} placeholder="RA2211026010111" readOnly />
+          <input
+            type="text"
+            value={regNo}
+            placeholder="RA2211026010111"
+            readOnly
+          />
         </div>
         <div className="select">
           <label className="label" htmlFor="gender">
@@ -200,8 +238,8 @@ export default function Start() {
             <label className="label" htmlFor="resume">
               Resume (upto 20 megabytes)
             </label>
-            <div {...getRootProps()} className="dropzone">
-              <input {...getInputProps()} />
+            {/* <div {...getRootProps()} className="dropzone">
+              <input name="resume" {...getInputProps()} />
               {selectedFile ? (
                 <div>
                   <p className="text">Selected file: {selectedFile["name"]}</p>
@@ -211,6 +249,9 @@ export default function Start() {
                   Drag &amp; drop files here, or click to select
                 </p>
               )}
+            </div> */}
+            <div>
+              <input name="resume" type="file" />
             </div>
           </div>
         </div>
