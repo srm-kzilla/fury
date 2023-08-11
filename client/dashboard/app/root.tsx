@@ -69,7 +69,7 @@ function App() {
   return (
     <>
       <Layout>
-        <Headbar headline="Dear Freshers, we see you can't wait. Recruitments open soon ;) [#2023Wrapped](https://photos.app.goo.gl/FQTcCjWnXgPB5r296)" />
+        <Headbar />
         <div className="App">
           <Store>
             <Outlet />
