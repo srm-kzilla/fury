@@ -46,28 +46,6 @@ const Explore = () => {
       url: "https://github.com/srm-kzilla/fury",
     },
     {
-      icon: <BiPalette />,
-      title: "Mellow",
-      description: "An artistic dark theme for Visual Studio Code.",
-      timestamp: 1586908800000,
-      url: "https://marketplace.visualstudio.com/items?itemName=SRMKZILLA.Mellow",
-    },
-    {
-      icon: <BiVector />,
-      title: "Kzilla.xyz",
-      description:
-        "Shorten the URL. Broaden the reach.The new URL shrinker of the Internet. It's as easy as it sounds. ",
-      timestamp: 1597190400000,
-      url: "https://kzilla.xyz/",
-    },
-    {
-      icon: <BiGame />,
-      title: "Jack",
-      description: "Meet Jack,a bot of all trades.",
-      timestamp: 1613260800000,
-      url: "https://github.com/srm-kzilla/jack",
-    },
-    {
       icon: <BiTime />,
       title: "Off The Clock",
       description:
@@ -170,6 +148,13 @@ const Explore = () => {
       url: "https://www.srmkzilla.net/",
     },
     {
+      icon: <BiGame />,
+      title: "Jack",
+      description: "Meet Jack,a bot of all trades.",
+      timestamp: 1613260800000,
+      url: "https://github.com/srm-kzilla/jack",
+    },
+    {
       icon: <BiAward />,
       title: "Introduced Springboard to World",
       description:
@@ -214,6 +199,21 @@ const Explore = () => {
       timestamp: 1603794255000,
       url: "https://www.instagram.com/p/CG1pVftDe4z/",
     },
+    {
+      icon: <BiVector />,
+      title: "Kzilla.xyz",
+      description:
+        "Shorten the URL. Broaden the reach.The new URL shrinker of the Internet. It's as easy as it sounds. ",
+      timestamp: 1597190400000,
+      url: "https://kzilla.xyz/",
+    },
+    {
+      icon: <BiPalette />,
+      title: "Mellow",
+      description: "An artistic dark theme for Visual Studio Code.",
+      timestamp: 1586908800000,
+      url: "https://marketplace.visualstudio.com/items?itemName=SRMKZILLA.Mellow",
+    },
   ];
 
   return (
@@ -225,7 +225,7 @@ const Explore = () => {
             Explore <span>@srmkzilla</span>
           </h2>
           <div>
-            <h3 className="mb">2022</h3>
+            <h3 className="mb">2023</h3>
             <div>
               {items.map((item, index) => {
                 return (
