@@ -195,7 +195,5 @@ export const postFinalApplication = async (request: Request, domain: string, ans
     }
   );
 
-  console.log("[res] ", res);
-
-  return null;
+  return res.json();
 }
