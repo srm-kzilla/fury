@@ -65,7 +65,6 @@ export const action: ActionFunction = async ({ request }) => {
       return redirect("/");
     }
   } catch (errors) {
-    console.log(errors);
     return { errors };
   }
 };
