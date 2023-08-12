@@ -19,6 +19,7 @@ import (
 	"github.com/srm-kzilla/Recruitments/api/utils"
 	"github.com/srm-kzilla/Recruitments/api/utils/constants"
 	"github.com/srm-kzilla/Recruitments/api/utils/database"
+	"github.com/srm-kzilla/Recruitments/api/utils/notifications"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"golang.org/x/oauth2"
@@ -179,6 +180,10 @@ func registerUserInDb(user models.UserData) (primitive.ObjectID, error) {
 		CreatedAt:     time.Now().Unix(),
 	}
 	result, e := usersCollection.InsertOne(context.Background(), newUser)
+	notificationInsert := notifications.RecordNotification("NEW_USER", result.InsertedID.(primitive.ObjectID))
+	if notificationInsert == false {
+		log.Error("Error: Inserting notification")
+	}
 	if e != nil {
 		return primitive.ObjectID{}, e
 	}
