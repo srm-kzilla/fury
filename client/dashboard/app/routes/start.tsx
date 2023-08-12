@@ -14,7 +14,7 @@ import type {
   LinksFunction,
   LoaderFunction,
 } from "@remix-run/node";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import toast from "~/utils/toast.client";
 import type { ValidationError } from "yup";
@@ -65,7 +65,6 @@ export const action: ActionFunction = async ({ request }) => {
       return redirect("/");
     }
   } catch (errors) {
-    console.log(errors)
     return { errors };
   }
 };
@@ -134,7 +133,6 @@ export default function Start() {
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   useEffect(() => {
-
     if (actionData?.toastErrMessage) {
       toast.error(actionData.toastErrMessage);
     }
@@ -147,8 +145,8 @@ export default function Start() {
       </div>
       <div>
         <h5>
-          We like being on a first-name basis, but it also helps us get in touch
-          with you.
+          Although not obligatory, including your LinkedIn profile, portfolio,
+          and other delightful tidbits can certainly give your chances a boost! 🚀
         </h5>
       </div>
       <div className="grid-box">
@@ -156,13 +154,23 @@ export default function Start() {
           <label className="label" htmlFor="name">
             Name<sup>*</sup>
           </label>
-          <input type="text" name="name" defaultValue={name} placeholder="Michael Scott" />
+          <input
+            type="text"
+            name="name"
+            defaultValue={name}
+            placeholder="Michael Scott"
+          />
         </div>
         <div className="select">
           <label className="label" htmlFor="regno">
             Registration Number<sup>*</sup>
           </label>
-          <input type="text" value={regNo} placeholder="RA2211026010111" readOnly />
+          <input
+            type="text"
+            value={regNo}
+            placeholder="RA2211026010111"
+            readOnly
+          />
         </div>
         <div className="select">
           <label className="label" htmlFor="gender">
