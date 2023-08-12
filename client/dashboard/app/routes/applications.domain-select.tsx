@@ -98,43 +98,45 @@ const DomainSelect = () => {
   const actionData = useActionData();
 
   return (
-    <Form method="POST" className="kz-form-container">
-      <div className="kz-form">
-        <h1>Select a domain</h1>
-        <div className="kz-form-field">
-          <input name="domain" value={domain} readOnly hidden />
-          {domains.map((option, index) => {
-            return (
-              <div
-                className={
-                  active === index ? `selectable-div active` : `selectable-div`
-                }
-                key={index}
-                onClick={() => {
-                  setActive(index);
-                  setDomain(option.value);
-                }}
-              >
-                <div key={option.key}>
-                  <h3>{option.text}</h3>
-                  <h4>{option.description}</h4>
+    <div className="kz-wizard">
+      <Form method="POST" className="kz-form-container">
+        <div className="kz-form">
+          <h1>Select a domain</h1>
+          <div className="kz-form-field">
+            <input name="domain" value={domain} readOnly hidden />
+            {domains.map((option, index) => {
+              return (
+                <div
+                  className={
+                    active === index ? `selectable-div active` : `selectable-div`
+                  }
+                  key={index}
+                  onClick={() => {
+                    setActive(index);
+                    setDomain(option.value);
+                  }}
+                >
+                  <div key={option.key}>
+                    <h3>{option.text}</h3>
+                    <h4>{option.description}</h4>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
+          <sub>{actionData?.error}</sub>
+          <div className="kz-button-container">
+            <button type="submit">
+              {navigation.state === "submitting" ? (
+                <BiLoader className="spin" />
+              ) : (
+                "Next"
+              )}
+            </button>
+          </div>
         </div>
-        <sub>{actionData?.error}</sub>
-        <div className="kz-button-container">
-          <button type="submit">
-            {navigation.state === "submitting" ? (
-              <BiLoader className="spin" />
-            ) : (
-              "Next"
-            )}
-          </button>
-        </div>
-      </div>
-    </Form>
+      </Form>
+    </div>
   );
 };
 
