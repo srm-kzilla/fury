@@ -231,7 +231,7 @@ const Application = () => {
           </div>
           <div className="kz-form-footer">
             <div className="center footer-item-1">
-              {parseInt(questionNumber) + 1} of {questionsArray.length}
+              {parseInt(questionNumber)} of {questionsArray.length}
             </div>
             <div className="footer-item-2">
               <div style={progressBarStyles.container}>

@@ -23,7 +23,7 @@ type UpdateUser = Pick<
 >;
 
 type Application = {
-  status: "pending" | "accepted" | "rejected";
+  status: "draft" | "pending" | "accepted" | "rejected";
   domain: string;
   appliedAt: Date;
   updatedAt: Date;
