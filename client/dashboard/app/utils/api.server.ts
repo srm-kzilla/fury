@@ -18,12 +18,15 @@ const API = {
       APPLICATIONS: () => "/applications",
       ACTIVITY: () => "/activity",
     },
+    APPLICATIONS: {
+      BASE_URL: () => "/application",
+    },
     AUTH: {
       BASE_URL: () => "/auth",
       ACCESS_TOKEN: (code: string) => `/google/token?code=${code}`,
     },
   },
-};
+};;
 
 export const getUserDetails = async (request: Request): Promise<User> => {
   const accessToken = await requireAccessToken(request);
@@ -146,3 +149,53 @@ export const getAccessTokenFromCode = async (request: Request) => {
 
   return res.json();
 };
+
+export const postDraftApplication = async (request: Request, domain: string, answers: Array<Answer>) => {
+  const { regNo } = await getUserDetails(request);
+
+  const res = await fetch(
+    API.BASE_URL + API.ENDPOINTS.APPLICATIONS.BASE_URL(),
+    {
+      method: "POST",
+      body: JSON.stringify({
+        regNo,
+        type: "draft",
+        application: {
+          domain,
+          questions: answers
+        }
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      }
+    }
+  );
+
+  return res.json();
+}
+
+export const postFinalApplication = async (request: Request, domain: string, answers: Array<Answer>) => {
+  const { regNo } = await getUserDetails(request);
+
+  const res = await fetch(
+    API.BASE_URL + API.ENDPOINTS.APPLICATIONS.BASE_URL(),
+    {
+      method: "POST",
+      body: JSON.stringify({
+        regNo,
+        type: "draft",
+        application: {
+          domain,
+          questions: answers
+        }
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      }
+    }
+  );
+
+  console.log("[res] ", res);
+
+  return null;
+}

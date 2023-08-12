@@ -48,3 +48,13 @@ type Activity = {
   project_slug?: string;
   user_id: string;
 };
+
+type Answer = {
+  questionNumber: string;
+  answer: string;
+}
+
+type FormSession = {
+  domain: string;
+  answers: Answer[];
+};

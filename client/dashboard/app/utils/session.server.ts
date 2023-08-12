@@ -40,7 +40,7 @@ export async function createUserSession(
   });
 }
 
-function getUserSession(request: Request) {
+async function getUserSession(request: Request) {
   return getSession(request.headers.get("Cookie"));
 }
 
@@ -68,6 +68,60 @@ export async function logout(request: Request) {
   return redirect("/", {
     headers: {
       "Set-Cookie": await destroySession(session),
+    },
+  });
+}
+
+export async function createFormSession(request: Request) {
+  const session = await getUserSession(request);
+
+  session.set("formSession", {
+    domain: null,
+    answers: [],
+  });
+
+  return redirect("/applications/domain-select", {
+    headers: {
+      "Set-Cookie": await commitSession(session),
+    },
+  });
+}
+
+export async function getFormSession(request: Request): Promise<FormSession> {
+  const session = await getUserSession(request);
+
+  return session.get("formSession");
+}
+
+export async function updateFormSession(
+  request: Request,
+  data: any,
+  redirectTo: string
+) {
+  const session = await getUserSession(request);
+
+  const formSession = session.get("formSession");
+  if (!formSession) {
+    return redirect("/applications/new");
+  }
+
+  session.set("formSession", data);
+
+  return redirect(redirectTo, {
+    headers: {
+      "Set-Cookie": await commitSession(session),
+    },
+  });
+}
+
+export async function destroyFormSession(request: Request) {
+  const session = await getUserSession(request);
+
+  session.set("formSession", null);
+
+  return redirect("/", {
+    headers: {
+      "Set-Cookie": await commitSession(session),
     },
   });
 }
