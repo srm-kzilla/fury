@@ -179,22 +179,71 @@ const Cookie = () => {
   );
 };
 
+function ErrorLayout({ children }: { children: ReactNode }) {
+
+  return (
+    <html lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <Meta />
+        <Links />
+        <title>SRMKZILLA Recruitments '23</title>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.$crisp=[];
+            window.CRISP_WEBSITE_ID="c3e20450-f803-4f5b-9674-b2245cf31786";
+            (function() {
+              d=document;
+              s=d.createElement("script");
+              s.src="https://client.crisp.chat/l.js";
+              s.async=1;
+              d.getElementsByTagName("head")[0].appendChild(s);
+            })();
+          `,
+          }}
+        />
+      </head>
+      <body>
+        <ScrollRestoration />
+        <Scripts />
+        <LiveReload />
+        <Toaster
+          position="top-right"
+          reverseOrder={false}
+          gutter={8}
+          containerStyle={{}}
+          toastOptions={{
+            className: "",
+            duration: 5000,
+            style: {
+              color: "#fff",
+            },
+          }}
+        />
+        {children}
+      </body>
+    </html>
+  );
+}
+
 export function ErrorBoundary() {
   const error = useRouteError();
 
   if (isRouteErrorResponse(error)) {
     return (
-      <Layout>
+      <ErrorLayout>
         <NotFound code={error.status} />
-      </Layout>
+      </ErrorLayout>
     );
   }
 
   return (
-    <Layout>
+    <ErrorLayout>
       <h1>Uh oh ...</h1>
       <p>Something went wrong.</p>
-    </Layout>
+    </ErrorLayout>
   );
 }
 
