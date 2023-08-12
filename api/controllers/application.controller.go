@@ -3,6 +3,7 @@ package controllers
 import (
 	"context"
 	"os"
+	"time"
 
 	"github.com/charmbracelet/log"
 	"github.com/gofiber/fiber/v2"
@@ -16,6 +17,7 @@ import (
 func CreateApplication(c *fiber.Ctx) error {
 	var body models.ApplicationBody
 	c.BodyParser(&body)
+	application := body.Application
 
 	if body.RegNo == "" {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
@@ -27,11 +29,12 @@ func CreateApplication(c *fiber.Ctx) error {
 	if body.Type == "submit" {
 		// schema validation
 		status = "pending"
+		application.CreatedAt = time.Now()
 	} else {
 		status = "draft"
+		application.UpdatedAt = time.Now()
 	}
 
-	application := body.Application
 	application.Status = status
 
 	usersCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "users")

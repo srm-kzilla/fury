@@ -1,11 +1,14 @@
 package models
 
+import "time"
+
 type Application struct {
-	Status    string   `json:"status"`
-	Domain    string   `validate:"required" json:"domain"`
-	AppliedAt string   `json:"appliedAt" bson:"appliedAt"`
-	UpdatedAt string   `json:"updatedAt" bson:"updatedAt"`
-	Questions Question `json:"questions"`
+	Status    string    `json:"status"`
+	Domain    string    `validate:"required" json:"domain"`
+	AppliedAt string    `json:"appliedAt" bson:"appliedAt"`
+	UpdatedAt time.Time `json:"updatedAt" bson:"updatedAt"`
+	CreatedAt time.Time `json:"createdAt" bson:"createdAt"`
+	Questions Question  `json:"questions"`
 }
 
 type Question struct {
