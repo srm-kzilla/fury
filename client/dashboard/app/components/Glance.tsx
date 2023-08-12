@@ -37,7 +37,7 @@ const Glance = ({ user, activity }: ActivityProps) => {
     <div className="kz-glance">
       <div className="profile">
         <img
-          src={`https://api.dicebear.com/6.x/notionists-neutral/svg?seed=${user.name}`}
+          src={`https://api.dicebear.com/6.x/notionists-neutral/svg?seed=${encodeURIComponent(user.name.trim())}`}
           alt="avatar"
         />
         <div>
