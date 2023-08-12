@@ -1,5 +1,5 @@
 import infoTileStyles from "~/styles/components/InfoTile.css";
-import { BiTime, BiArrowToRight } from "react-icons/bi";
+import { BiTime, BiArrowToRight, BiGitBranch } from "react-icons/bi";
 import moment from "moment";
 import type { LinksFunction } from "@remix-run/node";
 
@@ -15,10 +15,18 @@ interface Props {
   title: string;
   description: string;
   timestamp: number;
+  github?: string;
   url?: string;
 }
 
-const InfoTile = ({ icon, title, description, timestamp, url }: Props) => {
+const InfoTile = ({
+  icon,
+  title,
+  description,
+  timestamp,
+  github,
+  url,
+}: Props) => {
   return (
     <div className="kz-info-tile">
       <div className="icon">{icon}</div>
@@ -29,12 +37,21 @@ const InfoTile = ({ icon, title, description, timestamp, url }: Props) => {
           <BiTime />
           {moment(timestamp).format("MMM DD, YYYY")}
         </div>
-        <div className="link">
-          {url && (
-            <a href={url} target="_blank">
-              <BiArrowToRight />
-            </a>
-          )}
+        <div className="icons">
+          <div className="git">
+            {github && (
+              <a href={github} target="_blank">
+                <BiGitBranch />
+              </a>
+            )}
+          </div>
+          <div className="link">
+            {url && (
+              <a href={url} target="_blank">
+                <BiArrowToRight />
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </div>
