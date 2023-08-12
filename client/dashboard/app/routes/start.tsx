@@ -99,13 +99,13 @@ const validateUserDetails = async (formData: FormData) => {
     linkedin: Yup.string()
       .url("The URL you have entered doesn't seem right")
       .matches(
-        /^https?:\/\/(?:[a-z]+\.)?linkedin\.com\/in\/[a-zA-Z0-9_-]+$/,
+        /^(https?:\/\/(?:[a-z]+\.)?linkedin\.com\/in\/[a-zA-Z0-9_-]+)?$/,
         "The URL you have entered doesn't seem right"
       ),
     github: Yup.string()
       .url("The URL you have entered doesn't seem right")
       .matches(
-        /^https?:\/\/(?:[a-z]+\.)?github\.com\/[a-zA-Z0-9_-]+$/,
+        /^(https?:\/\/(?:[a-z]+\.)?github\.com\/[a-zA-Z0-9_-]+)?$/,
         "The URL you have entered doesn't seem right"
       ),
     resume: Yup.string(),
