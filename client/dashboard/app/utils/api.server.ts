@@ -21,6 +21,7 @@ const API = {
     AUTH: {
       BASE_URL: () => "/auth",
       ACCESS_TOKEN: (code: string) => `/google/token?code=${code}`,
+      REFRESH_TOKEN: (code: string) => `/google/refresh?refresh_token=${code}}`,
     },
   },
 };
@@ -142,6 +143,16 @@ export const getAccessTokenFromCode = async (request: Request) => {
     {
       method: "POST",
     }
+  );
+
+  return res.json();
+};
+
+export const getAccessTokenFromRefreshToken = async (refreshToken: string) => {
+  const res = await fetch(
+    API.BASE_URL +
+      API.ENDPOINTS.AUTH.BASE_URL() +
+      API.ENDPOINTS.AUTH.REFRESH_TOKEN(refreshToken)
   );
 
   return res.json();

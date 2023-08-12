@@ -147,7 +147,8 @@ export default function Start() {
       <div>
         <h5>
           Although not obligatory, including your LinkedIn profile, portfolio,
-          and other delightful tidbits can certainly give your chances a boost!🚀
+          and other delightful tidbits can certainly give your chances a
+          boost!🚀
         </h5>
       </div>
       <div className="grid-box">

@@ -58,7 +58,10 @@ const Dashboard = () => {
   const endTime = parseInt(env.APPLICATION_DEADLINE!);
 
   useEffect(() => {
-    toast.show(`Deadline for application is ${moment(endTime).format("MMMM Do YYYY")}`, "🗓️");
+    toast.show(
+      `Deadline for application is ${moment(endTime).format("MMMM Do YYYY")}`,
+      "🗓️"
+    );
   }, []);
 
   return (
