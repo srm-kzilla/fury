@@ -32,14 +32,28 @@ div.kz-info-tile {
     align-items: center;
     justify-content: space-between;
     margin-top: 2rem;
-
-    .link {
-      svg {
-        color: $primary;
-        width: 2rem;
-        height: 2rem;
+    .icons{
+      display: flex;
+      flex-direction: row;
+      .link {
+        svg {
+          color: $primary;
+          width: 2rem;
+          height: 2rem;
+        }
+      }
+      .git{
+        svg {
+          color: $primary;
+          width: 1.5rem;
+          height: 1.5rem;
+          margin-top: 0.25rem;
+          margin-right: 0.5rem;
+        } 
       }
     }
+
+    
 
     .status {
       display: flex;
