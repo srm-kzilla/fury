@@ -12,6 +12,13 @@ div.kz-wizard {
     margin-top: 2rem;
   }
 
+  .kz-form-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   .kz-form-container {
     flex-grow: 1;
     display: flex;

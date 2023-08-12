@@ -17,13 +17,14 @@ import type {
 } from "@remix-run/node";
 import {
   Form,
+  Link,
   useActionData,
   useLoaderData,
   useNavigation,
 } from "@remix-run/react";
 import { getDomainName, questionsArray } from "~/utils/applications";
-import { BiLoader } from "react-icons/bi";
-import { useEffect, useRef } from "react";
+import { BiHomeAlt, BiLoader } from "react-icons/bi";
+import React, { useEffect, useRef } from "react";
 import { postFinalApplication } from "~/utils/api.server";
 import type { ValidationError } from "yup";
 
@@ -87,7 +88,10 @@ export const loader: LoaderFunction = async ({ request }) => {
     typedAnswer = answer;
   }
 
-  const previousQuestionNumber = checkIfAllPreviousQuestionsAnswered(questionNumber, answers);
+  const previousQuestionNumber = checkIfAllPreviousQuestionsAnswered(
+    questionNumber,
+    answers
+  );
 
   if (!previousQuestionNumber) {
     return { domain, questionNumber, typedAnswer };
@@ -124,11 +128,11 @@ export const action: ActionFunction = async ({ request }) => {
             ...formSession,
             answers: formSession.answers
               ? [
-                ...formSession.answers.filter(
-                  (answer) => questionNumber !== answer.questionNumber
-                ),
-                { questionNumber, answer },
-              ]
+                  ...formSession.answers.filter(
+                    (answer) => questionNumber !== answer.questionNumber
+                  ),
+                  { questionNumber, answer },
+                ]
               : [{ questionNumber, answer }],
           },
           `/applications/new?question=${parseInt(questionNumber) + 1}`
@@ -141,7 +145,12 @@ export const action: ActionFunction = async ({ request }) => {
       if (parseInt(questionNumber) === 1) {
         return redirect("/applications/domain-select");
       }
-      return redirect(`/applications/new?question=${parseInt(questionNumber) - 1}`);
+      return redirect(
+        `/applications/new?question=${parseInt(questionNumber) - 1}`
+      );
+    }
+    case "delete": {
+      return destroyFormSession(request);
     }
   }
 };
@@ -171,10 +180,39 @@ const Application = () => {
     (q) => q.domain === domain
   );
 
+  const progressBarStyles = {
+    container: {
+      width: "100%",
+      height: 10,
+      borderRadius: "5rem",
+      backgroundColor: "#d5d5d5",
+    },
+    completed: {
+      height: "100%",
+      borderRadius: "5rem",
+      width: `${(parseInt(questionNumber) / questionsArray.length) * 100}%`,
+      backgroundColor: "#ff644e",
+    },
+  };
+
   return (
     <div className="kz-wizard">
       {currentQuestion ? (
         <Form method="POST" className="kz-form-container" ref={formRef}>
+          <div className="kz-form-header">
+            <Link to="/dashboard">
+              <BiHomeAlt size={36} className="home-icon" title="Home" />
+            </Link>
+            <div className="kz-button-container">
+              <button type="submit" name="_action" value="delete">
+                {navigation.state === "submitting" ? (
+                  <BiLoader className="spin" />
+                ) : (
+                  "Delete Draft"
+                )}
+              </button>
+            </div>
+          </div>
           <div className="kz-form">
             <div className="kz-message-screen">
               <h1>{getDomainName(currentQuestion.domain)} Application</h1>
@@ -191,17 +229,29 @@ const Application = () => {
               <sub>{actionData?.error}</sub>
             </div>
           </div>
-          <div className="kz-button-container">
-            <button type="submit" name="_action" value="previous" >Previous</button>
-            <button type="submit" name="_action" value="next">
-              {navigation.state === "submitting" ? (
-                <BiLoader className="spin" />
-              ) : questionNumber == questionsArray.length ? (
-                "Submit"
-              ) : (
-                "Next"
-              )}
-            </button>
+          <div className="kz-form-footer">
+            <div className="center footer-item-1">
+              {parseInt(questionNumber) + 1} of {questionsArray.length}
+            </div>
+            <div className="footer-item-2">
+              <div style={progressBarStyles.container}>
+                <div style={progressBarStyles.completed}></div>
+              </div>
+            </div>
+            <div className="kz-button-container">
+              <button type="submit" name="_action" value="previous">
+                Previous
+              </button>
+              <button type="submit" name="_action" value="next">
+                {navigation.state === "submitting" ? (
+                  <BiLoader className="spin" />
+                ) : questionNumber == questionsArray.length ? (
+                  "Submit"
+                ) : (
+                  "Next"
+                )}
+              </button>
+            </div>
           </div>
         </Form>
       ) : (
