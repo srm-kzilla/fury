@@ -53,11 +53,11 @@ const checkIfAllPreviousQuestionsAnswered = (
 ) => {
   for (let i = 1; i < parseInt(currentQuestionNumber); i++) {
     if (!answers.find((answer) => answer.questionNumber === i.toString())) {
-      return redirect(`/applications/new?question=${i}`);
+      return i;
     }
   }
 
-  return true;
+  return 0;
 };
 
 export const loader: LoaderFunction = async ({ request }) => {
@@ -68,8 +68,6 @@ export const loader: LoaderFunction = async ({ request }) => {
   } else if (formSession && !formSession.domain) {
     return redirect("/applications/domain-select");
   }
-
-  console.log("[formSession] ", formSession);
 
   const url = new URL(request.url);
   const questionNumber = url.searchParams.get("question") || "1";
@@ -89,9 +87,13 @@ export const loader: LoaderFunction = async ({ request }) => {
     typedAnswer = answer;
   }
 
-  if (checkIfAllPreviousQuestionsAnswered(questionNumber, answers)) {
+  const previousQuestionNumber = checkIfAllPreviousQuestionsAnswered(questionNumber, answers);
+
+  if (!previousQuestionNumber) {
     return { domain, questionNumber, typedAnswer };
   }
+
+  return redirect(`/applications/new?question=${previousQuestionNumber}`);
 };
 
 export const action: ActionFunction = async ({ request }) => {
