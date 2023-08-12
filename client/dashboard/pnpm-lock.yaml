@@ -118,6 +118,9 @@ devDependencies:
   '@types/react-dom':
     specifier: ^18.0.11
     version: 18.0.11
+  '@types/react-lottie':
+    specifier: ^1.2.6
+    version: 1.2.6
   '@types/tinycolor2':
     specifier: ^1.4.3
     version: 1.4.3
@@ -2464,6 +2467,12 @@ packages:
 
   /@types/react-dom@18.0.11:
     resolution: {integrity: sha512-O38bPbI2CWtgw/OoQoY+BRelw7uysmXbWvw3nLWO21H1HSh+GOlqPuXshJfjmpNlKiiSDG9cc1JZAaMmVdcTlw==}
+    dependencies:
+      '@types/react': 18.0.35
+    dev: true
+
+  /@types/react-lottie@1.2.6:
+    resolution: {integrity: sha512-fvGJHD7SeUdVESHo7f7erRnXkTWaa/6Mo5TB+R0/ieSftKoFspA4sMlF2qMH6BljXI7ehFJbBtrD5bzDxPCkGg==}
     dependencies:
       '@types/react': 18.0.35
     dev: true

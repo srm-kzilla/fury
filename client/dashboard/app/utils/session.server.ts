@@ -65,7 +65,7 @@ export async function requireAccessToken(request: Request) {
 
 export async function logout(request: Request) {
   let session = await getUserSession(request);
-  return redirect("/", {
+  return redirect(getEnv().LANDING_PAGE_URL as string, {
     headers: {
       "Set-Cookie": await destroySession(session),
     },

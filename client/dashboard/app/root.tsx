@@ -61,6 +61,7 @@ export const loader = () => {
       APPLICATION_DEADLINE: env.APPLICATION_DEADLINE,
       OAUTH_REDIRECT_URI: env.OAUTH_REDIRECT_URI,
       OAUTH_CLIENT_ID: env.OAUTH_CLIENT_ID,
+      LANDING_PAGE_URL: env.LANDING_PAGE_URL,
     },
   });
 };
