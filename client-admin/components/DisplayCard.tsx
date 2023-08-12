@@ -84,11 +84,11 @@ const DisplayCard = ({
                   ))}
                 </div>
                 <div className="flex flex-row justify-evenly">
-                  <button className="text-kz-red text-sm border border-kz-red px-3 hover:text-sm hover:text-white hover:bg-kz-red rounded-full">
+                  <button className="text-white text-sm md:text-lg px-3 py-2 bg-kz-red rounded-2xl hover:scale-110 font-medium">
                     Reject
                   </button>
-                  <button className="text-kz-green text-sm border border-kz-green px-3 hover:text-sm hover:text-white hover:bg-kz-green  rounded-full">
-                    Call to Interview
+                  <button className="text-white text-sm md:text-lg px-3 py-2 bg-kz-green rounded-2xl hover:scale-110 font-medium">
+                    Call for Interview
                   </button>
                 </div>
               </div>
