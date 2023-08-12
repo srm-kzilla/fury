@@ -1,6 +1,32 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import { useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/router";
+
 const LoginPage: NextPage = () => {
+  const router = useRouter();
+  const [form, setform] = useState({
+    email: "",
+    password: "",
+  });
+  const handelSubmit = async () => {
+    try {
+      const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/login`, form, {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      })
+      localStorage.setItem('token', data.jwt);
+      if (data.success) {
+        router.push('/dashboard');
+      }
+    }
+    catch (err) {
+      console.log(err);
+    }
+
+  };
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-colors-kz-grey overflow-x-hidden">
       <Head>
@@ -29,7 +55,7 @@ const LoginPage: NextPage = () => {
               </div>
               <div>
                 <p className=" text-colors-kz-orange text-left font-outfit font-semibold text-xl md:text-2xl m-2">
-                  Username
+                  Email
                 </p>
                 <div className="flex flex-col items-center">
                   <div className="w-full p-2 flex items-center rounded-xl ">
@@ -38,6 +64,9 @@ const LoginPage: NextPage = () => {
                       type="email"
                       name="email"
                       placeholder="Enter your user name"
+                      onChange={(e) => {
+                        setform({ ...form, email: e.target.value })
+                      }}
                     />
                   </div>
                 </div>
@@ -53,6 +82,9 @@ const LoginPage: NextPage = () => {
                       type="password"
                       name="password"
                       placeholder="Enter your Password"
+                      onChange={(e) => {
+                        setform({ ...form, password: e.target.value })
+                      }}
                     />
                   </div>
                 </div>
@@ -62,6 +94,9 @@ const LoginPage: NextPage = () => {
                   <button
                     type="button"
                     className="text-white w-full bg-colors-kz-orange hover:shadow-box-shadow focus:outline-none font-medium rounded-lg md:text-sm px-5 py-2.5 text-center justify-between"
+                    onClick={() => {
+                      handelSubmit();
+                    }}
                   >
                     Login
                   </button>
