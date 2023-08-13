@@ -1,6 +1,7 @@
 import getEnv from "~/utils/env";
 import { redirect } from "@remix-run/node";
 import { requireAccessToken } from "~/utils/session.server";
+import getRecaptchaToken from "~/utils/recaptcha";
 
 const env = getEnv();
 
@@ -27,10 +28,12 @@ const API = {
 
 export const getUserDetails = async (request: Request): Promise<User> => {
   const accessToken = await requireAccessToken(request);
+  const recaptchaToken = await getRecaptchaToken("getUserDetails");
 
   const res = await fetch(API.BASE_URL + API.ENDPOINTS.USERS.BASE_URL(), {
     headers: {
       Authorization: `Bearer ${accessToken}`,
+      "X-Recaptcha-Token": recaptchaToken,
     },
   });
 
@@ -39,6 +42,7 @@ export const getUserDetails = async (request: Request): Promise<User> => {
 
 export const updateUserDetails = async (request: Request, user: UpdateUser) => {
   const accessToken = await requireAccessToken(request);
+  const recaptchaToken = await getRecaptchaToken("updateUserDetails");
 
   const res = await fetch(API.BASE_URL + API.ENDPOINTS.USERS.BASE_URL(), {
     method: "PUT",
@@ -46,6 +50,7 @@ export const updateUserDetails = async (request: Request, user: UpdateUser) => {
     headers: {
       Authorization: `Bearer ${accessToken}`,
       "Content-Type": "application/json",
+      "X-Recaptcha-Token": recaptchaToken,
     },
   });
 
@@ -57,6 +62,7 @@ export const uploadResume = async (
   data: AsyncIterable<Uint8Array>
 ) => {
   const accessToken = await requireAccessToken(request);
+  const recaptchaToken = await getRecaptchaToken("uploadResume");
 
   const formData = new FormData();
   formData.append("resume", data.toString());
@@ -71,6 +77,7 @@ export const uploadResume = async (
       headers: {
         Authorization: `Bearer ${accessToken}`,
         "Content-Type": "multipart/form-data",
+        "X-Recaptcha-Token": recaptchaToken,
       },
     }
   );
@@ -80,6 +87,7 @@ export const uploadResume = async (
 
 export const getNotifications = async (request: Request) => {
   const accessToken = await requireAccessToken(request);
+  const recaptchaToken = await getRecaptchaToken("getNotifications");
 
   const res = await fetch(
     API.BASE_URL +
@@ -88,6 +96,7 @@ export const getNotifications = async (request: Request) => {
     {
       headers: {
         Authorization: `Bearer ${accessToken}`,
+        "X-Recaptcha-Token": recaptchaToken,
       },
     }
   );
@@ -97,6 +106,7 @@ export const getNotifications = async (request: Request) => {
 
 export const getApplications = async (request: Request) => {
   const accessToken = await requireAccessToken(request);
+  const recaptchaToken = await getRecaptchaToken("getApplications");
 
   const res = await fetch(
     API.BASE_URL +
@@ -105,6 +115,7 @@ export const getApplications = async (request: Request) => {
     {
       headers: {
         Authorization: `Bearer ${accessToken}`,
+        "X-Recaptcha-Token": recaptchaToken,
       },
     }
   );
@@ -114,6 +125,7 @@ export const getApplications = async (request: Request) => {
 
 export const getUserActivity = async (request: Request) => {
   const accessToken = await requireAccessToken(request);
+  const recaptchaToken = await getRecaptchaToken("getUserActivity");
 
   const res = await fetch(
     API.BASE_URL +
@@ -122,6 +134,7 @@ export const getUserActivity = async (request: Request) => {
     {
       headers: {
         Authorization: `Bearer ${accessToken}`,
+        "X-Recaptcha-Token": recaptchaToken,
       },
     }
   );
@@ -132,6 +145,7 @@ export const getUserActivity = async (request: Request) => {
 export const getAccessTokenFromCode = async (request: Request) => {
   const url = new URL(request.url);
   const code = url.searchParams.get("code");
+  const recaptchaToken = await getRecaptchaToken("getAccessTokenFromCode");
 
   if (!code) return redirect("/");
 
@@ -141,6 +155,9 @@ export const getAccessTokenFromCode = async (request: Request) => {
       API.ENDPOINTS.AUTH.ACCESS_TOKEN(code),
     {
       method: "POST",
+      headers: {
+        "X-Recaptcha-Token": recaptchaToken,
+      }
     }
   );
 

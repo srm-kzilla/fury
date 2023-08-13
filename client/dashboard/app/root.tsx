@@ -62,6 +62,7 @@ export const loader = () => {
       OAUTH_REDIRECT_URI: env.OAUTH_REDIRECT_URI,
       OAUTH_CLIENT_ID: env.OAUTH_CLIENT_ID,
       LANDING_PAGE_URL: env.LANDING_PAGE_URL,
+      RECAPTCHA_SITE_KEY: env.RECAPTCHA_SITE_KEY,
     },
   });
 };
