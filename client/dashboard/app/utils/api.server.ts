@@ -26,7 +26,7 @@ const API = {
       ACCESS_TOKEN: (code: string) => `/google/token?code=${code}`,
     },
   },
-};;
+};
 
 export const getUserDetails = async (request: Request): Promise<User> => {
   const accessToken = await requireAccessToken(request);
