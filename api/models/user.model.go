@@ -8,18 +8,18 @@ import (
 
 type User struct {
 	ID            primitive.ObjectID `json:"_id" bson:"_id"`
-	RegNo         string             `validate:"required" json:"regNo" bson:"regNo"`
-	Name          string             `validate:"required" json:"name"`
-	Year          int                `validate:"required" json:"year"`
-	Email         string             `validate:"required" json:"email"`
+	RegNo         string             `json:"regNo" bson:"regNo"`
+	Name          string             `json:"name" bson:"name"`
+	Year          int                `json:"year" bson:"year"`
+	Email         string             `json:"email" bson:"email"`
 	Gender        string             `validate:"required" json:"gender"`
-	Branch        string             `validate:"required" json:"branch"`
-	Resume        string             `validate:"required" json:"resume"`
-	Contact       string             `validate:"required" json:"contact"`
+	Branch        string             `validate:"required" json:"branch" bson:"branch"`
+	Resume        string             `validate:"required" json:"resume" bson:"resume"`
+	Contact       string             `validate:"required" json:"contact" bson:"contact"`
 	CreatedAt     int64              `json:"createdAt" bson:"createdAt"`
-	Notifications []Notification     `json:"notifications" bson:"notifications"`
+	Notifications []Notification     `json:"notifications" default:"[]" bson:"notifications"`
 	Application   []Application      `json:"application" default:"[]" bson:"application"`
-	Socials       Social             `json:"socials"`
+	Socials       Social             `json:"socials" bson:"socials"`
 }
 
 type Social struct {
