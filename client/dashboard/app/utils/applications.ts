@@ -29,6 +29,45 @@ export function getDomainName(domain: string) {
   }
 }
 
+export const domains = [
+  {
+    key: "content_writing",
+    value: "content_writing",
+    text: "Content Writing",
+    description: "Hunger for content curation will be satisfied",
+  },
+  {
+    key: "vfx",
+    value: "vfx",
+    text: "VFX",
+    description: "Creativity through motion coz it is the new trend",
+  },
+  {
+    key: "gfx",
+    value: "gfx",
+    text: "GFX or Photography",
+    description: "Designs the pixels with purpose with an eye for creativity",
+  },
+  {
+    key: "events",
+    value: "events",
+    text: "Events",
+    description: "Plan events, set the stage and drop the mic",
+  },
+  {
+    key: "technical",
+    value: "technical",
+    text: "Technical",
+    description: "Turn every wild idea into reality",
+  },
+  {
+    key: "corporate",
+    value: "corporate",
+    text: "Corporate",
+    description: "Bring in the bucks as they got the vault and the deals",
+  },
+];
+
 export const questionsArray: Array<{
   domain: string;
   question: string;

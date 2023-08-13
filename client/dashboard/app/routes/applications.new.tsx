@@ -10,11 +10,6 @@ import {
   updateFormSession,
 } from "~/utils/session.server";
 import { redirect } from "@remix-run/node";
-import type {
-  ActionFunction,
-  LinksFunction,
-  LoaderFunction,
-} from "@remix-run/node";
 import {
   Form,
   Link,
@@ -22,10 +17,16 @@ import {
   useLoaderData,
   useNavigation,
 } from "@remix-run/react";
-import { getDomainName, questionsArray } from "~/utils/applications";
+import toast from "~/utils/toast.client";
+import { useEffect, useRef } from "react";
 import { BiHomeAlt, BiLoader } from "react-icons/bi";
-import React, { useEffect, useRef } from "react";
+import { getDomainName, questionsArray } from "~/utils/applications";
 import { postFinalApplication } from "~/utils/api.server";
+import type {
+  ActionFunction,
+  LinksFunction,
+  LoaderFunction,
+} from "@remix-run/node";
 import type { ValidationError } from "yup";
 
 export const links: LinksFunction = () => [
@@ -46,6 +47,7 @@ export const links: LinksFunction = () => [
 
 type ActionData = {
   error?: string;
+  toastMessage?: string;
 };
 
 const checkIfAllPreviousQuestionsAnswered = (
@@ -149,6 +151,10 @@ export const action: ActionFunction = async ({ request }) => {
         `/applications/new?question=${parseInt(questionNumber) - 1}`
       );
     }
+    case "save": {
+      // TODO: Implement save functionality
+      return { toastMessage: "Saved successfully" };
+    }
     case "delete": {
       return destroyFormSession(request);
     }
@@ -176,6 +182,16 @@ const Application = () => {
     formRef.current?.reset();
   }, [questionNumber]);
 
+  useEffect(() => {
+    if (actionData?.toastMessage) {
+      toast.show(actionData.toastMessage, "🚀");
+    }
+
+    if (actionData?.error) {
+      toast.error(actionData.error);
+    }
+  }, [actionData]);
+
   const currentQuestion = questionsArray[parseInt(questionNumber) - 1].find(
     (q) => q.domain === domain
   );
@@ -200,16 +216,30 @@ const Application = () => {
       {currentQuestion ? (
         <Form method="POST" className="kz-form-container" ref={formRef}>
           <div className="kz-form-header">
-            <Link to="/dashboard">
+            <Link to="/">
               <BiHomeAlt size={36} className="home-icon" title="Home" />
             </Link>
             <div className="kz-button-container">
-              <button type="submit" name="_action" value="delete">
+              <button
+                type="submit"
+                name="_action"
+                value="save"
+                title="Save Draft"
+              >
                 {navigation.state === "submitting" ? (
                   <BiLoader className="spin" />
                 ) : (
-                  "Delete Draft"
+                  "Save Changes"
                 )}
+              </button>
+              <button
+                className="text-only"
+                type="submit"
+                name="_action"
+                value="delete"
+                title="Delete Draft"
+              >
+                Delete Draft
               </button>
             </div>
           </div>
@@ -239,10 +269,20 @@ const Application = () => {
               </div>
             </div>
             <div className="kz-button-container">
-              <button type="submit" name="_action" value="previous">
+              <button
+                type="submit"
+                name="_action"
+                value="previous"
+                title="Previous Question"
+              >
                 Previous
               </button>
-              <button type="submit" name="_action" value="next">
+              <button
+                type="submit"
+                name="_action"
+                value="next"
+                title="Save and Next Question"
+              >
                 {navigation.state === "submitting" ? (
                   <BiLoader className="spin" />
                 ) : questionNumber == questionsArray.length ? (
