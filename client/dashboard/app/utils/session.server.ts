@@ -49,9 +49,24 @@ export async function getAccessToken(request: Request) {
   let accessToken = session.get("access_token");
 
   if (typeof accessToken !== "string") return null;
+  const expiresIn = session.get("expires_in");
 
+  if (Date.now() > new Date(expiresIn).getTime()) {
+    console.log("refreshing access token");
+    return refreshAccessToken(request);
+  }
   return accessToken;
 }
+
+export async function refreshAccessToken(request: Request) {
+  const userSession = await getUserSession(request);
+  const refreshToken = userSession.get("refresh_token");
+  const { access_token, refresh_token, expires_in } =
+    await getAccessTokenFromRefreshToken(refreshToken);
+
+  await createUserSession(access_token, refresh_token, expires_in, request.url);
+}
+
 
 export async function requireAccessToken(request: Request) {
   const accessToken = await getAccessToken(request);
