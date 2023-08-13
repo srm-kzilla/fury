@@ -22,7 +22,7 @@ const API = {
     AUTH: {
       BASE_URL: () => "/auth",
       ACCESS_TOKEN: (code: string) => `/google/token?code=${code}`,
-      REFRESH_TOKEN: (code: string) => `/google/refresh?code=${code}`,
+      REFRESH_TOKEN: (code: string) => `/google/refresh?refresh_token=${code}}`,
     },
   },
 };
