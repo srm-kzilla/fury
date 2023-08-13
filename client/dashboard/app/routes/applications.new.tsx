@@ -47,7 +47,10 @@ export const links: LinksFunction = () => [
 
 type ActionData = {
   error?: string;
-  toastMessage?: string;
+  toast?: {
+    message: string;
+    type: "success" | "error";
+  };
 };
 
 const checkIfAllPreviousQuestionsAnswered = (
@@ -153,7 +156,7 @@ export const action: ActionFunction = async ({ request }) => {
     }
     case "save": {
       // TODO: Implement save functionality
-      return { toastMessage: "Saved successfully" };
+      return { toast: { message: "Saved successfully", type: "success" } };
     }
     case "delete": {
       return destroyFormSession(request);
@@ -183,12 +186,12 @@ const Application = () => {
   }, [questionNumber]);
 
   useEffect(() => {
-    if (actionData?.toastMessage) {
-      toast.show(actionData.toastMessage, "🚀");
-    }
-
-    if (actionData?.error) {
-      toast.error(actionData.error);
+    if (actionData?.toast) {
+      if (actionData.toast.type === "success") {
+        toast.show(actionData.toast.message, "🚀");
+      } else {
+        toast.error(actionData.toast.message);
+      }
     }
   }, [actionData]);
 
@@ -269,14 +272,16 @@ const Application = () => {
               </div>
             </div>
             <div className="kz-button-container">
-              <button
-                type="submit"
-                name="_action"
-                value="previous"
-                title="Previous Question"
-              >
-                Previous
-              </button>
+              {questionNumber !== "1" && (
+                <button
+                  type="submit"
+                  name="_action"
+                  value="previous"
+                  title="Previous Question"
+                >
+                  Previous
+                </button>
+              )}
               <button
                 type="submit"
                 name="_action"
