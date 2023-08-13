@@ -19,6 +19,7 @@ import (
 	"github.com/srm-kzilla/Recruitments/api/utils"
 	"github.com/srm-kzilla/Recruitments/api/utils/constants"
 	"github.com/srm-kzilla/Recruitments/api/utils/database"
+	"github.com/srm-kzilla/Recruitments/api/utils/notifications"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"golang.org/x/oauth2"
@@ -97,8 +98,13 @@ func getUserDetailsGoogle(code string) (models.Auth, error) {
 	if !strings.HasSuffix(userData.Email, constants.SRM_EMAIL_DOMAIN) {
 		return models.Auth{}, errors.New("use srm mail id")
 	}
+
 	userData.RegNo = retrieveRegNoFromLastName(userData.FamilyName)
 	userData.Year = calculateStudentYear(userData.RegNo)
+
+	if !validateCollegeYear(userData.Year) {
+		return models.Auth{}, errors.New("only 1st and 2nd years can apply")
+	}
 	userData.Name = filterName(userData.Name)
 	userData.FamilyName = filterName(userData.FamilyName)
 	authData := models.Auth{
@@ -132,7 +138,12 @@ func calculateStudentYear(regNo string) int {
 	}
 	return studentYear
 }
-
+func validateCollegeYear(year int) bool {
+	if year == 1 || year == 2 {
+		return true
+	}
+	return false
+}
 func filterName(familyName string) string {
 	index := strings.Index(familyName, " (")
 
@@ -169,6 +180,10 @@ func registerUserInDb(user models.UserData) (primitive.ObjectID, error) {
 		CreatedAt:     time.Now().Unix(),
 	}
 	result, e := usersCollection.InsertOne(context.Background(), newUser)
+	notificationInsert := notifications.RecordNotification("NEW_USER", result.InsertedID.(primitive.ObjectID))
+	if notificationInsert == false {
+		log.Error("Error: Inserting notification")
+	}
 	if e != nil {
 		return primitive.ObjectID{}, e
 	}
