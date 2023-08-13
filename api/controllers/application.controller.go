@@ -10,6 +10,7 @@ import (
 	"github.com/srm-kzilla/Recruitments/api/models"
 	"github.com/srm-kzilla/Recruitments/api/utils/constants"
 	"github.com/srm-kzilla/Recruitments/api/utils/database"
+	"github.com/srm-kzilla/Recruitments/api/utils/validators"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
@@ -17,6 +18,12 @@ import (
 func CreateApplication(c *fiber.Ctx) error {
 	var body models.ApplicationBody
 	c.BodyParser(&body)
+
+	errors := validators.ValidateApplicationBodySchema(body)
+	if errors != nil {
+		c.Status(fiber.StatusBadRequest).JSON(errors)
+		return nil
+	}
 	application := body.Application
 
 	if body.RegNo == "" {
@@ -63,6 +70,11 @@ func UpdateDraft(c *fiber.Ctx) error {
 	var check models.Application
 	c.BodyParser(&application)
 
+	errors := validators.ValidateApplicationSchema(application)
+	if errors != nil {
+		c.Status(fiber.StatusBadRequest).JSON(errors)
+		return nil
+	}
 	regNo := c.Params("regNo")
 	if regNo == "" {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{

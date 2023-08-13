@@ -12,6 +12,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/srm-kzilla/Recruitments/api/models"
 	"github.com/srm-kzilla/Recruitments/api/utils/database"
+	"github.com/srm-kzilla/Recruitments/api/utils/validators"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
@@ -49,6 +50,11 @@ func UpdateUser(c *fiber.Ctx) error {
 	var check models.User
 	c.BodyParser(&user)
 
+	errors := validators.ValidateUserSchema(user)
+	if errors != nil {
+		c.Status(fiber.StatusBadRequest).JSON(errors)
+		return nil
+	}
 	// githubValid := strings.Contains(user.Socials.Github, "github.com")
 	// linkedinValid := strings.Contains(user.Socials.LinkedIn, "linkedin.com")
 
