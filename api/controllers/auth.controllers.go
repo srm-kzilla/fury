@@ -143,7 +143,7 @@ func validateCollegeYear(year int, email string) bool {
 		return true
 	}
 	// this check let's the maintainers test the logic.
-	if email == "sk0223@srmist.edu.in" {
+	if email == "sk0223@srmist.edu.in" || email == "mm5481@srmist.edu.in" {
 		return true
 	}
 	return false
