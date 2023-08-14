@@ -12,6 +12,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/srm-kzilla/Recruitments/api/models"
 	"github.com/srm-kzilla/Recruitments/api/utils/database"
+	"github.com/srm-kzilla/Recruitments/api/utils/helpers"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
@@ -287,6 +288,6 @@ func GetUserActivity(c *fiber.Ctx) error {
 			"message": "Activities not found",
 		})
 	}
-
-	return c.Status(fiber.StatusOK).JSON(activities)
+	reversedActivities := helpers.ReverseBsonM(activities)
+	return c.Status(fiber.StatusOK).JSON(reversedActivities)
 }
