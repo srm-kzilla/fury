@@ -3,16 +3,17 @@ package models
 import "time"
 
 type Application struct {
-	Status    string    `json:"status"`
-	Domain    string    `validate:"required" json:"domain"`
-	AppliedAt string    `json:"appliedAt" bson:"appliedAt"`
-	UpdatedAt time.Time `json:"updatedAt" bson:"updatedAt"`
-	CreatedAt time.Time `json:"createdAt" bson:"createdAt"`
-	Questions Question  `json:"questions"`
+	Status    string     `json:"status"`
+	Domain    string     `validate:"required" json:"domain"`
+	AppliedAt string     `json:"appliedAt" bson:"appliedAt"`
+	UpdatedAt time.Time  `json:"updatedAt" bson:"updatedAt"`
+	CreatedAt time.Time  `json:"createdAt" bson:"createdAt"`
+	Questions []Question `json:"questions"`
 }
 
 type Question struct {
-	Question1 string `validate:"required" json:"question1"`
+	QuestionNumber int    `validate:"required" json:"questionNumber"`
+	Answer         string `validate:"required" json:"answer"`
 }
 
 type UpdateApplication struct {
