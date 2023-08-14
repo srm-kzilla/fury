@@ -3,6 +3,7 @@ package controllers
 import (
 	"context"
 	"os"
+	"sort"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
@@ -287,6 +288,8 @@ func GetUserActivity(c *fiber.Ctx) error {
 			"message": "Activities not found",
 		})
 	}
-
+	sort.Slice(activities, func(i, j int) bool {
+		return i > j
+	})
 	return c.Status(fiber.StatusOK).JSON(activities)
 }

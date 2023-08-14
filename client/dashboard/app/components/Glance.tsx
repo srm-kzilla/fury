@@ -63,8 +63,6 @@ const Glance = ({ user, activity }: ActivityProps) => {
         <div>
           {activity &&
             activity
-              .slice()
-              .reverse()
               .map((event: Activity) => {
                 return <Activity key={event._id} event={event} />;
               })}
