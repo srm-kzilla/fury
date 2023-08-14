@@ -10,6 +10,7 @@ import (
 	"github.com/golang-jwt/jwt/v4"
 	"github.com/srm-kzilla/Recruitments/api/models"
 	"github.com/srm-kzilla/Recruitments/api/utils/database"
+	"github.com/srm-kzilla/Recruitments/api/utils/validators"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"golang.org/x/crypto/bcrypt"
@@ -84,6 +85,11 @@ func UpdateApplications(c *fiber.Ctx) error {
 	var check models.Application
 	c.BodyParser(&application)
 
+	errors := validators.ValidateUpdateApplicationSchema(application)
+	if errors != nil {
+		c.Status(fiber.StatusBadRequest).JSON(errors)
+		return nil
+	}
 	usersCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "users")
 	if e != nil {
 		log.Error("Error: ", e)
@@ -120,6 +126,11 @@ func AdminSignup(c *fiber.Ctx) error {
 	var check models.Evaluators
 	c.BodyParser(&evaluator)
 
+	errors := validators.ValidateAdminEvaluatorSchema(evaluator)
+	if errors != nil {
+		c.Status(fiber.StatusBadRequest).JSON(errors)
+		return nil
+	}
 	evaluatorsCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "evaluators")
 	if e != nil {
 		log.Error("Error: ", e)
@@ -177,6 +188,12 @@ func AdminLogin(c *fiber.Ctx) error {
 	var evaluatorRequest models.Evaluators
 	c.BodyParser(&evaluatorRequest)
 
+	errors := validators.ValidateAdminEvaluatorSchema(evaluatorRequest)
+	if errors != nil {
+		c.Status(fiber.StatusBadRequest).JSON(errors)
+		return nil
+	}
+
 	evaluatorsCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "evaluators")
 	if e != nil {
 		log.Error("Error: ", e)
@@ -200,7 +217,7 @@ func AdminLogin(c *fiber.Ctx) error {
 		})
 	}
 
-	if evaluator.IsActive == false {
+	if !evaluator.IsActive {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"message": "Inactive User",
 		})
