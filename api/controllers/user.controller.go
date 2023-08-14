@@ -3,6 +3,7 @@ package controllers
 import (
 	"context"
 	"os"
+	"sort"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
@@ -12,7 +13,6 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/srm-kzilla/Recruitments/api/models"
 	"github.com/srm-kzilla/Recruitments/api/utils/database"
-	"github.com/srm-kzilla/Recruitments/api/utils/helpers"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
@@ -288,6 +288,8 @@ func GetUserActivity(c *fiber.Ctx) error {
 			"message": "Activities not found",
 		})
 	}
-	reversedActivities := helpers.ReverseBsonM(activities)
-	return c.Status(fiber.StatusOK).JSON(reversedActivities)
+	sort.Slice(activities, func(i, j int) bool {
+		return i > j
+	})
+	return c.Status(fiber.StatusOK).JSON(activities)
 }
