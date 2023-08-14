@@ -14,7 +14,7 @@ type User struct {
 	Email         string             `json:"email" bson:"email"`
 	Gender        string             `validate:"required" json:"gender"`
 	Branch        string             `validate:"required" json:"branch" bson:"branch"`
-	Resume        string             `validate:"required" json:"resume" bson:"resume"`
+	Resume        string             `json:"resume" bson:"resume"`
 	Contact       string             `validate:"required" json:"contact" bson:"contact"`
 	CreatedAt     int64              `json:"createdAt" bson:"createdAt"`
 	Notifications []Notification     `json:"notifications" default:"[]" bson:"notifications"`
