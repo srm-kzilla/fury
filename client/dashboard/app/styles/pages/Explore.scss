@@ -2,7 +2,6 @@
 
 div.kz-explore {
   padding-left: 5rem;
-  margin: 1rem;
   .glance{
     margin: 0rem 1rem 1rem;
   }
@@ -40,6 +39,7 @@ div.kz-explore {
 @media only screen and (max-width: 768px) {
   div.kz-explore {
     padding-left: 4rem;
+    margin: 1rem;
 
     .glance{
       margin-bottom: 4rem;
