@@ -142,10 +142,11 @@ func validateCollegeYear(year int, email string) bool {
 	if year == 1 || year == 2 {
 		return true
 	}
-	// this check let's the maintainers test the logic.
-	if email == "sk0223@srmist.edu.in" || email == "mm5481@srmist.edu.in" {
+
+	if utils.ArrayContains(constants.MaintainerEmails[:], email) {
 		return true
 	}
+
 	return false
 }
 func filterName(familyName string) string {
