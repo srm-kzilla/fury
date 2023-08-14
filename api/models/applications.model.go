@@ -12,7 +12,7 @@ type Application struct {
 }
 
 type Question struct {
-	QuestionNumber int    `validate:"required" json:"questionNumber"`
+	QuestionNumber string `validate:"required" json:"questionNumber"`
 	Answer         string `validate:"required" json:"answer"`
 }
 
