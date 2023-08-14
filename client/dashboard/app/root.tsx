@@ -243,7 +243,7 @@ export function ErrorBoundary() {
   else if (error instanceof Error) {
     return (
       <ErrorLayout>
-        <NotFound customError={error.message} code={400} />
+        <NotFound customError={error.message}/>
       </ErrorLayout>
     );
   }

@@ -10,7 +10,7 @@ export const links: LinksFunction = () => [
 ];
 
 type NotFoundProps = {
-  code: number;
+  code?: number;
   description?: string;
   customError?: string;
   title?: string;
