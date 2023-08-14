@@ -2,6 +2,14 @@
 
 div.kz-explore {
   padding-left: 5rem;
+  margin: 1rem;
+  .glance{
+    margin: 0rem 1rem 1rem;
+  }
+  .container{
+    display: flex;
+    flex-direction: row;
+  }
 
   .main {
     width: 80%;
@@ -32,6 +40,15 @@ div.kz-explore {
 @media only screen and (max-width: 768px) {
   div.kz-explore {
     padding-left: 4rem;
+
+    .glance{
+      margin-bottom: 4rem;
+    }
+
+    .container{
+      display: flex;
+      flex-direction: column;
+    }
 
     .main {
       width: 100%;
