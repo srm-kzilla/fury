@@ -10,7 +10,6 @@ import (
 	"github.com/srm-kzilla/Recruitments/api/models"
 	"github.com/srm-kzilla/Recruitments/api/utils/constants"
 	"github.com/srm-kzilla/Recruitments/api/utils/database"
-	"github.com/srm-kzilla/Recruitments/api/utils/validators"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -19,12 +18,6 @@ import (
 func CreateApplication(c *fiber.Ctx) error {
 	var body models.ApplicationBody
 	c.BodyParser(&body)
-
-	errors := validators.ValidateApplicationBodySchema(body)
-	if errors != nil {
-		c.Status(fiber.StatusBadRequest).JSON(errors)
-		return nil
-	}
 	application := body.Application
 
 	userId := c.Locals("userId").(primitive.ObjectID)
@@ -35,13 +28,14 @@ func CreateApplication(c *fiber.Ctx) error {
 	}
 
 	var status string
-	if body.Type == "submit" {
-		// schema validation
-		status = "pending"
-		application.CreatedAt = time.Now()
+	if body.Type != "draft" {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"message": "Invalid type. Type should be draft",
+		})
 	} else {
 		status = "draft"
 		application.UpdatedAt = time.Now()
+		application.CreatedAt = time.Now()
 	}
 
 	application.Status = status
@@ -72,12 +66,6 @@ func UpdateDraft(c *fiber.Ctx) error {
 	var check models.Application
 	c.BodyParser(&application)
 
-
-	errors := validators.ValidateApplicationSchema(application)
-	if errors != nil {
-		c.Status(fiber.StatusBadRequest).JSON(errors)
-		return nil
-	}
 	userId := c.Locals("userId").(primitive.ObjectID)
 	if userId == primitive.NilObjectID {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
@@ -197,5 +185,11 @@ func DeleteDraftApplication(c *fiber.Ctx) error {
 	}
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"message": "Draft application deleted successfully",
+	})
+}
+
+func SubmitApplication(c *fiber.Ctx) error {
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{
+		"message": "Application created successfully",
 	})
 }

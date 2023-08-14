@@ -9,7 +9,8 @@ import (
 func ApplicationRoutes(router fiber.Router) {
 	protected := router.Use(middlewares.UserAuthenticate)
 	protected.Post("/", controllers.CreateApplication)
-	protected.Put("/:regNo", controllers.UpdateDraft)
+	protected.Post("/submit", controllers.SubmitApplication)
+	protected.Put("/", controllers.UpdateDraft)
 	protected.Get("/questions/:domain", controllers.GetQuestions)
 	protected.Delete("/:domain", controllers.DeleteDraftApplication)
 }
