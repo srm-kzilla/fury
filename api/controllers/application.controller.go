@@ -115,7 +115,8 @@ func UpdateDraft(c *fiber.Ctx) error {
 	check = application
 	_, errr := usersCollection.UpdateOne(context.Background(), bson.M{"_id": userId}, bson.M{
 		"$set": bson.M{
-			"application.$[elem]": application,
+			"application.$[elem].questions": application.Questions,
+			"application.$[elem].updatedAt": time.Now(),
 		},
 	}, &options.UpdateOptions{
 		ArrayFilters: &arrayFilters,
