@@ -14,6 +14,7 @@ import type {
   LoaderFunction,
   LinksFunction,
 } from "@remix-run/node";
+import {getUserDetails} from "~/utils/api.server";
 
 export const links: LinksFunction = () => [
   {
@@ -33,19 +34,19 @@ export const links: LinksFunction = () => [
 ];
 
 export const loader: LoaderFunction = async ({ request }) => {
+  const user = await getUserDetails(request);
   const formSession = await getFormSession(request);
 
   if (!formSession || (formSession && formSession.domain)) {
     return redirect("/applications/new");
   }
 
-  return null;
+  return user;
 };
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
-  const domain = formData.get("domain");
-
+  const domain = formData.get("domain") as string;
   if (!domain) {
     return json({
       error: "Domain is required",
@@ -53,7 +54,7 @@ export const action: ActionFunction = async ({ request }) => {
     });
   }
 
-  return updateFormSession(request, { domain }, "/applications/new");
+  return updateFormSession(request, { domain, answers: [] }, "/applications/new");
 };
 
 const DomainSelect = () => {

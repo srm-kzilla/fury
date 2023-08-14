@@ -20,6 +20,7 @@ const API = {
     },
     APPLICATIONS: {
       BASE_URL: () => "/application",
+      DELETE_DRAFT: (domain: string) => `/${domain}`,
     },
     AUTH: {
       BASE_URL: () => "/auth",
@@ -181,6 +182,22 @@ export const postApplication = async (
 
   return res.json();
 };
+
+export const deleteDraftApplication = async (request: Request, domain: string) => {
+  const accessToken = await requireAccessToken(request);
+
+  const res = await fetch(
+    API.BASE_URL + API.ENDPOINTS.APPLICATIONS.BASE_URL() + API.ENDPOINTS.APPLICATIONS.DELETE_DRAFT(domain),
+    {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      }
+    }
+  );
+
+  return res.json();
+}
 
 export const getAccessTokenFromRefreshToken = async (refreshToken: string) => {
   const res = await fetch(

@@ -20,7 +20,7 @@ import {
 import { useEffect, useRef } from "react";
 import { BiHomeAlt, BiLoader } from "react-icons/bi";
 import { getDomainName, questionsArray } from "~/utils/applications";
-import { postApplication } from "~/utils/api.server";
+import {deleteDraftApplication, getUserDetails, postApplication} from "~/utils/api.server";
 import type {
   ActionFunction,
   LinksFunction,
@@ -45,6 +45,7 @@ export const links: LinksFunction = () => [
 ];
 
 type LoaderData = {
+  user: User;
   domain: string;
   questionNumber: string;
   typedAnswer: string;
@@ -68,6 +69,7 @@ const checkIfAllPreviousQuestionsAnswered = (
 };
 
 export const loader: LoaderFunction = async ({ request }) => {
+  const user = await getUserDetails(request);
   const formSession = await getFormSession(request);
 
   if (!formSession) {
@@ -100,7 +102,7 @@ export const loader: LoaderFunction = async ({ request }) => {
   );
 
   if (!previousQuestionNumber) {
-    return { domain, questionNumber, typedAnswer };
+    return { user, domain, questionNumber, typedAnswer };
   }
 
   return redirect(`/applications/new?question=${previousQuestionNumber}`);
@@ -205,6 +207,7 @@ export const action: ActionFunction = async ({ request }) => {
     }
 
     case "delete": {
+      await deleteDraftApplication(request, formSession.domain);
       return destroyFormSession(request);
     }
   }
