@@ -20,7 +20,7 @@ func RecordNotification(notificationType string, userId any) bool {
 	switch notificationType {
 	case "NEW_USER":
 		notification.Text = "Hello, dreamer. Welcome to #Recruitment2023. Your pathway to becoming an SRMKZILLian starts right here. Create a new application to get started."
-		notification.Markdown = "**Hello, dreamer.** Welcome to #Recruitment2022. Your pathway to becoming an SRMKZILLian starts right here. Create a new application to get started."
+		notification.Markdown = "**Hello, dreamer.** Welcome to #Recruitment2023. Your pathway to becoming an SRMKZILLian starts right here. Create a new application to get started."
 	}
 
 	usersCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "users")
