@@ -111,7 +111,7 @@ export async function getFormSession(request: Request): Promise<FormSession> {
 
 export async function updateFormSession(
   request: Request,
-  data: any,
+  data: FormSession,
   redirectTo: string
 ) {
   const session = await getUserSession(request);

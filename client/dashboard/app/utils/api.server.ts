@@ -151,8 +151,14 @@ export const getAccessTokenFromCode = async (request: Request) => {
   return res.json();
 };
 
-export const postDraftApplication = async (request: Request, domain: string, answers: Array<Answer>) => {
+export const postApplication = async (
+  request: Request,
+  domain: string,
+  answers: Array<Answer>,
+  type: "draft" | "pending" = "draft"
+) => {
   const { regNo } = await getUserDetails(request);
+  const accessToken = await requireAccessToken(request);
 
   const res = await fetch(
     API.BASE_URL + API.ENDPOINTS.APPLICATIONS.BASE_URL(),
@@ -160,44 +166,21 @@ export const postDraftApplication = async (request: Request, domain: string, ans
       method: "POST",
       body: JSON.stringify({
         regNo,
-        type: "draft",
+        type,
         application: {
           domain,
-          questions: answers
-        }
+          questions: answers,
+        },
       }),
       headers: {
+        Authorization: `Bearer ${accessToken}`,
         "Content-Type": "application/json",
-      }
+      },
     }
   );
 
   return res.json();
-}
-
-export const postFinalApplication = async (request: Request, domain: string, answers: Array<Answer>) => {
-  const { regNo } = await getUserDetails(request);
-
-  const res = await fetch(
-    API.BASE_URL + API.ENDPOINTS.APPLICATIONS.BASE_URL(),
-    {
-      method: "POST",
-      body: JSON.stringify({
-        regNo,
-        type: "draft",
-        application: {
-          domain,
-          questions: answers
-        }
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      }
-    }
-  );
-
-  return res.json();
-}
+};
 
 export const getAccessTokenFromRefreshToken = async (refreshToken: string) => {
   const res = await fetch(

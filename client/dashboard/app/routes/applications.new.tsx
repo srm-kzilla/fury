@@ -17,11 +17,10 @@ import {
   useLoaderData,
   useNavigation,
 } from "@remix-run/react";
-import toast from "~/utils/toast.client";
 import { useEffect, useRef } from "react";
 import { BiHomeAlt, BiLoader } from "react-icons/bi";
 import { getDomainName, questionsArray } from "~/utils/applications";
-import { postFinalApplication } from "~/utils/api.server";
+import { postApplication } from "~/utils/api.server";
 import type {
   ActionFunction,
   LinksFunction,
@@ -45,12 +44,14 @@ export const links: LinksFunction = () => [
   ...loadingLinks(),
 ];
 
+type LoaderData = {
+  domain: string;
+  questionNumber: string;
+  typedAnswer: string;
+};
+
 type ActionData = {
   error?: string;
-  toast?: {
-    message: string;
-    type: "success" | "error";
-  };
 };
 
 const checkIfAllPreviousQuestionsAnswered = (
@@ -105,6 +106,24 @@ export const loader: LoaderFunction = async ({ request }) => {
   return redirect(`/applications/new?question=${previousQuestionNumber}`);
 };
 
+const getUpdatedAnswers = (
+  formSession: FormSession,
+  questionNumber: string,
+  answer: string
+) => {
+  return {
+    ...formSession,
+    answers: formSession.answers
+      ? [
+          ...formSession.answers.filter(
+            (answer) => questionNumber !== answer.questionNumber
+          ),
+          { questionNumber, answer },
+        ]
+      : [{ questionNumber, answer }],
+  };
+};
+
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
   const formSession = await getFormSession(request);
@@ -119,33 +138,37 @@ export const action: ActionFunction = async ({ request }) => {
         const answer = await validateAnswer(formData);
 
         if (parseInt(questionNumber) === questionsArray.length) {
-          await postFinalApplication(
+          await postApplication(
             request,
             formSession.domain,
-            formSession.answers
+            formSession.answers,
+            "pending"
           );
           return destroyFormSession(request);
         }
 
+        const updatedAnswers = getUpdatedAnswers(
+          formSession,
+          questionNumber,
+          answer
+        );
+
+        await postApplication(
+          request,
+          updatedAnswers.domain,
+          updatedAnswers.answers
+        );
+
         return await updateFormSession(
           request,
-          {
-            ...formSession,
-            answers: formSession.answers
-              ? [
-                  ...formSession.answers.filter(
-                    (answer) => questionNumber !== answer.questionNumber
-                  ),
-                  { questionNumber, answer },
-                ]
-              : [{ questionNumber, answer }],
-          },
+          updatedAnswers,
           `/applications/new?question=${parseInt(questionNumber) + 1}`
         );
       } catch (error) {
         return { error };
       }
     }
+
     case "previous": {
       if (parseInt(questionNumber) === 1) {
         return redirect("/applications/domain-select");
@@ -154,10 +177,33 @@ export const action: ActionFunction = async ({ request }) => {
         `/applications/new?question=${parseInt(questionNumber) - 1}`
       );
     }
+
     case "save": {
-      // TODO: Implement save functionality
-      return { toast: { message: "Saved successfully", type: "success" } };
+      try {
+        const answer = await validateAnswer(formData);
+
+        const updatedAnswers = getUpdatedAnswers(
+          formSession,
+          questionNumber,
+          answer
+        );
+
+        await postApplication(
+          request,
+          updatedAnswers.domain,
+          updatedAnswers.answers
+        );
+
+        return await updateFormSession(
+          request,
+          updatedAnswers,
+          `/applications/new?question=${parseInt(questionNumber)}`
+        );
+      } catch (error) {
+        return { error };
+      }
     }
+
     case "delete": {
       return destroyFormSession(request);
     }
@@ -176,7 +222,7 @@ const validateAnswer = async (formData: FormData) => {
 };
 
 const Application = () => {
-  const { domain, questionNumber, typedAnswer } = useLoaderData();
+  const { domain, questionNumber, typedAnswer } = useLoaderData<LoaderData>();
   const navigation = useNavigation();
   const actionData = useActionData<ActionData>();
   const formRef = useRef<HTMLFormElement>(null);
@@ -184,16 +230,6 @@ const Application = () => {
   useEffect(() => {
     formRef.current?.reset();
   }, [questionNumber]);
-
-  useEffect(() => {
-    if (actionData?.toast) {
-      if (actionData.toast.type === "success") {
-        toast.show(actionData.toast.message, "🚀");
-      } else {
-        toast.error(actionData.toast.message);
-      }
-    }
-  }, [actionData]);
 
   const currentQuestion = questionsArray[parseInt(questionNumber) - 1].find(
     (q) => q.domain === domain
@@ -290,7 +326,7 @@ const Application = () => {
               >
                 {navigation.state === "submitting" ? (
                   <BiLoader className="spin" />
-                ) : questionNumber == questionsArray.length ? (
+                ) : parseInt(questionNumber) == questionsArray.length ? (
                   "Submit"
                 ) : (
                   "Next"
