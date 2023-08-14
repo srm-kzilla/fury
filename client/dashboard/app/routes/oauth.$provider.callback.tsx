@@ -15,9 +15,18 @@ export const loader: LoaderFunction = async ({ request }) => {
   const data = await getAccessTokenFromCode(request);
 
   if (data.error) {
-    return json({
-      error: "Use SRM Email to Register",
-    });
+    
+    if (data.error === "only 1st and 2nd years can apply") {
+      throw new Error("Sorry, Only 1st and 2nd years can apply");
+    }
+
+    if (data.error === "Use SRM Email to Register") {
+      throw new Error("Use SRM Email to Register");
+    }
+    // return json({
+    //   error: "Use SRM Email to Register",
+    // });
+    throw new Error("Use SRM Email to Register");
   }
 
   const { access_token, refresh_token, expires_in } = data;

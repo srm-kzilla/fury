@@ -12,11 +12,12 @@ export const links: LinksFunction = () => [
 type NotFoundProps = {
   code: number;
   description?: string;
+  customError?: string;
   title?: string;
   image?: any;
 };
 
-const NotFound = ({ code }: NotFoundProps) => {
+const NotFound = ({ code, customError }: NotFoundProps) => {
   const errors = [
     {
       status: 404,
@@ -51,7 +52,7 @@ const NotFound = ({ code }: NotFoundProps) => {
       <div>
         <img src="/not_found.svg" alt="not found" />
         <div>
-          <h1>{error?.description}</h1>
+          <h1>{customError ? customError : error?.description}</h1>
           <h5>
             <Link to="/">
               Take me back to <span>Home</span>.

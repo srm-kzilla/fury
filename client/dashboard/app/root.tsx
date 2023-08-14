@@ -182,7 +182,6 @@ const Cookie = () => {
 };
 
 function ErrorLayout({ children }: { children: ReactNode }) {
-
   return (
     <html lang="en">
       <head>
@@ -241,10 +240,17 @@ export function ErrorBoundary() {
     );
   }
 
+  else if (error instanceof Error) {
+    return (
+      <ErrorLayout>
+        <NotFound customError={error.message} code={400} />
+      </ErrorLayout>
+    );
+  }
+
   return (
     <ErrorLayout>
-      <h1>Uh oh ...</h1>
-      <p>Something went wrong.</p>
+      <NotFound code={500} />
     </ErrorLayout>
   );
 }
