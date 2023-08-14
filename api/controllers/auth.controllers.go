@@ -102,7 +102,7 @@ func getUserDetailsGoogle(code string) (models.Auth, error) {
 	userData.RegNo = retrieveRegNoFromLastName(userData.FamilyName)
 	userData.Year = calculateStudentYear(userData.RegNo)
 
-	if !validateCollegeYear(userData.Year) {
+	if !validateCollegeYear(userData.Year, userData.Email) {
 		return models.Auth{}, errors.New("only 1st and 2nd years can apply")
 	}
 	userData.Name = filterName(userData.Name)
@@ -138,8 +138,12 @@ func calculateStudentYear(regNo string) int {
 	}
 	return studentYear
 }
-func validateCollegeYear(year int) bool {
+func validateCollegeYear(year int, email string) bool {
 	if year == 1 || year == 2 {
+		return true
+	}
+	// this check let's the maintainers test the logic.
+	if email == "sk0223@srmist.edu.in" {
 		return true
 	}
 	return false

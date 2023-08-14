@@ -6,6 +6,7 @@ import {
   sidebarLinks,
   FooterCompact,
   Sidebar,
+  Glance,
 } from "~/components";
 import {
   BiAward,
@@ -23,7 +24,9 @@ import {
   BiTime,
   BiVector,
 } from "react-icons/bi";
-import type { LinksFunction } from "@remix-run/node";
+import { json, type LinksFunction, type LoaderFunction } from "@remix-run/node";
+import { getUserActivity, getUserDetails } from "~/utils/api.server";
+import { useLoaderData } from "@remix-run/react";
 
 export const links: LinksFunction = () => [
   ...sidebarLinks(),
@@ -35,7 +38,14 @@ export const links: LinksFunction = () => [
   },
 ];
 
+export const loader: LoaderFunction = async ({ request }) => {
+  const activity = await getUserActivity(request);
+  const user = await getUserDetails(request);
+  return json({ user, activity });
+};
+
 const Explore = () => {
+  const { user, activity } = useLoaderData();
   const items = [
     {
       icon: <BiRocket />,
@@ -235,21 +245,28 @@ const Explore = () => {
     <>
       <div className="kz-explore">
         <Sidebar />
-        <div className="main">
-          <h2>
-            Explore <span>@srmkzilla</span>
-          </h2>
-          <div>
-            <h3 className="mb">2023</h3>
+        <div className="container">
+          <div className="main">
+            <h2>
+              Explore <span>@srmkzilla</span>
+            </h2>
             <div>
-              {items.map((item, index) => {
-                return (
-                  <div key={index} className="tile">
-                    <InfoTile {...item} />
-                  </div>
-                );
-              })}
+              <h3 className="mb">2023</h3>
+              <div>
+                <div>
+                  {items.map((item, index) => {
+                    return (
+                      <div key={index} className="tile">
+                        <InfoTile {...item} />
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
+          </div>
+          <div className="glance">
+            <Glance user={user} activity={activity} />
           </div>
         </div>
       </div>

@@ -12,6 +12,7 @@ import (
 	"github.com/srm-kzilla/Recruitments/api/utils/database"
 	"github.com/srm-kzilla/Recruitments/api/utils/validators"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
@@ -26,9 +27,10 @@ func CreateApplication(c *fiber.Ctx) error {
 	}
 	application := body.Application
 
-	if body.RegNo == "" {
+	userId := c.Locals("userId").(primitive.ObjectID)
+	if userId == primitive.NilObjectID {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
-			"error": "RegNo is required",
+			"error": "User ObjectID is missing",
 		})
 	}
 
@@ -52,7 +54,7 @@ func CreateApplication(c *fiber.Ctx) error {
 			"message": "Error getting users collection",
 		})
 	}
-	_, err := usersCollection.UpdateOne(context.TODO(), bson.M{"regNo": body.RegNo}, bson.M{"$push": bson.M{"application": application}})
+	_, err := usersCollection.UpdateOne(context.TODO(), bson.M{"_id": userId}, bson.M{"$push": bson.M{"application": application}})
 	if err != nil {
 		log.Error("Error: ", err)
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
@@ -70,19 +72,18 @@ func UpdateDraft(c *fiber.Ctx) error {
 	var check models.Application
 	c.BodyParser(&application)
 
+
 	errors := validators.ValidateApplicationSchema(application)
 	if errors != nil {
 		c.Status(fiber.StatusBadRequest).JSON(errors)
 		return nil
 	}
-	regNo := c.Params("regNo")
-	if regNo == "" {
+	userId := c.Locals("userId").(primitive.ObjectID)
+	if userId == primitive.NilObjectID {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
-			"error": "RegNo is required",
+			"error": "User ObjectID is missing",
 		})
 	}
-
-	log.Info("regNo: ", regNo)
 	usersCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "users")
 	if e != nil {
 		log.Error("Error: ", e)
@@ -92,7 +93,7 @@ func UpdateDraft(c *fiber.Ctx) error {
 		})
 	}
 
-	err := usersCollection.FindOne(context.Background(), bson.M{"regNo": regNo}).Decode(&check)
+	err := usersCollection.FindOne(context.Background(), bson.M{"_id": userId}).Decode(&check)
 	if err != nil {
 		log.Error("Error ", err)
 		c.Status(fiber.StatusBadGateway).JSON(fiber.Map{
@@ -106,7 +107,7 @@ func UpdateDraft(c *fiber.Ctx) error {
 	}
 
 	check = application
-	_, errr := usersCollection.UpdateOne(context.Background(), bson.M{"regNo": regNo}, bson.M{
+	_, errr := usersCollection.UpdateOne(context.Background(), bson.M{"_id": userId}, bson.M{
 		"$set": bson.M{
 			"application.$[elem]": application,
 		},
@@ -144,4 +145,57 @@ func GetQuestions(c *fiber.Ctx) error {
 		"error": "domain is invalid",
 	})
 
+}
+
+func DeleteDraftApplication(c *fiber.Ctx) error {
+	userId := c.Locals("userId").(primitive.ObjectID)
+	if userId == primitive.NilObjectID {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error": "User ObjectID is missing",
+		})
+	}
+	domain := c.Params("domain")
+	if domain == "" {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error": "domain is required",
+		})
+	}
+
+	usersCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "users")
+	if e != nil {
+		log.Error("Error: ", e)
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"error":   e.Error(),
+			"message": "Error getting users collection",
+		})
+	}
+	update := bson.M{
+		"$pull": bson.M{
+			"application": bson.M{
+				"domain": domain,
+				"status": "draft",
+			},
+		},
+	}
+
+	deleted, err := usersCollection.UpdateOne(
+		context.Background(),
+		bson.M{"_id": userId},
+		update,
+	)
+	if err != nil {
+		log.Error("Error: ", err)
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"error":   err.Error(),
+			"message": "Error deleting draft application",
+		})
+	}
+	if deleted.ModifiedCount == 0 {
+		return c.Status(fiber.StatusOK).JSON(fiber.Map{
+			"message": "No application matching the criteria to delete",
+		})
+	}
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{
+		"message": "Draft application deleted successfully",
+	})
 }
