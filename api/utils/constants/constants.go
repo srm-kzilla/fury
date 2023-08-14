@@ -45,3 +45,5 @@ var Questions = map[string]map[int]string{
 		3: "What is the difference between a boss and a leader?",
 	},
 }
+
+var MaintainerEmails = [3]string{"sk0223@srmist.edu.in", "mm5481@srmist.edu.in", "ar8930@srmist.edu.in"}
