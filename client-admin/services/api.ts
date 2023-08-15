@@ -33,15 +33,16 @@ const API = {
   },
 };
 
-async function fetchData(): Promise<PersonType[]> {
+async function fetchData(token:string): Promise<PersonType[]> {
   //need to implement choice here for the domains.
   const response = await fetch(API.BASE_URL + API.ENDPOINTS.DOMAINS.TECHNICAL(),
   {
     headers:{
-      Authorization:`Bearer ${token}`, //need to update token
+      Authorization:`Bearer ${token}`, 
     },
   },);
   const data: PersonType[] = await response.json();
+  console.log(data);
   return data;
 }
 
