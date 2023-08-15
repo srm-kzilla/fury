@@ -1,6 +1,9 @@
 import { createCookieSessionStorage, redirect } from "@remix-run/node";
 import getEnv from "~/utils/env";
-import { getAccessTokenFromRefreshToken } from "./api.server";
+import {
+  getAccessTokenFromRefreshToken,
+  getDraftApplication,
+} from "./api.server";
 
 const env = getEnv();
 const sessionSecret = env.SESSION_SECRET;
@@ -41,7 +44,7 @@ export async function createUserSession(
   });
 }
 
-function getUserSession(request: Request) {
+async function getUserSession(request: Request) {
   return getSession(request.headers.get("Cookie"));
 }
 
@@ -53,7 +56,6 @@ export async function getAccessToken(request: Request) {
   const expiresIn = session.get("expires_in");
 
   if (Date.now() > new Date(expiresIn).getTime()) {
-    console.log("refreshing access token");
     return refreshAccessToken(request);
   }
   return accessToken;
@@ -67,7 +69,6 @@ export async function refreshAccessToken(request: Request) {
 
   await createUserSession(access_token, refresh_token, expires_in, request.url);
 }
-
 
 export async function requireAccessToken(request: Request) {
   const accessToken = await getAccessToken(request);
@@ -84,6 +85,68 @@ export async function logout(request: Request) {
   return redirect(getEnv().LANDING_PAGE_URL as string, {
     headers: {
       "Set-Cookie": await destroySession(session),
+    },
+  });
+}
+
+export async function createFormSession(request: Request) {
+  const session = await getUserSession(request);
+  const draftApplication = await getDraftApplication(request);
+
+  if (draftApplication) {
+    session.set("formSession", {
+      domain: draftApplication.domain,
+      answers: draftApplication.questions,
+    });
+  } else {
+    session.set("formSession", {
+      domain: null,
+      answers: [],
+    });
+  }
+
+  return redirect("/applications/domain-select", {
+    headers: {
+      "Set-Cookie": await commitSession(session),
+    },
+  });
+}
+
+export async function getFormSession(request: Request): Promise<FormSession> {
+  const session = await getUserSession(request);
+
+  return session.get("formSession");
+}
+
+export async function updateFormSession(
+  request: Request,
+  data: FormSession,
+  redirectTo: string
+) {
+  const session = await getUserSession(request);
+
+  const formSession = session.get("formSession");
+  if (!formSession) {
+    return redirect("/applications/new");
+  }
+
+  session.set("formSession", data);
+
+  return redirect(redirectTo, {
+    headers: {
+      "Set-Cookie": await commitSession(session),
+    },
+  });
+}
+
+export async function destroyFormSession(request: Request) {
+  const session = await getUserSession(request);
+
+  session.set("formSession", null);
+
+  return redirect("/", {
+    headers: {
+      "Set-Cookie": await commitSession(session),
     },
   });
 }

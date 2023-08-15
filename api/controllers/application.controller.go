@@ -12,13 +12,14 @@ import (
 	"github.com/srm-kzilla/Recruitments/api/utils/database"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
+	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 func CreateApplication(c *fiber.Ctx) error {
 	var body models.ApplicationBody
 	c.BodyParser(&body)
-	application := body.Application
+	application := body
 
 	userId := c.Locals("userId").(primitive.ObjectID)
 	if userId == primitive.NilObjectID {
@@ -27,18 +28,13 @@ func CreateApplication(c *fiber.Ctx) error {
 		})
 	}
 
-	var status string
-	if body.Type != "draft" {
-		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
-			"message": "Invalid type. Type should be draft",
-		})
-	} else {
-		status = "draft"
-		application.UpdatedAt = time.Now()
-		application.CreatedAt = time.Now()
-	}
+	currTime := time.Now()
+	application.UpdatedAt = currTime
+	application.CreatedAt = currTime
+	application.AppliedAt = currTime
+	application.Domain = body.Domain
 
-	application.Status = status
+	application.Status = "draft"
 
 	usersCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "users")
 	if e != nil {
@@ -47,6 +43,28 @@ func CreateApplication(c *fiber.Ctx) error {
 			"error":   e.Error(),
 			"message": "Error getting users collection",
 		})
+	}
+	filter := bson.M{
+		"_id":                userId,
+		"application.domain": body.Domain,
+	}
+	var result bson.M
+
+	errorfind := usersCollection.FindOne(context.Background(), filter).Decode(&result)
+	if errorfind != nil {
+		log.Error("Error ", errorfind)
+		if errorfind != mongo.ErrNoDocuments {
+			c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+				"error": "record doesn't exists",
+			})
+			return nil
+		}
+	}
+	if result != nil {
+		c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error": "Application already exists",
+		})
+		return nil
 	}
 	_, err := usersCollection.UpdateOne(context.TODO(), bson.M{"_id": userId}, bson.M{"$push": bson.M{"application": application}})
 	if err != nil {
@@ -97,7 +115,8 @@ func UpdateDraft(c *fiber.Ctx) error {
 	check = application
 	_, errr := usersCollection.UpdateOne(context.Background(), bson.M{"_id": userId}, bson.M{
 		"$set": bson.M{
-			"application.$[elem]": application,
+			"application.$[elem].questions": application.Questions,
+			"application.$[elem].updatedAt": time.Now(),
 		},
 	}, &options.UpdateOptions{
 		ArrayFilters: &arrayFilters,

@@ -12,6 +12,13 @@ div.kz-wizard {
     margin-top: 2rem;
   }
 
+  .kz-form-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   .kz-form-container {
     flex-grow: 1;
     display: flex;
@@ -69,6 +76,13 @@ div.kz-wizard {
       &:first-child {
         margin-right: 1rem;
       }
+    }
+
+    .text-only {
+      border-color: $primary !important;
+      border-radius: 5px !important;
+      background-color: inherit;
+      color: $primary;
     }
 
     .hide {

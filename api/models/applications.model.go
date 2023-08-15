@@ -5,14 +5,14 @@ import "time"
 type Application struct {
 	Status    string     `json:"status"`
 	Domain    string     `validate:"required" json:"domain"`
-	AppliedAt string     `json:"appliedAt" bson:"appliedAt"`
+	AppliedAt time.Time  `json:"appliedAt" bson:"appliedAt"`
 	UpdatedAt time.Time  `json:"updatedAt" bson:"updatedAt"`
 	CreatedAt time.Time  `json:"createdAt" bson:"createdAt"`
 	Questions []Question `json:"questions"`
 }
 
 type Question struct {
-	QuestionNumber string `validate:"required" json:"questionNumber"`
+	QuestionNumber string `validate:"required" json:"questionNumber" bson:"questionNumber"`
 	Answer         string `validate:"required" json:"answer"`
 }
 
@@ -22,7 +22,9 @@ type UpdateApplication struct {
 }
 
 type ApplicationBody struct {
-	RegNo       string      `validate:"required" json:"regNo" bson:"regNo"`
-	Type        string      `validate:"required" json:"type"`
-	Application Application `json:"application"`
+	Status    string    `json:"status"`
+	Domain    string    `validate:"required" json:"domain"`
+	AppliedAt time.Time `json:"appliedAt" bson:"appliedAt"`
+	UpdatedAt time.Time `json:"updatedAt" bson:"updatedAt"`
+	CreatedAt time.Time `json:"createdAt" bson:"createdAt"`
 }

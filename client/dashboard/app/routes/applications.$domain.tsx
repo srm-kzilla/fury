@@ -1,13 +1,12 @@
-import applicationStyles from "~/styles/pages/Application.css";
-import { LinksFunction } from "@remix-run/node";
 import Lottie from "react-lottie";
+import applicationStyles from "~/styles/pages/Application.css";
 import paperPlaneLottie from "~/assets/lotties/paperplane.json";
 import tickLottie from "~/assets/lotties/tick.json";
-import { Sidebar } from "~/components";
-import { sidebarLinks } from "~/components";
-import { useEffect, useState } from "react";
-import { useParams } from "@remix-run/react";
-import getEnv from "~/utils/env";
+import { Sidebar, sidebarLinks } from "~/components";
+import { useLoaderData, useNavigate } from "@remix-run/react";
+import type { LinksFunction, LoaderFunction } from "@remix-run/node";
+import { json, redirect } from "@remix-run/node";
+import { getApplications } from "~/utils/api.server";
 
 export const links: LinksFunction = () => [
   ...sidebarLinks(),
@@ -17,43 +16,40 @@ export const links: LinksFunction = () => [
   },
 ];
 
-export default function Application() {
-  const [data, setData] = useState();
-  const params = useParams();
-  const { domain } = params;
+type LoaderData = {
+  application: Application;
+};
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const response = await fetch(
-          `${getEnv().API_BASE_URL}/applications/get/${domain}`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: "Bearer " + localStorage.getItem("access_token"),
-            },
-          }
-        );
-        const data = await response.json();
-        console.log({ data });
-        setData(data.status);
-      } catch (error) {
-        console.error(error);
-      }
-    })();
-  }, []);
+export const loader: LoaderFunction = async ({ request, params }) => {
+  const { domain } = params;
+  if (!domain) return redirect("/");
+
+  const { applications } = await getApplications(request);
+
+  const application = applications.find(
+    (application) => application.domain === domain
+  );
+
+  if (!application) return redirect("/");
+
+  return json({ application });
+};
+
+export default function Application() {
+  const {
+    application: { status },
+  } = useLoaderData<LoaderData>();
+  const navigate = useNavigate();
 
   return (
     <div className="wrapper">
       <div>
         <Sidebar />
       </div>
-
       <div className="main">
-        {data === "Accepted" ? (
-          <div className="mainAccepted">
-            <div className="wrapperAccepted">
+        {status === "accepted" ? (
+          <div className="main-accepted">
+            <div className="wrapper-accepted">
               <Lottie
                 style={{ width: "60%", height: "60%" }}
                 options={{
@@ -69,22 +65,22 @@ export default function Application() {
                 <h1>Accepted</h1>
                 <p>We loved you!</p>
               </div>
-              <div className="statusWrapper">
+              <div className="status-wrapper">
                 <div>
-                  <div className="greenCircle"></div>
+                  <div className="green-circle"></div>
                   <p>Draft</p>
                 </div>
                 <div>
-                  <div className="greenCircle"></div>
+                  <div className="green-circle"></div>
                   <p>In Review</p>
                 </div>
                 <div>
-                  <div className="greenCircle"></div>
+                  <div className="green-circle"></div>
                   <p>Accepted</p>
                 </div>
               </div>
             </div>
-            <div className="wrapperText">
+            <div className="wrapper-text">
               <h1>What's next?</h1>
               <p>
                 You will get an email from us regarding the interview where
@@ -100,8 +96,8 @@ export default function Application() {
               </h5>
             </div>
           </div>
-        ) : data === "Rejected" ? (
-          <div className="rejectWrapper">
+        ) : status === "rejected" ? (
+          <div className="rejected-wrapper">
             <h1>
               We carefully reviewed your submission,{" "}
               <span>and decided not to proceed with your application.</span>
@@ -117,22 +113,22 @@ export default function Application() {
               wish you the best of luck in your search. We hope to see you
               reapply for a future batch.
             </p>
-            <div className="statusWrapper">
+            <div className="status-wrapper">
               <div>
-                <div className="greenCircle"></div>
+                <div className="green-circle"></div>
                 <p>Draft</p>
               </div>
               <div>
-                <div className="greenCircle"></div>
+                <div className="green-circle"></div>
                 <p>In Review</p>
               </div>
               <div>
-                <div className={"redCircle"}></div>
+                <div className={"red-circle"}></div>
                 <p>Rejected</p>
               </div>
             </div>
           </div>
-        ) : data === "in_review" ? (
+        ) : status === "pending" ? (
           <div className="main">
             <div className="lottie">
               <Lottie
@@ -153,22 +149,61 @@ export default function Application() {
             <div>
               <p>We are reviewing applications on a rolling basis.</p>
             </div>
-            <div className="statusWrapper">
+            <div className="status-wrapper">
               <div>
-                <div className="greenCircle"></div>
+                <div className="green-circle"></div>
                 <p>Draft</p>
               </div>
               <div>
-                <div className="greenCircle"></div>
+                <div className="green-circle"></div>
                 <p>In Review</p>
               </div>
               <div>
-                <div className="borderCircle"></div>
+                <div className="border-circle"></div>
                 <p>Accepted</p>
               </div>
             </div>
           </div>
-        ) : null}
+        ) : (
+          <div className="main">
+            <div className="lottie">
+              <Lottie
+                style={{ width: "80%", height: "80%" }}
+                options={{
+                  loop: true,
+                  autoplay: true,
+                  animationData: paperPlaneLottie,
+                  rendererSettings: {
+                    preserveAspectRatio: "xMidYMid slice",
+                  },
+                }}
+              />
+            </div>
+            <div>
+              <h1>Draft</h1>
+            </div>
+            <div className="draft-wrapper">
+              <p>Complete your application now!</p>
+              <button onClick={() => navigate("/applications/new")}>
+                Take me there!
+              </button>
+            </div>
+            <div className="status-wrapper">
+              <div>
+                <div className="border-circle"></div>
+                <p>Draft</p>
+              </div>
+              <div>
+                <div className="border-circle"></div>
+                <p>In Review</p>
+              </div>
+              <div>
+                <div className="border-circle"></div>
+                <p>Accepted</p>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
