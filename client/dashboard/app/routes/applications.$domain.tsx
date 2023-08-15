@@ -84,11 +84,11 @@ export default function Application() {
               <h1>What's next?</h1>
               <p>
                 You will get an email from us regarding the interview where
-                we'll talk about your interests, your past experience, out
+                we'll talk about your interests, your past experience, our
                 vision for the future, and how you can contribute and help us
                 achieve it. <br />
                 Meanwhile, keep an eye on our Instagram page for updates. If you
-                have any queries ping us on out Instagram handle.
+                have any queries ping us on our Instagram handle.
               </p>
               <h5>
                 Not yet joined the super awesome SRMKZILLA Discord?{" "}
