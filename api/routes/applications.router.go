@@ -11,6 +11,5 @@ func ApplicationRoutes(router fiber.Router) {
 	protected.Post("/", controllers.CreateApplication)
 	protected.Post("/submit", controllers.SubmitApplication)
 	protected.Put("/", controllers.UpdateDraft)
-	protected.Get("/questions/:domain", controllers.GetQuestions)
 	protected.Delete("/:domain", controllers.DeleteDraftApplication)
 }

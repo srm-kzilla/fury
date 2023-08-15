@@ -8,7 +8,6 @@ import (
 	"github.com/charmbracelet/log"
 	"github.com/gofiber/fiber/v2"
 	"github.com/srm-kzilla/Recruitments/api/models"
-	"github.com/srm-kzilla/Recruitments/api/utils/constants"
 	"github.com/srm-kzilla/Recruitments/api/utils/database"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -130,28 +129,6 @@ func UpdateDraft(c *fiber.Ctx) error {
 	}
 	c.Status(fiber.StatusOK).JSON(check)
 	return nil
-}
-
-func GetQuestions(c *fiber.Ctx) error {
-	domain := c.Params("domain")
-	if domain == "" {
-		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
-			"error": "domain is required",
-		})
-	}
-
-	var questions map[int]string
-
-	for _, item := range constants.Domains[:] {
-		if item == domain {
-			questions = constants.Questions[domain]
-			return c.Status(fiber.StatusOK).JSON(questions)
-		}
-	}
-	return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
-		"error": "domain is invalid",
-	})
-
 }
 
 func DeleteDraftApplication(c *fiber.Ctx) error {
