@@ -23,10 +23,11 @@ import {
   BiTerminal,
   BiTime,
   BiVector,
+  BiArrowFromRight,
 } from "react-icons/bi";
 import { json, type LinksFunction, type LoaderFunction } from "@remix-run/node";
 import { getUserActivity, getUserDetails } from "~/utils/api.server";
-import { useLoaderData } from "@remix-run/react";
+import { Link, useLoaderData } from "@remix-run/react";
 
 export const links: LinksFunction = () => [
   ...sidebarLinks(),
@@ -247,6 +248,12 @@ const Explore = () => {
         <Sidebar />
         <div className="container">
           <div className="main">
+            <Link to={"/"}>
+              <div className="go-back">
+                <BiArrowFromRight className="icon" />
+                <h2>Applications</h2>
+              </div>
+            </Link>
             <h2>
               Explore <span>@srmkzilla</span>
             </h2>

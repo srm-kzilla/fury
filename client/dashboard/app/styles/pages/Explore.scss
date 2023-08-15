@@ -14,6 +14,22 @@ div.kz-explore {
     width: 80%;
     padding: 2rem;
 
+    .go-back{
+      display: flex;
+      align-items: center;
+
+      .icon{
+        height: 1.5rem;
+        width: 1.5rem;
+      }  
+
+      h2{
+        margin-left: 0.5rem;
+        font-size: 1.25rem;
+      }
+    }
+
+
     h2 {
       margin: 1rem 0;
 
