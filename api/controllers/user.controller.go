@@ -130,12 +130,12 @@ func UploadResume(c *fiber.Ctx) error {
 			"message": err.Error(),
 		})
 	}
-	if file.Header.Get("Content-Type") != "application/pdf" {
-		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
-			"error":   "Invalid file format. Only PDF files are allowed.",
-			"message": "Invalid file format",
-		})
-	}
+	// if file.Header.Get("Content-Type") != "application/pdf" {
+	// 	return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+	// 		"error":   "Invalid file format. Only PDF files are allowed.",
+	// 		"message": "Invalid file format",
+	// 	})
+	// }
 
 	if file.Size > maxFileSize {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
