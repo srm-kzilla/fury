@@ -34,9 +34,16 @@ div.kz-dashboard {
       padding: 2rem 1rem;
     }
 
-    div.kz-timer {
-      padding: 1rem 0;
+    .notif-wrapper {
+      overflow-x: hidden;
       width: 100%;
+      height: fit-content;
+    }
+
+    div.kz-timer {
+      padding: 2rem 0;
+      width: 100%;
+      height: 5vw;
       background-color: var(--color-bg-alt);
       border-radius: 1rem;
       display: flex;
@@ -153,7 +160,7 @@ div.kz-dashboard {
     }
 
     .banner {
-      max-width: 25.5rem;
+      // max-width: 25.5rem;
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -286,14 +293,19 @@ div.kz-dashboard {
     }
 
     .notif-row {
+      width: 90%;
       padding: 1rem;
       display: flex;
       gap: 10px;
       align-items: center;
+      display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns, each taking up 50% of available space */
+  gap: 10px; 
     }
 
     .kz-notifications {
-      height: 25rem;
+      width: 100%;
+      height: 100%;
       overflow-y: scroll;
       background-color: var(--color-bg-alt);
       border-radius: 1rem;
@@ -337,14 +349,13 @@ div.kz-dashboard {
   }
 }
 
-@media only screen and (min-width:1700px ){
-  div.kz-dashboard{
-    .new{
+@media only screen and (min-width: 1700px) {
+  div.kz-dashboard {
+    .new {
       position: absolute;
       right: 5rem;
     }
   }
-  
 }
 
 @media only screen and (max-width: 768px) {
@@ -363,7 +374,7 @@ div.kz-dashboard {
         .notif-wrapper {
           overflow-x: hidden;
           width: 100%;
-          height: 50%;
+          height: fit-content;
         }
 
         .application-wrapper {
@@ -382,11 +393,16 @@ div.kz-dashboard {
         }
 
         .notif-row {
+          width: 100%;
           padding: 1rem;
           display: flex;
           flex-direction: column;
           gap: 10px;
           align-items: center;
+
+          .kz-notifications {
+            width: 100%;
+          }
         }
       }
     }
