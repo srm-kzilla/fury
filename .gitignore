@@ -1,6 +1,6 @@
 # env
 .env
-.env.*
+.env.local
 
 # deps
 node_modules/
