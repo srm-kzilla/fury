@@ -60,7 +60,6 @@ export const updateUserDetails = async (request: Request, user: UpdateUser) => {
 
 export const uploadResume = async (request: Request, body: FormData) => {
   const accessToken = await requireAccessToken(request);
-  const recaptchaToken = await getRecaptchaToken("uploadResume");
   const formdata = new FormData();
   formdata.append("resume", body.get("resume") as Blob, "random-uuid-1.pdf");
 
@@ -74,8 +73,7 @@ export const uploadResume = async (request: Request, body: FormData) => {
       redirect: "follow",
 
       headers: {
-        "Authorization": `Bearer ${accessToken}`,
-        "X-Recaptcha-Token": recaptchaToken,
+        "Authorization": `Bearer ${accessToken}`
       },
     },
   );
@@ -85,7 +83,6 @@ export const uploadResume = async (request: Request, body: FormData) => {
 
 export const getNotifications = async (request: Request) => {
   const accessToken = await requireAccessToken(request);
-  const recaptchaToken = await getRecaptchaToken("getNotifications");
 
   const res = await fetch(
     API.BASE_URL +
@@ -93,9 +90,7 @@ export const getNotifications = async (request: Request) => {
       API.ENDPOINTS.USERS.NOTIFICATIONS(),
     {
       headers: {
-        "Authorization": `Bearer ${accessToken}`,
-        "X-Recaptcha-Token": recaptchaToken,
-      },
+        "Authorization": `Bearer ${accessToken}`      },
     },
   );
 
@@ -238,7 +233,7 @@ export const deleteDraftApplication = async (
     {
       method: "DELETE",
       headers: {
-        "X-Recaptcha-Token": recaptchaToken,
+        "Authorization": `Bearer ${accessToken}`,
       },
     },
 
