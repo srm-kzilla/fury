@@ -235,10 +235,16 @@ func SubmitApplication(c *fiber.Ctx) error {
 	}
 	update := bson.M{
 		"$set": bson.M{
-			"application.$.status": "submitted",
+			"application.$[elem].status": "submitted",
 		},
 	}
-	_, errr := usersCollection.UpdateOne(context.Background(), filter, update)
+	options := options.Update().SetArrayFilters(options.ArrayFilters{
+		Filters: []interface{}{
+			bson.M{"elem.status": "draft", "elem.domain": domain},
+		},
+	})
+
+	_, errr := usersCollection.UpdateOne(context.Background(), filter, update, options)
 	if errr != nil {
 		log.Error("Error: ", errr)
 		return c.Status(fiber.StatusBadGateway).JSON(fiber.Map{
