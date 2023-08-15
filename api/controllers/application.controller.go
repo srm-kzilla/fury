@@ -186,22 +186,18 @@ func DeleteDraftApplication(c *fiber.Ctx) error {
 
 func SubmitApplication(c *fiber.Ctx) error {
 	var user models.User
-	var body bson.M
 	userId := c.Locals("userId").(primitive.ObjectID)
 	if userId == primitive.NilObjectID {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": "User ObjectID is missing",
 		})
 	}
-	err := c.BodyParser(&body)
-	if err != nil {
-		log.Error("Error: ", err)
-		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"error":   err.Error(),
-			"message": "Error parsing application",
+	domain := c.Params("domain")
+	if domain == "" {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error": "domain is required",
 		})
 	}
-	domain := body["domain"].(string)
 	if domain == "" {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": "domain is required",
@@ -221,7 +217,7 @@ func SubmitApplication(c *fiber.Ctx) error {
 		"application.domain": domain,
 		"application.status": "draft",
 	}
-	err = usersCollection.FindOne(context.Background(), filter).Decode(&user)
+	err := usersCollection.FindOne(context.Background(), filter).Decode(&user)
 	if err != nil {
 		log.Print("1")
 		log.Error("Error ", err)
