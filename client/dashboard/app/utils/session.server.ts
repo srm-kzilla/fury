@@ -56,7 +56,6 @@ export async function getAccessToken(request: Request) {
   const expiresIn = session.get("expires_in");
 
   if (Date.now() > new Date(expiresIn).getTime()) {
-    console.log("refreshing access token");
     return refreshAccessToken(request);
   }
   return accessToken;

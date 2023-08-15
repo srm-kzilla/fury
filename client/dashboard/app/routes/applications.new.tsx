@@ -273,8 +273,6 @@ const Application = () => {
     },
   };
 
-  console.log("[navigation.formData]", navigation.formData?.get("_action"))
-
   return (
     <div className="kz-wizard">
       {currentQuestion ? (
