@@ -254,7 +254,7 @@ func SubmitApplication(c *fiber.Ctx) error {
 	}
 	update := bson.M{
 		"$set": bson.M{
-			"application.$.status": "submitted",
+			"application.$.status": "pending",
 		},
 	}
 	_, errr := usersCollection.UpdateOne(context.Background(), filter, update)
