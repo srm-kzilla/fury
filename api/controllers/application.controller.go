@@ -227,7 +227,6 @@ func SubmitApplication(c *fiber.Ctx) error {
 	}
 	err = usersCollection.FindOne(context.Background(), filter).Decode(&user)
 	if err != nil {
-		log.Print("1")
 		log.Error("Error ", err)
 		return c.Status(fiber.StatusBadGateway).JSON(fiber.Map{
 			"error": "Application doesn't exists",
@@ -235,7 +234,7 @@ func SubmitApplication(c *fiber.Ctx) error {
 	}
 	update := bson.M{
 		"$set": bson.M{
-			"application.$[elem].status": "submitted",
+			"application.$[elem].status": "pending",
 		},
 	}
 	options := options.Update().SetArrayFilters(options.ArrayFilters{
