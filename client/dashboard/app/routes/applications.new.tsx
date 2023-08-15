@@ -9,6 +9,7 @@ import {
   getFormSession,
   updateFormSession,
 } from "~/utils/session.server";
+import toast from "~/utils/toast.client";
 import { redirect } from "@remix-run/node";
 import {
   Form,
@@ -20,7 +21,12 @@ import {
 import { useEffect, useRef } from "react";
 import { BiHomeAlt, BiLoader } from "react-icons/bi";
 import { getDomainName, questionsArray } from "~/utils/applications";
-import {deleteDraftApplication, getUserDetails, postApplication} from "~/utils/api.server";
+import {
+  getUserDetails,
+  deleteDraftApplication,
+  updateApplication,
+  submitApplication,
+} from "~/utils/api.server";
 import type {
   ActionFunction,
   LinksFunction,
@@ -139,23 +145,13 @@ export const action: ActionFunction = async ({ request }) => {
       try {
         const answer = await validateAnswer(formData);
 
-        if (parseInt(questionNumber) === questionsArray.length) {
-          await postApplication(
-            request,
-            formSession.domain,
-            formSession.answers,
-            "pending"
-          );
-          return destroyFormSession(request);
-        }
-
         const updatedAnswers = getUpdatedAnswers(
           formSession,
           questionNumber,
           answer
         );
 
-        await postApplication(
+        await updateApplication(
           request,
           updatedAnswers.domain,
           updatedAnswers.answers
@@ -190,7 +186,7 @@ export const action: ActionFunction = async ({ request }) => {
           answer
         );
 
-        await postApplication(
+        await updateApplication(
           request,
           updatedAnswers.domain,
           updatedAnswers.answers
@@ -201,6 +197,30 @@ export const action: ActionFunction = async ({ request }) => {
           updatedAnswers,
           `/applications/new?question=${parseInt(questionNumber)}`
         );
+      } catch (error) {
+        return { error };
+      }
+    }
+
+    case "submit": {
+      const answer = await validateAnswer(formData);
+
+      try {
+        const updatedAnswers = getUpdatedAnswers(
+          formSession,
+          questionNumber,
+          answer
+        );
+
+        await updateApplication(
+          request,
+          updatedAnswers.domain,
+          updatedAnswers.answers
+        );
+
+        await submitApplication(request, formSession.domain);
+
+        return destroyFormSession(request);
       } catch (error) {
         return { error };
       }
@@ -253,6 +273,8 @@ const Application = () => {
     },
   };
 
+  console.log("[navigation.formData]", navigation.formData?.get("_action"))
+
   return (
     <div className="kz-wizard">
       {currentQuestion ? (
@@ -268,7 +290,7 @@ const Application = () => {
                 value="save"
                 title="Save Draft"
               >
-                {navigation.state === "submitting" ? (
+                {(navigation.state === "submitting" && navigation.formData?.get("_action") === "save") ? (
                   <BiLoader className="spin" />
                 ) : (
                   "Save Changes"
@@ -321,20 +343,25 @@ const Application = () => {
                   Previous
                 </button>
               )}
-              <button
-                type="submit"
-                name="_action"
-                value="next"
-                title="Save and Next Question"
-              >
-                {navigation.state === "submitting" ? (
-                  <BiLoader className="spin" />
-                ) : parseInt(questionNumber) == questionsArray.length ? (
-                  "Submit"
-                ) : (
-                  "Next"
-                )}
-              </button>
+              {parseInt(questionNumber) === questionsArray.length ? (
+                <button
+                  type="submit"
+                  name="_action"
+                  value="submit"
+                  title="Submit Application"
+                >
+                  {(navigation.state === "submitting" && navigation.formData?.get("_action") === "submit") ? <BiLoader /> : "Submit"}
+                </button>
+              ) : (
+                <button
+                  type="submit"
+                  name="_action"
+                  value="next"
+                  title="Save and Next Question"
+                >
+                  {(navigation.state === "submitting" && navigation.formData?.get("_action") === "next") ? <BiLoader /> : "Next"}
+                </button>
+              )}
             </div>
           </div>
         </Form>

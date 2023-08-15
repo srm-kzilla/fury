@@ -18,9 +18,10 @@ const API = {
       APPLICATIONS: () => "/applications",
       ACTIVITY: () => "/activity",
     },
-    APPLICATIONS: {
+    APPLICATION: {
       BASE_URL: () => "/application",
       DELETE_DRAFT: (domain: string) => `/${domain}`,
+      SUBMIT_APPLICATION: () => "/submit",
     },
     AUTH: {
       BASE_URL: () => "/auth",
@@ -53,32 +54,6 @@ export const updateUserDetails = async (request: Request, user: UpdateUser) => {
       "Content-Type": "application/json",
     },
   });
-
-  return res.json();
-};
-
-export const uploadResume = async (
-  request: Request,
-  data: AsyncIterable<Uint8Array>
-) => {
-  const accessToken = await requireAccessToken(request);
-
-  const formData = new FormData();
-  formData.append("resume", data.toString());
-
-  const res = await fetch(
-    API.BASE_URL +
-      API.ENDPOINTS.USERS.BASE_URL() +
-      API.ENDPOINTS.USERS.RESUME_UPLOAD(),
-    {
-      method: "POST",
-      body: formData,
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "multipart/form-data",
-      },
-    }
-  );
 
   return res.json();
 };
@@ -152,26 +127,57 @@ export const getAccessTokenFromCode = async (request: Request) => {
   return res.json();
 };
 
-export const postApplication = async (
+export const createApplication = async (request: Request, domain: string) => {
+  const accessToken = await requireAccessToken(request);
+
+  const res = await fetch(API.BASE_URL + API.ENDPOINTS.APPLICATION.BASE_URL(), {
+    method: "POST",
+    body: JSON.stringify({
+      domain,
+    }),
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      "Content-Type": "application/json",
+    },
+  });
+
+  return res.json();
+};
+
+export const updateApplication = async (
   request: Request,
   domain: string,
-  answers: Array<Answer>,
-  type: "draft" | "pending" = "draft"
+  answers: Array<Answer>
 ) => {
-  const { regNo } = await getUserDetails(request);
+  const accessToken = await requireAccessToken(request);
+
+  const res = await fetch(API.BASE_URL + API.ENDPOINTS.APPLICATION.BASE_URL(), {
+    method: "PUT",
+    body: JSON.stringify({
+      type: "draft",
+      domain,
+      questions: answers,
+    }),
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      "Content-Type": "application/json",
+    },
+  });
+
+  return res.json();
+};
+
+export const submitApplication = async (request: Request, domain: string) => {
   const accessToken = await requireAccessToken(request);
 
   const res = await fetch(
-    API.BASE_URL + API.ENDPOINTS.APPLICATIONS.BASE_URL(),
+    API.BASE_URL +
+      API.ENDPOINTS.APPLICATION.BASE_URL() +
+      API.ENDPOINTS.APPLICATION.SUBMIT_APPLICATION(),
     {
       method: "POST",
       body: JSON.stringify({
-        regNo,
-        type,
-        application: {
-          domain,
-          questions: answers,
-        },
+        domain,
       }),
       headers: {
         Authorization: `Bearer ${accessToken}`,
@@ -183,21 +189,26 @@ export const postApplication = async (
   return res.json();
 };
 
-export const deleteDraftApplication = async (request: Request, domain: string) => {
+export const deleteDraftApplication = async (
+  request: Request,
+  domain: string
+) => {
   const accessToken = await requireAccessToken(request);
 
   const res = await fetch(
-    API.BASE_URL + API.ENDPOINTS.APPLICATIONS.BASE_URL() + API.ENDPOINTS.APPLICATIONS.DELETE_DRAFT(domain),
+    API.BASE_URL +
+      API.ENDPOINTS.APPLICATION.BASE_URL() +
+      API.ENDPOINTS.APPLICATION.DELETE_DRAFT(domain),
     {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${accessToken}`,
-      }
+      },
     }
   );
 
   return res.json();
-}
+};
 
 export const getAccessTokenFromRefreshToken = async (refreshToken: string) => {
   const res = await fetch(

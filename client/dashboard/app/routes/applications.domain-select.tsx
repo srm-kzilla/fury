@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { json, redirect } from "@remix-run/node";
-import { Form, useActionData, useNavigation } from "@remix-run/react";
+import { Form, Link, useActionData, useNavigation } from "@remix-run/react";
 import { loadingLinks, taskListLinks } from "~/components";
 import { getFormSession, updateFormSession } from "~/utils/session.server";
-import { BiLoader } from "react-icons/bi";
+import { BiHomeAlt, BiLoader } from "react-icons/bi";
 import toast from "~/utils/toast.client";
-import { domains } from "~/utils/applications";
+import { domains, getDomainName } from "~/utils/applications";
 import formFieldStyles from "~/styles/components/FormFields.css";
 import formStepsStyles from "~/styles/components/FormSteps.css";
 import wizardStyles from "~/styles/components/Wizard.css";
@@ -14,7 +14,7 @@ import type {
   LoaderFunction,
   LinksFunction,
 } from "@remix-run/node";
-import {getUserDetails} from "~/utils/api.server";
+import { createApplication, getUserDetails } from "~/utils/api.server";
 
 export const links: LinksFunction = () => [
   {
@@ -47,6 +47,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
   const domain = formData.get("domain") as string;
+
   if (!domain) {
     return json({
       error: "Domain is required",
@@ -54,7 +55,20 @@ export const action: ActionFunction = async ({ request }) => {
     });
   }
 
-  return updateFormSession(request, { domain, answers: [] }, "/applications/new");
+  const { application } = await getUserDetails(request);
+
+  if (application.some((app) => app.domain === domain)) {
+    return json({
+      toastMessage: `You have applied for ${getDomainName(domain)} already`,
+    });
+  }
+
+  await createApplication(request, domain);
+  return updateFormSession(
+    request,
+    { domain, answers: [] },
+    "/applications/new"
+  );
 };
 
 const DomainSelect = () => {
@@ -73,6 +87,11 @@ const DomainSelect = () => {
   return (
     <div className="kz-wizard">
       <Form method="POST" className="kz-form-container">
+        <div className="kz-form-header">
+          <Link to="/">
+            <BiHomeAlt size={36} className="home-icon" title="Home" />
+          </Link>
+        </div>
         <div className="kz-form">
           <h1>Select a domain</h1>
           <div className="kz-form-field">
