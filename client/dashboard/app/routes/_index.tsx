@@ -94,7 +94,7 @@ const Dashboard = () => {
                               application={application}
                               handleClick={() => {
                                 navigate(
-                                  `/applications/${application.domain}`
+                                  `/applications/status/${application.domain}`
                                 );
                               }}
                             />
