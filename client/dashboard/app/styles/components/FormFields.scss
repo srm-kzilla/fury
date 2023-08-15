@@ -3,6 +3,10 @@
 
 .kz-form-field {
   margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+
 
   div.inner {
     display: flex;
@@ -112,6 +116,8 @@
 
 @media only screen and (max-width: 768px) {
   .kz-form-field {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
     .selectable-div {
       margin: 0 0 20px;
       width: 100%;
