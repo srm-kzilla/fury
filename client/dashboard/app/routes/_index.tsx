@@ -94,9 +94,7 @@ const Dashboard = () => {
                               application={application}
                               handleClick={() => {
                                 navigate(
-                                  application.status === "draft"
-                                    ? `/applications/new`
-                                    : `/applications/${applications.domain}`
+                                  `/applications/${application.domain}`
                                 );
                               }}
                             />
