@@ -1,8 +1,9 @@
 import { MdCheck, MdDelete } from "react-icons/md";
 import classNames from "classnames";
-import { TaskType } from "./ProjectTiles";
 import Markdown from "markdown-to-jsx";
-import TaskListStyles from "~/styles/components/TaskList.css";
+import taskListStyles from "~/styles/components/TaskList.css";
+import type { TaskType } from "./ProjectTiles";
+import type { LinksFunction } from "@remix-run/node";
 
 interface Props {
   projectTask: TaskType;
@@ -11,13 +12,11 @@ interface Props {
   clickDisabled: boolean;
 }
 
-import type { LinksFunction } from "@remix-run/node";
-
 export const links: LinksFunction = () => {
   return [
     {
       rel: "stylesheet",
-      href: TaskListStyles,
+      href: taskListStyles,
     },
   ];
 };

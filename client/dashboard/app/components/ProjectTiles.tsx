@@ -1,9 +1,6 @@
-import { useContext, useEffect, useState } from "react";
-import { Task, Tile, User } from "~/components";
+import { useState } from "react";
+import { Task, Tile } from "~/components";
 import { produce } from "immer";
-import { StoreContext } from "~/components/Wizard/Store";
-import { APIService } from "~/shared/services/api-service";
-import LoadingShimmer from "~/components/LoadingShimmer";
 import type { LinksFunction } from "@remix-run/node";
 import projectTilesStyles from "~/styles/pages/ProjectTiles.css";
 import tileStyles from "~/styles/components/Tile.css";
@@ -46,38 +43,8 @@ export interface ProjectTile {
 
 const ProjectTiles = () => {
   const [projects, setProjects] = useState<ProjectTile[]>([]);
-  const [activeProject, setActiveProject] = useState<ProjectTile>();
-  const [loading, setLoading] = useState(true);
-  const clickDisabled = true;
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { selectedProjectSlug, setSelectedProjectSlug } =
-    useContext(StoreContext);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { domain } = useContext(StoreContext);
+  const [activeProject] = useState<ProjectTile>();
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const projectsResponse =
-          await APIService.getInstance().fetchAllProjects();
-        console.log(projectsResponse.data.projects);
-
-        setProjects(projectsResponse.data.projects);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    })();
-  }, []);
-  useEffect(() => {
-    const active = projects
-      .slice()
-      .reverse()
-      .find((p) => p.active);
-    setActiveProject(active);
-    if (active) setSelectedProjectSlug(active?.slug);
-  }, [projects]);
   const toggleTileActive = (id: string) => {
     setProjects(
       projects.map((projectTile) => {
@@ -142,35 +109,27 @@ const ProjectTiles = () => {
       <div>
         <div className="kz-project-flex">
           <div className="kz-project-inner-flex">
-            <User clickDisabled={clickDisabled} />
-            {loading && (
-              <div className="kz-shimmer">
-                <LoadingShimmer />
-                <LoadingShimmer />
-                <LoadingShimmer />
-                <LoadingShimmer />
-              </div>
-            )}
-            {!loading && (
-              <div className="kz-project-tiles">
-                <div>
-                  <div className="kz-project-grid">
-                    {projects.map((tile) => {
-                      return (
-                        <div key={tile.slug}>
-                          <Tile
-                            tile={tile}
-                            toggleTileActive={(id: string) => {
-                              toggleTileActive(id);
-                            }}
-                          />
-                        </div>
-                      );
-                    })}
-                  </div>
+            <div className="kz-user">
+              <h2>Pick a project to continue</h2>
+            </div>
+            <div className="kz-project-tiles">
+              <div>
+                <div className="kz-project-grid">
+                  {projects.map((tile) => {
+                    return (
+                      <div key={tile.slug}>
+                        <Tile
+                          tile={tile}
+                          toggleTileActive={(id: string) => {
+                            toggleTileActive(id);
+                          }}
+                        />
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
-            )}
+            </div>
           </div>
 
           <div className="kz-project-inner-flex">

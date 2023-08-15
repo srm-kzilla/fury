@@ -1,15 +1,9 @@
 import classNames from "classnames";
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import { BiArrowBack, BiCog } from "react-icons/bi";
 import { FooterCompact, Task } from "~/components";
 import { TextField } from "~/components/Wizard/FormFields";
 import { Field } from "formik";
-import {
-  DomainInstructions,
-  GeneralInstructionComponent,
-} from "../components/Wizard/FormSteps/Instructions";
-import { APIService } from "~/shared/services/api-service";
-import { StoreContext } from "~/components/Wizard/Store";
 import ProjectStyles from "~/styles/pages/Project.css";
 import type { LinksFunction } from "@remix-run/node";
 
@@ -24,25 +18,7 @@ export const links: LinksFunction = () => {
 
 const Project = () => {
   const [settingsMode, setSettingsMode] = useState(true);
-  const [currentProject, setCurrentProject] = useState<any>({});
-  const { selectedProjectSlug } = useContext(StoreContext);
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const projectsResponse =
-          await APIService.getInstance().fetchAllProjects();
-
-        setCurrentProject(
-          projectsResponse.data.projects.filter(
-            (project: any) => project.slug === selectedProjectSlug
-          )[0]
-        );
-      } catch (error) {
-        console.error(error);
-      }
-    })();
-  }, []);
+  const [currentProject] = useState<any>({});
 
   return (
     <>
@@ -59,9 +35,6 @@ const Project = () => {
                     }}
                   />
                 </div>
-              </div>
-              <div className="instructions-box margin-bt">
-                <DomainInstructions.component domain={"technical"} />
               </div>
               <div className="instructions-box">
                 {currentProject.tasks && (
