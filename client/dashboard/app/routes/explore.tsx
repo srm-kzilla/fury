@@ -6,7 +6,6 @@ import {
   sidebarLinks,
   FooterCompact,
   Sidebar,
-  Glance,
 } from "~/components";
 import {
   BiAward,
@@ -260,7 +259,7 @@ const Explore = () => {
             <div>
               <h3 className="mb">2023</h3>
               <div>
-                <div>
+                <div className="items">
                   {items.map((item, index) => {
                     return (
                       <div key={index} className="tile">
@@ -271,9 +270,6 @@ const Explore = () => {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="glance">
-            <Glance user={user} activity={activity} />
           </div>
         </div>
       </div>
