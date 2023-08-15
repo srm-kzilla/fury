@@ -2,9 +2,6 @@
 
 div.kz-explore {
   padding-left: 5rem;
-  .glance{
-    margin: 0rem 1rem 1rem;
-  }
   .container{
     display: flex;
     flex-direction: row;
@@ -13,6 +10,27 @@ div.kz-explore {
   .main {
     width: 80%;
     padding: 2rem;
+
+    .go-back{
+      display: flex;
+      align-items: center;
+
+      .icon{
+        height: 1.5rem;
+        width: 1.5rem;
+      }  
+
+      h2{
+        margin-left: 0.5rem;
+        font-size: 1.25rem;
+      }
+    }
+    .items{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      width: 90vw;
+    }
 
     h2 {
       margin: 1rem 0;
@@ -41,10 +59,6 @@ div.kz-explore {
     padding-left: 4rem;
     margin: 1rem;
 
-    .glance{
-      margin-bottom: 4rem;
-    }
-
     .container{
       display: flex;
       flex-direction: column;
@@ -53,6 +67,13 @@ div.kz-explore {
     .main {
       width: 100%;
       padding: 0 1rem 0 0;
+
+      .items{
+        display:flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        width: auto;
+      }
 
       h2 {
         margin: 1rem 0;

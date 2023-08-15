@@ -23,7 +23,7 @@ type UpdateUser = Pick<
 >;
 
 type Application = {
-  status: "pending" | "accepted" | "rejected";
+  status: "draft" | "pending" | "accepted" | "rejected";
   domain: string;
   appliedAt: Date;
   updatedAt: Date;
@@ -47,4 +47,14 @@ type Activity = {
   type: "login" | "add_project" | "update_project" | "delete_project";
   project_slug?: string;
   user_id: string;
+};
+
+type Answer = {
+  questionNumber: string;
+  answer: string;
+}
+
+type FormSession = {
+  domain: string;
+  answers: Answer[];
 };

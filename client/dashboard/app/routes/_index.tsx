@@ -57,7 +57,10 @@ const Dashboard = () => {
   const endTime = parseInt(env.APPLICATION_DEADLINE!);
 
   useEffect(() => {
-    toast.show(`Deadline for application is ${moment(endTime).format("MMMM Do YYYY")}`, "🗓️");
+    toast.show(
+      `Deadline for application is ${moment(endTime).format("MMMM Do YYYY")}`,
+      "🗓️"
+    );
   }, []);
 
   return (
@@ -83,18 +86,22 @@ const Dashboard = () => {
                 <div className="application-wrapper">
                   {applications &&
                     applications.length > 0 &&
-                    applications.map((project: any, index: number) => {
-                      return (
-                        <div key={index} className="tile">
-                          <ApplicationTile
-                            application={project}
-                            handleClick={() => {
-                              navigate(`/applications/${project.domain}`);
-                            }}
-                          />
-                        </div>
-                      );
-                    })}
+                    applications.map(
+                      (application: Application, index: number) => {
+                        return (
+                          <div key={index} className="tile">
+                            <ApplicationTile
+                              application={application}
+                              handleClick={() => {
+                                navigate(
+                                  `/applications/${application.domain}`
+                                );
+                              }}
+                            />
+                          </div>
+                        );
+                      }
+                    )}
                 </div>
               </div>
               {applications && applications.length === 0 && (

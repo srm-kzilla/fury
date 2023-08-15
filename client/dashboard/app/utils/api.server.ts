@@ -1,7 +1,6 @@
 import getEnv from "~/utils/env";
 import { redirect } from "@remix-run/node";
 import { requireAccessToken } from "~/utils/session.server";
-import getRecaptchaToken from "~/utils/recaptcha";
 
 const env = getEnv();
 
@@ -19,6 +18,11 @@ const API = {
       APPLICATIONS: () => "/applications",
       ACTIVITY: () => "/activity",
     },
+    APPLICATION: {
+      BASE_URL: () => "/application",
+      DELETE_DRAFT: (domain: string) => `/${domain}`,
+      SUBMIT_APPLICATION: () => "/submit",
+    },
     AUTH: {
       BASE_URL: () => "/auth",
       ACCESS_TOKEN: (code: string) => `/google/token?code=${code}`,
@@ -29,12 +33,10 @@ const API = {
 
 export const getUserDetails = async (request: Request): Promise<User> => {
   const accessToken = await requireAccessToken(request);
-  const recaptchaToken = await getRecaptchaToken("getUserDetails");
 
   const res = await fetch(API.BASE_URL + API.ENDPOINTS.USERS.BASE_URL(), {
     headers: {
       "Authorization": `Bearer ${accessToken}`,
-      "X-Recaptcha-Token": recaptchaToken,
     },
   });
 
@@ -43,7 +45,6 @@ export const getUserDetails = async (request: Request): Promise<User> => {
 
 export const updateUserDetails = async (request: Request, user: UpdateUser) => {
   const accessToken = await requireAccessToken(request);
-  const recaptchaToken = await getRecaptchaToken("updateUserDetails");
 
   const res = await fetch(API.BASE_URL + API.ENDPOINTS.USERS.BASE_URL(), {
     method: "PUT",
@@ -51,7 +52,6 @@ export const updateUserDetails = async (request: Request, user: UpdateUser) => {
     headers: {
       "Authorization": `Bearer ${accessToken}`,
       "Content-Type": "application/json",
-      "X-Recaptcha-Token": recaptchaToken,
     },
   });
 
@@ -102,9 +102,8 @@ export const getNotifications = async (request: Request) => {
   return res.json();
 };
 
-export const getApplications = async (request: Request) => {
+export const getApplications = async (request: Request): Promise<{ applications: Application[] }> => {
   const accessToken = await requireAccessToken(request);
-  const recaptchaToken = await getRecaptchaToken("getApplications");
 
   const res = await fetch(
     API.BASE_URL +
@@ -113,7 +112,6 @@ export const getApplications = async (request: Request) => {
     {
       headers: {
         "Authorization": `Bearer ${accessToken}`,
-        "X-Recaptcha-Token": recaptchaToken,
       },
     },
   );
@@ -123,7 +121,6 @@ export const getApplications = async (request: Request) => {
 
 export const getUserActivity = async (request: Request) => {
   const accessToken = await requireAccessToken(request);
-  const recaptchaToken = await getRecaptchaToken("getUserActivity");
 
   const res = await fetch(
     API.BASE_URL +
@@ -132,7 +129,6 @@ export const getUserActivity = async (request: Request) => {
     {
       headers: {
         "Authorization": `Bearer ${accessToken}`,
-        "X-Recaptcha-Token": recaptchaToken,
       },
     },
   );
@@ -143,7 +139,6 @@ export const getUserActivity = async (request: Request) => {
 export const getAccessTokenFromCode = async (request: Request) => {
   const url = new URL(request.url);
   const code = url.searchParams.get("code");
-  const recaptchaToken = await getRecaptchaToken("getAccessTokenFromCode");
 
   if (!code) return redirect("/");
 
@@ -153,10 +148,100 @@ export const getAccessTokenFromCode = async (request: Request) => {
       API.ENDPOINTS.AUTH.ACCESS_TOKEN(code),
     {
       method: "POST",
+    }
+  );
+
+  return res.json();
+};
+
+export const createApplication = async (request: Request, domain: string) => {
+  const accessToken = await requireAccessToken(request);
+
+  const res = await fetch(API.BASE_URL + API.ENDPOINTS.APPLICATION.BASE_URL(), {
+    method: "POST",
+    body: JSON.stringify({
+      domain,
+    }),
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      "Content-Type": "application/json",
+    },
+  });
+
+  return res.json();
+};
+
+export const updateApplication = async (
+  request: Request,
+  domain: string,
+  answers: Array<Answer>
+) => {
+  const accessToken = await requireAccessToken(request);
+
+  const res = await fetch(API.BASE_URL + API.ENDPOINTS.APPLICATION.BASE_URL(), {
+    method: "PUT",
+    body: JSON.stringify({
+      type: "draft",
+      domain,
+      questions: answers,
+    }),
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      "Content-Type": "application/json",
+    },
+  });
+
+  return res.json();
+};
+
+export const submitApplication = async (request: Request, domain: string) => {
+  const accessToken = await requireAccessToken(request);
+
+  const res = await fetch(
+    API.BASE_URL +
+      API.ENDPOINTS.APPLICATION.BASE_URL() +
+      API.ENDPOINTS.APPLICATION.SUBMIT_APPLICATION(),
+    {
+      method: "POST",
+      body: JSON.stringify({
+        domain,
+      }),
+      headers: {
+        "Authorization": `Bearer ${accessToken}`,
+      },
+    },
+  );
+
+  return res.json();
+};
+
+export const getDraftApplication = async (request: Request) => {
+  const { applications } = await getApplications(request);
+
+  const draftApplication = applications.find(application => application.status === "draft");
+
+  if (!draftApplication) return null;
+
+  return draftApplication;
+}
+
+export const deleteDraftApplication = async (
+  request: Request,
+  domain: string
+) => {
+  const accessToken = await requireAccessToken(request);
+
+  const res = await fetch(
+    API.BASE_URL +
+      API.ENDPOINTS.APPLICATION.BASE_URL() +
+      API.ENDPOINTS.APPLICATION.DELETE_DRAFT(domain),
+    {
+      method: "DELETE",
       headers: {
         "X-Recaptcha-Token": recaptchaToken,
       },
     },
+
   );
 
   return res.json();

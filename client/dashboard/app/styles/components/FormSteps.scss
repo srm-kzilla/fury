@@ -4,6 +4,11 @@
 .kz-form {
   flex-grow: 1;
 
+  sub {
+    color: #ff644e;
+    font-size: 14px;
+  }
+
   label {
     span {
       color: $primary;
