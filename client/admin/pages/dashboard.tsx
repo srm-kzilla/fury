@@ -1,23 +1,13 @@
 // import data from "@/mock-data/names.json";
 import DisplayCard from "@/components/DisplayCard";
 import Head from "next/head";
-import { fetchData } from "@/services/api";
-import { PersonType } from "@/services/api";
-import { useEffect } from "react";
-interface PersonProps {
-  data: PersonType[];
+import { Applicant } from "@/services/api";
+import { env } from "process";
+interface ApplicantProps {
+  data: Applicant[];
 }
 
-export function Dashboard({ data }: PersonProps) {
-  useEffect(() => {
-    const accessToken = localStorage.getItem("token");
-    if (accessToken) {
-      fetchData(accessToken);
-    } else {
-      console.log("Access token not found in local storage.");
-    }
-  }, []);
-  console.log(data);
+export function Dashboard({ data }: ApplicantProps) {
   return (
     <div className="min-h-screen w-screen bg-kz-grey p-5">
       <Head>
@@ -30,14 +20,46 @@ export function Dashboard({ data }: PersonProps) {
         <hr className="text-kz-orange" />
       </div>
       <div className="flex flex-col m-1">
-        {data.map((person: PersonType) => (
-          <div key={person.id}>
+        {data.map((person: Applicant) => (
+          <div key={person._id}>
             <DisplayCard {...person} />
           </div>
         ))}
       </div>
     </div>
   );
+}
+
+export const API = {
+  BASE_URL: env.API_URL,
+  TOKEN: env.API_BEARER_TOKEN,
+  USERS: () => "/applications",
+  ENDPOINTS: {
+    DOMAINS: {
+      TECHNICAL: () => "/technical",
+      EVENTS: () => "/events",
+      CORPORATE: () => "/corporate",
+      EDITORIAL: () => "/editorial",
+    },
+  },
+};
+
+export async function getServerSideProps() {
+  console.log(API.TOKEN);
+  const response = await fetch(
+    API.BASE_URL + API.USERS() + API.ENDPOINTS.DOMAINS.TECHNICAL(),
+    {
+      headers: {
+        Authorization: `Bearer ${API.TOKEN}`,
+      },
+    }
+  );
+  const data: Applicant[] = await response.json();
+  return {
+    props: {
+      data,
+    },
+  };
 }
 
 export default Dashboard;
