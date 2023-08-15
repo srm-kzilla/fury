@@ -33,7 +33,7 @@ export const getUserDetails = async (request: Request): Promise<User> => {
 
   const res = await fetch(API.BASE_URL + API.ENDPOINTS.USERS.BASE_URL(), {
     headers: {
-      Authorization: `Bearer ${accessToken}`,
+      "Authorization": `Bearer ${accessToken}`,
       "X-Recaptcha-Token": recaptchaToken,
     },
   });
@@ -49,7 +49,7 @@ export const updateUserDetails = async (request: Request, user: UpdateUser) => {
     method: "PUT",
     body: JSON.stringify(user),
     headers: {
-      Authorization: `Bearer ${accessToken}`,
+      "Authorization": `Bearer ${accessToken}`,
       "Content-Type": "application/json",
       "X-Recaptcha-Token": recaptchaToken,
     },
@@ -58,15 +58,11 @@ export const updateUserDetails = async (request: Request, user: UpdateUser) => {
   return res.json();
 };
 
-export const uploadResume = async (
-  request: Request,
-  data: AsyncIterable<Uint8Array>
-) => {
+export const uploadResume = async (request: Request, body: FormData) => {
   const accessToken = await requireAccessToken(request);
   const recaptchaToken = await getRecaptchaToken("uploadResume");
-
-  const formData = new FormData();
-  formData.append("resume", data.toString());
+  const formdata = new FormData();
+  formdata.append("resume", body.get("resume") as Blob, "random-uuid-1.pdf");
 
   const res = await fetch(
     API.BASE_URL +
@@ -74,16 +70,17 @@ export const uploadResume = async (
       API.ENDPOINTS.USERS.RESUME_UPLOAD(),
     {
       method: "POST",
-      body: formData,
+      body: formdata,
+      redirect: "follow",
+
       headers: {
-        Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "multipart/form-data",
+        "Authorization": `Bearer ${accessToken}`,
         "X-Recaptcha-Token": recaptchaToken,
       },
-    }
+    },
   );
-
-  return res.json();
+  const data = await res.json();
+  return data;
 };
 
 export const getNotifications = async (request: Request) => {
@@ -96,10 +93,10 @@ export const getNotifications = async (request: Request) => {
       API.ENDPOINTS.USERS.NOTIFICATIONS(),
     {
       headers: {
-        Authorization: `Bearer ${accessToken}`,
+        "Authorization": `Bearer ${accessToken}`,
         "X-Recaptcha-Token": recaptchaToken,
       },
-    }
+    },
   );
 
   return res.json();
@@ -115,10 +112,10 @@ export const getApplications = async (request: Request) => {
       API.ENDPOINTS.USERS.APPLICATIONS(),
     {
       headers: {
-        Authorization: `Bearer ${accessToken}`,
+        "Authorization": `Bearer ${accessToken}`,
         "X-Recaptcha-Token": recaptchaToken,
       },
-    }
+    },
   );
 
   return res.json();
@@ -134,10 +131,10 @@ export const getUserActivity = async (request: Request) => {
       API.ENDPOINTS.USERS.ACTIVITY(),
     {
       headers: {
-        Authorization: `Bearer ${accessToken}`,
+        "Authorization": `Bearer ${accessToken}`,
         "X-Recaptcha-Token": recaptchaToken,
       },
-    }
+    },
   );
 
   return res.json();
@@ -158,8 +155,8 @@ export const getAccessTokenFromCode = async (request: Request) => {
       method: "POST",
       headers: {
         "X-Recaptcha-Token": recaptchaToken,
-      }
-    }
+      },
+    },
   );
 
   return res.json();
@@ -169,7 +166,7 @@ export const getAccessTokenFromRefreshToken = async (refreshToken: string) => {
   const res = await fetch(
     API.BASE_URL +
       API.ENDPOINTS.AUTH.BASE_URL() +
-      API.ENDPOINTS.AUTH.REFRESH_TOKEN(refreshToken)
+      API.ENDPOINTS.AUTH.REFRESH_TOKEN(refreshToken),
   );
 
   return res.json();
