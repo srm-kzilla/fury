@@ -1,29 +1,12 @@
-import { useState } from "react";
-import TaskList from "./TaskList";
-import { BiPlus } from "react-icons/bi";
-import classNames from "classnames";
-import { v4 as uuid } from "uuid";
 import { Assets } from "~/constants";
-import type { ProjectTile, TaskType } from "./ProjectTiles";
+import type { Project } from "./ProjectTiles";
 import Markdown from "markdown-to-jsx";
 
 interface Props {
-  activeProject: ProjectTile | undefined;
-  toggleTaskChecked: (taskId: string) => void;
-  addTask: (task: TaskType) => void;
-  deleteTask: (taskId: string) => void;
-  clickDisabled: boolean;
+  activeProject: Project | undefined;
 }
 
 const Task = (props: Props) => {
-  const [addItem, setAddItem] = useState<TaskType>({
-    id: "",
-    title: "",
-    section: "bonus",
-    done: true,
-    isDeletable: true,
-  });
-
   return (
     <div className="kz-task-project">
       {!props.activeProject && (
@@ -38,10 +21,6 @@ const Task = (props: Props) => {
             <div className="kz-project-title">
               <div>
                 <h2>{props.activeProject?.title}</h2>
-                <span>
-                  {props.activeProject.track &&
-                    props.activeProject.track.split("-").join(" ")}
-                </span>
               </div>
               <h5>
                 <Markdown options={{ forceBlock: true }}>
@@ -53,24 +32,20 @@ const Task = (props: Props) => {
               <div className="kz-task-title">
                 <h4>Suggested Tasks</h4>
               </div>
-              <div
-                className={classNames("kz-task-list", {
-                  clickDisabled: props.clickDisabled,
-                })}
-              >
+              <div className="kz-task-list">
                 {props.activeProject?.tasks
                   .filter(
                     (task: any) => task.section.toLowerCase() === "suggested"
                   )
                   .map((task: any) => {
                     return (
-                      <TaskList
-                        key={task.id}
-                        projectTask={task}
-                        toggleTaskChecked={props.toggleTaskChecked}
-                        deleteTask={props.deleteTask}
-                        clickDisabled={props.clickDisabled}
-                      />
+                      <div className="description">
+                        <h5>
+                          <Markdown>
+                            {props.activeProject?.title || ""}
+                          </Markdown>
+                        </h5>
+                      </div>
                     );
                   })}
               </div>
@@ -79,24 +54,12 @@ const Task = (props: Props) => {
               <div className="kz-task-title">
                 <h4>Bonus Tasks</h4>
               </div>
-              <div
-                className={classNames("kz-task-list", {
-                  clickDisabled: props.clickDisabled,
-                })}
-              >
+              <div className="kz-task-list">
                 {props.activeProject?.tasks
                   .filter((task: any) => task.section.toLowerCase() === "bonus")
-                  .map((task: any) => {
-                    return (
-                      <TaskList
-                        key={task.id}
-                        projectTask={task}
-                        toggleTaskChecked={props.toggleTaskChecked}
-                        deleteTask={props.deleteTask}
-                        clickDisabled={props.clickDisabled}
-                      />
-                    );
-                  })}
+                  .map((task: any) => (
+                    <Markdown>{props.activeProject?.title || ""}</Markdown>
+                  ))}
               </div>
             </div>
             {props.activeProject?.additionalNotes && (
@@ -114,44 +77,6 @@ const Task = (props: Props) => {
               </div>
             )}
           </div>
-          {!props.clickDisabled && (
-            <div className="kz-add-task">
-              {/* <div
-                className={classNames("check-icon", {
-                  active: addItem.title.length > 0,
-                })}
-              >
-                <MdCheck />
-              </div> */}
-              <button
-                onClick={() => {
-                  props.addTask({ ...addItem, id: uuid() });
-                  setAddItem({ ...addItem, title: "" });
-                }}
-                disabled={addItem.title.length > 0 ? false : true}
-              >
-                <BiPlus />
-              </button>
-
-              <input
-                type="text"
-                placeholder="Add task"
-                value={addItem.title}
-                onChange={(e) => {
-                  setAddItem({ ...addItem, title: e.target.value });
-                }}
-                onKeyPress={(e) => {
-                  if (
-                    (e.key === "Enter" || e.key === "Return") &&
-                    addItem.title.length > 0
-                  ) {
-                    props.addTask({ ...addItem, id: uuid() });
-                    setAddItem({ ...addItem, title: "" });
-                  }
-                }}
-              />
-            </div>
-          )}
         </div>
       )}
     </div>

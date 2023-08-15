@@ -12,7 +12,6 @@ export { default as Project } from "./Project";
 export { default as ProjectTiles } from "./ProjectTiles";
 export { default as Sidebar } from "./Sidebar";
 export { default as Task } from "./Task";
-export { default as TaskList } from "./TaskList";
 export { default as TeamSvg } from "./TeamSvg";
 export { default as Tile } from "./Tile";
 
@@ -28,5 +27,4 @@ export { links as notificationLinks } from "./Notification";
 export { links as projectLinks } from "./Project";
 export { links as projectTilesLinks } from "./ProjectTiles";
 export { links as sidebarLinks } from "./Sidebar";
-export { links as taskListLinks } from "./TaskList";
 export { links as teamSvgLinks } from "./TeamSvg";

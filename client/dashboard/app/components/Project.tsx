@@ -40,10 +40,6 @@ const Project = () => {
                 {currentProject.tasks && (
                   <Task
                     activeProject={currentProject}
-                    toggleTaskChecked={() => {}}
-                    addTask={() => {}}
-                    deleteTask={() => {}}
-                    clickDisabled={true}
                   />
                 )}
               </div>
