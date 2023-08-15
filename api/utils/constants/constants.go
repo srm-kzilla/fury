@@ -46,4 +46,4 @@ var Questions = map[string]map[int]string{
 	},
 }
 
-var MaintainerEmails = [3]string{"sk0223@srmist.edu.in", "mm5481@srmist.edu.in", "ar8930@srmist.edu.in"}
+var MaintainerEmails = [6]string{"sk0223@srmist.edu.in", "mm5481@srmist.edu.in", "ar8930@srmist.edu.in", "nn6144@srmist.edu.in","va1221@srmist.edu.in","uv8428@srmist.edu.in"}
