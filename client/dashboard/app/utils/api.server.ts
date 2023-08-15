@@ -75,7 +75,7 @@ export const getNotifications = async (request: Request) => {
   return res.json();
 };
 
-export const getApplications = async (request: Request) => {
+export const getApplications = async (request: Request): Promise<{ applications: Application[] }> => {
   const accessToken = await requireAccessToken(request);
 
   const res = await fetch(
@@ -188,6 +188,16 @@ export const submitApplication = async (request: Request, domain: string) => {
 
   return res.json();
 };
+
+export const getDraftApplication = async (request: Request) => {
+  const { applications } = await getApplications(request);
+
+  const draftApplication = applications.find(application => application.status === "draft");
+
+  if (!draftApplication) return null;
+
+  return draftApplication;
+}
 
 export const deleteDraftApplication = async (
   request: Request,

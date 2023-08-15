@@ -1,6 +1,9 @@
 import { createCookieSessionStorage, redirect } from "@remix-run/node";
 import getEnv from "~/utils/env";
-import { getAccessTokenFromRefreshToken } from "./api.server";
+import {
+  getAccessTokenFromRefreshToken,
+  getDraftApplication,
+} from "./api.server";
 
 const env = getEnv();
 const sessionSecret = env.SESSION_SECRET;
@@ -68,7 +71,6 @@ export async function refreshAccessToken(request: Request) {
   await createUserSession(access_token, refresh_token, expires_in, request.url);
 }
 
-
 export async function requireAccessToken(request: Request) {
   const accessToken = await getAccessToken(request);
 
@@ -90,11 +92,19 @@ export async function logout(request: Request) {
 
 export async function createFormSession(request: Request) {
   const session = await getUserSession(request);
+  const draftApplication = await getDraftApplication(request);
 
-  session.set("formSession", {
-    domain: null,
-    answers: [],
-  });
+  if (draftApplication) {
+    session.set("formSession", {
+      domain: draftApplication.domain,
+      answers: draftApplication.questions,
+    });
+  } else {
+    session.set("formSession", {
+      domain: null,
+      answers: [],
+    });
+  }
 
   return redirect("/applications/domain-select", {
     headers: {
