@@ -24,7 +24,6 @@ export const loader: LoaderFunction = async ({ request, params }) => {
   const { domain } = params;
   if (!domain) return redirect("/");
 
-  console.log("[domain] ", domain);
   const { applications } = await getApplications(request);
 
   const application = applications.find(
