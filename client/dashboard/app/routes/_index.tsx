@@ -52,7 +52,6 @@ export const loader: LoaderFunction = async ({ request }) => {
 const Dashboard = () => {
   const { user, notifications, applications, activity } = useLoaderData();
   const navigate = useNavigate();
-  console.log(applications);
   const env = getEnv();
   const endTime = parseInt(env.APPLICATION_DEADLINE!);
 
