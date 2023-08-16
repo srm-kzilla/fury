@@ -29,7 +29,7 @@ div.kz-explore {
       display:flex;
       flex-wrap: wrap;
       gap: 1rem;
-      width: 90vw;
+      width: 75vw;
     }
 
     h2 {
@@ -58,6 +58,10 @@ div.kz-explore {
   div.kz-explore {
     padding-left: 4rem;
     margin: 1rem;
+
+    .glance{
+      visibility: hidden;
+    }
 
     .container{
       display: flex;

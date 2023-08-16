@@ -6,6 +6,7 @@ import {
   sidebarLinks,
   FooterCompact,
   Sidebar,
+  Glance,
 } from "~/components";
 import {
   BiAward,
@@ -288,6 +289,9 @@ const Explore = () => {
                 </div>
               </div>
             </div>
+          </div>
+          <div className="glance">
+            <Glance user={user} activity={activity} />
           </div>
         </div>
       </div>
