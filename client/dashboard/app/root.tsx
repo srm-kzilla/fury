@@ -64,11 +64,15 @@ export const loader = () => {
       LANDING_PAGE_URL: env.LANDING_PAGE_URL,
       RECAPTCHA_SITE_KEY: env.RECAPTCHA_SITE_KEY,
     },
-  }
+  };
 
   let key: keyof typeof envSec.env;
   for (key in envSec.env) {
-    if (envSec.env[key] === undefined || envSec.env[key] === "" || envSec.env[key] === null) {
+    if (
+      envSec.env[key] === undefined ||
+      envSec.env[key] === "" ||
+      envSec.env[key] === null
+    ) {
       throw new Error(`Something went wrong. If presists contact us`);
     }
   }
@@ -247,12 +251,13 @@ export function ErrorBoundary() {
         <NotFound code={error.status} />
       </ErrorLayout>
     );
-  }
-
-  else if (error instanceof Error) {
+  } else if (error instanceof Error) {
     return (
       <ErrorLayout>
-        <NotFound customError={error.message}/>
+        <NotFound
+          customError={error.message}
+          link={"https://www.instagram.com/srmkzilla/"}
+        />
       </ErrorLayout>
     );
   }

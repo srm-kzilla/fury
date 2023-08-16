@@ -13,11 +13,12 @@ type NotFoundProps = {
   code?: number;
   description?: string;
   customError?: string;
+  link?: string;
   title?: string;
   image?: any;
 };
 
-const NotFound = ({ code, customError }: NotFoundProps) => {
+const NotFound = ({ code, customError, link }: NotFoundProps) => {
   const errors = [
     {
       status: 404,
@@ -52,7 +53,11 @@ const NotFound = ({ code, customError }: NotFoundProps) => {
       <div>
         <img src="/not_found.svg" alt="not found" />
         <div>
-          <h1>{customError ? customError : error?.description}</h1>
+          <h1>
+            <a href={link} target="blank">
+              {customError ? customError : error?.description}
+            </a>
+          </h1>
           <h5>
             <Link to="/">
               Take me back to <span>Home</span>.
