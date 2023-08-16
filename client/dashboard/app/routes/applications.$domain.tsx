@@ -3,10 +3,11 @@ import applicationStyles from "~/styles/pages/Application.css";
 import paperPlaneLottie from "~/assets/lotties/paperplane.json";
 import tickLottie from "~/assets/lotties/tick.json";
 import { Sidebar, sidebarLinks } from "~/components";
-import { useLoaderData, useNavigate } from "@remix-run/react";
+import { Link, useLoaderData, useNavigate } from "@remix-run/react";
 import type { LinksFunction, LoaderFunction } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
 import { getApplications } from "~/utils/api.server";
+import { BiArrowFromRight } from "react-icons/bi";
 
 export const links: LinksFunction = () => [
   ...sidebarLinks(),
@@ -45,6 +46,14 @@ export default function Application() {
     <div className="wrapper">
       <div>
         <Sidebar />
+      </div>
+      <div>
+        <Link to={"/"}>
+          <div className="go-back">
+            <BiArrowFromRight className="icon" />
+            <h2>Home</h2>
+          </div>
+        </Link>
       </div>
       <div className="main">
         {status === "accepted" ? (
