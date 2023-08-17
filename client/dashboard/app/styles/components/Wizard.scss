@@ -25,6 +25,13 @@ div.kz-wizard {
     flex-direction: column;
   }
 
+  .kz-form-submit-info {
+    color: $primary;
+    font-size: 0.90rem;
+    text-align: right;
+    margin: 0 1rem 0.5rem;
+  }
+
   .kz-form-footer {
     display: flex;
     align-items: center;
