@@ -21,7 +21,7 @@ func CreateApplication(c *fiber.Ctx) error {
 	c.BodyParser(&body)
 	application := body
 
-	userId := c.Locals("userId").(primitive.ObjectID)
+	userId := c.Locals("userData").(map[string]interface{})["userId"].(primitive.ObjectID)
 	if userId == primitive.NilObjectID {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": "User ObjectID is missing",
@@ -88,7 +88,7 @@ func UpdateDraft(c *fiber.Ctx) error {
 	var check models.Application
 	c.BodyParser(&application)
 
-	userId := c.Locals("userId").(primitive.ObjectID)
+	userId := c.Locals("userData").(map[string]interface{})["userId"].(primitive.ObjectID)
 	if userId == primitive.NilObjectID {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": "User ObjectID is missing",
@@ -137,7 +137,7 @@ func UpdateDraft(c *fiber.Ctx) error {
 }
 
 func DeleteDraftApplication(c *fiber.Ctx) error {
-	userId := c.Locals("userId").(primitive.ObjectID)
+	userId := c.Locals("userData").(map[string]interface{})["userId"].(primitive.ObjectID)
 	if userId == primitive.NilObjectID {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": "User ObjectID is missing",
@@ -191,7 +191,7 @@ func DeleteDraftApplication(c *fiber.Ctx) error {
 
 func SubmitApplication(c *fiber.Ctx) error {
 	var user models.User
-	userId := c.Locals("userId").(primitive.ObjectID)
+	userId := c.Locals("userData").(map[string]interface{})["userId"].(primitive.ObjectID)
 	if userId == primitive.NilObjectID {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": "User ObjectID is missing",

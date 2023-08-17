@@ -49,7 +49,11 @@ func UserAuthenticate(c *fiber.Ctx) error {
 			"message": err.Error(),
 		})
 	}
-	c.Locals("userId", user.ID)
+	userData := map[string]interface{}{
+		"email":  user.Email,
+		"userId": user.ID,
+	}
+	c.Locals("userData", userData)
 	return c.Next()
 }
 

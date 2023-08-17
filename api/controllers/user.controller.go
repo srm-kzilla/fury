@@ -19,7 +19,7 @@ import (
 )
 
 func GetUser(c *fiber.Ctx) error {
-	userId := c.Locals("userId").(primitive.ObjectID)
+	userId := c.Locals("userData").(map[string]interface{})["userId"].(primitive.ObjectID)
 	if userId == primitive.NilObjectID {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": "User ObjectID is missing",
@@ -66,7 +66,7 @@ func UpdateUser(c *fiber.Ctx) error {
 	// 	})
 	// }
 
-	userId := c.Locals("userId").(primitive.ObjectID)
+	userId := c.Locals("userData").(map[string]interface{})["userId"].(primitive.ObjectID)
 	if userId == primitive.NilObjectID {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": "User ObjectID is missing",
@@ -123,7 +123,7 @@ func UploadResume(c *fiber.Ctx) error {
 			"message": err.Error(),
 		})
 	}
-	userId := c.Locals("userId").(primitive.ObjectID).Hex()
+	userId := c.Locals("userData").(map[string]interface{})["userId"].(primitive.ObjectID).Hex()
 	if userId == "" {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error":   "User ObjectID is missing",
@@ -199,7 +199,7 @@ func UploadResume(c *fiber.Ctx) error {
 }
 
 func GetNotifications(c *fiber.Ctx) error {
-	userId := c.Locals("userId").(primitive.ObjectID)
+	userId := c.Locals("userData").(map[string]interface{})["userId"].(primitive.ObjectID)
 	if userId == primitive.NilObjectID {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": "User ObjectID is missing",
@@ -231,7 +231,7 @@ func GetNotifications(c *fiber.Ctx) error {
 }
 
 func GetUserApplications(c *fiber.Ctx) error {
-	userId := c.Locals("userId").(primitive.ObjectID)
+	userId := c.Locals("userData").(map[string]interface{})["userId"].(primitive.ObjectID)
 	if userId == primitive.NilObjectID {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": "User ObjectID is missing",
@@ -272,7 +272,7 @@ func GetUserActivity(c *fiber.Ctx) error {
 		})
 	}
 
-	userId := c.Locals("userId").(primitive.ObjectID)
+	userId := c.Locals("userData").(map[string]interface{})["userId"].(primitive.ObjectID)
 
 	cursor, err := activityCollection.Find(context.Background(), bson.M{
 		"user_id": userId,
