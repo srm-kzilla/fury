@@ -90,7 +90,8 @@ export const questionsArray: Array<
     },
     {
       domain: "photography",
-      question: `If you are tasked with making a promo video for a product launch, what would be your thought process behind it? What are the details that would be taken into account for the video?`,
+      question:
+        "How passionate are you about photography/videography? Tell us about your strengths in this area and prior experience (if any).",
     },
     {
       domain: "content_writing",
@@ -142,7 +143,8 @@ export const questionsArray: Array<
     },
     {
       domain: "photography",
-      question: `If you are tasked with making a promo video for a product launch, what would be your thought process behind it? What are the details that would be taken into account for the video?`,
+      question:
+        "Which software do you use for editing images and videos? How proficient are you with these tools?",
     },
     {
       domain: "corporate",
@@ -162,7 +164,8 @@ export const questionsArray: Array<
     },
     {
       domain: "photography",
-      question: `If you are tasked with making a promo video for a product launch, what would be your thought process behind it? What are the details that would be taken into account for the video?`,
+      question:
+        "How, according to you, is event photography different from other forms of photography? What unique challenges and opportunities does event photography present?",
     },
     {
       domain: "content_writing",
@@ -194,7 +197,8 @@ export const questionsArray: Array<
     },
     {
       domain: "photography",
-      question: `If you are tasked with making a promo video for a product launch, what would be your thought process behind it? What are the details that would be taken into account for the video?`,
+      question:
+        "Which device do you use for photography/videography? What are the key features of your preferred equipment?",
     },
     {
       domain: "content_writing",
@@ -244,7 +248,8 @@ export const questionsArray: Array<
     },
     {
       domain: "photography",
-      question: `If you are tasked with making a promo video for a product launch, what would be your thought process behind it? What are the details that would be taken into account for the video?`,
+      question:
+        "Do you have any setup for capturing some of the most beautiful moments? This could include gear like DSLR, gimbal, drone, monopods, tripods, etc.",
     },
     {
       domain: "content_writing",
@@ -278,7 +283,8 @@ export const questionsArray: Array<
     },
     {
       domain: "photography",
-      question: `If you are tasked with making a promo video for a product launch, what would be your thought process behind it? What are the details that would be taken into account for the video?`,
+      question:
+        "Along with following your passion, would you like to contribute to events planning, ideations, and event management? How do you see your photography skills complementing event organization?",
     },
     {
       domain: "content_writing",
@@ -310,7 +316,8 @@ export const questionsArray: Array<
     },
     {
       domain: "photography",
-      question: `If you are tasked with making a promo video for a product launch, what would be your thought process behind it? What are the details that would be taken into account for the video?`,
+      question:
+        "Record a small campus tour reel that includes campus buildings, portraits, close-up shots, people, etc. You can add suitable music to enhance the experience. (Enter Google Drive link for the video)",
     },
     {
       domain: "content_writing",
@@ -353,7 +360,8 @@ export const questionsArray: Array<
     },
     {
       domain: "photography",
-      question: `If you are tasked with making a promo video for a product launch, what would be your thought process behind it? What are the details that would be taken into account for the video?`,
+      question:
+        "We would love to see some of your past work too! Please provide a link to your portfolio or a Google Drive link with public access to view your work.",
     },
     {
       domain: "content_writing",
