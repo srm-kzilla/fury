@@ -108,6 +108,24 @@ div.kz-project {
 
   div.kz-project-inner-flex {
     flex-basis: 50%;
+
+    .kz-button-container {
+      display: flex;
+      gap: 2rem;
+
+      button {
+        cursor: pointer;
+        border: none;
+        outline: none;
+        background-color: $primary;
+        color: #fff;
+        border-radius: 5px;
+        padding: 12px 25px;
+        font-family: "Caros", sans-serif;
+        font-weight: 500;
+        margin: 1rem 0;
+      }
+    }
   }
 
   div.kz-task-wrapper {

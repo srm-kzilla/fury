@@ -28,3 +28,5 @@ export { links as projectLinks } from "./Project";
 export { links as projectTilesLinks } from "./ProjectTiles";
 export { links as sidebarLinks } from "./Sidebar";
 export { links as teamSvgLinks } from "./TeamSvg";
+export { links as taskLinks } from "./Task";
+export { links as tileLinks } from "./Tile";

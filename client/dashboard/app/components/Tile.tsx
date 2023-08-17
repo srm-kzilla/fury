@@ -1,7 +1,15 @@
 import { useMemo } from "react";
-import type { Project } from "./ProjectTiles";
+import type { LinksFunction } from "@remix-run/node";
+import tileStyles from "~/styles/components/Tile.css";
 
 interface TileProps extends Project {}
+
+export const links: LinksFunction = () => [
+  {
+    rel: "stylesheet",
+    href: tileStyles,
+  },
+];
 
 const Tile = ({ title }: TileProps) => {
   const setRotation = () => {
@@ -16,9 +24,7 @@ const Tile = ({ title }: TileProps) => {
 
   return (
     <div className="kz-wrapper">
-      <div
-        className="kz-project-tile dark"
-      >
+      <div className="kz-project-tile dark">
         <h2>{title?.substring(0, 2)}</h2>
         <div className="kz-bg-shapes" style={rotationStyle}>
           <div className="kz-rectangle"></div>

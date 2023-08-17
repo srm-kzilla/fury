@@ -21,7 +21,7 @@ const API = {
     APPLICATION: {
       BASE_URL: () => "/application",
       DELETE_DRAFT: (domain: string) => `/${domain}`,
-      SUBMIT_APPLICATION: () => "/submit",
+      SUBMIT_APPLICATION: (domain: string) => `/submit/${domain}`
     },
     AUTH: {
       BASE_URL: () => "/auth",
@@ -173,12 +173,9 @@ export const submitApplication = async (request: Request, domain: string) => {
   const res = await fetch(
     API.BASE_URL +
       API.ENDPOINTS.APPLICATION.BASE_URL() +
-      API.ENDPOINTS.APPLICATION.SUBMIT_APPLICATION(),
+      API.ENDPOINTS.APPLICATION.SUBMIT_APPLICATION(domain),
     {
       method: "POST",
-      body: JSON.stringify({
-        domain,
-      }),
       headers: {
         Authorization: `Bearer ${accessToken}`,
         "Content-Type": "application/json",

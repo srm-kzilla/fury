@@ -1,30 +1,38 @@
 import { Assets } from "~/constants";
-import type { Project } from "./ProjectTiles";
+import taskStyles from "~/styles/components/Task.css";
 import Markdown from "markdown-to-jsx";
+import type { LinksFunction } from "@remix-run/node";
 
-interface Props {
+interface TaskProps {
   activeProject: Project | undefined;
 }
 
-const Task = (props: Props) => {
+export const links: LinksFunction = () => [
+  {
+    rel: "stylesheet",
+    href: taskStyles,
+  },
+];
+
+const Task = ({ activeProject }: TaskProps) => {
   return (
     <div className="kz-task-project">
-      {!props.activeProject && (
+      {!activeProject && (
         <div className="not-found">
           <img src={Assets.EMPTY} alt="No Elements in pool" />
           <p>Please select a project to show its task list</p>
         </div>
       )}
-      {props.activeProject && (
+      {activeProject && (
         <div style={{ height: "100%" }}>
           <div className="kz-task-project-wrapper">
             <div className="kz-project-title">
               <div>
-                <h2>{props.activeProject?.title}</h2>
+                <h2>{activeProject?.title}</h2>
               </div>
               <h5>
                 <Markdown options={{ forceBlock: true }}>
-                  {props.activeProject?.description || ""}
+                  {activeProject.description || ""}
                 </Markdown>
               </h5>
             </div>
@@ -33,21 +41,13 @@ const Task = (props: Props) => {
                 <h4>Suggested Tasks</h4>
               </div>
               <div className="kz-task-list">
-                {props.activeProject?.tasks
-                  .filter(
-                    (task: any) => task.section.toLowerCase() === "suggested"
-                  )
-                  .map((task: any) => {
-                    return (
-                      <div className="description">
-                        <h5>
-                          <Markdown>
-                            {props.activeProject?.title || ""}
-                          </Markdown>
-                        </h5>
-                      </div>
-                    );
-                  })}
+                {activeProject?.tasks
+                  .filter(({ section }: TaskType) => section === "suggested")
+                  .map(({ id, title }: TaskType) => (
+                    <Markdown options={{ forceBlock: true }} key={id}>
+                      {title}
+                    </Markdown>
+                  ))}
               </div>
             </div>
             <div className="kz-task">
@@ -55,14 +55,16 @@ const Task = (props: Props) => {
                 <h4>Bonus Tasks</h4>
               </div>
               <div className="kz-task-list">
-                {props.activeProject?.tasks
-                  .filter((task: any) => task.section.toLowerCase() === "bonus")
-                  .map((task: any) => (
-                    <Markdown>{props.activeProject?.title || ""}</Markdown>
+                {activeProject.tasks
+                  .filter(({ section }: TaskType) => section === "bonus")
+                  .map(({ id, title }: TaskType) => (
+                    <Markdown options={{ forceBlock: true }} key={id}>
+                      {title}
+                    </Markdown>
                   ))}
               </div>
             </div>
-            {props.activeProject?.additionalNotes && (
+            {activeProject.additionalNotes && (
               <div className="kz-task">
                 <div className="kz-project-title">
                   <div className="kz-task-title">
@@ -70,7 +72,7 @@ const Task = (props: Props) => {
                   </div>
                   <h5>
                     <Markdown options={{ forceBlock: true }}>
-                      {props.activeProject?.additionalNotes || ""}
+                      {activeProject.additionalNotes}
                     </Markdown>
                   </h5>
                 </div>

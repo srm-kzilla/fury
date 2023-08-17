@@ -83,7 +83,7 @@ export const loader: LoaderFunction = async ({ request }) => {
     return redirect("/applications/domain-select");
   }
 
-  if (formSession.domain === "technicalp") return redirect("/applications/technicalp");
+  if (formSession.domain === "technicalp") return redirect("/applications/technical-project");
 
   const url = new URL(request.url);
   const questionNumber = url.searchParams.get("question") || "1";

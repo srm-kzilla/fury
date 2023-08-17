@@ -58,3 +58,18 @@ type FormSession = {
   domain: string;
   answers: Answer[];
 };
+
+type TaskType = {
+  id: string;
+  title: string;
+  section: string;
+}
+
+type Project = {
+  slug: string;
+  title: string;
+  description: string;
+  domain: string;
+  tasks: TaskType[];
+  additionalNotes: string;
+}

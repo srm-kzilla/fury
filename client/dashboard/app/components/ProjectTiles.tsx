@@ -1,74 +1,61 @@
-import {useEffect, useState} from "react";
-import { Task, Tile } from "~/components";
-import type { LinksFunction } from "@remix-run/node";
+import { Task, taskLinks, Tile, tileLinks } from "~/components";
 import projectTilesStyles from "~/styles/pages/ProjectTiles.css";
-import { projects } from "~/utils/projects";
-import tileStyles from "~/styles/components/Tile.css";
-import taskStyles from "~/styles/components/Task.css";
+import type { LinksFunction } from "@remix-run/node";
+import { Link } from "@remix-run/react";
+import { BiHomeAlt } from "react-icons/bi";
 
 export const links: LinksFunction = () => [
+  ...tileLinks(),
+  ...taskLinks(),
   {
     rel: "stylesheet",
     href: projectTilesStyles,
   },
-  {
-    rel: "stylesheet",
-    href: tileStyles,
-  },
-  {
-    rel: "stylesheet",
-    href: taskStyles,
-  },
 ];
 
-export interface Task {
-  id: string;
-  title: string;
-  section: string;
+interface ProjectTilesProps {
+  projects: Project[];
+  activeProject?: Project;
+  setActiveProject: (project: Project) => void;
 }
 
-export interface Project {
-  slug: string;
-  title: string;
-  description?: string;
-  domain: string;
-  tasks: Task[];
-  additionalNotes: string;
-}
-
-const ProjectTiles = () => {
-  const [activeProject, setActiveProject] = useState<Project>();
-
-  useEffect(() => {
-    console.log("[activeProject]", activeProject)
-  }, [activeProject]);
-
+const ProjectTiles = ({
+  projects,
+  activeProject,
+  setActiveProject,
+}: ProjectTilesProps) => {
   return (
     <div className="kz-project">
-      <div>
-        <div className="kz-project-flex">
-          <div className="kz-project-inner-flex">
-            <div className="kz-user">
-              <h2>Pick a project to continue</h2>
-            </div>
-            <div className="kz-project-tiles">
-              <div>
-                <div className="kz-project-grid">
-                  {projects.map((tile) => {
-                    return (
-                      <div onClick={() => setActiveProject(tile)}>
-                        <Tile key={tile.slug} {...tile} />
-                      </div>
-                    );
-                  })}
+      <div className="kz-project-flex">
+        <div className="kz-project-inner-flex">
+          <Link to="/">
+            <BiHomeAlt size={36} className="home-icon" title="Home" />
+          </Link>
+          <div className="kz-user">
+            <h2>Pick a project to continue</h2>
+          </div>
+          <div className="kz-project-tiles">
+            <div className="kz-project-grid">
+              {projects.map((tile) => (
+                <div key={tile.slug} onClick={() => setActiveProject(tile)}>
+                  <Tile key={tile.slug} {...tile} />
                 </div>
-              </div>
+              ))}
             </div>
           </div>
-          <div className="kz-project-inner-flex">
-            <div className="kz-task-wrapper">
-              <Task activeProject={activeProject} />
-            </div>
+          <input hidden name="slug" value={activeProject?.slug} />
+          <div className="kz-button-container">
+            <button name="_action" value="show" disabled={!activeProject}>
+              Make Submission
+            </button>
+            <button name="_action" value="delete" disabled={!activeProject}>
+              Delete Draft
+            </button>
+          </div>
+        </div>
+        <div className="kz-project-inner-flex">
+          <div className="kz-task-wrapper">
+            <Task activeProject={activeProject} />
           </div>
         </div>
       </div>

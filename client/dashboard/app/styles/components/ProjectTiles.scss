@@ -101,6 +101,7 @@ div.kz-project {
 
   div.kz-project-flex {
     display: flex;
+
     @media screen and (max-width: 768px) {
       flex-direction: column;
     }
