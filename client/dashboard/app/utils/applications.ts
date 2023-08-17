@@ -6,6 +6,7 @@ export enum Domain {
   Content_Writing = "content_writing",
   Events = "events",
   Corporate = "corporate",
+  Photography = "photography",
 }
 
 export function getDomainName(domain: string) {
@@ -17,7 +18,9 @@ export function getDomainName(domain: string) {
     case Domain.VFX:
       return "VFX";
     case Domain.GFX:
-      return "GFX or Photography";
+      return "GFX";
+    case Domain.Photography:
+      return "Photography"
     case Domain.Content_Writing:
       return "Content Writing";
     case Domain.Events:
@@ -45,8 +48,14 @@ export const domains = [
   {
     key: "gfx",
     value: "gfx",
-    text: "GFX or Photography",
+    text: "GFX",
     description: "Designs the pixels with purpose with an eye for creativity",
+  },
+  {
+    key: "photography",
+    value: "photography",
+    text: "Photography",
+    description: "Freeze moments in time, and unveil the world's beauty.",
   },
   {
     key: "events",
@@ -75,7 +84,11 @@ export const questionsArray: Array<{
   [
     {
       domain: "technical",
-      question: "What does the term programming mean to you?",
+      question: "What does programming mean to you?",
+    },
+    {
+      domain: "photography",
+      question: `If you are tasked with making a promo video for a product launch, what would be your thought process behind it? What are the details that would be taken into account for the video?`,
     },
     {
       domain: "content_writing",
@@ -91,7 +104,7 @@ export const questionsArray: Array<{
     },
     {
       domain: "corporate",
-      question: `What according to you is the work of the corporate domain & how do you think you would be able to contribute to the club and this domain?`,
+      question: `How do you think you would be able to contribute to the club and this domain and how do you think the corporate domain works within a club?`,
     },
     {
       domain: "events",
@@ -102,7 +115,7 @@ export const questionsArray: Array<{
     {
       domain: "technical",
       question:
-        "What is the latest technical stuff that you learnt? Tell us in depth about it and how would you explain it to a five year old kid.",
+        "What new technology interests you the most, and why?",
     },
     {
       domain: "content_writing",
@@ -126,8 +139,12 @@ export const questionsArray: Array<{
       question: `If you are tasked with making a promo video for a product launch, what would be your thought process behind it? What are the details that would be taken into account for the video?`,
     },
     {
+      domain: "photography",
+      question: `If you are tasked with making a promo video for a product launch, what would be your thought process behind it? What are the details that would be taken into account for the video?`,
+    },
+    {
       domain: "corporate",
-      question: `If you have any, please mention any prior experience related to this domain’s scope.`,
+      question: `What according to you makes you stand out and deserving to be on the team?`,
     },
     {
       domain: "events",
@@ -138,7 +155,11 @@ export const questionsArray: Array<{
     {
       domain: "technical",
       question:
-        "Explain Object Oriented Programming. Do you prefer using OOP, why or why not?",
+        "What is a tree (data structure ofc :p) and how would you explain it to a 5-year-old kid?",
+    },
+    {
+      domain: "photography",
+      question: `If you are tasked with making a promo video for a product launch, what would be your thought process behind it? What are the details that would be taken into account for the video?`,
     },
     {
       domain: "content_writing",
@@ -154,7 +175,7 @@ export const questionsArray: Array<{
     },
     {
       domain: "corporate",
-      question: `What is sponsorship according to you?`,
+      question: `What according to you is the difference between sponsorship, marketing and advertising?`,
     },
     {
       domain: "events",
@@ -164,7 +185,11 @@ export const questionsArray: Array<{
   [
     {
       domain: "technical",
-      question: "Which is your favourite programming language and why?",
+      question: "Is it still valuable to learn to code in the age of generative AI and no code tools?",
+    },
+    {
+      domain: "photography",
+      question: `If you are tasked with making a promo video for a product launch, what would be your thought process behind it? What are the details that would be taken into account for the video?`,
     },
     {
       domain: "content_writing",
@@ -198,7 +223,7 @@ export const questionsArray: Array<{
     },
     {
       domain: "corporate",
-      question: `Rate your communication skills out of 10 and give your reasoning.`,
+      question: `Rate your communication and collaboration skills out of 10 and state why?`,
     },
     {
       domain: "events",
@@ -210,7 +235,11 @@ export const questionsArray: Array<{
     {
       domain: "technical",
       question:
-        "Can you differentiate between primitive and non-primivite data types? Give examples.",
+        "How do you explain complex technical concepts to a person from a non-technical background? Take an example and explain it to us!",
+    },
+    {
+      domain: "photography",
+      question: `If you are tasked with making a promo video for a product launch, what would be your thought process behind it? What are the details that would be taken into account for the video?`,
     },
     {
       domain: "content_writing",
@@ -228,7 +257,7 @@ export const questionsArray: Array<{
     },
     {
       domain: "corporate",
-      question: `After previously agreeing to a sponsorship, a sponsor backs out of an event at the last minute. How would you handle this situation?`,
+      question: `After mutually agreeing to a sponsorship for an upcoming event, a sponsor backs out at the last minute. How would you as a member of the corporate domain handle this situation?`,
     },
     {
       domain: "events",
@@ -239,7 +268,11 @@ export const questionsArray: Array<{
     {
       domain: "technical",
       question:
-        "What are the technologies (in any field of your choice) you are interested to work with? Write as much as you know about them, their future potential and how you would explain that technology to a 5 year old kid.",
+        "Are you currently working on any projects? if yes, what is the tech stack, and why did you choose that particular tech stack if not, what technologies are you looking forward to learning in the near future? (If the project is open source, give us the link! not mandatory but has brownie points)",
+    },
+    {
+      domain: "photography",
+      question: `If you are tasked with making a promo video for a product launch, what would be your thought process behind it? What are the details that would be taken into account for the video?`,
     },
     {
       domain: "content_writing",
@@ -255,7 +288,7 @@ export const questionsArray: Array<{
     },
     {
       domain: "corporate",
-      question: `How familiar are you with current trends on social media and how do you stay updated?`,
+      question: `How would you, without raising more conflict, resolve a dispute between two members of the club?`,
     },
     {
       domain: "events",
@@ -269,7 +302,11 @@ export const questionsArray: Array<{
     {
       domain: "technical",
       question:
-        "What is the best feature that you liked in any application or any project made by someone else? Also write how would you improve upon that.",
+        "What motivated you to join our technical club? How do you think you can contribute to the club?",
+    },
+    {
+      domain: "photography",
+      question: `If you are tasked with making a promo video for a product launch, what would be your thought process behind it? What are the details that would be taken into account for the video?`,
     },
     {
       domain: "content_writing",
@@ -296,7 +333,7 @@ export const questionsArray: Array<{
     },
     {
       domain: "corporate",
-      question: `Scenario based question: A post introducing a workshop gets user engagement on Instagram, but not on Twitter. What according to you could have been the problem? What would you do to overcome such a scenario?`,
+      question: `Scenario based question: You have been told to send out mails to potential sponsors for your upcoming event and the only information you have is the date and the agenda of the event. How would you draft a mail to the potential sponsor convincing them to sponsor our event despite only having minimal details?(Draft a mail below)`,
     },
     {
       domain: "events",
@@ -307,7 +344,11 @@ export const questionsArray: Array<{
     {
       domain: "technical",
       question:
-        "Do you have any projects/works to show us? If so, describe what you did and attach a GitHub or drive link to that project(Not mandatory but has brownie points).",
+        "How do you manage and learn from failures and setbacks in your work?",
+    },
+    {
+      domain: "photography",
+      question: `If you are tasked with making a promo video for a product launch, what would be your thought process behind it? What are the details that would be taken into account for the video?`,
     },
     {
       domain: "content_writing",
@@ -382,7 +423,7 @@ export const questionsArray: Array<{
     },
     {
       domain: "corporate",
-      question: `How would you solve a conflict of interest between you and your colleagues (be it the same domain or a different one)?`,
+      question: `If you have any prior experiences in this domain, please mention them below.`,
     },
     {
       domain: "events",
