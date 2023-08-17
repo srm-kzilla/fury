@@ -22,8 +22,9 @@ div.kz-dashboard {
     padding: 2rem;
 
     .application-wrapper {
+      width: 90%;
       display: flex;
-      gap: 20px;
+      gap: 10px;
     }
 
     .application-wrapper > div {
@@ -294,7 +295,7 @@ div.kz-dashboard {
 
     .notif-row {
       width: 90%;
-      padding: 1rem;
+      padding: 0;
       display: flex;
       gap: 10px;
       align-items: center;
@@ -378,9 +379,10 @@ div.kz-dashboard {
         }
 
         .application-wrapper {
+          width: 100%;
           display: flex;
           flex-direction: column;
-          gap: 20px;
+          gap: 10px;
         }
 
         .application-wrapper > div {
@@ -394,7 +396,7 @@ div.kz-dashboard {
 
         .notif-row {
           width: 100%;
-          padding: 1rem;
+          padding: 0;
           display: flex;
           flex-direction: column;
           gap: 10px;
