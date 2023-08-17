@@ -14,7 +14,6 @@ import { useEffect, useState } from "react";
 import classNames from "classnames";
 import rootStyles from "~/styles/index.css";
 import appStyles from "~/styles/App.css";
-import Store from "~/components/Wizard/Store";
 import {
   Headbar,
   NotFound,
@@ -86,9 +85,7 @@ function App() {
       <Layout>
         <Headbar />
         <div className="App">
-          <Store>
-            <Outlet />
-          </Store>
+          <Outlet />
           <Cookie />
         </div>
       </Layout>
