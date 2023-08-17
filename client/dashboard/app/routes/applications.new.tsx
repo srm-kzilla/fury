@@ -322,6 +322,12 @@ const Application = () => {
               <sub>{actionData?.error}</sub>
             </div>
           </div>
+          {parseInt(questionNumber) === questionsArray.length && (
+            <div className="kz-form-submit-info">
+              <p>Once submitted, the application cannot be updated</p>
+              <p>You can only apply for a maximum of 2 domains</p>
+            </div>
+          )}
           <div className="kz-form-footer">
             <div className="center footer-item-1">
               {parseInt(questionNumber)} of {questionsArray.length}

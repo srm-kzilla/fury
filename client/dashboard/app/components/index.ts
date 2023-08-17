@@ -12,6 +12,7 @@ export { default as Sidebar } from "./Sidebar";
 export { default as Task } from "./Task";
 export { default as TeamSvg } from "./TeamSvg";
 export { default as Tile } from "./Tile";
+
 export { links as applicationTileLinks } from "./ApplicationTile";
 export { links as footerCompactLinks } from "./FooterCompact";
 export { links as glanceLinks } from "./Glance";
