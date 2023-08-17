@@ -10,16 +10,8 @@ import (
 	"github.com/charmbracelet/log"
 )
 
-type SESInput struct {
-	TemplateName  string      `json:"templateName" bson:"templateName" validate:"required"`
-	Subject       string      `json:"subject" bson:"subject" validate:"required"`
-	RecieverEmail string      `json:"recieverEmail" bson:"recieverEmail" validate:"required"`
-	SenderEmail   string      `json:"senderEmail" bson:"senderEmail" validate:"required"`
-	EmbedData     interface{} `json:"embedData" bson:"embedData" validate:"required"`
-}
-
-type EmbedData struct {
-	Name string `json:"name" bson:"name" validate:"required"`
+var TEMPLATES = TemplateNames{
+	EmailTemplate: "emailTemplate.html",
 }
 
 func getHTMLTemplate(templateName string, embedData interface{}) string {
@@ -34,7 +26,7 @@ func getHTMLTemplate(templateName string, embedData interface{}) string {
 
 	error := htmlTemplate.ExecuteTemplate(&templateBuffer, "email.html", embedData)
 	if error != nil {
-		log.Error("Error: ",error)
+		log.Error("Error: ", error)
 		return ""
 	}
 	return templateBuffer.String()
