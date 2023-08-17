@@ -4,6 +4,10 @@ import (
 	"os"
 	"time"
 
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/credentials"
+	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/ses"
 	"github.com/charmbracelet/log"
 	"github.com/joho/godotenv"
 	"golang.org/x/oauth2"
@@ -12,6 +16,13 @@ import (
 
 var AppConfig oauth2.Config
 var StartTime time.Time
+var Service *ses.SES
+
+var (
+	AwsRegion          = os.Getenv("AWS_REGION")
+	AwsAccessKeyId     = os.Getenv("AWS_KEY")
+	AwsSecretAccessKey = os.Getenv("AWS_SECRET")
+)
 
 func init() {
 	StartTime = time.Now()
@@ -31,4 +42,13 @@ func init() {
 			"https://www.googleapis.com/auth/userinfo.profile",
 		},
 	}
+	sess, err := session.NewSession(&aws.Config{
+		Region:      aws.String(AwsRegion),
+		Credentials: credentials.NewStaticCredentials(AwsAccessKeyId, AwsSecretAccessKey, ""),
+	})
+	if err != nil {
+		log.Error("Error: ", err)
+		os.Exit(1)
+	}
+	Service = ses.New(sess)
 }

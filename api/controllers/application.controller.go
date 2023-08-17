@@ -9,6 +9,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/srm-kzilla/Recruitments/api/models"
 	"github.com/srm-kzilla/Recruitments/api/utils/database"
+	"github.com/srm-kzilla/Recruitments/api/utils/mailer"
 	"github.com/srm-kzilla/Recruitments/api/utils/notifications"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -22,6 +23,7 @@ func CreateApplication(c *fiber.Ctx) error {
 	application := body
 
 	userId := c.Locals("userData").(map[string]interface{})["userId"].(primitive.ObjectID)
+	email := c.Locals("userData").(map[string]interface{})["email"].(string)
 	if userId == primitive.NilObjectID {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": "User ObjectID is missing",
@@ -77,6 +79,22 @@ func CreateApplication(c *fiber.Ctx) error {
 	notificationInsert := notifications.RecordNotification("NEW_APPLICATION", userId)
 	if !notificationInsert {
 		log.Error("Error: Inserting notification")
+	}
+	newMailEmbed := mailer.MailEmbed{
+		Header:      "Recruitments#2023",
+		Salutations: "Hello Dreamer,",
+		Body:        "Your Application has been created! Get ready for this rollercoaster ride. But dont be afraid, we are here by your side at every moment. like vin diesel says, `We got Family'.",
+	}
+	sesInput := mailer.SESInput{
+		TemplateName:  mailer.TEMPLATES.EmailTemplate,
+		Subject:       "Application Created",
+		RecieverEmail: email,
+		SenderEmail:   os.Getenv("SENDER_EMAIL"),
+		EmbedData:     newMailEmbed,
+	}
+	err = mailer.SendEmail(sesInput)
+	if err != nil {
+		return err
 	}
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"message": "Application created successfully",
