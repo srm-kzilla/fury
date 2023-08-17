@@ -95,15 +95,15 @@ export const questionsArray: Array<
     },
     {
       domain: "content_writing",
-      question: `Describe a perfect day in your life. You can think of yourself as the protagonist of a movie. (Something like Michael Scran *wink wink*)`,
+      question: `What, according to you, is your best quality? How can that quality benefit the club? Explain using a scenario!`,
     },
     {
       domain: "gfx",
-      question: `Rate your creativity on a scale of 1-10 with appropriate justifications. Also, what are your sources of inspiration for your design thinking? (Go ahead, boast your heart out hehe)`,
+      question: `Did you see our event poster for ? If you haven't, swiftly visit our Instagram page and check it out (https://www.instagram.com/p/Cv96ZrEvVgf/). We hope you liked it but can you make it better?`,
     },
     {
       domain: "vfx",
-      question: `How would you cope-up with the latest tools and software during your tenure? How will you deal with a software mismatch when working with a team (for example: After Effects and Premier Pro)? What is your go-to tool for making a video?`,
+      question: `How would you keep up with the latest tools and software during your tenure? `,
     },
     {
       domain: "corporate",
@@ -122,24 +122,20 @@ export const questionsArray: Array<
     },
     {
       domain: "content_writing",
-      question: `How would you analyze the performance of another content writer? What factors would you take into consideration?`,
+      question: `How would you describe your writing style? `,
     },
     {
       domain: "gfx",
-      question: `Did you see our event poster for Multiverse of IoT, an Internet of Things workshop? ? If you haven't, swiftly visit our Instagram page and check it out (<a href="https://www.instagram.com/p/Cd8b7GMPZ_Y/" target="_blank">https://www.instagram.com/p/Cd8b7GMPZ_Y/</a>). We hope you liked it but can you make it better? Suggest edits to our Multiverse of IoT poster and give it your awesome touch.
-    <br />
-    <br />
-    OR 
-    <br />
-    <br />
-    <h3 style='color:#ff644e; margin:0;'>Photography</h3> 
-    <br />
-    Explain the rule of thirds
-    `,
+      question: `Suggest edits to our Multiverse of IoT poster and give it your awesome touch (instagram: https://www.instagram.com/p/Cd8b7GMPZ_Y/?utm_source=ig_web_copy_link)`,
     },
     {
       domain: "vfx",
-      question: `If you are tasked with making a promo video for a product launch, what would be your thought process behind it? What are the details that would be taken into account for the video?`,
+      question: `How will you deal with a software mismatch when working with a team (for example: After Effects and Premier Pro)? What is your go-to tool for making a video?      `,
+    },
+    {
+      domain: "photography",
+      question:
+        "Which software do you use for editing images and videos? How proficient are you with these tools?",
     },
     {
       domain: "photography",
@@ -169,7 +165,7 @@ export const questionsArray: Array<
     },
     {
       domain: "content_writing",
-      question: `What, according to you, is your best quality? How can that quality benefit the club? Explain using a scenario, we would love to hear about all the good stuff.`,
+      question: `Showcase your style with a short example please. How do you feel it would benefit the club’s social media engagement?       `,
     },
     {
       domain: "gfx",
@@ -177,7 +173,7 @@ export const questionsArray: Array<
     },
     {
       domain: "vfx",
-      question: `Did you see our Multiverse of IoT announcement video? If you haven't, swiftly visit our Instagram page and check it out (<a href="https://www.instagram.com/p/Cdz20_ADvwS/?utm_medium=share_sheet" target="_blank">https://www.instagram.com/p/Cdz20_ADvwS</a>). We hope you liked it but can you make it better?<br/>Suggest edits to our video and give it your awesome touch.`,
+      question: `If you are tasked with making a promo video for an event, what would be your thought process behind it? What are the details that would be taken into account for the video?      `,
     },
     {
       domain: "corporate",
@@ -202,33 +198,22 @@ export const questionsArray: Array<
     },
     {
       domain: "content_writing",
-      question: `Take a look at the details of this imaginary event of SRMKZILLA. Frame a caption to announce the event for an Instagram post.<br/>
-    Word limit: 120 words<br/>
-    Event details:<br/>
-    - Event: Roadmap to competitive coding<br/>
-    - Speaker: Mr. Raj, Software Developer at Amazon<br/>
-    - Date and Time: 28th September at 5 pm<br/>
-    - Platform: Discord<br/>
-    - Registration: Link in bio<br/>
-    Quick Tip: Remember to make the caption fun and try to include pop culture references.    
+      question: `How would you increase SRMKZILLA's social media engagement for a product launch? (via stories/reels/posts) Head to our Instagram page and check out the posts on the update of our URL shrinker; Kzilla XYZ 2.0.
+      <br/>      Post 1: https://www.instagram.com/p/CklX_Mjqufg/?img_index=1
+      <br/>
+      Post 2 (reel): https://www.instagram.com/p/Ck3l51Wjo4s/
+      <br/>
+      Suggest ideas that can be used in the posts/videos/reels/story for the launch of the update. (put your endless scrolling through social media to good use xD)
+        
     `,
     },
     {
       domain: "gfx",
-      question: `If you are tasked with designing an Instagram series on Neural Networks. What would be your thought process behind it? What are the details that you would take into account for the posts of the series? You can use our recent series on AI as a reference point <a href="https://www.instagram.com/p/CW7bc0KPILA" target="_blank">https://www.instagram.com/p/CW7bc0KPILA</a>
-    <br />
-    <br />
-    OR 
-    <br />
-    <br />
-    <h3 style='color:#ff644e; margin:0;'>Photography</h3> 
-    <br />
-    Explain the difference in focal length if you want to capture depth and distortion vs when you want to capture a flat image. Don't worry, we don't need super professional answers ;)
-    `,
+      question: `If you are tasked with designing an Instagram series on Neural Networks. What would be your thought process behind it? `,
     },
     {
       domain: "vfx",
-      question: `How do you think we can improve the club’s outreach through social media platforms?`,
+      question: `What, according to you, is your best quality? How can that quality benefit the club’s social media engagement? Explain using a scenario!      `,
     },
     {
       domain: "corporate",
@@ -253,13 +238,20 @@ export const questionsArray: Array<
     },
     {
       domain: "content_writing",
-      question: `How would you increase SRMKZILLA's social media engagement for a product launch? (via stories/reels/posts)<br/>
-    Head to our Instagram page and check out the posts on our mailing bud, Sandesh <a href="https://www.instagram.com/p/CdkPtAIqq4F/" target="_blank">https://www.instagram.com/p/CdkPtAIqq4F/</a> 
-    <br/>Suggest ideas that can be used in the posts/video/reels/story for the launch of Sandesh. (put your endless scrolling through social media to good use xD)`,
+      question: ` This task is mandatory for 2nd and 3rd-year students however we strongly recommend 1st-year students to give it a shot too.
+      <br/>
+      How would you entice people to check out the club event sponsors using social media posts? Check out our insta posts for our Mozofest 23 Sponsors, Devfolio and Bikaji, and write some quick, interesting content for them!
+      <br/>
+      Devfolio: https://www.instagram.com/p/CpCqYkCvSN9/
+      <br/>
+      Bikaji: https://www.instagram.com/p/CpCq-R3PXVY/
+      `,
     },
     {
       domain: "gfx",
-      question: `Would you like to change the theme and design of our Instagram page? If so, what changes would you make? If not, please describe what you find aesthetically pleasing on the page.`,
+      question: `In Addition, What are the details that you would take into account for the posts of the series? You can use our series on Web 3 as a reference point
+      https://www.instagram.com/p/CgE0GV-vCFQ/?igshid=MzRlODBiNWFlZA==
+      `,
     },
     {
       domain: "vfx",
@@ -325,17 +317,7 @@ export const questionsArray: Array<
     },
     {
       domain: "gfx",
-      question: `If you had the freedom to redesign the landing page of our recruitment portal what design changes would you make?
-    <br />
-    <br />
-    OR 
-    <br />
-    <br />
-    <h3 style='color:#ff644e; margin:0;'>Photography</h3> 
-    <br />
-    Suggest shots and changes in settings for the reel on our instagram page of the full team meeting we had at the beginning of the year. How will you add your magic touch to it?
-    Check it out here:
-    <a href="https://www.instagram.com/reel/CdFv4LqD8xK/?igshid=YWZlMWU5YjI=" target="_blank">https://www.instagram.com/reel/CdFv4LqD8xK</a>
+      question: `If you had the freedom to redesign the landing page of our recruitment portal what design changes would you make? link: https://recruitment.srmkzilla.net
 `,
     },
     {
@@ -365,74 +347,64 @@ export const questionsArray: Array<
     },
     {
       domain: "content_writing",
-      question: `We would love to see any previous work of yours. It can be a story, poem, article, or even your blog. A quick bit to impress us xD.
-    <br/>This is an optional question.`,
+      question: `Tell us something that you are passionate about. It could be anything from a hobby to a social cause. Have you been a part of any clubs or societies befoer? We would love to hear about it!`,
     },
     {
       domain: "gfx",
-      question: `Note: This task is mandatory for 2nd students however we strongly recommend 1st-year students to give it a shot too.<br/><br/>Please attempt <b>ONE of the three</b> tasks mentioned below and upload the file of your awesome work :<br/>
-    <br/>Task 1: Design an event poster<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;a. Topic: Webinar on Blockchain<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;b. Required fields:<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i.   Social Media footer<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ii.  Date/Time<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iii. Registration link<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv.  Custom heading/Event logo<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;c. Size: 1080px by 1080px<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;d. Export: JPEG format with the source file<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;e. Bonus: To create greater impact, experiment with typography<br/>
-    <br/>Task 2: Illustration(Adobe Illustrator, Affinity Designer, sketch)<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;a. Topic: Redesign the SRMKZILLA logo<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;b. Size: 1080px by 1080px<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;c. Export: JPEG format with the source file<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;d. Bonus: Sign off your artwork with your own custom logo<br/>
-    <br/>Task 3: UI/UX (Figma, Sketch)<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;a. Topic: Redesign SRMKZILLA homepage<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;b. Export: JPEG format with the source file<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;c. Bonus: Try to include gradient effect in elements.
-    <br />
-    <br />
-    OR 
-    <br />
-    <br />
-    <h3 style='color:#ff644e; margin:0;'>Photography</h3> 
-    <br />
-    Simple simple task for you. 
-    We require you to submit your best shots (crowd photography preferred) or some of the awesome reels that you have created
-    <br />
-    If you have a portfolio, show off your skills!
-    <br/>
-    <br/>
-    Here's how you can upload your files: 
-    <br />
-    &nbsp;&nbsp;&nbsp;&nbsp;a. Compile all your work, collect your best shots/videos/reels
-    <br />
-    &nbsp;&nbsp;&nbsp;&nbsp;b. Upload the videos/photos/reels on your google drive
-    <br />
-    &nbsp;&nbsp;&nbsp;&nbsp;c. Copy paste the drive link in a document (For reels, you can insert the instagram link in the doc) 
-    Voila! Just put that doc here`,
+      question: `Note: This task is mandatory for 2nd and 3rd-year students however we strongly recommend 1st-year students to give it a shot too.
+
+      Task 1: Design an event poster
+        a. Topic: Designathon
+        b. Required fields:
+            i. Social Media footer
+            ii. Date/Time
+            iii. Registration link
+            iv. Custom heading/Event logo
+        c. Size: 1080px by 1080px
+        d. Export: JPEG format with the source file
+        e. Bonus: To create greater impact, experiment with typography
+      
+      Task 2: Illustration(Adobe Illustrator, Affinity Designer, sketch)
+        a. Topic: Redesign the SRMKZILLA logo
+        b. Size: 1080px by 1080px
+        c. Export: JPEG format with the source file
+        d. Bonus: Sign off your artwork with your own custom logo
+      
+      Task 3: UI/UX (Figma, Sketch)
+        a. Topic: Redesign RECRUITMENT homepage
+        b. Export: JPEG format with the source file
+        c. Bonus: Try to include gradient effect in elements.
+      
+      
+      `,
     },
     {
       domain: "vfx",
-      question: `Note: This task is mandatory for 2nd students however we strongly recommend 1st-year students to give it a shot too.<br/><br/>Please attempt <b>ONE of the three</b> tasks mentioned below:<br/>
-    <br/>Task 1 (Cinema 4D/Blender/Adobe after effects/Premiere Pro):<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;a. Topic: Create a logo reveal for a tech video<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;b. Composition size: 1920px by 1080px 30 fps<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;c. Export: MP4 with the source file<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;d. Length: 6 sec(Minimum requirement)<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;e. Bonus: Most intros end with the logo on a black or dark background. It’s not a rule, but it stands out better and keeps you in sync with the industry<br/>
-    <br/>Task 2 (Premiere pro/ Apple final cut pro/ Adobe After Effects)<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;a. Topic: Edit our Web3 series video( <a href="https://www.instagram.com/p/CguMTKAq7LS/" target="_blank">https://www.instagram.com/p/CguMTKAq7LS/</a> ) <br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;b. Composition size: 1920px by 1080px 30 fps<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;c. Export: MP4 with the source file<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;d. Length: 10 sec (Minimum requirement)<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;e. Bonus: Use of 3D mockups will be highly recommended<br/>
-    <br/>Task 3 (Adobe After Effects)<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;a. Topic: Promo video on product Sandesh ( <a href="https://www.instagram.com/p/CdkPtAIqq4F/" target="_blank">https://www.instagram.com/p/CdkPtAIqq4F/</a> )<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;b. Composition size: Instagram story dimension<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;c. Export: MP4 with the source file<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;d. Length: 15 sec (Stated)<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;e. Bonus: Experiment with typography<br/>`,
+      question: `Note: This task is mandatory for 2nd and 3rd-year students however we strongly recommend 1st-year students to give it a shot too.
+
+      Please attempt ONE of the three tasks mentioned below:
+      
+      Task 1 (Cinema 4D/Blender/Adobe after effects/Premiere Pro):
+        a. Topic: Create a logo reveal for a tech video
+        b. Composition size: 1920px by 1080px 30 fps
+        c. Export: MP4 with the source file
+        d. Length: 6 sec(Minimum requirement)
+        e. Bonus: Most intros end with the logo on a black or dark background. It’s not a rule, but it stands out better and keeps you in sync with the industry
+      
+      Task 2 (Premiere pro/ Apple final cut pro/ Adobe After Effects):
+        a. Topic: Edit the Sandesh video below (https://www.instagram.com/p/CdniBEIqmh-/)
+        b. Composition size: 1920px by 1080px 30 fps
+        c. Export: MP4 with the source file
+        d. Length: 10 sec (Minimum requirement)
+        e. Bonus: Use of 3D mockups will be highly recommended
+      
+      Task 3 (Adobe After Effects):
+        a. Topic: Promo video on Mozofest video: (https://www.instagram.com/reel/CpApkpZjx1r/?igshid=MzRlODBiNWFlZA==)
+        b. Composition size: Instagram story dimension
+        c. Export: MP4 with the source file
+        d. Length: 15 sec (Stated)
+        e. Bonus: Experiment with typography
+      `,
     },
     {
       domain: "corporate",
