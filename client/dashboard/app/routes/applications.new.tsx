@@ -54,6 +54,7 @@ type LoaderData = {
   domain: string;
   questionNumber: string;
   typedAnswer: string;
+  answers: Answer[];
 };
 
 type ActionData = {
@@ -83,7 +84,8 @@ export const loader: LoaderFunction = async ({ request }) => {
     return redirect("/applications/domain-select");
   }
 
-  if (formSession.domain === "technicalp") return redirect("/applications/technical-project");
+  if (formSession.domain === "technicalp")
+    return redirect("/applications/technical-project");
 
   const url = new URL(request.url);
   const questionNumber = url.searchParams.get("question") || "1";
@@ -109,7 +111,7 @@ export const loader: LoaderFunction = async ({ request }) => {
   );
 
   if (!previousQuestionNumber) {
-    return { user, domain, questionNumber, typedAnswer };
+    return { user, domain, questionNumber, typedAnswer, answers };
   }
 
   return redirect(`/applications/new?question=${previousQuestionNumber}`);
@@ -203,6 +205,10 @@ export const action: ActionFunction = async ({ request }) => {
       }
     }
 
+    case "skip": {
+      return redirect(`/applications/new?question=${questionsArray.length}`);
+    }
+
     case "submit": {
       const answer = await validateAnswer(formData);
 
@@ -246,7 +252,7 @@ const validateAnswer = async (formData: FormData) => {
 };
 
 const Application = () => {
-  const { domain, questionNumber, typedAnswer } = useLoaderData<LoaderData>();
+  const { domain, questionNumber, typedAnswer, answers } = useLoaderData<LoaderData>();
   const navigation = useNavigation();
   const actionData = useActionData<ActionData>();
   const formRef = useRef<HTMLFormElement>(null);
@@ -289,7 +295,8 @@ const Application = () => {
                 value="save"
                 title="Save Draft"
               >
-                {(navigation.state === "submitting" && navigation.formData?.get("_action") === "save") ? (
+                {navigation.state === "submitting" &&
+                navigation.formData?.get("_action") === "save" ? (
                   <BiLoader className="spin" />
                 ) : (
                   "Save Changes"
@@ -349,7 +356,12 @@ const Application = () => {
                   value="submit"
                   title="Submit Application"
                 >
-                  {(navigation.state === "submitting" && navigation.formData?.get("_action") === "submit") ? <BiLoader /> : "Submit"}
+                  {navigation.state === "submitting" &&
+                  navigation.formData?.get("_action") === "submit" ? (
+                    <BiLoader />
+                  ) : (
+                    "Submit"
+                  )}
                 </button>
               ) : (
                 <button
@@ -358,7 +370,27 @@ const Application = () => {
                   value="next"
                   title="Save and Next Question"
                 >
-                  {(navigation.state === "submitting" && navigation.formData?.get("_action") === "next") ? <BiLoader /> : "Next"}
+                  {navigation.state === "submitting" &&
+                  navigation.formData?.get("_action") === "next" ? (
+                    <BiLoader />
+                  ) : (
+                    "Next"
+                  )}
+                </button>
+              )}
+              {answers.length - parseInt(questionNumber) > 0 && (
+                <button
+                  type="submit"
+                  name="_action"
+                  value="skip"
+                  title="Skip to last answered"
+                >
+                  {navigation.state === "submitting" &&
+                  navigation.formData?.get("_action") === "skip" ? (
+                    <BiLoader />
+                  ) : (
+                    "Skip"
+                  )}
                 </button>
               )}
             </div>
