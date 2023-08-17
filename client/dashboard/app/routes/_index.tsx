@@ -57,7 +57,7 @@ const Dashboard = () => {
   useEffect(() => {
     toast.show(
       `Deadline for application is ${moment(endTime).format("MMMM Do YYYY")}`,
-      "🗓️"
+      "🗓️",
     );
   }, []);
 
@@ -70,7 +70,7 @@ const Dashboard = () => {
             <div className="main">
               <h2>
                 Applications
-                {applications.length < 2 && (
+                {applications && applications?.length < 2 && (
                   <Link
                     className="new"
                     to="/applications/new"
@@ -92,13 +92,13 @@ const Dashboard = () => {
                               application={application}
                               handleClick={() => {
                                 navigate(
-                                  `/applications/status/${application.domain}`
+                                  `/applications/status/${application.domain}`,
                                 );
                               }}
                             />
                           </div>
                         );
-                      }
+                      },
                     )}
                 </div>
               </div>
