@@ -68,6 +68,8 @@ div.kz-wizard {
   }
 
   .kz-button-container {
+    display: flex;
+    gap: 1rem;
     button {
       cursor: pointer;
       border: none;
@@ -79,10 +81,6 @@ div.kz-wizard {
       font-family: "Caros", sans-serif;
       font-weight: 500;
       margin-top: 1rem;
-
-      &:first-child {
-        margin-right: 1rem;
-      }
     }
 
     .text-only {
