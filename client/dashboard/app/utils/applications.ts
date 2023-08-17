@@ -20,7 +20,7 @@ export function getDomainName(domain: string) {
     case Domain.GFX:
       return "GFX";
     case Domain.Photography:
-      return "Photography"
+      return "Photography";
     case Domain.Content_Writing:
       return "Content Writing";
     case Domain.Events:
@@ -77,10 +77,12 @@ export const domains = [
   },
 ];
 
-export const questionsArray: Array<{
-  domain: string;
-  question: string;
-}[]> = [
+export const questionsArray: Array<
+  {
+    domain: string;
+    question: string;
+  }[]
+> = [
   [
     {
       domain: "technical",
@@ -108,14 +110,14 @@ export const questionsArray: Array<{
     },
     {
       domain: "events",
-      question: `Exiting the realm of "everything online" just recently, what is your opinion on the mode of conducting events? What according to you makes an event a success?`,
+      question:
+        "We know organizing events is fun, but we would still want to hear more about something that made you choose the events domain!",
     },
   ],
   [
     {
       domain: "technical",
-      question:
-        "What new technology interests you the most, and why?",
+      question: "What new technology interests you the most, and why?",
     },
     {
       domain: "content_writing",
@@ -148,7 +150,8 @@ export const questionsArray: Array<{
     },
     {
       domain: "events",
-      question: `During an event, there is a group of people that are trying to disrupt the flow and create a ruckus. How will you handle such an issue?`,
+      question:
+        "Do you have any prior experience in event planning or event management? If yes, we would love to know! If not, that’s okay too :)",
     },
   ],
   [
@@ -179,13 +182,15 @@ export const questionsArray: Array<{
     },
     {
       domain: "events",
-      question: `You have been given a box, a pair of sunglasses, and 12 ping pong balls. Come up with a game that could be fun, quick, and quirky in order to keep your audience engaged!`,
+      question:
+        "What all characteristics, in your opinion, does a successful event have?",
     },
   ],
   [
     {
       domain: "technical",
-      question: "Is it still valuable to learn to code in the age of generative AI and no code tools?",
+      question:
+        "Is it still valuable to learn to code in the age of generative AI and no code tools?",
     },
     {
       domain: "photography",
@@ -227,8 +232,8 @@ export const questionsArray: Array<{
     },
     {
       domain: "events",
-      question: `There is a shortage of Chairs at the event venue. The expected footfall for the event was 120 and now you are 20 chairs short. How will you handle such a situation? How will you make sure such an incident does not happen in the future?
-    `,
+      question:
+        "If you were to plan an interactive activity for the audience during the break time of a workshop, what would you wish to do?",
     },
   ],
   [
@@ -261,7 +266,8 @@ export const questionsArray: Array<{
     },
     {
       domain: "events",
-      question: `You have been assigned the task of setting up helpdesks on the campus to interact with students. How will you make the experience interactive? How will you use these helpdesks to spread awareness about the club and its upcoming event?`,
+      question:
+        "You are given paper cups, ping pong balls, threads, blindfold cloth, darts, and a rectangular wooden board. Design a mini game using these materials that would not take more than 20 minutes to finish.",
     },
   ],
   [
@@ -292,10 +298,8 @@ export const questionsArray: Array<{
     },
     {
       domain: "events",
-      question: `Consider a hypothetical situation where the club has planned to present itself to the new batch of freshers. 
-    Now you realize that all halls are completely booked so you have no proper venue to conduct the club’s upcoming event that the team had been working on for weeks. 
-    You have about 6 days left before the freshers arrive on the campus. What is your contingency plan to promote the club amongst the freshers? 
-    How do you plan on making the club seen amongst a batch of completely new students?`,
+      question:
+        "Suppose you planned to organize a workshop in a hall with a capacity of 200 people, but you found out that only 120 people turned up out of 500 registrations. How would you react to this situation and what actions would you take?",
     },
   ],
   [
@@ -337,7 +341,8 @@ export const questionsArray: Array<{
     },
     {
       domain: "events",
-      question: `What are some out-of-the-box ideas that would be great in order to create a buzz about the club amongst the students?`,
+      question:
+        "The venue for your upcoming event faces unforeseen issues, forcing you to relocate the event just two days before the date. How would you manage this change and communicate it to attendees and stakeholders effectively?",
     },
   ],
   [
@@ -427,7 +432,8 @@ export const questionsArray: Array<{
     },
     {
       domain: "events",
-      question: `Hema ,Rekha, Jaya aur Sushma… Sabki pasand nirma kyu hai? Feel free to be creative!`,
+      question:
+        "You are working with a team member who is not pulling their weight and is causing frustration among other team members. How would you address this issue while maintaining a positive team environment?",
     },
-  ]
+  ],
 ];
