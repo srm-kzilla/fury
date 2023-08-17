@@ -3,9 +3,7 @@
 
 .kz-form-field {
   margin-bottom: 2rem;
-  grid-template-columns: repeat(2, 1fr);
   gap: 0.5rem;
-
 
   div.inner {
     display: flex;
@@ -70,9 +68,8 @@
     border-radius: 10px;
     border: 1px solid transparent;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 
     h3 {
       margin: 0;
@@ -91,6 +88,12 @@
     width: 80%;
     padding: 4px 0;
   }
+}
+
+.kz-selectable-div-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
 
 .react-select-container {
