@@ -97,7 +97,7 @@ const DomainSelect = () => {
         </div>
         <div className="kz-form">
           <h1>Select a domain</h1>
-          <div className="kz-form-field">
+          <div className="kz-form-field kz-selectable-div-container">
             <input name="domain" value={domain} readOnly hidden />
             {domains.map((option, index) => {
               return (

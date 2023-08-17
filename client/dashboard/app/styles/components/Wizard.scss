@@ -25,6 +25,13 @@ div.kz-wizard {
     flex-direction: column;
   }
 
+  .kz-form-submit-info {
+    color: $primary;
+    font-size: 0.90rem;
+    text-align: right;
+    margin: 0 1rem 0.5rem;
+  }
+
   .kz-form-footer {
     display: flex;
     align-items: center;
@@ -61,6 +68,8 @@ div.kz-wizard {
   }
 
   .kz-button-container {
+    display: flex;
+    gap: 1rem;
     button {
       cursor: pointer;
       border: none;
@@ -72,10 +81,6 @@ div.kz-wizard {
       font-family: "Caros", sans-serif;
       font-weight: 500;
       margin-top: 1rem;
-
-      &:first-child {
-        margin-right: 1rem;
-      }
     }
 
     .text-only {

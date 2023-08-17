@@ -5,7 +5,6 @@ module.exports = {
   // assetsBuildDirectory: "public/build",
   // serverBuildPath: "build/index.js",
   // publicPath: "/build/",
-  serverDependenciesToBundle: ["axios"],
   serverModuleFormat: "cjs",
   future: {
     v2_dev: true,

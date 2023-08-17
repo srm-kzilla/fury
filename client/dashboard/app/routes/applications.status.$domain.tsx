@@ -3,11 +3,11 @@ import applicationStyles from "~/styles/pages/Application.css";
 import paperPlaneLottie from "~/assets/lotties/paperplane.json";
 import tickLottie from "~/assets/lotties/tick.json";
 import { Sidebar, sidebarLinks } from "~/components";
-import { Link, useLoaderData, useNavigate } from "@remix-run/react";
+import {Form, Link, useLoaderData, useNavigate} from "@remix-run/react";
 import type { LinksFunction, LoaderFunction } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
 import { getApplications } from "~/utils/api.server";
-import { BiArrowFromRight } from "react-icons/bi";
+import { BiHome } from "react-icons/bi";
 
 export const links: LinksFunction = () => [
   ...sidebarLinks(),
@@ -48,9 +48,9 @@ export default function Application() {
         <Sidebar />
       </div>
       <div>
-        <Link to={"/"}>
+        <Link to="/">
           <div className="go-back">
-            <BiArrowFromRight className="icon" />
+            <BiHome className="icon" />
             <h2>Home</h2>
           </div>
         </Link>
@@ -132,7 +132,7 @@ export default function Application() {
                 <p>In Review</p>
               </div>
               <div>
-                <div className={"red-circle"}></div>
+                <div className="red-circle"></div>
                 <p>Rejected</p>
               </div>
             </div>
@@ -193,9 +193,14 @@ export default function Application() {
             </div>
             <div className="draft-wrapper">
               <p>Complete your application now!</p>
-              <button onClick={() => navigate("/applications/new")}>
-                Take me there!
-              </button>
+              <div className="button-row">
+                <button onClick={() => navigate("/applications/new")}>
+                  Take me there!
+                </button>
+                <Form method="POST" action="/applications/new">
+                  <button type="submit" name="_action" value="delete">Delete Draft</button>
+                </Form>
+              </div>
             </div>
             <div className="status-wrapper">
               <div>

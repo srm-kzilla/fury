@@ -7,8 +7,7 @@ import {
   BiTask,
   BiX,
 } from "react-icons/bi";
-import { getDomainName } from "~/shared/utils/domains";
-import Skeleton from "react-loading-skeleton";
+import { getDomainName } from "~/utils/applications";
 import type { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => [
@@ -19,7 +18,7 @@ export const links: LinksFunction = () => [
 ];
 
 interface Props {
-  application: any;
+  application: Application;
   handleClick: () => void;
 }
 
@@ -33,7 +32,7 @@ export enum Status {
 }
 
 const ApplicationTile = ({ application, handleClick }: Props) => {
-  const { status: applicationStatus, questions } = application;
+  const { status: applicationStatus, questions = [] } = application;
   const formatStatus = (status: string) => {
     switch (status) {
       case Status.InProgress:
@@ -78,14 +77,12 @@ const ApplicationTile = ({ application, handleClick }: Props) => {
           {status && status.label}
         </div>
       </div>
-      {questions &&
-        questions?.length === 8 &&
-        applicationStatus === "draft" && (
-          <div>
-            <h4>Your application is complete! Submit it now</h4>
-          </div>
-        )}
-      {applicationStatus === "draft" && questions.length !== 8 && (
+      {questions && questions.length === 8 && applicationStatus === "draft" && (
+        <div>
+          <h4>Your application is complete! Submit it now</h4>
+        </div>
+      )}
+      {applicationStatus === "draft" && (
         <div>
           <h4>Your application is saved as draft. Complete it now!</h4>
         </div>
@@ -95,29 +92,6 @@ const ApplicationTile = ({ application, handleClick }: Props) => {
           <h4>Application in review</h4>
         </div>
       )}
-    </div>
-  );
-};
-
-export const ApplicationTileSkeleton = () => {
-  return (
-    <div className="kz-application-tile">
-      <div className="icon">
-        <Skeleton circle width={32} height={32} />
-      </div>
-      <h3>
-        <Skeleton />
-      </h3>
-      <div className="info">
-        <div className="status">
-          <Skeleton width={96} />
-        </div>
-        <div>
-          <span className="domain">
-            <Skeleton width={64} />
-          </span>
-        </div>
-      </div>
     </div>
   );
 };

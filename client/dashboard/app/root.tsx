@@ -11,10 +11,8 @@ import {
   useRouteError,
 } from "@remix-run/react";
 import { useEffect, useState } from "react";
-import classNames from "classnames";
 import rootStyles from "~/styles/index.css";
 import appStyles from "~/styles/App.css";
-import Store from "~/components/Wizard/Store";
 import {
   Headbar,
   NotFound,
@@ -23,7 +21,6 @@ import {
   headbarLinks,
 } from "~/components";
 import { BiX } from "react-icons/bi";
-import { Constants } from "~/constants";
 import { json } from "@remix-run/node";
 import type { ReactNode } from "react";
 import type { LinksFunction } from "@remix-run/node";
@@ -73,7 +70,7 @@ export const loader = () => {
       envSec.env[key] === "" ||
       envSec.env[key] === null
     ) {
-      throw new Error(`Something went wrong. If presists contact us`);
+      throw new Error(`Something went wrong. If persists contact us`);
     }
   }
 
@@ -86,9 +83,7 @@ function App() {
       <Layout>
         <Headbar />
         <div className="App">
-          <Store>
-            <Outlet />
-          </Store>
+          <Outlet />
           <Cookie />
         </div>
       </Layout>
@@ -155,11 +150,7 @@ const Cookie = () => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    if (
-      localStorage.getItem(Constants.LOCAL_STORAGE.SHOW_COOKIE_PROMPT) ===
-      "true"
-    )
-      setOpen(false);
+    if (localStorage.getItem("show_cookie_prompt") === "true") setOpen(false);
     else setOpen(true);
   }, []);
 
@@ -168,12 +159,12 @@ const Cookie = () => {
   };
 
   const accept = () => {
-    localStorage.setItem(Constants.LOCAL_STORAGE.SHOW_COOKIE_PROMPT, "true");
+    localStorage.setItem("show_cookie_prompt", "true");
     setOpen(false);
   };
 
   return (
-    <div className={classNames("kz-cookie", { open })}>
+    <div className={open ? "kz-cookie open" : "kz-cookie"}>
       <span>
         <BiX size={32} onClick={close} />
       </span>

@@ -1,8 +1,6 @@
 import sidebarCSS from "~/styles/components/Sidebar.css";
-import { Assets } from "~/constants";
 import { BiHomeCircle, BiLogOut, BiRocket } from "react-icons/bi";
 import { Form, Link, useLocation, useNavigate } from "@remix-run/react";
-import classNames from "classnames";
 import type { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => {
@@ -24,7 +22,7 @@ const Sidebar = () => {
       <div>
         <div className="logo">
           <img
-            src={Assets.SRMKZILLA_LOGO_WHITE}
+            src="/srmkzilla_logo_white.svg"
             alt="logo"
             onClick={() => {
               navigate("/");
@@ -33,14 +31,14 @@ const Sidebar = () => {
         </div>
         <ul>
           <li title="Dashboard">
-            <Link to="/" className={classNames({ active: pathname === "/" })}>
+            <Link to="/" className={pathname === "/" ? "active" : ""}>
               <BiHomeCircle />
             </Link>
           </li>
           <li title="Explore SRMKZILLA">
             <Link
               to="/explore"
-              className={classNames({ active: pathname === "/explore" })}
+              className={pathname === "/explore" ? "active" : ""}
             >
               <BiRocket />
             </Link>

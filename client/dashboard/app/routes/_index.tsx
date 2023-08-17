@@ -22,7 +22,6 @@ import {
 import { Link, useLoaderData, useNavigate } from "@remix-run/react";
 import getEnv from "~/utils/env";
 import { BiAlarm, BiPlus } from "react-icons/bi";
-import { Assets } from "~/constants";
 import toast from "~/utils/toast.client";
 import { useEffect } from "react";
 import moment from "moment";
@@ -136,7 +135,7 @@ const Dashboard = () => {
                       })}
                     {(!notifications || notifications.length === 0) && (
                       <div className="empty">
-                        <img src={Assets.MAIL} alt="mail" />
+                        <img src="/mail.svg" alt="mail" />
                         <h2>The mailman did not have anything for you.</h2>
                       </div>
                     )}

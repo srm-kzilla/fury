@@ -6,6 +6,7 @@ export enum Domain {
   Content_Writing = "content_writing",
   Events = "events",
   Corporate = "corporate",
+  Photography = "photography",
 }
 
 export function getDomainName(domain: string) {
@@ -17,7 +18,9 @@ export function getDomainName(domain: string) {
     case Domain.VFX:
       return "VFX";
     case Domain.GFX:
-      return "GFX or Photography";
+      return "GFX";
+    case Domain.Photography:
+      return "Photography";
     case Domain.Content_Writing:
       return "Content Writing";
     case Domain.Events:
@@ -45,8 +48,14 @@ export const domains = [
   {
     key: "gfx",
     value: "gfx",
-    text: "GFX or Photography",
+    text: "GFX",
     description: "Designs the pixels with purpose with an eye for creativity",
+  },
+  {
+    key: "photography",
+    value: "photography",
+    text: "Photography",
+    description: "Freeze moments in time, and unveil the world's beauty.",
   },
   {
     key: "events",
@@ -68,159 +77,181 @@ export const domains = [
   },
 ];
 
-export const questionsArray: Array<{
-  domain: string;
-  question: string;
-}[]> = [
+export const questionsArray: Array<
+  {
+    domain: string;
+    question: string;
+  }[]
+> = [
   [
     {
       domain: "technical",
-      question: "What does the term programming mean to you?",
+      question: "What does programming mean to you?",
+    },
+    {
+      domain: "photography",
+      question:
+        "How passionate are you about photography/videography? Tell us about your strengths in this area and prior experience (if any).",
     },
     {
       domain: "content_writing",
-      question: `Describe a perfect day in your life. You can think of yourself as the protagonist of a movie. (Something like Michael Scran *wink wink*)`,
+      question: `What, according to you, is your best quality? How can that quality benefit the club? Explain using a scenario!`,
     },
     {
       domain: "gfx",
-      question: `Rate your creativity on a scale of 1-10 with appropriate justifications. Also, what are your sources of inspiration for your design thinking? (Go ahead, boast your heart out hehe)`,
+      question: `Did you see our event poster for ? If you haven't, swiftly visit our Instagram page and check it out (https://www.instagram.com/p/Cv96ZrEvVgf/). We hope you liked it but can you make it better?`,
     },
     {
       domain: "vfx",
-      question: `How would you cope-up with the latest tools and software during your tenure? How will you deal with a software mismatch when working with a team (for example: After Effects and Premier Pro)? What is your go-to tool for making a video?`,
+      question: `How would you keep up with the latest tools and software during your tenure? `,
     },
     {
       domain: "corporate",
-      question: `What according to you is the work of the corporate domain & how do you think you would be able to contribute to the club and this domain?`,
+      question: `How do you think you would be able to contribute to the club and this domain and how do you think the corporate domain works within a club?`,
     },
     {
       domain: "events",
-      question: `Exiting the realm of "everything online" just recently, what is your opinion on the mode of conducting events? What according to you makes an event a success?`,
+      question:
+        "We know organizing events is fun, but we would still want to hear more about something that made you choose the events domain!",
+    },
+  ],
+  [
+    {
+      domain: "technical",
+      question: "What new technology interests you the most, and why?",
+    },
+    {
+      domain: "content_writing",
+      question: `How would you describe your writing style? `,
+    },
+    {
+      domain: "gfx",
+      question: `Suggest edits to our Multiverse of IoT poster and give it your awesome touch (instagram: https://www.instagram.com/p/Cd8b7GMPZ_Y/?utm_source=ig_web_copy_link)`,
+    },
+    {
+      domain: "vfx",
+      question: `How will you deal with a software mismatch when working with a team (for example: After Effects and Premier Pro)? What is your go-to tool for making a video?      `,
+    },
+    {
+      domain: "photography",
+      question:
+        "Which software do you use for editing images and videos? How proficient are you with these tools?",
+    },
+    {
+      domain: "photography",
+      question:
+        "Which software do you use for editing images and videos? How proficient are you with these tools?",
+    },
+    {
+      domain: "corporate",
+      question: `What according to you makes you stand out and deserving to be on the team?`,
+    },
+    {
+      domain: "events",
+      question:
+        "Do you have any prior experience in event planning or event management? If yes, we would love to know! If not, that’s okay too :)",
     },
   ],
   [
     {
       domain: "technical",
       question:
-        "What is the latest technical stuff that you learnt? Tell us in depth about it and how would you explain it to a five year old kid.",
+        "What is a tree (data structure ofc :p) and how would you explain it to a 5-year-old kid?",
+    },
+    {
+      domain: "photography",
+      question:
+        "How, according to you, is event photography different from other forms of photography? What unique challenges and opportunities does event photography present?",
     },
     {
       domain: "content_writing",
-      question: `How would you analyze the performance of another content writer? What factors would you take into consideration?`,
+      question: `Showcase your style with a short example please. How do you feel it would benefit the club’s social media engagement?       `,
     },
     {
       domain: "gfx",
-      question: `Did you see our event poster for Multiverse of IoT, an Internet of Things workshop? ? If you haven't, swiftly visit our Instagram page and check it out (<a href="https://www.instagram.com/p/Cd8b7GMPZ_Y/" target="_blank">https://www.instagram.com/p/Cd8b7GMPZ_Y/</a>). We hope you liked it but can you make it better? Suggest edits to our Multiverse of IoT poster and give it your awesome touch.
-    <br />
-    <br />
-    OR 
-    <br />
-    <br />
-    <h3 style='color:#ff644e; margin:0;'>Photography</h3> 
-    <br />
-    Explain the rule of thirds
-    `,
-    },
-    {
-      domain: "vfx",
-      question: `If you are tasked with making a promo video for a product launch, what would be your thought process behind it? What are the details that would be taken into account for the video?`,
-    },
-    {
-      domain: "corporate",
-      question: `If you have any, please mention any prior experience related to this domain’s scope.`,
-    },
-    {
-      domain: "events",
-      question: `During an event, there is a group of people that are trying to disrupt the flow and create a ruckus. How will you handle such an issue?`,
-    },
-  ],
-  [
-    {
-      domain: "technical",
-      question:
-        "Explain Object Oriented Programming. Do you prefer using OOP, why or why not?",
-    },
-    {
-      domain: "content_writing",
       question: `What, according to you, is your best quality? How can that quality benefit the club? Explain using a scenario, we would love to hear about all the good stuff.`,
     },
     {
-      domain: "gfx",
-      question: `What, according to you, is your best quality? How can that quality benefit the club? Explain using a scenario, we would love to hear about all the good stuff.`,
-    },
-    {
       domain: "vfx",
-      question: `Did you see our Multiverse of IoT announcement video? If you haven't, swiftly visit our Instagram page and check it out (<a href="https://www.instagram.com/p/Cdz20_ADvwS/?utm_medium=share_sheet" target="_blank">https://www.instagram.com/p/Cdz20_ADvwS</a>). We hope you liked it but can you make it better?<br/>Suggest edits to our video and give it your awesome touch.`,
+      question: `If you are tasked with making a promo video for an event, what would be your thought process behind it? What are the details that would be taken into account for the video?      `,
     },
     {
       domain: "corporate",
-      question: `What is sponsorship according to you?`,
+      question: `What according to you is the difference between sponsorship, marketing and advertising?`,
     },
     {
       domain: "events",
-      question: `You have been given a box, a pair of sunglasses, and 12 ping pong balls. Come up with a game that could be fun, quick, and quirky in order to keep your audience engaged!`,
-    },
-  ],
-  [
-    {
-      domain: "technical",
-      question: "Which is your favourite programming language and why?",
-    },
-    {
-      domain: "content_writing",
-      question: `Take a look at the details of this imaginary event of SRMKZILLA. Frame a caption to announce the event for an Instagram post.<br/>
-    Word limit: 120 words<br/>
-    Event details:<br/>
-    - Event: Roadmap to competitive coding<br/>
-    - Speaker: Mr. Raj, Software Developer at Amazon<br/>
-    - Date and Time: 28th September at 5 pm<br/>
-    - Platform: Discord<br/>
-    - Registration: Link in bio<br/>
-    Quick Tip: Remember to make the caption fun and try to include pop culture references.    
-    `,
-    },
-    {
-      domain: "gfx",
-      question: `If you are tasked with designing an Instagram series on Neural Networks. What would be your thought process behind it? What are the details that you would take into account for the posts of the series? You can use our recent series on AI as a reference point <a href="https://www.instagram.com/p/CW7bc0KPILA" target="_blank">https://www.instagram.com/p/CW7bc0KPILA</a>
-    <br />
-    <br />
-    OR 
-    <br />
-    <br />
-    <h3 style='color:#ff644e; margin:0;'>Photography</h3> 
-    <br />
-    Explain the difference in focal length if you want to capture depth and distortion vs when you want to capture a flat image. Don't worry, we don't need super professional answers ;)
-    `,
-    },
-    {
-      domain: "vfx",
-      question: `How do you think we can improve the club’s outreach through social media platforms?`,
-    },
-    {
-      domain: "corporate",
-      question: `Rate your communication skills out of 10 and give your reasoning.`,
-    },
-    {
-      domain: "events",
-      question: `There is a shortage of Chairs at the event venue. The expected footfall for the event was 120 and now you are 20 chairs short. How will you handle such a situation? How will you make sure such an incident does not happen in the future?
-    `,
+      question:
+        "What all characteristics, in your opinion, does a successful event have?",
     },
   ],
   [
     {
       domain: "technical",
       question:
-        "Can you differentiate between primitive and non-primivite data types? Give examples.",
+        "Is it still valuable to learn to code in the age of generative AI and no code tools?",
+    },
+    {
+      domain: "photography",
+      question:
+        "Which device do you use for photography/videography? What are the key features of your preferred equipment?",
     },
     {
       domain: "content_writing",
-      question: `How would you increase SRMKZILLA's social media engagement for a product launch? (via stories/reels/posts)<br/>
-    Head to our Instagram page and check out the posts on our mailing bud, Sandesh <a href="https://www.instagram.com/p/CdkPtAIqq4F/" target="_blank">https://www.instagram.com/p/CdkPtAIqq4F/</a> 
-    <br/>Suggest ideas that can be used in the posts/video/reels/story for the launch of Sandesh. (put your endless scrolling through social media to good use xD)`,
+      question: `How would you increase SRMKZILLA's social media engagement for a product launch? (via stories/reels/posts) Head to our Instagram page and check out the posts on the update of our URL shrinker; Kzilla XYZ 2.0.
+      <br/>      Post 1: https://www.instagram.com/p/CklX_Mjqufg/?img_index=1
+      <br/>
+      Post 2 (reel): https://www.instagram.com/p/Ck3l51Wjo4s/
+      <br/>
+      Suggest ideas that can be used in the posts/videos/reels/story for the launch of the update. (put your endless scrolling through social media to good use xD)
+        
+    `,
     },
     {
       domain: "gfx",
-      question: `Would you like to change the theme and design of our Instagram page? If so, what changes would you make? If not, please describe what you find aesthetically pleasing on the page.`,
+      question: `If you are tasked with designing an Instagram series on Neural Networks. What would be your thought process behind it? `,
+    },
+    {
+      domain: "vfx",
+      question: `What, according to you, is your best quality? How can that quality benefit the club’s social media engagement? Explain using a scenario!      `,
+    },
+    {
+      domain: "corporate",
+      question: `Rate your communication and collaboration skills out of 10 and state why?`,
+    },
+    {
+      domain: "events",
+      question:
+        "If you were to plan an interactive activity for the audience during the break time of a workshop, what would you wish to do?",
+    },
+  ],
+  [
+    {
+      domain: "technical",
+      question:
+        "How do you explain complex technical concepts to a person from a non-technical background? Take an example and explain it to us!",
+    },
+    {
+      domain: "photography",
+      question:
+        "Do you have any setup for capturing some of the most beautiful moments? This could include gear like DSLR, gimbal, drone, monopods, tripods, etc.",
+    },
+    {
+      domain: "content_writing",
+      question: ` This task is mandatory for 2nd and 3rd-year students however we strongly recommend 1st-year students to give it a shot too.
+      <br/>
+      How would you entice people to check out the club event sponsors using social media posts? Check out our insta posts for our Mozofest 23 Sponsors, Devfolio and Bikaji, and write some quick, interesting content for them!
+      <br/>
+      Devfolio: https://www.instagram.com/p/CpCqYkCvSN9/
+      <br/>
+      Bikaji: https://www.instagram.com/p/CpCq-R3PXVY/
+      `,
+    },
+    {
+      domain: "gfx",
+      question: `In Addition, What are the details that you would take into account for the posts of the series? You can use our series on Web 3 as a reference point
+      https://www.instagram.com/p/CgE0GV-vCFQ/?igshid=MzRlODBiNWFlZA==
+      `,
     },
     {
       domain: "vfx",
@@ -228,18 +259,24 @@ export const questionsArray: Array<{
     },
     {
       domain: "corporate",
-      question: `After previously agreeing to a sponsorship, a sponsor backs out of an event at the last minute. How would you handle this situation?`,
+      question: `After mutually agreeing to a sponsorship for an upcoming event, a sponsor backs out at the last minute. How would you as a member of the corporate domain handle this situation?`,
     },
     {
       domain: "events",
-      question: `You have been assigned the task of setting up helpdesks on the campus to interact with students. How will you make the experience interactive? How will you use these helpdesks to spread awareness about the club and its upcoming event?`,
+      question:
+        "You are given paper cups, ping pong balls, threads, blindfold cloth, darts, and a rectangular wooden board. Design a mini game using these materials that would not take more than 20 minutes to finish.",
     },
   ],
   [
     {
       domain: "technical",
       question:
-        "What are the technologies (in any field of your choice) you are interested to work with? Write as much as you know about them, their future potential and how you would explain that technology to a 5 year old kid.",
+        "Are you currently working on any projects? if yes, what is the tech stack, and why did you choose that particular tech stack if not, what technologies are you looking forward to learning in the near future? (If the project is open source, give us the link! not mandatory but has brownie points)",
+    },
+    {
+      domain: "photography",
+      question:
+        "Along with following your passion, would you like to contribute to events planning, ideations, and event management? How do you see your photography skills complementing event organization?",
     },
     {
       domain: "content_writing",
@@ -255,21 +292,24 @@ export const questionsArray: Array<{
     },
     {
       domain: "corporate",
-      question: `How familiar are you with current trends on social media and how do you stay updated?`,
+      question: `How would you, without raising more conflict, resolve a dispute between two members of the club?`,
     },
     {
       domain: "events",
-      question: `Consider a hypothetical situation where the club has planned to present itself to the new batch of freshers. 
-    Now you realize that all halls are completely booked so you have no proper venue to conduct the club’s upcoming event that the team had been working on for weeks. 
-    You have about 6 days left before the freshers arrive on the campus. What is your contingency plan to promote the club amongst the freshers? 
-    How do you plan on making the club seen amongst a batch of completely new students?`,
+      question:
+        "Suppose you planned to organize a workshop in a hall with a capacity of 200 people, but you found out that only 120 people turned up out of 500 registrations. How would you react to this situation and what actions would you take?",
     },
   ],
   [
     {
       domain: "technical",
       question:
-        "What is the best feature that you liked in any application or any project made by someone else? Also write how would you improve upon that.",
+        "What motivated you to join our technical club? How do you think you can contribute to the club?",
+    },
+    {
+      domain: "photography",
+      question:
+        "Record a small campus tour reel that includes campus buildings, portraits, close-up shots, people, etc. You can add suitable music to enhance the experience. (Enter Google Drive link for the video)",
     },
     {
       domain: "content_writing",
@@ -277,17 +317,7 @@ export const questionsArray: Array<{
     },
     {
       domain: "gfx",
-      question: `If you had the freedom to redesign the landing page of our recruitment portal what design changes would you make?
-    <br />
-    <br />
-    OR 
-    <br />
-    <br />
-    <h3 style='color:#ff644e; margin:0;'>Photography</h3> 
-    <br />
-    Suggest shots and changes in settings for the reel on our instagram page of the full team meeting we had at the beginning of the year. How will you add your magic touch to it?
-    Check it out here:
-    <a href="https://www.instagram.com/reel/CdFv4LqD8xK/?igshid=YWZlMWU5YjI=" target="_blank">https://www.instagram.com/reel/CdFv4LqD8xK</a>
+      question: `If you had the freedom to redesign the landing page of our recruitment portal what design changes would you make? link: https://recruitment.srmkzilla.net
 `,
     },
     {
@@ -296,97 +326,94 @@ export const questionsArray: Array<{
     },
     {
       domain: "corporate",
-      question: `Scenario based question: A post introducing a workshop gets user engagement on Instagram, but not on Twitter. What according to you could have been the problem? What would you do to overcome such a scenario?`,
+      question: `Scenario based question: You have been told to send out mails to potential sponsors for your upcoming event and the only information you have is the date and the agenda of the event. How would you draft a mail to the potential sponsor convincing them to sponsor our event despite only having minimal details?(Draft a mail below)`,
     },
     {
       domain: "events",
-      question: `What are some out-of-the-box ideas that would be great in order to create a buzz about the club amongst the students?`,
+      question:
+        "The venue for your upcoming event faces unforeseen issues, forcing you to relocate the event just two days before the date. How would you manage this change and communicate it to attendees and stakeholders effectively?",
     },
   ],
   [
     {
       domain: "technical",
       question:
-        "Do you have any projects/works to show us? If so, describe what you did and attach a GitHub or drive link to that project(Not mandatory but has brownie points).",
+        "How do you manage and learn from failures and setbacks in your work?",
+    },
+    {
+      domain: "photography",
+      question:
+        "We would love to see some of your past work too! Please provide a link to your portfolio or a Google Drive link with public access to view your work.",
     },
     {
       domain: "content_writing",
-      question: `We would love to see any previous work of yours. It can be a story, poem, article, or even your blog. A quick bit to impress us xD.
-    <br/>This is an optional question.`,
+      question: `Tell us something that you are passionate about. It could be anything from a hobby to a social cause. Have you been a part of any clubs or societies befoer? We would love to hear about it!`,
     },
     {
       domain: "gfx",
-      question: `Note: This task is mandatory for 2nd students however we strongly recommend 1st-year students to give it a shot too.<br/><br/>Please attempt <b>ONE of the three</b> tasks mentioned below and upload the file of your awesome work :<br/>
-    <br/>Task 1: Design an event poster<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;a. Topic: Webinar on Blockchain<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;b. Required fields:<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i.   Social Media footer<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ii.  Date/Time<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iii. Registration link<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv.  Custom heading/Event logo<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;c. Size: 1080px by 1080px<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;d. Export: JPEG format with the source file<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;e. Bonus: To create greater impact, experiment with typography<br/>
-    <br/>Task 2: Illustration(Adobe Illustrator, Affinity Designer, sketch)<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;a. Topic: Redesign the SRMKZILLA logo<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;b. Size: 1080px by 1080px<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;c. Export: JPEG format with the source file<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;d. Bonus: Sign off your artwork with your own custom logo<br/>
-    <br/>Task 3: UI/UX (Figma, Sketch)<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;a. Topic: Redesign SRMKZILLA homepage<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;b. Export: JPEG format with the source file<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;c. Bonus: Try to include gradient effect in elements.
-    <br />
-    <br />
-    OR 
-    <br />
-    <br />
-    <h3 style='color:#ff644e; margin:0;'>Photography</h3> 
-    <br />
-    Simple simple task for you. 
-    We require you to submit your best shots (crowd photography preferred) or some of the awesome reels that you have created
-    <br />
-    If you have a portfolio, show off your skills!
-    <br/>
-    <br/>
-    Here's how you can upload your files: 
-    <br />
-    &nbsp;&nbsp;&nbsp;&nbsp;a. Compile all your work, collect your best shots/videos/reels
-    <br />
-    &nbsp;&nbsp;&nbsp;&nbsp;b. Upload the videos/photos/reels on your google drive
-    <br />
-    &nbsp;&nbsp;&nbsp;&nbsp;c. Copy paste the drive link in a document (For reels, you can insert the instagram link in the doc) 
-    Voila! Just put that doc here`,
+      question: `Note: This task is mandatory for 2nd and 3rd-year students however we strongly recommend 1st-year students to give it a shot too.
+
+      Task 1: Design an event poster
+        a. Topic: Designathon
+        b. Required fields:
+            i. Social Media footer
+            ii. Date/Time
+            iii. Registration link
+            iv. Custom heading/Event logo
+        c. Size: 1080px by 1080px
+        d. Export: JPEG format with the source file
+        e. Bonus: To create greater impact, experiment with typography
+      
+      Task 2: Illustration(Adobe Illustrator, Affinity Designer, sketch)
+        a. Topic: Redesign the SRMKZILLA logo
+        b. Size: 1080px by 1080px
+        c. Export: JPEG format with the source file
+        d. Bonus: Sign off your artwork with your own custom logo
+      
+      Task 3: UI/UX (Figma, Sketch)
+        a. Topic: Redesign RECRUITMENT homepage
+        b. Export: JPEG format with the source file
+        c. Bonus: Try to include gradient effect in elements.
+      
+      
+      `,
     },
     {
       domain: "vfx",
-      question: `Note: This task is mandatory for 2nd students however we strongly recommend 1st-year students to give it a shot too.<br/><br/>Please attempt <b>ONE of the three</b> tasks mentioned below:<br/>
-    <br/>Task 1 (Cinema 4D/Blender/Adobe after effects/Premiere Pro):<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;a. Topic: Create a logo reveal for a tech video<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;b. Composition size: 1920px by 1080px 30 fps<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;c. Export: MP4 with the source file<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;d. Length: 6 sec(Minimum requirement)<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;e. Bonus: Most intros end with the logo on a black or dark background. It’s not a rule, but it stands out better and keeps you in sync with the industry<br/>
-    <br/>Task 2 (Premiere pro/ Apple final cut pro/ Adobe After Effects)<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;a. Topic: Edit our Web3 series video( <a href="https://www.instagram.com/p/CguMTKAq7LS/" target="_blank">https://www.instagram.com/p/CguMTKAq7LS/</a> ) <br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;b. Composition size: 1920px by 1080px 30 fps<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;c. Export: MP4 with the source file<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;d. Length: 10 sec (Minimum requirement)<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;e. Bonus: Use of 3D mockups will be highly recommended<br/>
-    <br/>Task 3 (Adobe After Effects)<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;a. Topic: Promo video on product Sandesh ( <a href="https://www.instagram.com/p/CdkPtAIqq4F/" target="_blank">https://www.instagram.com/p/CdkPtAIqq4F/</a> )<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;b. Composition size: Instagram story dimension<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;c. Export: MP4 with the source file<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;d. Length: 15 sec (Stated)<br/>
-    &nbsp;&nbsp;&nbsp;&nbsp;e. Bonus: Experiment with typography<br/>`,
+      question: `Note: This task is mandatory for 2nd and 3rd-year students however we strongly recommend 1st-year students to give it a shot too.
+
+      Please attempt ONE of the three tasks mentioned below:
+      
+      Task 1 (Cinema 4D/Blender/Adobe after effects/Premiere Pro):
+        a. Topic: Create a logo reveal for a tech video
+        b. Composition size: 1920px by 1080px 30 fps
+        c. Export: MP4 with the source file
+        d. Length: 6 sec(Minimum requirement)
+        e. Bonus: Most intros end with the logo on a black or dark background. It’s not a rule, but it stands out better and keeps you in sync with the industry
+      
+      Task 2 (Premiere pro/ Apple final cut pro/ Adobe After Effects):
+        a. Topic: Edit the Sandesh video below (https://www.instagram.com/p/CdniBEIqmh-/)
+        b. Composition size: 1920px by 1080px 30 fps
+        c. Export: MP4 with the source file
+        d. Length: 10 sec (Minimum requirement)
+        e. Bonus: Use of 3D mockups will be highly recommended
+      
+      Task 3 (Adobe After Effects):
+        a. Topic: Promo video on Mozofest video: (https://www.instagram.com/reel/CpApkpZjx1r/?igshid=MzRlODBiNWFlZA==)
+        b. Composition size: Instagram story dimension
+        c. Export: MP4 with the source file
+        d. Length: 15 sec (Stated)
+        e. Bonus: Experiment with typography
+      `,
     },
     {
       domain: "corporate",
-      question: `How would you solve a conflict of interest between you and your colleagues (be it the same domain or a different one)?`,
+      question: `If you have any prior experiences in this domain, please mention them below.`,
     },
     {
       domain: "events",
-      question: `Hema ,Rekha, Jaya aur Sushma… Sabki pasand nirma kyu hai? Feel free to be creative!`,
+      question:
+        "You are working with a team member who is not pulling their weight and is causing frustration among other team members. How would you address this issue while maintaining a positive team environment?",
     },
-  ]
+  ],
 ];
