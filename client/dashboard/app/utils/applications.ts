@@ -138,6 +138,11 @@ export const questionsArray: Array<
         "Which software do you use for editing images and videos? How proficient are you with these tools?",
     },
     {
+      domain: "photography",
+      question:
+        "Which software do you use for editing images and videos? How proficient are you with these tools?",
+    },
+    {
       domain: "corporate",
       question: `What according to you makes you stand out and deserving to be on the team?`,
     },
