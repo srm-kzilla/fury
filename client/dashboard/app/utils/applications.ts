@@ -6,6 +6,7 @@ export enum Domain {
   Content_Writing = "content_writing",
   Events = "events",
   Corporate = "corporate",
+  Photography = "photography",
 }
 
 export function getDomainName(domain: string) {
@@ -17,7 +18,9 @@ export function getDomainName(domain: string) {
     case Domain.VFX:
       return "VFX";
     case Domain.GFX:
-      return "GFX or Photography";
+      return "GFX";
+    case Domain.Photography:
+      return "Photography";
     case Domain.Content_Writing:
       return "Content Writing";
     case Domain.Events:
@@ -45,8 +48,14 @@ export const domains = [
   {
     key: "gfx",
     value: "gfx",
-    text: "GFX or Photography",
+    text: "GFX",
     description: "Designs the pixels with purpose with an eye for creativity",
+  },
+  {
+    key: "photography",
+    value: "photography",
+    text: "Photography",
+    description: "Freeze moments in time, and unveil the world's beauty.",
   },
   {
     key: "events",
@@ -68,14 +77,21 @@ export const domains = [
   },
 ];
 
-export const questionsArray: Array<{
-  domain: string;
-  question: string;
-}[]> = [
+export const questionsArray: Array<
+  {
+    domain: string;
+    question: string;
+  }[]
+> = [
   [
     {
       domain: "technical",
-      question: "What does the term programming mean to you?",
+      question: "What does programming mean to you?",
+    },
+    {
+      domain: "photography",
+      question:
+        "How passionate are you about photography/videography? Tell us about your strengths in this area and prior experience (if any).",
     },
     {
       domain: "content_writing",
@@ -91,18 +107,18 @@ export const questionsArray: Array<{
     },
     {
       domain: "corporate",
-      question: `What according to you is the work of the corporate domain & how do you think you would be able to contribute to the club and this domain?`,
+      question: `How do you think you would be able to contribute to the club and this domain and how do you think the corporate domain works within a club?`,
     },
     {
       domain: "events",
-      question: `Exiting the realm of "everything online" just recently, what is your opinion on the mode of conducting events? What according to you makes an event a success?`,
+      question:
+        "We know organizing events is fun, but we would still want to hear more about something that made you choose the events domain!",
     },
   ],
   [
     {
       domain: "technical",
-      question:
-        "What is the latest technical stuff that you learnt? Tell us in depth about it and how would you explain it to a five year old kid.",
+      question: "What new technology interests you the most, and why?",
     },
     {
       domain: "content_writing",
@@ -126,19 +142,30 @@ export const questionsArray: Array<{
       question: `If you are tasked with making a promo video for a product launch, what would be your thought process behind it? What are the details that would be taken into account for the video?`,
     },
     {
+      domain: "photography",
+      question:
+        "Which software do you use for editing images and videos? How proficient are you with these tools?",
+    },
+    {
       domain: "corporate",
-      question: `If you have any, please mention any prior experience related to this domain’s scope.`,
+      question: `What according to you makes you stand out and deserving to be on the team?`,
     },
     {
       domain: "events",
-      question: `During an event, there is a group of people that are trying to disrupt the flow and create a ruckus. How will you handle such an issue?`,
+      question:
+        "Do you have any prior experience in event planning or event management? If yes, we would love to know! If not, that’s okay too :)",
     },
   ],
   [
     {
       domain: "technical",
       question:
-        "Explain Object Oriented Programming. Do you prefer using OOP, why or why not?",
+        "What is a tree (data structure ofc :p) and how would you explain it to a 5-year-old kid?",
+    },
+    {
+      domain: "photography",
+      question:
+        "How, according to you, is event photography different from other forms of photography? What unique challenges and opportunities does event photography present?",
     },
     {
       domain: "content_writing",
@@ -154,17 +181,24 @@ export const questionsArray: Array<{
     },
     {
       domain: "corporate",
-      question: `What is sponsorship according to you?`,
+      question: `What according to you is the difference between sponsorship, marketing and advertising?`,
     },
     {
       domain: "events",
-      question: `You have been given a box, a pair of sunglasses, and 12 ping pong balls. Come up with a game that could be fun, quick, and quirky in order to keep your audience engaged!`,
+      question:
+        "What all characteristics, in your opinion, does a successful event have?",
     },
   ],
   [
     {
       domain: "technical",
-      question: "Which is your favourite programming language and why?",
+      question:
+        "Is it still valuable to learn to code in the age of generative AI and no code tools?",
+    },
+    {
+      domain: "photography",
+      question:
+        "Which device do you use for photography/videography? What are the key features of your preferred equipment?",
     },
     {
       domain: "content_writing",
@@ -198,19 +232,24 @@ export const questionsArray: Array<{
     },
     {
       domain: "corporate",
-      question: `Rate your communication skills out of 10 and give your reasoning.`,
+      question: `Rate your communication and collaboration skills out of 10 and state why?`,
     },
     {
       domain: "events",
-      question: `There is a shortage of Chairs at the event venue. The expected footfall for the event was 120 and now you are 20 chairs short. How will you handle such a situation? How will you make sure such an incident does not happen in the future?
-    `,
+      question:
+        "If you were to plan an interactive activity for the audience during the break time of a workshop, what would you wish to do?",
     },
   ],
   [
     {
       domain: "technical",
       question:
-        "Can you differentiate between primitive and non-primivite data types? Give examples.",
+        "How do you explain complex technical concepts to a person from a non-technical background? Take an example and explain it to us!",
+    },
+    {
+      domain: "photography",
+      question:
+        "Do you have any setup for capturing some of the most beautiful moments? This could include gear like DSLR, gimbal, drone, monopods, tripods, etc.",
     },
     {
       domain: "content_writing",
@@ -228,18 +267,24 @@ export const questionsArray: Array<{
     },
     {
       domain: "corporate",
-      question: `After previously agreeing to a sponsorship, a sponsor backs out of an event at the last minute. How would you handle this situation?`,
+      question: `After mutually agreeing to a sponsorship for an upcoming event, a sponsor backs out at the last minute. How would you as a member of the corporate domain handle this situation?`,
     },
     {
       domain: "events",
-      question: `You have been assigned the task of setting up helpdesks on the campus to interact with students. How will you make the experience interactive? How will you use these helpdesks to spread awareness about the club and its upcoming event?`,
+      question:
+        "You are given paper cups, ping pong balls, threads, blindfold cloth, darts, and a rectangular wooden board. Design a mini game using these materials that would not take more than 20 minutes to finish.",
     },
   ],
   [
     {
       domain: "technical",
       question:
-        "What are the technologies (in any field of your choice) you are interested to work with? Write as much as you know about them, their future potential and how you would explain that technology to a 5 year old kid.",
+        "Are you currently working on any projects? if yes, what is the tech stack, and why did you choose that particular tech stack if not, what technologies are you looking forward to learning in the near future? (If the project is open source, give us the link! not mandatory but has brownie points)",
+    },
+    {
+      domain: "photography",
+      question:
+        "Along with following your passion, would you like to contribute to events planning, ideations, and event management? How do you see your photography skills complementing event organization?",
     },
     {
       domain: "content_writing",
@@ -255,21 +300,24 @@ export const questionsArray: Array<{
     },
     {
       domain: "corporate",
-      question: `How familiar are you with current trends on social media and how do you stay updated?`,
+      question: `How would you, without raising more conflict, resolve a dispute between two members of the club?`,
     },
     {
       domain: "events",
-      question: `Consider a hypothetical situation where the club has planned to present itself to the new batch of freshers. 
-    Now you realize that all halls are completely booked so you have no proper venue to conduct the club’s upcoming event that the team had been working on for weeks. 
-    You have about 6 days left before the freshers arrive on the campus. What is your contingency plan to promote the club amongst the freshers? 
-    How do you plan on making the club seen amongst a batch of completely new students?`,
+      question:
+        "Suppose you planned to organize a workshop in a hall with a capacity of 200 people, but you found out that only 120 people turned up out of 500 registrations. How would you react to this situation and what actions would you take?",
     },
   ],
   [
     {
       domain: "technical",
       question:
-        "What is the best feature that you liked in any application or any project made by someone else? Also write how would you improve upon that.",
+        "What motivated you to join our technical club? How do you think you can contribute to the club?",
+    },
+    {
+      domain: "photography",
+      question:
+        "Record a small campus tour reel that includes campus buildings, portraits, close-up shots, people, etc. You can add suitable music to enhance the experience. (Enter Google Drive link for the video)",
     },
     {
       domain: "content_writing",
@@ -296,18 +344,24 @@ export const questionsArray: Array<{
     },
     {
       domain: "corporate",
-      question: `Scenario based question: A post introducing a workshop gets user engagement on Instagram, but not on Twitter. What according to you could have been the problem? What would you do to overcome such a scenario?`,
+      question: `Scenario based question: You have been told to send out mails to potential sponsors for your upcoming event and the only information you have is the date and the agenda of the event. How would you draft a mail to the potential sponsor convincing them to sponsor our event despite only having minimal details?(Draft a mail below)`,
     },
     {
       domain: "events",
-      question: `What are some out-of-the-box ideas that would be great in order to create a buzz about the club amongst the students?`,
+      question:
+        "The venue for your upcoming event faces unforeseen issues, forcing you to relocate the event just two days before the date. How would you manage this change and communicate it to attendees and stakeholders effectively?",
     },
   ],
   [
     {
       domain: "technical",
       question:
-        "Do you have any projects/works to show us? If so, describe what you did and attach a GitHub or drive link to that project(Not mandatory but has brownie points).",
+        "How do you manage and learn from failures and setbacks in your work?",
+    },
+    {
+      domain: "photography",
+      question:
+        "We would love to see some of your past work too! Please provide a link to your portfolio or a Google Drive link with public access to view your work.",
     },
     {
       domain: "content_writing",
@@ -382,11 +436,12 @@ export const questionsArray: Array<{
     },
     {
       domain: "corporate",
-      question: `How would you solve a conflict of interest between you and your colleagues (be it the same domain or a different one)?`,
+      question: `If you have any prior experiences in this domain, please mention them below.`,
     },
     {
       domain: "events",
-      question: `Hema ,Rekha, Jaya aur Sushma… Sabki pasand nirma kyu hai? Feel free to be creative!`,
+      question:
+        "You are working with a team member who is not pulling their weight and is causing frustration among other team members. How would you address this issue while maintaining a positive team environment?",
     },
-  ]
+  ],
 ];
