@@ -195,9 +195,9 @@ func registerUserInDb(user models.UserData) (primitive.ObjectID, error) {
 	}
 
 	newMailEmbed := mailer.MailEmbed{
-		Header:    "Recruitments#2023",
-		Salutaion: "Hi " + user.Name + ",",
-		Body:      "Thank you for registering for the recruitment process. We will keep you updated with the latest information.",
+		Header:      "Recruitments#2023",
+		Salutations: "Hi " + user.Name + ",",
+		Body:        "Thank you for registering for the recruitment process. We will keep you updated with the latest information.",
 	}
 	sesInput := mailer.SESInput{
 		TemplateName:  mailer.TEMPLATES.EmailTemplate,
@@ -208,7 +208,7 @@ func registerUserInDb(user models.UserData) (primitive.ObjectID, error) {
 	}
 	err = mailer.SendEmail(sesInput)
 	if err != nil {
-		log.Error("Error: Sending email")
+		return primitive.ObjectID{}, err
 	}
 	oid, _ := result.InsertedID.(primitive.ObjectID)
 

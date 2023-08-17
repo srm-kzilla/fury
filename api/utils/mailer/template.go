@@ -17,7 +17,7 @@ var TEMPLATES = TemplateNames{
 func getHTMLTemplate(templateName string, embedData interface{}) string {
 	var templateBuffer bytes.Buffer
 
-	htmlData, err := os.ReadFile("./templates/" + templateName)
+	htmlData, err := os.ReadFile("./api/utils/templates/" + templateName)
 	if err != nil {
 		log.Print("Error Reading the file")
 	}

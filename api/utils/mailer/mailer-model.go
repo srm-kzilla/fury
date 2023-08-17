@@ -1,9 +1,9 @@
 package mailer
 
 type MailEmbed struct {
-	Header    string `json:"Header"`
-	Salutaion string `json:"Salutaion"`
-	Body      string `json:"Body"`
+	Header      string `json:"Header"`
+	Salutations string `json:"Salutations"`
+	Body        string `json:"Body"`
 }
 
 type TemplateNames struct {
