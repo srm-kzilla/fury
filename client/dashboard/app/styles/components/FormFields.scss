@@ -96,26 +96,6 @@
   gap: 20px;
 }
 
-.react-select-container {
-  .react-select__menu {
-    color: var(--color-input);
-    background-color: var(--color-bg-alt);
-    width: 80%;
-  }
-
-  .react-select__option {
-    color: var(--color-input);
-    background-color: var(--color-bg-alt);
-    width: 80%;
-  }
-
-  .react-select__control {
-    color: var(--color-input);
-    background-color: var(--color-bg-alt);
-    width: 80%;
-  }
-}
-
 @media only screen and (max-width: 768px) {
   .kz-form-field {
     display: grid;
