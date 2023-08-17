@@ -1,5 +1,4 @@
 export { default as ApplicationTile } from "./ApplicationTile";
-export { ApplicationTileSkeleton } from "./ApplicationTile";
 export { default as FooterCompact } from "./FooterCompact";
 export { default as Glance } from "./Glance";
 export { default as Headbar } from "./Headbar";
@@ -13,7 +12,6 @@ export { default as Sidebar } from "./Sidebar";
 export { default as Task } from "./Task";
 export { default as TeamSvg } from "./TeamSvg";
 export { default as Tile } from "./Tile";
-
 export { links as applicationTileLinks } from "./ApplicationTile";
 export { links as footerCompactLinks } from "./FooterCompact";
 export { links as glanceLinks } from "./Glance";

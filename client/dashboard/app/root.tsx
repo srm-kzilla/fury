@@ -11,7 +11,6 @@ import {
   useRouteError,
 } from "@remix-run/react";
 import { useEffect, useState } from "react";
-import classNames from "classnames";
 import rootStyles from "~/styles/index.css";
 import appStyles from "~/styles/App.css";
 import {
@@ -151,11 +150,7 @@ const Cookie = () => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    if (
-      localStorage.getItem("show_cookie_prompt") ===
-      "true"
-    )
-      setOpen(false);
+    if (localStorage.getItem("show_cookie_prompt") === "true") setOpen(false);
     else setOpen(true);
   }, []);
 
@@ -169,7 +164,7 @@ const Cookie = () => {
   };
 
   return (
-    <div className={classNames("kz-cookie", { open })}>
+    <div className={open ? "kz-cookie open" : "kz-cookie"}>
       <span>
         <BiX size={32} onClick={close} />
       </span>
