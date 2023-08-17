@@ -1,5 +1,4 @@
 import footerCompactStyles from "~/styles/components/FooterCompact.css";
-import { Assets } from "~/constants";
 import type { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => {
@@ -15,7 +14,7 @@ const FooterCompact = () => {
   return (
     <div className="kz-footer-compact">
       <p>
-        crafted by your <img src={Assets.MASK_PARROT} alt="parrot" /> crazy
+        crafted by your <img src="/mask_parrot.gif" alt="parrot" /> crazy
         friends on the SRMKZILLA team
       </p>
     </div>

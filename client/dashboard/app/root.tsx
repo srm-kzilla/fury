@@ -22,7 +22,6 @@ import {
   headbarLinks,
 } from "~/components";
 import { BiX } from "react-icons/bi";
-import { Constants } from "~/constants";
 import { json } from "@remix-run/node";
 import type { ReactNode } from "react";
 import type { LinksFunction } from "@remix-run/node";
@@ -72,7 +71,7 @@ export const loader = () => {
       envSec.env[key] === "" ||
       envSec.env[key] === null
     ) {
-      throw new Error(`Something went wrong. If presists contact us`);
+      throw new Error(`Something went wrong. If persists contact us`);
     }
   }
 
@@ -153,7 +152,7 @@ const Cookie = () => {
 
   useEffect(() => {
     if (
-      localStorage.getItem(Constants.LOCAL_STORAGE.SHOW_COOKIE_PROMPT) ===
+      localStorage.getItem("show_cookie_prompt") ===
       "true"
     )
       setOpen(false);
@@ -165,7 +164,7 @@ const Cookie = () => {
   };
 
   const accept = () => {
-    localStorage.setItem(Constants.LOCAL_STORAGE.SHOW_COOKIE_PROMPT, "true");
+    localStorage.setItem("show_cookie_prompt", "true");
     setOpen(false);
   };
 

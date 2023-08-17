@@ -1,4 +1,3 @@
-import { Assets } from "~/constants";
 import taskStyles from "~/styles/components/Task.css";
 import Markdown from "markdown-to-jsx";
 import type { LinksFunction } from "@remix-run/node";
@@ -19,7 +18,7 @@ const Task = ({ activeProject }: TaskProps) => {
     <div className="kz-task-project">
       {!activeProject && (
         <div className="not-found">
-          <img src={Assets.EMPTY} alt="No Elements in pool" />
+          <img src="/empty.svg" alt="No Elements in pool" />
           <p>Please select a project to show its task list</p>
         </div>
       )}
