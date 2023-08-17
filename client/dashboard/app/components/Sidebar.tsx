@@ -1,5 +1,4 @@
 import sidebarCSS from "~/styles/components/Sidebar.css";
-import { Assets } from "~/constants";
 import { BiHomeCircle, BiLogOut, BiRocket } from "react-icons/bi";
 import { Form, Link, useLocation, useNavigate } from "@remix-run/react";
 import classNames from "classnames";
@@ -24,7 +23,7 @@ const Sidebar = () => {
       <div>
         <div className="logo">
           <img
-            src={Assets.SRMKZILLA_LOGO_WHITE}
+            src="/srmkzilla_logo_white.svg"
             alt="logo"
             onClick={() => {
               navigate("/");
