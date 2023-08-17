@@ -1,127 +1,76 @@
-import classNames from "classnames";
-import { useContext, useEffect, useState } from "react";
-import { BiArrowBack, BiCog } from "react-icons/bi";
-import { FooterCompact, Task } from "~/components";
-import { TextField } from "~/components/Wizard/FormFields";
-import { Field } from "formik";
-import {
-  DomainInstructions,
-  GeneralInstructionComponent,
-} from "../components/Wizard/FormSteps/Instructions";
-import { APIService } from "~/shared/services/api-service";
-import { StoreContext } from "~/components/Wizard/Store";
-import ProjectStyles from "~/styles/pages/Project.css";
+import projectStyles from "~/styles/pages/Project.css";
+import { Task } from "~/components";
 import type { LinksFunction } from "@remix-run/node";
+import type { ActionData } from "~/routes/applications.technical-project";
+import {useEffect} from "react";
 
-export const links: LinksFunction = () => {
-  return [
-    {
-      rel: "stylesheet",
-      href: ProjectStyles,
-    },
-  ];
-};
+export const links: LinksFunction = () => [
+  {
+    rel: "stylesheet",
+    href: projectStyles,
+  },
+];
 
-const Project = () => {
-  const [settingsMode, setSettingsMode] = useState(true);
-  const [currentProject, setCurrentProject] = useState<any>({});
-  const { selectedProjectSlug } = useContext(StoreContext);
+interface ProjectProps {
+  slug: string;
+  projects: Project[];
+  actionData?: ActionData;
+}
+
+const Project = ({ slug, projects, actionData }: ProjectProps) => {
+  const activeProject = projects.find((project) => project.slug === slug);
+
+  if (!activeProject) {
+    throw new Error("Not a valid project slug");
+  }
 
   useEffect(() => {
-    (async () => {
-      try {
-        const projectsResponse =
-          await APIService.getInstance().fetchAllProjects();
-
-        setCurrentProject(
-          projectsResponse.data.projects.filter(
-            (project: any) => project.slug === selectedProjectSlug
-          )[0]
-        );
-      } catch (error) {
-        console.error(error);
-      }
-    })();
-  }, []);
+    console.log(actionData);
+  }, [actionData]);
 
   return (
-    <>
-      <div className="kz-project-module">
-        <div>
-          <div className="kz-project-flex">
-            <div className="main left">
-              <div className="heading">
-                <div>
-                  <BiCog
-                    className={classNames({ active: settingsMode })}
-                    onClick={() => {
-                      setSettingsMode(!settingsMode);
-                    }}
-                  />
-                </div>
+    <div className="kz-project-module">
+      <div className="kz-project-flex">
+        <div className="main left">
+          <div className="instructions-box">
+            {activeProject.tasks && <Task activeProject={activeProject} />}
+          </div>
+        </div>
+        <div className="main">
+          <div className="settings">
+            <div className="settings-box">
+              <div className="field">
+                <label>Project Title</label>
+                <input
+                  type="text"
+                  placeholder="Enter the title of your project"
+                  name="title"
+                />
+                <sub>{actionData?.errors?.title}</sub>
+                <label>GitHub Repository</label>
+                <input
+                  type="text"
+                  placeholder="https://github.com/srm-kzilla/srm-kzilla"
+                  name="link"
+                />
+                <sub>{actionData?.errors?.link}</sub>
+                <label htmlFor="subdomain">Preferred Subdomain</label>
+                <select name="subdomain">
+                  <option value="" selected disabled>
+                    Select Your Preferred Subdomain
+                  </option>
+                  <option value="app">App Development</option>
+                  <option value="frontend">Frontend Development</option>
+                  <option value="backend">Backend Development</option>
+                </select>
+                <sub>{actionData?.errors?.subdomain}</sub>
               </div>
-              <div className="instructions-box margin-bt">
-                <DomainInstructions.component domain={"technical"} />
-              </div>
-              <div className="instructions-box">
-                {currentProject.tasks && (
-                  <Task
-                    activeProject={currentProject}
-                    toggleTaskChecked={() => {}}
-                    addTask={() => {}}
-                    deleteTask={() => {}}
-                    clickDisabled={true}
-                  />
-                )}
-              </div>
+              <button type="submit" name="_action" value="submit">Submit</button>
             </div>
-
-            {settingsMode && (
-              <div className="main">
-                <div className="settings">
-                  <h3>
-                    <span>
-                      <BiArrowBack
-                        onClick={() => {
-                          setSettingsMode(false);
-                        }}
-                      />
-                      Project Settings
-                    </span>
-                  </h3>
-                  <div className="settings-box">
-                    <div className="field">
-                      <label>Project Title</label>
-                      <TextField
-                        placeholder="Enter the title of your project"
-                        name="project_title"
-                      />
-
-                      <label>GitHub Repository</label>
-                      <TextField
-                        placeholder="https://github.com/srm-kzilla/srm-kzilla"
-                        name="project_link"
-                      />
-                      <label htmlFor="subdomain">Preferred Subdomain</label>
-                      <Field component="select" name="subdomain">
-                        <option value="">
-                          Select Your Preferred Subdomain
-                        </option>
-                        <option value="app">App Development</option>
-                        <option value="frontend">Frontend Development</option>
-                        <option value="backend">Backend Development</option>
-                        <option value="blockchain">Blockchain</option>
-                      </Field>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </div>
-      <FooterCompact />
-    </>
+    </div>
   );
 };
 

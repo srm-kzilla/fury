@@ -21,7 +21,7 @@ const API = {
     APPLICATION: {
       BASE_URL: () => "/application",
       DELETE_DRAFT: (domain: string) => `/${domain}`,
-      SUBMIT_APPLICATION: () => "/submit",
+      SUBMIT_APPLICATION: (domain: string) => `/submit/${domain}`
     },
     AUTH: {
       BASE_URL: () => "/auth",
@@ -60,8 +60,8 @@ export const updateUserDetails = async (request: Request, user: UpdateUser) => {
 
 export const uploadResume = async (request: Request, body: FormData) => {
   const accessToken = await requireAccessToken(request);
-  const formdata = new FormData();
-  formdata.append("resume", body.get("resume") as Blob, "random-uuid-1.pdf");
+  const formData = new FormData();
+  formData.append("resume", body.get("resume") as Blob, "random-uuid-1.pdf");
 
   const res = await fetch(
     API.BASE_URL +
@@ -69,7 +69,7 @@ export const uploadResume = async (request: Request, body: FormData) => {
       API.ENDPOINTS.USERS.RESUME_UPLOAD(),
     {
       method: "POST",
-      body: formdata,
+      body: formData,
       redirect: "follow",
 
       headers: {
@@ -77,8 +77,7 @@ export const uploadResume = async (request: Request, body: FormData) => {
       },
     },
   );
-  const data = await res.json();
-  return data;
+  return await res.json();
 };
 
 export const getNotifications = async (request: Request) => {
@@ -195,11 +194,9 @@ export const submitApplication = async (request: Request, domain: string) => {
   const res = await fetch(
     API.BASE_URL +
       API.ENDPOINTS.APPLICATION.BASE_URL() +
-      API.ENDPOINTS.APPLICATION.SUBMIT_APPLICATION() + '/' +domain,
+      API.ENDPOINTS.APPLICATION.SUBMIT_APPLICATION(domain),
     {
       method: "POST",
-      body: JSON.stringify({
-      }),
       headers: {
         "Authorization": `Bearer ${accessToken}`,
       },

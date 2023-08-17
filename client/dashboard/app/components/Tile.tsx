@@ -1,52 +1,37 @@
-import React, { useMemo } from "react";
-import tinycolor from "tinycolor2";
-import classNames from "classnames";
-import { ProjectTile } from "./ProjectTiles";
+import { useMemo } from "react";
+import type { LinksFunction } from "@remix-run/node";
+import tileStyles from "~/styles/components/Tile.css";
 
-interface Props {
-  tile: ProjectTile;
-  toggleTileActive: (slug: string) => void;
-}
+interface TileProps extends Project {}
 
-const Tile = (props: Props) => {
+export const links: LinksFunction = () => [
+  {
+    rel: "stylesheet",
+    href: tileStyles,
+  },
+];
+
+const Tile = ({ title }: TileProps) => {
   const setRotation = () => {
     const angle = (90 * Math.floor(Math.random() * Math.floor(5))).toString();
     return "rotate(" + angle + "deg)";
   };
   const memoizedRotation = useMemo(() => setRotation(), []);
 
-  const checkTheme = () => {
-    return tinycolor(props.tile.color).isDark();
-  };
-
-  const insertTheme = {
-    "--theme": props.tile.color,
-  } as React.CSSProperties;
-
   const rotationStyle = {
     transform: memoizedRotation,
   };
 
   return (
-    <div
-      className={classNames("kz-wrapper", { active: props.tile.active })}
-      style={insertTheme}
-    >
-      <div
-        className={classNames("kz-project-tile", {
-          dark: checkTheme(),
-        })}
-        onClick={() => {
-          props.toggleTileActive(props.tile.slug);
-        }}
-      >
-        <h2>{props.tile.title?.substring(0, 2)}</h2>
+    <div className="kz-wrapper">
+      <div className="kz-project-tile dark">
+        <h2>{title?.substring(0, 2)}</h2>
         <div className="kz-bg-shapes" style={rotationStyle}>
           <div className="kz-rectangle"></div>
           <div className="kz-circle"></div>
         </div>
       </div>
-      <h5>{props.tile.title}</h5>
+      <h5>{title}</h5>
     </div>
   );
 };

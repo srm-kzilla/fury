@@ -192,7 +192,7 @@ export default function Start() {
           <label className="label" htmlFor="gender">
             Gender<sup>*</sup>
           </label>
-          <select name="gender" defaultValue={"other"}>
+          <select name="gender" defaultValue="other">
             <option value="">Select your gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>

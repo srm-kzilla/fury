@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { json, redirect } from "@remix-run/node";
 import { Form, Link, useActionData, useNavigation } from "@remix-run/react";
-import { loadingLinks, taskListLinks } from "~/components";
+import { loadingLinks } from "~/components";
 import { getFormSession, updateFormSession } from "~/utils/session.server";
 import { BiHomeAlt, BiLoader } from "react-icons/bi";
 import toast from "~/utils/toast.client";
@@ -30,7 +30,6 @@ export const links: LinksFunction = () => [
     href: wizardStyles,
   },
   ...loadingLinks(),
-  ...taskListLinks(),
 ];
 
 export const loader: LoaderFunction = async ({ request }) => {
@@ -46,7 +45,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
-  const domain = formData.get("domain") as string;
+  let domain = formData.get("domain") as string;
 
   if (!domain) {
     return json({
@@ -54,6 +53,10 @@ export const action: ActionFunction = async ({ request }) => {
       toastMessage: "Domain is required",
     });
   }
+
+  const { year } = await getUserDetails(request);
+
+  if (domain === "technical" && year != 1) domain = "technicalp";
 
   const { application } = await getUserDetails(request);
 
