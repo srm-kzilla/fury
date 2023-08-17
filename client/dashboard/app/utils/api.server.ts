@@ -36,7 +36,7 @@ export const getUserDetails = async (request: Request): Promise<User> => {
 
   const res = await fetch(API.BASE_URL + API.ENDPOINTS.USERS.BASE_URL(), {
     headers: {
-      Authorization: `Bearer ${accessToken}`,
+      "Authorization": `Bearer ${accessToken}`,
     },
   });
 
@@ -50,12 +50,34 @@ export const updateUserDetails = async (request: Request, user: UpdateUser) => {
     method: "PUT",
     body: JSON.stringify(user),
     headers: {
-      Authorization: `Bearer ${accessToken}`,
+      "Authorization": `Bearer ${accessToken}`,
       "Content-Type": "application/json",
     },
   });
 
   return res.json();
+};
+
+export const uploadResume = async (request: Request, body: FormData) => {
+  const accessToken = await requireAccessToken(request);
+  const formData = new FormData();
+  formData.append("resume", body.get("resume") as Blob, "random-uuid-1.pdf");
+
+  const res = await fetch(
+    API.BASE_URL +
+      API.ENDPOINTS.USERS.BASE_URL() +
+      API.ENDPOINTS.USERS.RESUME_UPLOAD(),
+    {
+      method: "POST",
+      body: formData,
+      redirect: "follow",
+
+      headers: {
+        "Authorization": `Bearer ${accessToken}`
+      },
+    },
+  );
+  return await res.json();
 };
 
 export const getNotifications = async (request: Request) => {
@@ -67,9 +89,8 @@ export const getNotifications = async (request: Request) => {
       API.ENDPOINTS.USERS.NOTIFICATIONS(),
     {
       headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    }
+        "Authorization": `Bearer ${accessToken}`      },
+    },
   );
 
   return res.json();
@@ -84,9 +105,9 @@ export const getApplications = async (request: Request): Promise<{ applications:
       API.ENDPOINTS.USERS.APPLICATIONS(),
     {
       headers: {
-        Authorization: `Bearer ${accessToken}`,
+        "Authorization": `Bearer ${accessToken}`,
       },
-    }
+    },
   );
 
   return res.json();
@@ -101,9 +122,9 @@ export const getUserActivity = async (request: Request) => {
       API.ENDPOINTS.USERS.ACTIVITY(),
     {
       headers: {
-        Authorization: `Bearer ${accessToken}`,
+        "Authorization": `Bearer ${accessToken}`,
       },
-    }
+    },
   );
 
   return res.json();
@@ -177,10 +198,9 @@ export const submitApplication = async (request: Request, domain: string) => {
     {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "application/json",
+        "Authorization": `Bearer ${accessToken}`,
       },
-    }
+    },
   );
 
   return res.json();
@@ -209,9 +229,10 @@ export const deleteDraftApplication = async (
     {
       method: "DELETE",
       headers: {
-        Authorization: `Bearer ${accessToken}`,
+        "Authorization": `Bearer ${accessToken}`,
       },
-    }
+    },
+
   );
 
   return res.json();
@@ -221,7 +242,7 @@ export const getAccessTokenFromRefreshToken = async (refreshToken: string) => {
   const res = await fetch(
     API.BASE_URL +
       API.ENDPOINTS.AUTH.BASE_URL() +
-      API.ENDPOINTS.AUTH.REFRESH_TOKEN(refreshToken)
+      API.ENDPOINTS.AUTH.REFRESH_TOKEN(refreshToken),
   );
 
   return res.json();

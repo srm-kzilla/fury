@@ -3,10 +3,11 @@ import applicationStyles from "~/styles/pages/Application.css";
 import paperPlaneLottie from "~/assets/lotties/paperplane.json";
 import tickLottie from "~/assets/lotties/tick.json";
 import { Sidebar, sidebarLinks } from "~/components";
-import { useLoaderData, useNavigate } from "@remix-run/react";
+import { Link, useLoaderData, useNavigate } from "@remix-run/react";
 import type { LinksFunction, LoaderFunction } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
 import { getApplications } from "~/utils/api.server";
+import { BiArrowFromRight } from "react-icons/bi";
 
 export const links: LinksFunction = () => [
   ...sidebarLinks(),
@@ -46,6 +47,14 @@ export default function Application() {
       <div>
         <Sidebar />
       </div>
+      <div>
+        <Link to={"/"}>
+          <div className="go-back">
+            <BiArrowFromRight className="icon" />
+            <h2>Home</h2>
+          </div>
+        </Link>
+      </div>
       <div className="main">
         {status === "accepted" ? (
           <div className="main-accepted">
@@ -84,11 +93,11 @@ export default function Application() {
               <h1>What's next?</h1>
               <p>
                 You will get an email from us regarding the interview where
-                we'll talk about your interests, your past experience, out
+                we'll talk about your interests, your past experience, our
                 vision for the future, and how you can contribute and help us
                 achieve it. <br />
                 Meanwhile, keep an eye on our Instagram page for updates. If you
-                have any queries ping us on out Instagram handle.
+                have any queries ping us on our Instagram handle.
               </p>
               <h5>
                 Not yet joined the super awesome SRMKZILLA Discord?{" "}

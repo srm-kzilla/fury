@@ -23,10 +23,12 @@ import {
   BiTerminal,
   BiTime,
   BiVector,
+  BiArrowFromRight,
+  BiNotepad,
 } from "react-icons/bi";
 import { json, type LinksFunction, type LoaderFunction } from "@remix-run/node";
 import { getUserActivity, getUserDetails } from "~/utils/api.server";
-import { useLoaderData } from "@remix-run/react";
+import { Link, useLoaderData } from "@remix-run/react";
 
 export const links: LinksFunction = () => [
   ...sidebarLinks(),
@@ -126,6 +128,15 @@ const Explore = () => {
       timestamp: 1637163264000,
       github: "https://github.com/srm-kzilla/polls",
       url: "https://www.instagram.com/p/CZWCbDRK2Y8/?igshid=MTA0ZTI1NzA=",
+    },
+    {
+      icon: <BiTerminal />,
+      title: "Zeus",
+      description:
+        "A fast and secure backend service for tracking event details and managing registrations in real-time.",
+      timestamp: 1636309800000,
+      github: "https://github.com/srm-kzilla/zeus-backend",
+      url: "",
     },
     {
       icon: <BiGame />,
@@ -239,6 +250,14 @@ const Explore = () => {
       github: "https://github.com/srm-kzilla/mellow-vscode-theme",
       url: "https://marketplace.visualstudio.com/items?itemName=SRMKZILLA.Mellow",
     },
+    {
+      icon: <BiNotepad />,
+      title: "Blogs",
+      description: "The go-to source for valuable information",
+      timestamp: 1582396200000,
+      github: "",
+      url: "https://medium.com/srmkzilla",
+    },
   ];
 
   return (
@@ -247,13 +266,19 @@ const Explore = () => {
         <Sidebar />
         <div className="container">
           <div className="main">
+            <Link to={"/"}>
+              <div className="go-back">
+                <BiArrowFromRight className="icon" />
+                <h2>Applications</h2>
+              </div>
+            </Link>
             <h2>
               Explore <span>@srmkzilla</span>
             </h2>
             <div>
               <h3 className="mb">2023</h3>
               <div>
-                <div>
+                <div className="items">
                   {items.map((item, index) => {
                     return (
                       <div key={index} className="tile">

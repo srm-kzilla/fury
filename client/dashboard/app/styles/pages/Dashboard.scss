@@ -22,8 +22,9 @@ div.kz-dashboard {
     padding: 2rem;
 
     .application-wrapper {
+      width: 90%;
       display: flex;
-      gap: 20px;
+      gap: 10px;
     }
 
     .application-wrapper > div {
@@ -34,130 +35,137 @@ div.kz-dashboard {
       padding: 2rem 1rem;
     }
 
-    div.kz-timer {
-      padding: 1rem 0;
+    .notif-wrapper {
+      overflow-x: hidden;
       width: 100%;
-      background-color: var(--color-bg-alt);
-      border-radius: 1rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      @include for-mobile-only {
-        margin: 0.5rem auto;
-      }
-
-      @include for-tablet-only {
-        margin: 0.75rem auto;
-      }
-
-      div.timer-inner {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-
-        h4 {
-          margin: 0.25rem auto;
-          display: inline-block;
-          @include fluid-type(0.75rem, 1rem, $min-width, $max-width);
-
-          svg {
-            vertical-align: bottom;
-            color: $primary;
-            width: 1.5rem;
-            height: 1.5rem;
-            animation: alarmBuzz 0.8s infinite
-              cubic-bezier(0.075, 0.82, 0.165, 1);
-
-            @keyframes alarmBuzz {
-              0% {
-                -webkit-transform: rotate(0deg);
-              }
-
-              10% {
-                -webkit-transform: rotate(-2deg);
-              }
-
-              20% {
-                -webkit-transform: rotate(2deg);
-              }
-
-              30% {
-                -webkit-transform: rotate(0deg);
-              }
-
-              40% {
-                -webkit-transform: rotate(2deg);
-              }
-
-              50% {
-                -webkit-transform: rotate(-2deg);
-              }
-
-              60% {
-                -webkit-transform: rotate(0deg);
-              }
-
-              70% {
-                -webkit-transform: rotate(-2deg);
-              }
-
-              80% {
-                -webkit-transform: rotate(2deg);
-              }
-
-              90% {
-                -webkit-transform: rotate(0deg);
-              }
-
-              100% {
-                -webkit-transform: rotate(-2deg);
-              }
-            }
-          }
-        }
-
-        div.timer {
-          display: flex;
-          justify-content: center;
-          flex-direction: row;
-          margin: 0.75rem auto;
-
-          & > div {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            h5 {
-              width: 3rem;
-              height: 3rem;
-              color: var(--color-text);
-              margin: auto 0.5rem;
-              border-radius: 0.25rem;
-              background-color: var(--color-bg);
-              display: flex;
-              justify-content: center;
-              align-items: center;
-            }
-
-            small {
-              margin: 0.25rem auto 0 auto;
-              color: $primary;
-              font-weight: 700;
-            }
-          }
-        }
-      }
+      height: fit-content;
     }
 
+    
     .banner {
-      max-width: 25.5rem;
       width: 100%;
       display: flex;
       flex-direction: column;
       gap: 10px;
+      
+      div.kz-timer {
+        padding: 1rem 0;
+        width: 100%;
+        height: fit-content;
+        background-color: var(--color-bg-alt);
+        border-radius: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+  
+        @include for-mobile-only {
+          margin: 0.5rem auto;
+        }
+  
+        @include for-tablet-only {
+          margin: 0.75rem auto;
+        }
+  
+        div.timer-inner {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+  
+          h4 {
+            margin: 0.25rem auto;
+            display: inline-block;
+            @include fluid-type(0.75rem, 1rem, $min-width, $max-width);
+  
+            svg {
+              vertical-align: bottom;
+              color: $primary;
+              width: 1.5rem;
+              height: 1.5rem;
+              animation: alarmBuzz 0.8s infinite
+                cubic-bezier(0.075, 0.82, 0.165, 1);
+  
+              @keyframes alarmBuzz {
+                0% {
+                  -webkit-transform: rotate(0deg);
+                }
+  
+                10% {
+                  -webkit-transform: rotate(-2deg);
+                }
+  
+                20% {
+                  -webkit-transform: rotate(2deg);
+                }
+  
+                30% {
+                  -webkit-transform: rotate(0deg);
+                }
+  
+                40% {
+                  -webkit-transform: rotate(2deg);
+                }
+  
+                50% {
+                  -webkit-transform: rotate(-2deg);
+                }
+  
+                60% {
+                  -webkit-transform: rotate(0deg);
+                }
+  
+                70% {
+                  -webkit-transform: rotate(-2deg);
+                }
+  
+                80% {
+                  -webkit-transform: rotate(2deg);
+                }
+  
+                90% {
+                  -webkit-transform: rotate(0deg);
+                }
+  
+                100% {
+                  -webkit-transform: rotate(-2deg);
+                }
+              }
+            }
+          }
+  
+          div.timer {
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            margin: 0.75rem auto;
+  
+            & > div {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+  
+              h5 {
+                width: 3rem;
+                height: 3rem;
+                color: var(--color-text);
+                margin: auto 0.5rem;
+                border-radius: 0.25rem;
+                background-color: var(--color-bg);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              }
+  
+              small {
+                margin: 0.25rem auto 0 auto;
+                color: $primary;
+                font-weight: 700;
+              }
+            }
+          }
+        }
+      }
 
       .container-iframe {
         position: relative;
@@ -286,14 +294,19 @@ div.kz-dashboard {
     }
 
     .notif-row {
-      padding: 1rem;
+      width: 90%;
+      padding: 0;
       display: flex;
       gap: 10px;
       align-items: center;
+      display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns, each taking up 50% of available space */
+  gap: 10px; 
     }
 
     .kz-notifications {
-      height: 25rem;
+      width: 100%;
+      height: 100%;
       overflow-y: scroll;
       background-color: var(--color-bg-alt);
       border-radius: 1rem;
@@ -337,14 +350,13 @@ div.kz-dashboard {
   }
 }
 
-@media only screen and (min-width:1700px ){
-  div.kz-dashboard{
-    .new{
+@media only screen and (min-width: 1700px) {
+  div.kz-dashboard {
+    .new {
       position: absolute;
       right: 5rem;
     }
   }
-  
 }
 
 @media only screen and (max-width: 768px) {
@@ -363,13 +375,14 @@ div.kz-dashboard {
         .notif-wrapper {
           overflow-x: hidden;
           width: 100%;
-          height: 50%;
+          height: fit-content;
         }
 
         .application-wrapper {
+          width: 100%;
           display: flex;
           flex-direction: column;
-          gap: 20px;
+          gap: 10px;
         }
 
         .application-wrapper > div {
@@ -382,11 +395,16 @@ div.kz-dashboard {
         }
 
         .notif-row {
-          padding: 1rem;
+          width: 100%;
+          padding: 0;
           display: flex;
           flex-direction: column;
           gap: 10px;
           align-items: center;
+
+          .kz-notifications {
+            width: 100%;
+          }
         }
       }
     }

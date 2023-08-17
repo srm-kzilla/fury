@@ -4,7 +4,11 @@ import {
   useActionData,
   useLoaderData,
 } from "@remix-run/react";
-import { getUserDetails, updateUserDetails } from "~/utils/api.server";
+import {
+  getUserDetails,
+  updateUserDetails,
+  uploadResume,
+} from "~/utils/api.server";
 import userProfileStyles from "~/styles/components/UserProfile.css";
 import { json, redirect } from "@remix-run/node";
 import { BiLoader } from "react-icons/bi";
@@ -42,16 +46,27 @@ type ActionData = {
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
+  const resumeResponse = await uploadResume(request, formData);
+  if (resumeResponse?.url) formData.append("resume", resumeResponse.url);
 
   try {
-    const { name, branch, contact, github, linkedin, portfolio, gender } =
-      await validateUserDetails(formData);
+    const {
+      name,
+      branch,
+      contact,
+      github,
+      linkedin,
+      portfolio,
+      gender,
+      resume,
+    } = await validateUserDetails(formData);
 
     const { error, message } = await updateUserDetails(request, {
       name,
       branch,
       contact,
       gender,
+      resume,
       socials: {
         github,
         linkedin,
@@ -99,13 +114,13 @@ const validateUserDetails = async (formData: FormData) => {
       .url("The URL you have entered doesn't seem right")
       .matches(
         /^(https?:\/\/(?:[a-z]+\.)?linkedin\.com\/in\/[a-zA-Z0-9_-]+)?$/,
-        "The URL you have entered doesn't seem right"
+        "The URL you have entered doesn't seem right",
       ),
     github: Yup.string()
       .url("The URL you have entered doesn't seem right")
       .matches(
         /^(https?:\/\/(?:[a-z]+\.)?github\.com\/[a-zA-Z0-9_-]+)?$/,
-        "The URL you have entered doesn't seem right"
+        "The URL you have entered doesn't seem right",
       ),
     resume: Yup.string(),
     portfolio: Yup.string().url(),
@@ -139,14 +154,15 @@ export default function Start() {
   }, [actionData]);
 
   return (
-    <Form method="post" className="kz-user-form">
+    <Form method="post" encType="multipart/form-data" className="kz-user-form">
       <div>
         <h1>Tell us about yourself</h1>
       </div>
       <div>
         <h5>
           Although not obligatory, including your LinkedIn profile, portfolio,
-          and other delightful tidbits can certainly give your chances a boost! 🚀
+          and other delightful tidbits can certainly give your chances a boost!
+          🚀
         </h5>
       </div>
       <div className="grid-box">
@@ -209,7 +225,7 @@ export default function Start() {
               Resume (upto 20 megabytes)
             </label>
             <div {...getRootProps()} className="dropzone">
-              <input {...getInputProps()} />
+              <input name="resume" {...getInputProps()} />
               {selectedFile ? (
                 <div>
                   <p className="text">Selected file: {selectedFile["name"]}</p>
