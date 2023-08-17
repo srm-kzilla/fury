@@ -7,7 +7,7 @@ import { Link, useLoaderData, useNavigate } from "@remix-run/react";
 import type { LinksFunction, LoaderFunction } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
 import { getApplications } from "~/utils/api.server";
-import { BiArrowFromRight } from "react-icons/bi";
+import { BiHome } from "react-icons/bi";
 
 export const links: LinksFunction = () => [
   ...sidebarLinks(),
@@ -50,7 +50,7 @@ export default function Application() {
       <div>
         <Link to={"/"}>
           <div className="go-back">
-            <BiArrowFromRight className="icon" />
+            <BiHome className="icon" />
             <h2>Home</h2>
           </div>
         </Link>
