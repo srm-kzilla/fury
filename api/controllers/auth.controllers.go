@@ -185,13 +185,14 @@ func registerUserInDb(user models.UserData) (primitive.ObjectID, error) {
 		CreatedAt:     time.Now().Unix(),
 	}
 	result, e := usersCollection.InsertOne(context.Background(), newUser)
-	notificationInsert := notifications.RecordNotification("NEW_USER", result.InsertedID.(primitive.ObjectID))
-	if notificationInsert == false {
-		log.Error("Error: Inserting notification")
-	}
 	if e != nil {
 		return primitive.ObjectID{}, e
 	}
+	notificationInsert := notifications.RecordNotification("NEW_USER", result.InsertedID.(primitive.ObjectID))
+	if !notificationInsert {
+		log.Error("Error: Inserting notification")
+	}
+
 	oid, _ := result.InsertedID.(primitive.ObjectID)
 
 	return oid, nil

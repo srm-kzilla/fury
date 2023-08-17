@@ -9,6 +9,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/srm-kzilla/Recruitments/api/models"
 	"github.com/srm-kzilla/Recruitments/api/utils/database"
+	"github.com/srm-kzilla/Recruitments/api/utils/notifications"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -72,6 +73,10 @@ func CreateApplication(c *fiber.Ctx) error {
 			"error":   err.Error(),
 			"message": "Error inserting application",
 		})
+	}
+	notificationInsert := notifications.RecordNotification("NEW_APPLICATION", userId)
+	if !notificationInsert {
+		log.Error("Error: Inserting notification")
 	}
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"message": "Application created successfully",
@@ -211,7 +216,6 @@ func SubmitApplication(c *fiber.Ctx) error {
 			"message": "Error getting users collection",
 		})
 	}
-
 	filter := bson.M{
 		"_id":                userId,
 		"application.domain": domain,
@@ -237,6 +241,10 @@ func SubmitApplication(c *fiber.Ctx) error {
 			"error": errr.Error(),
 		})
 
+	}
+	notificationInsert := notifications.RecordNotification("APPLICATION_IN_REVIEW", userId)
+	if !notificationInsert {
+		log.Error("Error: Inserting notification")
 	}
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"message": "Application submitted successfully",
