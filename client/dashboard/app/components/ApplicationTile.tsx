@@ -33,7 +33,7 @@ export enum Status {
 }
 
 const ApplicationTile = ({ application, handleClick }: Props) => {
-  const {status: applicationStatus, questions} = application;
+  const { status: applicationStatus, questions } = application;
   const formatStatus = (status: string) => {
     switch (status) {
       case Status.InProgress:
@@ -78,11 +78,13 @@ const ApplicationTile = ({ application, handleClick }: Props) => {
           {status && status.label}
         </div>
       </div>
-      {questions && questions.length === 8 && applicationStatus === "draft" && (
-        <div>
-          <h4>Your application is complete! Submit it now</h4>
-        </div>
-      )}
+      {questions &&
+        questions?.length === 8 &&
+        applicationStatus === "draft" && (
+          <div>
+            <h4>Your application is complete! Submit it now</h4>
+          </div>
+        )}
       {applicationStatus === "draft" && questions.length !== 8 && (
         <div>
           <h4>Your application is saved as draft. Complete it now!</h4>
