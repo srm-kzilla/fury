@@ -47,7 +47,7 @@ const InfoTile = ({
           </div>
           <div className="link">
             {url && (
-              <a href={url} target="_blank">
+              <a href={url} target="_blank" rel="noreferrer">
                 <BiArrowToRight />
               </a>
             )}

@@ -30,7 +30,6 @@ const Glance = ({ user, activity }: ActivityProps) => {
     window.$crisp.push(["set", "user:nickname", [user?.name]]);
     window.$crisp.push(["set", "user:email", [user?.email]]);
     window.$crisp.push(["set", "user:phone", [user?.contact]]);
-    // window.$crisp.push(["set", "user:avatar", [user?.avatar_url]]);
   }, []);
 
   return (

@@ -3,14 +3,12 @@ import { Link } from "@remix-run/react";
 import formClosedStyles from "~/styles/components/FormClosed.css";
 import type { LinksFunction } from "@remix-run/node";
 
-export const links: LinksFunction = () => {
-  return [
-    {
-      rel: "stylesheet",
-      href: formClosedStyles,
-    },
-  ];
-};
+export const links: LinksFunction = () => [
+  {
+    rel: "stylesheet",
+    href: formClosedStyles,
+  },
+];
 
 export default function FormClosed() {
   return (
