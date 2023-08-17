@@ -21,6 +21,14 @@ func RecordNotification(notificationType string, userId any) bool {
 	case "NEW_USER":
 		notification.Text = "Hello, dreamer. Welcome to #Recruitment2023. Your pathway to becoming an SRMKZILLian starts right here. Create a new application to get started."
 		notification.Markdown = "**Hello, dreamer.** Welcome to #Recruitment2023. Your pathway to becoming an SRMKZILLian starts right here. Create a new application to get started."
+
+	case "NEW_APPLICATION":
+		notification.Text = "Your application has been created."
+		notification.Markdown = "**Your application has been <span>created</span>.**"
+
+	case "APPLICATION_IN_REVIEW":
+		notification.Text = "Your application is under review."
+		notification.Markdown = "**Your application status changed to <span>In review</span>.**"
 	}
 
 	usersCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "users")
