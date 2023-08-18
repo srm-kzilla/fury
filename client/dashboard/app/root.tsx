@@ -7,12 +7,13 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLoaderData,
+  useLoaderData, useNavigation,
   useRouteError,
 } from "@remix-run/react";
 import { useEffect, useState } from "react";
 import rootStyles from "~/styles/index.css";
 import appStyles from "~/styles/App.css";
+import progressStyles from "nprogress/nprogress.css";
 import {
   Headbar,
   NotFound,
@@ -24,6 +25,7 @@ import { BiX } from "react-icons/bi";
 import { json } from "@remix-run/node";
 import type { ReactNode } from "react";
 import type { LinksFunction } from "@remix-run/node";
+import NProgress from "nprogress";
 import { Toaster } from "react-hot-toast";
 
 declare global {
@@ -46,6 +48,10 @@ export const links: LinksFunction = () => {
       rel: "stylesheet",
       href: appStyles,
     },
+    {
+      rel: "stylesheet",
+      href: progressStyles,
+    }
   ];
 };
 
@@ -78,6 +84,17 @@ export const loader = () => {
 };
 
 function App() {
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    NProgress.configure({ showSpinner: false })
+    if (navigation.state === "loading") {
+      NProgress.start();
+    } else {
+      NProgress.done();
+    }
+  }, [navigation]);
+
   return (
     <>
       <Layout>
