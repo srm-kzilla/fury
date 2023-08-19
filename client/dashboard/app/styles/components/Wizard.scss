@@ -27,7 +27,7 @@ div.kz-wizard {
 
   .kz-form-submit-info {
     color: $primary;
-    font-size: 0.90rem;
+    font-size: 0.9rem;
     text-align: right;
     margin: 0 1rem 0.5rem;
   }
@@ -63,7 +63,7 @@ div.kz-wizard {
   .kz-button-container {
     display: flex;
     gap: 0.5rem;
-    margin-left: 1.5rem;
+    margin: 1rem;
 
     button {
       cursor: pointer;
@@ -110,13 +110,15 @@ div.kz-wizard {
       margin: 1rem 1.5rem;
     }
 
-    .kz-form-header {
+   .kz-form-container {
+    .kz-form {
       .kz-button-container {
         display: flex;
-        flex-direction: column;
-        padding: 1rem;
+        gap: 0.5rem;
+        margin: 0rem 0rem 1rem 0rem;
       }
     }
+   }
   }
 
   .kz-form-footer {
