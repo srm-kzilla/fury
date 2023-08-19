@@ -9,6 +9,7 @@ import {
   ScrollRestoration,
   useLoaderData,
   useRouteError,
+  useSearchParams,
 } from "@remix-run/react";
 import { useEffect, useState } from "react";
 import rootStyles from "~/styles/index.css";
@@ -20,11 +21,12 @@ import {
   notFoundLinks,
   headbarLinks,
 } from "~/components";
+import { Toaster } from "react-hot-toast";
+import toast, { getToastFromIdentifier } from "~/utils/toast.client";
 import { BiX } from "react-icons/bi";
 import { json } from "@remix-run/node";
 import type { ReactNode } from "react";
-import type { LinksFunction } from "@remix-run/node";
-import { Toaster } from "react-hot-toast";
+import type { LoaderFunction, LinksFunction } from "@remix-run/node";
 
 declare global {
   interface Window {
@@ -49,7 +51,7 @@ export const links: LinksFunction = () => {
   ];
 };
 
-export const loader = () => {
+export const loader: LoaderFunction = () => {
   const env = process.env;
 
   const envSec = {
@@ -93,6 +95,31 @@ function App() {
 
 function Layout({ children }: { children: ReactNode }) {
   const { env } = useLoaderData<typeof loader>();
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    const toastParam = searchParams.get("toast") as ToastIdentifier;
+    if (!toastParam) return;
+
+    const toastMessage = getToastFromIdentifier(toastParam);
+    if (toastMessage) {
+      switch (toastMessage.type) {
+        case "success":
+          toast.success(toastMessage.message);
+          break;
+        case "custom":
+          toast.show(toastMessage.message, toastMessage.icon);
+          break;
+        case "error":
+          toast.error(toastMessage.message);
+          break;
+      }
+
+      searchParams.delete("toast");
+      setSearchParams(searchParams);
+    }
+  }, [searchParams, setSearchParams]);
 
   return (
     <html lang="en">

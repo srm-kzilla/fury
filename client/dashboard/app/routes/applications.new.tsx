@@ -198,7 +198,7 @@ export const action: ActionFunction = async ({ request }) => {
         return await updateFormSession(
           request,
           updatedAnswers,
-          `/applications/new?question=${parseInt(questionNumber)}`
+          `/applications/new?question=${parseInt(questionNumber)}&toast=form_saved`
         );
       } catch (error) {
         return { error };
@@ -227,7 +227,7 @@ export const action: ActionFunction = async ({ request }) => {
 
         await submitApplication(request, formSession.domain);
 
-        return destroyFormSession(request);
+        return destroyFormSession(request, "form_submitted");
       } catch (error) {
         return { error };
       }
@@ -235,7 +235,7 @@ export const action: ActionFunction = async ({ request }) => {
 
     case "delete": {
       await deleteDraftApplication(request, formSession.domain);
-      return destroyFormSession(request);
+      return destroyFormSession(request, "draft_deleted");
     }
   }
 };
