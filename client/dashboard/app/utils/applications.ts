@@ -193,7 +193,7 @@ export const questionsArray: Array<
     },
     {
       domain: "content_writing",
-      question: `How would you increase SRMKZILLA's social media engagement for a product launch? (via stories/reels/posts) <br/>Head to our Instagram page and check out the posts on the update of our URL shrinker <i>Kzilla XYZ 2.0</i>.
+      question: `How would you increase SRMKZILLA's social media engagement for a product launch? (via stories/reels/posts) <br/>Head to our Instagram page and check out the posts on the update of our URL shrinker <b>kzilla.xyz 2.0</b>.
       <br/>      Post 1: <a href=https://www.instagram.com/p/CklX_Mjqufg/?img_index=1 target=_blank><u>kzilla.xyz Post</u> </a>
       <br/>
       Post 2: <a href=https://www.instagram.com/p/Ck3l51Wjo4s/ target=_blank><u>kzilla.xyz Reel</u></a>
