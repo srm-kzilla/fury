@@ -4,10 +4,6 @@ import (
 	"os"
 	"time"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/credentials"
-	"github.com/aws/aws-sdk-go/aws/session"
-	"github.com/aws/aws-sdk-go/service/ses"
 	"github.com/charmbracelet/log"
 	"github.com/joho/godotenv"
 	"golang.org/x/oauth2"
@@ -16,12 +12,10 @@ import (
 
 var AppConfig oauth2.Config
 var StartTime time.Time
-var Service *ses.SES
-
 var (
-	AwsRegion          = os.Getenv("AWS_REGION")
-	AwsAccessKeyId     = os.Getenv("AWS_KEY")
-	AwsSecretAccessKey = os.Getenv("AWS_SECRET")
+	AwsRegion          string
+	AwsAccessKeyId     string
+	AwsSecretAccessKey string
 )
 
 func init() {
@@ -31,7 +25,9 @@ func init() {
 		log.Error(err)
 	}
 	log.Info("Loaded .env file")
-
+	AwsRegion = os.Getenv("AWS_REGION")
+	AwsAccessKeyId = os.Getenv("AWS_KEY")
+	AwsSecretAccessKey = os.Getenv("AWS_SECRET")
 	AppConfig = oauth2.Config{
 		ClientID:     os.Getenv("GOOGLE_CLIENT_ID"),
 		ClientSecret: os.Getenv("GOOGLE_CLIENT_SECRET"),
@@ -42,13 +38,4 @@ func init() {
 			"https://www.googleapis.com/auth/userinfo.profile",
 		},
 	}
-	sess, err := session.NewSession(&aws.Config{
-		Region:      aws.String(AwsRegion),
-		Credentials: credentials.NewStaticCredentials(AwsAccessKeyId, AwsSecretAccessKey, ""),
-	})
-	if err != nil {
-		log.Error("Error: ", err)
-		os.Exit(1)
-	}
-	Service = ses.New(sess)
 }
