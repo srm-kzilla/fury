@@ -86,6 +86,7 @@ func UpdateApplications(c *fiber.Ctx) error {
 	var check models.Application
 	c.BodyParser(&application)
 
+	domain := c.Locals("evaluator").(models.Evaluators).Domain
 	errors := validators.ValidateUpdateApplicationSchema(application)
 	if errors != nil {
 		c.Status(fiber.StatusBadRequest).JSON(errors)
@@ -110,7 +111,7 @@ func UpdateApplications(c *fiber.Ctx) error {
 	}
 
 	arrayFilters := options.ArrayFilters{
-		Filters: []interface{}{bson.M{"elem.domain": application.Domain}},
+		Filters: []interface{}{bson.M{"elem.domain": domain}},
 	}
 
 	_, errr := usersCollection.UpdateOne(context.Background(), bson.M{"regNo": application.RegNo}, bson.M{
