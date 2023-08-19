@@ -1,5 +1,3 @@
-import { env } from "process";
-
 interface Question {
   answer: string;
   questionNumber: string;
@@ -33,30 +31,3 @@ export interface Applicant {
   };
   year: number;
 }
-// const API = {
-//   BASE_URL: env.API_URL,
-//   USERS: ()=> "/applications",
-//   ENDPOINTS: {
-//     DOMAINS: {
-//       TECHNICAL: () => "/technical",
-//       EVENTS: () => "/events",
-//       CORPORATE: () => "/corporate",
-//       EDITORIAL: () => "/editorial",
-//     },
-//   },
-// };
-
-// async function fetchData(): Promise<Applicant[]> {
-
-//   const token=env.API_BEARER_TOKEN;
-//   const response = await fetch(API.BASE_URL +API.USERS()+ API.ENDPOINTS.DOMAINS.TECHNICAL(),
-//   {
-//     headers:{
-//       Authorization:`Bearer ${token}`, 
-//     },
-//   },);
-//   const data: Applicant[] = await response.json();
-//   return data;
-// }
-
-// export { fetchData };

@@ -1,4 +1,3 @@
-// import data from "@/mock-data/names.json";
 import DisplayCard from "@/components/DisplayCard";
 import Head from "next/head";
 import { Applicant } from "@/services/api";
