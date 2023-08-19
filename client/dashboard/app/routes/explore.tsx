@@ -32,7 +32,7 @@ import {
   type LinksFunction,
   type LoaderFunction,
 } from "@remix-run/node";
-import { getUserActivity, getUserDetails } from "~/utils/api.server";
+import { getTeamData, getUserDetails } from "~/utils/api.server";
 import { Link, useLoaderData } from "@remix-run/react";
 
 export const meta: V2_MetaFunction = () => {
@@ -56,13 +56,13 @@ export const links: LinksFunction = () => [
 ];
 
 export const loader: LoaderFunction = async ({ request }) => {
-  const activity = await getUserActivity(request);
+  const team = await getTeamData(request);
   const user = await getUserDetails(request);
-  return json({ user, activity });
+  return json({ user, team });
 };
 
 const Explore = () => {
-  const { user, activity } = useLoaderData();
+  const { user, team } = useLoaderData();
   const items = [
     {
       icon: <BiRocket />,
@@ -315,7 +315,7 @@ const Explore = () => {
             </div>
           </div>
           <div className="glance">
-            <Glance user={user} activity={activity} />
+            <Glance user={user} team={team} />
           </div>
         </div>
       </div>

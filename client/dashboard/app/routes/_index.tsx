@@ -16,7 +16,7 @@ import { json, redirect } from "@remix-run/node";
 import {
   getApplications,
   getNotifications,
-  getUserActivity,
+  getTeamData,
   getUserDetails,
 } from "~/utils/api.server";
 import { Link, useLoaderData, useNavigate } from "@remix-run/react";
@@ -56,14 +56,14 @@ export const loader: LoaderFunction = async ({ request }) => {
   const user = await getUserDetails(request);
   const { notifications } = await getNotifications(request);
   const { applications } = await getApplications(request);
-  const activity = await getUserActivity(request);
+  const team = await getTeamData(request);
   if (!user.gender) return redirect("/start");
-
-  return json({ user, notifications, applications, activity });
+console.log(team)
+  return json({ user, notifications, applications, team });
 };
 
 const Dashboard = () => {
-  const { user, notifications, applications, activity } = useLoaderData();
+  const { user, notifications, applications, team } = useLoaderData();
   const navigate = useNavigate();
   const env = getEnv();
   const endTime = parseInt(env.APPLICATION_DEADLINE!);
@@ -215,7 +215,7 @@ const Dashboard = () => {
               </div>
             </div>
             <div className="glance">
-              <Glance user={user} activity={activity} />
+              <Glance user={user} team={team} />
             </div>
           </div>
         </div>

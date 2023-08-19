@@ -16,7 +16,7 @@ const API = {
       RESUME_UPLOAD: () => "/upload/resume",
       NOTIFICATIONS: () => "/notifications",
       APPLICATIONS: () => "/applications",
-      ACTIVITY: () => "/activity",
+      TEAM: () => "/team",
     },
     APPLICATION: {
       BASE_URL: () => "/application",
@@ -116,13 +116,13 @@ export const getApplications = async (
   return res.json();
 };
 
-export const getUserActivity = async (request: Request) => {
+export const getTeamData = async (request: Request) => {
   const accessToken = await requireAccessToken(request);
 
   const res = await fetch(
     API.BASE_URL +
       API.ENDPOINTS.USERS.BASE_URL() +
-      API.ENDPOINTS.USERS.ACTIVITY(),
+      API.ENDPOINTS.USERS.TEAM(),
     {
       headers: {
         Authorization: `Bearer ${accessToken}`,
