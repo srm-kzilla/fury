@@ -35,7 +35,8 @@ div.kz-wizard {
   .kz-form-footer {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    justify-content: center;
+    gap: 2rem;
     padding: 2rem 1.5rem;
     border-top: 1px solid var(--color-skeleton);
 
@@ -46,14 +47,6 @@ div.kz-wizard {
       margin-top: 10px;
       color: var(--color-input);
     }
-  }
-
-  .footer-item-1 {
-    flex-basis: 25%;
-  }
-
-  .footer-item-2 {
-    flex-basis: 50%;
   }
 
   .home-icon {
@@ -69,7 +62,8 @@ div.kz-wizard {
 
   .kz-button-container {
     display: flex;
-    gap: 1rem;
+    gap: 0.5rem;
+
     button {
       cursor: pointer;
       border: none;
@@ -80,7 +74,14 @@ div.kz-wizard {
       padding: 12px 25px;
       font-family: "Caros", sans-serif;
       font-weight: 500;
-      margin-top: 1rem;
+
+      &:is([value="next"], [value="skip"]) {
+        width: 5rem;
+      }
+
+      &[value="save"] {
+        width: 9rem;
+      }
     }
 
     .text-only {
