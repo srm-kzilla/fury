@@ -124,6 +124,13 @@ div.kz-project {
         font-family: "Caros", sans-serif;
         font-weight: 500;
         margin: 1rem 0;
+
+        &[value="delete"] {
+          border-color: $primary;
+          border-radius: 5px;
+          background-color: inherit;
+          color: $primary;
+        }
       }
     }
   }
