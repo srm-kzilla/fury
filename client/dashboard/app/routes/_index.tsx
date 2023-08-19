@@ -208,13 +208,7 @@ const Dashboard = () => {
                       )}
                     </div>
                     <div className="container-iframe">
-                      <iframe
-                        className="responsive-iframe"
-                        src="https://www.youtube.com/embed/LPt3vocZGfE?controls=0"
-                        title="YouTube video player"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
-                      ></iframe>
+                      <img className="container-iframe" src="https://recruitment-2021.s3.ap-south-1.amazonaws.com/life/Screenshot+from+2021-09-14+17-35-58.png" alt="The campus club you love" />
                     </div>
                   </div>
                 </div>
