@@ -2,13 +2,16 @@ package controllers
 
 import (
 	"context"
+	"fmt"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/charmbracelet/log"
 	"github.com/gofiber/fiber/v2"
 	"github.com/srm-kzilla/Recruitments/api/models"
 	"github.com/srm-kzilla/Recruitments/api/utils/database"
+	"github.com/srm-kzilla/Recruitments/api/utils/mailer"
 	"github.com/srm-kzilla/Recruitments/api/utils/notifications"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -21,7 +24,8 @@ func CreateApplication(c *fiber.Ctx) error {
 	c.BodyParser(&body)
 	application := body
 
-	userId := c.Locals("userId").(primitive.ObjectID)
+	userId := c.Locals("userData").(map[string]interface{})["userId"].(primitive.ObjectID)
+	email := c.Locals("userData").(map[string]interface{})["email"].(string)
 	if userId == primitive.NilObjectID {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": "User ObjectID is missing",
@@ -74,9 +78,25 @@ func CreateApplication(c *fiber.Ctx) error {
 			"message": "Error inserting application",
 		})
 	}
-	notificationInsert := notifications.RecordNotification("NEW_APPLICATION", userId)
+	notificationInsert := notifications.RecordNotification("NEW_APPLICATION", userId, body.Domain)
 	if !notificationInsert {
 		log.Error("Error: Inserting notification")
+	}
+	newMailEmbed := mailer.MailEmbed{
+		Header:      "#Recruitment2023",
+		Salutations: "Hello Dreamer,",
+		Body:        strings.Replace(body.Domain, "_", " ", -1),
+	}
+	sesInput := mailer.SESInput{
+		TemplateName:  mailer.TEMPLATES.Draft,
+		Subject:       fmt.Sprintf("Finish crafting Your %s domain Application Today!", strings.Replace(body.Domain, "_", " ", -1)),
+		RecieverEmail: email,
+		SenderEmail:   os.Getenv("SENDER_EMAIL"),
+		EmbedData:     newMailEmbed,
+	}
+	err = mailer.SendEmail(sesInput)
+	if err != nil {
+		return err
 	}
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"message": "Application created successfully",
@@ -88,7 +108,7 @@ func UpdateDraft(c *fiber.Ctx) error {
 	var check models.Application
 	c.BodyParser(&application)
 
-	userId := c.Locals("userId").(primitive.ObjectID)
+	userId := c.Locals("userData").(map[string]interface{})["userId"].(primitive.ObjectID)
 	if userId == primitive.NilObjectID {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": "User ObjectID is missing",
@@ -137,7 +157,7 @@ func UpdateDraft(c *fiber.Ctx) error {
 }
 
 func DeleteDraftApplication(c *fiber.Ctx) error {
-	userId := c.Locals("userId").(primitive.ObjectID)
+	userId := c.Locals("userData").(map[string]interface{})["userId"].(primitive.ObjectID)
 	if userId == primitive.NilObjectID {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": "User ObjectID is missing",
@@ -184,6 +204,10 @@ func DeleteDraftApplication(c *fiber.Ctx) error {
 			"message": "No application matching the criteria to delete",
 		})
 	}
+	notificationInsert := notifications.RecordNotification("APPLICATION_DELETED", userId, domain)
+	if !notificationInsert {
+		log.Error("Error: Inserting notification")
+	}
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"message": "Draft application deleted successfully",
 	})
@@ -191,7 +215,7 @@ func DeleteDraftApplication(c *fiber.Ctx) error {
 
 func SubmitApplication(c *fiber.Ctx) error {
 	var user models.User
-	userId := c.Locals("userId").(primitive.ObjectID)
+	userId := c.Locals("userData").(map[string]interface{})["userId"].(primitive.ObjectID)
 	if userId == primitive.NilObjectID {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": "User ObjectID is missing",
@@ -242,9 +266,26 @@ func SubmitApplication(c *fiber.Ctx) error {
 		})
 
 	}
-	notificationInsert := notifications.RecordNotification("APPLICATION_IN_REVIEW", userId)
+	notificationInsert := notifications.RecordNotification("APPLICATION_IN_REVIEW", userId, domain)
 	if !notificationInsert {
 		log.Error("Error: Inserting notification")
+	}
+	email := c.Locals("userData").(map[string]interface{})["email"].(string)
+	newMailEmbed := mailer.MailEmbed{
+		Header:      "#Recruitment2023",
+		Salutations: "Hello there, SRMKZILLian in the making,",
+		Body:        strings.Replace(domain, "_", " ", -1),
+	}
+	sesInput := mailer.SESInput{
+		TemplateName:  mailer.TEMPLATES.Submit,
+		Subject:       fmt.Sprintf("Your SRMKZILLA %s Application: Locked, Loaded, and Under Review!", strings.Replace(domain, "_", " ", -1)),
+		RecieverEmail: email,
+		SenderEmail:   os.Getenv("SENDER_EMAIL"),
+		EmbedData:     newMailEmbed,
+	}
+	err = mailer.SendEmail(sesInput)
+	if err != nil {
+		return err
 	}
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"message": "Application submitted successfully",

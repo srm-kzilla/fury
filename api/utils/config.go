@@ -12,6 +12,11 @@ import (
 
 var AppConfig oauth2.Config
 var StartTime time.Time
+var (
+	AwsRegion          string
+	AwsAccessKeyId     string
+	AwsSecretAccessKey string
+)
 
 func init() {
 	StartTime = time.Now()
@@ -20,7 +25,9 @@ func init() {
 		log.Error(err)
 	}
 	log.Info("Loaded .env file")
-
+	AwsRegion = os.Getenv("AWS_REGION")
+	AwsAccessKeyId = os.Getenv("AWS_KEY")
+	AwsSecretAccessKey = os.Getenv("AWS_SECRET")
 	AppConfig = oauth2.Config{
 		ClientID:     os.Getenv("GOOGLE_CLIENT_ID"),
 		ClientSecret: os.Getenv("GOOGLE_CLIENT_SECRET"),

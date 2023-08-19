@@ -19,6 +19,7 @@ import (
 	"github.com/srm-kzilla/Recruitments/api/utils"
 	"github.com/srm-kzilla/Recruitments/api/utils/constants"
 	"github.com/srm-kzilla/Recruitments/api/utils/database"
+	"github.com/srm-kzilla/Recruitments/api/utils/mailer"
 	"github.com/srm-kzilla/Recruitments/api/utils/notifications"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -188,11 +189,27 @@ func registerUserInDb(user models.UserData) (primitive.ObjectID, error) {
 	if e != nil {
 		return primitive.ObjectID{}, e
 	}
-	notificationInsert := notifications.RecordNotification("NEW_USER", result.InsertedID.(primitive.ObjectID))
+	notificationInsert := notifications.RecordNotification("NEW_USER", result.InsertedID.(primitive.ObjectID), "")
 	if !notificationInsert {
 		log.Error("Error: Inserting notification")
 	}
 
+	newMailEmbed := mailer.MailEmbed{
+		Header:      "#Recruitment2023",
+		Salutations: "Aloha " + user.Name + ",",
+		Body:        "",
+	}
+	sesInput := mailer.SESInput{
+		TemplateName:  mailer.TEMPLATES.Start,
+		Subject:       "Unlock Your Potential: Complete Your SRMKZILLian Recruitment Registration Today!",
+		RecieverEmail: user.Email,
+		SenderEmail:   os.Getenv("SENDER_EMAIL"),
+		EmbedData:     newMailEmbed,
+	}
+	err = mailer.SendEmail(sesInput)
+	if err != nil {
+		return primitive.ObjectID{}, err
+	}
 	oid, _ := result.InsertedID.(primitive.ObjectID)
 
 	return oid, nil
