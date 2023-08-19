@@ -92,7 +92,8 @@ div.kz-project {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-
+    justify-content: center;
+    align-items: center;
     @include for-tablet-only {
       grid-template-columns: 1fr 1fr 1fr;
       gap: 1rem;
@@ -111,6 +112,7 @@ div.kz-project {
 
     .kz-button-container {
       display: flex;
+      justify-content: center;
       gap: 2rem;
 
       button {
@@ -123,7 +125,7 @@ div.kz-project {
         padding: 12px 25px;
         font-family: "Caros", sans-serif;
         font-weight: 500;
-        margin: 1rem 0;
+        margin: 1rem 0rem;
       }
     }
   }
@@ -132,6 +134,12 @@ div.kz-project {
     position: relative;
     width: 100%;
     height: 100vh;
+  }
+
+  div.kz-user{
+    h2{
+      text-align: center;
+    }
   }
 
   div.kz-shimmer {

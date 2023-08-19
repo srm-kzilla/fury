@@ -65,15 +65,13 @@ const Task = ({ activeProject }: TaskProps) => {
             </div>
             {activeProject.additionalNotes && (
               <div className="kz-task">
-                <div className="kz-project-title">
-                  <div className="kz-task-title">
-                    <h4>Additional Notes</h4>
-                  </div>
-                  <h5>
-                    <Markdown options={{ forceBlock: true }}>
-                      {activeProject.additionalNotes}
-                    </Markdown>
-                  </h5>
+                <div className="kz-task-title">
+                  <h4>Additional Notes</h4>
+                </div>
+                <div className="kz-task-list">
+                  <Markdown options={{ forceBlock: true }}>
+                    {activeProject.additionalNotes}
+                  </Markdown>
                 </div>
               </div>
             )}

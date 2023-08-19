@@ -2,7 +2,7 @@ import projectStyles from "~/styles/pages/Project.css";
 import { Task } from "~/components";
 import type { LinksFunction } from "@remix-run/node";
 import type { ActionData } from "~/routes/applications.technical-project";
-import {useEffect} from "react";
+import { useEffect } from "react";
 
 export const links: LinksFunction = () => [
   {
@@ -32,7 +32,7 @@ const Project = ({ slug, projects, actionData }: ProjectProps) => {
     <div className="kz-project-module">
       <div className="kz-project-flex">
         <div className="main left">
-          <div className="instructions-box">
+          <div>
             {activeProject.tasks && <Task activeProject={activeProject} />}
           </div>
         </div>
@@ -65,7 +65,9 @@ const Project = ({ slug, projects, actionData }: ProjectProps) => {
                 </select>
                 <sub>{actionData?.errors?.subdomain}</sub>
               </div>
-              <button type="submit" name="_action" value="submit">Submit</button>
+              <button type="submit" name="_action" value="submit">
+                Submit
+              </button>
             </div>
           </div>
         </div>
