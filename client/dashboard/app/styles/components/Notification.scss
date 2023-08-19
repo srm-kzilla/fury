@@ -4,8 +4,7 @@
   display: flex;
   align-items: center;
   margin: 1rem;
-  padding: 0.5rem 0;
-  padding-bottom: 1.5rem;
+  padding: 0.5rem 0 1.5rem;
   border-bottom: 1px rgba(var(--color-text-alt-rgb), 0.5) solid;
 
   &:last-child {

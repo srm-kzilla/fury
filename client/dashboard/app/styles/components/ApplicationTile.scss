@@ -40,9 +40,12 @@ div.kz-application-tile {
       display: flex;
       align-items: center;
       color: var(--color-text-alt);
+      font-size: 1rem;
 
       svg {
         margin-right: 0.5rem;
+        height: 1.2rem;
+        width: 1.2rem;
 
         &.primary {
           color: $primary;
