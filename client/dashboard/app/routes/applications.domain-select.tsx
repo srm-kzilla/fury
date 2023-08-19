@@ -92,7 +92,7 @@ const DomainSelect = () => {
       <Form method="POST" className="kz-form-container">
         <div className="kz-form-header">
           <Link to="/" prefetch="viewport">
-            <BiHomeAlt size={36} className="home-icon" title="Home" />
+            <BiHomeAlt size={30} className="home-icon" title="Home" />
           </Link>
         </div>
         <div className="kz-form">

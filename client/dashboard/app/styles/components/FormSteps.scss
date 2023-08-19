@@ -17,6 +17,7 @@
 
   h1 {
     color: var(--color-header);
+    margin-left: 2rem;
 
     @include for-mobile-only {
       margin-bottom: 1rem;
@@ -147,10 +148,10 @@
 
   .kz-form {
     padding: 0 1.5rem;
-  }
-
-  h1 {
-    font-size: 2rem;
+  
+    h1 {
+      font-size: 2rem;
+    }
   }
 
   .kz-form-field .css-yk16xz-control {
