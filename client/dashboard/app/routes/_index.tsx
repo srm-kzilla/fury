@@ -50,10 +50,6 @@ export const links: LinksFunction = () => [
     rel: "stylesheet",
     href: dashboardStyles,
   },
-  {
-    rel: "icon",
-    href: "/favicon.ico",
-  },
 ];
 
 export const loader: LoaderFunction = async ({ request }) => {
