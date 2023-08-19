@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/charmbracelet/log"
@@ -19,7 +20,7 @@ func RecordNotification(notificationType string, userId any, domain string) bool
 	if domain == "technicalp" {
 		finalDomain = "technical"
 	} else {
-		finalDomain = domain
+		finalDomain = strings.Replace(domain, "_", " ", -1)
 	}
 
 	switch notificationType {

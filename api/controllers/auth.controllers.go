@@ -195,7 +195,7 @@ func registerUserInDb(user models.UserData) (primitive.ObjectID, error) {
 	}
 
 	newMailEmbed := mailer.MailEmbed{
-		Header:      "#Recruitment23",
+		Header:      "#Recruitment2023",
 		Salutations: "Aloha " + user.Name + ",",
 		Body:        "",
 	}

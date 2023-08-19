@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/charmbracelet/log"
@@ -82,13 +83,13 @@ func CreateApplication(c *fiber.Ctx) error {
 		log.Error("Error: Inserting notification")
 	}
 	newMailEmbed := mailer.MailEmbed{
-		Header:      "Recruitment#2023",
+		Header:      "#Recruitment2023",
 		Salutations: "Hello Dreamer,",
-		Body:        body.Domain,
+		Body:        strings.Replace(body.Domain, "_", " ", -1),
 	}
 	sesInput := mailer.SESInput{
 		TemplateName:  mailer.TEMPLATES.Draft,
-		Subject:       fmt.Sprintf("Finish crafting Your %s domain Application Today!", body.Domain),
+		Subject:       fmt.Sprintf("Finish crafting Your %s domain Application Today!", strings.Replace(body.Domain, "_", " ", -1)),
 		RecieverEmail: email,
 		SenderEmail:   os.Getenv("SENDER_EMAIL"),
 		EmbedData:     newMailEmbed,
@@ -271,13 +272,13 @@ func SubmitApplication(c *fiber.Ctx) error {
 	}
 	email := c.Locals("userData").(map[string]interface{})["email"].(string)
 	newMailEmbed := mailer.MailEmbed{
-		Header:      "Recruitment#2023",
+		Header:      "#Recruitment2023",
 		Salutations: "Hello there, SRMKZILLian in the making,",
-		Body:        domain,
+		Body:        strings.Replace(domain, "_", " ", -1),
 	}
 	sesInput := mailer.SESInput{
 		TemplateName:  mailer.TEMPLATES.Submit,
-		Subject:       fmt.Sprintf("Your SRMKZILLA %s Application: Locked, Loaded, and Under Review!", domain),
+		Subject:       fmt.Sprintf("Your SRMKZILLA %s Application: Locked, Loaded, and Under Review!", strings.Replace(domain, "_", " ", -1)),
 		RecieverEmail: email,
 		SenderEmail:   os.Getenv("SENDER_EMAIL"),
 		EmbedData:     newMailEmbed,
