@@ -84,15 +84,17 @@ const Dashboard = () => {
             <div className="main">
               <h2>
                 Applications
-                {endTime - Date.now() > 0 && applications && applications?.length < 2 && (
-                  <Link
-                    className="new"
-                    to="/applications/new"
-                    title="Create a new application"
-                  >
-                    <BiPlus />
-                  </Link>
-                )}
+                {endTime - Date.now() > 0 &&
+                  applications &&
+                  applications?.length < 2 && (
+                    <Link
+                      className="new"
+                      to="/applications/new"
+                      title="Create a new application"
+                    >
+                      <BiPlus />
+                    </Link>
+                  )}
               </h2>
               <div>
                 <div className="application-wrapper">

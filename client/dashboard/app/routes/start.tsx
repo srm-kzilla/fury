@@ -139,7 +139,7 @@ export default function Start() {
   const {
     user: { name, regNo },
   } = useLoaderData();
-  const [selectedFile, setSelectedFile] = useState<File|null>(null);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const onDrop = (acceptedFiles: File[]) => {
     if (fileRejections.length > 0) {
       toast.error("Only PDF files are allowed");

@@ -36,7 +36,9 @@ const Glance = ({ user, activity }: ActivityProps) => {
     <div className="kz-glance">
       <div className="profile">
         <img
-          src={`https://api.dicebear.com/6.x/notionists-neutral/svg?seed=${encodeURIComponent(user.name.trim())}`}
+          src={`https://api.dicebear.com/6.x/notionists-neutral/svg?seed=${encodeURIComponent(
+            user.name.trim()
+          )}`}
           alt="avatar"
         />
         <div>
@@ -61,10 +63,9 @@ const Glance = ({ user, activity }: ActivityProps) => {
         <h3>Recent activity</h3>
         <div>
           {activity &&
-            activity
-              .map((event: Activity) => {
-                return <Activity key={event._id} event={event} />;
-              })}
+            activity.map((event: Activity) => {
+              return <Activity key={event._id} event={event} />;
+            })}
         </div>
       </div>
     </div>

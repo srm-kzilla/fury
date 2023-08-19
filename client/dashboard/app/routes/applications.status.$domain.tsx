@@ -3,17 +3,17 @@ import applicationStyles from "~/styles/pages/Application.css";
 import paperPlaneLottie from "~/assets/lotties/paperplane.json";
 import tickLottie from "~/assets/lotties/tick.json";
 import { Sidebar, sidebarLinks } from "~/components";
-import {Form, Link, useLoaderData, useNavigate, useNavigation} from "@remix-run/react";
+import { Form, Link, useLoaderData, useNavigation } from "@remix-run/react";
 import { json, redirect } from "@remix-run/node";
 import { getApplications } from "~/utils/api.server";
-import {BiHome, BiLoader} from "react-icons/bi";
+import { BiHome, BiLoader } from "react-icons/bi";
 import type {
   LinksFunction,
   LoaderFunction,
   V2_MetaFunction,
 } from "@remix-run/node";
 
-export const meta: V2_MetaFunction = ({ data }) => {
+export const meta: V2_MetaFunction = () => {
   return [
     { title: "Application Status | SRMKZILLA #Recruitment'23" },
     {
@@ -54,7 +54,6 @@ export default function Application() {
   const {
     application: { status },
   } = useLoaderData<LoaderData>();
-  const navigate = useNavigate();
   const navigation = useNavigation();
 
   return (

@@ -140,7 +140,10 @@ export async function updateFormSession(
   });
 }
 
-export async function destroyFormSession(request: Request, toastIdentifier?: ToastIdentifier) {
+export async function destroyFormSession(
+  request: Request,
+  toastIdentifier?: ToastIdentifier
+) {
   const session = await getUserSession(request);
 
   session.set("formSession", null);
