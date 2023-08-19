@@ -53,15 +53,16 @@ const NotFound = ({ code, customError, link }: NotFoundProps) => {
       <div>
         <img src="/not_found.svg" alt="not found" />
         <div>
-          <h1>
-            <a href={link} target="blank">
-              {customError ? customError : error?.description}
+          <h1>{customError ? customError : error?.description}</h1>
+          <h5>
+            <a href={link}>
+              <span>Contact Us</span> if the problem does not go away
             </a>
-          </h1>
+          </h5>
           <h5>
             <Link to="/">
               Take me back to <span>Home</span>.
-            </Link>
+            </Link>{" "}
           </h5>
         </div>
       </div>
