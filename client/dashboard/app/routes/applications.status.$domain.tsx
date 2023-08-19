@@ -3,10 +3,10 @@ import applicationStyles from "~/styles/pages/Application.css";
 import paperPlaneLottie from "~/assets/lotties/paperplane.json";
 import tickLottie from "~/assets/lotties/tick.json";
 import { Sidebar, sidebarLinks } from "~/components";
-import { Form, Link, useLoaderData, useNavigate } from "@remix-run/react";
+import {Form, Link, useLoaderData, useNavigate, useNavigation} from "@remix-run/react";
 import { json, redirect } from "@remix-run/node";
 import { getApplications } from "~/utils/api.server";
-import { BiHome } from "react-icons/bi";
+import {BiHome, BiLoader} from "react-icons/bi";
 import type {
   LinksFunction,
   LoaderFunction,
@@ -55,6 +55,7 @@ export default function Application() {
     application: { status },
   } = useLoaderData<LoaderData>();
   const navigate = useNavigate();
+  const navigation = useNavigation();
 
   return (
     <div className="wrapper">
@@ -220,12 +221,16 @@ export default function Application() {
             <div className="draft-wrapper">
               <p>Complete your application now!</p>
               <div className="button-row">
-                <button onClick={() => navigate("/applications/new")}>
-                  Take me there!
-                </button>
+                <Link to="/applications/new" prefetch="viewport">
+                  <button>Take me there!</button>
+                </Link>
                 <Form method="POST" action="/applications/new">
                   <button type="submit" name="_action" value="delete">
-                    Delete Draft
+                    {navigation.state === "submitting" ? (
+                      <BiLoader className="spin" />
+                    ) : (
+                      "Delete Draft"
+                    )}
                   </button>
                 </Form>
               </div>

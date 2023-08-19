@@ -139,7 +139,7 @@
   }
 
   button {
-    width: fit-content;
+    width: 10rem;
   }
 }
 
@@ -186,7 +186,6 @@ button {
   margin-top: 1rem;
 }
 
-// Write css for mobile view
 @media (max-width: 768px) {
   .lottie {
     width: 100%;
