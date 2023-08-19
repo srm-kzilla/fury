@@ -1,10 +1,9 @@
 import projectStyles from "~/styles/pages/Project.css";
 import { Task } from "~/components";
-import type { LinksFunction } from "@remix-run/node";
-import type { ActionData } from "~/routes/applications.technical-project";
-import { useEffect } from "react";
 import { BiLoader } from "react-icons/bi";
 import { useNavigation } from "@remix-run/react";
+import type { LinksFunction } from "@remix-run/node";
+import type { ActionData } from "~/routes/applications.technical-project";
 
 export const links: LinksFunction = () => [
   {
@@ -28,15 +27,11 @@ const Project = ({ slug, projects, actionData }: ProjectProps) => {
 
   const navigation = useNavigation();
 
-  useEffect(() => {
-    console.log(actionData);
-  }, [actionData]);
-
   return (
     <div className="kz-project-module">
       <div className="kz-project-flex">
         <div className="main left">
-          <div className="instructions-box">
+          <div>
             {activeProject.tasks && <Task activeProject={activeProject} />}
           </div>
         </div>

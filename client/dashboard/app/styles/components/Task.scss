@@ -82,9 +82,8 @@ div.kz-task-project {
   div.kz-task-project-wrapper {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     padding: 2rem 4rem;
-    padding-bottom: 4rem;
     overflow-x: hidden;
     overflow-y: scroll;
 
@@ -97,7 +96,7 @@ div.kz-task-project {
 
     div.kz-project-title {
       font-family: "Caros", sans-serif;
-
+      
       & > div {
         display: flex;
         justify-content: space-between;
@@ -113,7 +112,9 @@ div.kz-task-project {
 
       h5 {
         @include fluid-type(0.75rem, 1rem, $min-width, $max-width);
-        font-weight: 300;
+        font-weight: 400;
+        font-size: 0.85rem;
+        padding: 0.5rem 0.5rem 0.5rem 0rem;
 
         span {
           color: $primary;
@@ -123,6 +124,11 @@ div.kz-task-project {
       h2 {
         @include fluid-type(1rem, 2rem, $min-width, $max-width);
         font-weight: 500;
+        font-size: 2rem;
+
+        @include for-mobile-only{
+          font-size: 1.5rem;
+        }
       }
     }
 
@@ -130,6 +136,7 @@ div.kz-task-project {
       div.kz-task-list {
         width: 100%;
         min-height: 8rem;
+        padding: 1rem 1rem 1rem 0rem;
 
         &.clickDisabled {
           pointer-events: none;
@@ -143,6 +150,11 @@ div.kz-task-project {
         padding: 0.5rem 0;
         justify-content: space-between;
         border-bottom: 0.01rem solid $border-primary;
+
+        h4{
+          font-size: 1.2rem;
+          font-weight: 450;
+        }
 
         svg {
           width: 2rem;

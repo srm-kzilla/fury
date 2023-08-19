@@ -91,8 +91,8 @@ const DomainSelect = () => {
     <div className="kz-wizard">
       <Form method="POST" className="kz-form-container">
         <div className="kz-form-header">
-          <Link to="/">
-            <BiHomeAlt size={36} className="home-icon" title="Home" />
+          <Link to="/" prefetch="viewport">
+            <BiHomeAlt size={30} className="home-icon" title="Home" />
           </Link>
         </div>
         <div className="kz-form">

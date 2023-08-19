@@ -28,8 +28,8 @@ const ProjectTiles = ({
     <div className="kz-project">
       <div className="kz-project-flex">
         <div className="kz-project-inner-flex">
-          <Link to="/">
-            <BiHomeAlt size={36} className="home-icon" title="Home" />
+          <Link to="/" prefetch="viewport">
+            <BiHomeAlt size={30} className="home-icon" title="Home" />
           </Link>
           <div className="kz-user">
             <h2>Pick a project to continue</h2>

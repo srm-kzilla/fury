@@ -287,7 +287,7 @@ const Application = () => {
       {currentQuestion ? (
         <Form method="POST" className="kz-form-container" ref={formRef}>
           <div className="kz-form-header">
-            <Link to="/">
+            <Link to="/" prefetch="viewport">
               <BiHomeAlt size={36} className="home-icon" title="Home" />
             </Link>
             <div className="kz-button-container">

@@ -48,7 +48,7 @@ export default function Application() {
         <Sidebar />
       </div>
       <div>
-        <Link to="/">
+        <Link to="/" prefetch="viewport">
           <div className="go-back">
             <BiHome className="icon" />
             <h2>Home</h2>

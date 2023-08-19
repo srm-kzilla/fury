@@ -275,7 +275,7 @@ const Explore = () => {
         <Sidebar />
         <div className="container">
           <div className="main">
-            <Link to={"/"}>
+            <Link to={"/"} prefetch="viewport">
               <div className="go-back">
                 <BiArrowFromRight className="icon" />
                 <h2>Applications</h2>
