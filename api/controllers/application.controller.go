@@ -76,7 +76,7 @@ func CreateApplication(c *fiber.Ctx) error {
 			"message": "Error inserting application",
 		})
 	}
-	notificationInsert := notifications.RecordNotification("NEW_APPLICATION", userId)
+	notificationInsert := notifications.RecordNotification("NEW_APPLICATION", userId, body.Domain)
 	if !notificationInsert {
 		log.Error("Error: Inserting notification")
 	}
@@ -202,6 +202,10 @@ func DeleteDraftApplication(c *fiber.Ctx) error {
 			"message": "No application matching the criteria to delete",
 		})
 	}
+	notificationInsert := notifications.RecordNotification("APPLICATION_DELETED", userId, domain)
+	if !notificationInsert {
+		log.Error("Error: Inserting notification")
+	}
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"message": "Draft application deleted successfully",
 	})
@@ -260,7 +264,7 @@ func SubmitApplication(c *fiber.Ctx) error {
 		})
 
 	}
-	notificationInsert := notifications.RecordNotification("APPLICATION_IN_REVIEW", userId)
+	notificationInsert := notifications.RecordNotification("APPLICATION_IN_REVIEW", userId, domain)
 	if !notificationInsert {
 		log.Error("Error: Inserting notification")
 	}

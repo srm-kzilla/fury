@@ -189,13 +189,13 @@ func registerUserInDb(user models.UserData) (primitive.ObjectID, error) {
 	if e != nil {
 		return primitive.ObjectID{}, e
 	}
-	notificationInsert := notifications.RecordNotification("NEW_USER", result.InsertedID.(primitive.ObjectID))
+	notificationInsert := notifications.RecordNotification("NEW_USER", result.InsertedID.(primitive.ObjectID), "")
 	if !notificationInsert {
 		log.Error("Error: Inserting notification")
 	}
 
 	newMailEmbed := mailer.MailEmbed{
-		Header:      "Recruitments#2023",
+		Header:      "Recruitment#2023",
 		Salutations: "Hi " + user.Name + ",",
 		Body:        "Thank you for registering for the recruitment process. We will keep you updated with the latest information.",
 	}
