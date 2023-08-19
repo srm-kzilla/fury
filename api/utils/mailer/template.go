@@ -11,7 +11,9 @@ import (
 )
 
 var TEMPLATES = TemplateNames{
-	EmailTemplate: "emailTemplate.html",
+	Start:  "start.html",
+	Draft:  "draft.html",
+	Submit: "submit.html",
 }
 
 func getHTMLTemplate(templateName string, embedData interface{}) string {

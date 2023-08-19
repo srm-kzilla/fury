@@ -7,7 +7,9 @@ type MailEmbed struct {
 }
 
 type TemplateNames struct {
-	EmailTemplate string
+	Start  string
+	Draft  string
+	Submit string
 }
 
 type SESInput struct {
