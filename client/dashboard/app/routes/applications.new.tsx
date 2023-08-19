@@ -268,7 +268,8 @@ const Application = () => {
 
   const progressBarStyles = {
     container: {
-      width: "100%",
+      width: "30vw",
+      minWidth: "15em",
       height: 10,
       borderRadius: "5rem",
       backgroundColor: "#d5d5d5",
@@ -325,6 +326,7 @@ const Application = () => {
                   name="answer"
                   placeholder="Type your answer here"
                   defaultValue={typedAnswer}
+                  disabled={navigation.state === "submitting"}
                 />
               </div>
               <sub>{actionData?.error}</sub>
@@ -337,13 +339,11 @@ const Application = () => {
             </div>
           )}
           <div className="kz-form-footer">
-            <div className="center footer-item-1">
+            <div>
               {parseInt(questionNumber)} of {questionsArray.length}
             </div>
-            <div className="footer-item-2">
               <div style={progressBarStyles.container}>
-                <div style={progressBarStyles.completed}></div>
-              </div>
+                <div style={progressBarStyles.completed} />
             </div>
             <div className="kz-button-container">
               {questionNumber !== "1" && (

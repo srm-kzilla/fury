@@ -123,7 +123,7 @@ const DomainSelect = () => {
           </div>
           <sub>{actionData?.error}</sub>
           <div className="kz-button-container">
-            <button type="submit">
+            <button type="submit" name="_action" value="next">
               {navigation.state === "submitting" ? (
                 <BiLoader className="spin" />
               ) : (

@@ -1,8 +1,9 @@
 import projectStyles from "~/styles/pages/Project.css";
 import { Task } from "~/components";
+import { BiLoader } from "react-icons/bi";
+import { useNavigation } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
 import type { ActionData } from "~/routes/applications.technical-project";
-import { useEffect } from "react";
 
 export const links: LinksFunction = () => [
   {
@@ -24,9 +25,7 @@ const Project = ({ slug, projects, actionData }: ProjectProps) => {
     throw new Error("Not a valid project slug");
   }
 
-  useEffect(() => {
-    console.log(actionData);
-  }, [actionData]);
+  const navigation = useNavigation();
 
   return (
     <div className="kz-project-module">
@@ -66,7 +65,11 @@ const Project = ({ slug, projects, actionData }: ProjectProps) => {
                 <sub>{actionData?.errors?.subdomain}</sub>
               </div>
               <button type="submit" name="_action" value="submit">
-                Submit
+                {navigation.state === "submitting" ? (
+                  <BiLoader />
+                ) : (
+                  "Submit"
+                )}
               </button>
             </div>
           </div>
