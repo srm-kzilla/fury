@@ -16,7 +16,7 @@ div.kz-wizard {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
   }
 
   .kz-form-container {
@@ -110,8 +110,12 @@ div.kz-wizard {
       margin: 1rem 1.5rem;
     }
 
-    button {
-      margin: 1rem 0;
+    .kz-form-header {
+      .kz-button-container {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+      }
     }
   }
 
@@ -131,6 +135,7 @@ div.kz-wizard {
         align-items: center;
         justify-content: center;
         width: 100%;
+
         button {
           width: 100%;
           margin-left: 0;
