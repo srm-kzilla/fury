@@ -24,7 +24,6 @@
     }
 
     @include fluid-type(1rem, 3rem, $min-width, $max-width);
-    margin-bottom: 2rem;
   }
 
   h3 {
@@ -151,6 +150,7 @@
   
     h1 {
       font-size: 2rem;
+      margin-left: 0rem;
     }
   }
 

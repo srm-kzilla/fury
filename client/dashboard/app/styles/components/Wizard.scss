@@ -63,6 +63,7 @@ div.kz-wizard {
   .kz-button-container {
     display: flex;
     gap: 0.5rem;
+    margin-left: 1.5rem;
 
     button {
       cursor: pointer;
@@ -130,7 +131,6 @@ div.kz-wizard {
         align-items: center;
         justify-content: center;
         width: 100%;
-
         button {
           width: 100%;
           margin-left: 0;
