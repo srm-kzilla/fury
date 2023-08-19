@@ -84,7 +84,7 @@ export const loader: LoaderFunction = () => {
       envSec.env[key] === "" ||
       envSec.env[key] === null
     ) {
-      throw new Error(`Something went wrong. If persists contact us`);
+      throw new Error(`Something went wrong`);
     }
   }
 
