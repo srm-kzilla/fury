@@ -70,7 +70,7 @@ const Dashboard = () => {
             <div className="main">
               <h2>
                 Applications
-                {applications && applications?.length < 2 && (
+                {endTime - Date.now() > 0 && applications && applications?.length < 2 && (
                   <Link
                     className="new"
                     to="/applications/new"
