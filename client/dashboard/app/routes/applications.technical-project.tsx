@@ -25,10 +25,10 @@ import type { ValidationError } from "yup";
 
 export const meta: V2_MetaFunction = () => {
   return [
-    { title: "Technical Projects | SRMKZILLA #Recruitments'23" },
+    { title: "Technical Projects | SRMKZILLA #Recruitment'23" },
     {
       name: "description",
-      content: "Technical Projects SRMKZILLA Recruitments'23",
+      content: "Technical Projects SRMKZILLA Recruitment'23",
     },
   ];
 };

@@ -15,10 +15,10 @@ import type {
 
 export const meta: V2_MetaFunction = ({ data }) => {
   return [
-    { title: "Application Status | SRMKZILLA #Recruitments'23" },
+    { title: "Application Status | SRMKZILLA #Recruitment'23" },
     {
       name: "description",
-      content: "Application Status SRMKZILLA Recruitments'23",
+      content: "Application Status SRMKZILLA Recruitment'23",
     },
   ];
 };

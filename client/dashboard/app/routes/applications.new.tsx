@@ -37,10 +37,10 @@ import type { ValidationError } from "yup";
 export const meta: V2_MetaFunction = ({ data }) => {
   const domain = getDomainName(data.domain);
   return [
-    { title: `${domain} | SRMKZILLA #Recruitments'23` },
+    { title: `${domain} | SRMKZILLA #Recruitment'23` },
     {
       name: "description",
-      content: "Domain Questions SRMKZILLA Recruitments'23",
+      content: "Domain Questions SRMKZILLA Recruitment'23",
     },
   ];
 };

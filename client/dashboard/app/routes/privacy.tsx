@@ -4,10 +4,10 @@ import getEnv from "~/utils/env";
 
 export const meta: V2_MetaFunction = () => {
   return [
-    { title: "Privacy Policy | SRMKZILLA #Recruitments'23" },
+    { title: "Privacy Policy | SRMKZILLA #Recruitment'23" },
     {
       name: "description",
-      content: "Privacy policy SRMKZILLA Recruitments'23",
+      content: "Privacy policy SRMKZILLA Recruitment'23",
     },
   ];
 };

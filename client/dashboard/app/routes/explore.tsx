@@ -37,10 +37,10 @@ import { Link, useLoaderData } from "@remix-run/react";
 
 export const meta: V2_MetaFunction = () => {
   return [
-    { title: "Explore | SRMKZILLA #Recruitments'23" },
+    { title: "Explore | SRMKZILLA #Recruitment'23" },
     {
       name: "description",
-      content: "Explore SRMKZILLA Recruitments'23",
+      content: "Explore SRMKZILLA Recruitment'23",
     },
   ];
 };
