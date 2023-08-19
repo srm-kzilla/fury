@@ -299,3 +299,43 @@ func GetUserActivity(c *fiber.Ctx) error {
 	})
 	return c.Status(fiber.StatusOK).JSON(activities)
 }
+
+func Getteam(c *fiber.Ctx) error {
+	teamCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "team")
+	if e != nil {
+		log.Error("Error", e)
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"error":   e.Error(),
+			"message": "DB not found",
+		})
+	}
+	maxNum := 3
+	var teams []models.Team
+
+	cursor, err := teamCollection.Aggregate(context.Background(), []bson.M{bson.M{"$sample": bson.M{"size": maxNum}}})
+	if err != nil {
+		log.Error("Error", err)
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error":   err.Error(),
+			"message": "team not found",
+		})
+	}
+
+	for cursor.Next(context.Background()) {
+		team := models.Team{}
+		err := cursor.Decode(&team)
+		if err != nil {
+			log.Error("Error", err)
+			return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+				"error":   err.Error(),
+				"message": "team not found",
+			})
+		} else {
+			teams = append(teams, team)
+		}
+	}
+
+	defer cursor.Close(context.Background())
+
+	return c.Status(fiber.StatusOK).JSON(teams)
+}

@@ -14,4 +14,5 @@ func UserRoutes(router fiber.Router) {
 	protected.Get("/applications", controllers.GetUserApplications)
 	protected.Get("/activity", controllers.GetUserActivity)
 	protected.Post("/upload/resume/", controllers.UploadResume)
+	protected.Get("/team", controllers.Getteam)
 }
