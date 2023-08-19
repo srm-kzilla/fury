@@ -1,5 +1,6 @@
 import { Applicant } from "@/services/api";
 import { Drawer } from "vaul";
+import quesans from "@/mock-data/quesans.json";
 
 const DisplayCard = ({
   _id,
@@ -61,12 +62,18 @@ const DisplayCard = ({
                     <div key={index}>
                       <h3>Application Domain: {application.domain}</h3>
                       <ul>
-                        {application.questions.map((question) => (
-                          <li key={question.questionNumber}>
-                            Question {question.questionNumber}:{" "}
-                            {question.answer}
-                          </li>
-                        ))}
+                        {application.questions
+                          ? application.questions.map((question, index) => {
+                              const allquestions = quesans.technical;
+                              const onequestion = allquestions[index];
+                              return (
+                                <li key={question.questionNumber}>
+                                  {onequestion} <br /> {question.questionNumber}
+                                  : {question.answer}
+                                </li>
+                              );
+                            })
+                          : null}
                       </ul>
                       <p>Application Status: {application.status}</p>
                     </div>

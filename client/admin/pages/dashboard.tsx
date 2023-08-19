@@ -4,10 +4,10 @@ import { Applicant } from "@/services/api";
 import { env } from "process";
 import names from "@/mock-data/names.json";
 interface ApplicantProps {
-  data: Applicant[];
+  names: Applicant[];
 }
 
-export function Dashboard({ data }: ApplicantProps) {
+export function Dashboard({ names }: ApplicantProps) {
   console.log(names);
   return (
     <div className="min-h-screen w-screen bg-kz-grey p-5">
@@ -21,7 +21,7 @@ export function Dashboard({ data }: ApplicantProps) {
         <hr className="text-kz-orange" />
       </div>
       <div className="flex flex-col m-1">
-        {data.map((person: Applicant) => (
+        {names.map((person: Applicant) => (
           <div key={person._id}>
             <DisplayCard {...person} />
           </div>
@@ -32,7 +32,7 @@ export function Dashboard({ data }: ApplicantProps) {
 }
 
 export const API = {
-  BASE_URL: env.API_URL,
+  BASE_URL: env.NEXT_PUBLIC_API_URL,
   TOKEN: env.API_BEARER_TOKEN,
   USERS: () => "/applications",
   ENDPOINTS: {
@@ -58,7 +58,7 @@ export async function getServerSideProps() {
   const data: Applicant[] = await response.json();
   return {
     props: {
-      data,
+      names,
     },
   };
 }
