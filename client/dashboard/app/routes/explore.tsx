@@ -26,9 +26,24 @@ import {
   BiArrowFromRight,
   BiNotepad,
 } from "react-icons/bi";
-import { json, type LinksFunction, type LoaderFunction } from "@remix-run/node";
+import {
+  json,
+  V2_MetaFunction,
+  type LinksFunction,
+  type LoaderFunction,
+} from "@remix-run/node";
 import { getUserActivity, getUserDetails } from "~/utils/api.server";
 import { Link, useLoaderData } from "@remix-run/react";
+
+export const meta: V2_MetaFunction = () => {
+  return [
+    { title: "Explore | SRMKZILLA #Recruitment'23" },
+    {
+      name: "description",
+      content: "Explore SRMKZILLA Recruitment'23",
+    },
+  ];
+};
 
 export const links: LinksFunction = () => [
   ...sidebarLinks(),

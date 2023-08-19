@@ -7,12 +7,31 @@ import {
 import { Form, useActionData, useLoaderData } from "@remix-run/react";
 import { useState } from "react";
 import { projects } from "~/utils/projects";
-import type { ActionFunction, LoaderFunction } from "@remix-run/node";
+import type {
+  ActionFunction,
+  LoaderFunction,
+  V2_MetaFunction,
+} from "@remix-run/node";
 import { redirect } from "@remix-run/node";
-import {createApplication, getUserDetails, submitApplication, updateApplication} from "~/utils/api.server";
+import {
+  createApplication,
+  getUserDetails,
+  submitApplication,
+  updateApplication,
+} from "~/utils/api.server";
 import { destroyFormSession } from "~/utils/session.server";
 import * as Yup from "yup";
 import type { ValidationError } from "yup";
+
+export const meta: V2_MetaFunction = () => {
+  return [
+    { title: "Technical Projects | SRMKZILLA #Recruitment'23" },
+    {
+      name: "description",
+      content: "Technical Projects SRMKZILLA Recruitment'23",
+    },
+  ];
+};
 
 export const links = () => [...projectTilesLinks(), ...projectLinks()];
 
@@ -58,7 +77,7 @@ export const action: ActionFunction = async ({ request }) => {
           { questionNumber: "4", answer: subdomain },
         ];
 
-        await createApplication(request, "technicalp")
+        await createApplication(request, "technicalp");
         await updateApplication(request, "technicalp", answers);
         await submitApplication(request, "technicalp");
         return destroyFormSession(request, "form_submitted");

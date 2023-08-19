@@ -30,9 +30,21 @@ import type {
   ActionFunction,
   LinksFunction,
   LoaderFunction,
+  V2_MetaFunction,
 } from "@remix-run/node";
 import type { ValidationError } from "yup";
 import getEnv from "~/utils/env";
+
+export const meta: V2_MetaFunction = ({ data }) => {
+  const domain = getDomainName(data.domain);
+  return [
+    { title: `${domain} | SRMKZILLA #Recruitment'23` },
+    {
+      name: "description",
+      content: "Domain Questions SRMKZILLA Recruitment'23",
+    },
+  ];
+};
 
 export const links: LinksFunction = () => [
   {
@@ -208,7 +220,9 @@ export const action: ActionFunction = async ({ request }) => {
         return await updateFormSession(
           request,
           updatedAnswers,
-          `/applications/new?question=${parseInt(questionNumber)}&toast=form_saved`
+          `/applications/new?question=${parseInt(
+            questionNumber
+          )}&toast=form_saved`
         );
       } catch (error) {
         return { error };
@@ -352,8 +366,8 @@ const Application = () => {
             <div>
               {parseInt(questionNumber)} of {questionsArray.length}
             </div>
-              <div style={progressBarStyles.container}>
-                <div style={progressBarStyles.completed} />
+            <div style={progressBarStyles.container}>
+              <div style={progressBarStyles.completed} />
             </div>
             <div className="kz-button-container">
               {questionNumber !== "1" && (

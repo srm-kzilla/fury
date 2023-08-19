@@ -7,7 +7,21 @@ import { Form, Link, useLoaderData, useNavigate } from "@remix-run/react";
 import { json, redirect } from "@remix-run/node";
 import { getApplications } from "~/utils/api.server";
 import { BiHome } from "react-icons/bi";
-import type { LinksFunction, LoaderFunction } from "@remix-run/node";
+import type {
+  LinksFunction,
+  LoaderFunction,
+  V2_MetaFunction,
+} from "@remix-run/node";
+
+export const meta: V2_MetaFunction = ({ data }) => {
+  return [
+    { title: "Application Status | SRMKZILLA #Recruitment'23" },
+    {
+      name: "description",
+      content: "Application Status SRMKZILLA Recruitment'23",
+    },
+  ];
+};
 
 export const links: LinksFunction = () => [
   ...sidebarLinks(),

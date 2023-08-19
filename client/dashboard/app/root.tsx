@@ -7,7 +7,9 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLoaderData, useNavigation, useRevalidator,
+  useLoaderData,
+  useNavigation,
+  useRevalidator,
   useRouteError,
   useSearchParams,
 } from "@remix-run/react";
@@ -53,7 +55,11 @@ export const links: LinksFunction = () => {
     {
       rel: "stylesheet",
       href: progressStyles,
-    }
+    },
+    {
+      rel: "icon",
+      href: "/favicon.ico",
+    },
   ];
 };
 
@@ -89,7 +95,7 @@ function App() {
   const navigation = useNavigation();
 
   useEffect(() => {
-    NProgress.configure({ showSpinner: false })
+    NProgress.configure({ showSpinner: false });
     if (navigation.state === "loading") {
       NProgress.start();
     } else {
