@@ -31,13 +31,18 @@ const Sidebar = () => {
         </div>
         <ul>
           <li title="Dashboard">
-            <Link to="/" className={pathname === "/" ? "active" : ""}>
+            <Link
+              to="/"
+              prefetch="viewport"
+              className={pathname === "/" ? "active" : ""}
+            >
               <BiHomeCircle />
             </Link>
           </li>
           <li title="Explore SRMKZILLA">
             <Link
               to="/explore"
+              prefetch="viewport"
               className={pathname === "/explore" ? "active" : ""}
             >
               <BiRocket />

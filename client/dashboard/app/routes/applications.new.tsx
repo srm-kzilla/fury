@@ -252,7 +252,8 @@ const validateAnswer = async (formData: FormData) => {
 };
 
 const Application = () => {
-  const { domain, questionNumber, typedAnswer, answers } = useLoaderData<LoaderData>();
+  const { domain, questionNumber, typedAnswer, answers } =
+    useLoaderData<LoaderData>();
   const navigation = useNavigation();
   const actionData = useActionData<ActionData>();
   const formRef = useRef<HTMLFormElement>(null);
@@ -285,7 +286,7 @@ const Application = () => {
       {currentQuestion ? (
         <Form method="POST" className="kz-form-container" ref={formRef}>
           <div className="kz-form-header">
-            <Link to="/">
+            <Link to="/" prefetch="viewport">
               <BiHomeAlt size={36} className="home-icon" title="Home" />
             </Link>
             <div className="kz-button-container">

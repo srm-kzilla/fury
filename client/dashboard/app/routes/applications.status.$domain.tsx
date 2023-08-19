@@ -3,7 +3,7 @@ import applicationStyles from "~/styles/pages/Application.css";
 import paperPlaneLottie from "~/assets/lotties/paperplane.json";
 import tickLottie from "~/assets/lotties/tick.json";
 import { Sidebar, sidebarLinks } from "~/components";
-import {Form, Link, useLoaderData, useNavigate} from "@remix-run/react";
+import { Form, Link, useLoaderData, useNavigate } from "@remix-run/react";
 import type { LinksFunction, LoaderFunction } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
 import { getApplications } from "~/utils/api.server";
@@ -48,7 +48,7 @@ export default function Application() {
         <Sidebar />
       </div>
       <div>
-        <Link to="/">
+        <Link to="/" prefetch="viewport">
           <div className="go-back">
             <BiHome className="icon" />
             <h2>Home</h2>
@@ -198,7 +198,9 @@ export default function Application() {
                   Take me there!
                 </button>
                 <Form method="POST" action="/applications/new">
-                  <button type="submit" name="_action" value="delete">Delete Draft</button>
+                  <button type="submit" name="_action" value="delete">
+                    Delete Draft
+                  </button>
                 </Form>
               </div>
             </div>

@@ -13,7 +13,7 @@ export const links: LinksFunction = () => [
 export default function FormClosed() {
   return (
     <div className="kz-form-closed">
-      <Link to="/dashboard">
+      <Link to="/dashboard" prefetch="viewport">
         <BiHomeAlt size={36} className="home-icon" title="Home" />
       </Link>
       <h1>Bummer! That ship has sailed</h1>
