@@ -2,7 +2,9 @@ import projectStyles from "~/styles/pages/Project.css";
 import { Task } from "~/components";
 import type { LinksFunction } from "@remix-run/node";
 import type { ActionData } from "~/routes/applications.technical-project";
-import {useEffect} from "react";
+import { useEffect } from "react";
+import { BiLoader } from "react-icons/bi";
+import { useNavigation } from "@remix-run/react";
 
 export const links: LinksFunction = () => [
   {
@@ -23,6 +25,8 @@ const Project = ({ slug, projects, actionData }: ProjectProps) => {
   if (!activeProject) {
     throw new Error("Not a valid project slug");
   }
+
+  const navigation = useNavigation();
 
   useEffect(() => {
     console.log(actionData);
@@ -65,7 +69,13 @@ const Project = ({ slug, projects, actionData }: ProjectProps) => {
                 </select>
                 <sub>{actionData?.errors?.subdomain}</sub>
               </div>
-              <button type="submit" name="_action" value="submit">Submit</button>
+              <button type="submit" name="_action" value="submit">
+                {navigation.state === "submitting" ? (
+                  <BiLoader />
+                ) : (
+                  "Submit"
+                )}
+              </button>
             </div>
           </div>
         </div>

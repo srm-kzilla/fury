@@ -1,8 +1,8 @@
 import { Task, taskLinks, Tile, tileLinks } from "~/components";
 import projectTilesStyles from "~/styles/pages/ProjectTiles.css";
-import type { LinksFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
 import { BiHomeAlt } from "react-icons/bi";
+import type { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => [
   ...tileLinks(),

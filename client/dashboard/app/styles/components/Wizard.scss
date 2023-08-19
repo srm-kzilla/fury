@@ -82,6 +82,10 @@ div.kz-wizard {
       &[value="save"] {
         width: 9rem;
       }
+
+      &[value="submit"] {
+        width: 7rem;
+      }
     }
 
     .text-only {
