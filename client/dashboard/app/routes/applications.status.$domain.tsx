@@ -18,7 +18,7 @@ export const meta: V2_MetaFunction = ({ data }) => {
     { title: "Application Status | SRMKZILLA #Recruitments'23" },
     {
       name: "description",
-      content: "application status srmkzilla recruitments'23",
+      content: "Application Status SRMKZILLA Recruitments'23",
     },
   ];
 };

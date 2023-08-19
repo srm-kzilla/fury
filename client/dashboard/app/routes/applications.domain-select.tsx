@@ -22,7 +22,7 @@ export const meta: V2_MetaFunction = () => {
     { title: "Select Domain | SRMKZILLA #Recruitments'23" },
     {
       name: "description",
-      content: "domain selection srmkzilla recruitments'23",
+      content: "Domain Selection SRMKZILLA Recruitments'23",
     },
   ];
 };

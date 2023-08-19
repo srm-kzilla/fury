@@ -7,7 +7,7 @@ export const meta: V2_MetaFunction = () => {
     { title: "Privacy Policy | SRMKZILLA #Recruitments'23" },
     {
       name: "description",
-      content: "Privacy policy srmkzilla recruitments'23",
+      content: "Privacy policy SRMKZILLA Recruitments'23",
     },
   ];
 };

@@ -40,7 +40,7 @@ export const meta: V2_MetaFunction = () => {
     { title: "Explore | SRMKZILLA #Recruitments'23" },
     {
       name: "description",
-      content: "explore srmkzilla recruitments'23",
+      content: "Explore SRMKZILLA Recruitments'23",
     },
   ];
 };
