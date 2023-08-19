@@ -1,8 +1,8 @@
 import { Task, taskLinks, Tile, tileLinks } from "~/components";
 import projectTilesStyles from "~/styles/pages/ProjectTiles.css";
-import type { LinksFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
 import { BiHomeAlt } from "react-icons/bi";
+import type { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => [
   ...tileLinks(),
@@ -28,8 +28,8 @@ const ProjectTiles = ({
     <div className="kz-project">
       <div className="kz-project-flex">
         <div className="kz-project-inner-flex">
-          <Link to="/">
-            <BiHomeAlt size={36} className="home-icon" title="Home" />
+          <Link to="/" prefetch="viewport">
+            <BiHomeAlt size={30} className="home-icon" title="Home" />
           </Link>
           <div className="kz-user">
             <h2>Pick a project to continue</h2>

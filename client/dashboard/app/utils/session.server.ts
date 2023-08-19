@@ -139,12 +139,12 @@ export async function updateFormSession(
   });
 }
 
-export async function destroyFormSession(request: Request) {
+export async function destroyFormSession(request: Request, toastIdentifier?: ToastIdentifier) {
   const session = await getUserSession(request);
 
   session.set("formSession", null);
 
-  return redirect("/", {
+  return redirect(`/?toast=${toastIdentifier}`, {
     headers: {
       "Set-Cookie": await commitSession(session),
     },

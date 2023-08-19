@@ -3,11 +3,11 @@ import applicationStyles from "~/styles/pages/Application.css";
 import paperPlaneLottie from "~/assets/lotties/paperplane.json";
 import tickLottie from "~/assets/lotties/tick.json";
 import { Sidebar, sidebarLinks } from "~/components";
-import {Form, Link, useLoaderData, useNavigate} from "@remix-run/react";
-import type { LinksFunction, LoaderFunction } from "@remix-run/node";
+import { Form, Link, useLoaderData, useNavigate } from "@remix-run/react";
 import { json, redirect } from "@remix-run/node";
 import { getApplications } from "~/utils/api.server";
 import { BiHome } from "react-icons/bi";
+import type { LinksFunction, LoaderFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => [
   ...sidebarLinks(),
@@ -48,7 +48,7 @@ export default function Application() {
         <Sidebar />
       </div>
       <div>
-        <Link to="/">
+        <Link to="/" prefetch="viewport">
           <div className="go-back">
             <BiHome className="icon" />
             <h2>Home</h2>
@@ -96,12 +96,24 @@ export default function Application() {
                 we'll talk about your interests, your past experience, our
                 vision for the future, and how you can contribute and help us
                 achieve it. <br />
-                Meanwhile, keep an eye on our Instagram page for updates. If you
-                have any queries ping us on our Instagram handle.
+                Meanwhile, keep an eye on our{" "}
+                <a
+                  href="https://www.instagram.com/srmkzilla/"
+                  title="SRMKZILLA Instagram"
+                >
+                  Instagram
+                </a>{" "}
+                for updates. If you have any queries ping us on our Instagram
+                handle.
               </p>
               <h5>
                 Not yet joined the super awesome SRMKZILLA Discord?{" "}
-                <a href="/">Join us on Discord</a>
+                <a
+                  href="https://community.srmkzilla.net"
+                  title="SRMKZILLA Discord"
+                >
+                  Join us on Discord
+                </a>
               </h5>
             </div>
           </div>
@@ -198,13 +210,15 @@ export default function Application() {
                   Take me there!
                 </button>
                 <Form method="POST" action="/applications/new">
-                  <button type="submit" name="_action" value="delete">Delete Draft</button>
+                  <button type="submit" name="_action" value="delete">
+                    Delete Draft
+                  </button>
                 </Form>
               </div>
             </div>
             <div className="status-wrapper">
               <div>
-                <div className="border-circle"></div>
+                <div className="green-circle"></div>
                 <p>Draft</p>
               </div>
               <div>

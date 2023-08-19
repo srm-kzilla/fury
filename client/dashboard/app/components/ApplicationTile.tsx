@@ -1,11 +1,11 @@
 import applicationTileStyles from "~/styles/components/ApplicationTile.css";
 import {
-  BiCheck,
   BiError,
   BiFlag,
-  BiHourglass,
-  BiTask,
-  BiX,
+  BiSolidCircle,
+  BiSolidHourglass,
+  BiSolidPaperPlane,
+  BiSolidPencil,
 } from "react-icons/bi";
 import { getDomainName } from "~/utils/applications";
 import type { LinksFunction } from "@remix-run/node";
@@ -23,47 +23,71 @@ interface Props {
 }
 
 export enum Status {
-  InProgress = "in_progress",
   Rejected = "rejected",
   Accepted = "accepted",
-  ChangesRequired = "changes_required",
-  InReview = "in_review",
+  InReview = "pending",
   Draft = "draft",
 }
 
 const ApplicationTile = ({ application, handleClick }: Props) => {
-  const { status: applicationStatus, questions = [] } = application;
+  const { status, questions = [] } = application;
+
   const formatStatus = (status: string) => {
     switch (status) {
-      case Status.InProgress:
+      case Status.Draft:
+        if (questions && questions.length === 8) {
+          return {
+            icon: (
+              <BiSolidPaperPlane
+                className="primary"
+                title="Application not submitted"
+              />
+            ),
+            label: "Your application is complete! Submit it now",
+          };
+        }
         return {
-          icon: <BiTask className="info" />,
-          label: "In-progress",
+          icon: (
+            <BiSolidPencil
+              className="warning"
+              title="Application draft saved"
+            />
+          ),
+          label: "Your application is saved as draft. Complete it now!",
         };
       case Status.InReview:
         return {
-          icon: <BiHourglass className="info spin" />,
-          label: "In-review",
+          icon: (
+            <BiSolidHourglass
+              className="tertiary"
+              title="Applition in review"
+            />
+          ),
+          label: "Application in review",
         };
       case Status.Accepted:
         return {
-          icon: <BiCheck className="tertiary" />,
-          label: "Accepted",
+          icon: (
+            <BiSolidCircle className="tertiary" title="Application accepted" />
+          ),
+          label: "Application Accepted",
         };
       case Status.Rejected:
         return {
-          icon: <BiX className="primary" />,
-          label: "Rejected",
+          icon: (
+            <BiSolidCircle className="primary" title="Application rejected" />
+          ),
+          label: "Application Rejected",
         };
-      case Status.ChangesRequired:
+      default:
         return {
-          icon: <BiError className="warning" />,
-          label: "Changes required",
+          icon: <BiError className="primary" title="Error fetching status" />,
+          label: "Something went wrong",
         };
     }
   };
 
-  const status = formatStatus(application.status);
+  const { icon, label } = formatStatus(status);
 
   return (
     <div className="kz-application-tile" onClick={handleClick}>
@@ -73,25 +97,10 @@ const ApplicationTile = ({ application, handleClick }: Props) => {
       <h3>{getDomainName(application.domain)}</h3>
       <div className="info">
         <div className="status">
-          {status && status.icon}
-          {status && status.label}
+          {icon}
+          {label}
         </div>
       </div>
-      {questions && questions.length === 8 && applicationStatus === "draft" && (
-        <div>
-          <h4>Your application is complete! Submit it now</h4>
-        </div>
-      )}
-      {applicationStatus === "draft" && (
-        <div>
-          <h4>Your application is saved as draft. Complete it now!</h4>
-        </div>
-      )}
-      {applicationStatus === "pending" && (
-        <div>
-          <h4>Application in review</h4>
-        </div>
-      )}
     </div>
   );
 };

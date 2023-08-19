@@ -65,7 +65,22 @@ div.kz-dashboard {
         @include for-tablet-only {
           margin: 0.75rem auto;
         }
-  
+
+        .kz-times-up {
+          width: 100%;
+          height: 100%;
+          padding: 1rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          p {
+            font-size: 1rem;
+            font-weight: bolder;
+            text-align: center;
+          }
+        }
+
         div.timer-inner {
           display: flex;
           justify-content: center;

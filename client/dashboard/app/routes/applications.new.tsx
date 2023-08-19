@@ -198,7 +198,7 @@ export const action: ActionFunction = async ({ request }) => {
         return await updateFormSession(
           request,
           updatedAnswers,
-          `/applications/new?question=${parseInt(questionNumber)}`
+          `/applications/new?question=${parseInt(questionNumber)}&toast=form_saved`
         );
       } catch (error) {
         return { error };
@@ -227,7 +227,7 @@ export const action: ActionFunction = async ({ request }) => {
 
         await submitApplication(request, formSession.domain);
 
-        return destroyFormSession(request);
+        return destroyFormSession(request, "form_submitted");
       } catch (error) {
         return { error };
       }
@@ -235,7 +235,7 @@ export const action: ActionFunction = async ({ request }) => {
 
     case "delete": {
       await deleteDraftApplication(request, formSession.domain);
-      return destroyFormSession(request);
+      return destroyFormSession(request, "draft_deleted");
     }
   }
 };
@@ -252,7 +252,8 @@ const validateAnswer = async (formData: FormData) => {
 };
 
 const Application = () => {
-  const { domain, questionNumber, typedAnswer, answers } = useLoaderData<LoaderData>();
+  const { domain, questionNumber, typedAnswer, answers } =
+    useLoaderData<LoaderData>();
   const navigation = useNavigation();
   const actionData = useActionData<ActionData>();
   const formRef = useRef<HTMLFormElement>(null);
@@ -267,7 +268,8 @@ const Application = () => {
 
   const progressBarStyles = {
     container: {
-      width: "100%",
+      width: "30vw",
+      minWidth: "15em",
       height: 10,
       borderRadius: "5rem",
       backgroundColor: "#d5d5d5",
@@ -285,7 +287,7 @@ const Application = () => {
       {currentQuestion ? (
         <Form method="POST" className="kz-form-container" ref={formRef}>
           <div className="kz-form-header">
-            <Link to="/">
+            <Link to="/" prefetch="viewport">
               <BiHomeAlt size={36} className="home-icon" title="Home" />
             </Link>
             <div className="kz-button-container">
@@ -324,6 +326,7 @@ const Application = () => {
                   name="answer"
                   placeholder="Type your answer here"
                   defaultValue={typedAnswer}
+                  disabled={navigation.state === "submitting"}
                 />
               </div>
               <sub>{actionData?.error}</sub>
@@ -336,13 +339,11 @@ const Application = () => {
             </div>
           )}
           <div className="kz-form-footer">
-            <div className="center footer-item-1">
+            <div>
               {parseInt(questionNumber)} of {questionsArray.length}
             </div>
-            <div className="footer-item-2">
               <div style={progressBarStyles.container}>
-                <div style={progressBarStyles.completed}></div>
-              </div>
+                <div style={progressBarStyles.completed} />
             </div>
             <div className="kz-button-container">
               {questionNumber !== "1" && (
