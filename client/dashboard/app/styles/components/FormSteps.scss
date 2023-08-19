@@ -16,13 +16,10 @@
   }
 
   h1 {
+    font-size: 40px;
+    font-weight: bold;
     color: var(--color-header);
-
-    @include for-mobile-only {
-      margin-bottom: 1rem;
-    }
-
-    @include fluid-type(1rem, 3rem, $min-width, $max-width);
+    margin-bottom: 1rem;
   }
 
   h3 {
@@ -35,6 +32,8 @@
 
   h4 {
     display: inline-block;
+    font-weight: normal;
+    font-size: 20px;
   }
 
   h5 {
@@ -156,8 +155,4 @@
   .kz-form-field .css-yk16xz-control {
     width: 80%;
   }
-}
-
-.kz-message-screen {
-  margin: 2rem;
 }
