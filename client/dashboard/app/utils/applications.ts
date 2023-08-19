@@ -194,9 +194,9 @@ export const questionsArray: Array<
     {
       domain: "content_writing",
       question: `How would you increase SRMKZILLA's social media engagement for a product launch? (via stories/reels/posts) <br/>Head to our Instagram page and check out the posts on the update of our URL shrinker <i>Kzilla XYZ 2.0</i>.
-      <br/>      Post 1: <a href=https://www.instagram.com/p/CklX_Mjqufg/?img_index=1 target=_blank><u>Kzilla XYZ Post</u> </a>
+      <br/>      Post 1: <a href=https://www.instagram.com/p/CklX_Mjqufg/?img_index=1 target=_blank><u>kzilla.xyz Post</u> </a>
       <br/>
-      Post 2: <a href=https://www.instagram.com/p/Ck3l51Wjo4s/ target=_blank><u>Kzilla XYZ Reel</u></a>
+      Post 2: <a href=https://www.instagram.com/p/Ck3l51Wjo4s/ target=_blank><u>kzilla.xyz Reel</u></a>
       <br/>
       Suggest ideas that can be used in the posts/videos/reels/story for the launch of the update. (put your endless scrolling through social media to good use xD)
         
@@ -245,7 +245,7 @@ export const questionsArray: Array<
     {
       domain: "gfx",
       question: `In Addition, What are the details that you would take into account for the posts of the series? You can use our series on Web 3 as a reference point
-      <a href=https://www.instagram.com/p/CgE0GV-vCFQ/?igshid=MzRlODBiNWFlZA== target=_blank><u>The WEB3 Chronicles<u> </a>
+      <a href=https://www.instagram.com/p/CgE0GV-vCFQ/?igshid=MzRlODBiNWFlZA== target=_blank><u>The Web3 Chronicles<u> </a>
       `,
     },
     {
@@ -283,7 +283,7 @@ export const questionsArray: Array<
     },
     {
       domain: "vfx",
-      question: `What kind of social media content excites <i>Millennials/ Gen Z</i> ? How can a technical club-like <i>SRMKZILLA</i> implement this kind of content while staying true to its technical roots?`,
+      question: `What kind of social media content excites <i>Millennials/Gen Z</i> ? How can a technical club-like <i>SRMKZILLA</i> implement this kind of content while staying true to its technical roots?`,
     },
     {
       domain: "corporate",
@@ -308,7 +308,7 @@ export const questionsArray: Array<
     },
     {
       domain: "content_writing",
-      question: `What kind of social media content excites <i>Millennials/ Gen Z?</i> How can a technical club-like <i>SRMKZILLA</i> implement this kind of content while staying true to its technical roots?`,
+      question: `What kind of social media content excites <i>Millennials/Gen Z?</i> How can a technical club-like <i>SRMKZILLA</i> implement this kind of content while staying true to its technical roots?`,
     },
     {
       domain: "gfx",
@@ -369,8 +369,6 @@ export const questionsArray: Array<
         a. Topic: Redesign RECRUITMENT homepage<br/>
         b. Export: JPEG format with the source file<br/>
         c. Bonus: Try to include gradient effect in elements.<br/>
-      
-      
       `,
     },
     {
