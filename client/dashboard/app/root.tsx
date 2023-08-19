@@ -9,6 +9,7 @@ import {
   ScrollRestoration,
   useLoaderData,
   useNavigation,
+  useRevalidator,
   useRouteError,
   useSearchParams,
 } from "@remix-run/react";
@@ -119,6 +120,7 @@ function Layout({ children }: { children: ReactNode }) {
   const { env } = useLoaderData<typeof loader>();
 
   const [searchParams, setSearchParams] = useSearchParams();
+  const { revalidate } = useRevalidator();
 
   useEffect(() => {
     const toastParam = searchParams.get("toast") as ToastIdentifier;
@@ -140,8 +142,9 @@ function Layout({ children }: { children: ReactNode }) {
 
       searchParams.delete("toast");
       setSearchParams(searchParams);
+      revalidate();
     }
-  }, [searchParams, setSearchParams]);
+  }, [searchParams, setSearchParams, revalidate]);
 
   return (
     <html lang="en">

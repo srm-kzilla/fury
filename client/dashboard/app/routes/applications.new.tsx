@@ -33,6 +33,7 @@ import type {
   V2_MetaFunction,
 } from "@remix-run/node";
 import type { ValidationError } from "yup";
+import getEnv from "~/utils/env";
 
 export const meta: V2_MetaFunction = ({ data }) => {
   const domain = getDomainName(data.domain);
@@ -86,7 +87,12 @@ const checkIfAllPreviousQuestionsAnswered = (
   return 0;
 };
 
+const env = getEnv();
+
 export const loader: LoaderFunction = async ({ request }) => {
+  if (Date.now() > parseInt(env.APPLICATION_DEADLINE!)) {
+    return redirect("/applications/closed");
+  }
   const user = await getUserDetails(request);
   const formSession = await getFormSession(request);
 
@@ -148,6 +154,10 @@ const getUpdatedAnswers = (
 };
 
 export const action: ActionFunction = async ({ request }) => {
+  if (Date.now() > parseInt(env.APPLICATION_DEADLINE!)) {
+    return redirect("/applications/closed");
+  }
+
   const formData = await request.formData();
   const formSession = await getFormSession(request);
 

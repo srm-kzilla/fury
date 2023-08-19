@@ -102,7 +102,7 @@ const Explore = () => {
     },
     {
       icon: <BiVector />,
-      title: "Kzilla.xyz",
+      title: "kzilla.xyz",
       description:
         "Shorten the URL. Broaden the reach.The new URL shrinker of the Internet. It's as easy as it sounds. ",
       timestamp: 1667586600000,

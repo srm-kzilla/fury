@@ -1,49 +1,31 @@
+import { Applicant } from "@/services/api";
 import { Drawer } from "vaul";
-interface PersonType {
-  id: number;
-  name: string;
-  regno: string;
-  year: number;
-  dept: string;
-  email: string;
-  gender: string;
-  contact: number;
-  socials: {
-    github: string;
-    linkedin: string;
-    portfolio: string;
-  };
-  application: Application[];
-}
-interface Application {
-  question: string;
-  answer: string;
-}
+
 const DisplayCard = ({
-  id,
+  _id,
   name,
-  regno,
+  regNo,
   year,
-  dept,
+  branch,
   email,
   gender,
   contact,
   socials,
   application,
-}: PersonType) => {
+}: Applicant) => {
   return (
     <div
-      key={id}
+      key={_id}
       className="shadow-card-shadow font-body w-full py-6 bg-kz-lt-grey rounded-md mt-5"
     >
       <Drawer.Root>
         <div className="flex flex-row justify-evenly items-center text-xs text-kz-white md:text-lg">
-          <div className="text-kz-white font-extrabold"># {id}</div>
+          <div className="text-kz-white font-extrabold"># 1</div>
           <Drawer.Trigger>
             <div className="hover:text-kz-orange">{name}</div>
           </Drawer.Trigger>
-          <div>{regno}</div>
-          <div>{dept}</div>
+          <div>{regNo}</div>
+          <div>{branch}</div>
           <div className="hidden md:block">{email}</div>
           <div className="hidden md:block">{contact}</div>
           <button>
@@ -61,7 +43,7 @@ const DisplayCard = ({
                   {name}
                   <hr className="text-kz-orange mt-2" />
                 </Drawer.Title>
-                <p className="mb-2">
+                <div className="mb-2">
                   <span className="font-bold">GitHub</span> : {socials.github}
                   <br />
                   <span className="font-bold">Linkedin</span> :{" "}
@@ -70,16 +52,23 @@ const DisplayCard = ({
                   <span className="font-bold">Portfolio</span> :{" "}
                   {socials.portfolio}
                   <hr className="mt-2 text-kz-orange" />
-                </p>
+                </div>
                 <div>
                   <h1 className="my-2 font-bold">
                     The answers to questions you asked
                   </h1>
-                  {application.map((question, index) => (
-                    <div key={index} className="my-5">
-                      Q.{index + 1} {question.question}
-                      <br />
-                      A. {question.answer}
+                  {application.map((application, index) => (
+                    <div key={index}>
+                      <h3>Application Domain: {application.domain}</h3>
+                      <ul>
+                        {application.questions.map((question) => (
+                          <li key={question.questionNumber}>
+                            Question {question.questionNumber}:{" "}
+                            {question.answer}
+                          </li>
+                        ))}
+                      </ul>
+                      <p>Application Status: {application.status}</p>
                     </div>
                   ))}
                 </div>
