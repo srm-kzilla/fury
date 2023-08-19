@@ -30,7 +30,11 @@ import toast, { getToastFromIdentifier } from "~/utils/toast.client";
 import { BiX } from "react-icons/bi";
 import { json } from "@remix-run/node";
 import type { ReactNode } from "react";
-import type { LoaderFunction, LinksFunction } from "@remix-run/node";
+import type {
+  LoaderFunction,
+  LinksFunction,
+  V2_MetaFunction,
+} from "@remix-run/node";
 
 declare global {
   interface Window {
@@ -38,6 +42,74 @@ declare global {
     ENV: { [key: string]: string };
   }
 }
+
+export const meta: V2_MetaFunction = () => {
+  return [
+    { title: "SRMKZILLA #Recruitment'23" },
+    {
+      name: "description",
+      content: "SRMKZILLA #Recruitment'23",
+    },
+    {
+      property: "og:title",
+      content: "SRMKZILLA #Recruitment'23",
+    },
+    {
+      name: "keywords",
+      content:
+        "SRMKZILLA, MOZILLA, SRM UNIVERSITY, Technical Club, Recruitment, 23, Mozilla Campus Club",
+    },
+    {
+      name: "viewport",
+      content: "width=device-width, initial-scale=1",
+    },
+    {
+      name: "robots",
+      content: "index, follow",
+    },
+    {
+      httpEquiv: "Content-Type",
+      content: "text/html;charset=utf-8",
+    },
+    {
+      name: "language",
+      content: "English",
+    },
+    {
+      name: "revisit-after",
+      content: "10 days",
+    },
+    {
+      name: "author",
+      content: "SRMKZILLA",
+    },
+    {
+      name: "copyright",
+      content: "All rights reserved,2023. SRMKZILLA",
+    },
+    {
+      name: "application-name",
+      content: "SRMKZILLA Recruitment'23",
+    },
+    {
+      property: "og:url",
+      content: "recruitment.srmkzilla.net",
+    },
+    {
+      property: "og:description",
+      content:
+        "SRMKZILLA is a community of young tech enthusiasts who eat, sleep and breath technology. If you want to join us, lucky for you because our Recruitments have begun!",
+    },
+    {
+      name: "msapplication-TileColor",
+      content: "#111111",
+    },
+    {
+      name: "theme-color",
+      content: "#000",
+    },
+  ];
+};
 
 export const links: LinksFunction = () => {
   return [
