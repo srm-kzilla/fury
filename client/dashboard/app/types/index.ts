@@ -52,7 +52,7 @@ type Activity = {
 type Answer = {
   questionNumber: string;
   answer: string;
-}
+};
 
 type FormSession = {
   domain: string;
@@ -63,7 +63,7 @@ type TaskType = {
   id: string;
   title: string;
   section: string;
-}
+};
 
 type Project = {
   slug: string;
@@ -72,4 +72,22 @@ type Project = {
   domain: string;
   tasks: TaskType[];
   additionalNotes: string;
-}
+};
+
+type ToastMessage =
+  | {
+      type: "success" | "error";
+      message: string;
+    }
+  | {
+      type: "custom";
+      message: string;
+      icon: string;
+    };
+
+type ToastIdentifier =
+  | "form_saved"
+  | "form_submitted"
+  | "form_submit_error"
+  | "draft_deleted"
+  | "answer_required";

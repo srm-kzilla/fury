@@ -58,15 +58,16 @@ export const action: ActionFunction = async ({ request }) => {
           { questionNumber: "4", answer: subdomain },
         ];
 
+        await createApplication(request, "technicalp")
         await updateApplication(request, "technicalp", answers);
         await submitApplication(request, "technicalp");
-        return redirect("/");
+        return destroyFormSession(request, "form_submitted");
       } catch (errors) {
         return { errors };
       }
 
     case "delete": {
-      return destroyFormSession(request);
+      return destroyFormSession(request, "draft_deleted");
     }
   }
 
@@ -93,7 +94,7 @@ const validateTechnicalProjectForm = async (formData: FormData) => {
 
   const technicalProjectSchema = Yup.object().shape({
     title: Yup.string().required("Title is required"),
-    link: Yup.string().required("Link is required"),
+    link: Yup.string().url().required("Link is required"),
     subdomain: Yup.string().required("Subdomain is required"),
   });
 

@@ -22,12 +22,12 @@ export default {
           background: "#111111",
           color: "#fff",
           border: "1px solid #30363d",
-          maxWidth: "300px",
           padding: "1rem",
           zIndex: "100000",
-          width: "fit-content",
+          width: "300px",
           borderRadius: "10px",
           gap: "1rem",
+          justifyContent: "space-between"
         }}
       >
         {icon}
@@ -50,4 +50,29 @@ export default {
     )),
   error: (message: string) => toast.error(message, toastBaseOptions),
   success: (message: string) => toast.success(message, toastBaseOptions),
+};
+
+export const getToastFromIdentifier = (identifier: ToastIdentifier): ToastMessage => {
+  switch (identifier) {
+    case "form_saved":
+      return { type: "success", message: "Form saved successfully" };
+
+    case "form_submitted":
+      return { type: "custom", message: "Form submitted successfully", icon: "🚀" };
+
+    case "form_submit_error":
+      return { type: "error", message: "Error submitting form" };
+
+    case "draft_deleted":
+      return { type: "success", message: "Draft deleted successfully"}
+
+    case "answer_required":
+      return {  type: "error", message: "Please answer answer the question" };
+
+    default:
+      return {
+        type: "error",
+        message: "Something went wrong, please try again",
+      };
+  }
 };
