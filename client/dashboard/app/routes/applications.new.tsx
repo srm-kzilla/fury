@@ -339,11 +339,11 @@ const Application = () => {
             </div>
           )}
           <div className="kz-form-footer">
-            <div className="">
+            <div>
               {parseInt(questionNumber)} of {questionsArray.length}
             </div>
               <div style={progressBarStyles.container}>
-                <div style={progressBarStyles.completed}></div>
+                <div style={progressBarStyles.completed} />
             </div>
             <div className="kz-button-container">
               {questionNumber !== "1" && (
