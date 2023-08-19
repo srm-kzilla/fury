@@ -25,7 +25,21 @@ import { BiAlarm, BiPlus } from "react-icons/bi";
 import toast from "~/utils/toast.client";
 import { useEffect } from "react";
 import moment from "moment";
-import type { LinksFunction, LoaderFunction } from "@remix-run/node";
+import type {
+  LinksFunction,
+  LoaderFunction,
+  V2_MetaFunction,
+} from "@remix-run/node";
+
+export const meta: V2_MetaFunction = () => {
+  return [
+    { title: "SRMKZILLA #Recruitments'23" },
+    {
+      name: "description",
+      content: "srmkzilla recruitments'23",
+    },
+  ];
+};
 
 export const links: LinksFunction = () => [
   ...sidebarLinks(),
@@ -35,6 +49,10 @@ export const links: LinksFunction = () => [
   {
     rel: "stylesheet",
     href: dashboardStyles,
+  },
+  {
+    rel: "icon",
+    href: "/favicon.ico",
   },
 ];
 
@@ -57,7 +75,7 @@ const Dashboard = () => {
   useEffect(() => {
     toast.show(
       `Deadline for application is ${moment(endTime).format("MMMM Do YYYY")}`,
-      "🗓️",
+      "🗓️"
     );
   }, []);
 
@@ -92,13 +110,13 @@ const Dashboard = () => {
                               application={application}
                               handleClick={() => {
                                 navigate(
-                                  `/applications/status/${application.domain}`,
+                                  `/applications/status/${application.domain}`
                                 );
                               }}
                             />
                           </div>
                         );
-                      },
+                      }
                     )}
                 </div>
               </div>

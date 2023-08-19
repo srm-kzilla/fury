@@ -13,8 +13,19 @@ import type {
   ActionFunction,
   LoaderFunction,
   LinksFunction,
+  V2_MetaFunction,
 } from "@remix-run/node";
 import { createApplication, getUserDetails } from "~/utils/api.server";
+
+export const meta: V2_MetaFunction = () => {
+  return [
+    { title: "Select Domain | SRMKZILLA #Recruitments'23" },
+    {
+      name: "description",
+      content: "domain selection srmkzilla recruitments'23",
+    },
+  ];
+};
 
 export const links: LinksFunction = () => [
   {
