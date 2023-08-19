@@ -40,3 +40,10 @@ type Notification struct {
 	Markdown  string    `json:"markdown" bson:"markdown"`
 	Text      string    `json:"text" bson:"text"`
 }
+
+type Team struct {
+	Name    string `json:"name"`
+	Role    string `json:"role"`
+	Comment string `json:"comment"`
+	URL     string `json:"url"`
+}
