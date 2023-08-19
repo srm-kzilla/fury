@@ -114,13 +114,13 @@ const validateUserDetails = async (formData: FormData) => {
       .url("The URL you have entered doesn't seem right")
       .matches(
         /^(https?:\/\/(?:[a-z]+\.)?linkedin\.com\/in\/[a-zA-Z0-9_-]+)?$/,
-        "The URL you have entered doesn't seem right",
+        "The URL you have entered doesn't seem right"
       ),
     github: Yup.string()
       .url("The URL you have entered doesn't seem right")
       .matches(
         /^(https?:\/\/(?:[a-z]+\.)?github\.com\/[a-zA-Z0-9_-]+)?$/,
-        "The URL you have entered doesn't seem right",
+        "The URL you have entered doesn't seem right"
       ),
     resume: Yup.string(),
     portfolio: Yup.string().url(),
@@ -139,13 +139,24 @@ export default function Start() {
   const {
     user: { name, regNo },
   } = useLoaderData();
-
-  const [selectedFile, setSelectedFile] = useState(null);
-  const onDrop = (acceptedFiles: any) => {
+  const [selectedFile, setSelectedFile] = useState<File|null>(null);
+  const onDrop = (acceptedFiles: File[]) => {
+    if (fileRejections.length > 0) {
+      toast.error("Only PDF files are allowed");
+      return;
+    } else if (acceptedFiles[0].size > 20000000) {
+      toast.error("File size must be less than 20MB");
+      return;
+    }
     setSelectedFile(acceptedFiles[0]);
   };
 
-  const { getRootProps, getInputProps } = useDropzone({ onDrop });
+  const { fileRejections, getRootProps, getInputProps } = useDropzone({
+    onDrop,
+    accept: {
+      "application/pdf": [".pdf"],
+    },
+  });
 
   useEffect(() => {
     if (actionData?.toastErrMessage) {
