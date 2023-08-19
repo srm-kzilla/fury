@@ -1,9 +1,9 @@
 import { BiHomeAlt } from "react-icons/bi";
 import { Link } from "@remix-run/react";
 import formClosedStyles from "~/styles/pages/FormClosed.css";
-import type {LinksFunction, LoaderFunction} from "@remix-run/node";
+import type { LinksFunction, LoaderFunction } from "@remix-run/node";
 import getEnv from "~/utils/env";
-import {redirect} from "@remix-run/node";
+import { redirect } from "@remix-run/node";
 
 export const links: LinksFunction = () => [
   {
@@ -21,7 +21,7 @@ export const loader: LoaderFunction = () => {
   }
 
   return null;
-}
+};
 
 export default function FormClosed() {
   return (

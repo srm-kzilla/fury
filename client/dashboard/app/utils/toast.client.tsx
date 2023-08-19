@@ -27,7 +27,7 @@ export default {
           width: "300px",
           borderRadius: "10px",
           gap: "1rem",
-          justifyContent: "space-between"
+          justifyContent: "space-between",
         }}
       >
         {icon}
@@ -52,22 +52,28 @@ export default {
   success: (message: string) => toast.success(message, toastBaseOptions),
 };
 
-export const getToastFromIdentifier = (identifier: ToastIdentifier): ToastMessage => {
+export const getToastFromIdentifier = (
+  identifier: ToastIdentifier
+): ToastMessage => {
   switch (identifier) {
     case "form_saved":
       return { type: "success", message: "Form saved successfully" };
 
     case "form_submitted":
-      return { type: "custom", message: "Form submitted successfully", icon: "🚀" };
+      return {
+        type: "custom",
+        message: "Form submitted successfully",
+        icon: "🚀",
+      };
 
     case "form_submit_error":
       return { type: "error", message: "Error submitting form" };
 
     case "draft_deleted":
-      return { type: "success", message: "Draft deleted successfully"}
+      return { type: "success", message: "Draft deleted successfully" };
 
     case "answer_required":
-      return {  type: "error", message: "Please answer answer the question" };
+      return { type: "error", message: "Please answer answer the question" };
 
     default:
       return {
