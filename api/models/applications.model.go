@@ -19,6 +19,7 @@ type Question struct {
 type UpdateApplication struct {
 	RegNo  string `validate:"required" json:"regNo" bson:"regNo"`
 	Status string `validate:"required" json:"status"`
+	Domain string `validate:"required" json:"domain"`
 }
 
 type ApplicationBody struct {

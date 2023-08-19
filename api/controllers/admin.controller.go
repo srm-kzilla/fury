@@ -13,6 +13,7 @@ import (
 	"github.com/srm-kzilla/Recruitments/api/utils/validators"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -108,8 +109,18 @@ func UpdateApplications(c *fiber.Ctx) error {
 		return nil
 	}
 
-	check.Status = application.Status
-	errr := usersCollection.FindOneAndReplace(context.Background(), bson.M{"regNo": application.RegNo}, check).Decode(&check)
+	arrayFilters := options.ArrayFilters{
+		Filters: []interface{}{bson.M{"elem.domain": application.Domain}},
+	}
+
+	_, errr := usersCollection.UpdateOne(context.Background(), bson.M{"regNo": application.RegNo}, bson.M{
+		"$set": bson.M{
+			"application.$[elem].status": application.Status,
+		},
+	}, &options.UpdateOptions{
+		ArrayFilters: &arrayFilters,
+	})
+
 	if errr != nil {
 		log.Error("Error: ", errr)
 		c.Status(fiber.StatusBadGateway).JSON(fiber.Map{
@@ -117,7 +128,9 @@ func UpdateApplications(c *fiber.Ctx) error {
 		})
 		return nil
 	}
-	c.Status(fiber.StatusOK).JSON(application)
+	c.Status(fiber.StatusOK).JSON(fiber.Map{
+		"message": "Application updated successfully",
+	})
 	return nil
 }
 
