@@ -2,11 +2,13 @@ import DisplayCard from "@/components/DisplayCard";
 import Head from "next/head";
 import { Applicant } from "@/services/api";
 import { env } from "process";
+import names from "@/mock-data/names.json";
 interface ApplicantProps {
   data: Applicant[];
 }
 
 export function Dashboard({ data }: ApplicantProps) {
+  console.log(names);
   return (
     <div className="min-h-screen w-screen bg-kz-grey p-5">
       <Head>

@@ -1,278 +1,310 @@
 [
-    {
-        "id":1,
-        "name":"John Doe",
-        "regno":"RA2311026010215",
-        "year":1,
-        "dept":"CINTEL",
-        "email":"someemail@gmail.com",
-        "gender":"male",
-        "contact":1234567890,
-        "socials":{
-            "github":"name_dev",
-            "linkedin":"name_lastname",
-            "portfolio":"link"
-        },
-        "application": [
-            {
-            "question": "Why do you want to join Kzilla",
-            "answer": "Because its the best club on campus"
-            },
-            {
-            "question": "Why do you want to join Kzilla",
-            "answer": "Because its the best club on campus"
-            },
-            {
-            "question": "Why do you want to join Kzilla",
-            "answer": "Because its the best club on campus"
-            }
-        ]
+  {
+    "_id": "64db53fd660592466d1d2f99",
+    "application": [
+      {
+        "appliedAt": "2023-08-17T21:13:59.85Z",
+        "createdAt": "2023-08-17T21:13:59.85Z",
+        "domain": "technical",
+        "questions": [
+          {
+            "answer": "headache",
+            "questionNumber": "1"
+          },
+          {
+            "answer": "how to remove } after debugging for one hour",
+            "questionNumber": "2"
+          },
+          {
+            "answer": "oops",
+            "questionNumber": "3"
+          },
+          {
+            "answer": "python is ❤‍🔥",
+            "questionNumber": "4"
+          },
+          {
+            "answer": "no",
+            "questionNumber": "5"
+          },
+          {
+            "answer": "....",
+            "questionNumber": "6"
+          },
+          {
+            "answer": "asdf",
+            "questionNumber": "7"
+          },
+          {
+            "answer": "no",
+            "questionNumber": "8"
+          }
+        ],
+        "status": "pending",
+        "updatedAt": "2023-08-17T21:15:44.486Z"
+      },
+      {
+        "appliedAt": "2023-08-17T21:38:09.271Z",
+        "createdAt": "2023-08-17T21:38:09.271Z",
+        "domain": "photography",
+        "questions": [
+          {
+            "answer": "adsfa",
+            "questionNumber": "1"
+          },
+          {
+            "answer": "asdf",
+            "questionNumber": "2"
+          }
+        ],
+        "status": "draft",
+        "updatedAt": "2023-08-17T21:38:58.053Z"
+      }
+    ],
+    "branch": "computer_science_and_engineering",
+    "contact": "7979783662",
+    "createdAt": 1692095485,
+    "email": "va1221@srmist.edu.in",
+    "gender": "other",
+    "name": "VIRAJ AGARWAL",
+    "notifications": [
+      {
+        "markdown": "*Hello, dreamer.* Welcome to #Recruitment2023. Your pathway to becoming an SRMKZILLian starts right here. Create a new application to get started.",
+        "text": "Hello, dreamer. Welcome to #Recruitment2023. Your pathway to becoming an SRMKZILLian starts right here. Create a new application to get started.",
+        "timestamp": "2023-08-15T10:31:25.969Z"
+      }
+    ],
+    "regNo": "RA2011003010262",
+    "resume": "https://recruitment-23.s3.ap-south-1.amazonaws.com/resume/64db53fd660592466d1d2f99.pdf",
+    "socials": {
+      "github": "",
+      "linkedin": "",
+      "portfolio": ""
     },
-    {
-        "id":2,
-        "name":"Jane Doe",
-        "regno":"RA2311026010215",
-        "year":1,
-        "dept":"CINTEL",
-        "email":"someemail@gmail.com",
-        "gender":"female",
-        "contact":1234567890,
-        "socials":{
-            "github":"name_dev",
-            "linkedin":"name_lastname",
-            "portfolio":"link"
-        },
-        "application": [
-            {
-            "question": "Why do you want to join Kzilla",
-            "answer": "Because its the best club on campus"
-            },
-            {
-            "question": "Why do you want to join Kzilla",
-            "answer": "Because its the best club on campus"
-            },
-            {
-            "question": "Why do you want to join Kzilla",
-            "answer": "Because its the best club on campus"
-            },
-            {
-            "question": "Why do you want to join Kzilla",
-            "answer": "Because its the best club on campus"
-            },
-            {
-            "question": "Why do you want to join Kzilla",
-            "answer": "Because its the best club on campus"
-            },
-            {
-            "question": "Why do you want to join Kzilla",
-            "answer": "Because its the best club on campus"
-            },
-            {
-            "question": "Why do you want to join Kzilla",
-            "answer": "Because its the best club on campus"
-            },
-            {
-            "question": "Why do you want to join Kzilla",
-            "answer": "Because its the best club on campus"
-            }
-        ]
+    "year": 4
+  },
+  {
+    "_id": "64db97175a08155345380a6e",
+    "application": [
+      {
+        "appliedAt": "2023-08-19T05:34:53.846Z",
+        "createdAt": "2023-08-19T05:34:53.846Z",
+        "domain": "technicalp",
+        "status": "draft",
+        "updatedAt": "2023-08-19T05:34:53.846Z"
+      }
+    ],
+    "branch": "computer_science_and_engineering",
+    "contact": "9939088088",
+    "createdAt": 1692112663,
+    "email": "un6427@srmist.edu.in",
+    "gender": "female",
+    "name": "UTKARSHINI NARAYAN",
+    "notifications": [
+      {
+        "markdown": "*Hello, dreamer.* Welcome to #Recruitment2023. Your pathway to becoming an SRMKZILLian starts right here. Create a new application to get started.",
+        "text": "Hello, dreamer. Welcome to #Recruitment2023. Your pathway to becoming an SRMKZILLian starts right here. Create a new application to get started.",
+        "timestamp": "2023-08-15T15:17:43.935Z"
+      },
+      {
+        "markdown": "**Your application has been <span>created</span>.**",
+        "text": "Your application has been created.",
+        "timestamp": "2023-08-19T05:34:53.923Z"
+      }
+    ],
+    "regNo": "RA2211003010403",
+    "resume": "https://recruitment-23.s3.ap-south-1.amazonaws.com/resume/64db97175a08155345380a6e.pdf",
+    "socials": {
+      "github": "",
+      "linkedin": "",
+      "portfolio": ""
     },
-    {
-        "id":3,
-        "name":"John Doe",
-        "regno":"RA2311026010215",
-        "year":1,
-        "dept":"CINTEL",
-        "email":"someemail@gmail.com",
-        "gender":"male",
-        "contact":1234567890,
-        "socials":{
-            "github":"name_dev",
-            "linkedin":"name_lastname",
-            "portfolio":"link"
-        },
-        "application": [
-            {
-                "question": "Why do you want to join Kzilla",
-                "answer": "Because its the best club on campus"
-                },
-                {
-                "question": "Why do you want to join Kzilla",
-                "answer": "Because its the best club on campus"
-                },
-                {
-                "question": "Why do you want to join Kzilla",
-                "answer": "Because its the best club on campus"
-                },
-                {
-                "question": "Why do you want to join Kzilla",
-                "answer": "Because its the best club on campus"
-                },
-                {
-                "question": "Why do you want to join Kzilla",
-                "answer": "Because its the best club on campus"
-                },
-                {
-                "question": "Why do you want to join Kzilla",
-                "answer": "Because its the best club on campus"
-                },
-                {
-                "question": "Why do you want to join Kzilla",
-                "answer": "Because its the best club on campus"
-                },
-                {
-                "question": "Why do you want to join Kzilla",
-                "answer": "Because its the best club on campus"
-                }
-        ]
+    "year": 2
+  },
+  {
+    "_id": "64de910429621b3e9d361dfd",
+    "application": [],
+    "branch": "",
+    "contact": "",
+    "createdAt": 1692307716,
+    "email": "ar8930@srmist.edu.in",
+    "gender": "",
+    "name": "ARYAN SINGH",
+    "notifications": [
+      {
+        "markdown": "*Hello, dreamer.* Welcome to #Recruitment2023. Your pathway to becoming an SRMKZILLian starts right here. Create a new application to get started.",
+        "text": "Hello, dreamer. Welcome to #Recruitment2023. Your pathway to becoming an SRMKZILLian starts right here. Create a new application to get started.",
+        "timestamp": "2023-08-17T21:28:36.128Z"
+      }
+    ],
+    "regNo": "RA2111027010126",
+    "resume": "",
+    "socials": {
+      "github": "",
+      "linkedin": "",
+      "portfolio": ""
     },
-    {
-        "id":4,
-        "name":"Jane Doe",
-        "regno":"RA2311026010215",
-        "year":1,
-        "dept":"CINTEL",
-        "email":"someemail@gmail.com",
-        "gender":"female",
-        "contact":1234567890,
-        "socials":{
-            "github":"name_dev",
-            "linkedin":"name_lastname",
-            "portfolio":"link"
-        },
-        "application": [
-            {
-                "question": "Why do you want to join Kzilla",
-                "answer": "Because its the best club on campus"
-                },
-                {
-                "question": "Why do you want to join Kzilla",
-                "answer": "Because its the best club on campus"
-                },
-                {
-                "question": "Why do you want to join Kzilla",
-                "answer": "Because its the best club on campus"
-                },
-                {
-                "question": "Why do you want to join Kzilla",
-                "answer": "Because its the best club on campus"
-                },
-                {
-                "question": "Why do you want to join Kzilla",
-                "answer": "Because its the best club on campus"
-                },
-                {
-                "question": "Why do you want to join Kzilla",
-                "answer": "Because its the best club on campus"
-                },
-                {
-                "question": "Why do you want to join Kzilla",
-                "answer": "Because its the best club on campus"
-                },
-                {
-                "question": "Why do you want to join Kzilla",
-                "answer": "Because its the best club on campus"
-                }
-        ]
-      
+    "year": 3
+  },
+  {
+    "_id": "64dee37fe91e6244602872e4",
+    "application": [],
+    "branch": "computer_science_and_engineering",
+    "contact": "6200402119",
+    "createdAt": 1692328831,
+    "email": "uv8428@srmist.edu.in",
+    "gender": "male",
+    "name": "UTKARSH UTKARSH",
+    "notifications": [
+      {
+        "markdown": "*Hello, dreamer.* Welcome to #Recruitment2023. Your pathway to becoming an SRMKZILLian starts right here. Create a new application to get started.",
+        "text": "Hello, dreamer. Welcome to #Recruitment2023. Your pathway to becoming an SRMKZILLian starts right here. Create a new application to get started.",
+        "timestamp": "2023-08-18T03:20:31.997Z"
+      }
+    ],
+    "regNo": "RA2111003010852",
+    "resume": "https://recruitment-23.s3.ap-south-1.amazonaws.com/resume/64dee37fe91e6244602872e4.pdf",
+    "socials": {
+      "github": "https://www.github.com/utkarsh575",
+      "linkedin": "https://www.linkedin.com/in/utkarsh575",
+      "portfolio": "https://www.utkarsh575.xyz"
     },
-    {
-        "id":5,
-        "name":"John Doe",
-        "regno":"RA2311026010215",
-        "year":1,
-        "dept":"CINTEL",
-        "email":"someemail@gmail.com",
-        "gender":"male",
-        "contact":1234567890,
-        "socials":{
-            "github":"name_dev",
-            "linkedin":"name_lastname",
-            "portfolio":"link"
-        },
-        "application": [
-            {
-                "question": "Why do you want to join Kzilla",
-                "answer": "Because its the best club on campus"
-                },
-                {
-                "question": "Why do you want to join Kzilla",
-                "answer": "Because its the best club on campus"
-                },
-                {
-                "question": "Why do you want to join Kzilla",
-                "answer": "Because its the best club on campus"
-                },
-                {
-                "question": "Why do you want to join Kzilla",
-                "answer": "Because its the best club on campus"
-                },
-                {
-                "question": "Why do you want to join Kzilla",
-                "answer": "Because its the best club on campus"
-                },
-                {
-                "question": "Why do you want to join Kzilla",
-                "answer": "Because its the best club on campus"
-                },
-                {
-                "question": "Why do you want to join Kzilla",
-                "answer": "Because its the best club on campus"
-                },
-                {
-                "question": "Why do you want to join Kzilla",
-                "answer": "Because its the best club on campus"
-                }
-        ]
+    "year": 3
+  },
+  {
+    "_id": "64df8e2890f7c32d50215e12",
+    "application": [
+      {
+        "appliedAt": "2023-08-18T15:34:42.864Z",
+        "createdAt": "2023-08-18T15:34:42.864Z",
+        "domain": "technicalp",
+        "questions": [
+          {
+            "answer": "discord-role-bot",
+            "questionNumber": "1"
+          },
+          {
+            "answer": "sdasd",
+            "questionNumber": "2"
+          },
+          {
+            "answer": "httpsa",
+            "questionNumber": "3"
+          },
+          {
+            "answer": "frontend",
+            "questionNumber": "4"
+          }
+        ],
+        "status": "accepted",
+        "updatedAt": "2023-08-18T15:35:32.873Z"
+      },
+      {
+        "appliedAt": "2023-08-18T17:30:47.187Z",
+        "createdAt": "2023-08-18T17:30:47.187Z",
+        "domain": "content_writing",
+        "status": "draft",
+        "updatedAt": "2023-08-18T17:30:47.187Z"
+      }
+    ],
+    "branch": "computer_science_and_engineering",
+    "contact": "9006406188",
+    "createdAt": 1692372520,
+    "email": "sk0223@srmist.edu.in",
+    "gender": "other",
+    "name": "SHASHANK KUMAR",
+    "notifications": [
+      {
+        "markdown": "*Hello, dreamer.* Welcome to #Recruitment2023. Your pathway to becoming an SRMKZILLian starts right here. Create a new application to get started.",
+        "text": "Hello, dreamer. Welcome to #Recruitment2023. Your pathway to becoming an SRMKZILLian starts right here. Create a new application to get started.",
+        "timestamp": "2023-08-18T15:28:40.474Z"
+      },
+      {
+        "markdown": "**Your application has been <span>created</span>.**",
+        "text": "Your application has been created.",
+        "timestamp": "2023-08-18T17:16:15.361Z"
+      },
+      {
+        "markdown": "**Your application has been <span>created</span>.**",
+        "text": "Your application has been created.",
+        "timestamp": "2023-08-18T17:30:47.284Z"
+      }
+    ],
+    "regNo": "RA2011026010181",
+    "resume": "https://recruitment-23.s3.ap-south-1.amazonaws.com/resume/64df8e2890f7c32d50215e12.pdf",
+    "socials": {
+      "github": "",
+      "linkedin": "",
+      "portfolio": ""
     },
-    {
-        "id":6,
-        "name":"Jane Doe",
-        "regno":"RA2311026010215",
-        "year":1,
-        "dept":"CINTEL",
-        "email":"someemail@gmail.com",
-        "gender":"female",
-        "contact":1234567890,
-        "socials":{
-            "github":"name_dev",
-            "linkedin":"name_lastname",
-            "portfolio":"link"
-        },
-        "application": [
-            {
-                "question": "Why do you want to join Kzilla",
-                "answer": "Because its the best club on campus"
-                },
-                {
-                "question": "Why do you want to join Kzilla",
-                "answer": "Because its the best club on campus"
-                },
-                {
-                "question": "Why do you want to join Kzilla",
-                "answer": "Because its the best club on campus"
-                },
-                {
-                "question": "Why do you want to join Kzilla",
-                "answer": "Because its the best club on campus"
-                },
-                {
-                "question": "Why do you want to join Kzilla",
-                "answer": "Because its the best club on campus"
-                },
-                {
-                "question": "Why do you want to join Kzilla",
-                "answer": "Because its the best club on campus"
-                },
-                {
-                "question": "Why do you want to join Kzilla",
-                "answer": "Because its the best club on campus"
-                },
-                {
-                "question": "Why do you want to join Kzilla",
-                "answer": "Because its the best club on campus"
-                }
-        ]
-      
-    }
-    ]
+    "year": 4
+  },
+  {
+    "_id": "64e076cd3bfc75264e52d388",
+    "application": [
+      {
+        "appliedAt": "2023-08-19T08:07:12.146Z",
+        "createdAt": "2023-08-19T08:07:12.146Z",
+        "domain": "technicalp",
+        "status": "draft",
+        "updatedAt": "2023-08-19T08:07:12.146Z"
+      }
+    ],
+    "branch": "cse_w/s_in_internet_of_things_(iot)",
+    "contact": "9941659425",
+    "createdAt": 1692432077,
+    "email": "mm5481@srmist.edu.in",
+    "gender": "male",
+    "name": "MOHAMED SAMI S",
+    "notifications": [
+      {
+        "markdown": "*Hello, dreamer.* Welcome to #Recruitment2023. Your pathway to becoming an SRMKZILLian starts right here. Create a new application to get started.",
+        "text": "Hello, dreamer. Welcome to #Recruitment2023. Your pathway to becoming an SRMKZILLian starts right here. Create a new application to get started.",
+        "timestamp": "2023-08-19T08:01:17.352Z"
+      },
+      {
+        "markdown": "**Your application has been <span>created</span>.**",
+        "text": "Your application has been created.",
+        "timestamp": "2023-08-19T08:02:09.524Z"
+      },
+      {
+        "markdown": "**Your application has been <span>created</span>.**",
+        "text": "Your application has been created.",
+        "timestamp": "2023-08-19T08:07:12.22Z"
+      }
+    ],
+    "regNo": "RA2111032010022",
+    "resume": "https://recruitment-23.s3.ap-south-1.amazonaws.com/resume/64e076cd3bfc75264e52d388.pdf",
+    "socials": {
+      "github": "",
+      "linkedin": "",
+      "portfolio": ""
+    },
+    "year": 3
+  },
+  {
+    "_id": "64e090803bfc75264e52d38f",
+    "application": [],
+    "branch": "",
+    "contact": "",
+    "createdAt": 1692438656,
+    "email": "sk0274@srmist.edu.in",
+    "gender": "",
+    "name": "SAANVI KUMAR",
+    "notifications": [
+      {
+        "markdown": "*Hello, dreamer.* Welcome to #Recruitment2023. Your pathway to becoming an SRMKZILLian starts right here. Create a new application to get started.",
+        "text": "Hello, dreamer. Welcome to #Recruitment2023. Your pathway to becoming an SRMKZILLian starts right here. Create a new application to get started.",
+        "timestamp": "2023-08-19T09:50:57.009Z"
+      }
+    ],
+    "regNo": "RA2211026010215",
+    "resume": "",
+    "socials": {
+      "github": "",
+      "linkedin": "",
+      "portfolio": ""
+    },
+    "year": 2
+  }
+]
