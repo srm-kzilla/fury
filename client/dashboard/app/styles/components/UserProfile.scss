@@ -115,10 +115,11 @@
 
   .resume {
     color: #fff;
+    margin-top: 1.7px;
     .dropzone {
-      height: 2.77rem;
+      min-height: 2.8rem;
       border-radius: 5px;
-      padding: 0.75rem;
+      padding: 0.5rem 1rem 0.5rem 0rem;
       text-align: center;
       align-items: center;
       cursor: pointer;
@@ -126,6 +127,7 @@
       .text{
         color: var(--color-placeholder);
         align-self: center;
+        word-wrap: break-word;
       }
     }
   }
