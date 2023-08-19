@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"context"
+	"fmt"
 	"os"
 	"time"
 
@@ -81,13 +82,13 @@ func CreateApplication(c *fiber.Ctx) error {
 		log.Error("Error: Inserting notification")
 	}
 	newMailEmbed := mailer.MailEmbed{
-		Header:      "Recruitments#2023",
+		Header:      "Recruitment#2023",
 		Salutations: "Hello Dreamer,",
-		Body:        "Your Application has been created! Get ready for this rollercoaster ride. But dont be afraid, we are here by your side at every moment. like vin diesel says, `We got Family'.",
+		Body:        fmt.Sprintf("Ruh-roh! It seems you've embarked on a thrilling journey by creating a draft for the %s Domain in our mysterious recruitment adventure – just like Scooby and the gang hopping into the Mystery Machine! 🚐🔍<br><br> The path to becoming a true SRMKZILLian is unfolding, and your draft is the first step to unraveling the enigmatic challenges and innovations that await. We're excited to see your technical prowess shine like Velma's brilliant insights!<br><br> But hang on to your virtual hats! The adventure's not over yet. Remember, the deadline for completing your application is creeping up faster than a ghostly phantom – August 26th! 📅 So don't let that draft sit idle; polish it up and submit it at recruitment.srmkzilla.net before the clock strikes midnight.<br><br>  Join us on this exhilarating escapade to the land of code, innovation, and camaraderie! We can't wait to have you onboard the SRMKZILLA crew, where every mystery solved is a step towards becoming a legend.<br><br>  If you have any questions, don't hesitate to reach out. Until then, keep your magnifying glass handy and your curiosity ignited!<br><br>  Best of luck, and let's solve these puzzles together!", body.Domain),
 	}
 	sesInput := mailer.SESInput{
 		TemplateName:  mailer.TEMPLATES.EmailTemplate,
-		Subject:       "Application Created",
+		Subject:       fmt.Sprintf("Finish crafting Your %s domain Application Today!", body.Domain),
 		RecieverEmail: email,
 		SenderEmail:   os.Getenv("SENDER_EMAIL"),
 		EmbedData:     newMailEmbed,
@@ -267,6 +268,23 @@ func SubmitApplication(c *fiber.Ctx) error {
 	notificationInsert := notifications.RecordNotification("APPLICATION_IN_REVIEW", userId, domain)
 	if !notificationInsert {
 		log.Error("Error: Inserting notification")
+	}
+	email := c.Locals("userData").(map[string]interface{})["email"].(string)
+	newMailEmbed := mailer.MailEmbed{
+		Header:      "Recruitment#2023",
+		Salutations: "Hello there, SRMKZILLian in the making,",
+		Body:        fmt.Sprintf("We wanted to let you in on a secret – your %s Domain application has taken its place in our enigmatic vault, just like a vital clue in the casebook! 📚🔍<br><br>  Riding the ZILLA MYSTERY MACHINE of creativity, your application is now securely submitted, ready for us to unlock its potential. Our team of digital detectives will be combing through applications like Shaggy through a snack buffet, reviewing them on a daily basis.<br><br>  Stay tuned for updates, both via email and on your dashboard. We'll keep you in the loop with each twist and turn, much like Scooby and the gang following the trail of breadcrumbs. 🍞👣<br><br>  We appreciate your eagerness to join the SRMKZILLA crew! Remember, it's not just about solving puzzles – it's about being part of a legendary squad.<br><br>  If you have any questions or just want to say &quot;zoinks,&quot; don't hesitate to reach out. Until then, keep your skills sharp and your curiosity piqued!<br><br>  Best of luck, and let's unravel the next chapter of your SRMKZILLA journey together!", domain),
+	}
+	sesInput := mailer.SESInput{
+		TemplateName:  mailer.TEMPLATES.EmailTemplate,
+		Subject:       fmt.Sprintf("Your SRMKZILLA %s Application: Locked, Loaded, and Under Review!", domain),
+		RecieverEmail: email,
+		SenderEmail:   os.Getenv("SENDER_EMAIL"),
+		EmbedData:     newMailEmbed,
+	}
+	err = mailer.SendEmail(sesInput)
+	if err != nil {
+		return err
 	}
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"message": "Application submitted successfully",

@@ -12,8 +12,6 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 )
 
-const NEW_USER = "Hello, dreamer. Welcome to #Recruitment2023. Your pathway to becoming an SRMKZILLian starts right here. Create a new application to get started."
-
 func RecordNotification(notificationType string, userId any, domain string) bool {
 	var notification models.Notification
 	notification.Timestamp = time.Now()
