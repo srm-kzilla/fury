@@ -31,7 +31,26 @@ const Glance = ({ user, activity }: ActivityProps) => {
     window.$crisp.push(["set", "user:email", [user?.email]]);
     window.$crisp.push(["set", "user:phone", [user?.contact]]);
   }, []);
-
+  const data = [
+    {
+      name: "Aryan",
+      role: "Tech Lead",
+      comment: "In reality I am an Events associate who can code in Go.",
+      url: "https://recruitment-23.s3.ap-south-1.amazonaws.com/images/duck-aryan.jpeg",
+    },
+    {
+      name: "Farhaan",
+      role: "Tech Lead",
+      comment: "I couldn't decide what I love more, my bike or my github account, so I got a github sticker on my bike.",
+      url: "https://recruitment-23.s3.ap-south-1.amazonaws.com/images/farhaan-spider.png",
+    },
+    {
+      name: "Viraj",
+      role: "Head of Tech",
+      comment: "I like crocs, remix, linux, dogs and roll from butty.",
+      url: "https://recruitment-23.s3.ap-south-1.amazonaws.com/images/doge-viraj.jpeg",
+    },
+  ];
   return (
     <div className="kz-glance">
       <div className="profile">
@@ -60,11 +79,19 @@ const Glance = ({ user, activity }: ActivityProps) => {
       <hr />
 
       <div className="activity">
-        <h3>Recent activity</h3>
+        <h3>Meet the Team</h3>
         <div>
-          {activity &&
-            activity.map((event: Activity) => {
-              return <Activity key={event._id} event={event} />;
+          {data &&
+            data.map((member: any, index) => {
+              return (
+                <div className="meetwizards" key={index}>
+                  <img src={member.url} alt="avatar" />
+                  <div>
+                    <h5>{member?.name}, <span>{member?.role}</span></h5>
+                    <p>{member?.comment}</p>
+                  </div>
+                </div>
+              );
             })}
         </div>
       </div>
