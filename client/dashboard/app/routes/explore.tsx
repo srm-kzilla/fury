@@ -86,6 +86,15 @@ const Explore = () => {
       url: "https://www.instagram.com/p/Cn-_yK5PixM/?igshid=MTc4MmM1YmI2Ng==",
     },
     {
+      icon: <BiVector />,
+      title: "Kzilla.xyz",
+      description:
+        "Shorten the URL. Broaden the reach.The new URL shrinker of the Internet. It's as easy as it sounds. ",
+      timestamp: 1667586600000,
+      github: "https://github.com/srm-kzilla/kzilla.xyz",
+      url: "https://kzilla.xyz/",
+    },
+    {
       icon: <BiTerminal />,
       title: "Git Set Go",
       description:
@@ -111,6 +120,15 @@ const Explore = () => {
       timestamp: 1652801664000,
       github: "https://github.com/srm-kzilla/sandesh",
       url: "https://www.instagram.com/p/CdkPtAIqq4F/?igshid=MTA0ZTI1NzA=",
+    },
+    {
+      icon: <BiLockOpenAlt />,
+      title: "MOZOFEST'22",
+      description:
+        "A three-day extravaganza to emanate the power of open source community sprinkled with a load of fun and frolic.",
+      timestamp: 1645727400000,
+      github: "",
+      url: "https://www.instagram.com/p/CZqXHUbvbHp/?igshid=MzRlODBiNWFlZA==",
     },
     {
       icon: <BiMeteor />,
@@ -232,15 +250,6 @@ const Explore = () => {
       timestamp: 1603794255000,
       github: "https://github.com/srm-kzilla/recruitments-2020",
       url: "https://www.instagram.com/p/CG1pVftDe4z/",
-    },
-    {
-      icon: <BiVector />,
-      title: "Kzilla.xyz",
-      description:
-        "Shorten the URL. Broaden the reach.The new URL shrinker of the Internet. It's as easy as it sounds. ",
-      timestamp: 1597190400000,
-      github: "https://github.com/srm-kzilla/kzilla.xyz",
-      url: "https://kzilla.xyz/",
     },
     {
       icon: <BiPalette />,
