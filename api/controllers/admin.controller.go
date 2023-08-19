@@ -42,12 +42,8 @@ func GetAllApplications(c *fiber.Ctx) error {
 }
 
 func GetApplications(c *fiber.Ctx) error {
-	domain := c.Params("domain")
-	if domain == "" {
-		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
-			"error": "Domain is required",
-		})
-	}
+	domain := c.Locals("evaluator").(models.Evaluators).Domain
+
 	usersCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "users")
 	if e != nil {
 		log.Error("Error: ", e)

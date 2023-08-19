@@ -14,8 +14,8 @@ func AdminRoutes(router fiber.Router) {
 
 	applicationsAdmin := protected.Group("/applications")
 
-	applicationsAdmin.Get("/", controllers.GetAllApplications)
-	applicationsAdmin.Get("/:domain", controllers.GetApplications)
+	applicationsAdmin.Get("/all", controllers.GetAllApplications)
+	applicationsAdmin.Get("/", controllers.GetApplications)
 	applicationsAdmin.Put("/", controllers.UpdateApplications)
 
 }
