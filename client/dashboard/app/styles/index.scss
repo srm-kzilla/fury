@@ -39,6 +39,11 @@ body,
   flex-direction: column;
 }
 
+#nprogress .bar {
+  background: #ffffff !important;
+  height: 10px !important;
+}
+
 body {
   font-size: $fontSize;
   font-family: "Caros", sans-serif;
