@@ -37,7 +37,7 @@ export async function createUserSession(
   session.set("refresh_token", refreshToken);
   session.set("expires_in", expiresIn);
 
-  return redirect(redirectTo, {
+  throw redirect(redirectTo, {
     headers: {
       "Set-Cookie": await commitSession(session),
     },
@@ -68,6 +68,7 @@ export async function refreshAccessToken(request: Request) {
     await getAccessTokenFromRefreshToken(refreshToken);
 
   await createUserSession(access_token, refresh_token, expires_in, request.url);
+  return access_token;
 }
 
 export async function requireAccessToken(request: Request) {
