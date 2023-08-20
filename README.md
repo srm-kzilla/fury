@@ -17,7 +17,8 @@ crafted with <span style="color: #8b0000;">&hearts;</span> by your friends on th
 
 ## Structure
 
-`Fury` is a mono repo having the backend server, User Dashboard, Landing Page and Admin Portal.
+`Fury` is a mono repo having the backend server written in Go under folder `api` and the frontend under the `client` folder.<br>
+The `client` has three sub-folders: `landing`, `admin` and `dashboard`, which are the Landing Page, Admin Dashboard and User Dashboard respectively.
 
 ## Stack
 
