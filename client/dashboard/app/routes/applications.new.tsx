@@ -97,7 +97,7 @@ export const loader: LoaderFunction = async ({ request }) => {
   const formSession = await getFormSession(request);
 
   if (!formSession) {
-    return createFormSession(request);
+    return createFormSession(request, "/applications/domain-select");
   } else if (formSession && !formSession.domain) {
     return redirect("/applications/domain-select");
   }
