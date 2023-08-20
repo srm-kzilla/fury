@@ -6,11 +6,7 @@ import {
 } from "./api.server";
 
 const env = getEnv();
-const sessionSecret = env.SESSION_SECRET;
-
-if (!sessionSecret) {
-  throw new Error("SESSION_SECRET is missing in .env");
-}
+const sessionSecret = env.SESSION_SECRET!;
 
 const { commitSession, getSession, destroySession } =
   createCookieSessionStorage({

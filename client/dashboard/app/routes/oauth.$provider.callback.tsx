@@ -16,11 +16,14 @@ export const loader: LoaderFunction = async ({ request }) => {
 
   if (data.error) {
     if (data.error === "only 1st and 2nd years can apply") {
-      throw new Error("Sorry, Only 1st and 2nd years can apply");
-    } else if (data.error === "Use SRM Email to Register") {
-      throw new Error("Use SRM Email to Register");
+      throw json(
+        { message: "Sorry, Only 1st and 2nd years can apply" },
+        { status: 400 }
+      );
+    } else if (data.error === "use srm mail id") {
+      throw json({ message: "Use SRM Email to Register" }, { status: 400 });
     } else {
-      throw new Error("Use SRM Email to Register");
+      throw json({ message: "Something went wrong" }, { status: 400 });
     }
   }
 
