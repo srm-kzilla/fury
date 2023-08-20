@@ -1,10 +1,10 @@
-# Project Fury
+# Admin Dashboard
 
 <div align="center">
   <img alt="SRMKZILLA Logo" src="public/SRMKZILLALogo.svg" height="56" />
 </div>
 <p align="center">
-Inspired by Nick Fury, whose primary job was to recruit Avengers, spies and other cool people!
+Here, the gods above decide whether to accept or reject you based on the application you submit.
 </p>
 <p align="center">
 crafted with <span style="color: #8b0000;">&hearts;</span> by your friends on the <a href="https://srmkzilla.net">SRMKZILLA</a> team.
@@ -14,6 +14,12 @@ crafted with <span style="color: #8b0000;">&hearts;</span> by your friends on th
     <img src="https://img.shields.io/badge/license-MIT-brightgreen" alt="license MIT"/>
     <img src="https://img.shields.io/badge/author-SRMKZILLA-orange" alt="author SRMKZILLA"/>
 </p>
+
+## Stack
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 
 ## Installation 🔧
 
