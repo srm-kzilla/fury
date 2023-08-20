@@ -225,6 +225,9 @@ func GetNotifications(c *fiber.Ctx) error {
 		})
 	}
 	notifications := user.Notifications
+	sort.Slice(notifications, func(i, j int) bool {
+		return i > j
+	})
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"notifications": notifications,
 	})
