@@ -2,6 +2,9 @@
 
 div.kz-application-tile {
   @include BoxShadow();
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   padding: 1rem 2rem;
   background-color: var(--color-bg-alt);
   border-radius: 0.5rem;
@@ -11,7 +14,6 @@ div.kz-application-tile {
   @include for-tablet-only {
     margin-bottom: 1rem;
   }
-
 
   .icon {
     svg {
@@ -26,10 +28,6 @@ div.kz-application-tile {
     font-size: 1.5rem;
   }
 
-  svg.info {
-    margin-top: 0;
-  }
-
   .info {
     display: flex;
     align-items: center;
@@ -39,13 +37,13 @@ div.kz-application-tile {
     .status {
       display: flex;
       align-items: center;
+      gap: 0.5rem;
       color: var(--color-text-alt);
       font-size: 1rem;
 
       svg {
-        margin-right: 0.5rem;
-        height: 1.2rem;
-        width: 1.2rem;
+        height: 1rem;
+        width: 1rem;
 
         &.primary {
           color: $primary;
