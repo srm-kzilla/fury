@@ -246,7 +246,7 @@ func AdminLogin(c *fiber.Ctx) error {
 	claims := jwt.MapClaims{
 		"iss": evaluator.Email,
 		"sub": evaluator.Domain,
-		"exp": time.Now().Add(time.Hour * 24 * 30).Unix(), // Token will expire in 24 hours
+		"exp": time.Now().Add(time.Hour * 24 * 30).Unix(), // Token will expire in one month
 	}
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
