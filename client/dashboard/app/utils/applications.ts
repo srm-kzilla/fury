@@ -139,7 +139,7 @@ export const questionsArray: Array<
     },
     {
       domain: "corporate",
-      question: `What according to you makes you stand out and deserving to be on the team?`,
+      question: `What according to you is the difference between sponsorship and donation. Also give the difference between marketing and advertising?`,
     },
     {
       domain: "events",
@@ -172,7 +172,7 @@ export const questionsArray: Array<
     },
     {
       domain: "corporate",
-      question: `What according to you is the difference between sponsorship, marketing and advertising?`,
+      question: ` After mutually agreeing to a sponsorship for an upcoming event, a sponsor backs out at the last minute.<br/> How would you as a member of the corporate domain handle this situation?`,
     },
     {
       domain: "events",
@@ -212,7 +212,7 @@ export const questionsArray: Array<
     },
     {
       domain: "corporate",
-      question: `Rate your communication and collaboration skills out of 10 and state why?`,
+      question: `In what ways do you leverage social media to engage with the college audience and bring a sense of community around the club's initiatives?`,
     },
     {
       domain: "events",
@@ -254,7 +254,7 @@ export const questionsArray: Array<
     },
     {
       domain: "corporate",
-      question: `After mutually agreeing to a sponsorship for an upcoming event, a sponsor backs out at the last minute. <br/>How would you as a member of the corporate domain handle this situation?`,
+      question: `How do you handle challenges related to limited budgets or resources while still achieving impactful publicity results? List some publicity ideas.`,
     },
     {
       domain: "events",
@@ -287,7 +287,7 @@ export const questionsArray: Array<
     },
     {
       domain: "corporate",
-      question: `How would you, without raising more conflict, resolve a dispute between two members of the club?`,
+      question: `Rate your communication and collaboration skills out of 10 and state why?`,
     },
     {
       domain: "events",
@@ -304,7 +304,7 @@ export const questionsArray: Array<
     {
       domain: "photography",
       question:
-        "Record a small campus tour reel that includes campus buildings, portraits, close-up shots, people, etc. You can add suitable music to enhance the experience. (Enter Google Drive link for the video)",
+        "Record a small campus tour reel that includes campus buildings, portraits, close-up shots, people, etc. You can add suitable music to enhance the experience. (Enter a Google Drive link with public access for the video)",
     },
     {
       domain: "content_writing",

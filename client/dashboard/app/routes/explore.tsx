@@ -282,14 +282,6 @@ const Explore = () => {
       github: "https://github.com/srm-kzilla/mellow-vscode-theme",
       url: "https://marketplace.visualstudio.com/items?itemName=SRMKZILLA.Mellow",
     },
-    {
-      icon: <BiNotepad />,
-      title: "Blogs",
-      description: "The go-to source for valuable information",
-      timestamp: 1582396200000,
-      github: "",
-      url: "https://medium.com/srmkzilla",
-    },
   ];
 
   return (
