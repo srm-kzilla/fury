@@ -67,8 +67,6 @@ const NotFound = ({ code, customError, link }: NotFoundProps) => {
               to return to the Home page.
             </h5>
           </Form>
-          <h5></h5>
-          <h5></h5>
         </div>
       </div>
     </div>
