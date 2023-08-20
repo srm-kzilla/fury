@@ -60,6 +60,12 @@ func GetAccessTokenGoogle(c *fiber.Ctx) error {
 			"error": err.Error(),
 		})
 	}
+	_, err = registerUserInDb(user.UserData)
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"error": err.Error(),
+		})
+	}
 	return c.Status(fiber.StatusOK).JSON(user)
 }
 
