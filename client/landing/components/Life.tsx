@@ -27,7 +27,7 @@ export default function Life() {
           reverse={true}
         />
         <LifeDesc
-          text="Our alumni range from academic weapons to obsessed artists who excel at whatever they decide to pursue. We have a long history of churning out winners and go-getters who continue to amaze us and everyone else in the best way possible. What can I say? We got that Midas touch!"
+          text="Our alumni range from academic weapons to obsessed artists who excel at whatever they decide to pursue. We have a long history of churning out winners and go-getters who continue to amaze us and everyone else in the best way possible. What can we say? We got that Midas touch!"
           img="/life-3.jpg"
           reverse={false}
         />

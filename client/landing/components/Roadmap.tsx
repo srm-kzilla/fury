@@ -15,7 +15,7 @@ const Roadmap = () => {
         }}
         className="font-semibold text-3xl"
       >
-        Become a SRMKZILLian
+        Become an SRMKZILLian
       </motion.div>
       <div className="hidden lg:block lg:scale-75 xl:scale-100">
         <div className="w-full px-1 lg:px-24 pt-10 flex justify-center">
