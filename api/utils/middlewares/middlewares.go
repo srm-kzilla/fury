@@ -70,6 +70,25 @@ func AdminAuthenticate(c *fiber.Ctx) error {
 		})
 	}
 
+	evaluatorsCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "evaluators")
+	if e != nil {
+		log.Error("Error: ", e)
+		return errors.New("error getting evaluators collection")
+	}
+
+	var evaluator models.Evaluators
+	var body models.UpdateStatusBody
+	c.BodyParser(&body)
+	err := evaluatorsCollection.FindOne(context.Background(), bson.M{"email": body.Email}).Decode(&evaluator)
+	if err != nil {
+		log.Error("Error", err)
+		return c.Status(400).JSON(fiber.Map{
+			"message": "Evaluator not found",
+		})
+	}
+
+	c.Locals("evaluator", evaluator)
+
 	return c.Next()
 }
 

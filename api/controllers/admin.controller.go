@@ -13,6 +13,7 @@ import (
 	"github.com/srm-kzilla/Recruitments/api/utils/validators"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -41,12 +42,8 @@ func GetAllApplications(c *fiber.Ctx) error {
 }
 
 func GetApplications(c *fiber.Ctx) error {
-	domain := c.Params("domain")
-	if domain == "" {
-		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
-			"error": "Domain is required",
-		})
-	}
+	domain := c.Locals("evaluator").(models.Evaluators).Domain
+
 	usersCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "users")
 	if e != nil {
 		log.Error("Error: ", e)
@@ -85,6 +82,7 @@ func UpdateApplications(c *fiber.Ctx) error {
 	var check models.Application
 	c.BodyParser(&application)
 
+	domain := c.Locals("evaluator").(models.Evaluators).Domain
 	errors := validators.ValidateUpdateApplicationSchema(application)
 	if errors != nil {
 		c.Status(fiber.StatusBadRequest).JSON(errors)
@@ -108,8 +106,18 @@ func UpdateApplications(c *fiber.Ctx) error {
 		return nil
 	}
 
-	check.Status = application.Status
-	errr := usersCollection.FindOneAndReplace(context.Background(), bson.M{"regNo": application.RegNo}, check).Decode(&check)
+	arrayFilters := options.ArrayFilters{
+		Filters: []interface{}{bson.M{"elem.domain": domain}},
+	}
+
+	_, errr := usersCollection.UpdateOne(context.Background(), bson.M{"regNo": application.RegNo}, bson.M{
+		"$set": bson.M{
+			"application.$[elem].status": application.Status,
+		},
+	}, &options.UpdateOptions{
+		ArrayFilters: &arrayFilters,
+	})
+
 	if errr != nil {
 		log.Error("Error: ", errr)
 		c.Status(fiber.StatusBadGateway).JSON(fiber.Map{
@@ -117,7 +125,9 @@ func UpdateApplications(c *fiber.Ctx) error {
 		})
 		return nil
 	}
-	c.Status(fiber.StatusOK).JSON(application)
+	c.Status(fiber.StatusOK).JSON(fiber.Map{
+		"message": "Application updated successfully",
+	})
 	return nil
 }
 
