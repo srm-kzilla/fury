@@ -90,10 +90,10 @@ div.kz-glance {
     & > div {
       span {
         color: $primary;
-        margin-left: 0.2rem;
         display: flex;
-        align-items: center;
-        justify-content: center;
+        align-items: left;
+        justify-content: left;
+        font-size: 0.7rem;
 
         svg {
           fill: $tertiary;
