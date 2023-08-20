@@ -138,29 +138,13 @@ export const links: LinksFunction = () => {
 export const loader: LoaderFunction = () => {
   const env = process.env;
 
-  const envSec = {
+  const envObj = {
     env: {
-      API_BASE_URL: env.API_BASE_URL,
       APPLICATION_DEADLINE: env.APPLICATION_DEADLINE,
-      OAUTH_REDIRECT_URI: env.OAUTH_REDIRECT_URI,
-      OAUTH_CLIENT_ID: env.OAUTH_CLIENT_ID,
-      LANDING_PAGE_URL: env.LANDING_PAGE_URL,
-      RECAPTCHA_SITE_KEY: env.RECAPTCHA_SITE_KEY,
     },
   };
 
-  let key: keyof typeof envSec.env;
-  for (key in envSec.env) {
-    if (
-      envSec.env[key] === undefined ||
-      envSec.env[key] === "" ||
-      envSec.env[key] === null
-    ) {
-      throw new Error(`Something went wrong`);
-    }
-  }
-
-  return json(envSec);
+  return json(envObj);
 };
 
 function App() {
@@ -190,6 +174,8 @@ function App() {
 
 function Layout({ children }: { children: ReactNode }) {
   const { env } = useLoaderData<typeof loader>();
+
+  console.log("[layout]", env);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const { revalidate } = useRevalidator();
@@ -361,18 +347,19 @@ export function ErrorBoundary() {
   const error = useRouteError();
 
   if (isRouteErrorResponse(error)) {
+    const {
+      status,
+      data: { message },
+    } = error;
     return (
       <ErrorLayout>
-        <NotFound code={error.status} />
+        <NotFound code={status} customError={message} />
       </ErrorLayout>
     );
   } else if (error instanceof Error) {
     return (
       <ErrorLayout>
-        <NotFound
-          customError={error.message}
-          link={"https://www.instagram.com/srmkzilla/"}
-        />
+        <NotFound customError={error.message} />
       </ErrorLayout>
     );
   }

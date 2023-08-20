@@ -55,7 +55,7 @@ const NotFound = ({ code, customError, link }: NotFoundProps) => {
         <div>
           <h1>{customError ? customError : error?.description}</h1>
           <h5>
-            <a href={link}>
+            <a href="https://www.instagram.com/srmkzilla/">
               <span>Contact Us</span> if the problem does not go away
             </a>
           </h5>

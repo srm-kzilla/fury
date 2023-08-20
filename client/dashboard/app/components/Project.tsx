@@ -2,6 +2,7 @@ import projectStyles from "~/styles/pages/Project.css";
 import { Task } from "~/components";
 import { BiLoader } from "react-icons/bi";
 import { useNavigation } from "@remix-run/react";
+import { json } from "@remix-run/node";
 import type { LinksFunction } from "@remix-run/node";
 import type { ActionData } from "~/routes/applications.technical-project";
 
@@ -22,7 +23,7 @@ const Project = ({ slug, projects, actionData }: ProjectProps) => {
   const activeProject = projects.find((project) => project.slug === slug);
 
   if (!activeProject) {
-    throw new Error("Not a valid project slug");
+    throw json({ message: "Not a valid project slug" }, { status: 400 });
   }
 
   const navigation = useNavigation();
