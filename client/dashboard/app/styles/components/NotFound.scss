@@ -35,4 +35,16 @@
     border-bottom: 3px dotted $primary;
     text-decoration: none;
   }
+
+  button {
+    background-color: transparent;
+    border: none;
+    color: var(--color-placeholder);
+  }
+
+  .form {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
 }
