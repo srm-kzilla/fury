@@ -60,30 +60,29 @@
   }
 
   .selectable-div {
-    box-shadow: 0px 4px 12px 2px rgba(88, 88, 87, 0.37);
     cursor: pointer;
     margin: 20px;
     border-radius: 10px;
     border: 1px solid transparent;
     padding: 20px;
+    background: var(--color-bg-alt);
     grid-template-columns: repeat(2, 1fr);
+    height: 140px;
+
+    @include BoxShadow();
 
     h3 {
       margin: 0;
     }
 
     h4 {
+      font-size: 16px;
       width: 100% !important;
     }
   }
 
   .active {
     border-color: $primary;
-  }
-
-  .css-yk16xz-control {
-    width: 80%;
-    padding: 4px 0;
   }
 }
 
@@ -93,6 +92,20 @@
   gap: 2px;
 }
 
+@media only screen and (max-width: 1024px) {
+  .kz-form-field {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 2rem;
+
+    .selectable-div {
+      margin: 0 0 20px;
+      width: 100%;
+      height: 160px;
+    }
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .kz-form-field {
     display: grid;
@@ -100,6 +113,7 @@
     .selectable-div {
       margin: 0 0 20px;
       width: 100%;
+      height: fit-content;
     }
   }
 
