@@ -208,11 +208,13 @@ const Dashboard = () => {
                       )}
                     </div>
                     <div className="container-iframe">
-                      <img
-                        className="container-iframe"
-                        src="https://recruitment-2021.s3.ap-south-1.amazonaws.com/life/Screenshot+from+2021-09-14+17-35-58.png"
-                        alt="The campus club you love"
-                      />
+                      <a href="https://www.srmkzilla.net/" target="_blank">
+                        <img
+                          className="container-iframe"
+                          src="https://recruitment-2021.s3.ap-south-1.amazonaws.com/life/Screenshot+from+2021-09-14+17-35-58.png"
+                          alt="The campus club you love"
+                        />
+                      </a>
                     </div>
                   </div>
                 </div>
