@@ -1,14 +1,14 @@
 import DisplayCard from "@/components/DisplayCard";
 import Head from "next/head";
 import { Applicant } from "@/services/api";
-import { env } from "process";
 import names from "@/mock-data/names.json";
+import nookies from "nookies";
+import { GetServerSidePropsContext } from "next";
 interface ApplicantProps {
-  names: Applicant[];
+  data: Applicant[];
 }
 
-export function Dashboard({ names }: ApplicantProps) {
-  console.log(names);
+export function Dashboard({ data }: ApplicantProps) {
   return (
     <div className="min-h-screen w-screen bg-kz-grey p-5">
       <Head>
@@ -21,7 +21,7 @@ export function Dashboard({ names }: ApplicantProps) {
         <hr className="text-kz-orange" />
       </div>
       <div className="flex flex-col m-1">
-        {names.map((person: Applicant) => (
+        {data.map((person: Applicant) => (
           <div key={person._id}>
             <DisplayCard {...person} />
           </div>
@@ -31,34 +31,20 @@ export function Dashboard({ names }: ApplicantProps) {
   );
 }
 
-export const API = {
-  BASE_URL: env.NEXT_PUBLIC_API_URL,
-  TOKEN: env.API_BEARER_TOKEN,
-  USERS: () => "/applications",
-  ENDPOINTS: {
-    DOMAINS: {
-      TECHNICAL: () => "/technical",
-      EVENTS: () => "/events",
-      CORPORATE: () => "/corporate",
-      EDITORIAL: () => "/editorial",
-    },
-  },
-};
-
-export async function getServerSideProps() {
-  console.log(API.TOKEN);
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const token = nookies.get(context).token;
   const response = await fetch(
-    API.BASE_URL + API.USERS() + API.ENDPOINTS.DOMAINS.TECHNICAL(),
+    `${process.env.NEXT_PUBLIC_API_URL}/applications`,
     {
       headers: {
-        Authorization: `Bearer ${API.TOKEN}`,
+        Authorization: `Bearer ${token}`,
       },
     }
   );
   const data: Applicant[] = await response.json();
   return {
     props: {
-      names,
+      data,
     },
   };
 }

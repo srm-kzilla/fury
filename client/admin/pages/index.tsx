@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { FormEvent } from "react";
+import { setCookie } from "nookies";
 
 const LoginPage: NextPage = () => {
   const router = useRouter();
@@ -27,7 +28,10 @@ const LoginPage: NextPage = () => {
       const data = await response.json();
       if (response.status === 200) {
         console.log("dsf", data);
-        localStorage.setItem("token", data.jwt);
+        setCookie(null, "token", data.jwt, {
+          maxAge: 30 * 24 * 60 * 60,
+          path: "/",
+        });
         router.push("/dashboard");
       }
     } catch (err) {
