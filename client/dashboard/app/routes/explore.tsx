@@ -74,6 +74,14 @@ const Explore = () => {
       url: "",
     },
     {
+      icon: <BiNotepad />,
+      title: "Blogs",
+      description: "The go-to source for valuable information",
+      timestamp: 1582396200000,
+      github: "",
+      url: "https://medium.com/srmkzilla",
+    },
+    {
       icon: <BiTime />,
       title: "Off The Clock",
       description:
