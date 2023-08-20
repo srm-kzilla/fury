@@ -67,7 +67,7 @@
     padding: 20px;
     background: var(--color-bg-alt);
     grid-template-columns: repeat(2, 1fr);
-    height: 150px;
+    height: 160px;
 
     @include BoxShadow();
 
@@ -76,17 +76,13 @@
     }
 
     h4 {
+      font-size: 16px;
       width: 100% !important;
     }
   }
 
   .active {
     border-color: $primary;
-  }
-
-  .css-yk16xz-control {
-    width: 80%;
-    padding: 4px 0;
   }
 }
 
