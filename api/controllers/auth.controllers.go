@@ -60,16 +60,6 @@ func GetAccessTokenGoogle(c *fiber.Ctx) error {
 			"error": err.Error(),
 		})
 	}
-	mongo_id, err := registerUserInDb(user.UserData)
-	if err != nil {
-		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"error": err.Error(),
-		})
-	}
-	errRecordActivity := utils.RecordActivity(c.Get("X-Forwarded-For"), "login", mongo_id)
-	if errRecordActivity != nil {
-		log.Error(errRecordActivity)
-	}
 	return c.Status(fiber.StatusOK).JSON(user)
 }
 
