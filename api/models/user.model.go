@@ -28,13 +28,6 @@ type Social struct {
 	Portfolio string `json:"portfolio"`
 }
 
-type Activity struct {
-	Timestamp time.Time          `json:"timestamp" bson:"timestamp"`
-	Location  string             `json:"location" bson:"location"`
-	Type      string             `json:"type" bson:"type"`
-	UserId    primitive.ObjectID `json:"user_id" bson:"user_id"`
-}
-
 type Notification struct {
 	Timestamp time.Time `json:"timestamp" bson:"timestamp"`
 	Markdown  string    `json:"markdown" bson:"markdown"`

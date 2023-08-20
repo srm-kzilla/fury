@@ -265,44 +265,6 @@ func GetUserApplications(c *fiber.Ctx) error {
 	})
 }
 
-func GetUserActivity(c *fiber.Ctx) error {
-	activityCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "activity")
-	if e != nil {
-		log.Error("Error", e)
-		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"error":   e.Error(),
-			"message": "DB not found",
-		})
-	}
-
-	userId := c.Locals("userData").(map[string]interface{})["userId"].(primitive.ObjectID)
-
-	cursor, err := activityCollection.Find(context.Background(), bson.M{
-		"user_id": userId,
-	})
-	if err != nil {
-		log.Error("Error", err)
-		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
-			"error":   err.Error(),
-			"message": "Activity not found",
-		})
-	}
-	defer cursor.Close(context.Background())
-
-	var activities []bson.M
-	if err := cursor.All(context.Background(), &activities); err != nil {
-		log.Fatal(err)
-		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
-			"error":   err.Error(),
-			"message": "Activities not found",
-		})
-	}
-	sort.Slice(activities, func(i, j int) bool {
-		return i > j
-	})
-	return c.Status(fiber.StatusOK).JSON(activities)
-}
-
 func Getteam(c *fiber.Ctx) error {
 	teamCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "team")
 	if e != nil {
