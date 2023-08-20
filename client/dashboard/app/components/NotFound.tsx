@@ -1,5 +1,5 @@
 import notFoundStyles from "~/styles/components/NotFound.css";
-import { Link } from "@remix-run/react";
+import { Form, Link } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => [
@@ -54,16 +54,21 @@ const NotFound = ({ code, customError, link }: NotFoundProps) => {
         <img src="/not_found.svg" alt="not found" />
         <div>
           <h1>{customError ? customError : error?.description}</h1>
-          <h5>
-            <a href="https://www.instagram.com/srmkzilla/">
-              <span>Contact Us</span> if the problem does not go away
-            </a>
-          </h5>
-          <h5>
-            <Link to="/">
-              Take me back to <span>Home</span>.
-            </Link>{" "}
-          </h5>
+            <h5>
+              Something went wrong; please try refreshing the page;
+            </h5>
+          <Form method="post" action="/logout" className="form">
+            <button type="submit">
+              <h5>
+                <span>Click here</span>
+              </h5>
+            </button>
+            <h5>
+              to return to the Home page.
+            </h5>
+          </Form>
+          <h5></h5>
+          <h5></h5>
         </div>
       </div>
     </div>
