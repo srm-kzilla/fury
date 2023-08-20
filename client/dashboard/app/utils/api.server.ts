@@ -120,9 +120,7 @@ export const getTeamData = async (request: Request) => {
   const accessToken = await requireAccessToken(request);
 
   const res = await fetch(
-    API.BASE_URL +
-      API.ENDPOINTS.USERS.BASE_URL() +
-      API.ENDPOINTS.USERS.TEAM(),
+    API.BASE_URL + API.ENDPOINTS.USERS.BASE_URL() + API.ENDPOINTS.USERS.TEAM(),
     {
       headers: {
         Authorization: `Bearer ${accessToken}`,

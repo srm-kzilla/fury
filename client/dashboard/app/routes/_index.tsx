@@ -58,7 +58,7 @@ export const loader: LoaderFunction = async ({ request }) => {
   const { applications } = await getApplications(request);
   const team = await getTeamData(request);
   if (!user.gender) return redirect("/start");
-console.log(team)
+  console.log(team);
   return json({ user, notifications, applications, team });
 };
 
@@ -208,7 +208,11 @@ const Dashboard = () => {
                       )}
                     </div>
                     <div className="container-iframe">
-                      <img className="container-iframe" src="https://recruitment-2021.s3.ap-south-1.amazonaws.com/life/Screenshot+from+2021-09-14+17-35-58.png" alt="The campus club you love" />
+                      <img
+                        className="container-iframe"
+                        src="https://recruitment-2021.s3.ap-south-1.amazonaws.com/life/Screenshot+from+2021-09-14+17-35-58.png"
+                        alt="The campus club you love"
+                      />
                     </div>
                   </div>
                 </div>

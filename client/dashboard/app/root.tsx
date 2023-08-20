@@ -175,8 +175,6 @@ function App() {
 function Layout({ children }: { children: ReactNode }) {
   const { env } = useLoaderData<typeof loader>();
 
-  console.log("[layout]", env);
-
   const [searchParams, setSearchParams] = useSearchParams();
   const { revalidate } = useRevalidator();
 

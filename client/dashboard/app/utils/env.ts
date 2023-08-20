@@ -7,7 +7,6 @@ let isEnvValidated = false;
 function getEnv() {
   if (!isEnvValidated) validateEnv();
   return isBrowser() ? window.ENV : process.env;
-
 }
 
 function validateEnv() {

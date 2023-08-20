@@ -1,9 +1,6 @@
 import { useEffect } from "react";
 import glanceStyles from "~/styles/components/Glance.css";
-import {
-  BiBell,
-  BiCheckCircle
-} from "react-icons/bi";
+import { BiBell, BiCheckCircle } from "react-icons/bi";
 import type { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => {
@@ -62,7 +59,9 @@ const Glance = ({ user, team }: ActivityProps) => {
                 <div className="meetwizards" key={index}>
                   <img src={member.url} alt="avatar" />
                   <div>
-                    <h5>{member?.name}, <span>{member?.role}</span></h5>
+                    <h5>
+                      {member?.name}, <span>{member?.role}</span>
+                    </h5>
                     <p>{member?.comment}</p>
                   </div>
                 </div>
@@ -73,6 +72,5 @@ const Glance = ({ user, team }: ActivityProps) => {
     </div>
   );
 };
-
 
 export default Glance;
