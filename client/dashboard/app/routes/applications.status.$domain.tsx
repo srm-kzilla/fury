@@ -12,7 +12,7 @@ import type {
   LoaderFunction,
   V2_MetaFunction,
 } from "@remix-run/node";
-import {createFormSession, getFormSession} from "~/utils/session.server";
+import { createFormSession, getFormSession } from "~/utils/session.server";
 
 export const meta: V2_MetaFunction = () => {
   return [
