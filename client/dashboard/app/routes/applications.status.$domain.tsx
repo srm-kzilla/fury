@@ -12,6 +12,7 @@ import type {
   LoaderFunction,
   V2_MetaFunction,
 } from "@remix-run/node";
+import {createFormSession, getFormSession} from "~/utils/session.server";
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -46,6 +47,11 @@ export const loader: LoaderFunction = async ({ request, params }) => {
   );
 
   if (!application) return redirect("/");
+
+  const formSession = await getFormSession(request);
+  if (!formSession) {
+    return createFormSession(request, request.url);
+  }
 
   return json({ application });
 };

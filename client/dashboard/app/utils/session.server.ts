@@ -86,7 +86,7 @@ export async function logout(request: Request) {
   });
 }
 
-export async function createFormSession(request: Request) {
+export async function createFormSession(request: Request, redirectTo: string) {
   const session = await getUserSession(request);
   const draftApplication = await getDraftApplication(request);
 
@@ -102,7 +102,7 @@ export async function createFormSession(request: Request) {
     });
   }
 
-  return redirect("/applications/domain-select", {
+  return redirect(redirectTo, {
     headers: {
       "Set-Cookie": await commitSession(session),
     },
