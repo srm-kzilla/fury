@@ -59,9 +59,8 @@ const Glance = ({ user, team }: ActivityProps) => {
                 <div className="meetwizards" key={index}>
                   <img src={member.url} alt="avatar" />
                   <div>
-                    <h5>
-                      {member?.name}, <span>{member?.role}</span>
-                    </h5>
+                    <h5>{member?.name}</h5>
+                    <span>{member?.role}</span>
                     <p>{member?.comment}</p>
                   </div>
                 </div>
