@@ -12,6 +12,7 @@ import (
 
 	"github.com/charmbracelet/log"
 	"github.com/gofiber/fiber/v2"
+	"github.com/golang-jwt/jwt"
 	"github.com/srm-kzilla/Recruitments/api/models"
 	"github.com/srm-kzilla/Recruitments/api/utils/constants"
 	"github.com/srm-kzilla/Recruitments/api/utils/database"
@@ -64,12 +65,27 @@ func AdminAuthenticate(c *fiber.Ctx) error {
 			"message": "Authorization token not found",
 		})
 	}
-	if !strings.Contains(accessToken, os.Getenv("ADMIN_TOKEN")) {
+	if !strings.Contains(accessToken, "Bearer") {
 		return c.Status(401).JSON(fiber.Map{
 			"message": "Invalid token",
 		})
 	}
+	jwtToken := strings.Split(accessToken, " ")[1]
 
+	token, err := jwt.ParseWithClaims(jwtToken, &jwt.StandardClaims{}, func(t *jwt.Token) (interface{}, error) {
+		return []byte(os.Getenv("JWT_SECRET")), nil
+	})
+	if err != nil {
+		return c.Status(401).JSON(fiber.Map{
+			"message": "Invalid token",
+		})
+	}
+	claims := token.Claims.(*jwt.StandardClaims)
+	if claims.ExpiresAt < time.Now().Unix() {
+		return c.Status(401).JSON(fiber.Map{
+			"message": "Token expired",
+		})
+	}
 	evaluatorsCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "evaluators")
 	if e != nil {
 		log.Error("Error: ", e)
@@ -77,9 +93,10 @@ func AdminAuthenticate(c *fiber.Ctx) error {
 	}
 
 	var evaluator models.Evaluators
-	var body models.UpdateStatusBody
-	c.BodyParser(&body)
-	err := evaluatorsCollection.FindOne(context.Background(), bson.M{"email": body.Email}).Decode(&evaluator)
+
+	email := claims.Issuer
+	domain := claims.Subject
+	err = evaluatorsCollection.FindOne(context.Background(), bson.M{"email": email}).Decode(&evaluator)
 	if err != nil {
 		log.Error("Error", err)
 		return c.Status(400).JSON(fiber.Map{
@@ -87,7 +104,7 @@ func AdminAuthenticate(c *fiber.Ctx) error {
 		})
 	}
 
-	c.Locals("evaluator", evaluator)
+	c.Locals("domain", domain)
 
 	return c.Next()
 }

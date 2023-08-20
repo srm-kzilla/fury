@@ -42,7 +42,7 @@ func GetAllApplications(c *fiber.Ctx) error {
 }
 
 func GetApplications(c *fiber.Ctx) error {
-	domain := c.Locals("evaluator").(models.Evaluators).Domain
+	domain := c.Locals("domain").(string)
 
 	usersCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "users")
 	if e != nil {
@@ -82,7 +82,7 @@ func UpdateApplications(c *fiber.Ctx) error {
 	var check models.Application
 	c.BodyParser(&application)
 
-	domain := c.Locals("evaluator").(models.Evaluators).Domain
+	domain := c.Locals("domain").(string)
 	errors := validators.ValidateUpdateApplicationSchema(application)
 	if errors != nil {
 		c.Status(fiber.StatusBadRequest).JSON(errors)
@@ -244,8 +244,9 @@ func AdminLogin(c *fiber.Ctx) error {
 		})
 	}
 	claims := jwt.MapClaims{
-		"email": evaluator.Email,
-		"exp":   time.Now().Add(time.Hour * 24 * 30).Unix(), // Token will expire in 24 hours
+		"iss": evaluator.Email,
+		"sub": evaluator.Domain,
+		"exp": time.Now().Add(time.Hour * 24 * 30).Unix(), // Token will expire in 24 hours
 	}
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
