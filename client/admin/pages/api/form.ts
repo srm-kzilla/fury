@@ -29,7 +29,6 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const body = req.body;
-  console.log("body: ", body);
   const form = {
     email: body.email,
     password: body.password,

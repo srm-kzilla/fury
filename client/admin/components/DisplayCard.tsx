@@ -31,7 +31,6 @@ const DisplayCard = ({
       },
       body: JSONdata,
     };
-    console.log(data);
     try {
       const response = await fetch(endpoint, options);
       const data = await response.json();
@@ -59,7 +58,13 @@ const DisplayCard = ({
           <div className="hidden md:block">{email}</div>
           <div className="hidden md:block">{contact}</div>
           <button>
-            <div className="w-3 h-3 rounded-full border border-kz-grey" />
+            <div
+              className={`w-3 h-3 rounded-full border border-kz-grey ${
+                application[0].status === "pending"
+                  ? ` bg-green-400`
+                  : ` bg-red-600`
+              } `}
+            />
           </button>
         </div>
 

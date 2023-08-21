@@ -11,7 +11,6 @@ const handleReview = async ({
   };
   token: string;
 }) => {
-  console.log("review: ", review);
   try {
     const { data } = await axios.put(
       `${process.env.NEXT_PUBLIC_API_URL}/applications`,
@@ -22,7 +21,6 @@ const handleReview = async ({
         },
       }
     );
-    console.log(data);
     if (data != undefined) {
       return data;
     }

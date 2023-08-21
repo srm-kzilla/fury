@@ -27,7 +27,6 @@ const LoginPage: NextPage = () => {
       const response = await fetch(endpoint, options);
       const data = await response.json();
       if (response.status === 200) {
-        console.log("dsf", data);
         setCookie(null, "token", data.jwt, {
           maxAge: 30 * 24 * 60 * 60,
           path: "/",
