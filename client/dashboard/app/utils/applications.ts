@@ -198,7 +198,7 @@ export const questionsArray: Array<
       <br/>
       Post 2: <a href=https://www.instagram.com/p/Ck3l51Wjo4s/ target=_blank><u>kzilla.xyz Reel</u></a>
       <br/>
-      Suggest ideas that can be used in the posts/videos/reels/story for the launch of the update. (put your endless scrolling through social media to good use xD)
+      Suggest ideas that can be used in the posts/videos/reels/story for the launch of the update. (Put your endless scrolling through social media to good use xD)
         
     `,
     },
@@ -273,7 +273,7 @@ export const questionsArray: Array<
     },
     {
       domain: "content_writing",
-      question: `How comfortable are you with working under pressure? Elaborate a situation where you have kept a level-head during a crisis situation (no pressure).`,
+      question: `How comfortable are you with working under pressure? Elaborate a situation where you have kept a level-head during a crisis situation (working under pressure).`,
     },
     {
       domain: "gfx",
@@ -315,7 +315,7 @@ export const questionsArray: Array<
     },
     {
       domain: "vfx",
-      question: `How do you handle criticisms and feedback? Our team works with a lot of redos and changes on your draft to put out the best. So how would you manage?`,
+      question: `How do you handle criticism and feedback? Our team works through a lot of draft changes and tweaks to ensure the best. How would you manage this?`,
     },
     {
       domain: "corporate",
@@ -340,7 +340,7 @@ export const questionsArray: Array<
     },
     {
       domain: "content_writing",
-      question: `Tell us something that you are passionate about. It could be anything from a hobby to a social cause. Have you been a part of any clubs or societies befoer? We would love to hear about it!`,
+      question: `Tell us something that you are passionate about. It could be anything from a hobby to a social cause. Have you been a part of any clubs or societies before? We would love to hear about it!`,
     },
     {
       domain: "gfx",
@@ -397,6 +397,8 @@ export const questionsArray: Array<
         c. Export: MP4 with the source file<br/>
         d. Length: 15 sec (Stated)<br/>
         e. Bonus: Experiment with typography<br/>
+        <br/>
+        Note: Upload your work to Gdrive, send the link here in your answer, AND ensure anyone with the link can access the file.
       `,
     },
     {
