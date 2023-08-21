@@ -1,7 +1,6 @@
 import DisplayCard from "@/components/DisplayCard";
 import Head from "next/head";
 import { Applicant } from "@/services/api";
-import names from "@/mock-data/names.json";
 import nookies from "nookies";
 import { GetServerSidePropsContext } from "next";
 interface ApplicantProps {
