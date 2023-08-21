@@ -208,7 +208,7 @@ export const questionsArray: Array<
     },
     {
       domain: "vfx",
-      question: `What, according to you, is your best quality? How can that quality benefit the club’s social media engagement? Explain using a scenario!      `,
+      question: `What, according to you, is your best quality? How can that quality benefit the club’s social media engagement? Explain using a scenario!, we would love to hear about all the good stuff.`,
     },
     {
       domain: "corporate",
@@ -248,7 +248,7 @@ export const questionsArray: Array<
     },
     {
       domain: "vfx",
-      question: `What, according to you, is your best quality? How can that quality benefit the club? Explain using a scenario, we would love to hear about all the good stuff.`,
+      question: `What are the things that makes an edit complete?`,
     },
     {
       domain: "corporate",
