@@ -90,7 +90,7 @@ func CreateApplication(c *fiber.Ctx) error {
 	}
 	sesInput := mailer.SESInput{
 		TemplateName:  mailer.TEMPLATES.Draft,
-		Subject:       fmt.Sprintf("Finish crafting Your %s Domain Application Today!", strings.Replace(utils.CapitalizeDomain(body.Domain), "_", " ", -1)),
+		Subject:       fmt.Sprintf("Finish crafting Your %s Domain Application Today!", utils.CapitalizeDomain(strings.Replace(body.Domain, "_", " ", -1))),
 		RecieverEmail: email,
 		SenderEmail:   os.Getenv("SENDER_EMAIL"),
 		EmbedData:     newMailEmbed,
@@ -279,7 +279,7 @@ func SubmitApplication(c *fiber.Ctx) error {
 	}
 	sesInput := mailer.SESInput{
 		TemplateName:  mailer.TEMPLATES.Submit,
-		Subject:       fmt.Sprintf("Your SRMKZILLA %s Application: Locked, Loaded, and Under Review!", strings.Replace(utils.CapitalizeDomain(domain), "_", " ", -1)),
+		Subject:       fmt.Sprintf("Your SRMKZILLA %s Application: Locked, Loaded, and Under Review!", utils.CapitalizeDomain(strings.Replace(domain, "_", " ", -1))),
 		RecieverEmail: email,
 		SenderEmail:   os.Getenv("SENDER_EMAIL"),
 		EmbedData:     newMailEmbed,
