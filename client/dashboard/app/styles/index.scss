@@ -39,9 +39,15 @@ body,
   flex-direction: column;
 }
 
-#nprogress .bar {
-  background: #ffffff !important;
-  height: 10px !important;
+#nprogress {
+  .bar {
+    background: #ffffff !important;
+    height: 5px !important;
+  }
+
+  .peg {
+    display: none;
+  }
 }
 
 body {
