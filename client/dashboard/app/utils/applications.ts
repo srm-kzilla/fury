@@ -43,13 +43,13 @@ export const domains = [
     key: "vfx",
     value: "vfx",
     text: "VFX",
-    description: "Creativity through motion coz it is the new trend",
+    description: "When IRL isn't enough, use VFX.",
   },
   {
     key: "gfx",
     value: "gfx",
     text: "GFX",
-    description: "Designs the pixels with purpose with an eye for creativity",
+    description: "God’s response to “What if DaVinci had Figma”",
   },
   {
     key: "photography",
@@ -99,7 +99,7 @@ export const questionsArray: Array<
     },
     {
       domain: "gfx",
-      question: `Did you see our event poster for "Off the Clock"? If you haven't, swiftly visit our Instagram page and check it out <a href=https://www.instagram.com/p/Cv96ZrEvVgf/ target=_blank><i><u>Off the Clock</u></i> </a>.<br/> We hope you liked it but can you make it better?`,
+      question: `Did you see our event poster for "Off The Clock"? If you haven't, swiftly visit our Instagram page and check it out: <a href=https://www.instagram.com/p/Cv96ZrEvVgf/ target=_blank><u>"Off the Clock"</u></a>. We hope you liked it but can you make it better?`,
     },
     {
       domain: "vfx",
@@ -198,17 +198,17 @@ export const questionsArray: Array<
       <br/>
       Post 2: <a href=https://www.instagram.com/p/Ck3l51Wjo4s/ target=_blank><u>kzilla.xyz Reel</u></a>
       <br/>
-      Suggest ideas that can be used in the posts/videos/reels/story for the launch of the update. (put your endless scrolling through social media to good use xD)
+      Suggest ideas that can be used in the posts/videos/reels/story for the launch of the update. (Put your endless scrolling through social media to good use xD)
         
     `,
     },
     {
       domain: "gfx",
-      question: `If you are tasked with designing an Instagram series on Neural Networks. What would be your thought process behind it? `,
+      question: `If you are tasked with designing an Instagram series on Neural Networks, what would be your thought process behind it?`,
     },
     {
       domain: "vfx",
-      question: `What, according to you, is your best quality? How can that quality benefit the club’s social media engagement? Explain using a scenario!      `,
+      question: `What, according to you, is your best quality? How can that quality benefit the club’s social media engagement? Explain using a scenario!, we would love to hear about all the good stuff.`,
     },
     {
       domain: "corporate",
@@ -244,13 +244,11 @@ export const questionsArray: Array<
     },
     {
       domain: "gfx",
-      question: `In Addition, What are the details that you would take into account for the posts of the series? You can use our series on Web 3 as a reference point
-      <a href=https://www.instagram.com/p/CgE0GV-vCFQ/?igshid=MzRlODBiNWFlZA== target=_blank><u>The Web3 Chronicles<u> </a>
-      `,
+      question: `In addition, what details would you take into account for multiple posts in a series? You can use our series on Web 3 as a reference point: <a href=https://www.instagram.com/p/CgE0GV-vCFQ/?igshid=MzRlODBiNWFlZA== target=_blank><u>The Web3 Chronicles<u> </a>`,
     },
     {
       domain: "vfx",
-      question: `What, according to you, is your best quality? How can that quality benefit the club? Explain using a scenario, we would love to hear about all the good stuff.`,
+      question: `What are the things that makes an edit complete?`,
     },
     {
       domain: "corporate",
@@ -275,11 +273,11 @@ export const questionsArray: Array<
     },
     {
       domain: "content_writing",
-      question: `How comfortable are you with working under pressure? Elaborate a situation where you have kept a level-head during a crisis situation (no pressure).`,
+      question: `How comfortable are you with working under pressure? Elaborate a situation where you have kept a level-head during a crisis situation (working under pressure).`,
     },
     {
       domain: "gfx",
-      question: `How do you handle criticisms and feedback? Our team works with a lot of redos and changes on your draft to put out the best. So how would you manage?`,
+      question: `How do you handle criticism and feedback? Our team works through a lot of draft changes and tweaks to ensure the best. How would you manage this?`,
     },
     {
       domain: "vfx",
@@ -312,12 +310,12 @@ export const questionsArray: Array<
     },
     {
       domain: "gfx",
-      question: `If you had the freedom to redesign the landing page of our recruitment portal, what design changes would you make? link: <a href=https://recruitment.srmkzilla.net target=_blank><u>Recruitment portal</u></a>
+      question: `If you had the freedom to redesign the landing page of our recruitment portal, what design changes would you make? LINK: <a href=https://recruitment.srmkzilla.net target=_blank><u>Recruitment portal</u></a>
 `,
     },
     {
       domain: "vfx",
-      question: `How do you handle criticisms and feedback? Our team works with a lot of redos and changes on your draft to put out the best. So how would you manage?`,
+      question: `How do you handle criticism and feedback? Our team works through a lot of draft changes and tweaks to ensure the best. How would you manage this?`,
     },
     {
       domain: "corporate",
@@ -342,7 +340,7 @@ export const questionsArray: Array<
     },
     {
       domain: "content_writing",
-      question: `Tell us something that you are passionate about. It could be anything from a hobby to a social cause. Have you been a part of any clubs or societies befoer? We would love to hear about it!`,
+      question: `Tell us something that you are passionate about. It could be anything from a hobby to a social cause. Have you been a part of any clubs or societies before? We would love to hear about it!`,
     },
     {
       domain: "gfx",
@@ -369,6 +367,8 @@ export const questionsArray: Array<
         a. Topic: Redesign RECRUITMENT homepage<br/>
         b. Export: JPEG format with the source file<br/>
         c. Bonus: Try to include gradient effect in elements.<br/>
+        <br/>
+        Note: Upload your work to Gdrive, send the link here in your answer, AND ensure anyone with the link can access the file.
       `,
     },
     {
@@ -397,6 +397,8 @@ export const questionsArray: Array<
         c. Export: MP4 with the source file<br/>
         d. Length: 15 sec (Stated)<br/>
         e. Bonus: Experiment with typography<br/>
+        <br/>
+        Note: Upload your work to Gdrive, send the link here in your answer, AND ensure anyone with the link can access the file.
       `,
     },
     {
