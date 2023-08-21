@@ -1,6 +1,7 @@
 import { Applicant } from "@/services/api";
 import { Drawer } from "vaul";
 import quesans from "@/mock-data/quesans.json";
+import nookies from "nookies";
 
 const DisplayCard = ({
   _id,
@@ -14,6 +15,34 @@ const DisplayCard = ({
   socials,
   application,
 }: Applicant) => {
+  const handleReview = async (review: string) => {
+    const token = nookies.get().token;
+    const data = {
+      regNo: regNo,
+      status: review,
+    };
+    const JSONdata = JSON.stringify(data);
+    const endpoint = "/api/review";
+    const options = {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSONdata,
+    };
+    console.log(data);
+    try {
+      const response = await fetch(endpoint, options);
+      const data = await response.json();
+      if (response.status === 200) {
+        console.log("Review updated successfully");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div
       key={_id}
@@ -60,16 +89,22 @@ const DisplayCard = ({
                   </h1>
                   {application.map((application, index) => (
                     <div key={index}>
-                      <h3>Application Domain: {application.domain}</h3>
-                      <ul>
+                      <h3 className="flex gap-1">
+                        Application Domain:{" "}
+                        <div className=" font-bold">{application.domain}</div>
+                      </h3>
+                      <ul className=" mt-6">
                         {application.questions
                           ? application.questions.map((question, index) => {
                               const allquestions = quesans.technical;
                               const onequestion = allquestions[index];
                               return (
-                                <li key={question.questionNumber}>
-                                  {onequestion} <br /> {question.questionNumber}
-                                  : {question.answer}
+                                <li
+                                  key={question.questionNumber}
+                                  className=" mt-2"
+                                >
+                                  {question.questionNumber}. {onequestion}:
+                                  <br /> Ans: {question.answer}
                                 </li>
                               );
                             })
@@ -80,10 +115,20 @@ const DisplayCard = ({
                   ))}
                 </div>
                 <div className="flex flex-row justify-evenly">
-                  <button className="text-white text-sm md:text-lg px-3 py-2 bg-kz-red rounded-2xl hover:scale-110 font-medium">
+                  <button
+                    className="text-white text-sm md:text-lg px-3 py-2 bg-kz-red rounded-2xl hover:scale-110 font-medium"
+                    onClick={() => {
+                      handleReview("rejected");
+                    }}
+                  >
                     Reject
                   </button>
-                  <button className="text-white text-sm md:text-lg px-3 py-2 bg-kz-green rounded-2xl hover:scale-110 font-medium">
+                  <button
+                    className="text-white text-sm md:text-lg px-3 py-2 bg-kz-green rounded-2xl hover:scale-110 font-medium"
+                    onClick={() => {
+                      handleReview("pending");
+                    }}
+                  >
                     Call for Interview
                   </button>
                 </div>
