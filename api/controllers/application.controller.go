@@ -10,6 +10,7 @@ import (
 	"github.com/charmbracelet/log"
 	"github.com/gofiber/fiber/v2"
 	"github.com/srm-kzilla/Recruitments/api/models"
+	"github.com/srm-kzilla/Recruitments/api/utils"
 	"github.com/srm-kzilla/Recruitments/api/utils/database"
 	"github.com/srm-kzilla/Recruitments/api/utils/mailer"
 	"github.com/srm-kzilla/Recruitments/api/utils/notifications"
@@ -85,11 +86,11 @@ func CreateApplication(c *fiber.Ctx) error {
 	newMailEmbed := mailer.MailEmbed{
 		Header:      "#Recruitment2023",
 		Salutations: "Hello Dreamer,",
-		Body:        strings.Replace(body.Domain, "_", " ", -1),
+		Body:        utils.CapitalizeDomain(strings.Replace(body.Domain, "_", " ", -1)),
 	}
 	sesInput := mailer.SESInput{
 		TemplateName:  mailer.TEMPLATES.Draft,
-		Subject:       fmt.Sprintf("Finish crafting Your %s domain Application Today!", strings.Replace(body.Domain, "_", " ", -1)),
+		Subject:       fmt.Sprintf("Finish crafting Your %s Domain Application Today!", strings.Replace(utils.CapitalizeDomain(body.Domain), "_", " ", -1)),
 		RecieverEmail: email,
 		SenderEmail:   os.Getenv("SENDER_EMAIL"),
 		EmbedData:     newMailEmbed,
@@ -274,11 +275,11 @@ func SubmitApplication(c *fiber.Ctx) error {
 	newMailEmbed := mailer.MailEmbed{
 		Header:      "#Recruitment2023",
 		Salutations: "Hello there, SRMKZILLian in the making,",
-		Body:        strings.Replace(domain, "_", " ", -1),
+		Body:        utils.CapitalizeDomain(strings.Replace(domain, "_", " ", -1)),
 	}
 	sesInput := mailer.SESInput{
 		TemplateName:  mailer.TEMPLATES.Submit,
-		Subject:       fmt.Sprintf("Your SRMKZILLA %s Application: Locked, Loaded, and Under Review!", strings.Replace(domain, "_", " ", -1)),
+		Subject:       fmt.Sprintf("Your SRMKZILLA %s Application: Locked, Loaded, and Under Review!", strings.Replace(utils.CapitalizeDomain(domain), "_", " ", -1)),
 		RecieverEmail: email,
 		SenderEmail:   os.Getenv("SENDER_EMAIL"),
 		EmbedData:     newMailEmbed,
