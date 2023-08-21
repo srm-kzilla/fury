@@ -43,13 +43,13 @@ export const domains = [
     key: "vfx",
     value: "vfx",
     text: "VFX",
-    description: "Creativity through motion coz it is the new trend",
+    description: "When IRL isn't enough, use VFX.",
   },
   {
     key: "gfx",
     value: "gfx",
     text: "GFX",
-    description: "Designs the pixels with purpose with an eye for creativity",
+    description: "God’s response to “What if DaVinci had Figma”",
   },
   {
     key: "photography",
