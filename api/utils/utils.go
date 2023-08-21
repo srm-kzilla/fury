@@ -33,3 +33,25 @@ func ArrayContains(arr []string, str string) bool {
 	}
 	return false
 }
+
+func CapitalizeDomain(domain string) string {
+	switch domain {
+	case "technical":
+		return "Technical"
+	case "events":
+		return "Events"
+	case "photography":
+		return "Photography"
+	case "vfx":
+		return "VFX"
+	case "gfx":
+		return "GFX"
+	case "content writing":
+		return "Content Writing"
+	case "corporate":
+		return "Corporate"
+	case "technicalp":
+		return "Technical"
+	}
+	return ""
+}
