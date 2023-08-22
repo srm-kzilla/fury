@@ -24,9 +24,7 @@ crafted with <span style="color: #8b0000;">&hearts;</span> by your friends on th
 
 ## Installation 🔧
 
-Get the client side up and running by running the following commands
-
-Navigate to the directory.
+I'm sure you're excited to clone our repo but first let's get you in the right folder. Run the command below in your terminal.
 
 ```bash
 cd client/dashboard

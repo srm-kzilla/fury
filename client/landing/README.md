@@ -16,6 +16,7 @@ crafted with <span style="color: #8b0000;">&hearts;</span> by your friends on th
 </p>
 
 ## Stack
+
 ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
@@ -28,22 +29,16 @@ I'm sure you're excited to clone our repo but first let's get you in the right f
 cd client/landing
 ```
 
-Install dependencies and build the server.
+Install dependencies.
 
 ```bash
-pnpm i and pnpm build
+pnpm i
 ```
 
-Start the Development Server.
+Run the Development Server.
 
 ```bash
 pnpm run dev
-```
-
-Start the server.
-
-```bash
-pnpm run build
 ```
 
 Finally open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
