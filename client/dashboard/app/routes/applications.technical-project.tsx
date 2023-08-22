@@ -14,12 +14,12 @@ import type {
 } from "@remix-run/node";
 import { redirect } from "@remix-run/node";
 import {
-  createApplication,
+  createApplication, deleteDraftApplication,
   getUserDetails,
   submitApplication,
   updateApplication,
 } from "~/utils/api.server";
-import { destroyFormSession } from "~/utils/session.server";
+import {destroyFormSession, getFormSession} from "~/utils/session.server";
 import * as Yup from "yup";
 import type { ValidationError } from "yup";
 
@@ -50,6 +50,7 @@ export type ActionData = {
 
 export const action: ActionFunction = async ({ request }) => {
   await getUserDetails(request);
+  const formSession = await getFormSession(request);
   const formData = await request.formData();
   const action = formData.get("_action");
 
@@ -86,6 +87,7 @@ export const action: ActionFunction = async ({ request }) => {
       }
 
     case "delete": {
+      await deleteDraftApplication(request, formSession.domain);
       return destroyFormSession(request, "draft_deleted");
     }
   }

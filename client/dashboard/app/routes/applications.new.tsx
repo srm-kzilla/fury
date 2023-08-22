@@ -7,7 +7,6 @@ import {
   createFormSession,
   destroyFormSession,
   getFormSession,
-  updateFormSession,
 } from "~/utils/session.server";
 import { redirect } from "@remix-run/node";
 import {
@@ -21,10 +20,10 @@ import { useEffect, useRef } from "react";
 import { BiHomeAlt, BiLoader } from "react-icons/bi";
 import { getDomainName, questionsArray } from "~/utils/applications";
 import {
-  getUserDetails,
   deleteDraftApplication,
   updateApplication,
   submitApplication,
+  getDraftApplication,
 } from "~/utils/api.server";
 import type {
   ActionFunction,
@@ -67,7 +66,7 @@ type LoaderData = {
   domain: string;
   questionNumber: string;
   typedAnswer: string;
-  answers: Answer[];
+  answers?: Answer[];
 };
 
 type ActionData = {
@@ -93,7 +92,7 @@ export const loader: LoaderFunction = async ({ request }) => {
   if (Date.now() > parseInt(env.APPLICATION_DEADLINE!)) {
     return redirect("/applications/closed");
   }
-  const user = await getUserDetails(request);
+
   const formSession = await getFormSession(request);
 
   if (!formSession) {
@@ -112,7 +111,13 @@ export const loader: LoaderFunction = async ({ request }) => {
     return redirect("/applications/new");
   }
 
-  const { domain, answers } = formSession;
+  const { domain } = formSession;
+  const draftApplication = await getDraftApplication(request);
+  if (!draftApplication) {
+    return redirect("/applications/domain-select");
+  }
+
+  const { questions: answers } = draftApplication;
 
   let typedAnswer = "";
   if (answers) {
@@ -129,22 +134,22 @@ export const loader: LoaderFunction = async ({ request }) => {
   );
 
   if (!previousQuestionNumber) {
-    return { user, domain, questionNumber, typedAnswer, answers };
+    return { domain, questionNumber, typedAnswer, answers };
   }
 
   return redirect(`/applications/new?question=${previousQuestionNumber}`);
 };
 
 const getUpdatedAnswers = (
-  formSession: FormSession,
+  previousAnswers: Pick<Application, "domain" | "questions">,
   questionNumber: string,
   answer: string
 ) => {
   return {
-    ...formSession,
-    answers: formSession.answers
+    ...previousAnswers,
+    answers: previousAnswers.questions
       ? [
-          ...formSession.answers.filter(
+          ...previousAnswers.questions.filter(
             (answer) => questionNumber !== answer.questionNumber
           ),
           { questionNumber, answer },
@@ -157,6 +162,13 @@ export const action: ActionFunction = async ({ request }) => {
   if (Date.now() > parseInt(env.APPLICATION_DEADLINE!)) {
     return redirect("/applications/closed");
   }
+
+  const draftApplication = await getDraftApplication(request);
+  if (!draftApplication) {
+    return redirect("/applications/domain-select");
+  }
+
+  const { domain, questions } = draftApplication;
 
   const formData = await request.formData();
   const formSession = await getFormSession(request);
@@ -171,7 +183,7 @@ export const action: ActionFunction = async ({ request }) => {
         const answer = await validateAnswer(formData);
 
         const updatedAnswers = getUpdatedAnswers(
-          formSession,
+          { domain, questions },
           questionNumber,
           answer
         );
@@ -182,9 +194,7 @@ export const action: ActionFunction = async ({ request }) => {
           updatedAnswers.answers
         );
 
-        return await updateFormSession(
-          request,
-          updatedAnswers,
+        return redirect(
           `/applications/new?question=${parseInt(questionNumber) + 1}`
         );
       } catch (error) {
@@ -206,7 +216,7 @@ export const action: ActionFunction = async ({ request }) => {
         const answer = await validateAnswer(formData);
 
         const updatedAnswers = getUpdatedAnswers(
-          formSession,
+          { domain, questions },
           questionNumber,
           answer
         );
@@ -217,9 +227,7 @@ export const action: ActionFunction = async ({ request }) => {
           updatedAnswers.answers
         );
 
-        return await updateFormSession(
-          request,
-          updatedAnswers,
+        return redirect(
           `/applications/new?question=${parseInt(
             questionNumber
           )}&toast=form_saved`
@@ -238,7 +246,7 @@ export const action: ActionFunction = async ({ request }) => {
 
       try {
         const updatedAnswers = getUpdatedAnswers(
-          formSession,
+          { domain, questions },
           questionNumber,
           answer
         );
@@ -409,7 +417,7 @@ const Application = () => {
                   )}
                 </button>
               )}
-              {answers.length - parseInt(questionNumber) > 0 && (
+              {answers && answers.length - parseInt(questionNumber) > 0 && (
                 <button
                   type="submit"
                   name="_action"

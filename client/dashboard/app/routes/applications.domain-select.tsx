@@ -80,7 +80,7 @@ export const action: ActionFunction = async ({ request }) => {
   await createApplication(request, domain);
   return updateFormSession(
     request,
-    { domain, answers: [] },
+    domain,
     "/applications/new"
   );
 };
