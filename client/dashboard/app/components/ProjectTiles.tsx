@@ -1,7 +1,7 @@
 import { Task, taskLinks, Tile, tileLinks } from "~/components";
 import projectTilesStyles from "~/styles/pages/ProjectTiles.css";
-import { Link } from "@remix-run/react";
-import { BiHomeAlt } from "react-icons/bi";
+import { Link, useNavigation } from "@remix-run/react";
+import { BiHomeAlt, BiLoader } from "react-icons/bi";
 import type { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => [
@@ -24,6 +24,8 @@ const ProjectTiles = ({
   activeProject,
   setActiveProject,
 }: ProjectTilesProps) => {
+  const navigation = useNavigation();
+
   return (
     <div className="kz-project">
       <div className="kz-project-flex">
@@ -48,8 +50,16 @@ const ProjectTiles = ({
             <button name="_action" value="show" disabled={!activeProject}>
               Make Submission
             </button>
-            <button name="_action" value="delete" disabled={!activeProject}>
-              Delete Draft
+            <button
+              name="_action"
+              value="delete"
+              disabled={navigation.state === "submitting"}
+            >
+              {navigation.state === "submitting" ? (
+                <BiLoader />
+              ) : (
+                "Delete Draft"
+              )}
             </button>
           </div>
         </div>
