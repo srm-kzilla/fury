@@ -16,7 +16,7 @@ export function getDomainName(domain: string) {
     case Domain.Technical:
       return "Technical";
     case Domain.VFX:
-      return "VFX";
+      return "SFX & VFX";
     case Domain.GFX:
       return "GFX";
     case Domain.Photography:
