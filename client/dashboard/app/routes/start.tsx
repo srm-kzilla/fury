@@ -51,6 +51,9 @@ export const action: ActionFunction = async ({ request }) => {
   if (resumeInfo.size > 0 || resumeInfo.type === "application/pdf") {
     const resumeResponse = await uploadResume(request, formData);
     if (resumeResponse?.url) formData.append("resume", resumeResponse.url);
+    else formData.delete("resume");
+  } else {
+    formData.delete("resume");
   }
 
   try {
