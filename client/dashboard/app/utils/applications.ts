@@ -368,7 +368,7 @@ export const questionsArray: Array<
         b. Export: JPEG format with the source file<br/>
         c. Bonus: Try to include gradient effect in elements.<br/>
         <br/>
-        Note: Upload your work to Gdrive, send the link here in your answer, AND ensure anyone with the link can access the file.
+        Note: Upload your work to Google Drive, send the link here in your answer, AND ensure anyone with the link can access the file. Write N/A if you are not attempting this task.
       `,
     },
     {
@@ -398,7 +398,7 @@ export const questionsArray: Array<
         d. Length: 15 sec (Stated)<br/>
         e. Bonus: Experiment with typography<br/>
         <br/>
-        Note: Upload your work to Gdrive, send the link here in your answer, AND ensure anyone with the link can access the file.
+        Note: Upload your work to Google Drive, send the link here in your answer, AND ensure anyone with the link can access the file. Write N/A if you are not attempting this task.
       `,
     },
     {
