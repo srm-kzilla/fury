@@ -17,8 +17,14 @@ crafted with <span style="color: #8b0000;">&hearts;</span> by your friends on th
 
 ## Structure
 
-`Fury` is a mono repo having the backend server written in Go under folder `api` and the frontend under the `client` folder.<br>
+`Fury` is a monorepo having the backend server written in Go under folder `api` and the frontend under the `client` folder.<br>
 The `client` has three sub-folders: `landing`, `admin` and `dashboard`, which are the Landing Page, Admin Dashboard and User Dashboard respectively.
+
+## How to start the API
+
+```bash
+run go
+```
 
 ## Stack
 
@@ -32,18 +38,14 @@ The `client` has three sub-folders: `landing`, `admin` and `dashboard`, which ar
 
 ## Shout outs 💥
 
-| <p align="center">![Shashank Kumar](https://github.com/shawshankkumar.png?size=128)<br>[Shashank Kumar](https://github.com/shawshankkumar)</p> | <p align="center">![Mohamed Sami](https://github.com/sm-sami.png?size=128)<br>[Mohamed Sami](https://github.com/sm-sami)</p> | <p align="center">![Aryan Singh](https://github.com/meltedhyperion.png?size=128)<br>[Aryan Singh](https://github.com/meltedhyperion)</p> | <p align="center">![Saanvi Kumar](https://github.com/SaanviKumar13.png?size=128)<br>[Saanvi Kumar](https://github.com/SaanviKumar13)</p> |
-| ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| <p align="center">![Shashank Kumar](https://github.com/shawshankkumar.png?size=128)<br>[Shashank Kumar](https://github.com/shawshankkumar)</p> | <p align="center">![Mohamed Sami](https://github.com/sm-sami.png?size=128)<br>[Mohamed Sami](https://github.com/sm-sami)</p> | <p align="center">![Aryan Singh](https://github.com/meltedhyperion.png?size=128)<br>[Aryan Singh](https://github.com/meltedhyperion)</p> | <p align="center">![Farhaan](https://github.com/mdfarhaan.png?size=128)<br>[Farhaan](https://github.com/mdfarhaan)</p> |
+| ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 
-
-| <p align="center">![Pradyumna D](https://github.com/YARE0909.png?size=128)<br>[Pradyumna D](https://github.com/YARE0909)</p> | <p align="center">![Farhaan](https://github.com/mdfarhaan.png?size=128)<br>[Farhaan](https://github.com/mdfarhaan)</p> | <p align="center">![Ajay ram S](https://github.com/CampVamp.png?size=128)<br>[Ajay ram S](https://github.com/CampVamp)</p> | <p align="center">![Shivam Bansal](https://github.com/ShivamBansal07.png?size=128)<br>[Shivam Bansal](https://github.com/ShivamBansal07)</p> |
-| ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-
+| <p align="center">![Pradyumna D](https://github.com/YARE0909.png?size=128)<br>[Pradyumna D](https://github.com/YARE0909)</p> | <p align="center">![Saanvi Kumar](https://github.com/SaanviKumar13.png?size=128)<br>[Saanvi Kumar](https://github.com/SaanviKumar13)</p> | <p align="center">![Ajay ram S](https://github.com/CampVamp.png?size=128)<br>[Ajay ram S](https://github.com/CampVamp)</p> | <p align="center">![Shivam Bansal](https://github.com/ShivamBansal07.png?size=128)<br>[Shivam Bansal](https://github.com/ShivamBansal07)</p> |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 
 | <p align="center">![Utkarsh](https://github.com/Utkarsh575.png?size=128)<br>[Utkarsh](https://github.com/Utkarsh575)</p> | <p align="center">![Utkarshini Narayan](https://github.com/utkarshini14.png?size=128)<br>[Utkarshini Narayan](https://github.com/utkarshini14)</p> | <p align="center">![Viraj Agarwal](https://github.com/agarwalviraj.png?size=128)<br>[Viraj Agarwal](https://github.com/agarwalviraj)</p> |
-| ------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-
-
+| ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
 
 ## License 📜
 
