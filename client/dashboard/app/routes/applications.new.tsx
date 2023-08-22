@@ -93,12 +93,6 @@ export const loader: LoaderFunction = async ({ request }) => {
     return redirect("/applications/closed");
   }
 
-  const draftApplication = await getDraftApplication(request);
-  if (!draftApplication) {
-    return redirect("/applications/domain-select");
-  }
-
-  const { questions: answers } = draftApplication;
   const formSession = await getFormSession(request);
 
   if (!formSession) {
@@ -118,6 +112,12 @@ export const loader: LoaderFunction = async ({ request }) => {
   }
 
   const { domain } = formSession;
+  const draftApplication = await getDraftApplication(request);
+  if (!draftApplication) {
+    return redirect("/applications/domain-select");
+  }
+
+  const { questions: answers } = draftApplication;
 
   let typedAnswer = "";
   if (answers) {
