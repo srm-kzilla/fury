@@ -46,8 +46,12 @@ type ActionData = {
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
-  const resumeResponse = await uploadResume(request, formData);
-  if (resumeResponse?.url) formData.append("resume", resumeResponse.url);
+
+  const resumeInfo = formData.get("resume") as Blob;
+  if (resumeInfo.size > 0 || resumeInfo.type === "application/pdf") {
+    const resumeResponse = await uploadResume(request, formData);
+    if (resumeResponse?.url) formData.append("resume", resumeResponse.url);
+  }
 
   try {
     const {
@@ -114,13 +118,13 @@ const validateUserDetails = async (formData: FormData) => {
       .url("The URL you have entered doesn't seem right")
       .matches(
         /^(https?:\/\/(?:[a-z]+\.)?linkedin\.com\/in\/[a-zA-Z0-9_-]+)?$/,
-        "The URL you have entered doesn't seem right"
+        "The URL you have entered doesn't seem right",
       ),
     github: Yup.string()
       .url("The URL you have entered doesn't seem right")
       .matches(
         /^(https?:\/\/(?:[a-z]+\.)?github\.com\/[a-zA-Z0-9_-]+)?$/,
-        "The URL you have entered doesn't seem right"
+        "The URL you have entered doesn't seem right",
       ),
     resume: Yup.string(),
     portfolio: Yup.string().url(),
