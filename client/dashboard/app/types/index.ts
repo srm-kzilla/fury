@@ -31,7 +31,8 @@ type Application = {
 };
 
 type Question = {
-  question: string;
+  questionNumber: string;
+  answer: string;
 };
 
 type NotificationType = {
@@ -56,7 +57,6 @@ type Answer = {
 
 type FormSession = {
   domain: string;
-  answers: Answer[];
 };
 
 type TaskType = {
