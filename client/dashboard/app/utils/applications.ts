@@ -43,7 +43,7 @@ export const domains = [
     key: "vfx",
     value: "vfx",
     text: "VFX",
-    description: "When IRL isn't enough, use VFX.",
+    description: "When IRL isn't enough, use SFX and VFX.",
   },
   {
     key: "gfx",
@@ -208,7 +208,7 @@ export const questionsArray: Array<
     },
     {
       domain: "vfx",
-      question: `What, according to you, is your best quality? How can that quality benefit the club’s social media engagement? Explain using a scenario!, we would love to hear about all the good stuff.`,
+      question: `What tools do you use for creating sound effects and how flexible will it be for you to learn new ones if the video requires it?`,
     },
     {
       domain: "corporate",
@@ -248,7 +248,7 @@ export const questionsArray: Array<
     },
     {
       domain: "vfx",
-      question: `What are the things that makes an edit complete?`,
+      question: `How do you approach the process of designing and creating unique sound effects for different types of media?`,
     },
     {
       domain: "corporate",
@@ -281,7 +281,7 @@ export const questionsArray: Array<
     },
     {
       domain: "vfx",
-      question: `What kind of social media content excites <i>Millennials/Gen Z</i> ? How can a technical club-like <i>SRMKZILLA</i> implement this kind of content while staying true to its technical roots?`,
+      question: `Here's a small task for you. Attached here, is a reference <a href=https://www.instagram.com/tv/CZMssWQIoF5/?igshid=MTc4MmM1YmI2Ng== target=_blank><u>reel</u></a>. Could you think of any other audio that would suit this. Please share your work in a GDrive link with shared access.`,
     },
     {
       domain: "corporate",
