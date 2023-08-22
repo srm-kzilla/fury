@@ -19,7 +19,7 @@ import {
   getTeamData,
   getUserDetails,
 } from "~/utils/api.server";
-import { Link, useLoaderData, useNavigate } from "@remix-run/react";
+import {Link, useLoaderData, useNavigate, useRevalidator} from "@remix-run/react";
 import getEnv from "~/utils/env";
 import { BiAlarm, BiPlus } from "react-icons/bi";
 import toast from "~/utils/toast.client";
@@ -68,6 +68,7 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const env = getEnv();
   const endTime = parseInt(env.APPLICATION_DEADLINE!);
+  const { revalidate } =useRevalidator();
 
   useEffect(() => {
     toast.show(
@@ -75,6 +76,14 @@ const Dashboard = () => {
       "🗓️"
     );
   }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      revalidate();
+    }, 10);
+
+    return () => clearTimeout(timer);
+  }, [revalidate]);
 
   return (
     <>

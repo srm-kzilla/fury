@@ -93,12 +93,10 @@ export async function createFormSession(request: Request, redirectTo: string) {
   if (draftApplication) {
     session.set("formSession", {
       domain: draftApplication.domain,
-      answers: draftApplication.questions,
     });
   } else {
     session.set("formSession", {
       domain: null,
-      answers: [],
     });
   }
 
@@ -117,7 +115,7 @@ export async function getFormSession(request: Request): Promise<FormSession> {
 
 export async function updateFormSession(
   request: Request,
-  data: FormSession,
+  domain: string,
   redirectTo: string
 ) {
   const session = await getUserSession(request);
@@ -127,7 +125,7 @@ export async function updateFormSession(
     return redirect("/applications/new");
   }
 
-  session.set("formSession", data);
+  session.set("formSession", { domain });
 
   return redirect(redirectTo, {
     headers: {

@@ -97,7 +97,7 @@ const ApplicationTile = ({ application, handleClick }: Props) => {
       <h3>{getDomainName(application.domain)}</h3>
       <div className="info">
         <div className="status">
-          <div>{icon}</div>
+          {icon}
           <p>{label}</p>
         </div>
       </div>

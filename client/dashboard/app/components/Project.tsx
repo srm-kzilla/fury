@@ -65,7 +65,7 @@ const Project = ({ slug, projects, actionData }: ProjectProps) => {
                 </select>
                 <sub>{actionData?.errors?.subdomain}</sub>
               </div>
-              <button type="submit" name="_action" value="submit">
+              <button type="submit" name="_action" value="submit" disabled={navigation.state === "submitting"}>
                 {navigation.state === "submitting" ? <BiLoader /> : "Submit"}
               </button>
             </div>
