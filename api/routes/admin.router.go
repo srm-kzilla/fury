@@ -8,11 +8,11 @@ import (
 
 func AdminRoutes(router fiber.Router) {
 	router.Post("/login", controllers.AdminLogin)
-	signUpProctected := router.Use(middlewares.SignUpAuthenticate)
+	signUpProtected := router.Use(middlewares.SignUpAuthenticate)
 	protected := router.Use(middlewares.AdminAuthenticate)
 	applicationsAdmin := protected.Group("/applications")
 
-	signUpProctected.Post("/signup", controllers.AdminSignup)
+	signUpProtected.Post("/signup", controllers.AdminSignup)
 	applicationsAdmin.Get("/all", controllers.GetAllApplications)
 	applicationsAdmin.Get("/", controllers.GetApplications)
 	applicationsAdmin.Put("/", controllers.UpdateApplications)
