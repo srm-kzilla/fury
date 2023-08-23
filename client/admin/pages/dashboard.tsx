@@ -9,7 +9,7 @@ interface ApplicantProps {
 
 export function Dashboard({ data }: ApplicantProps) {
   return (
-    <div className="min-h-screen w-screen bg-kz-grey p-5">
+    <div className="w-full bg-kz-grey p-5">
       <Head>
         <title>Admin Dashboard</title>
       </Head>
@@ -19,9 +19,9 @@ export function Dashboard({ data }: ApplicantProps) {
         </h1>
         <hr className="text-kz-orange" />
       </div>
-      <div className="flex flex-col m-1">
+      <div className="flex flex-col">
         {data.map((person: Applicant) => (
-          <div key={person._id}>
+          <div key={person._id} className=" w-full flex justify-center">
             <DisplayCard {...person} />
           </div>
         ))}

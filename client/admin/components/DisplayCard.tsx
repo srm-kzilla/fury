@@ -45,7 +45,7 @@ const DisplayCard = ({
   return (
     <div
       key={_id}
-      className="shadow-card-shadow font-body w-full py-6 bg-kz-lt-grey rounded-md mt-5"
+      className="shadow-card-shadow font-body w-11/12 py-6 bg-kz-lt-grey rounded-md mt-5"
     >
       <Drawer.Root>
         <div className="flex flex-row justify-evenly items-center text-xs text-kz-white md:text-lg">
@@ -54,7 +54,6 @@ const DisplayCard = ({
             <div className="hover:text-kz-orange">{name}</div>
           </Drawer.Trigger>
           <div>{regNo}</div>
-          <div>{branch}</div>
           <div className="hidden md:block">{email}</div>
           <div className="hidden md:block">{contact}</div>
           <button>
