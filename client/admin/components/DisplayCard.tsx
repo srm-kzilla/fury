@@ -42,6 +42,16 @@ const DisplayCard = ({
     }
   };
 
+  let color = "";
+  switch (application[0].status) {
+    case "accpeted":
+      color = "bg-kz-green";
+      break;
+    case "rejected":
+      color = "bg-kz-red";
+      break;
+  }
+
   return (
     <div
       key={_id}
@@ -58,11 +68,7 @@ const DisplayCard = ({
           <div className="hidden md:block">{contact}</div>
           <button>
             <div
-              className={`w-3 h-3 rounded-full border border-kz-grey ${
-                application[0].status === "pending"
-                  ? ` bg-green-400`
-                  : ` bg-red-600`
-              } `}
+              className={`w-3 h-3 rounded-full border border-kz-grey ${color}`}
             />
           </button>
         </div>
@@ -153,7 +159,7 @@ const DisplayCard = ({
                   <button
                     className="text-white text-sm md:text-lg px-3 py-2 bg-kz-green rounded-2xl hover:scale-110 font-medium"
                     onClick={() => {
-                      handleReview("pending");
+                      handleReview("accpeted");
                     }}
                   >
                     Call for Interview
