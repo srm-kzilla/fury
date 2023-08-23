@@ -3,6 +3,7 @@ import { Drawer } from "vaul";
 import questions from "@/pages/api/questions.json";
 import nookies from "nookies";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const DisplayCard = ({
   _id,
@@ -41,6 +42,9 @@ const DisplayCard = ({
       if (response.status === 200) {
         console.log("Review updated successfully");
         setStatus(review);
+        review === "accpeted"
+          ? toast.success("Accepted")
+          : toast.error("Rejected");
       }
     } catch (err) {
       console.log(err);
