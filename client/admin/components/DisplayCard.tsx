@@ -1,8 +1,7 @@
 import { Applicant } from "@/services/api";
 import { Drawer } from "vaul";
-import questions from "../pages/api/questions.json";
+import questions from "@/pages/api/questions.json";
 import nookies from "nookies";
-import { all } from "axios";
 
 const DisplayCard = ({
   _id,
