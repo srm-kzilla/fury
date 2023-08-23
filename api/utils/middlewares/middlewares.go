@@ -65,7 +65,8 @@ func SignUpAuthenticate(c *fiber.Ctx) error {
 			"message": "Authorization token not found",
 		})
 	}
-	if !strings.Contains(accessToken, os.Getenv("ADMIN_TOKEN")) {
+
+	if accessToken == os.Getenv("ADMIN_TOKEN") {
 		return c.Status(401).JSON(fiber.Map{
 			"message": "Invalid token",
 		})
