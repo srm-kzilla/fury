@@ -14,9 +14,8 @@ export const links: LinksFunction = () => [
 const Tile = ({ title, icon }: TileProps) => {
   return (
     <div className="kz-wrapper">
-      <div className="icon">{icon}</div>
-      <div className="kz-project-tile dark">
-        <h2>{title?.substring(0, 2)}</h2>
+      <div className="tile">
+        <div className="icon">{icon}</div>
       </div>
       <h5>{title}</h5>
     </div>
