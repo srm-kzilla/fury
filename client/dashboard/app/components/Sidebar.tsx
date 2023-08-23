@@ -1,5 +1,5 @@
 import sidebarCSS from "~/styles/components/Sidebar.css";
-import { BiHomeCircle, BiLogOut, BiRocket } from "react-icons/bi";
+import { BiChat, BiHomeCircle, BiLogOut, BiRocket } from "react-icons/bi";
 import { Form, Link, useLocation, useNavigate } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
 
@@ -46,6 +46,15 @@ const Sidebar = () => {
               className={pathname === "/explore" ? "active" : ""}
             >
               <BiRocket />
+            </Link>
+          </li>
+          <li title="FAQ's">
+            <Link
+              to="/landing/faq"
+              prefetch="viewport"
+              className={pathname === "/landing/faq" ? "active" : ""}
+            >
+              <BiChat />
             </Link>
           </li>
         </ul>
