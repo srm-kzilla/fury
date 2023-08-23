@@ -4,8 +4,7 @@
 
 @font-face {
   font-family: "Caros";
-  src:
-    url("../../assets/fonts/CarosLight.woff2") format("woff2"),
+  src: url("../../assets/fonts/CarosLight.woff2") format("woff2"),
     url("../../assets/fonts/CarosLight.woff") format("woff");
   font-weight: 300;
   font-style: normal;
@@ -14,8 +13,7 @@
 
 @font-face {
   font-family: "Caros";
-  src:
-    url("../../assets/fonts/CarosBold.woff2") format("woff2"),
+  src: url("../../assets/fonts/CarosBold.woff2") format("woff2"),
     url("../../assets/fonts/CarosBold.woff") format("woff");
   font-weight: bold;
   font-style: normal;
@@ -24,8 +22,7 @@
 
 @font-face {
   font-family: "Caros";
-  src:
-    url("../../assets/fonts/CarosMedium.woff2") format("woff2"),
+  src: url("../../assets/fonts/CarosMedium.woff2") format("woff2"),
     url("../../assets/fonts/CarosMedium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
@@ -34,8 +31,7 @@
 
 @font-face {
   font-family: "Caros";
-  src:
-    url("../../assets/fonts/Caros.woff2") format("woff2"),
+  src: url("../../assets/fonts/Caros.woff2") format("woff2"),
     url("../../assets/fonts/Caros.woff") format("woff");
   font-weight: normal;
   font-style: normal;
@@ -62,11 +58,20 @@ div.kz-wrapper {
   &.active {
     div.kz-project-tile {
       border: 0.2rem solid var(--theme);
-      box-shadow:
-        0 0 5px #fff,
-        -5px 0 10px var(--theme),
+      box-shadow: 0 0 5px #fff, -5px 0 10px var(--theme),
         5px 0 10px var(--theme);
     }
+  }
+}
+
+.icon {
+  position: absolute;
+  top: 0.5rem;
+  left: 1rem;
+  svg {
+    width: 4rem;
+    height: 4rem;
+    color: $primary;
   }
 }
 
@@ -84,10 +89,7 @@ div.kz-project-tile {
   overflow: hidden;
 
   &:hover {
-    box-shadow:
-      0 0 5px #fff,
-      -5px 0 10px var(--theme),
-      5px 0 10px var(--theme);
+    box-shadow: 0 0 5px #fff, -5px 0 10px var(--theme), 5px 0 10px var(--theme);
   }
 
   h2 {

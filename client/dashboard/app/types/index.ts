@@ -68,6 +68,7 @@ type TaskType = {
 type Project = {
   slug: string;
   title: string;
+  icon?: JSX.Element;
   description: string;
   domain: string;
   tasks: TaskType[];

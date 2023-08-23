@@ -1,8 +1,11 @@
+import { BiPalette } from "react-icons/bi";
+
 export const projects = [
   {
     title: "Meme Gallery",
     domain: "technicalp",
     slug: "meme-gallery",
+    icon: <BiPalette/>,
     description:
       "Welcome to the exciting world of meme-sharing at SRMKZILLA! In this task, your creative prowess will shine as you design and implement a user-friendly, Meme Gallery, submission platform. Your mission is to provide meme enthusiasts with a seamless way to contribute their humorous masterpieces to the digital realm.",
     tasks: [
