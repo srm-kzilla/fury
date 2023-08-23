@@ -102,22 +102,28 @@ const DisplayCard = ({
                         {application.questions
                           ? application.questions.map((question, index) => {
                               let allquestions;
-                              if (application.domain === "technical") {
-                                allquestions = questions.technical;
-                              } else if (application.domain === "events") {
-                                allquestions = questions.events;
-                              } else if (application.domain === "photography") {
-                                allquestions = questions.photography;
-                              } else if (
-                                application.domain === "content_writing"
-                              ) {
-                                allquestions = questions.content_writing;
-                              } else if (application.domain === "gfx") {
-                                allquestions = questions.gfx;
-                              } else if (application.domain === "vfx") {
-                                allquestions = questions.vfx;
-                              } else if (application.domain === "corporate") {
-                                allquestions = questions.corporate;
+                              switch (application.domain) {
+                                case "technical":
+                                  allquestions = questions.technical;
+                                  break;
+                                case "events":
+                                  allquestions = questions.events;
+                                  break;
+                                case "photography":
+                                  allquestions = questions.photography;
+                                  break;
+                                case "content_writing":
+                                  allquestions = questions.content_writing;
+                                  break;
+                                case "gfx":
+                                  allquestions = questions.gfx;
+                                  break;
+                                case "vfx":
+                                  allquestions = questions.vfx;
+                                  break;
+                                case "corporate":
+                                  allquestions = questions.corporate;
+                                  break;
                               }
                               const onequestion = allquestions![index];
                               return (
