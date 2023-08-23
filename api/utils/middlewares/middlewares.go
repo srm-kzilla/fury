@@ -57,7 +57,20 @@ func UserAuthenticate(c *fiber.Ctx) error {
 	c.Locals("userData", userData)
 	return c.Next()
 }
-
+func AdminSignupAuthenticate(c *fiber.Ctx) error {
+	accessToken := c.GetReqHeaders()["Authorization"]
+	if accessToken == "" {
+		return c.Status(401).JSON(fiber.Map{
+			"message": "Authorization token not found",
+		})
+	}
+	if accessToken == os.Getenv("ADMIN_SIGNUP_TOKEN") {
+		return c.Next()
+	}
+	return c.Status(401).JSON(fiber.Map{
+		"message": "Invalid token",
+	})
+}
 func AdminAuthenticate(c *fiber.Ctx) error {
 	accessToken := c.GetReqHeaders()["Authorization"]
 	if accessToken == "" {
