@@ -2,6 +2,7 @@ import { Applicant } from "@/services/api";
 import { Drawer } from "vaul";
 import questions from "@/pages/api/questions.json";
 import nookies from "nookies";
+import { useState } from "react";
 
 const DisplayCard = ({
   _id,
@@ -14,7 +15,10 @@ const DisplayCard = ({
   contact,
   socials,
   application,
-}: Applicant) => {
+  index,
+}: Applicant & { index: number }) => {
+  const [status, setStatus] = useState(application[0].status);
+
   const handleReview = async (review: string) => {
     const token = nookies.get().token;
     const data = {
@@ -36,6 +40,7 @@ const DisplayCard = ({
       const data = await response.json();
       if (response.status === 200) {
         console.log("Review updated successfully");
+        setStatus(review);
       }
     } catch (err) {
       console.log(err);
@@ -43,7 +48,7 @@ const DisplayCard = ({
   };
 
   let color = "";
-  switch (application[0].status) {
+  switch (status) {
     case "accpeted":
       color = "bg-kz-green";
       break;
@@ -59,7 +64,7 @@ const DisplayCard = ({
     >
       <Drawer.Root>
         <div className="flex flex-row justify-evenly items-center text-xs text-kz-white md:text-lg">
-          <div className="text-kz-white font-extrabold"># 1</div>
+          <div className="text-kz-white font-extrabold">#{index + 1}</div>
           <Drawer.Trigger>
             <div className="hover:text-kz-orange">{name}</div>
           </Drawer.Trigger>

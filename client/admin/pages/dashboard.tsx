@@ -20,9 +20,9 @@ export function Dashboard({ data }: ApplicantProps) {
         <hr className="text-kz-orange" />
       </div>
       <div className="flex flex-col">
-        {data.map((person: Applicant) => (
+        {data.map((person: Applicant, index) => (
           <div key={person._id} className=" w-full flex justify-center">
-            <DisplayCard {...person} />
+            <DisplayCard {...person} index={index} />
           </div>
         ))}
       </div>
