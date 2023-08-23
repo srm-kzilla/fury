@@ -50,9 +50,13 @@ const Sidebar = () => {
           </li>
           <li title="FAQ's">
             <Link
-              to="/landing/faq"
+              to="https://recruitment.srmkzilla.net/faq"
               prefetch="viewport"
-              className={pathname === "/landing/faq" ? "active" : ""}
+              className={
+                pathname === "https://recruitment.srmkzilla.net/faq"
+                  ? "active"
+                  : ""
+              }
             >
               <BiChat />
             </Link>
