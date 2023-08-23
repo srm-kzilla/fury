@@ -2,6 +2,7 @@ import { Applicant } from "@/services/api";
 import { Drawer } from "vaul";
 import questions from "../pages/api/questions.json";
 import nookies from "nookies";
+import { all } from "axios";
 
 const DisplayCard = ({
   _id,
@@ -101,8 +102,25 @@ const DisplayCard = ({
                       <ul className=" mt-6">
                         {application.questions
                           ? application.questions.map((question, index) => {
-                              const allquestions = questions.technical;
-                              const onequestion = allquestions[index];
+                              let allquestions;
+                              if (application.domain === "technical") {
+                                allquestions = questions.technical;
+                              } else if (application.domain === "events") {
+                                allquestions = questions.events;
+                              } else if (application.domain === "photography") {
+                                allquestions = questions.photography;
+                              } else if (
+                                application.domain === "content_writing"
+                              ) {
+                                allquestions = questions.content_writing;
+                              } else if (application.domain === "gfx") {
+                                allquestions = questions.gfx;
+                              } else if (application.domain === "vfx") {
+                                allquestions = questions.vfx;
+                              } else if (application.domain === "corporate") {
+                                allquestions = questions.corporate;
+                              }
+                              const onequestion = allquestions![index];
                               return (
                                 <li
                                   key={question.questionNumber}
