@@ -7,15 +7,11 @@ const handelSubmit = async ({
   form: { email: string; password: string };
 }) => {
   try {
-    const { data } = await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}/login`,
-      form,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const { data } = await axios.post(`${process.env.API_URL}/login`, form, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     if (data.success) {
       return data;
     }

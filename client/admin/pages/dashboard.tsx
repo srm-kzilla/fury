@@ -32,14 +32,11 @@ export function Dashboard({ data }: ApplicantProps) {
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const token = nookies.get(context).token;
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/applications`,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
+  const response = await fetch(`${process.env.API_URL}/applications`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
   const data: Applicant[] = await response.json();
   return {
     props: {

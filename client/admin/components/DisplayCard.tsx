@@ -1,6 +1,6 @@
 import { Applicant } from "@/services/api";
 import { Drawer } from "vaul";
-import quesans from "@/mock-data/quesans.json";
+import questions from "../pages/api/questions.json";
 import nookies from "nookies";
 
 const DisplayCard = ({
@@ -101,7 +101,7 @@ const DisplayCard = ({
                       <ul className=" mt-6">
                         {application.questions
                           ? application.questions.map((question, index) => {
-                              const allquestions = quesans.technical;
+                              const allquestions = questions.technical;
                               const onequestion = allquestions[index];
                               return (
                                 <li

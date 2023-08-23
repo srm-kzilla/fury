@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
+import nookies from "nookies";
 
 const handleReview = async ({
   review,
@@ -13,7 +14,7 @@ const handleReview = async ({
 }) => {
   try {
     const { data } = await axios.put(
-      `${process.env.NEXT_PUBLIC_API_URL}/applications`,
+      `${process.env.API_URL}/applications`,
       review,
       {
         headers: {
@@ -33,11 +34,8 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const cookies = req.headers.cookie;
-  const tokenCookie = cookies
-    ? cookies.split(";").find((cookie) => cookie.trim().startsWith("token="))
-    : null;
-  const token = tokenCookie ? tokenCookie.split("=")[1] : null;
+  const cookies = nookies.get({ req });
+  const token = cookies.token;
 
   if (!token) {
     return res.status(401).json({ error: "Unauthorized" });
