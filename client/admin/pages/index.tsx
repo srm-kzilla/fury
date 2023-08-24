@@ -40,7 +40,7 @@ const LoginPage: NextPage = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-kz-grey overflow-x-hidden">
       <Head>
-        <title>Signup</title>
+        <title>Sign In</title>
         <link rel="icon" href="/logo.svg" />
       </Head>
       <div className="flex h-screen w-full flex-col">
