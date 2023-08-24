@@ -18,7 +18,7 @@ const LoginPage: NextPage = () => {
         password: formData.get("password"),
       };
 
-      const res = await fetch("/api/form", {
+      const res = await fetch("/api/signin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

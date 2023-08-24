@@ -1,29 +1,20 @@
 import { useState } from "react";
 import { Drawer } from "vaul";
-import questionsData from "@/pages/api/questions.json";
 import nookies from "nookies";
 import toast from "@/utils/toast";
-import type { Applicant } from "@/types";
 import { GithubIcon, Globe, LinkedinIcon, StickyNoteIcon } from "lucide-react";
-
-interface Questions {
-  domain: string;
-  questions: string[];
-}
+import questions from "@/pages/api/questions.json";
+import type { Applicant } from "@/types";
 
 const DisplayCard = ({
   name,
   regNo,
-  year,
-  branch,
   email,
-  gender,
   contact,
   socials,
   application,
   index,
 }: Applicant & { index: number }) => {
-  const questions: Questions[] = questionsData;
   const [status, setStatus] = useState(application[0].status);
 
   const handleReview = async (review: "accepted" | "rejected") => {
@@ -57,8 +48,12 @@ const DisplayCard = ({
   };
 
   const selectedDomainQuestions = questions.find(
-    (domain) => domain.domain === application[0].domain
+    (domain) => domain.domain === application[0].domain,
   );
+
+  if (!selectedDomainQuestions) {
+    toast.error("Failed to load questions");
+  }
 
   return (
     <div className="font-body w-full py-6 rounded-md mt-5 bg-kz-grey">
@@ -88,45 +83,35 @@ const DisplayCard = ({
 
         <Drawer.Portal>
           <Drawer.Overlay className="fixed bg-kz-black" />
-          <Drawer.Content className="bg-kz-grey flex flex-col fixed max-h-[85vh] mt-24 bottom-0 left-0 right-0">
-            <div className="w-screen overflow-auto px-10 p-5 rounded-t-3xl  bg-kz-lt-grey text-kz-white">
+          <Drawer.Content className="bg-kz-grey rounded-t-3xl flex flex-col fixed max-h-[85vh] mt-24 bottom-0 left-0 right-0">
+            <div className="w-screen overflow-auto px-10 p-5 rounded-t-3xl bg-kz-lt-grey text-kz-white">
               <div className="mx-auto w-12 h-1.5 rounded-full bg-kz-orange mb-8" />
-              <div className="mx-auto">
-                <Drawer.Title className="font-semibold text-xl mb-4">
+              <div className="mx-32">
+                <Drawer.Title className="font-semibold text-3xl mb-4">
                   {name}
-                  <hr className="text-kz-orange mt-2" />
                 </Drawer.Title>
                 <div className="flex flex-col md:flex-row justify-between">
                   <div className="my-2 flex flex-row gap-5">
                     {socials.github && (
-                      <div>
-                        <a href={socials.github} target="_blank">
-                          <GithubIcon color="#ff644e" size={30} />
-                        </a>
-                      </div>
+                      <a href={socials.github} target="_blank">
+                        <GithubIcon color="#ff644e" size={30} />
+                      </a>
                     )}
                     {socials.linkedin && (
-                      <div>
-                        <a href={socials.linkedin} target="_blank">
-                          <LinkedinIcon color="#ff644e" size={30} />
-                        </a>
-                      </div>
+                      <a href={socials.linkedin} target="_blank">
+                        <LinkedinIcon color="#ff644e" size={30} />
+                      </a>
                     )}
                     {socials.portfolio && (
-                      <div>
-                        <a href={socials.portfolio} target="_blank">
-                          <Globe color="#ff644e" size={30} />
-                        </a>
-                      </div>
+                      <a href={socials.portfolio} target="_blank">
+                        <Globe color="#ff644e" size={30} />
+                      </a>
                     )}
                     {socials.resume && (
-                      <div>
-                        <a href={socials.resume} target="_blank">
-                          <StickyNoteIcon color="#ff644e" size={30} />
-                        </a>
-                      </div>
+                      <a href={socials.resume} target="_blank">
+                        <StickyNoteIcon color="#ff644e" size={30} />
+                      </a>
                     )}
-                    <br />
                   </div>
                   <div className="flex flex-row gap-4">
                     <button
@@ -147,35 +132,40 @@ const DisplayCard = ({
                     </button>
                   </div>
                 </div>
-                <hr className="mt-2 text-kz-orange" />
-                <div>
-                  <h1 className="my-2 font-bold">
-                    The answers to questions you asked
-                  </h1>
-                  {application.map((application, index) => {
-                    return (
-                      <div key={index}>
-                        <h3 className="flex gap-1">
-                          Application Domain:{" "}
-                          <div className=" font-bold">{application.domain}</div>
-                        </h3>
-                        <ul className=" mt-6">
-                          {application.questions &&
-                            application.questions.map((question, index) => {
-                              const onequestion =
-                                selectedDomainQuestions?.questions[index];
-                              return (
-                                <li key={index} className=" mt-2">
-                                  {question.questionNumber}. {onequestion}:
-                                  <br /> Ans: {question.answer}
-                                </li>
-                              );
-                            })}
-                        </ul>
-                        <p>Application Status: {application.status}</p>
-                      </div>
-                    );
-                  })}
+                <div className="my-10">
+                  {application.map((application, index) => (
+                    <div key={index}>
+                      <h3 className="flex justify-between">
+                        <div className=" font-bold">
+                          Domain: {application.domain}
+                        </div>
+                        <div
+                          className={`text-kz-black rounded-md px-2 py-0.5 font-bold ${
+                            status === "accepted"
+                              ? "bg-kz-green"
+                              : status === "rejected"
+                              ? "bg-kz-red"
+                              : "bg-kz-yellow"
+                          }`}
+                        >
+                          Application Status: {status}
+                        </div>
+                      </h3>
+                      <ul className="flex flex-col gap-3 mt-6 text-lg">
+                        {application.questions &&
+                          application.questions.map(({ questionNumber, answer }, index) => (
+                            <li key={index} className="mt-2">
+                              <div>
+                                {selectedDomainQuestions?.questions[index]}
+                              </div>
+                              <div className="text-2xl font-bold">
+                                {answer}
+                              </div>
+                            </li>
+                          ))}
+                      </ul>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

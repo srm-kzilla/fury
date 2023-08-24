@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 const toastBaseOptions = {
   style: {
     background: "#202020",
-    color: "#ff644e",
+    color: "#fff",
     border: "1px solid #fff",
     maxWidth: "250px",
   },

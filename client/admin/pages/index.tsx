@@ -25,7 +25,7 @@ export function Index({ applications }: ApplicantProps) {
       <div className="my-10">
         <div className="flex w-[70vw] mx-auto my-12 justify-between items-center">
           <h1 className="text-kz-orange font-body font-bold text-xl">
-            Fury Admin Dashboard
+            Fury
           </h1>
           <button className="btn text-white bg-kz-orange" onClick={handleLogout}>
             Logout
@@ -33,7 +33,7 @@ export function Index({ applications }: ApplicantProps) {
         </div>
         <div className="flex flex-col w-[70vw] mx-auto">
           {applications.map((application: Applicant, index) => (
-            <DisplayCard key={application.email} {...application} index={index} />
+            <DisplayCard key={index} {...application} index={index} />
           ))}
         </div>
       </div>
