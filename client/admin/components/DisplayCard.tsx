@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Drawer } from "vaul";
 import questions from "@/pages/api/questions.json";
 import nookies from "nookies";
-import toast from "react-hot-toast";
+import toast from "@/utils/toast";
 import type { Applicant } from "@/types";
 
 const DisplayCard = ({
@@ -64,7 +64,13 @@ const DisplayCard = ({
           <div className="hidden md:block w-[10vw] text-left">{contact}</div>
           <button>
             <div
-              className={`w-4 h-4 rounded-full border-2 border-kz-black ${status === "accepted" ? "bg-kz-green" : status === "rejected" ? "bg-kz-red" : "bg-kz-yellow"}`}
+              className={`w-4 h-4 rounded-full border-2 border-kz-black ${
+                status === "accepted"
+                  ? "bg-kz-green"
+                  : status === "rejected"
+                  ? "bg-kz-red"
+                  : "bg-kz-yellow"
+              }`}
             />
           </button>
         </div>
