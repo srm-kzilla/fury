@@ -61,6 +61,14 @@ const DisplayCard = ({
       break;
   }
 
+  const clipName = (name: string) => {
+    if (name.length > 15) {
+      return name.slice(0, 15) + "...";
+    } else {
+      return name;
+    }
+  };
+
   return (
     <div
       key={_id}
@@ -70,7 +78,7 @@ const DisplayCard = ({
         <div className="flex flex-row justify-evenly items-center text-xs text-kz-white md:text-lg">
           <div className="text-kz-white font-extrabold">#{index + 1}</div>
           <Drawer.Trigger>
-            <div className="hover:text-kz-orange">{name}</div>
+            <div className="hover:text-kz-orange">{clipName(name)}</div>
           </Drawer.Trigger>
           <div>{regNo}</div>
           <div className="hidden md:block">{email}</div>
