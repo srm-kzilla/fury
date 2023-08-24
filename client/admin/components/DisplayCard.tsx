@@ -4,6 +4,7 @@ import questions from "@/pages/api/questions.json";
 import nookies from "nookies";
 import toast from "react-hot-toast";
 import type { Applicant } from "@/types";
+import { GithubIcon, Globe, LinkedinIcon, StickyNoteIcon } from "lucide-react";
 
 const DisplayCard = ({
   name,
@@ -64,7 +65,13 @@ const DisplayCard = ({
           <div className="hidden md:block w-[10vw] text-left">{contact}</div>
           <button>
             <div
-              className={`w-4 h-4 rounded-full border-2 border-kz-black ${status === "accepted" ? "bg-kz-green" : status === "rejected" ? "bg-kz-red" : "bg-kz-yellow"}`}
+              className={`w-4 h-4 rounded-full border-2 border-kz-black ${
+                status === "accepted"
+                  ? "bg-kz-green"
+                  : status === "rejected"
+                  ? "bg-kz-red"
+                  : "bg-kz-yellow"
+              }`}
             />
           </button>
         </div>
@@ -79,16 +86,58 @@ const DisplayCard = ({
                   {name}
                   <hr className="text-kz-orange mt-2" />
                 </Drawer.Title>
-                <div className="mb-2">
-                  <span className="font-bold">GitHub</span> : {socials.github}
-                  <br />
-                  <span className="font-bold">Linkedin</span> :{" "}
-                  {socials.linkedin}
-                  <br />
-                  <span className="font-bold">Portfolio</span> :{" "}
-                  {socials.portfolio}
-                  <hr className="mt-2 text-kz-orange" />
+                <div className="flex flex-col md:flex-row justify-between">
+                  <div className="my-2 flex flex-row gap-5">
+                    {socials.github && (
+                      <div>
+                        <a href={socials.github} target="_blank">
+                          <GithubIcon color="#ff644e" size={30} />
+                        </a>
+                      </div>
+                    )}
+                    {socials.linkedin && (
+                      <div>
+                        <a href={socials.linkedin} target="_blank">
+                          <LinkedinIcon color="#ff644e" size={30} />
+                        </a>
+                      </div>
+                    )}
+                    {socials.portfolio && (
+                      <div>
+                        <a href={socials.portfolio} target="_blank">
+                          <Globe color="#ff644e" size={30} />
+                        </a>
+                      </div>
+                    )}
+                    {socials.resume && (
+                      <div>
+                        <a href={socials.resume} target="_blank">
+                          <StickyNoteIcon color="#ff644e" size={30} />
+                        </a>
+                      </div>
+                    )}
+                    <br />
+                  </div>
+                  <div className="flex flex-row gap-4">
+                    <button
+                      className="text-kz-black bg-kz-red font-bold rounded-lg px-3 py-1 md:px-2 my-1"
+                      onClick={async () => {
+                        await handleReview("rejected");
+                      }}
+                    >
+                      Reject
+                    </button>
+                    <button
+                      className="text-kz-black font-bold rounded-lg px-2 my-1 bg-kz-green"
+                      onClick={async () => {
+                        await handleReview("accepted");
+                      }}
+                    >
+                      Call for Interview
+                    </button>
+                  </div>
                 </div>
+                <hr className="mt-2 text-kz-orange" />
                 <div>
                   <h1 className="my-2 font-bold">
                     The answers to questions you asked
@@ -142,24 +191,6 @@ const DisplayCard = ({
                       <p>Application Status: {application.status}</p>
                     </div>
                   ))}
-                </div>
-                <div className="flex flex-row justify-evenly">
-                  <button
-                    className="btn text-kz-black bg-kz-red"
-                    onClick={async () => {
-                      await handleReview("rejected");
-                    }}
-                  >
-                    Reject
-                  </button>
-                  <button
-                    className="btn text-kz-black bg-kz-green"
-                    onClick={async () => {
-                      await handleReview("accepted");
-                    }}
-                  >
-                    Call for Interview
-                  </button>
                 </div>
               </div>
             </div>
