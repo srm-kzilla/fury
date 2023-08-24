@@ -6,7 +6,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Component {...pageProps} />
-      <Toaster />
+      <Toaster position="top-right" />
     </>
   );
 }

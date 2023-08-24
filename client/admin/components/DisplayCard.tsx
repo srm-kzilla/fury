@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Drawer } from "vaul";
 import questionsData from "@/pages/api/questions.json";
 import nookies from "nookies";
-import toast from "react-hot-toast";
+import toast from "@/utils/toast";
 import type { Applicant } from "@/types";
 import { GithubIcon, Globe, LinkedinIcon, StickyNoteIcon } from "lucide-react";
 

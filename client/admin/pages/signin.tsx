@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { FormEvent } from "react";
 import { setCookie } from "nookies";
 import type { NextPage } from "next";
-import toast from "react-hot-toast";
+import toast from "@/utils/toast";
 
 const LoginPage: NextPage = () => {
   const router = useRouter();
@@ -79,10 +79,7 @@ const LoginPage: NextPage = () => {
             placeholder="ariyaaniscutebutsheiscuter"
           />
         </div>
-        <button
-          type="submit"
-          className="btn text-white bg-kz-orange"
-        >
+        <button type="submit" className="btn text-white bg-kz-orange">
           Login
         </button>
       </form>
