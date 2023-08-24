@@ -27,7 +27,7 @@ export function Index({ applications }: ApplicantProps) {
           <h1 className="text-kz-orange font-body font-bold text-xl">
             Fury Admin Dashboard
           </h1>
-          <button className="btn" onClick={handleLogout}>
+          <button className="btn text-white bg-kz-orange" onClick={handleLogout}>
             Logout
           </button>
         </div>

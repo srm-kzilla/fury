@@ -76,12 +76,12 @@ const LoginPage: NextPage = () => {
             className="bg-transparent border-b-2 w-full"
             type="password"
             name="password"
-            placeholder="ariyaaniscute"
+            placeholder="ariyaaniscutebutsheiscuter"
           />
         </div>
         <button
           type="submit"
-          className="btn"
+          className="btn text-white bg-kz-orange"
         >
           Login
         </button>

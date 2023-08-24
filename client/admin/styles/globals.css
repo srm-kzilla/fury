@@ -9,7 +9,7 @@ body {
 }
 
 .btn {
-  @apply text-white bg-kz-orange font-bold rounded-lg md:text-lg mt-5 px-5 py-1.5 text-center;
+  @apply font-bold rounded-lg md:text-lg mt-5 px-5 py-1.5 text-center;
 }
 
 ::-webkit-scrollbar {
