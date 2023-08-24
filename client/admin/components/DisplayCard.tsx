@@ -3,7 +3,7 @@ import { Drawer } from "vaul";
 import questions from "@/pages/api/questions.json";
 import nookies from "nookies";
 import { useState } from "react";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 const DisplayCard = ({
   _id,
