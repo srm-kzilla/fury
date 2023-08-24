@@ -57,9 +57,7 @@ const Footer = () => {
               <a href="https://medium.com/srmkzilla" target="blank">
                 Our Blog
               </a>
-              <a href="/faq" target="blank">
-                FAQs
-              </a>
+              <a href="/faq">FAQs</a>
             </div>
             <div className="flex flex-col gap-3 sm:items-start items-center text-center sm:text-left">
               <h2 className="text-highlight font-semibold lg:text-lg">

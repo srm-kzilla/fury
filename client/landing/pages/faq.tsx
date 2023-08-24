@@ -20,7 +20,7 @@ const Faq = () => {
         <meta />
       </Head>
       <Navbar />
-      <div className="font-sans mx-10 my-4 md:px-20">
+      <div className="font-sans mx-10 my-4 mb-16 md:px-20">
         <main className="text-base">
           <div className="container mx-auto">
             <h1 className="text-highlight text-4xl font-bold mb-8">
@@ -30,14 +30,16 @@ const Faq = () => {
               {faqs.map((faq, index) => (
                 <div key={index} className="mb-4">
                   <button
-                    className="text-white text-lg text-left font-semibold mb-2 flex flex-row gap-2"
+                    className="text-white text-2xl text-left font-semibold mb-2 flex flex-row gap-2"
                     onClick={() => toggleFAQ(index)}
                   >
                     <span className="text-highlight"> + </span>
                     {faq.question}
                   </button>
                   {activeId === index && (
-                    <p className="text-white font-light px-5">{faq.answer}</p>
+                    <p className="text-white text-lg font-light px-5">
+                      {faq.answer}
+                    </p>
                   )}
                 </div>
               ))}
