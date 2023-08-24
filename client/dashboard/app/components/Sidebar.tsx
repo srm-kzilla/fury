@@ -1,7 +1,8 @@
 import sidebarCSS from "~/styles/components/Sidebar.css";
-import { BiHomeCircle, BiLogOut, BiRocket } from "react-icons/bi";
+import { BiChat, BiHomeCircle, BiLogOut, BiRocket } from "react-icons/bi";
 import { Form, Link, useLocation, useNavigate } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
+import getEnv from "~/utils/env";
 
 export const links: LinksFunction = () => {
   return [
@@ -16,7 +17,7 @@ const Sidebar = () => {
   let location = useLocation();
   const navigate = useNavigate();
   const pathname = location.pathname;
-
+  const { LANDING_PAGE_URL } = getEnv();
   return (
     <div className="kz-sidebar">
       <div>
@@ -46,6 +47,15 @@ const Sidebar = () => {
               className={pathname === "/explore" ? "active" : ""}
             >
               <BiRocket />
+            </Link>
+          </li>
+          <li title="FAQ's">
+            <Link
+              to={LANDING_PAGE_URL + "faq"}
+              prefetch="viewport"
+              target="_blank"
+            >
+              <BiChat />
             </Link>
           </li>
         </ul>
