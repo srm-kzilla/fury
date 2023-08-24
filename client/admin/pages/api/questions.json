@@ -1,72 +1,93 @@
-{
-  "technical": [
-    "What does programming mean to you?",
-    "What new technology interests you the most, and why?",
-    "What is a tree (data structure ofc :p) and how would you explain it to a 5-year-old kid?",
-    "Is it still valuable to learn to code in the age of generative AI and no code tools?",
-    "How do you explain complex technical concepts to a person from a non-technical background? Take an example and explain it to us!",
-    "Are you currently working on any projects? if yes, what is the tech stack, and why did you choose that particular tech stack if not, what technologies are you looking forward to learning in the near future? (If the project is open source, give us the link! not mandatory but has brownie points)",
-    "What motivated you to join our technical club? How do you think you can contribute to the club?",
-    "How do you manage and learn from failures and setbacks in your work?"
-  ],
-  "photography": [
-    "How passionate are you about photography/videography? Tell us about your strengths in this area and prior experience (if any).",
-    "Which software do you use for editing images and videos? How proficient are you with these tools?",
-    "Which device do you use for photography/videography? What are the key features of your preferred equipment?",
-    "How, according to you, is event photography different from other forms of photography? What unique challenges and opportunities does event photography present?",
-    "Do you have any setup for capturing some of the most beautiful moments? This could include gear like DSLR, gimbal, drone, monopods, tripods, etc.",
-    "Along with following your passion, would you like to contribute to events planning, ideations, and event management? How do you see your photography skills complementing event organization?",
-    "We would love to see some of your past work too! Please provide a link to your portfolio or a Google Drive link with public access to view your work.",
-    "Record a small campus tour reel that includes campus buildings, portraits, close-up shots, people, etc. You can add suitable music to enhance the experience. (Enter Google Drive link for the video)"
-  ],
-  "content_writing": [
-    "What, according to you, is your best quality? How can that quality benefit the club? Explain using a scenario!",
-    "How would you describe your writing style?",
-    "Showcase your style with a short example please. How do you feel it would benefit the club’s social media engagement?",
-    "How comfortable are you with working under pressure? Elaborate a situation where you have kept a level-head during a crisis situation (no pressure).",
-    "Tell us something that you are passionate about. It could be anything from a hobby to a social cause. Have you been a part of any clubs or societies before? We would love to hear about it!",
-    "What kind of social media content excites Millennials/Gen Z? How can a technical club-like SRMKZILLA implement this kind of content while staying true to its technical roots?",
-    "What kind of social media content excites Millennials/Gen Z? How can a technical club-like SRMKZILLA implement this kind of content while staying true to its technical roots?",
-    "How would you increase SRMKZILLA's social media engagement for a product launch? (via stories/reels/posts) Head to our Instagram page and check out the posts on the update of our URL shrinker; Kzilla XYZ 2.0. Suggest ideas that can be used in the posts/videos/reels/story for the launch of the update. (put your endless scrolling through social media to good use xD)"
-  ],
-  "gfx": [
-    "Did you see our event poster for ? If you haven't, swiftly visit our Instagram page and check it out (https://www.instagram.com/p/Cv96ZrEvVgf/). We hope you liked it but can you make it better?",
-    "Suggest edits to our Multiverse of IoT poster and give it your awesome touch (instagram: https://www.instagram.com/p/Cd8b7GMPZ_Y/?utm_source=ig_web_copy_link)",
-    "If you are tasked with designing an Instagram series on Neural Networks. What would be your thought process behind it?",
-    "If you are tasked with designing an Instagram series on Neural Networks. What would be your thought process behind it?",
-    "If you are tasked with designing an Instagram series on Neural Networks. What would be your thought process behind it?",
-    "In Addition, What are the details that you would take into account for the posts of the series? You can use our series on Web 3 as a reference point (https://www.instagram.com/p/CgE0GV-vCFQ/?igshid=MzRlODBiNWFlZA==)",
-    "If you had the freedom to redesign the landing page of our recruitment portal what design changes would you make? link: https://recruitment.srmkzilla.net",
-    "Note: This task is mandatory for 2nd and 3rd-year students however we strongly recommend 1st-year students to give it a shot too.\nTask 1: Design an event poster\na. Topic: Designathon\nb. Required fields:\ni. Social Media footer\nii. Date/Time\niii. Registration link\niv. Custom heading/Event logo\nc. Size: 1080px by 1080px\nd. Export: JPEG format with the source file\ne. Bonus: To create greater impact, experiment with typography\nTask 2: Illustration(Adobe Illustrator, Affinity Designer, sketch)\na. Topic: Redesign the SRMKZILLA logo\nb. Size: 1080px by 1080px\nc. Export: JPEG format with the source file\nd. Bonus: Sign off your artwork with your own custom logo\nTask 3: UI/UX (Figma, Sketch)\na. Topic: Redesign RECRUITMENT homepage\nb. Export: JPEG format with the source file\nc. Bonus: Try to include gradient effect in elements."
-  ],
-  "vfx": [
-    "How would you keep up with the latest tools and software during your tenure?",
-    "How will you deal with a software mismatch when working with a team (for example: After Effects and Premier Pro)? What is your go-to tool for making a video?",
-    "What, according to you, is your best quality? How can that quality benefit the club’s social media engagement? Explain using a scenario!",
-    "How would you keep up with the latest tools and software during your tenure?",
-    "What, according to you, is your best quality? How can that quality benefit the club’s social media engagement? Explain using a scenario, we would love to hear about all the good stuff.",
-    "How would you keep up with the latest tools and software during your tenure?",
-    "What kind of social media content excites Millennials/Gen Z? How can a technical club-like SRMKZILLA implement this kind of content while staying true to its technical roots?",
-    "What, according to you, is your best quality? How can that quality benefit the club’s social media engagement? Explain using a scenario, we would love to hear about all the good stuff."
-  ],
-  "corporate": [
-    "How do you think you would be able to contribute to the club and this domain and how do you think the corporate domain works within a club?",
-    "What according to you makes you stand out and deserving to be on the team?",
-    "What according to you is the difference between sponsorship, marketing and advertising?",
-    "Rate your communication and collaboration skills out of 10 and state why?",
-    "After mutually agreeing to a sponsorship for an upcoming event, a sponsor backs out at the last minute. How would you as a member of the corporate domain handle this situation?",
-    "How do you think you would be able to contribute to the club and this domain and how do you think the corporate domain works within a club?",
-    "What according to you is the difference between sponsorship, marketing and advertising?",
-    "If you have any prior experiences in this domain, please mention them below."
-  ],
-  "events": [
-    "We know organizing events is fun, but we would still want to hear more about something that made you choose the events domain!",
-    "Do you have any prior experience in event planning or event management? If yes, we would love to know! If not, that’s okay too :)",
-    "What all characteristics, in your opinion, does a successful event have?",
-    "If you were to plan an interactive activity for the audience during the break time of a workshop, what would you wish to do?",
-    "Suppose you planned to organize a workshop in a hall with a capacity of 200 people, but you found out that only 120 people turned up out of 500 registrations. How would you react to this situation and what actions would you take?",
-    "The venue for your upcoming event faces unforeseen issues, forcing you to relocate the event just two days before the date. How would you manage this change and communicate it to attendees and stakeholders effectively?",
-    "If you were to plan an interactive activity for the audience during the break time of a workshop, what would you wish to do?",
-    "You are working with a team member who is not pulling their weight and is causing frustration among other team members. How would you address this issue while maintaining a positive team environment?"
-  ]
-}
+[
+  {
+    "domain": "technical",
+    "questions": [
+      "What does programming mean to you?",
+      "What new technology interests you the most, and why?",
+      "What is a tree (data structure ofc :p) and how would you explain it to a 5-year-old kid?",
+      "Is it still valuable to learn to code in the age of generative AI and no code tools?",
+      "How do you explain complex technical concepts to a person from a non-technical background? Take an example and explain it to us!",
+      "Are you currently working on any projects? if yes, what is the tech stack, and why did you choose that particular tech stack if not, what technologies are you looking forward to learning in the near future? (If the project is open source, give us the link! not mandatory but has brownie points)",
+      "What motivated you to join our technical club? How do you think you can contribute to the club?",
+      "How do you manage and learn from failures and setbacks in your work?"
+    ]
+  },
+  {
+    "domain": "photography",
+    "questions": [
+      "How passionate are you about photography/videography? Tell us about your strengths in this area and prior experience (if any).",
+      "Which software do you use for editing images and videos? How proficient are you with these tools?",
+      "Which device do you use for photography/videography? What are the key features of your preferred equipment?",
+      "How, according to you, is event photography different from other forms of photography? What unique challenges and opportunities does event photography present?",
+      "Do you have any setup for capturing some of the most beautiful moments? This could include gear like DSLR, gimbal, drone, monopods, tripods, etc.",
+      "Along with following your passion, would you like to contribute to events planning, ideations, and event management? How do you see your photography skills complementing event organization?",
+      "We would love to see some of your past work too! Please provide a link to your portfolio or a Google Drive link with public access to view your work.",
+      "Record a small campus tour reel that includes campus buildings, portraits, close-up shots, people, etc. You can add suitable music to enhance the experience. (Enter Google Drive link for the video)"
+    ]
+  },
+  {
+    "domain": "content_writing",
+    "questions": [
+      "What, according to you, is your best quality? How can that quality benefit the club? Explain using a scenario!",
+      "How would you describe your writing style?",
+      "Showcase your style with a short example please. How do you feel it would benefit the club’s social media engagement?",
+      "How comfortable are you with working under pressure? Elaborate a situation where you have kept a level-head during a crisis situation (no pressure).",
+      "Tell us something that you are passionate about. It could be anything from a hobby to a social cause. Have you been a part of any clubs or societies before? We would love to hear about it!",
+      "What kind of social media content excites Millennials/Gen Z? How can a technical club-like SRMKZILLA implement this kind of content while staying true to its technical roots?",
+      "What kind of social media content excites Millennials/Gen Z? How can a technical club-like SRMKZILLA implement this kind of content while staying true to its technical roots?",
+      "How would you increase SRMKZILLA's social media engagement for a product launch? (via stories/reels/posts) Head to our Instagram page and check out the posts on the update of our URL shrinker; Kzilla XYZ 2.0. Suggest ideas that can be used in the posts/videos/reels/story for the launch of the update. (put your endless scrolling through social media to good use xD)"
+    ]
+  },
+  {
+    "domain": "gfx",
+    "questions": [
+      "Did you see our event poster for ? If you haven't, swiftly visit our Instagram page and check it out (https://www.instagram.com/p/Cv96ZrEvVgf/). We hope you liked it but can you make it better?",
+      "Suggest edits to our Multiverse of IoT poster and give it your awesome touch (instagram: https://www.instagram.com/p/Cd8b7GMPZ_Y/?utm_source=ig_web_copy_link)",
+      "If you are tasked with designing an Instagram series on Neural Networks. What would be your thought process behind it?",
+      "If you are tasked with designing an Instagram series on Neural Networks. What would be your thought process behind it?",
+      "If you are tasked with designing an Instagram series on Neural Networks. What would be your thought process behind it?",
+      "In Addition, What are the details that you would take into account for the posts of the series? You can use our series on Web 3 as a reference point (https://www.instagram.com/p/CgE0GV-vCFQ/?igshid=MzRlODBiNWFlZA==)",
+      "If you had the freedom to redesign the landing page of our recruitment portal what design changes would you make? link: https://recruitment.srmkzilla.net",
+      "Note: This task is mandatory for 2nd and 3rd-year students however we strongly recommend 1st-year students to give it a shot too.\nTask 1: Design an event poster\na. Topic: Designathon\nb. Required fields:\ni. Social Media footer\nii. Date/Time\niii. Registration link\niv. Custom heading/Event logo\nc. Size: 1080px by 1080px\nd. Export: JPEG format with the source file\ne. Bonus: To create greater impact, experiment with typography\nTask 2: Illustration(Adobe Illustrator, Affinity Designer, sketch)\na. Topic: Redesign the SRMKZILLA logo\nb. Size: 1080px by 1080px\nc. Export: JPEG format with the source file\nd. Bonus: Sign off your artwork with your own custom logo\nTask 3: UI/UX (Figma, Sketch)\na. Topic: Redesign RECRUITMENT homepage\nb. Export: JPEG format with the source file\nc. Bonus: Try to include gradient effect in elements."
+    ]
+  },
+  {
+    "domain": "vfx",
+    "questions": [
+      "How would you keep up with the latest tools and software during your tenure?",
+      "How will you deal with a software mismatch when working with a team (for example: After Effects and Premier Pro)? What is your go-to tool for making a video?",
+      "What, according to you, is your best quality? How can that quality benefit the club’s social media engagement? Explain using a scenario!",
+      "How would you keep up with the latest tools and software during your tenure?",
+      "What, according to you, is your best quality? How can that quality benefit the club’s social media engagement? Explain using a scenario, we would love to hear about all the good stuff.",
+      "How would you keep up with the latest tools and software during your tenure?",
+      "What kind of social media content excites Millennials/Gen Z? How can a technical club-like SRMKZILLA implement this kind of content while staying true to its technical roots?",
+      "What, according to you, is your best quality? How can that quality benefit the club’s social media engagement? Explain using a scenario, we would love to hear about all the good stuff."
+    ]
+  },
+  {
+    "domain": "corporate",
+    "questions": [
+      "How do you think you would be able to contribute to the club and this domain and how do you think the corporate domain works within a club?",
+      "What according to you makes you stand out and deserving to be on the team?",
+      "What according to you is the difference between sponsorship, marketing and advertising?",
+      "Rate your communication and collaboration skills out of 10 and state why?",
+      "After mutually agreeing to a sponsorship for an upcoming event, a sponsor backs out at the last minute. How would you as a member of the corporate domain handle this situation?",
+      "How do you think you would be able to contribute to the club and this domain and how do you think the corporate domain works within a club?",
+      "What according to you is the difference between sponsorship, marketing and advertising?",
+      "If you have any prior experiences in this domain, please mention them below."
+    ]
+  },
+  {
+    "domain": "events",
+    "questions": [
+      "We know organizing events is fun, but we would still want to hear more about something that made you choose the events domain!",
+      "Do you have any prior experience in event planning or event management? If yes, we would love to know! If not, that’s okay too :)",
+      "What all characteristics, in your opinion, does a successful event have?",
+      "If you were to plan an interactive activity for the audience during the break time of a workshop, what would you wish to do?",
+      "Suppose you planned to organize a workshop in a hall with a capacity of 200 people, but you found out that only 120 people turned up out of 500 registrations. How would you react to this situation and what actions would you take?",
+      "The venue for your upcoming event faces unforeseen issues, forcing you to relocate the event just two days before the date. How would you manage this change and communicate it to attendees and stakeholders effectively?",
+      "If you were to plan an interactive activity for the audience during the break time of a workshop, what would you wish to do?",
+      "You are working with a team member who is not pulling their weight and is causing frustration among other team members. How would you address this issue while maintaining a positive team environment?"
+    ]
+  }
+]

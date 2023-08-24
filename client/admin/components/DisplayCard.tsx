@@ -6,13 +6,8 @@ import toast from "react-hot-toast";
 import type { Applicant } from "@/types";
 
 interface Questions {
-  technical: string[];
-  photography: string[];
-  content_writing: string[];
-  gfx: string[];
-  vfx: string[];
-  corporate: string[];
-  events: string[];
+  domain: string;
+  questions: string[];
 }
 
 const DisplayCard = ({
@@ -27,7 +22,7 @@ const DisplayCard = ({
   application,
   index,
 }: Applicant & { index: number }) => {
-  const questions: Questions = questionsData;
+  const questions: Questions[] = questionsData;
   const [status, setStatus] = useState(application[0].status);
 
   const handleReview = async (review: "accepted" | "rejected") => {
@@ -59,6 +54,10 @@ const DisplayCard = ({
       console.log(err);
     }
   };
+
+  const selectedDomainQuestions = questions.find(
+    (domain) => domain.domain === application[0].domain
+  );
 
   return (
     <div className="font-body w-full py-6 rounded-md mt-5 bg-kz-grey">
@@ -110,35 +109,30 @@ const DisplayCard = ({
                   <h1 className="my-2 font-bold">
                     The answers to questions you asked
                   </h1>
-                  {application.map((application, index) => (
-                    <div key={index}>
-                      <h3 className="flex gap-1">
-                        Application Domain:{" "}
-                        <div className=" font-bold">{application.domain}</div>
-                      </h3>
-                      <ul className=" mt-6">
-                        {application.questions
-                          ? application.questions.map((question, index) => {
-                              const allquestions =
-                                questions[
-                                  application.domain as keyof Questions
-                                ];
-                              const onequestion = allquestions![index];
+                  {application.map((application, index) => {
+                    return (
+                      <div key={index}>
+                        <h3 className="flex gap-1">
+                          Application Domain:{" "}
+                          <div className=" font-bold">{application.domain}</div>
+                        </h3>
+                        <ul className=" mt-6">
+                          {application.questions &&
+                            application.questions.map((question, index) => {
+                              const onequestion =
+                                selectedDomainQuestions?.questions[index];
                               return (
-                                <li
-                                  key={question.questionNumber}
-                                  className=" mt-2"
-                                >
+                                <li key={index} className=" mt-2">
                                   {question.questionNumber}. {onequestion}:
                                   <br /> Ans: {question.answer}
                                 </li>
                               );
-                            })
-                          : null}
-                      </ul>
-                      <p>Application Status: {application.status}</p>
-                    </div>
-                  ))}
+                            })}
+                        </ul>
+                        <p>Application Status: {application.status}</p>
+                      </div>
+                    );
+                  })}
                 </div>
                 <div className="flex flex-row justify-evenly">
                   <button
