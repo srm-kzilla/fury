@@ -4,8 +4,7 @@
 
 @font-face {
   font-family: "Caros";
-  src:
-    url("../../assets/fonts/CarosLight.woff2") format("woff2"),
+  src: url("../../assets/fonts/CarosLight.woff2") format("woff2"),
     url("../../assets/fonts/CarosLight.woff") format("woff");
   font-weight: 300;
   font-style: normal;
@@ -14,8 +13,7 @@
 
 @font-face {
   font-family: "Caros";
-  src:
-    url("../../assets/fonts/CarosBold.woff2") format("woff2"),
+  src: url("../../assets/fonts/CarosBold.woff2") format("woff2"),
     url("../../assets/fonts/CarosBold.woff") format("woff");
   font-weight: bold;
   font-style: normal;
@@ -24,8 +22,7 @@
 
 @font-face {
   font-family: "Caros";
-  src:
-    url("../../assets/fonts/CarosMedium.woff2") format("woff2"),
+  src: url("../../assets/fonts/CarosMedium.woff2") format("woff2"),
     url("../../assets/fonts/CarosMedium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
@@ -34,8 +31,7 @@
 
 @font-face {
   font-family: "Caros";
-  src:
-    url("../../assets/fonts/Caros.woff2") format("woff2"),
+  src: url("../../assets/fonts/Caros.woff2") format("woff2"),
     url("../../assets/fonts/Caros.woff") format("woff");
   font-weight: normal;
   font-style: normal;
@@ -43,9 +39,13 @@
 }
 
 div.kz-wrapper {
+  text-align: center;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: fit-content;
-  margin: 1rem auto;
+  margin: 1rem;
   padding: 0.5rem;
   height: fit-content;
   cursor: pointer;
@@ -62,10 +62,20 @@ div.kz-wrapper {
   &.active {
     div.kz-project-tile {
       border: 0.2rem solid var(--theme);
-      box-shadow:
-        0 0 5px #fff,
-        -5px 0 10px var(--theme),
+      box-shadow: 0 0 5px #fff, -5px 0 10px var(--theme),
         5px 0 10px var(--theme);
+    }
+  }
+}
+
+.tile {
+  height: 5.5rem;
+  width: inherit;
+  .icon {
+    svg {
+      width: 5rem;
+      height: 6rem;
+      color: $primary;
     }
   }
 }
@@ -84,10 +94,7 @@ div.kz-project-tile {
   overflow: hidden;
 
   &:hover {
-    box-shadow:
-      0 0 5px #fff,
-      -5px 0 10px var(--theme),
-      5px 0 10px var(--theme);
+    box-shadow: 0 0 5px #fff, -5px 0 10px var(--theme), 5px 0 10px var(--theme);
   }
 
   h2 {
@@ -129,6 +136,23 @@ div.kz-project-tile {
       height: 5rem;
       border: 1rem solid #fff;
       border-radius: 50%;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  div.kz-wrapper {
+    width: 5rem;
+    padding: 0rem;
+    .tile {
+      height: 3rem;
+      .icon {
+        svg {
+          width: 3rem;
+          height: 4rem;
+          color: $primary;
+        }
+      }
     }
   }
 }

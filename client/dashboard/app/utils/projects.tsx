@@ -1,8 +1,25 @@
+import {
+  BiChat,
+  BiDollar,
+  BiImage,
+  BiLogoDiscord,
+  BiLogoDiscordAlt,
+  BiMoney,
+  BiMovie,
+  BiMoviePlay,
+  BiNotepad,
+  BiPalette,
+  BiSolidBank,
+  BiSolidContact,
+  BiUpload,
+} from "react-icons/bi";
+
 export const projects = [
   {
     title: "Meme Gallery",
     domain: "technicalp",
     slug: "meme-gallery",
+    icon: <BiImage />,
     description:
       "Welcome to the exciting world of meme-sharing at SRMKZILLA! In this task, your creative prowess will shine as you design and implement a user-friendly, Meme Gallery, submission platform. Your mission is to provide meme enthusiasts with a seamless way to contribute their humorous masterpieces to the digital realm.",
     tasks: [
@@ -42,6 +59,7 @@ export const projects = [
     title: "KzForms",
     domain: "technicalp",
     slug: "kzforms",
+    icon: <BiNotepad />,
     description:
       "At SRMKZILLA, we never run out of forms to create and fill. For example, you are currently filling a form for recruitment. Your task will be to create a form and POST that data to a dummy API.",
     tasks: [
@@ -88,6 +106,7 @@ export const projects = [
     title: "Expense Tracker",
     domain: "technicalp",
     slug: "expense-tracker",
+    icon: <BiDollar />,
     description:
       "Living in SRM can be expensive, from canteen to Java, from Potheri to Pondy, it costs a lot of money to survive. Your task is to create an expense tracker that will help students keep track of their expenses so that they don't have to live on egg puffs and lime during the month end.",
     tasks: [
@@ -126,6 +145,7 @@ export const projects = [
     title: "Contact Manager",
     domain: "technicalp",
     slug: "contact-manager",
+    icon: <BiSolidContact />,
     description:
       "Managing contacts efficiently is essential for staying connected. Your task is to create a contact manager application that allows users to organize and access their contacts easily, ensuring they never lose touch with their important connections.",
     tasks: [
@@ -167,6 +187,7 @@ export const projects = [
     title: "TV show and Movie API",
     domain: "technicalp",
     slug: "movie-api",
+    icon: <BiMoviePlay />,
     description:
       "We all love watching movies and TV shows. Your task is to create an API that will allow users to store, read, update and delete movie and tv show data. ",
     tasks: [
@@ -214,6 +235,7 @@ export const projects = [
     title: "Discord Role Assignment Bot",
     domain: "technicalp",
     slug: "discord-role-bot",
+    icon: <BiLogoDiscordAlt />,
     description:
       "In the dynamic world of Discord servers, managing role assignments for users is essential. Your task is to create a versatile Discord bot that will enable users to assign and manage roles within a server seamlessly.",
     tasks: [
@@ -255,6 +277,7 @@ export const projects = [
     title: "CLI Chat with Websockets",
     domain: "technicalp",
     slug: "cli-chat-websockets",
+    icon: <BiChat />,
     description:
       "Real-time communication is essential in the digital era. Your task is to develop a Command Line Interface (CLI) chat application using Websockets that allows users to have interactive conversations seamlessly.",
     tasks: [
