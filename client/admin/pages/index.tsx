@@ -1,11 +1,46 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { FormEvent } from "react";
+import { setCookie } from "nookies";
 
 const LoginPage: NextPage = () => {
+  const router = useRouter();
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const data = {
+      email: formData.get("email"),
+      password: formData.get("password"),
+    };
+    const JSONdata = JSON.stringify(data);
+    const endpoint = "/api/form";
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSONdata,
+    };
+
+    try {
+      const response = await fetch(endpoint, options);
+      const data = await response.json();
+      if (response.status === 200) {
+        setCookie(null, "token", data.jwt, {
+          maxAge: 30 * 24 * 60 * 60,
+          path: "/",
+        });
+        router.push("/dashboard");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-kz-grey overflow-x-hidden">
       <Head>
-        <title>Signup</title>
+        <title>Sign In</title>
         <link rel="icon" href="/logo.svg" />
       </Head>
       <div className="flex h-screen w-full flex-col">
@@ -28,7 +63,7 @@ const LoginPage: NextPage = () => {
                   Sign In
                 </h1>
               </div>
-              <form className="space-y-9" action="" method="post">
+              <form onSubmit={handleSubmit}>
                 <div>
                   <label className=" text-kz-orange text-left font-outfit font-semibold text-xl md:text-2xl m-2">
                     Email

@@ -1,5 +1,9 @@
 import { Applicant } from "@/services/api";
 import { Drawer } from "vaul";
+import questions from "@/pages/api/questions.json";
+import nookies from "nookies";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
 const DisplayCard = ({
   _id,
@@ -12,24 +16,77 @@ const DisplayCard = ({
   contact,
   socials,
   application,
-}: Applicant) => {
+  index,
+}: Applicant & { index: number }) => {
+  const [status, setStatus] = useState(application[0].status);
+
+  const handleReview = async (review: string) => {
+    const token = nookies.get().token;
+    const data = {
+      regNo: regNo,
+      status: review,
+    };
+    const JSONdata = JSON.stringify(data);
+    const endpoint = "/api/review";
+    const options = {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSONdata,
+    };
+    try {
+      const response = await fetch(endpoint, options);
+      const data = await response.json();
+      if (response.status === 200) {
+        console.log("Review updated successfully");
+        setStatus(review);
+        review === "accpeted"
+          ? toast.success("Accepted")
+          : toast.error("Rejected");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  let color = "";
+  switch (status) {
+    case "accpeted":
+      color = "bg-kz-green";
+      break;
+    case "rejected":
+      color = "bg-kz-red";
+      break;
+  }
+
+  const clipName = (name: string) => {
+    if (name.length > 15) {
+      return name.slice(0, 15) + "...";
+    } else {
+      return name;
+    }
+  };
+
   return (
     <div
       key={_id}
-      className="shadow-card-shadow font-body w-full py-6 bg-kz-lt-grey rounded-md mt-5"
+      className="shadow-card-shadow font-body w-11/12 py-6 bg-kz-lt-grey rounded-md mt-5"
     >
       <Drawer.Root>
         <div className="flex flex-row justify-evenly items-center text-xs text-kz-white md:text-lg">
-          <div className="text-kz-white font-extrabold"># 1</div>
+          <div className="text-kz-white font-extrabold">#{index + 1}</div>
           <Drawer.Trigger>
-            <div className="hover:text-kz-orange">{name}</div>
+            <div className="hover:text-kz-orange">{clipName(name)}</div>
           </Drawer.Trigger>
           <div>{regNo}</div>
-          <div>{branch}</div>
           <div className="hidden md:block">{email}</div>
           <div className="hidden md:block">{contact}</div>
           <button>
-            <div className="w-3 h-3 rounded-full border border-kz-grey" />
+            <div
+              className={`w-3 h-3 rounded-full border border-kz-grey ${color}`}
+            />
           </button>
         </div>
 
@@ -59,24 +116,69 @@ const DisplayCard = ({
                   </h1>
                   {application.map((application, index) => (
                     <div key={index}>
-                      <h3>Application Domain: {application.domain}</h3>
-                      <ul>
-                        {application.questions.map((question) => (
-                          <li key={question.questionNumber}>
-                            Question {question.questionNumber}:{" "}
-                            {question.answer}
-                          </li>
-                        ))}
+                      <h3 className="flex gap-1">
+                        Application Domain:{" "}
+                        <div className=" font-bold">{application.domain}</div>
+                      </h3>
+                      <ul className=" mt-6">
+                        {application.questions
+                          ? application.questions.map((question, index) => {
+                              let allquestions;
+                              switch (application.domain) {
+                                case "technical":
+                                  allquestions = questions.technical;
+                                  break;
+                                case "events":
+                                  allquestions = questions.events;
+                                  break;
+                                case "photography":
+                                  allquestions = questions.photography;
+                                  break;
+                                case "content_writing":
+                                  allquestions = questions.content_writing;
+                                  break;
+                                case "gfx":
+                                  allquestions = questions.gfx;
+                                  break;
+                                case "vfx":
+                                  allquestions = questions.vfx;
+                                  break;
+                                case "corporate":
+                                  allquestions = questions.corporate;
+                                  break;
+                              }
+                              const onequestion = allquestions![index];
+                              return (
+                                <li
+                                  key={question.questionNumber}
+                                  className=" mt-2"
+                                >
+                                  {question.questionNumber}. {onequestion}:
+                                  <br /> Ans: {question.answer}
+                                </li>
+                              );
+                            })
+                          : null}
                       </ul>
                       <p>Application Status: {application.status}</p>
                     </div>
                   ))}
                 </div>
                 <div className="flex flex-row justify-evenly">
-                  <button className="text-white text-sm md:text-lg px-3 py-2 bg-kz-red rounded-2xl hover:scale-110 font-medium">
+                  <button
+                    className="text-white text-sm md:text-lg px-3 py-2 bg-kz-red rounded-2xl hover:scale-110 font-medium"
+                    onClick={() => {
+                      handleReview("rejected");
+                    }}
+                  >
                     Reject
                   </button>
-                  <button className="text-white text-sm md:text-lg px-3 py-2 bg-kz-green rounded-2xl hover:scale-110 font-medium">
+                  <button
+                    className="text-white text-sm md:text-lg px-3 py-2 bg-kz-green rounded-2xl hover:scale-110 font-medium"
+                    onClick={() => {
+                      handleReview("accpeted");
+                    }}
+                  >
                     Call for Interview
                   </button>
                 </div>
