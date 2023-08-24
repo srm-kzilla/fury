@@ -28,6 +28,7 @@ export interface Applicant {
     github: string;
     linkedin: string;
     portfolio: string;
+    resume:string;
   };
   year: number;
 }
