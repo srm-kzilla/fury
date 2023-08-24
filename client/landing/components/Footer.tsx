@@ -4,6 +4,7 @@ import YoutubeLineIcon from "remixicon-react/YoutubeLineIcon";
 import MailLine from "remixicon-react/MailLineIcon";
 import LinkedInBoxLine from "remixicon-react/LinkedinBoxLineIcon";
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -57,7 +58,7 @@ const Footer = () => {
               <a href="https://medium.com/srmkzilla" target="blank">
                 Our Blog
               </a>
-              <a href="/faq">FAQs</a>
+              <Link href="/faq">FAQs</Link>
             </div>
             <div className="flex flex-col gap-3 sm:items-start items-center text-center sm:text-left">
               <h2 className="text-highlight font-semibold lg:text-lg">
@@ -88,9 +89,9 @@ const Footer = () => {
       <div className="flex justify-center sm:justify-end gap-16 py-3 px-4 md:px-0">
         <div className="flex flex-col">
           <div className="text-highlight">
-            <a href="privacy-policy" target="blank">
-              <div>Privacy Policy</div>
-            </a>
+            <Link href="/privacy-policy">
+              Privacy Policy
+            </Link>
           </div>
         </div>
       </div>
