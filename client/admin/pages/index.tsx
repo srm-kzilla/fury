@@ -1,114 +1,71 @@
-import type { NextPage } from "next";
+import DisplayCard from "@/components/DisplayCard";
 import Head from "next/head";
+import { Applicant } from "@/types";
+import nookies from "nookies";
 import { useRouter } from "next/router";
-import { FormEvent } from "react";
-import { setCookie } from "nookies";
+import type { GetServerSidePropsContext } from "next";
 
-const LoginPage: NextPage = () => {
+interface ApplicantProps {
+  applications: Applicant[];
+}
+
+export function Index({ applications }: ApplicantProps) {
   const router = useRouter();
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const data = {
-      email: formData.get("email"),
-      password: formData.get("password"),
-    };
-    const JSONdata = JSON.stringify(data);
-    const endpoint = "/api/form";
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSONdata,
-    };
 
-    try {
-      const response = await fetch(endpoint, options);
-      const data = await response.json();
-      if (response.status === 200) {
-        setCookie(null, "token", data.jwt, {
-          maxAge: 30 * 24 * 60 * 60,
-          path: "/",
-        });
-        router.push("/dashboard");
-      }
-    } catch (err) {
-      console.log(err);
-    }
+  const handleLogout = async () => {
+    nookies.destroy(null, "token");
+    await router.push("/");
   };
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-kz-grey overflow-x-hidden">
+    <>
       <Head>
-        <title>Sign In</title>
-        <link rel="icon" href="/logo.svg" />
+        <title>Admin Dashboard</title>
       </Head>
-      <div className="flex h-screen w-full flex-col">
-        <div className="flex flex-col h-full w-full lg:flex-row">
-          <div className="w-full lg:h-full h-fit lg:w-5/12">
-            <div className="flex justify-center h-fit lg:h-[50vh]">
-              <div className="justify-center h-fit lg:h-[50vh]">
-                <div className="relative h-1/2 center md:pl-12">
-                  <div className="lg:mt-20 h-full w-full font-josefinSans mt-2 font-bold text-kz-orange md:text-[7vw] text-[3rem] ">
-                    AdminPanel
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="z-0 flex h-full w-full lg:w-7/12 items-center justify-center">
-            <div className="flex relative h-fit w-fit lg:w-7/12 xl:w-5/12 flex-col rounded-xl bg-kz-lt-grey px-10 py-12 sm:py-16 sm:pt-10 space-y-8 drop-shadow-2xl outline outline-1 shadow-3xl">
-              <div className="absolute left-4 -top-[8vh] lg:-rotate-90 lg:-left-[14vh] lg:top-[6vh]">
-                <h1 className="text-[6vh] font-outfit font-bold text-gray-500">
-                  Sign In
-                </h1>
-              </div>
-              <form onSubmit={handleSubmit}>
-                <div>
-                  <label className=" text-kz-orange text-left font-outfit font-semibold text-xl md:text-2xl m-2">
-                    Email
-                  </label>
-                  <div className="w-full p-2 flex items-center rounded-xl ">
-                    <input
-                      className="bg-transparent border-b-2 text-gray-500 font-medium outline-none w-full text-l"
-                      type="email"
-                      id="email"
-                      name="email"
-                      placeholder="Enter your user name"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className=" text-kz-orange text-left font-outfit font-semibold text-xl md:text-2xl m-2">
-                    Password
-                  </label>
-                  <div className="w-full p-2 flex items-center rounded-xl ">
-                    <input
-                      className="bg-transparent border-b-2 text-gray-500 font-medium outline-none w-full text-l"
-                      type="password"
-                      id="password"
-                      name="password"
-                      placeholder="Enter your Password"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <div className="px-2 sm:px-5 max-w-sm ">
-                    <button
-                      type="submit"
-                      className="text-white w-full bg-kz-orange hover:shadow-box-shadow focus:outline-none font-medium rounded-lg md:text-sm px-5 py-2.5 text-center justify-between"
-                    >
-                      Login
-                    </button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
+      <div className="my-10">
+        <div className="flex w-[70vw] mx-auto my-12 justify-between items-center">
+          <h1 className="text-kz-orange font-body font-bold text-xl">
+            Fury Admin Dashboard
+          </h1>
+          <button className="btn" onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
+        <div className="flex flex-col w-[70vw] mx-auto">
+          {applications.map((application: Applicant, index) => (
+            <DisplayCard key={application.email} {...application} index={index} />
+          ))}
         </div>
       </div>
-    </div>
+    </>
   );
-};
+}
 
-export default LoginPage;
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const { token } = nookies.get(context);
+
+  if (!token) {
+    return {
+      redirect: {
+        destination: "/signin",
+        permanent: false,
+      },
+    };
+  }
+
+  const response = await fetch(`${process.env.API_URL}/applications`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  const applications: Applicant[] = await response.json();
+
+  return {
+    props: {
+      applications,
+    },
+  };
+}
+
+export default Index;

@@ -19,6 +19,7 @@
     "next": "13.4.12",
     "nookies": "^2.5.2",
     "postcss": "8.4.27",
+    "prettier": "^3.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.1",

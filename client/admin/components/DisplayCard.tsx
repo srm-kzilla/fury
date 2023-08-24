@@ -1,9 +1,9 @@
-import { Applicant } from "@/services/api";
+import { useState } from "react";
 import { Drawer } from "vaul";
 import questions from "@/pages/api/questions.json";
 import nookies from "nookies";
-import { useState } from "react";
 import toast from "react-hot-toast";
+import type { Applicant } from "@/types";
 
 const DisplayCard = ({
   _id,
@@ -40,9 +40,8 @@ const DisplayCard = ({
       const response = await fetch(endpoint, options);
       const data = await response.json();
       if (response.status === 200) {
-        console.log("Review updated successfully");
         setStatus(review);
-        review === "accpeted"
+        review === "accepted"
           ? toast.success("Accepted")
           : toast.error("Rejected");
       }
@@ -53,7 +52,7 @@ const DisplayCard = ({
 
   let color = "";
   switch (status) {
-    case "accpeted":
+    case "accepted":
       color = "bg-kz-green";
       break;
     case "rejected":
@@ -61,37 +60,27 @@ const DisplayCard = ({
       break;
   }
 
-  const clipName = (name: string) => {
-    if (name.length > 15) {
-      return name.slice(0, 15) + "...";
-    } else {
-      return name;
-    }
-  };
-
   return (
     <div
-      key={_id}
-      className="shadow-card-shadow font-body w-11/12 py-6 bg-kz-lt-grey rounded-md mt-5"
+      className="font-body w-full py-6 rounded-md mt-5 bg-kz-grey"
     >
       <Drawer.Root>
-        <div className="flex flex-row justify-evenly items-center text-xs text-kz-white md:text-lg">
-          <div className="text-kz-white font-extrabold">#{index + 1}</div>
+        <div className="flex flex-row bg-kz-grey justify-around items-center text-xs md:text-lg">
           <Drawer.Trigger>
-            <div className="hover:text-kz-orange">{clipName(name)}</div>
+            <div className="hover:text-kz-orange w-[25vw] truncate text-left font-bold"><span className="font-normal mr-3">#{index + 1}</span>{name}</div>
           </Drawer.Trigger>
-          <div>{regNo}</div>
-          <div className="hidden md:block">{email}</div>
-          <div className="hidden md:block">{contact}</div>
+          <div className="w-[10vw] text-left">{regNo}</div>
+          <div className="hidden md:block w-[12vw] text-left">{email}</div>
+          <div className="hidden md:block w-[10vw] text-left">{contact}</div>
           <button>
             <div
-              className={`w-3 h-3 rounded-full border border-kz-grey ${color}`}
+              className={`w-4 h-4 rounded-full border-2 border-kz-black ${color}`}
             />
           </button>
         </div>
 
         <Drawer.Portal>
-          <Drawer.Overlay className="fixed bg-kz-lt-grey" />
+          <Drawer.Overlay className="fixed bg-kz-black" />
           <Drawer.Content className="bg-kz-grey flex flex-col fixed max-h-[85vh] mt-24 bottom-0 left-0 right-0">
             <div className="w-screen overflow-auto px-10 p-5 rounded-t-3xl  bg-kz-lt-grey text-kz-white">
               <div className="mx-auto w-12 h-1.5 rounded-full bg-kz-orange mb-8" />
@@ -176,7 +165,7 @@ const DisplayCard = ({
                   <button
                     className="text-white text-sm md:text-lg px-3 py-2 bg-kz-green rounded-2xl hover:scale-110 font-medium"
                     onClick={() => {
-                      handleReview("accpeted");
+                      handleReview("accepted");
                     }}
                   >
                     Call for Interview

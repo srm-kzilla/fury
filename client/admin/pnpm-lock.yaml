@@ -35,6 +35,9 @@ dependencies:
   postcss:
     specifier: 8.4.27
     version: 8.4.27
+  prettier:
+    specifier: ^3.0.2
+    version: 3.0.2
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -2566,6 +2569,12 @@ packages:
   /prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
+    dev: false
+
+  /prettier@3.0.2:
+    resolution: {integrity: sha512-o2YR9qtniXvwEZlOKbveKfDQVyqxbEIWn48Z8m3ZJjBjcCmUy3xZGIv+7AkaeuaTr6yPXJjwv07ZWlsWbEy1rQ==}
+    engines: {node: '>=14'}
+    hasBin: true
     dev: false
 
   /prop-types@15.8.1:

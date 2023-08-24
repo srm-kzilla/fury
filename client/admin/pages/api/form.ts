@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
 
-const handelSubmit = async ({
+const handleSubmit = async ({
   form,
 }: {
   form: { email: string; password: string };
@@ -29,7 +29,7 @@ export default async function handler(
     email: body.email,
     password: body.password,
   };
-  const result = await handelSubmit({ form });
+  const result = await handleSubmit({ form });
   if (result.success) {
     res.send(result);
   } else {
