@@ -140,6 +140,7 @@ export const loader: LoaderFunction = () => {
   const envObj = {
     env: {
       APPLICATION_DEADLINE: env.APPLICATION_DEADLINE,
+      LANDING_PAGE_URL: env.LANDING_PAGE_URL,
     },
   };
 

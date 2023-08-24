@@ -58,7 +58,7 @@ const Footer = () => {
                 Our Blog
               </a>
               <a href="/faq" target="blank">
-                FAQ's
+                FAQs
               </a>
             </div>
             <div className="flex flex-col gap-3 sm:items-start items-center text-center sm:text-left">
@@ -80,11 +80,11 @@ const Footer = () => {
           </div>
         </div>
         <div className="flex flex-col items-center justify-center basis-1/3">
-          {/* <a href="https://dashboard.kzilla.xyz" target="_blank"> */}
-          <div className="relative w-64 h-64">
-            <Image src="srmkzilla-join-now.svg" alt="SRMKZILLA" fill />
-          </div>
-          {/* </a> */}
+          <a href="https://dash.kzilla.xyz">
+            <div className="relative w-64 h-64">
+              <Image src="srmkzilla-join-now.svg" alt="SRMKZILLA" fill />
+            </div>
+          </a>
         </div>
       </div>
       <div className="flex justify-center sm:justify-end gap-16 py-3 px-4 md:px-0">
