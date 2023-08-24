@@ -1,9 +1,19 @@
 import { useState } from "react";
 import { Drawer } from "vaul";
-import questions from "@/pages/api/questions.json";
+import questionsData from "@/pages/api/questions.json";
 import nookies from "nookies";
 import toast from "react-hot-toast";
 import type { Applicant } from "@/types";
+
+interface Questions {
+  technical: string[];
+  photography: string[];
+  content_writing: string[];
+  gfx: string[];
+  vfx: string[];
+  corporate: string[];
+  events: string[];
+}
 
 const DisplayCard = ({
   name,
@@ -17,6 +27,7 @@ const DisplayCard = ({
   application,
   index,
 }: Applicant & { index: number }) => {
+  const questions: Questions = questionsData;
   const [status, setStatus] = useState(application[0].status);
 
   const handleReview = async (review: "accepted" | "rejected") => {
@@ -64,7 +75,13 @@ const DisplayCard = ({
           <div className="hidden md:block w-[10vw] text-left">{contact}</div>
           <button>
             <div
-              className={`w-4 h-4 rounded-full border-2 border-kz-black ${status === "accepted" ? "bg-kz-green" : status === "rejected" ? "bg-kz-red" : "bg-kz-yellow"}`}
+              className={`w-4 h-4 rounded-full border-2 border-kz-black ${
+                status === "accepted"
+                  ? "bg-kz-green"
+                  : status === "rejected"
+                  ? "bg-kz-red"
+                  : "bg-kz-yellow"
+              }`}
             />
           </button>
         </div>
@@ -102,30 +119,10 @@ const DisplayCard = ({
                       <ul className=" mt-6">
                         {application.questions
                           ? application.questions.map((question, index) => {
-                              let allquestions;
-                              switch (application.domain) {
-                                case "technical":
-                                  allquestions = questions.technical;
-                                  break;
-                                case "events":
-                                  allquestions = questions.events;
-                                  break;
-                                case "photography":
-                                  allquestions = questions.photography;
-                                  break;
-                                case "content_writing":
-                                  allquestions = questions.content_writing;
-                                  break;
-                                case "gfx":
-                                  allquestions = questions.gfx;
-                                  break;
-                                case "vfx":
-                                  allquestions = questions.vfx;
-                                  break;
-                                case "corporate":
-                                  allquestions = questions.corporate;
-                                  break;
-                              }
+                              const allquestions =
+                                questions[
+                                  application.domain as keyof Questions
+                                ];
                               const onequestion = allquestions![index];
                               return (
                                 <li
