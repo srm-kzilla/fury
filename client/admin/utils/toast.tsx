@@ -1,3 +1,4 @@
+import { LucideCircleSlash } from "lucide-react";
 import toast from "react-hot-toast";
 
 const toastBaseOptions = {
@@ -7,6 +8,13 @@ const toastBaseOptions = {
     border: "1px solid #fff",
     maxWidth: "250px",
   },
+};
+
+const showToast = (message: string, style: object) => {
+  toast(<h1>{message}</h1>, {
+    ...style,
+    icon: <LucideCircleSlash />,
+  });
 };
 
 export default {
@@ -21,5 +29,10 @@ export default {
     toast.success(message, {
       ...toastBaseOptions,
       style: { ...toastBaseOptions.style, border: "1px solid #008000" },
+    }),
+  pending: (message: string) =>
+    showToast(message, {
+      ...toastBaseOptions,
+      style: { ...toastBaseOptions.style, border: "1px solid #f9d56e" },
     }),
 };
