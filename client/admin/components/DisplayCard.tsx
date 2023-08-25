@@ -48,7 +48,7 @@ const DisplayCard = ({
   };
 
   const selectedDomainQuestions = questions.find(
-    (domain) => domain.domain === application[0].domain,
+    (domain) => domain.domain === application[0].domain
   );
 
   if (!selectedDomainQuestions) {
@@ -153,16 +153,21 @@ const DisplayCard = ({
                       </h3>
                       <ul className="flex flex-col gap-3 mt-6 text-lg">
                         {application.questions &&
-                          application.questions.map(({ questionNumber, answer }, index) => (
-                            <li key={index} className="mt-2">
-                              <div>
-                                {selectedDomainQuestions?.questions[index]}
-                              </div>
-                              <div className="text-2xl font-bold">
-                                {answer}
-                              </div>
-                            </li>
-                          ))}
+                          application.questions.map(
+                            ({ questionNumber, answer }, index) => (
+                              <li key={index} className="mt-2">
+                                <div className="flex flex-row gap-2">
+                                  Q.{" "}
+                                  <span>
+                                    {selectedDomainQuestions?.questions[index]}
+                                  </span>
+                                </div>
+                                <div className="text-2xl font-bold flex flex-row gap-2">
+                                  Ans. <span>{answer}</span>
+                                </div>
+                              </li>
+                            )
+                          )}
                       </ul>
                     </div>
                   ))}
