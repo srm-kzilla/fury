@@ -49,6 +49,11 @@ const DisplayCard = ({
     }
   };
 
+  const handleCopy = (text: string) => {
+    navigator.clipboard.writeText(text);
+    toast.show(`Copied "${text}" to clipboard`, "📋");
+  };
+
   const selectedDomainQuestions = questions.find(
     (domain) => domain.domain === application[0].domain
   );
@@ -68,8 +73,22 @@ const DisplayCard = ({
             </div>
           </Drawer.Trigger>
           <div className="w-[10vw] text-left">{regNo}</div>
-          <div className="hidden md:block w-[12vw] text-left">{email}</div>
-          <div className="hidden md:block w-[10vw] text-left">{contact}</div>
+          <button
+            className="hidden md:block w-[12vw] text-left hover:cursor-copy"
+            onClick={() => {
+              handleCopy(email);
+            }}
+          >
+            {email}
+          </button>
+          <button
+            className="hidden md:block w-[10vw] text-left hover:cursor-copy"
+            onClick={() => {
+              handleCopy(contact);
+            }}
+          >
+            {contact}
+          </button>
           <button>
             <div
               className={`w-4 h-4 rounded-full border-2 border-kz-black ${
