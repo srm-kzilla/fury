@@ -2,6 +2,7 @@ import DisplayCard from "@/components/DisplayCard";
 import Head from "next/head";
 import { Applicant } from "@/types";
 import nookies from "nookies";
+import jwt_decode from "jwt-decode";
 import { useRouter } from "next/router";
 import type { GetServerSidePropsContext } from "next";
 
@@ -11,6 +12,9 @@ interface ApplicantProps {
 
 export function Index({ applications }: ApplicantProps) {
   const router = useRouter();
+
+  const { token } = nookies.get();
+  const { iss }: { iss: string } = jwt_decode(token);
 
   const handleLogout = async () => {
     nookies.destroy(null, "token");
@@ -25,12 +29,16 @@ export function Index({ applications }: ApplicantProps) {
       </Head>
       <div className="my-10">
         <div className="flex w-[70vw] mx-auto my-12 justify-between items-center">
-          <h1 className="text-kz-orange font-body font-bold text-xl">
-            Fury
-          </h1>
-          <button className="btn text-white bg-kz-orange" onClick={handleLogout}>
-            Logout
-          </button>
+          <h1 className="text-kz-orange font-body font-bold text-xl">Fury</h1>
+          <div className="flex flex-col gap-3">
+            <button
+              className="btn text-white bg-kz-orange w-fit self-end"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+            <div className="text-lg">Logged in as <span className="text-kz-orange font-bold">{iss}</span></div>
+          </div>
         </div>
         <div className="flex flex-col w-[70vw] mx-auto">
           {applications.map((application: Applicant, index) => (
