@@ -47,8 +47,13 @@ const DisplayCard = ({
     }
   };
 
+  const handleCopy = (text: string) => {
+    navigator.clipboard.writeText(text);
+    toast.success("Copied to clipboard");
+  };
+
   const selectedDomainQuestions = questions.find(
-    (domain) => domain.domain === application[0].domain,
+    (domain) => domain.domain === application[0].domain
   );
 
   if (!selectedDomainQuestions) {
@@ -66,8 +71,22 @@ const DisplayCard = ({
             </div>
           </Drawer.Trigger>
           <div className="w-[10vw] text-left">{regNo}</div>
-          <div className="hidden md:block w-[12vw] text-left">{email}</div>
-          <div className="hidden md:block w-[10vw] text-left">{contact}</div>
+          <button
+            className="hidden md:block w-[12vw] text-left"
+            onClick={() => {
+              handleCopy(email);
+            }}
+          >
+            {email}
+          </button>
+          <button
+            className="hidden md:block w-[10vw] text-left"
+            onClick={() => {
+              handleCopy(contact);
+            }}
+          >
+            {contact}
+          </button>
           <button>
             <div
               className={`w-4 h-4 rounded-full border-2 border-kz-black ${
@@ -153,16 +172,18 @@ const DisplayCard = ({
                       </h3>
                       <ul className="flex flex-col gap-3 mt-6 text-lg">
                         {application.questions &&
-                          application.questions.map(({ questionNumber, answer }, index) => (
-                            <li key={index} className="mt-2">
-                              <div>
-                                {selectedDomainQuestions?.questions[index]}
-                              </div>
-                              <div className="text-2xl font-bold">
-                                {answer}
-                              </div>
-                            </li>
-                          ))}
+                          application.questions.map(
+                            ({ questionNumber, answer }, index) => (
+                              <li key={index} className="mt-2">
+                                <div>
+                                  {selectedDomainQuestions?.questions[index]}
+                                </div>
+                                <div className="text-2xl font-bold">
+                                  {answer}
+                                </div>
+                              </li>
+                            )
+                          )}
                       </ul>
                     </div>
                   ))}
