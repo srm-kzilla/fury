@@ -17,7 +17,7 @@ const DisplayCard = ({
 }: Applicant & { index: number }) => {
   const [status, setStatus] = useState(application[0].status);
 
-  const handleReview = async (review: "accepted" | "rejected") => {
+  const handleReview = async (review: "accepted" | "rejected" | "pending") => {
     const { token } = nookies.get();
 
     const data = {
@@ -39,12 +39,19 @@ const DisplayCard = ({
         setStatus(review);
         review === "accepted"
           ? toast.success("Accepted")
+          : review === "pending"
+          ? toast.pending("Pending")
           : toast.error("Rejected");
       }
     } catch (err) {
       toast.error("Something went wrong");
       console.log(err);
     }
+  };
+
+  const handleCopy = (text: string) => {
+    navigator.clipboard.writeText(text);
+    toast.show(`Copied "${text}" to clipboard`, "📋");
   };
 
   const selectedDomainQuestions = questions.find(
@@ -66,8 +73,22 @@ const DisplayCard = ({
             </div>
           </Drawer.Trigger>
           <div className="w-[10vw] text-left">{regNo}</div>
-          <div className="hidden md:block w-[12vw] text-left">{email}</div>
-          <div className="hidden md:block w-[10vw] text-left">{contact}</div>
+          <button
+            className="hidden md:block w-[12vw] text-left hover:cursor-copy"
+            onClick={() => {
+              handleCopy(email);
+            }}
+          >
+            {email}
+          </button>
+          <button
+            className="hidden md:block w-[10vw] text-left hover:cursor-copy"
+            onClick={() => {
+              handleCopy(contact);
+            }}
+          >
+            {contact}
+          </button>
           <button>
             <div
               className={`w-4 h-4 rounded-full border-2 border-kz-black ${
@@ -129,6 +150,14 @@ const DisplayCard = ({
                       }}
                     >
                       Call for Interview
+                    </button>
+                    <button
+                      className="text-kz-black font-bold rounded-lg px-2 my-1 bg-kz-yellow"
+                      onClick={async () => {
+                        await handleReview("pending");
+                      }}
+                    >
+                      Mark as Pending
                     </button>
                   </div>
                 </div>

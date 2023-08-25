@@ -65,7 +65,7 @@ func GetApplications(c *fiber.Ctx) error {
 	}
 	defer cursor.Close(context.Background())
 
-	var applications []bson.M
+	var applications []models.User
 	if err := cursor.All(context.Background(), &applications); err != nil {
 		log.Fatal(err)
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
@@ -74,7 +74,20 @@ func GetApplications(c *fiber.Ctx) error {
 		})
 	}
 
-	return c.Status(fiber.StatusOK).JSON(applications)
+	var finalApplications []models.User
+
+	for _, data := range applications {
+		var domainApplication []models.Application
+		for _, application := range data.Application {
+			if application.Domain == domain {
+				domainApplication = append(domainApplication, application)
+			}
+		}
+		data.Application = domainApplication
+		finalApplications = append(finalApplications, data)
+	}
+
+	return c.Status(fiber.StatusOK).JSON(finalApplications)
 }
 
 func UpdateApplications(c *fiber.Ctx) error {
