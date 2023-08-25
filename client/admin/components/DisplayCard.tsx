@@ -185,11 +185,14 @@ const DisplayCard = ({
                           application.questions.map(
                             ({ questionNumber, answer }, index) => (
                               <li key={index} className="mt-2">
-                                <div>
-                                  {selectedDomainQuestions?.questions[index]}
+                                <div className="flex flex-row gap-2">
+                                  Q.{" "}
+                                  <span>
+                                    {selectedDomainQuestions?.questions[index]}
+                                  </span>
                                 </div>
-                                <div className="text-2xl font-bold">
-                                  {answer}
+                                <div className="text-2xl font-bold flex flex-row gap-2">
+                                  Ans. <span>{answer}</span>
                                 </div>
                               </li>
                             )
