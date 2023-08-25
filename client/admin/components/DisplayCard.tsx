@@ -72,7 +72,7 @@ const DisplayCard = ({
           </Drawer.Trigger>
           <div className="w-[10vw] text-left">{regNo}</div>
           <button
-            className="hidden md:block w-[12vw] text-left"
+            className="hidden md:block w-[12vw] text-left hover:cursor-copy"
             onClick={() => {
               handleCopy(email);
             }}
@@ -80,7 +80,7 @@ const DisplayCard = ({
             {email}
           </button>
           <button
-            className="hidden md:block w-[10vw] text-left"
+            className="hidden md:block w-[10vw] text-left hover:cursor-copy"
             onClick={() => {
               handleCopy(contact);
             }}
