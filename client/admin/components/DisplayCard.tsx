@@ -49,7 +49,7 @@ const DisplayCard = ({
 
   const handleCopy = (text: string) => {
     navigator.clipboard.writeText(text);
-    toast.success("Copied to clipboard");
+    toast.show(`Copied "${text}" to clipboard`, "📋");
   };
 
   const selectedDomainQuestions = questions.find(
