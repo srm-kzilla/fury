@@ -17,7 +17,7 @@ const DisplayCard = ({
 }: Applicant & { index: number }) => {
   const [status, setStatus] = useState(application[0].status);
 
-  const handleReview = async (review: "accepted" | "rejected") => {
+  const handleReview = async (review: "accepted" | "rejected" | "pending") => {
     const { token } = nookies.get();
 
     const data = {
@@ -39,6 +39,8 @@ const DisplayCard = ({
         setStatus(review);
         review === "accepted"
           ? toast.success("Accepted")
+          : review === "pending"
+          ? toast.pending("Pending")
           : toast.error("Rejected");
       }
     } catch (err) {
@@ -48,7 +50,7 @@ const DisplayCard = ({
   };
 
   const selectedDomainQuestions = questions.find(
-    (domain) => domain.domain === application[0].domain,
+    (domain) => domain.domain === application[0].domain
   );
 
   if (!selectedDomainQuestions) {
@@ -130,6 +132,14 @@ const DisplayCard = ({
                     >
                       Call for Interview
                     </button>
+                    <button
+                      className="text-kz-black font-bold rounded-lg px-2 my-1 bg-kz-yellow"
+                      onClick={async () => {
+                        await handleReview("pending");
+                      }}
+                    >
+                      Mark as Pending
+                    </button>
                   </div>
                 </div>
                 <div className="my-10">
@@ -153,16 +163,18 @@ const DisplayCard = ({
                       </h3>
                       <ul className="flex flex-col gap-3 mt-6 text-lg">
                         {application.questions &&
-                          application.questions.map(({ questionNumber, answer }, index) => (
-                            <li key={index} className="mt-2">
-                              <div>
-                                {selectedDomainQuestions?.questions[index]}
-                              </div>
-                              <div className="text-2xl font-bold">
-                                {answer}
-                              </div>
-                            </li>
-                          ))}
+                          application.questions.map(
+                            ({ questionNumber, answer }, index) => (
+                              <li key={index} className="mt-2">
+                                <div>
+                                  {selectedDomainQuestions?.questions[index]}
+                                </div>
+                                <div className="text-2xl font-bold">
+                                  {answer}
+                                </div>
+                              </li>
+                            )
+                          )}
                       </ul>
                     </div>
                   ))}
