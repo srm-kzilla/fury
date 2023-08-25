@@ -45,7 +45,8 @@ const LoginPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Sign In</title>
+        <title>Admin | Sign In</title>
+        <link rel="icon" href="/SRMKZILLALogo.svg" />
       </Head>
       <form
         onSubmit={handleSubmit}

@@ -15,7 +15,8 @@ const DisplayCard = ({
   application,
   index,
 }: Applicant & { index: number }) => {
-  const [status, setStatus] = useState(application[0].status);
+  const [domainApplication] = application;
+  const [status, setStatus] = useState(domainApplication.status);
 
   const handleReview = async (review: "accepted" | "rejected" | "pending") => {
     const { token } = nookies.get();
@@ -49,13 +50,13 @@ const DisplayCard = ({
     }
   };
 
-  const handleCopy = (text: string) => {
+  const handleCopy = (text: string, info: string, icon: string) => {
     navigator.clipboard.writeText(text);
-    toast.show(`Copied "${text}" to clipboard`, "📋");
+    toast.show(`Copied ${info}: ${text}`, icon);
   };
 
   const selectedDomainQuestions = questions.find(
-    (domain) => domain.domain === application[0].domain
+    (domain) => domain.domain === application[0].domain,
   );
 
   if (!selectedDomainQuestions) {
@@ -76,7 +77,7 @@ const DisplayCard = ({
           <button
             className="hidden md:block w-[12vw] text-left hover:cursor-copy"
             onClick={() => {
-              handleCopy(email);
+              handleCopy(email, "email", "📧");
             }}
           >
             {email}
@@ -84,7 +85,7 @@ const DisplayCard = ({
           <button
             className="hidden md:block w-[10vw] text-left hover:cursor-copy"
             onClick={() => {
-              handleCopy(contact);
+              handleCopy(contact, "phone number", "📞");
             }}
           >
             {contact}
@@ -162,44 +163,40 @@ const DisplayCard = ({
                   </div>
                 </div>
                 <div className="my-10">
-                  {application.map((application, index) => (
-                    <div key={index}>
-                      <h3 className="flex justify-between">
-                        <div className=" font-bold">
-                          Domain: {application.domain}
-                        </div>
-                        <div
-                          className={`text-kz-black rounded-md px-2 py-0.5 font-bold ${
-                            status === "accepted"
-                              ? "bg-kz-green"
-                              : status === "rejected"
-                              ? "bg-kz-red"
-                              : "bg-kz-yellow"
-                          }`}
-                        >
-                          Application Status: {status}
-                        </div>
-                      </h3>
-                      <ul className="flex flex-col gap-3 mt-6 text-lg">
-                        {application.questions &&
-                          application.questions.map(
-                            ({ questionNumber, answer }, index) => (
-                              <li key={index} className="mt-2">
-                                <div className="flex flex-row gap-2">
-                                  Q.{" "}
-                                  <span>
-                                    {selectedDomainQuestions?.questions[index]}
-                                  </span>
-                                </div>
-                                <div className="text-2xl font-bold flex flex-row gap-2">
-                                  Ans. <span>{answer}</span>
-                                </div>
-                              </li>
-                            )
-                          )}
-                      </ul>
-                    </div>
-                  ))}
+                  <div key={index}>
+                    <h3 className="flex justify-between">
+                      <div className=" font-bold">
+                        Domain: {domainApplication.domain}
+                      </div>
+                      <div
+                        className={`text-kz-black rounded-md px-2 py-0.5 font-bold ${
+                          status === "accepted"
+                            ? "bg-kz-green"
+                            : status === "rejected"
+                            ? "bg-kz-red"
+                            : "bg-kz-yellow"
+                        }`}
+                      >
+                        Application Status: {status}
+                      </div>
+                    </h3>
+                    <ul className="flex flex-col gap-3 mt-6 text-lg">
+                      {domainApplication.questions &&
+                        domainApplication.questions.map(({ answer }, index) => (
+                          <li key={index} className="mt-2">
+                            <div className="flex flex-row gap-2">
+                              Q.{" "}
+                              <span>
+                                {selectedDomainQuestions?.questions[index]}
+                              </span>
+                            </div>
+                            <div className="bg-kz-black mt-2 px-6 py-7 rounded-2xl text-xl font-bold flex flex-row gap-2">
+                              {answer}
+                            </div>
+                          </li>
+                        ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>

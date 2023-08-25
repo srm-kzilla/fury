@@ -20,7 +20,8 @@ export function Index({ applications }: ApplicantProps) {
   return (
     <>
       <Head>
-        <title>Admin Dashboard</title>
+        <title>Admin | Dashboard</title>
+        <link rel="icon" href="/SRMKZILLALogo.svg" />
       </Head>
       <div className="my-10">
         <div className="flex w-[70vw] mx-auto my-12 justify-between items-center">

@@ -5,7 +5,7 @@ const toastBaseOptions = {
   style: {
     background: "#202020",
     color: "#fff",
-    border: "1px solid #fff",
+    border: "1px solid #000",
     maxWidth: "250px",
   },
 };
