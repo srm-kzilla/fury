@@ -9,14 +9,23 @@ import (
 func AdminRoutes(router fiber.Router) {
 	router.Post("/login", controllers.AdminLogin)
 
+	signup := router.Group("/signup")
+	SignUpAdminRoutes(signup)
+
+	applications := router.Group("/applications")
+	AdminApplicationRoutes(applications)
+
+}
+
+func SignUpAdminRoutes(router fiber.Router) {
 	signUpProtected := router.Use(middlewares.SignUpAuthenticate)
-	signUpProtected.Post("/signup", controllers.AdminSignup)
+	signUpProtected.Post("/", controllers.AdminSignup)
+}
 
+func AdminApplicationRoutes(router fiber.Router) {
 	protected := router.Use(middlewares.AdminAuthenticate)
-	applicationsAdmin := protected.Group("/applications")
 
-	applicationsAdmin.Get("/all", controllers.GetAllApplications)
-	applicationsAdmin.Get("/", controllers.GetApplications)
-	applicationsAdmin.Put("/", controllers.UpdateApplications)
-
+	protected.Get("/all", controllers.GetAllApplications)
+	protected.Get("/", controllers.GetApplications)
+	protected.Put("/", controllers.UpdateApplications)
 }
