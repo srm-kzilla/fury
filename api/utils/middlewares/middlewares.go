@@ -66,7 +66,7 @@ func SignUpAuthenticate(c *fiber.Ctx) error {
 		})
 	}
 
-	if accessToken == os.Getenv("ADMIN_TOKEN") {
+	if accessToken != os.Getenv("ADMIN_TOKEN") {
 		return c.Status(401).JSON(fiber.Map{
 			"message": "Invalid token",
 		})
