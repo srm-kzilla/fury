@@ -26,9 +26,8 @@ export interface Applicant {
   resume: string;
   socials: {
     github: string;
-    linkedin: string;
+    linkedIn: string;
     portfolio: string;
-    resume:string;
   };
   year: number;
 }

@@ -11,6 +11,7 @@ const DisplayCard = ({
   regNo,
   email,
   contact,
+  resume,
   socials,
   application,
   index,
@@ -18,6 +19,7 @@ const DisplayCard = ({
   const [domainApplication] = application;
   const [status, setStatus] = useState(domainApplication.status);
 
+  if (email === "mm5481@srmist.edu.in") console.log({ domainApplication, socials, resume });
   const handleReview = async (review: "accepted" | "rejected" | "pending") => {
     const { token } = nookies.get();
 
@@ -119,8 +121,8 @@ const DisplayCard = ({
                         <GithubIcon color="#ff644e" size={30} />
                       </a>
                     )}
-                    {socials.linkedin && (
-                      <a href={socials.linkedin} target="_blank">
+                    {socials.linkedIn && (
+                      <a href={socials.linkedIn} target="_blank">
                         <LinkedinIcon color="#ff644e" size={30} />
                       </a>
                     )}
@@ -129,8 +131,8 @@ const DisplayCard = ({
                         <Globe color="#ff644e" size={30} />
                       </a>
                     )}
-                    {socials.resume && (
-                      <a href={socials.resume} target="_blank">
+                    {resume && (
+                      <a href={resume} target="_blank">
                         <StickyNoteIcon color="#ff644e" size={30} />
                       </a>
                     )}
