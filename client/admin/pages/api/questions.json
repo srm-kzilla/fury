@@ -89,5 +89,14 @@
       "If you were to plan an interactive activity for the audience during the break time of a workshop, what would you wish to do?",
       "You are working with a team member who is not pulling their weight and is causing frustration among other team members. How would you address this issue while maintaining a positive team environment?"
     ]
+  },
+  {
+    "domain": "technicalp",
+    "questions": [
+      "Project slug",
+      "Project Name",
+      "Github Repo Link",
+      "Preferred Domain"
+    ]
   }
 ]
