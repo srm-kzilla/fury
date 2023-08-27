@@ -35,4 +35,5 @@ export default {
       ...toastBaseOptions,
       style: { ...toastBaseOptions.style, border: "1px solid #f9d56e" },
     }),
+  dismiss: () => toast.dismiss(),
 };
