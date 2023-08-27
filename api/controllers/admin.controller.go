@@ -52,10 +52,15 @@ func GetApplications(c *fiber.Ctx) error {
 			"message": "Error getting users collection",
 		})
 	}
-
-	cursor, err := usersCollection.Find(context.Background(), bson.M{
-		"application.domain": domain,
-	})
+	filter := bson.M{
+		"application": bson.M{
+			"$elemMatch": bson.M{
+				"domain": domain,
+				"status": "pending",
+			},
+		},
+	}
+	cursor, err := usersCollection.Find(context.Background(), filter)
 	if err != nil {
 		log.Error("Error", err)
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
