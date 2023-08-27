@@ -20,8 +20,10 @@ const DisplayCard = ({
   const [status, setStatus] = useState(domainApplication.status);
 
   const handleReview = async (review: "accepted" | "rejected" | "pending") => {
+    if (review === "accepted") toast.success("Accepting...");
+    else if (review === "pending") toast.pending("Marking as Pending...");
+    else toast.error("Rejecting...");
     const { token } = nookies.get();
-
     const data = {
       regNo: regNo,
       status: review,
@@ -38,6 +40,7 @@ const DisplayCard = ({
       });
 
       if (response.status === 200) {
+        toast.dismiss();
         setStatus(review);
         review === "accepted"
           ? toast.success("Accepted")

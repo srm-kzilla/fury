@@ -9,6 +9,7 @@ const LoginPage: NextPage = () => {
   const router = useRouter();
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    toast.pending("Logging in...");
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
 
@@ -27,8 +28,10 @@ const LoginPage: NextPage = () => {
       });
 
       const { jwt } = await res.json();
+      toast.dismiss();
 
       if (res.status === 200) {
+        toast.success("Logged In");
         setCookie(null, "token", jwt, {
           maxAge: 30 * 24 * 60 * 60,
           path: "/",
