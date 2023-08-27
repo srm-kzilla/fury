@@ -19,8 +19,6 @@ const DisplayCard = ({
   const [domainApplication] = application;
   const [status, setStatus] = useState(domainApplication.status);
 
-  if (email === "mm5481@srmist.edu.in")
-    console.log({ domainApplication, socials, resume });
   const handleReview = async (review: "accepted" | "rejected" | "pending") => {
     const { token } = nookies.get();
 
