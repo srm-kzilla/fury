@@ -19,7 +19,6 @@ const DisplayCard = ({
   const [domainApplication] = application;
   const [status, setStatus] = useState(domainApplication.status);
 
-  if (email === "mm5481@srmist.edu.in") console.log({ domainApplication, socials, resume });
   const handleReview = async (review: "accepted" | "rejected" | "pending") => {
     const { token } = nookies.get();
 
@@ -58,7 +57,7 @@ const DisplayCard = ({
   };
 
   const selectedDomainQuestions = questions.find(
-    (domain) => domain.domain === application[0].domain,
+    (domain) => domain.domain === application[0].domain
   );
 
   if (!selectedDomainQuestions) {
@@ -192,7 +191,7 @@ const DisplayCard = ({
                                 {selectedDomainQuestions?.questions[index]}
                               </span>
                             </div>
-                            <div className="bg-kz-black mt-2 px-6 py-7 rounded-2xl text-xl font-bold flex flex-row gap-2">
+                            <div className="bg-kz-black mt-2 px-6 py-7 select-text rounded-2xl text-xl font-bold flex flex-row gap-2">
                               {answer}
                             </div>
                           </li>
