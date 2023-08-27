@@ -8,13 +8,11 @@ import type { GetServerSidePropsContext } from "next";
 
 interface ApplicantProps {
   applications: Applicant[];
+  email: string;
 }
 
-export function Index({ applications }: ApplicantProps) {
+export function Index({ applications, email }: ApplicantProps) {
   const router = useRouter();
-
-  const { token } = nookies.get();
-  const { iss }: { iss: string } = jwt_decode(token);
 
   const handleLogout = async () => {
     nookies.destroy(null, "token");
@@ -37,7 +35,7 @@ export function Index({ applications }: ApplicantProps) {
             >
               Logout
             </button>
-            <div className="text-lg">Logged in as <span className="text-kz-orange font-bold">{iss}</span></div>
+            <div className="text-lg">Logged in as <span className="text-kz-orange font-bold">{email}</span></div>
           </div>
         </div>
         <div className="flex flex-col w-[70vw] mx-auto">
@@ -62,6 +60,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     };
   }
 
+  const { iss: email }: { iss: string } = jwt_decode(token);
+
   const response = await fetch(`${process.env.API_URL}/applications`, {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -73,6 +73,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   return {
     props: {
       applications,
+      email
     },
   };
 }
