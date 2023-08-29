@@ -93,10 +93,6 @@ type ToastIdentifier =
   | "draft_deleted"
   | "answer_required";
 
-  enum States {
-    DRAFT= "draft",
-    ACCEPTED= "accepted",
-    REJECTED= "rejected",
-    PENDING="pending",
-  };
+
+
   
