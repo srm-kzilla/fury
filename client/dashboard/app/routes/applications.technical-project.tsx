@@ -23,7 +23,7 @@ import {
 import { destroyFormSession, getFormSession } from "~/utils/session.server";
 import * as Yup from "yup";
 import type { ValidationError } from "yup";
-import States from "~/types/enum";
+import { States } from "~/types/enum";
 
 export const meta: V2_MetaFunction = () => {
   return [
