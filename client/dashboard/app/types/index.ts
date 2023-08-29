@@ -92,3 +92,11 @@ type ToastIdentifier =
   | "form_submit_error"
   | "draft_deleted"
   | "answer_required";
+
+  enum States {
+    DRAFT= "draft",
+    ACCEPTED= "accepted",
+    REJECTED= "rejected",
+    PENDING="pending",
+  };
+  

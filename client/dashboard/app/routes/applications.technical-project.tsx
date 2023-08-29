@@ -23,7 +23,6 @@ import {
 import { destroyFormSession, getFormSession } from "~/utils/session.server";
 import * as Yup from "yup";
 import type { ValidationError } from "yup";
-import States from "~/utils/constants";
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -40,8 +39,9 @@ export const links = () => [...projectTilesLinks(), ...projectLinks()];
 export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url);
   const slug = url.searchParams.get("slug");
-  const userDetails = await getUserDetails(request);
-  const { application: [{ status = "" } = {}] = [] } = userDetails;
+  const { application: [{ status = "" } = {}] = [] } = await getUserDetails(
+    request
+  );
   if (!(status === States.DRAFT)) {
     return redirect("/applications/domain-select");
   }
