@@ -14,14 +14,16 @@ import type {
 } from "@remix-run/node";
 import { redirect } from "@remix-run/node";
 import {
-  createApplication, deleteDraftApplication,
+  createApplication,
+  deleteDraftApplication,
   getUserDetails,
   submitApplication,
   updateApplication,
 } from "~/utils/api.server";
-import {destroyFormSession, getFormSession} from "~/utils/session.server";
+import { destroyFormSession, getFormSession } from "~/utils/session.server";
 import * as Yup from "yup";
 import type { ValidationError } from "yup";
+import { States } from "~/types/enum";
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -35,9 +37,15 @@ export const meta: V2_MetaFunction = () => {
 
 export const links = () => [...projectTilesLinks(), ...projectLinks()];
 
-export const loader: LoaderFunction = ({ request }) => {
+export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url);
   const slug = url.searchParams.get("slug");
+  const { application: [{ status = "" } = {}] = [] } = await getUserDetails(
+    request
+  );
+  if (!(status === States.DRAFT)) {
+    return redirect("/applications/domain-select");
+  }
 
   return { slug };
 };
