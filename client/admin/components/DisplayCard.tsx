@@ -110,9 +110,9 @@ const DisplayCard = ({
         <Drawer.Portal>
           <Drawer.Overlay className="fixed bg-kz-black" />
           <Drawer.Content className="bg-kz-grey rounded-t-3xl flex flex-col fixed max-h-[85vh] mt-24 bottom-0 left-0 right-0">
-            <div className="w-screen overflow-auto px-10 p-5 rounded-t-3xl bg-kz-lt-grey text-kz-white">
+            <div className="w-screen overflow-auto md:px-10 p-5 rounded-t-3xl bg-kz-lt-grey text-kz-white">
               <div className="mx-auto w-12 h-1.5 rounded-full bg-kz-orange mb-8" />
-              <div className="mx-32">
+              <div className=" mx-10 md:mx-32">
                 <Drawer.Title className="font-semibold text-3xl mb-4">
                   {name}
                 </Drawer.Title>
