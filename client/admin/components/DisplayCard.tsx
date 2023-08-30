@@ -186,19 +186,25 @@ const DisplayCard = ({
                     </h3>
                     <ul className="flex flex-col gap-3 mt-6 text-lg">
                       {domainApplication.questions &&
-                        domainApplication.questions.map(({ answer }, index) => (
-                          <li key={index} className="mt-2">
-                            <div className="flex flex-row gap-2">
-                              Q.{" "}
-                              <span>
-                                {selectedDomainQuestions?.questions[index]}
-                              </span>
-                            </div>
-                            <div className="bg-kz-black mt-2 px-6 py-7 select-text rounded-2xl text-xl font-bold flex flex-row gap-2">
-                              {answer}
-                            </div>
-                          </li>
-                        ))}
+                        domainApplication.questions.map(
+                          ({ answer, questionNumber }, index) => (
+                            <li key={index} className="mt-2">
+                              <div className="flex flex-row gap-2">
+                                Q.{" "}
+                                <span>
+                                  {
+                                    selectedDomainQuestions?.questions[
+                                      parseInt(questionNumber) - 1
+                                    ]
+                                  }
+                                </span>
+                              </div>
+                              <div className="bg-kz-black mt-2 px-6 py-7 select-text rounded-2xl text-xl font-bold flex flex-row gap-2">
+                                {answer}
+                              </div>
+                            </li>
+                          )
+                        )}
                     </ul>
                   </div>
                 </div>
