@@ -1,7 +1,6 @@
 export enum States {
-    DRAFT= "draft",
-    ACCEPTED= "accepted",
-    REJECTED= "rejected",
-    PENDING="pending",
-  };
- 
+  DRAFT = "draft",
+  PENDING = "pending",
+  ACCEPTED = "accepted",
+  REJECTED = "rejected",
+}
