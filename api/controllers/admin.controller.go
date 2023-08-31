@@ -57,7 +57,7 @@ func GetApplications(c *fiber.Ctx) error {
 			"$elemMatch": bson.M{
 				"domain": domain,
 				"status": bson.M{
-					"$in": []string{"pending", "accepted", "rejected"},
+					"$ne": "draft",
 				},
 			},
 		},
