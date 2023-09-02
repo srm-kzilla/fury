@@ -75,6 +75,9 @@ export const getToastFromIdentifier = (
     case "answer_required":
       return { type: "error", message: "Please answer answer the question" };
 
+    case "application_limit_reached":
+      return { type: "error", message: "You have already made 2 applications" };
+
     default:
       return {
         type: "error",
