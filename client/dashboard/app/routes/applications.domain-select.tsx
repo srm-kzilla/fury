@@ -45,8 +45,12 @@ export const links: LinksFunction = () => [
 
 export const loader: LoaderFunction = async ({ request }) => {
   const user = await getUserDetails(request);
-  const formSession = await getFormSession(request);
 
+  if (user.application.length === 2) {
+    return redirect("/?toast=application_limit_reached");
+  }
+
+  const formSession = await getFormSession(request);
   if (!formSession || (formSession && formSession.domain)) {
     return redirect("/applications/new");
   }

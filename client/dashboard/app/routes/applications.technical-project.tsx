@@ -40,10 +40,15 @@ export const links = () => [...projectTilesLinks(), ...projectLinks()];
 export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url);
   const slug = url.searchParams.get("slug");
-  const { application: [{ status = "" } = {}] = [] } = await getUserDetails(
+  const { application } = await getUserDetails(
     request
   );
-  if (!(status === States.DRAFT)) {
+
+  const technicalProject = application.find(
+    (a) => a.domain === "technicalp"
+  );
+
+  if (!technicalProject || !(technicalProject.status === States.DRAFT)) {
     return redirect("/applications/domain-select");
   }
 

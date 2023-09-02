@@ -91,5 +91,6 @@ type ToastIdentifier =
   | "form_submitted"
   | "form_submit_error"
   | "draft_deleted"
-  | "answer_required";
+  | "answer_required"
+  | "application_limit_reached";
   
