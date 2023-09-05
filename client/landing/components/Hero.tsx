@@ -34,7 +34,7 @@ export default function Hero() {
               <RightArrow size={25} />
             </div>
             <div>
-              <h1 className="text-2xl font-semibold">Get Started</h1>
+              <h1 className="text-2xl font-semibold">Go to Dashboard</h1>
             </div>
           </button>
         </a>
