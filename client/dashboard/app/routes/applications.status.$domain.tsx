@@ -129,6 +129,7 @@ export default function Application() {
               <h5>
                 Not yet joined the super awesome SRMKZILLA Discord?{" "}
                 <a
+                  target="_blank"
                   href="https://community.srmkzilla.net"
                   title="SRMKZILLA Discord"
                 >
