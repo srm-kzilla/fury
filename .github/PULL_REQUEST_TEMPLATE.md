@@ -4,6 +4,13 @@ Please include a summary of the change and which issue is fixed. Please also inc
 
 Fixes # (issue)
 
+## Change In
+
+- [ ] Backend
+- [ ] Client Landing Frontend
+- [ ] Client Dashboard Frontend
+- [ ] Client Admin Frontend
+
 ## Type of change
 
 Please delete options that are not relevant.
