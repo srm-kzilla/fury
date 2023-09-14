@@ -23,7 +23,7 @@ The `client` has three sub-folders: `landing`, `admin` and `dashboard`, which ar
 ## How to start the API
 
 ```bash
-run go
+go run .
 ```
 
 ## Stack
