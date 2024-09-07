@@ -14,7 +14,7 @@ const PrivacyPolicy = () => {
       <div className=" font-sans px-8 xl:px-48">
         <main className="text-base">
           <h5 className="my-2 text-xs font-bold">
-            Last Updated on 21st July 2023
+            Last Updated on 21st July 2024
           </h5>
           <div className="pb-4">
             <h2 className="text-highlight text-3xl my-4 font-medium">

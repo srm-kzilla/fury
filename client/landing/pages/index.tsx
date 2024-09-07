@@ -12,15 +12,15 @@ export default function Home() {
     <>
       <Head>
         <title>JOIN SRMKZILLA!</title>
-        <meta name="title" content="RECRUITMENT'23 SRMKZILLA" />
-        <meta property="og:title" content="RECRUITMENT23 SRMKZILLA" />
-        <meta property="twitter:title" content="RECRUITMENT23 SRMKZILLA" />
+        <meta name="title" content="RECRUITMENT'24 SRMKZILLA" />
+        <meta property="og:title" content="RECRUITMENT24 SRMKZILLA" />
+        <meta property="twitter:title" content="RECRUITMENT24 SRMKZILLA" />
         <meta httpEquiv="refresh" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <meta
           name="keywords"
-          content="RECRUITMENT23, RECRUITMENT, SRMKZILLA, MOZILLA, SRM UNIVERSITY, Technical Club, Mozilla Campus Club"
+          content="RECRUITMENT24, RECRUITMENT, SRMKZILLA, MOZILLA, SRM UNIVERSITY, Technical Club, Mozilla Campus Club"
         />
         <meta name="robots" content="index, follow" />
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
