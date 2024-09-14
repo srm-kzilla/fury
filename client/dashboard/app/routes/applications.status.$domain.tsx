@@ -16,10 +16,10 @@ import { createFormSession, getFormSession } from "~/utils/session.server";
 
 export const meta: V2_MetaFunction = () => {
   return [
-    { title: "Application Status | SRMKZILLA #Recruitment'23" },
+    { title: "Application Status | SRMKZILLA #Recruitment'24" },
     {
       name: "description",
-      content: "Application Status SRMKZILLA Recruitment'23",
+      content: "Application Status SRMKZILLA Recruitment'24",
     },
   ];
 };

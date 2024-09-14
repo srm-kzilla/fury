@@ -91,46 +91,45 @@ export const questionsArray: Array<
     {
       domain: "photography",
       question:
-        "How passionate are you about photography/videography? Tell us about your strengths in this area and prior experience (if any).",
+        "Do you have experience shooting events on campus (e.g., TP Classes, UB, or Mini Halls)?",
     },
     {
       domain: "content_writing",
-      question: `What, according to you, is your best quality? How can that quality benefit the club? Explain using a scenario!`,
+      question: `What made you choose this particular subdomain?`,
     },
     {
       domain: "gfx",
-      question: `Did you see our event poster for "Off The Clock"? If you haven't, swiftly visit our Instagram page and check it out: <a href=https://www.instagram.com/p/Cv96ZrEvVgf/ target=_blank><u>"Off the Clock"</u></a>. We hope you liked it but can you make it better?`,
+      question: `How do you stay updated with the latest design trends and tools in graphic design (GFX)?`,
     },
     {
       domain: "vfx",
-      question: `How would you keep up with the latest tools and software during your tenure? `,
+      question: `What software do you use for creating VFX?`,
     },
     {
       domain: "corporate",
-      question: `How do you think you would be able to contribute to the club and this domain? How do you think the corporate domain works within a club?`,
+      question: `What is your understanding of sponsorships, and can you explain the different types of sponsorships that are typically offered for events?`,
     },
     {
       domain: "events",
-      question:
-        "We know organizing events is fun, but we would still want to hear more about something that made you choose the events domain!",
+      question: "What are your personal goals for contributing to the club?",
     },
   ],
   [
     {
       domain: "technical",
-      question: "What new technology interests you the most, and why?",
+      question: "	Which tech concept interests you the most right now and why? ",
     },
     {
       domain: "content_writing",
-      question: `How would you describe your writing style? `,
+      question: `What made you choose this particular subdomain? `,
     },
     {
       domain: "gfx",
-      question: `Suggest edits to our Multiverse of IoT poster and give it your awesome touch (instagram: <a href=https://www.instagram.com/p/Cd8b7GMPZ_Y/?utm_source=ig_web_copy_link target=_blank><u>Multiverse of IoT</u></a>)`,
+      question: `What tools do you use, and how will you manage different team members using various software?`,
     },
     {
       domain: "vfx",
-      question: `How will you deal with a software mismatch when working with a team (for example: After Effects and Premier Pro)? What is your go-to tool for making a video?      `,
+      question: `What kind of VFX work have you done before?   `,
     },
     {
       domain: "photography",
@@ -139,92 +138,81 @@ export const questionsArray: Array<
     },
     {
       domain: "corporate",
-      question: `What according to you is the difference between sponsorship and donation. Also give the difference between marketing and advertising?`,
+      question: `One of the most effective ways to secure sponsorships is by leveraging connections. What tools or platforms do you know that facilitate networking and relationship-building, and how effective do you think they are in helping secure sponsorships?`,
     },
     {
       domain: "events",
-      question:
-        "Do you have any prior experience in event planning or event management? <br/>If yes, we would love to know! If not, that’s okay too :)",
+      question: "Are you a generalist or specialist?",
     },
   ],
   [
     {
       domain: "technical",
       question:
-        "What is a tree (data structure ofc :p) and how would you explain it to a 5-year-old kid?",
+        "What do you think open source is, which open source impressed you a lot?",
+    },
+    {
+      domain: "photography",
+      question: "What’s your editing process after an event?",
+    },
+    {
+      domain: "content_writing",
+      question: `How do you handle criticism? `,
+    },
+    {
+      domain: "gfx",
+      question: `Why do you think you are the right fit for this position?`,
+    },
+    {
+      domain: "vfx",
+      question: `How do you handle feedback and revisions on VFX work?  `,
+    },
+    {
+      domain: "corporate",
+      question: `You’ve secured a high-value sponsor, but they have specific branding requirements that might conflict with the event’s theme or audience expectations. How would you approach this situation to ensure both the sponsor’s and the event’s needs are met?`,
+    },
+    {
+      domain: "events",
+      question: "If you were a fictional character, who would you be and why?",
+    },
+  ],
+  [
+    {
+      domain: "technical",
+      question: "How do you think AI will impact software developers?",
     },
     {
       domain: "photography",
       question:
-        "How, according to you, is event photography different from other forms of photography? What unique challenges and opportunities does event photography present?",
+        "How do you handle low-light situations during events, particularly in mini halls or TP rooms?",
     },
     {
       domain: "content_writing",
-      question: `Showcase your style with a short example please. How do you feel it would benefit the club’s social media engagement?       `,
+      question: `How do you tailor captions to fit a specific event or post?`,
     },
     {
       domain: "gfx",
-      question: `What, according to you, is your best quality? How can that quality benefit the club? Explain using a scenario, we would love to hear about all the good stuff.`,
+      question: `What’s your process for gathering inspiration before starting a design project?`,
     },
     {
       domain: "vfx",
-      question: `If you are tasked with making a promo video for an event, what would be your thought process behind it? What are the details that would be taken into account for the video?      `,
+      question: `What resources do you use to learn new VFX techniques?`,
     },
     {
       domain: "corporate",
-      question: ` After mutually agreeing to a sponsorship for an upcoming event, a sponsor backs out at the last minute.<br/> How would you as a member of the corporate domain handle this situation?`,
+      question: `Can you provide an example of a time when you took initiative or demonstrated leadership?`,
     },
     {
       domain: "events",
       question:
-        "What all characteristics, in your opinion, does a successful event have?",
+        "Can you give an example of an event you organized? What went well and what didn’t?",
     },
   ],
   [
     {
       domain: "technical",
       question:
-        "Is it still valuable to learn to code in the age of generative AI and no code tools?",
-    },
-    {
-      domain: "photography",
-      question:
-        "Which device do you use for photography/videography? What are the key features of your preferred equipment?",
-    },
-    {
-      domain: "content_writing",
-      question: `How would you increase SRMKZILLA's social media engagement for a product launch? (via stories/reels/posts) <br/>Head to our Instagram page and check out the posts on the update of our URL shrinker <b>kzilla.xyz 2.0</b>.
-      <br/>      Post 1: <a href=https://www.instagram.com/p/CklX_Mjqufg/?img_index=1 target=_blank><u>kzilla.xyz Post</u> </a>
-      <br/>
-      Post 2: <a href=https://www.instagram.com/p/Ck3l51Wjo4s/ target=_blank><u>kzilla.xyz Reel</u></a>
-      <br/>
-      Suggest ideas that can be used in the posts/videos/reels/story for the launch of the update. (Put your endless scrolling through social media to good use xD)
-        
-    `,
-    },
-    {
-      domain: "gfx",
-      question: `If you are tasked with designing an Instagram series on Neural Networks, what would be your thought process behind it?`,
-    },
-    {
-      domain: "vfx",
-      question: `What tools do you use for creating sound effects and how flexible will it be for you to learn new ones if the video requires it?`,
-    },
-    {
-      domain: "corporate",
-      question: `In what ways do you leverage social media to engage with the college audience and bring a sense of community around the club's initiatives?`,
-    },
-    {
-      domain: "events",
-      question:
-        "If you were to plan an interactive activity for the audience during the break time of a workshop, what would you wish to do?",
-    },
-  ],
-  [
-    {
-      domain: "technical",
-      question:
-        "How do you explain complex technical concepts to a person from a non-technical background? Take an example and explain it to us!",
+        "	What real life problem would you choose to solve by building a software for it?",
     },
     {
       domain: "photography",
@@ -233,18 +221,11 @@ export const questionsArray: Array<
     },
     {
       domain: "content_writing",
-      question: ` This task is mandatory for 2nd and 3rd-year students however we strongly recommend 1st-year students to give it a shot too.
-      <br/>
-      How would you entice people to check out the club event sponsors using social media posts? Check out our insta posts for our <i>Mozofest'23</i> Sponsors, <i>Devfolio and Bikaji</i>, and write some quick, interesting content for them!
-      <br/>
-      Link 1: <a href=https://www.instagram.com/p/CpCqYkCvSN9/  target=_blank><u>Devfolio</u></a>
-      <br/>
-      Link 2: <a hrefhttps://www.instagram.com/p/CpCq-R3PXVY/ target=_blank><u>Bikaji</u></a>
-      `,
+      question: ` How do you stay updated on trends in social media content writing?`,
     },
     {
       domain: "gfx",
-      question: `In addition, what details would you take into account for multiple posts in a series? You can use our series on Web 3 as a reference point: <a href=https://www.instagram.com/p/CgE0GV-vCFQ/?igshid=MzRlODBiNWFlZA== target=_blank><u>The Web3 Chronicles<u> </a>`,
+      question: `How do you incorporate feedback into your design process?`,
     },
     {
       domain: "vfx",
@@ -252,12 +233,12 @@ export const questionsArray: Array<
     },
     {
       domain: "corporate",
-      question: `How do you handle challenges related to limited budgets or resources while still achieving impactful publicity results? List some publicity ideas.`,
+      question: `What do you think is the most essential element when it comes to working with/communicating with a diverse team in a club like SRMKZILLA? How would you rate your communication skills?`,
     },
     {
       domain: "events",
       question:
-        "You are given paper cups, ping pong balls, threads, blindfold cloth, darts, and a rectangular wooden board. <br/>Design a mini game using these materials that would not take more than 20 minutes to finish.",
+        "What strategies would you use to increase audience engagement and participation during an event?",
     },
   ],
   [
@@ -269,11 +250,11 @@ export const questionsArray: Array<
     {
       domain: "photography",
       question:
-        "Along with following your passion, would you like to contribute to events planning, ideations, and event management? How do you see your photography skills complementing event organization?",
+        "Can you share an example of a challenging event shoot and how you overcame obstacles?",
     },
     {
       domain: "content_writing",
-      question: `How comfortable are you with working under pressure? Elaborate a situation where you have kept a level-head during a crisis situation (working under pressure).`,
+      question: `What strategies do you use to engage your audience effectively?`,
     },
     {
       domain: "gfx",
@@ -281,16 +262,16 @@ export const questionsArray: Array<
     },
     {
       domain: "vfx",
-      question: `Here's a small task for you. Attached here, is a reference <a href=https://www.instagram.com/tv/CZMssWQIoF5/?igshid=MTc4MmM1YmI2Ng== target=_blank><u>reel</u></a>. Could you think of any other audio that would suit this. Please share your work in a GDrive link with shared access.`,
+      question: `Can you describe a VFX project that required collaboration with other team members?.`,
     },
     {
       domain: "corporate",
-      question: `Rate your communication and collaboration skills out of 10 and state why?`,
+      question: `Imagine your club is seeking sponsorship for an upcoming event, and a potential sponsor is interested but offers less funding than expected or backs out of the deal at the last hour. How would you negotiate?`,
     },
     {
       domain: "events",
       question:
-        "Suppose you planned to organize a workshop in a hall with a capacity of 200 people, but you found out that only 120 people turned up out of 500 registrations.<br/> How would you react to this situation and what actions would you take?",
+        "If you had to promote an upcoming event with no budget, what strategies would you use?",
     },
   ],
   [
@@ -319,7 +300,7 @@ export const questionsArray: Array<
     },
     {
       domain: "corporate",
-      question: `Scenario based question: You have been told to send out mails to potential sponsors for your upcoming event and the only information you have is the date and the agenda of the event.<br/> How would you draft a mail to the potential sponsor convincing them to sponsor our event despite only having minimal details? (Draft a mail below)`,
+      question: `What unique qualities do you think you offer that would prove to be a valuable addition to the team at SRMKZILLA?`,
     },
     {
       domain: "events",
@@ -408,7 +389,7 @@ export const questionsArray: Array<
     {
       domain: "events",
       question:
-        "You are working with a team member who is not pulling their weight and is causing frustration among other team members.<br/> How would you address this issue while maintaining a positive team environment?",
+        "As a part of a team what are your ways to avoid any misunderstanding or dispute among the members?",
     },
   ],
 ];

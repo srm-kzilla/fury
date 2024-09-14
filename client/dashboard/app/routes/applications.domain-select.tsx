@@ -19,10 +19,10 @@ import { createApplication, getUserDetails } from "~/utils/api.server";
 
 export const meta: V2_MetaFunction = () => {
   return [
-    { title: "Select Domain | SRMKZILLA #Recruitment'23" },
+    { title: "Select Domain | SRMKZILLA #Recruitment'24" },
     {
       name: "description",
-      content: "Domain Selection SRMKZILLA Recruitment'23",
+      content: "Domain Selection SRMKZILLA Recruitment'24",
     },
   ];
 };
@@ -82,11 +82,7 @@ export const action: ActionFunction = async ({ request }) => {
   }
 
   await createApplication(request, domain);
-  return updateFormSession(
-    request,
-    domain,
-    "/applications/new"
-  );
+  return updateFormSession(request, domain, "/applications/new");
 };
 
 const DomainSelect = () => {
