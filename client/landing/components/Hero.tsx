@@ -19,7 +19,7 @@ export default function Hero() {
               visible: { opacity: 1, x: 0 },
             }}
           >
-            #Recruitment2023
+            #Recruitment2024
           </motion.h1>
         </div>
         <div>

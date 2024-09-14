@@ -84,7 +84,7 @@ func CreateApplication(c *fiber.Ctx) error {
 		log.Error("Error: Inserting notification")
 	}
 	newMailEmbed := mailer.MailEmbed{
-		Header:      "#Recruitment2023",
+		Header:      "#Recruitment2024",
 		Salutations: "Hello Dreamer,",
 		Body:        utils.CapitalizeDomain(strings.Replace(body.Domain, "_", " ", -1)),
 	}
@@ -273,7 +273,7 @@ func SubmitApplication(c *fiber.Ctx) error {
 	}
 	email := c.Locals("userData").(map[string]interface{})["email"].(string)
 	newMailEmbed := mailer.MailEmbed{
-		Header:      "#Recruitment2023",
+		Header:      "#Recruitment2024",
 		Salutations: "Hello there, SRMKZILLian in the making,",
 		Body:        utils.CapitalizeDomain(strings.Replace(domain, "_", " ", -1)),
 	}

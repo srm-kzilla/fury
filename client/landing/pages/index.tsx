@@ -27,7 +27,7 @@ export default function Home() {
         <meta name="language" content="English" />
         <meta name="revisit-after" content="10 days" />
         <meta name="author" content="SRMKZILLA" />
-        <meta name="copyright" content="All rights reserved,2023. SRMKZILLA" />
+        <meta name="copyright" content="All rights reserved,2024. SRMKZILLA" />
         <meta httpEquiv="content-language" content="en" />
         <meta name="application-name" content="SRMKZILLA" />
 

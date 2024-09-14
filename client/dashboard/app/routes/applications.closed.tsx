@@ -31,7 +31,7 @@ export default function FormClosed() {
       </Link>
       <h1>Bummer! That ship has sailed</h1>
       <p>
-        We are not accepting any more applications for #Recruitment2023. Nothing
+        We are not accepting any more applications for #Recruitment2024. Nothing
         to worry about, though. We'd love to see you apply again the next time
         around!
       </p>

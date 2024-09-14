@@ -19,7 +19,12 @@ import {
   getTeamData,
   getUserDetails,
 } from "~/utils/api.server";
-import {Link, useLoaderData, useNavigate, useRevalidator} from "@remix-run/react";
+import {
+  Link,
+  useLoaderData,
+  useNavigate,
+  useRevalidator,
+} from "@remix-run/react";
 import getEnv from "~/utils/env";
 import { BiAlarm, BiPlus } from "react-icons/bi";
 import toast from "~/utils/toast.client";
@@ -33,10 +38,10 @@ import type {
 
 export const meta: V2_MetaFunction = () => {
   return [
-    { title: "SRMKZILLA #Recruitment'23" },
+    { title: "SRMKZILLA #Recruitment'24" },
     {
       name: "description",
-      content: "SRMKZILLA #Recruitment'23",
+      content: "SRMKZILLA #Recruitment'24",
     },
   ];
 };
@@ -68,7 +73,7 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const env = getEnv();
   const endTime = parseInt(env.APPLICATION_DEADLINE!);
-  const { revalidate } =useRevalidator();
+  const { revalidate } = useRevalidator();
 
   useEffect(() => {
     toast.show(

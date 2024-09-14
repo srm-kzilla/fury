@@ -37,10 +37,10 @@ import getEnv from "~/utils/env";
 export const meta: V2_MetaFunction = ({ data }) => {
   const domain = getDomainName(data.domain);
   return [
-    { title: `${domain} | SRMKZILLA #Recruitment'23` },
+    { title: `${domain} | SRMKZILLA #Recruitment'24` },
     {
       name: "description",
-      content: "Domain Questions SRMKZILLA Recruitment'23",
+      content: "Domain Questions SRMKZILLA Recruitment'24",
     },
   ];
 };

@@ -14,7 +14,7 @@ type LocationData struct {
 }
 
 func RootFunction(c *fiber.Ctx) error {
-	return c.JSON(fiber.Map{"message": "SRMKZILLA Recruitments-23 server running"})
+	return c.JSON(fiber.Map{"message": "SRMKZILLA Recruitments-24 server running"})
 }
 
 func HealthCheck(c *fiber.Ctx) error {
