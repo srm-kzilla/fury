@@ -25,6 +25,7 @@ import {
   BiVector,
   BiArrowFromRight,
   BiNotepad,
+  BiCode,
 } from "react-icons/bi";
 import {
   json,
@@ -64,6 +65,33 @@ export const loader: LoaderFunction = async ({ request }) => {
 const Explore = () => {
   const { user, team } = useLoaderData();
   const items = [
+    {
+      icon: <BiCode />,
+      title: "Neo's Nexus",
+      description:
+        "We present to you “Neo's Nexus” - a dive into the world of web dev.",
+      timestamp: 1725874200000,
+      github: "",
+      url: "https://www.instagram.com/srmkzilla/p/C_dcBEoyWKg/",
+    },
+    {
+      icon: <BiLockOpenAlt />,
+      title: "MOZOFEST'24",
+      description:
+        "A three-day extravaganza to emanate the power of open source community sprinkled with a load of fun and frolic.",
+      timestamp: 1711963800000,
+      github: "",
+      url: "https://www.instagram.com/p/C4xIlSVPvoj/",
+    },
+    {
+      icon: <BiMeteor />,
+      title: "MOZOHACK'24",
+      description:
+        "A thrilling 24-hour hackathon where students across the nation come together to bring some amazing ideas to life.",
+      timestamp: 1711704600000,
+      github: "",
+      url: "https://www.instagram.com/p/C4PxzE4vGIG/",
+    },
     {
       icon: <BiRocket />,
       title: "Fury",
@@ -300,7 +328,7 @@ const Explore = () => {
               Explore <span>@srmkzilla</span>
             </h2>
             <div>
-              <h3 className="mb">2023</h3>
+              <h3 className="mb">2024</h3>
               <div>
                 <div className="items">
                   {items.map((item, index) => {

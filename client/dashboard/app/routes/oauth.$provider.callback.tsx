@@ -23,6 +23,8 @@ export const loader: LoaderFunction = async ({ request }) => {
     } else if (data.error === "use srm mail id") {
       throw json({ message: "Use SRM Email to Register" }, { status: 400 });
     } else {
+      console.error(data.error);
+      console.log(data);
       throw json({ message: "Something went wrong" }, { status: 400 });
     }
   }

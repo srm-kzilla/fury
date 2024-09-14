@@ -341,7 +341,7 @@ function ErrorLayout({ children }: { children: ReactNode }) {
 
 export function ErrorBoundary() {
   const error = useRouteError();
-
+  console.log(error);
   if (isRouteErrorResponse(error)) {
     const {
       status,
