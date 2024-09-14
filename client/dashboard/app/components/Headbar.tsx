@@ -21,7 +21,7 @@ const Headbar = () => {
           rel="noreferrer"
         >
           {" "}
-          #2024Wrapped
+          #2023Wrapped
         </a>
       </p>
     </div>
