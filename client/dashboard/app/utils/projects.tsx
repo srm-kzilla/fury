@@ -1,4 +1,5 @@
 import {
+  BiCalendarEvent,
   BiChart,
   BiChat,
   BiCloud,
@@ -208,94 +209,51 @@ export const projects = [
       "Please upload the working code to your public GitHub repository. A README.md file with clear documentation is appreciated. Bonus points for a deployed project with full functionality and integration.",
   },
   {
-    title: "TV show and Movie API",
-    domain: "technicalp",
-    slug: "movie-api",
-    icon: <BiMoviePlay />,
+    title: "Events API",
+    domain: "technical",
+    slug: "events-api",
+    icon: <BiCalendarEvent />,
     description:
-      "We all love watching movies and TV shows. Your task is to create an API that will allow users to store, read, update and delete movie and tv show data. ",
+      "Events are a key part of community life, and your task is to create an API that allows users to manage events. It should enable users to store, read, update, and delete event details like name, location, time, and description. While we use Node.js and Go at SRMKZILLA, feel free to use any backend technology of your choice, such as Ruby on Rails, Django, Flask, or Spring Boot.",
     tasks: [
-      {
-        id: "7",
-        title:
-          "While we use Node.js and Go lang at SRMKZILLA, feel free to use any backend technology of your choice. Ruby on rails, Django, Flask, Springboot etc.",
-        section: "suggested",
-      },
       {
         id: "1",
         title:
-          "The code must be robust, clean to read and scalable. Single file code will not be accepted. Follow a proper architecture like MVC, MVVM, etc.",
+          "Create a well-structured and scalable API for managing events (CRUD operations).",
         section: "suggested",
       },
       {
         id: "2",
         title:
-          "While we use MongoDB and Postgresql, you can choose any database and ORM you like.",
+          "Ensure the API follows proper architecture patterns like MVC or MVVM, with clean and modular code.",
         section: "suggested",
       },
       {
         id: "3",
         title:
-          "Writing tests is not mandatory, but if done, it will earn you extra points.",
-        section: "bonus",
-      },
-      {
-        id: "3",
-        title:
-          "Projects which document proper reasons for picking a tech stack will have a better chance of getting selected.",
-        section: "bonus",
+          "Feel free to use any database and ORM you like (e.g., MongoDB, PostgreSQL).",
+        section: "suggested",
       },
       {
         id: "4",
+        title: "Bonus points for writing unit and integration tests.",
+        section: "bonus",
+      },
+      {
+        id: "5",
         title:
-          "APIs must be well docuemnted(postman, openapi, .http files or any other creative way you can find) and easy to use.",
+          "APIs must be well documented using tools like Postman, OpenAPI, or any other method.",
+        section: "bonus",
+      },
+      {
+        id: "6",
+        title:
+          "Explain your choice of tech stack in the README for extra consideration.",
         section: "bonus",
       },
     ],
     additionalNotes:
-      "Ensure that you share functional code on a public GitHub repository. Create a comprehensive README.md file with clear explanations. If you deploy the application and provide thorough documentation, you'll earn extra points.",
-  },
-  {
-    title: "Discord Role Assignment Bot",
-    domain: "technicalp",
-    slug: "discord-role-bot",
-    icon: <BiLogoDiscordAlt />,
-    description:
-      "In the dynamic world of Discord servers, managing role assignments for users is essential. Your task is to create a versatile Discord bot that will enable users to assign and manage roles within a server seamlessly.",
-    tasks: [
-      {
-        id: "7",
-        title:
-          "Although we commonly use TypeScript with libraries like discord.js, you're welcome to choose any backend technology suitable for building a Discord bot.",
-        section: "suggested",
-      },
-      {
-        id: "1",
-        title:
-          "Your code must be robust, well-structured, and scalable. Follow a suitable architectural pattern such as MVC, MVVM, etc., and avoid monolithic single-file code.",
-        section: "suggested",
-      },
-      {
-        id: "2",
-        title:
-          "While the main task is a role bot, you can add other features to make your bot more versatile and useful.",
-        section: "suggested",
-      },
-      {
-        id: "3",
-        title:
-          "Though not obligatory, implementing test cases will earn you extra points and showcase your commitment to code quality.",
-        section: "bonus",
-      },
-      {
-        id: "4",
-        title:
-          "Projects that provide well-documented reasons for the chosen tech stack and architecture will have an advantage during selection.",
-        section: "bonus",
-      },
-    ],
-    additionalNotes:
-      "Share your functional code via a public GitHub repository and craft a comprehensive README.md file that provides clear instructions. If you deploy the bot and offer comprehensive documentation, you'll receive extra recognition.",
+      "Please upload your functional code to a public GitHub repository. A clear README.md with explanations is required. Extra points for a deployed API and thorough documentation.",
   },
   {
     title: "CLI Chat with Websockets",
