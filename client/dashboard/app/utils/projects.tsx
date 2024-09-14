@@ -1,4 +1,5 @@
 import {
+  BiChart,
   BiChat,
   BiDollar,
   BiImage,
@@ -11,20 +12,21 @@ import {
   BiPalette,
   BiSolidBank,
   BiSolidContact,
+  BiTime,
   BiUpload,
 } from "react-icons/bi";
 
 export const projects = [
   {
-    title: "Meme Gallery",
-    domain: "technicalp",
-    slug: "meme-gallery",
-    icon: <BiImage />,
+    title: "Data Dashboard",
+    domain: "technical",
+    slug: "real-time-dashboard",
+    icon: <BiChart />,
     description:
-      "Welcome to the exciting world of meme-sharing at SRMKZILLA! In this task, your creative prowess will shine as you design and implement a user-friendly, Meme Gallery, submission platform. Your mission is to provide meme enthusiasts with a seamless way to contribute their humorous masterpieces to the digital realm.",
+      "Transform any data into dynamic insights! Create a real-time dashboard using React.js and Chart.js to visualize diverse datasets like movies, books, weather, or any other open API data. Make complex information engaging and easy to understand with interactive features and creative design.",
     tasks: [
       {
-        id: "7",
+        id: "1",
         title:
           "You can use any frontend framework of your choice (React, Angular, Svelte, and Vue are some of the popular choices) for this task",
         section: "suggested",
@@ -32,60 +34,14 @@ export const projects = [
       {
         id: "2",
         title:
-          "Design a sleek and modern UI for the Meme Gallery submission form, giving users an enjoyable interaction.",
+          "Integrate open APIs for diverse data sources and showcase creative applications.",
         section: "suggested",
       },
       {
         id: "3",
         title:
-          "Using TypeScript is not mandatory but does have some extra points.",
+          "Include interactive features such as filters, sorting, and dynamic updates.",
         section: "suggested",
-      },
-      {
-        id: "4",
-        title: "Extra points for submitting a deployed URL.",
-        section: "bonus",
-      },
-      {
-        id: "6",
-        title: "Responsive design is recommended and performance is a plus.",
-        section: "bonus",
-      },
-    ],
-    additionalNotes:
-      "You need to upload working code in your public GitHub repository. A README.md file with proper explanations is appreciated. There are brownie points for deployed and well documented projects.",
-  },
-  {
-    title: "KzForms",
-    domain: "technicalp",
-    slug: "kzforms",
-    icon: <BiNotepad />,
-    description:
-      "At SRMKZILLA, we never run out of forms to create and fill. For example, you are currently filling a form for recruitment. Your task will be to create a form and POST that data to a dummy API.",
-    tasks: [
-      {
-        id: "7",
-        title:
-          "You can use any frontend framework of your choice(React, Angular, Svelte, and Vue are some of the popular choices) for this task",
-        section: "suggested",
-      },
-      {
-        id: "1",
-        title:
-          "A form needs to be created with a clean UI (should be unique) to accept a student's Registration number, GitHub profile, SRM IST Email Id, Name, and any other fields you may deem necessary.",
-        section: "suggested",
-      },
-      {
-        id: "2",
-        title:
-          "You may use a dummy API to post the form data or log the details to the console. You may then redirect the user to another page where you can show them the form data they filled out.",
-        section: "suggested",
-      },
-      {
-        id: "3",
-        title:
-          "Using TypeScript is not mandatory but does have some extra points.",
-        section: "bonus",
       },
       {
         id: "4",
@@ -95,12 +51,63 @@ export const projects = [
       {
         id: "5",
         title:
-          "You must have proper validation for the fields and a proper error logging mechanism to let the user know about their mistakes. (Yup, Joi and Zod are some of the most widely used validation libraries). The better the User experience, the higher the points you score.",
+          "Brownie points for responsive and creative design and performance optimization.",
         section: "bonus",
       },
     ],
     additionalNotes:
-      "You need to upload working code in your public GitHub repository. A README.md file with proper explanations is appreciated. There are brownie points for deployed and well documented projects.",
+      "Please upload your code to a public GitHub repository. A detailed README.md is encouraged. Bonus points for a deployed project with thorough documentation.",
+  },
+  {
+    title: "Digital Time Capsule",
+    domain: "technical",
+    slug: "digital-time-capsule",
+    icon: <BiTime />,
+
+    description:
+      "Preserve memories or set future goals with a digital time capsule! Build a platform where users can create time capsules filled with photos, videos, letters, and other digital memorabilia. These capsules can be locked and scheduled to open on a specific future date, offering a unique way to capture and revisit moments in time.",
+
+    tasks: [
+      {
+        id: "1",
+        title:
+          "You can use any frontend framework of your choice (React, Angular, Svelte, and Vue are some of the popular choices) for this task",
+        section: "suggested",
+      },
+      {
+        id: "2",
+        title:
+          "Implement features for uploading and managing digital content such as photos, videos, and letters.",
+        section: "suggested",
+      },
+      {
+        id: "3",
+        title:
+          "Create a user-friendly interface for setting future unlock dates and viewing time capsules.",
+        section: "suggested",
+      },
+      {
+        id: "4",
+        title:
+          "Incorporate security measures to ensure that time capsules are only accessible when intended.",
+        section: "suggested",
+      },
+      {
+        id: "5",
+        title:
+          "Extra points for implementing notifications or reminders for upcoming unlock dates.",
+        section: "bonus",
+      },
+      {
+        id: "6",
+        title:
+          "Extra points for responsive design and a polished user experience.",
+        section: "bonus",
+      },
+    ],
+
+    additionalNotes:
+      "Upload your project code to a public GitHub repository. A well-documented README.md is appreciated. Bonus points for a deployed project and additional features such as notifications.",
   },
   {
     title: "Expense Tracker",
