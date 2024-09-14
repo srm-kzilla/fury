@@ -23,23 +23,24 @@ func RecordNotification(notificationType string, userId any, domain string) bool
 		finalDomain = strings.Replace(domain, "_", " ", -1)
 	}
 
-	switch notificationType {
+switch notificationType {
 	case "NEW_USER":
-		notification.Text = "Hello, dreamer. Welcome to #Recruitment2024. Your pathway to becoming an SRMKZILLian starts right here. Create a new application to get started."
-		notification.Markdown = "Ruh-roh, welcome, aspiring sleuth! The trail to becoming an SRMKZILLian is wide open, just like Scooby's appetite. Kick off your adventure by cooking up a new application! #Recruitment2024"
+		notification.Text = "Greetings, mortal. Welcome to #Recruitment2024. Your divine journey to becoming an SRMKZILLian starts now. Create a new application to begin your quest."
+		notification.Markdown = "Hail, brave soul! The path to becoming an SRMKZILLian champion is open, like the gates of Olympus. Begin your epic journey by crafting your first application! #Recruitment2024"
 
 	case "NEW_APPLICATION":
 		notification.Text = "Your application has been created."
-		notification.Markdown = fmt.Sprintf("**Zoinks,** you've cracked the case, detective! Your new application for the %s domain has been created. Finish it on time and let's see what mysteries unfold! #SRMKZILLianAdventures", finalDomain)
+		notification.Markdown = fmt.Sprintf("**By the will of Zeus,** you've made your first offering, hero! Your new application for the %s domain has been created. Complete it in time and let the Fates decide what legends await! #SRMKZILLianAdventures", finalDomain)
 
 	case "APPLICATION_IN_REVIEW":
 		notification.Text = "Your application is under review."
-		notification.Markdown = fmt.Sprintf("**Jinkies,** your application for the %s domain is in the vault, awaiting our sleuthy scrutiny! Stay tuned for the unraveling excitement! #SRMKZILLianAdventures", finalDomain)
+		notification.Markdown = fmt.Sprintf("**Athena watches over you,** as your application for the %s domain undergoes divine scrutiny. Stand firm, for your quest is far from over! #SRMKZILLianAdventures", finalDomain)
 
 	case "APPLICATION_DELETED":
 		notification.Text = "Your draft has been deleted."
-		notification.Markdown = fmt.Sprintf("**Zoinks, creator!** Your draft for %s domain took a disappearing act, but fear not! Just a Scooby-Doo away from rewriting your mystery.", finalDomain)
-	}
+		notification.Markdown = fmt.Sprintf("**Hades stirs,** as your draft for the %s domain has vanished into the underworld. But fear not, hero! With strength, you can craft another masterpiece from the flames. #SRMKZILLianAdventures", finalDomain)
+}
+
 
 	usersCollection, e := database.GetCollection(os.Getenv("DB_NAME"), "users")
 	if e != nil {
