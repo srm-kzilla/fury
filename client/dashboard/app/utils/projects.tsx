@@ -1,6 +1,7 @@
 import {
   BiChart,
   BiChat,
+  BiCloud,
   BiDollar,
   BiImage,
   BiLogoDiscord,
@@ -10,6 +11,7 @@ import {
   BiMoviePlay,
   BiNotepad,
   BiPalette,
+  BiRun,
   BiSolidBank,
   BiSolidContact,
   BiTime,
@@ -110,85 +112,100 @@ export const projects = [
       "Upload your project code to a public GitHub repository. A well-documented README.md is appreciated. Bonus points for a deployed project and additional features such as notifications.",
   },
   {
-    title: "Expense Tracker",
-    domain: "technicalp",
-    slug: "expense-tracker",
-    icon: <BiDollar />,
+    title: "Env Storer",
+    domain: "technical",
+    slug: "env-storer",
+    icon: <BiCloud />,
+
     description:
-      "Living in SRM can be expensive, from canteen to Java, from Potheri to Pondy, it costs a lot of money to survive. Your task is to create an expense tracker that will help students keep track of their expenses so that they don't have to live on egg puffs and lime during the month end.",
+      "In today's world, managing environment variables can become chaotic. Build an 'Env Storer' platform that allows users to securely store, manage, and retrieve environment variables for their projects with ease and efficiency.",
+
     tasks: [
       {
-        id: "7",
+        id: "1",
         title:
           "While we build a lot of our applications in Flutter, you can use any app dev tech stack you want, Kotlin, Java, Swift, Flutter, React Native, etc.",
         section: "suggested",
       },
       {
-        id: "1",
-        title:
-          "Clean UI is a must. You can use any UI framework of your choice.",
-        section: "suggested",
-      },
-      {
         id: "2",
-        title: "A compiled version of the app must be available for download.",
+        title:
+          "Develop a secure app that allows users to store and manage environment variables for different projects.",
         section: "suggested",
       },
       {
         id: "3",
-        title: "Using APIs or something like Firebase, Supabase is a plus.",
-        section: "bonus",
+        title:
+          "Implement encryption to securely store environment variables, ensuring data privacy.",
+        section: "suggested",
       },
       {
         id: "4",
-        title: "UI is good, but performance is better.",
+        title:
+          "Create a user-friendly interface for adding, updating, and deleting environment variables.",
+        section: "suggested",
+      },
+      {
+        id: "5",
+        title:
+          "Extra points for supporting multiple users with role-based access control (RBAC).",
+        section: "bonus",
+      },
+      {
+        id: "6",
+        title:
+          "Extra points for adding a secure versioning system for environment variables.",
         section: "bonus",
       },
     ],
+
     additionalNotes:
-      "You need to upload working code in your public GitHub repository. A README.md file with proper explanations is appreciated. There are brownie points for deployed and well documented projects.",
+      "Upload your code to a public GitHub repository. A README.md file with detailed instructions is encouraged. Bonus points for a deployed and well-documented project.",
   },
   {
-    title: "Contact Manager",
-    domain: "technicalp",
-    slug: "contact-manager",
-    icon: <BiSolidContact />,
+    title: "Fitness Tracker",
+    domain: "technical",
+    slug: "fitness-tracker",
+    icon: <BiRun />,
+
     description:
-      "Managing contacts efficiently is essential for staying connected. Your task is to create a contact manager application that allows users to organize and access their contacts easily, ensuring they never lose touch with their important connections.",
+      "Help users take charge of their fitness journey! Build a fitness tracker app that enables users to log their daily workouts, track progress, set goals, and visualize their health data through engaging charts and stats.",
+
     tasks: [
-      {
-        id: "7",
-        title:
-          "While we use Flutter, feel free to choose any app development technology that suits your expertise: Kotlin, Java, Swift, Flutter, React Native, etc.",
-        section: "suggested",
-      },
       {
         id: "1",
         title:
-          "A clean and intuitive user interface is crucial for a great user experience. Utilize any UI framework of your preference.",
+          "While we build a lot of our applications in Flutter, you can use any app dev tech stack you want, Kotlin, Java, Swift, Flutter, React Native, etc.",
         section: "suggested",
       },
       {
         id: "2",
         title:
-          "Make sure a compiled version of the app is available for download to showcase your project.",
+          "Develop the core functionality for tracking workouts, including logging exercises, duration, and calories burned.",
         section: "suggested",
       },
       {
         id: "3",
         title:
-          "Implementing APIs or utilizing platforms like Firebase or Supabase to enhance functionality is a valuable addition.",
-        section: "bonus",
+          "Incorporate features for users to set fitness goals and track progress over time.",
+        section: "suggested",
       },
       {
         id: "4",
         title:
-          "Prioritize both appealing UI and excellent performance for a well-rounded project.",
+          "Implement reminders and notifications for users to stay on track with their fitness goals.",
+        section: "suggested",
+      },
+      {
+        id: "5",
+        title:
+          "Extra points for integrating health data from wearable devices or third-party APIs (like Google Fit or Apple Health).",
         section: "bonus",
       },
     ],
+
     additionalNotes:
-      "Ensure that you share functional code on a public GitHub repository. Create a comprehensive README.md file with clear explanations. If you deploy the application and provide thorough documentation, you'll earn extra points.",
+      "Please upload the working code to your public GitHub repository. A README.md file with clear documentation is appreciated. Bonus points for a deployed project with full functionality and integration.",
   },
   {
     title: "TV show and Movie API",
