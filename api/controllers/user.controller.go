@@ -192,7 +192,7 @@ func UploadResume(c *fiber.Ctx) error {
 
 	c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"message": "File uploaded successfully with public read access.",
-		"url":     "https://recruitment-23.s3.ap-south-1.amazonaws.com/" + key,
+		"url":     "https://recruitments-24.s3.ap-south-1.amazonaws.com/" + key,
 	})
 
 	return nil
