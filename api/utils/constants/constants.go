@@ -8,4 +8,5 @@ const GOOGLE_RECAPTCHA_VERIFY = "https://www.google.com/recaptcha/api/siteverify
 
 var Domains = [7]string{"technical", "editorial", "corporate", "events", "gfx", "vfx", "content"}
 
-var MaintainerEmails = [4]string{"sk0274@srmist.edu.in", "mp2216@srmist.edu.in", "ag8448@srmist.edu.in", "hp8823@srmist.edu.in"}
+var MaintainerEmails = [8]string{"sk0274@srmist.edu.in", "mp2216@srmist.edu.in", "ag8448@srmist.edu.in", "hp8823@srmist.edu.in",
+	"rr4060@srmist.edu.in", "hb9703@srmist.edu.in", "dv2099@srmist.edu.in", "ma8680@srmist.edu.in"}
