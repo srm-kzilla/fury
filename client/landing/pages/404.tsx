@@ -29,7 +29,7 @@ const Error = () => {
         <h1 className="text-center text-white text-xl font-medium mt-5">
           Redirecting to{" "}
           <Link className="cursor-pointer" href="/">
-            recruitment.srmkzilla.net
+            recruitments.srmkzilla.net
           </Link>{" "}
           now
         </h1>
