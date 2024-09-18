@@ -305,7 +305,7 @@ export const questionsArray: Array<
     {
       domain: "events",
       question:
-        "The venue for your upcoming event faces unforeseen issues, forcing you to relocate the event just two days before the date.<br/> How would you manage this change and communicate it to attendees and stakeholders effectively?",
+        "As a part of a team what are your ways to avoid any misunderstanding or dispute among the members?",
     },
   ],
   [
@@ -389,7 +389,7 @@ export const questionsArray: Array<
     {
       domain: "events",
       question:
-        "As a part of a team what are your ways to avoid any misunderstanding or dispute among the members?",
+        "Why is Melody so chocolaty?",
     },
   ],
 ];
