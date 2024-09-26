@@ -33,7 +33,7 @@ export const links: LinksFunction = () => [
 export const loader: LoaderFunction = async ({ request }) => {
   const user = await getUserDetails(request);
 
-  if (!!user.gender) return redirect("/");
+  // if (!!user.gender) return redirect("/");
   return json({ user });
 };
 

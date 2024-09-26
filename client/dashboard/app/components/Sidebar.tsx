@@ -1,5 +1,11 @@
 import sidebarCSS from "~/styles/components/Sidebar.css";
-import { BiChat, BiHomeCircle, BiLogOut, BiRocket } from "react-icons/bi";
+import {
+  BiChat,
+  BiHomeCircle,
+  BiLogOut,
+  BiRocket,
+  BiUser,
+} from "react-icons/bi";
 import { Form, Link, useLocation, useNavigate } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
 import getEnv from "~/utils/env";
@@ -14,7 +20,7 @@ export const links: LinksFunction = () => {
 };
 
 const Sidebar = () => {
-  let location = useLocation();
+  const location = useLocation();
   const navigate = useNavigate();
   const pathname = location.pathname;
   const { LANDING_PAGE_URL } = getEnv();
@@ -60,11 +66,23 @@ const Sidebar = () => {
           </li>
         </ul>
 
-        <Form method="post" action="/logout">
-          <button type="submit">
-            <BiLogOut />
-          </button>
-        </Form>
+        <div>
+          <li title="My Account">
+            <Link
+              to={LANDING_PAGE_URL + "start"}
+              prefetch="viewport"
+              target="_blank"
+            >
+              <BiUser />
+            </Link>
+          </li>
+
+          <Form method="post" action="/logout">
+            <button type="submit">
+              <BiLogOut />
+            </button>
+          </Form>
+        </div>
       </div>
     </div>
   );
