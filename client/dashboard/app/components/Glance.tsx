@@ -28,7 +28,11 @@ const Glance = ({ user, team }: ActivityProps) => {
   }, []);
   return (
     <div className="kz-glance">
-      <Link to={`${LANDING_PAGE_URL}start`} prefetch="viewport" target="_blank">
+      <Link
+        to={`${LANDING_PAGE_URL}start?f=1`}
+        prefetch="viewport"
+        target="_blank"
+      >
         <div className="profile">
           <img
             src={`https://api.dicebear.com/6.x/notionists-neutral/svg?seed=${encodeURIComponent(

@@ -31,7 +31,7 @@ const Sidebar = () => {
           <img
             src="/srmkzilla_logo_white.svg"
             alt="logo"
-            onClick={() => {
+            onClick={(): void => {
               navigate("/");
             }}
           />
@@ -57,7 +57,7 @@ const Sidebar = () => {
           </li>
           <li title="FAQ's">
             <Link
-              to={LANDING_PAGE_URL + "faq"}
+              to={`${LANDING_PAGE_URL}faq`}
               prefetch="viewport"
               target="_blank"
             >
@@ -69,7 +69,7 @@ const Sidebar = () => {
         <div>
           <li title="My Account">
             <Link
-              to={LANDING_PAGE_URL + "start"}
+              to={`${LANDING_PAGE_URL}start?f=1`}
               prefetch="viewport"
               target="_blank"
             >

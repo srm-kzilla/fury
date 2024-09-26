@@ -32,8 +32,13 @@ export const links: LinksFunction = () => [
 
 export const loader: LoaderFunction = async ({ request }) => {
   const user = await getUserDetails(request);
+  const url = new URL(request.url);
+  const bypass = url.searchParams.get("f");
 
-  // if (!!user.gender) return redirect("/");
+  if (!bypass) {
+    if (user.gender) return redirect("/");
+  }
+
   return json({ user });
 };
 
