@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import glanceStyles from "~/styles/components/Glance.css";
 import { BiBell, BiCheckCircle } from "react-icons/bi";
 import type { LinksFunction } from "@remix-run/node";
+import { Link } from "@remix-run/react";
+import getEnv from "~/utils/env";
 
 export const links: LinksFunction = () => {
   return [
@@ -18,6 +20,7 @@ interface ActivityProps {
 }
 
 const Glance = ({ user, team }: ActivityProps) => {
+  const { LANDING_PAGE_URL } = getEnv();
   useEffect(() => {
     window.$crisp.push(["set", "user:nickname", [user?.name]]);
     window.$crisp.push(["set", "user:email", [user?.email]]);
@@ -25,29 +28,36 @@ const Glance = ({ user, team }: ActivityProps) => {
   }, []);
   return (
     <div className="kz-glance">
-      <div className="profile">
-        <img
-          src={`https://api.dicebear.com/6.x/notionists-neutral/svg?seed=${encodeURIComponent(
-            user.name.trim()
-          )}`}
-          alt="avatar"
-        />
-        <div>
-          <h5>
-            {user?.name}
-            <span>
-              <BiCheckCircle />
-            </span>
-          </h5>
+      <Link
+        to={`${LANDING_PAGE_URL}start?f=1`}
+        prefetch="viewport"
+        target="_blank"
+      >
+        <div className="profile">
+          <img
+            src={`https://api.dicebear.com/6.x/notionists-neutral/svg?seed=${encodeURIComponent(
+              user.name.trim()
+            )}`}
+            alt="avatar"
+          />
 
-          <p>
-            {user?.email}
-            <span className="primary">
-              <BiBell />
-            </span>
-          </p>
+          <div>
+            <h5>
+              {user?.name}
+              <span>
+                <BiCheckCircle />
+              </span>
+            </h5>
+
+            <p>
+              {user?.email}
+              <span className="primary">
+                <BiBell />
+              </span>
+            </p>
+          </div>
         </div>
-      </div>
+      </Link>
       <hr />
 
       <div className="activity">
