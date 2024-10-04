@@ -27,17 +27,17 @@ type GoogleAccessTokenInfo struct {
 
 func UserAuthenticate(c *fiber.Ctx) error {
 	accessToken := c.GetReqHeaders()["Authorization"]
-	if accessToken == "" {
+	if len(accessToken) == 0 {
 		return c.Status(401).JSON(fiber.Map{
 			"message": "Authorization token not found",
 		})
 	}
-	if !strings.Contains(accessToken, "Bearer") {
+	if !strings.Contains(accessToken[0], "Bearer") {
 		return c.Status(401).JSON(fiber.Map{
 			"message": "Invalid token",
 		})
 	}
-	token := strings.Split(accessToken, " ")[1]
+	token := strings.Split(accessToken[0], " ")[1]
 	email, err := getGoogleAccessTokenInfo(token)
 	if err != nil {
 		return c.Status(401).JSON(fiber.Map{
@@ -60,12 +60,12 @@ func UserAuthenticate(c *fiber.Ctx) error {
 
 func SignUpAuthenticate(c *fiber.Ctx) error {
 	accessToken := c.GetReqHeaders()["Authorization"]
-	if accessToken == "" {
+	if len(accessToken) == 0 {
 		return c.Status(401).JSON(fiber.Map{
 			"message": "Authorization token not found",
 		})
 	}
-	if accessToken != os.Getenv("ADMIN_TOKEN") {
+	if accessToken[0] != os.Getenv("ADMIN_TOKEN") {
 		return c.Status(401).JSON(fiber.Map{
 			"message": "Invalid token",
 		})
@@ -76,17 +76,17 @@ func SignUpAuthenticate(c *fiber.Ctx) error {
 
 func AdminAuthenticate(c *fiber.Ctx) error {
 	accessToken := c.GetReqHeaders()["Authorization"]
-	if accessToken == "" {
+	if len(accessToken) == 0 {
 		return c.Status(401).JSON(fiber.Map{
 			"message": "Authorization token not found",
 		})
 	}
-	if !strings.Contains(accessToken, "Bearer") {
+	if !strings.Contains(accessToken[0], "Bearer") {
 		return c.Status(401).JSON(fiber.Map{
 			"message": "Invalid token",
 		})
 	}
-	jwtToken := strings.Split(accessToken, " ")[1]
+	jwtToken := strings.Split(accessToken[0], " ")[1]
 
 	token, err := jwt.ParseWithClaims(jwtToken, &jwt.StandardClaims{}, func(t *jwt.Token) (interface{}, error) {
 		return []byte(os.Getenv("JWT_SECRET")), nil
