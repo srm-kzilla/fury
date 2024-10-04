@@ -1,93 +1,102 @@
 [
-    {
-        "domain": "technical",
-        "questions": [
-            "What does programming mean to you?",
-            "\tWhich tech concept interests you the most right now and why? ",
-            "What do you think open source is, which open source impressed you a lot?",
-            "How do you think AI will impact software developers?",
-            "\tWhat real life problem would you choose to solve by building a software for it?",
-            "Are you currently working on any projects?<br/> If yes, what is the tech stack, and why did you choose that particular tech stack? <br>If not, what technologies are you looking forward to learning in the near future? <br/>(If the project is open source, give us the link! not mandatory but has brownie points)",
-            "What motivated you to join our technical club? How do you think you can contribute to the club?",
-            "How do you manage and learn from failures and setbacks in your work?"
-        ]
-    },
-    {
-        "domain": "photography",
-        "questions": [
-            "Do you have experience shooting events on campus (e.g., TP Classes, UB, or Mini Halls)?",
-            "What made you choose this particular subdomain? ",
-            "What’s your editing process after an event?",
-            "How do you handle low-light situations during events, particularly in mini halls or TP rooms?",
-            "Do you have any setup for capturing some of the most beautiful moments? This could include gear like DSLR, gimbal, drone, monopods, tripods, etc.",
-            "Can you share an example of a challenging event shoot and how you overcame obstacles?",
-            "Record a small campus tour reel that includes campus buildings, portraits, close-up shots, people, etc. You can add suitable music to enhance the experience. (Enter a Google Drive link with public access for the video)",
-            "We would love to see some of your past work too! Please provide a link to your portfolio or a Google Drive link with public access to view your work."
-        ]
-    },
-    {
-        "domain": "content",
-        "questions": [
-            "What made you choose this particular subdomain?",
-            "What tools do you use, and how will you manage different team members using various software?",
-            "How do you handle criticism? ",
-            "How do you tailor captions to fit a specific event or post?",
-            " How do you stay updated on trends in social media content writing?",
-            "What strategies do you use to engage your audience effectively?",
-            "What kind of social media content excites <i>Millennials/Gen Z?</i> How can a technical club-like <i>SRMKZILLA</i> implement this kind of content while staying true to its technical roots?",
-            "Tell us something that you are passionate about. It could be anything from a hobby to a social cause. Have you been a part of any clubs or societies before? We would love to hear about it!"
-        ]
-    },
-    {
-        "domain": "gfx",
-        "questions": [
-            "How do you stay updated with the latest design trends and tools in graphic design (GFX)?",
-            "What kind of VFX work have you done before?   ",
-            "Why do you think you are the right fit for this position?",
-            "What’s your process for gathering inspiration before starting a design project?",
-            "How do you incorporate feedback into your design process?",
-            "How do you handle criticism and feedback? Our team works through a lot of draft changes and tweaks to ensure the best. How would you manage this?",
-            "If you had the freedom to redesign the landing page of our recruitment portal, what design changes would you make? LINK: <a href=https://recruitment.srmkzilla.net target=_blank><u>Recruitment portal</u></a>\n",
-            "Note: This task is mandatory for 2nd and 3rd-year students however we strongly recommend 1st-year students to give it a shot too.\n      <br/>\n      Task 1: Design an event poster<br/>\n        a. Topic: Designathon<br/>\n        b. Required fields:<br/>\n            i. Social Media footer<br/>\n            ii. Date/Time<br/>\n            iii. Registration link<br/>\n            iv. Custom heading/Event logo<br/>\n        c. Size: 1080px by 1080px<br/>\n        d. Export: JPEG format with the source file<br/>\n        e. Bonus: To create greater impact, experiment with typography<br/>\n      <br/>\n      Task 2: Illustration(Adobe Illustrator, Affinity Designer, sketch)<br/>\n        a. Topic: Redesign the SRMKZILLA logo<br/>\n        b. Size: 1080px by 1080px<br/>\n        c. Export: JPEG format with the source file<br/>\n        d. Bonus: Sign off your artwork with your own custom logo<br/>\n      <br/>\n      Task 3: UI/UX (Figma, Sketch)<br/>\n        a. Topic: Redesign RECRUITMENT homepage<br/>\n        b. Export: JPEG format with the source file<br/>\n        c. Bonus: Try to include gradient effect in elements.<br/>\n        <br/>\n        Note: Upload your work to Google Drive, send the link here in your answer, AND ensure anyone with the link can access the file. Write N/A if you are not attempting this task.\n      "
-        ]
-    },
-    {
-        "domain": "vfx",
-        "questions": [
-            "What software do you use for creating VFX?",
-            "Which software do you use for editing images and videos? How proficient are you with these tools?",
-            "How do you handle feedback and revisions on VFX work?  ",
-            "What resources do you use to learn new VFX techniques?",
-            "How do you approach the process of designing and creating unique sound effects for different types of media?",
-            "Can you describe a VFX project that required collaboration with other team members?.",
-            "How do you handle criticism and feedback? Our team works through a lot of draft changes and tweaks to ensure the best. How would you manage this?",
-            "Note: This task is mandatory for 2nd and 3rd-year students however we strongly recommend 1st-year students to give it a shot too.\n\n      Please attempt ONE of the three tasks mentioned below:\n      <br/>\n      Task 1 (Cinema 4D/Blender/Adobe after effects/Premiere Pro):<br/>\n        a. Topic: Create a logo reveal for a tech video<br/>\n        b. Composition size: 1920px by 1080px 30 fps<br/>\n        c. Export: MP4 with the source file<br/>\n        d. Length: 6 sec(Minimum requirement)<br/>\n        e. Bonus: Most intros end with the logo on a black or dark background. It’s not a rule, but it stands out better and keeps you in sync with the industry.<br/>\n      <br/>\n      Task 2 (Premiere pro/ Apple final cut pro/ Adobe After Effects):<br/>\n        a. Topic: Edit the Sandesh video below <a href=https://www.instagram.com/p/CdniBEIqmh-/ target=_blank><u>Sandesh Link</u></a><br/>\n        b. Composition size: 1920px by 1080px 30 fps<br/>\n        c. Export: MP4 with the source file<br/>\n        d. Length: 10 sec (Minimum requirement)<br/>\n        e. Bonus: Use of 3D mockups will be highly recommended<br/>\n      <br/>\n      Task 3 (Adobe After Effects):\n        a. Topic: Promo video on Mozofest video: <a href=https://www.instagram.com/reel/CpApkpZjx1r/?igshid=MzRlODBiNWFlZA== target=_blank><u>Mozofest Link</u></a><br/>\n        b. Composition size: Instagram story dimension<br/>\n        c. Export: MP4 with the source file<br/>\n        d. Length: 15 sec (Stated)<br/>\n        e. Bonus: Experiment with typography<br/>\n        <br/>\n        Note: Upload your work to Google Drive, send the link here in your answer, AND ensure anyone with the link can access the file. Write N/A if you are not attempting this task.\n      "
-        ]
-    },
-    {
-        "domain": "corporate",
-        "questions": [
-            "What is your understanding of sponsorships, and can you explain the different types of sponsorships that are typically offered for events?",
-            "One of the most effective ways to secure sponsorships is by leveraging connections. What tools or platforms do you know that facilitate networking and relationship-building, and how effective do you think they are in helping secure sponsorships?",
-            "You’ve secured a high-value sponsor, but they have specific branding requirements that might conflict with the event’s theme or audience expectations. How would you approach this situation to ensure both the sponsor’s and the event’s needs are met?",
-            "Can you provide an example of a time when you took initiative or demonstrated leadership?",
-            "What do you think is the most essential element when it comes to working with/communicating with a diverse team in a club like SRMKZILLA? How would you rate your communication skills?",
-            "Imagine your club is seeking sponsorship for an upcoming event, and a potential sponsor is interested but offers less funding than expected or backs out of the deal at the last hour. How would you negotiate?",
-            "What unique qualities do you think you offer that would prove to be a valuable addition to the team at SRMKZILLA?",
-            "If you have any prior experiences in this domain, please mention them below."
-        ]
-    },
-    {
-        "domain": "events",
-        "questions": [
-            "What are your personal goals for contributing to the club?",
-            "Are you a generalist or specialist?",
-            "If you were a fictional character, who would you be and why?",
-            "Can you give an example of an event you organized? What went well and what didn’t?",
-            "What strategies would you use to increase audience engagement and participation during an event?",
-            "If you had to promote an upcoming event with no budget, what strategies would you use?",
-            "The venue for your upcoming event faces unforeseen issues, forcing you to relocate the event just two days before the date.<br/> How would you manage this change and communicate it to attendees and stakeholders effectively?",
-            "As a part of a team what are your ways to avoid any misunderstanding or dispute among the members?"
-        ]
-    }
+  {
+    "domain": "technical",
+    "questions": [
+      "What does programming mean to you?",
+      "\tWhich tech concept interests you the most right now and why? ",
+      "What do you think open source is, which open source impressed you a lot?",
+      "How do you think AI will impact software developers?",
+      "\tWhat real life problem would you choose to solve by building a software for it?",
+      "Are you currently working on any projects?<br/> If yes, what is the tech stack, and why did you choose that particular tech stack? <br>If not, what technologies are you looking forward to learning in the near future? <br/>(If the project is open source, give us the link! not mandatory but has brownie points)",
+      "What motivated you to join our technical club? How do you think you can contribute to the club?",
+      "How do you manage and learn from failures and setbacks in your work?"
+    ]
+  },
+  {
+    "domain": "photography",
+    "questions": [
+      "Do you have experience shooting events on campus (e.g., TP Classes, UB, or Mini Halls)?",
+      "What made you choose this particular subdomain? ",
+      "What’s your editing process after an event?",
+      "How do you handle low-light situations during events, particularly in mini halls or TP rooms?",
+      "Do you have any setup for capturing some of the most beautiful moments? This could include gear like DSLR, gimbal, drone, monopods, tripods, etc.",
+      "Can you share an example of a challenging event shoot and how you overcame obstacles?",
+      "Record a small campus tour reel that includes campus buildings, portraits, close-up shots, people, etc. You can add suitable music to enhance the experience. (Enter a Google Drive link with public access for the video)",
+      "We would love to see some of your past work too! Please provide a link to your portfolio or a Google Drive link with public access to view your work."
+    ]
+  },
+  {
+    "domain": "content",
+    "questions": [
+      "What made you choose this particular subdomain?",
+      "What tools do you use, and how will you manage different team members using various software?",
+      "How do you handle criticism? ",
+      "How do you tailor captions to fit a specific event or post?",
+      " How do you stay updated on trends in social media content writing?",
+      "What strategies do you use to engage your audience effectively?",
+      "What kind of social media content excites <i>Millennials/Gen Z?</i> How can a technical club-like <i>SRMKZILLA</i> implement this kind of content while staying true to its technical roots?",
+      "Tell us something that you are passionate about. It could be anything from a hobby to a social cause. Have you been a part of any clubs or societies before? We would love to hear about it!"
+    ]
+  },
+  {
+    "domain": "gfx",
+    "questions": [
+      "How do you stay updated with the latest design trends and tools in graphic design (GFX)?",
+      "What kind of VFX work have you done before?   ",
+      "Why do you think you are the right fit for this position?",
+      "What’s your process for gathering inspiration before starting a design project?",
+      "How do you incorporate feedback into your design process?",
+      "How do you handle criticism and feedback? Our team works through a lot of draft changes and tweaks to ensure the best. How would you manage this?",
+      "If you had the freedom to redesign the landing page of our recruitment portal, what design changes would you make? LINK: <a href=https://recruitment.srmkzilla.net target=_blank><u>Recruitment portal</u></a>\n",
+      "Note: This task is mandatory for 2nd and 3rd-year students however we strongly recommend 1st-year students to give it a shot too.\n      <br/>\n      Task 1: Design an event poster<br/>\n        a. Topic: Designathon<br/>\n        b. Required fields:<br/>\n            i. Social Media footer<br/>\n            ii. Date/Time<br/>\n            iii. Registration link<br/>\n            iv. Custom heading/Event logo<br/>\n        c. Size: 1080px by 1080px<br/>\n        d. Export: JPEG format with the source file<br/>\n        e. Bonus: To create greater impact, experiment with typography<br/>\n      <br/>\n      Task 2: Illustration(Adobe Illustrator, Affinity Designer, sketch)<br/>\n        a. Topic: Redesign the SRMKZILLA logo<br/>\n        b. Size: 1080px by 1080px<br/>\n        c. Export: JPEG format with the source file<br/>\n        d. Bonus: Sign off your artwork with your own custom logo<br/>\n      <br/>\n      Task 3: UI/UX (Figma, Sketch)<br/>\n        a. Topic: Redesign RECRUITMENT homepage<br/>\n        b. Export: JPEG format with the source file<br/>\n        c. Bonus: Try to include gradient effect in elements.<br/>\n        <br/>\n        Note: Upload your work to Google Drive, send the link here in your answer, AND ensure anyone with the link can access the file. Write N/A if you are not attempting this task.\n      "
+    ]
+  },
+  {
+    "domain": "vfx",
+    "questions": [
+      "What software do you use for creating VFX?",
+      "Which software do you use for editing images and videos? How proficient are you with these tools?",
+      "How do you handle feedback and revisions on VFX work?  ",
+      "What resources do you use to learn new VFX techniques?",
+      "How do you approach the process of designing and creating unique sound effects for different types of media?",
+      "Can you describe a VFX project that required collaboration with other team members?.",
+      "How do you handle criticism and feedback? Our team works through a lot of draft changes and tweaks to ensure the best. How would you manage this?",
+      "Note: This task is mandatory for 2nd and 3rd-year students however we strongly recommend 1st-year students to give it a shot too.\n\n      Please attempt ONE of the three tasks mentioned below:\n      <br/>\n      Task 1 (Cinema 4D/Blender/Adobe after effects/Premiere Pro):<br/>\n        a. Topic: Create a logo reveal for a tech video<br/>\n        b. Composition size: 1920px by 1080px 30 fps<br/>\n        c. Export: MP4 with the source file<br/>\n        d. Length: 6 sec(Minimum requirement)<br/>\n        e. Bonus: Most intros end with the logo on a black or dark background. It’s not a rule, but it stands out better and keeps you in sync with the industry.<br/>\n      <br/>\n      Task 2 (Premiere pro/ Apple final cut pro/ Adobe After Effects):<br/>\n        a. Topic: Edit the Sandesh video below <a href=https://www.instagram.com/p/CdniBEIqmh-/ target=_blank><u>Sandesh Link</u></a><br/>\n        b. Composition size: 1920px by 1080px 30 fps<br/>\n        c. Export: MP4 with the source file<br/>\n        d. Length: 10 sec (Minimum requirement)<br/>\n        e. Bonus: Use of 3D mockups will be highly recommended<br/>\n      <br/>\n      Task 3 (Adobe After Effects):\n        a. Topic: Promo video on Mozofest video: <a href=https://www.instagram.com/reel/CpApkpZjx1r/?igshid=MzRlODBiNWFlZA== target=_blank><u>Mozofest Link</u></a><br/>\n        b. Composition size: Instagram story dimension<br/>\n        c. Export: MP4 with the source file<br/>\n        d. Length: 15 sec (Stated)<br/>\n        e. Bonus: Experiment with typography<br/>\n        <br/>\n        Note: Upload your work to Google Drive, send the link here in your answer, AND ensure anyone with the link can access the file. Write N/A if you are not attempting this task.\n      "
+    ]
+  },
+  {
+    "domain": "corporate",
+    "questions": [
+      "What is your understanding of sponsorships, and can you explain the different types of sponsorships that are typically offered for events?",
+      "One of the most effective ways to secure sponsorships is by leveraging connections. What tools or platforms do you know that facilitate networking and relationship-building, and how effective do you think they are in helping secure sponsorships?",
+      "You’ve secured a high-value sponsor, but they have specific branding requirements that might conflict with the event’s theme or audience expectations. How would you approach this situation to ensure both the sponsor’s and the event’s needs are met?",
+      "Can you provide an example of a time when you took initiative or demonstrated leadership?",
+      "What do you think is the most essential element when it comes to working with/communicating with a diverse team in a club like SRMKZILLA? How would you rate your communication skills?",
+      "Imagine your club is seeking sponsorship for an upcoming event, and a potential sponsor is interested but offers less funding than expected or backs out of the deal at the last hour. How would you negotiate?",
+      "What unique qualities do you think you offer that would prove to be a valuable addition to the team at SRMKZILLA?",
+      "If you have any prior experiences in this domain, please mention them below."
+    ]
+  },
+  {
+    "domain": "events",
+    "questions": [
+      "What are your personal goals for contributing to the club?",
+      "Are you a generalist or specialist?",
+      "If you were a fictional character, who would you be and why?",
+      "Can you give an example of an event you organized? What went well and what didn’t?",
+      "What strategies would you use to increase audience engagement and participation during an event?",
+      "If you had to promote an upcoming event with no budget, what strategies would you use?",
+      "The venue for your upcoming event faces unforeseen issues, forcing you to relocate the event just two days before the date.<br/> How would you manage this change and communicate it to attendees and stakeholders effectively?",
+      "As a part of a team what are your ways to avoid any misunderstanding or dispute among the members?"
+    ]
+  },
+  {
+    "domain": "technicalp",
+    "questions": [
+      "Project slug",
+      "Project Name",
+      "Github Repo Link",
+      "Preferred Domain"
+    ]
+  }
 ]
