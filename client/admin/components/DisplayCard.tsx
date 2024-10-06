@@ -19,7 +19,9 @@ const DisplayCard = ({
   const [domainApplication] = application;
   const [status, setStatus] = useState(domainApplication.status);
 
-  const handleReview = async (review: "accepted" | "rejected" | "pending") => {
+  const handleReview = async (
+    review: "accepted" | "rejected" | "pending" | "reviewed",
+  ) => {
     if (review === "accepted") toast.success("Accepting...");
     else if (review === "pending") toast.pending("Marking as Pending...");
     else toast.error("Rejecting...");
@@ -46,6 +48,8 @@ const DisplayCard = ({
           ? toast.success("Accepted")
           : review === "pending"
           ? toast.pending("Pending")
+          : review === "reviewed"
+          ? toast.show("Marked as Reviewed", "👀")
           : toast.error("Rejected");
       }
     } catch (err) {
@@ -60,7 +64,7 @@ const DisplayCard = ({
   };
 
   const selectedDomainQuestions = questions.find(
-    (domain) => domain.domain === application[0].domain
+    (domain) => domain.domain === application[0].domain,
   );
 
   if (!selectedDomainQuestions) {
@@ -79,6 +83,7 @@ const DisplayCard = ({
           </Drawer.Trigger>
           <div className="w-[10vw] text-left">{regNo}</div>
           <button
+            type="button"
             className="hidden md:block w-[12vw] text-left hover:cursor-copy"
             onClick={() => {
               handleCopy(email, "email", "📧");
@@ -87,6 +92,7 @@ const DisplayCard = ({
             {email}
           </button>
           <button
+            type="button"
             className="hidden md:block w-[10vw] text-left hover:cursor-copy"
             onClick={() => {
               handleCopy(contact, "phone number", "📞");
@@ -94,13 +100,15 @@ const DisplayCard = ({
           >
             {contact}
           </button>
-          <button>
+          <button type="button">
             <div
               className={`w-4 h-4 rounded-full border-2 border-kz-black ${
                 status === "accepted"
                   ? "bg-kz-green"
                   : status === "rejected"
                   ? "bg-kz-red"
+                  : status === "reviewed"
+                  ? "bg-kz-blue"
                   : "bg-kz-yellow"
               }`}
             />
@@ -119,28 +127,37 @@ const DisplayCard = ({
                 <div className="flex flex-col md:flex-row justify-between">
                   <div className="my-2 flex flex-row gap-5">
                     {socials.github && (
-                      <a href={socials.github} target="_blank">
+                      <a href={socials.github} target="_blank" rel="noreferrer">
                         <GithubIcon color="#ff644e" size={30} />
                       </a>
                     )}
                     {socials.linkedIn && (
-                      <a href={socials.linkedIn} target="_blank">
+                      <a
+                        href={socials.linkedIn}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         <LinkedinIcon color="#ff644e" size={30} />
                       </a>
                     )}
                     {socials.portfolio && (
-                      <a href={socials.portfolio} target="_blank">
+                      <a
+                        href={socials.portfolio}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         <Globe color="#ff644e" size={30} />
                       </a>
                     )}
                     {resume && (
-                      <a href={resume} target="_blank">
+                      <a href={resume} target="_blank" rel="noreferrer">
                         <StickyNoteIcon color="#ff644e" size={30} />
                       </a>
                     )}
                   </div>
                   <div className="flex flex-row gap-4">
                     <button
+                      type="button"
                       className="text-kz-black bg-kz-red font-bold rounded-lg px-3 py-1 md:px-2 my-1"
                       onClick={async () => {
                         await handleReview("rejected");
@@ -149,6 +166,7 @@ const DisplayCard = ({
                       Reject
                     </button>
                     <button
+                      type="button"
                       className="text-kz-black font-bold rounded-lg px-2 my-1 bg-kz-green"
                       onClick={async () => {
                         await handleReview("accepted");
@@ -157,6 +175,17 @@ const DisplayCard = ({
                       Call for Interview
                     </button>
                     <button
+                      type="button"
+                      className="text-kz-black font-bold rounded-lg px-2 my-1 bg-kz-blue"
+                      onClick={async () => {
+                        await handleReview("reviewed");
+                      }}
+                    >
+                      Mark as Reviewed
+                    </button>
+
+                    <button
+                      type="button"
                       className="text-kz-black font-bold rounded-lg px-2 my-1 bg-kz-yellow"
                       onClick={async () => {
                         await handleReview("pending");
@@ -178,6 +207,8 @@ const DisplayCard = ({
                             ? "bg-kz-green"
                             : status === "rejected"
                             ? "bg-kz-red"
+                            : status === "reviewed"
+                            ? "bg-kz-blue"
                             : "bg-kz-yellow"
                         }`}
                       >
@@ -185,26 +216,28 @@ const DisplayCard = ({
                       </div>
                     </h3>
                     <ul className="flex flex-col gap-3 mt-6 text-lg">
-                      {domainApplication.questions &&
-                        domainApplication.questions.map(
-                          ({ answer, questionNumber }, index) => (
-                            <li key={index} className="mt-2">
-                              <div className="flex flex-row gap-2">
-                                Q.{" "}
-                                <span>
-                                  {
-                                    selectedDomainQuestions?.questions[
-                                      parseInt(questionNumber) - 1
-                                    ]
-                                  }
-                                </span>
-                              </div>
-                              <div className="bg-kz-black mt-2 px-6 py-7 select-text rounded-2xl text-xl font-bold flex flex-row gap-2">
-                                {answer}
-                              </div>
-                            </li>
-                          )
-                        )}
+                      {domainApplication.questions?.map(
+                        ({ answer, questionNumber }, questionIndex) => (
+                          <li
+                            key={`question-${questionIndex}`}
+                            className="mt-2"
+                          >
+                            <div className="flex flex-row gap-2">
+                              Q.{" "}
+                              <span>
+                                {
+                                  selectedDomainQuestions?.questions[
+                                    Number.parseInt(questionNumber) - 1
+                                  ]
+                                }
+                              </span>
+                            </div>
+                            <div className="bg-kz-black mt-2 px-6 py-7 select-text rounded-2xl text-xl font-bold flex flex-row gap-2">
+                              {answer}
+                            </div>
+                          </li>
+                        ),
+                      )}
                     </ul>
                   </div>
                 </div>
