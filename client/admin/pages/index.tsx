@@ -34,6 +34,10 @@ export function Index({ applications, email }: ApplicantProps) {
     app.application.some((a) => a.status === "pending"),
   ).length;
 
+  const reviewedApplications = applications.filter((app) =>
+    app.application.some((a) => a.status === "reviewed"),
+  ).length;
+
   const filteredApplications = applications.filter((app) => {
     if (filter !== "all" && !app.application.some((a) => a.status === filter)) {
       return false;
@@ -96,6 +100,10 @@ export function Index({ applications, email }: ApplicantProps) {
             <h2 className="font-bold">Pending</h2>
             <p>{pendingApplications}</p>
           </div>
+          <div className="text-center">
+            <h2 className="font-bold">Reviewed</h2>
+            <p>{reviewedApplications}</p>
+          </div>
         </div>
         <div className="flex justify-around w-[70vw] mx-auto mb-8 items-center">
           <select
@@ -107,6 +115,7 @@ export function Index({ applications, email }: ApplicantProps) {
             <option value="accepted">Accepted</option>
             <option value="rejected">Rejected</option>
             <option value="pending">Pending</option>
+            <option value="reviewed">Reviewed</option>
           </select>
           <input
             type="text"
