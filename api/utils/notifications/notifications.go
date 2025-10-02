@@ -25,8 +25,8 @@ func RecordNotification(notificationType string, userId any, domain string) bool
 
 switch notificationType {
 	case "NEW_USER":
-		notification.Text = "Greetings, mortal. Welcome to #Recruitment2024. Your divine journey to becoming an SRMKZILLian starts now. Create a new application to begin your quest."
-		notification.Markdown = "Hail, brave soul! The path to becoming an SRMKZILLian champion is open, like the gates of Olympus. Begin your epic journey by crafting your first application! #Recruitment2024"
+		notification.Text = "Greetings, mortal. Welcome to #Recruitment2025. Your divine journey to becoming an SRMKZILLian starts now. Create a new application to begin your quest."
+		notification.Markdown = "Hail, brave soul! The path to becoming an SRMKZILLian champion is open, like the gates of Olympus. Begin your epic journey by crafting your first application! #Recruitment2025"
 
 	case "NEW_APPLICATION":
 		notification.Text = "Your application has been created."

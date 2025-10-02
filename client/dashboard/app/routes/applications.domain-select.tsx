@@ -19,10 +19,10 @@ import { createApplication, getUserDetails } from "~/utils/api.server";
 
 export const meta: V2_MetaFunction = () => {
   return [
-    { title: "Select Domain | SRMKZILLA #Recruitment'24" },
+    { title: "Select Domain | SRMKZILLA #Recruitment'25" },
     {
       name: "description",
-      content: "Domain Selection SRMKZILLA Recruitment'24",
+      content: "Domain Selection SRMKZILLA Recruitment'25",
     },
   ];
 };

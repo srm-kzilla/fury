@@ -38,10 +38,10 @@ import type {
 
 export const meta: V2_MetaFunction = () => {
   return [
-    { title: "SRMKZILLA #Recruitment'24" },
+    { title: "SRMKZILLA #Recruitment'25" },
     {
       name: "description",
-      content: "SRMKZILLA #Recruitment'24",
+      content: "SRMKZILLA #Recruitment'25",
     },
   ];
 };

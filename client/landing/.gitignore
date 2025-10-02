@@ -27,6 +27,12 @@ yarn-error.log*
 # local env files
 .env*.local
 
+# ignore actual env files
+client/landing/.env
+client/admin/.env
+client/dashboard/.env
+backend/.env
+
 # vercel
 .vercel
 

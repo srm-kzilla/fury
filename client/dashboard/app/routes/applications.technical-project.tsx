@@ -27,10 +27,10 @@ import { States } from "~/types/enum";
 
 export const meta: V2_MetaFunction = () => {
   return [
-    { title: "Technical Projects | SRMKZILLA #Recruitment'24" },
+    { title: "Technical Projects | SRMKZILLA #Recruitment'25" },
     {
       name: "description",
-      content: "Technical Projects SRMKZILLA Recruitment'24",
+      content: "Technical Projects SRMKZILLA Recruitment'25",
     },
   ];
 };
