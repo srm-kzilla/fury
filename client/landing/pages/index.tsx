@@ -12,22 +12,22 @@ export default function Home() {
     <>
       <Head>
         <title>JOIN SRMKZILLA!</title>
-        <meta name="title" content="RECRUITMENT'24 SRMKZILLA" />
-        <meta property="og:title" content="RECRUITMENT24 SRMKZILLA" />
-        <meta property="twitter:title" content="RECRUITMENT24 SRMKZILLA" />
+        <meta name="title" content="RECRUITMENT'25 SRMKZILLA" />
+        <meta property="og:title" content="RECRUITMENT25 SRMKZILLA" />
+        <meta property="twitter:title" content="RECRUITMENT25 SRMKZILLA" />
         <meta httpEquiv="refresh" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <meta
           name="keywords"
-          content="RECRUITMENT24, RECRUITMENT, SRMKZILLA, MOZILLA, SRM UNIVERSITY, Technical Club, Mozilla Campus Club"
+          content="RECRUITMENT25, RECRUITMENT, SRMKZILLA, MOZILLA, SRM UNIVERSITY, Technical Club, Mozilla Campus Club"
         />
         <meta name="robots" content="index, follow" />
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="English" />
         <meta name="revisit-after" content="10 days" />
         <meta name="author" content="SRMKZILLA" />
-        <meta name="copyright" content="All rights reserved,2024. SRMKZILLA" />
+        <meta name="copyright" content="All rights reserved,2025. SRMKZILLA" />
         <meta httpEquiv="content-language" content="en" />
         <meta name="application-name" content="SRMKZILLA" />
 

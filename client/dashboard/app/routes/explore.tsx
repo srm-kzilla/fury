@@ -38,10 +38,10 @@ import { Link, useLoaderData } from "@remix-run/react";
 
 export const meta: V2_MetaFunction = () => {
   return [
-    { title: "Explore | SRMKZILLA #Recruitment'24" },
+    { title: "Explore | SRMKZILLA #Recruitment'25" },
     {
       name: "description",
-      content: "Explore SRMKZILLA Recruitment'24",
+      content: "Explore SRMKZILLA Recruitment'25",
     },
   ];
 };
@@ -76,7 +76,7 @@ const Explore = () => {
     },
     {
       icon: <BiLockOpenAlt />,
-      title: "MOZOFEST'24",
+      title: "MOZOFEST'25",
       description:
         "A three-day extravaganza to emanate the power of open source community sprinkled with a load of fun and frolic.",
       timestamp: 1711963800000,
@@ -85,7 +85,7 @@ const Explore = () => {
     },
     {
       icon: <BiMeteor />,
-      title: "MOZOHACK'24",
+      title: "MOZOHACK'25",
       description:
         "A thrilling 24-hour hackathon where students across the nation come together to bring some amazing ideas to life.",
       timestamp: 1711704600000,

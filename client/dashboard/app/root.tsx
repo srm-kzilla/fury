@@ -44,19 +44,19 @@ declare global {
 
 export const meta: V2_MetaFunction = () => {
   return [
-    { title: "SRMKZILLA #Recruitment'24" },
+    { title: "SRMKZILLA #Recruitment'25" },
     {
       name: "description",
-      content: "SRMKZILLA #Recruitment'24",
+      content: "SRMKZILLA #Recruitment'25",
     },
     {
       property: "og:title",
-      content: "SRMKZILLA #Recruitment'24",
+      content: "SRMKZILLA #Recruitment'25",
     },
     {
       name: "keywords",
       content:
-        "SRMKZILLA, MOZILLA, SRM UNIVERSITY, Technical Club, Recruitment, 24, Mozilla Campus Club",
+        "SRMKZILLA, MOZILLA, SRM UNIVERSITY, Technical Club, Recruitment, 25, Mozilla Campus Club",
     },
     {
       name: "viewport",
@@ -84,11 +84,11 @@ export const meta: V2_MetaFunction = () => {
     },
     {
       name: "copyright",
-      content: "All rights reserved,2024. SRMKZILLA",
+      content: "All rights reserved,2025. SRMKZILLA",
     },
     {
       name: "application-name",
-      content: "SRMKZILLA Recruitment'24",
+      content: "SRMKZILLA Recruitment'25",
     },
     {
       property: "og:url",
@@ -207,7 +207,7 @@ function Layout({ children }: { children: ReactNode }) {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <Links />
-        <title>SRMKZILLA Recruitments '24</title>
+        <title>SRMKZILLA Recruitments '25</title>
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -299,7 +299,7 @@ function ErrorLayout({ children }: { children: ReactNode }) {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <Links />
-        <title>SRMKZILLA Recruitments '24</title>
+        <title>SRMKZILLA Recruitments '25</title>
         <script
           dangerouslySetInnerHTML={{
             __html: `
